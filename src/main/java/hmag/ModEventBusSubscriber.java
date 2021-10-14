@@ -39,7 +39,7 @@ import hmag.entity.WitherGhostEntity;
 import hmag.entity.WitherSkeletonGirlEntity;
 import hmag.entity.ZombieGirlEntity;
 import hmag.item.ModSpawnEggItem;
-import hmag.loot.ModLoadedCondition;
+import hmag.loot.conditions.ModLoadedCondition;
 import hmag.registry.ModEntityTypes;
 import hmag.registry.ModItems;
 import hmag.registry.ModPotions;

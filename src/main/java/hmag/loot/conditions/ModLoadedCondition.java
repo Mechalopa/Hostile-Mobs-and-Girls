@@ -1,4 +1,4 @@
-package hmag.loot;
+package hmag.loot.conditions;
 
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;

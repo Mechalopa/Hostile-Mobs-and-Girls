@@ -1,4 +1,4 @@
-package hmag.loot;
+package hmag.loot.loot_modifiers;
 
 import java.util.List;
 
@@ -26,8 +26,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class AdditionalEntityLootModifier extends LootModifier
 {
-    private static final Gson GSON_INSTANCE = LootSerializers.createFunctionSerializer().create();
-    private final ILootFunction[] functions;
+	private static final Gson GSON_INSTANCE = LootSerializers.createFunctionSerializer().create();
+	private final ILootFunction[] functions;
 	private final Item addition;
 
 	public AdditionalEntityLootModifier(ILootCondition[] conditionsIn, ILootFunction[] functions, Item addition)

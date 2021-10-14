@@ -1,4 +1,4 @@
-package hmag.loot;
+package hmag.loot.loot_modifiers;
 
 import java.util.List;
 
@@ -25,8 +25,8 @@ import net.minecraftforge.common.loot.LootModifier;
 
 public class NuggetLootModifier extends LootModifier
 {
-    private static final Gson GSON_INSTANCE = LootSerializers.createFunctionSerializer().create();
-    private final ILootFunction[] functions;
+	private static final Gson GSON_INSTANCE = LootSerializers.createFunctionSerializer().create();
+	private final ILootFunction[] functions;
 
 	public NuggetLootModifier(ILootCondition[] conditionsIn, ILootFunction[] functions)
 	{

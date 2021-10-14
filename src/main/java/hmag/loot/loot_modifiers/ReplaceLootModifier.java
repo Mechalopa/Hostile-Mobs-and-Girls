@@ -1,4 +1,4 @@
-package hmag.loot;
+package hmag.loot.loot_modifiers;
 
 import java.util.List;
 import java.util.stream.Collectors;
