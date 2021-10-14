@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "hmag:lich_cloth"
+    },
+    {
+      "item": "hmag:soul_apple"
+    },
+    {
+      "tag": "hmag:milk"
+    },
+    {
+      "item": "minecraft:fermented_spider_eye"
+    },
+    {
+      "tag": "forge:gems/lapis"
+    },
+    {
+      "item": "minecraft:warped_roots"
+    }
+  ],
+  "result": {
+    "item": "hmag:purification_cloth",
+    "count": 3
+  }
+}

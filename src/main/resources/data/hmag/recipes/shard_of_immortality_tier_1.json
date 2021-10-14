@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "hmag:reinforcing_plate"
+    },
+    {
+      "item": "hmag:evil_crystal"
+    },
+    {
+      "tag": "forge:storage_blocks/iron"
+    },
+    {
+      "tag": "forge:nuggets/diamond"
+    },
+    {
+      "item": "minecraft:crying_obsidian"
+    }
+  ],
+  "result": {
+    "item": "hmag:shard_of_immortality_tier_1"
+  }
+}

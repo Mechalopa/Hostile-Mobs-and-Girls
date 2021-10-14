@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:gems/sapphire"
+    }
+  ],
+  "result": {
+    "item": "hmag:sapphire_fragment",
+    "count": 9
+  },
+  "conditions": [
+  {
+    "type": "forge:not",
+    "value": {
+        "type": "forge:tag_empty",
+        "tag": "forge:gems/sapphire"
+      }
+    }
+  ]
+}

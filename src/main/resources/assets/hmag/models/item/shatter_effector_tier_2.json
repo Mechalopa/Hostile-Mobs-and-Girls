@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "hmag:item/shatter_effector_tier_2"
+  }
+}

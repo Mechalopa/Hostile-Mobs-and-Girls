@@ -1,0 +1,28 @@
+{
+  "type": "hmag:crafting_item_tag_shaped",
+  "pattern": [
+    " # ",
+    "#I#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "hmag:kobold_leather"
+    },
+    "I": {
+      "tag": "forge:ingots/iron"
+    }
+  },
+  "result": {
+    "tag": "forge:ingots/cobalt"
+  },
+  "conditions": [
+  {
+    "type": "forge:not",
+    "value": {
+        "type": "forge:tag_empty",
+        "tag": "forge:ingots/cobalt"
+      }
+    }
+  ]
+}

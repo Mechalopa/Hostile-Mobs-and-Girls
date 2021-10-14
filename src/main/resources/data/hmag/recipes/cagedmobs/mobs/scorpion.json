@@ -1,0 +1,50 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cagedmobs"
+    }
+  ],
+  "type": "cagedmobs:mob_data",
+  "entity": "hmag:scorpion",
+  "samplerTier": 2,
+  "environments": ["sand"],
+  "growTicks": 1200,
+  "results": [
+    {
+      "chance": 0.5,
+      "output": {
+        "item": "minecraft:dead_bush"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.4,
+      "output": {
+        "item": "minecraft:clay_ball"
+      },
+      "output_cooked": {
+        "item": "minecraft:brick"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.025,
+      "output": {
+        "item": "minecraft:golden_carrot"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.025,
+      "output": {
+        "item": "minecraft:iron_ingot"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    }
+  ]
+}

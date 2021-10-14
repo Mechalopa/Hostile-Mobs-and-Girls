@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:string"
+    },
+    {
+      "item": "minecraft:weeping_vines"
+    },
+    {
+      "item": "minecraft:twisting_vines"
+    },
+    {
+      "tag": "forge:bat_wing"
+    },
+    {
+      "item": "hmag:evil_crystal"
+    },
+    {
+      "tag": "hmag:emerald_and_ruby_and_sapphire"
+    },
+    {
+      "tag": "forge:nuggets/diamond"
+    }
+  ],
+  "result": {
+    "item": "hmag:powerful_bowstring_tier_1"
+  }
+}

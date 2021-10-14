@@ -1,0 +1,6 @@
+{
+  "parent": "hmag:item/shield_blocking",
+  "textures": {
+    "particle": "hmag:block/ancient_stone_block"
+  }
+}

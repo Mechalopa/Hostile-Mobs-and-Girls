@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:storage_blocks/gold"
+    },
+    {
+      "item": "minecraft:gilded_blackstone"
+    },
+    {
+      "tag": "minecraft:soul_fire_base_blocks"
+    },
+    {
+      "item": "minecraft:red_nether_bricks"
+    },
+    {
+      "tag": "forge:gems/quartz"
+    },
+    {
+      "tag": "forge:dusts/glowstone"
+    },
+    {
+      "item": "hmag:burning_core"
+    },
+    {
+      "tag": "hmag:wither_materials"
+    },
+    {
+      "item": "hmag:evil_crystal"
+    }
+  ],
+  "result": {
+    "item": "hmag:tiny_netherite_scrap"
+  }
+}

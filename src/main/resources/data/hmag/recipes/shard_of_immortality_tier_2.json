@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "hmag:shard_of_immortality_tier_1"
+    },
+    {
+      "item": "hmag:shard_of_immortality_tier_1"
+    },
+    {
+      "item": "hmag:reinforcing_plate"
+    },
+    {
+      "item": "hmag:reinforcing_plate"
+    },
+    {
+      "item": "hmag:evil_crystal"
+    },
+    {
+      "item": "hmag:evil_crystal"
+    },
+    {
+      "tag": "forge:gems/diamond"
+    },
+    {
+      "item": "hmag:ancient_stone"
+    }
+  ],
+  "result": {
+    "item": "hmag:shard_of_immortality_tier_2"
+  }
+}

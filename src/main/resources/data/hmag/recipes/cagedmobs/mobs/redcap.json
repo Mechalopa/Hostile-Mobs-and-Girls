@@ -1,0 +1,95 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cagedmobs"
+    }
+  ],
+  "type": "cagedmobs:mob_data",
+  "entity": "hmag:redcap",
+  "samplerTier": 2,
+  "environments": ["cave"],
+  "growTicks": 1200,
+  "results": [
+    {
+      "chance": 0.375,
+      "output": {
+        "item": "hmag:strawberry"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.375,
+      "output": {
+        "item": "minecraft:red_dye"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.375,
+      "output": {
+        "item": "minecraft:redstone"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.025,
+      "output": {
+        "item": "minecraft:stone_axe"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.025,
+      "output": {
+        "item": "minecraft:iron_axe"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.04375,
+      "output": {
+        "item": "minecraft:iron_boots"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.00625,
+      "output": {
+        "item": "minecraft:chainmail_boots"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.025,
+      "output": {
+        "item": "minecraft:emerald"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.025,
+      "output": {
+        "item": "minecraft:apple"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.025,
+      "output": {
+        "item": "minecraft:redstone_block"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    }
+  ]
+}

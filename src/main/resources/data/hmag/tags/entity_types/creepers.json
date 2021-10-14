@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:creeper",
+    "hmag:creeper_girl"
+  ],
+  "optional": [
+    "cactusmod:cactus_creeper"
+  ]
+}

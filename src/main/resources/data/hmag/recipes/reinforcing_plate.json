@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "YZY",
+    "X#X"
+  ],
+  "key": {
+    "#": {
+      "tag": "hmag:reinforcing_plate_crafting_materials"
+    },
+    "X": {
+      "tag": "forge:obsidian"
+    },
+    "Y": {
+      "tag": "forge:ingots/iron"
+    },
+    "Z": {
+      "item": "minecraft:chain"
+    }
+  },
+  "result": {
+    "item": "hmag:reinforcing_plate",
+    "count": 2
+  }
+}

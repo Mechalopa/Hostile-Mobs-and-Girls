@@ -1,0 +1,47 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cagedmobs"
+    }
+  ],
+  "type": "cagedmobs:mob_data",
+  "entity": "hmag:dyssomnia",
+  "samplerTier": 2,
+  "environments": ["cave"],
+  "growTicks": 1800,
+  "results": [
+    {
+      "chance": 0.625,
+      "output": {
+        "item": "minecraft:phantom_membrane"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.375,
+      "output": {
+        "item": "hmag:dyssomnia_skin"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.4,
+      "output": {
+        "item": "minecraft:lapis_lazuli"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.025,
+      "output": {
+        "item": "minecraft:emerald"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    }
+  ]
+}

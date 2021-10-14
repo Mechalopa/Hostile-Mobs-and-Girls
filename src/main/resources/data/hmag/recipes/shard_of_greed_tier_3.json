@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "hmag:shard_of_greed_tier_2"
+    },
+    {
+      "item": "hmag:shard_of_greed_tier_2"
+    },
+    {
+      "tag": "forge:ingots/netherite"
+    },
+    {
+      "tag": "forge:nether_stars"
+    },
+    {
+      "item": "minecraft:dragon_head"
+    }
+  ],
+  "result": {
+    "item": "hmag:shard_of_greed_tier_3"
+  }
+}

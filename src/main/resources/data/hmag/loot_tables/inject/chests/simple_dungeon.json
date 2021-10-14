@@ -1,0 +1,124 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": {
+        "min": 0.0,
+        "max": 2.0,
+        "type": "minecraft:uniform"
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "weight": 5,
+          "name": "hmag:spectral_soup"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 5,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1.0,
+                "max": 5.0,
+                "type": "minecraft:uniform"
+              }
+            }
+          ],
+          "name": "hmag:soul_powder"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1.0,
+                "max": 4.0,
+                "type": "minecraft:uniform"
+              }
+            }
+          ],
+          "name": "hmag:fire_bottle"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1.0,
+                "max": 3.0,
+                "type": "minecraft:uniform"
+              }
+            }
+          ],
+          "name": "hmag:kobold_leather"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1.0,
+                "max": 5.0,
+                "type": "minecraft:uniform"
+              }
+            }
+          ],
+          "name": "hmag:evil_crystal_fragment"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1.0,
+                "max": 3.0,
+                "type": "minecraft:uniform"
+              }
+            }
+          ],
+          "name": "hmag:diamond_fragment"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1.0,
+                "max": 2.0,
+                "type": "minecraft:uniform"
+              }
+            }
+          ],
+          "name": "hmag:reinforcing_plate"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1.0,
+                "max": 3.0,
+                "type": "minecraft:uniform"
+              }
+            }
+          ],
+          "name": "hmag:purification_cloth"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "hmag:shard_of_fortune_tier_1"
+    },
+    {
+      "item": "hmag:shard_of_fortune_tier_1"
+    },
+    {
+      "tag": "forge:storage_blocks/diamond"
+    },
+    {
+      "item": "minecraft:enchanted_golden_apple"
+    },
+    [
+      {
+        "item": "hmag:lich_cloth"
+      },
+      {
+        "item": "hmag:dyssomnia_skin"
+      }
+    ],
+    {
+      "item": "minecraft:netherite_scrap"
+    },
+    {
+      "item": "minecraft:ghast_tear"
+    },
+    {
+      "item": "hmag:ender_plasm"
+    },
+    {
+      "item": "hmag:lightning_particle"
+    }
+  ],
+  "result": {
+    "item": "hmag:shard_of_fortune_tier_2"
+  }
+}

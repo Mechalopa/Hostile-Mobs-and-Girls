@@ -1,0 +1,130 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 0.0,
+                "max": 1.0,
+                "type": "minecraft:uniform"
+              }
+            },
+            {
+              "function": "minecraft:looting_enchant",
+              "count": {
+                "min": 0.0,
+                "max": 1.0
+              }
+            }
+          ],
+          "name": "minecraft:ghast_tear"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 0.0,
+                "max": 3.0,
+                "type": "minecraft:uniform"
+              }
+            },
+            {
+              "function": "minecraft:looting_enchant",
+              "count": {
+                "min": 0.0,
+                "max": 1.0
+              }
+            }
+          ],
+          "name": "minecraft:gunpowder"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 0.0,
+                "max": 1.0,
+                "type": "minecraft:uniform"
+              }
+            },
+            {
+              "function": "minecraft:looting_enchant",
+              "count": {
+                "min": 0.0,
+                "max": 1.0
+              }
+            }
+          ],
+          "name": "minecraft:fire_charge"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": -1.0,
+                "max": 1.0,
+                "type": "minecraft:uniform"
+              }
+            },
+            {
+              "function": "minecraft:looting_enchant",
+              "count": {
+                "min": 0.0,
+                "max": 1.0
+              }
+            }
+          ],
+          "name": "minecraft:ghast_tear"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:killed_by_player"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:gilded_blackstone"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:killed_by_player"
+        },
+        {
+          "condition": "minecraft:random_chance_with_looting",
+          "chance": 0.11,
+          "looting_multiplier": 0.02
+        }
+      ]
+    }
+  ]
+}

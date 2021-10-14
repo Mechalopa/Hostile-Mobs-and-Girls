@@ -1,0 +1,27 @@
+modLoader="javafml"
+loaderVersion="[36,)"
+license="LGPL-3.0"
+issueTrackerURL="https://github.com/Mechalopa/Hostile-Mobs-and-Girls/issues"
+[[mods]]
+modId="hmag"
+version="4.4.0"
+displayName="Hostile Mobs and Girls"
+#updateJSONURL="http://myurl.me/"
+#displayURL="http://example.com/"
+#logoFile="logo.png"
+credits="Mechalopa"
+authors="Mechalopa"
+description='''More Hostile Mobs and Girls!!!'''
+itemIcon="hmag:evil_crystal"
+[[dependencies.hmag]]
+    modId="forge"
+    mandatory=true
+    versionRange="[36.2.0,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.hmag]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16.5]"
+    ordering="NONE"
+    side="BOTH"

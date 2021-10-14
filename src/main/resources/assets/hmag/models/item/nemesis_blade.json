@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "hmag:item/nemesis_blade"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "level": 1.0
+      },
+      "model": "hmag:item/nemesis_blade_1"
+    },
+    {
+      "predicate": {
+        "level": 2.0
+      },
+      "model": "hmag:item/nemesis_blade_2"
+    },
+    {
+      "predicate": {
+        "level": 3.0
+      },
+      "model": "hmag:item/nemesis_blade_3"
+    },
+    {
+      "predicate": {
+        "level": 4.0
+      },
+      "model": "hmag:item/nemesis_blade_4"
+    }
+  ]
+}

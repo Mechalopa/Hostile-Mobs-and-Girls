@@ -1,0 +1,17 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "type": "tconstruct:entity_melting",
+  "entity": {
+    "type": "hmag:creeper_girl"
+  },
+  "result": {
+    "fluid": "tconstruct:molten_glass",
+    "amount": 50
+  },
+  "damage": 2
+}

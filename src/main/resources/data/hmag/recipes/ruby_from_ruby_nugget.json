@@ -1,0 +1,25 @@
+{
+  "type": "hmag:crafting_item_tag_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:nuggets/ruby"
+    }
+  },
+  "result": {
+    "tag": "forge:gems/ruby"
+  },
+  "conditions": [
+  {
+    "type": "forge:not",
+    "value": {
+        "type": "forge:tag_empty",
+        "tag": "forge:gems/ruby"
+      }
+    }
+  ]
+}

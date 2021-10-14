@@ -1,0 +1,31 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cagedmobs"
+    }
+  ],
+  "type": "cagedmobs:mob_data",
+  "entity": "hmag:monolith",
+  "samplerTier": 2,
+  "environments": ["end"],
+  "growTicks": 1200,
+  "results": [
+    {
+      "chance": 0.375,
+      "output": {
+        "item": "hmag:ancient_stone"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.025,
+      "output": {
+        "item": "minecraft:ender_eye"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    }
+  ]
+}

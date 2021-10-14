@@ -1,0 +1,47 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cagedmobs"
+    }
+  ],
+  "type": "cagedmobs:mob_data",
+  "entity": "hmag:ogre",
+  "samplerTier": 2,
+  "environments": ["cave"],
+  "growTicks": 1800,
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "minecraft:basalt"
+      },
+      "minAmount": 1,
+      "maxAmount": 3
+    },
+    {
+      "chance": 0.375,
+      "output": {
+        "item": "hmag:ogre_horn"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:obsidian"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.025,
+      "output": {
+        "item": "minecraft:emerald"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    }
+  ]
+}

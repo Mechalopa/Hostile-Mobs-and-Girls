@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:scute",
+    "hmag:kobold_leather",
+    "hmag:ogre_horn",
+    "hmag:ancient_stone",
+    "hmag:canine_tooth",
+    "hmag:burning_core",
+    "hmag:necrofiber",
+    "hmag:cubic_nucleus"
+  ],
+  "optional": [
+    "turtlemancy:magma_scute",
+    "thermal:basalz_rod",
+    "thermal:blitz_rod",
+    "omnis:ravaged_scrap"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "hmag:cubic_nucleus"
+    }
+  ],
+  "result": {
+    "item": "minecraft:slime_ball",
+    "count": 3
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:wither_rose",
+    "#forge:wither_bones"
+  ],
+  "optional": [
+    "xreliquary:withered_rib"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "type": "hmag:additional_entity_loot",
+  "conditions": [
+    {
+      "condition": "minecraft:entity_properties",
+      "entity": "this",
+      "predicate": {
+        "type": "#hmag:creepers",
+        "nbt": "{powered:true}"
+      }
+    }
+  ],
+  "functions": [
+    {
+      "function": "minecraft:set_count",
+      "count": {
+        "min": 0.0,
+        "max": 2.0,
+        "type": "minecraft:uniform"
+      }
+    },
+    {
+      "function": "minecraft:looting_enchant",
+      "count": {
+        "min": 0.0,
+        "max": 1.0
+      }
+    }
+  ],
+  "addition": "hmag:lightning_particle"
+}

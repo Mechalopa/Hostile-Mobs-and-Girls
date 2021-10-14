@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [],
+  "optional": [
+    "quark:dragon_scale",
+    "forbidden_arcanus:dragon_scale",
+    "bountifulbaubles:ender_dragon_scale",
+    "cagedmobs:dragon_scale",
+    "tconstruct:dragon_scale"
+  ]
+}

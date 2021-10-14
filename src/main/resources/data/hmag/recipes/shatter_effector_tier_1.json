@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:stone_pickaxe"
+    },
+    {
+      "item": "minecraft:soul_torch"
+    },
+    {
+      "tag": "forge:dusts/redstone"
+    },
+    {
+      "item": "hmag:kobold_leather"
+    },
+    {
+      "item": "hmag:evil_crystal"
+    },
+    {
+      "tag": "hmag:emerald_and_ruby_and_sapphire"
+    },
+    {
+      "tag": "forge:nuggets/diamond"
+    }
+  ],
+  "result": {
+    "item": "hmag:shatter_effector_tier_1"
+  }
+}

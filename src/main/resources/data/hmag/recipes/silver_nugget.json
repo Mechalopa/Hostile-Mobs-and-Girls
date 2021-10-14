@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingots/silver"
+    }
+  ],
+  "result": {
+    "item": "hmag:silver_nugget",
+    "count": 9
+  },
+  "conditions": [
+  {
+    "type": "forge:not",
+    "value": {
+        "type": "forge:tag_empty",
+        "tag": "forge:ingots/silver"
+      }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "Y#Y",
+    "#X#",
+    "Y#Y"
+  ],
+  "key": {
+    "#": {
+      "item": "hmag:reinforcing_plate"
+    },
+    "X": {
+      "tag": "hmag:reinforced_block_crafting_materials"
+    },
+    "Y": {
+      "tag": "forge:nuggets/netherite"
+    }
+  },
+  "result": {
+    "item": "hmag:reinforced_block",
+    "count": 16
+  }
+}

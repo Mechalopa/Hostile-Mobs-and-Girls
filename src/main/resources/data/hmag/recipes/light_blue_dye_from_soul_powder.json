@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "hmag:soul_powder"
+    },
+    {
+      "item": "hmag:soul_powder"
+    }
+  ],
+  "result": {
+    "item": "minecraft:light_blue_dye"
+  }
+}

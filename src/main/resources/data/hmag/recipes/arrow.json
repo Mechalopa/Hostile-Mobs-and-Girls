@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X",
+    "#",
+    "Y"
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:rods/wooden"
+    },
+    "X": [
+      {
+        "item": "hmag:canine_tooth"
+      },
+      {
+        "tag": "forge:flint"
+      }
+    ],
+    "Y": [
+      {
+        "tag": "forge:bat_wing"
+      },
+      {
+        "tag": "forge:feathers"
+      }
+    ]
+  },
+  "result": {
+    "item": "minecraft:arrow",
+    "count": 4
+  }
+}

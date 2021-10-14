@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "hmag:bat_wing"
+  ],
+  "optional": [
+    "forbidden_arcanus:bat_wing",
+    "xreliquary:bat_wing",
+    "foodexpansion:bat_wing"
+  ]
+}

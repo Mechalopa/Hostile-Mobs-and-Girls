@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "entries": [
+    "hmag:ancient_stone_from_elder_guardian",
+    "hmag:bat_wing_from_bat",
+    "hmag:lightning_particle_from_powered_creeper",
+    "hmag:nugget_loot",
+    "hmag:tconstruct/wither_bone_from_wither_skeleton_girl",
+    "hmag:xreliquary/catalyzing_gland",
+    "hmag:xreliquary/eye_of_the_storm",
+    "hmag:xreliquary/frozen_core",
+    "hmag:xreliquary/molten_core",
+    "hmag:xreliquary/nebulous_heart",
+    "hmag:xreliquary/rib_bone",
+    "hmag:xreliquary/slime_pearl",
+    "hmag:xreliquary/withered_rib",
+    "hmag:xreliquary/zombie_heart"
+  ]
+}

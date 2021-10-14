@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:foods/strawberries",
+    "#forge:foods/blueberries"
+  ]
+}

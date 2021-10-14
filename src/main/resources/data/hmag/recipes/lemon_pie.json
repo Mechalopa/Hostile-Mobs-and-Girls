@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:crops/lemon"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "tag": "forge:eggs"
+    }
+  ],
+  "result": {
+    "item": "hmag:lemon_pie"
+  }
+}

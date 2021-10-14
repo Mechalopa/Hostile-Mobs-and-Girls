@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "hmag:savagefang_meat"
+  },
+  "result": "hmag:cooked_savagefang_meat",
+  "experience": 0.35,
+  "cookingtime": 200
+}

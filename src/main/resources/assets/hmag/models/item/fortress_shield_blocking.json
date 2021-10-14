@@ -1,0 +1,6 @@
+{
+  "parent": "hmag:item/shield_blocking",
+  "textures": {
+    "particle": "minecraft:block/nether_bricks"
+  }
+}

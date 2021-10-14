@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "hmag:block/reinforced_block_top",
+    "side": "hmag:block/reinforced_block_side"
+  }
+}

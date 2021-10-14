@@ -1,0 +1,24 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:nuggets/netherite_scrap",
+    "#forge:nuggets/nether_star",
+    "#forge:dragon_scale"
+  ],
+  "optional": [
+    "#forge:nuggets/manyullyn",
+    "#forge:scales/dragon",
+    "iceandfire:dragonscales_red",
+    "iceandfire:dragonscales_green",
+    "iceandfire:dragonscales_bronze",
+    "iceandfire:dragonscales_gray",
+    "iceandfire:dragonscales_blue",
+    "iceandfire:dragonscales_white",
+    "iceandfire:dragonscales_sapphire",
+    "iceandfire:dragonscales_silver",
+    "iceandfire:dragonscales_electric",
+    "iceandfire:dragonscales_amythest",
+    "iceandfire:dragonscales_copper",
+    "iceandfire:dragonscales_black"
+  ]
+}

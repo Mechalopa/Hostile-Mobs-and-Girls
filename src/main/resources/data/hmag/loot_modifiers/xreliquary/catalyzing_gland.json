@@ -1,0 +1,43 @@
+{
+  "type": "hmag:additional_entity_loot",
+  "conditions": [
+    {
+      "condition": "hmag:mod_loaded",
+      "modid": "xreliquary"
+    },
+    {
+      "condition": "minecraft:alternative",
+      "terms": [
+        {
+          "condition": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "type": "hmag:creeper_girl"
+          }
+        },
+        {
+          "condition": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "type": "hmag:ghastly_seeker"
+          }
+        }
+      ]
+    },
+    {
+      "condition": "minecraft:killed_by_player"
+    },
+    {
+      "condition": "minecraft:random_chance_with_looting",
+      "chance": 0.1,
+      "looting_multiplier": 0.05
+    }
+  ],
+  "functions": [
+    {
+      "function": "minecraft:set_count",
+      "count": 1
+    }
+  ],
+  "addition": "xreliquary:catalyzing_gland"
+}

@@ -1,0 +1,24 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cagedmobs"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "xreliquary"
+    }
+  ],
+  "type": "cagedmobs:additional_loot_data",
+  "entity": "hmag:melty_monster",
+  "results": [
+    {
+      "chance": 0.1,
+      "output": {
+        "item": "xreliquary:molten_core"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    }
+  ]
+}

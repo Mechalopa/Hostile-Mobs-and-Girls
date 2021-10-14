@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GGG",
+    "GXG",
+    "GYG"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:ender_eye"
+    },
+    "Y": {
+      "item": "hmag:ender_plasm"
+    },
+    "G": {
+      "tag": "forge:glass/colorless"
+    }
+  },
+  "result": {
+    "item": "minecraft:end_crystal"
+  }
+}

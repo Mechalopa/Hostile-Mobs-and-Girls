@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:crying_obsidian",
+    "minecraft:end_stone_bricks",
+    "minecraft:end_stone_brick_slab",
+    "minecraft:end_stone_brick_stairs",
+    "minecraft:purpur_block",
+    "minecraft:purpur_pillar",
+    "minecraft:purpur_slab",
+    "minecraft:purpur_stairs"
+  ]
+}

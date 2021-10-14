@@ -1,0 +1,21 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "type": "tconstruct:severing",
+  "entity": {
+    "types": [
+      "hmag:skeleton_girl",
+      "hmag:stray_girl",
+      "hmag:lich",
+      "hmag:necrotic_reaper"
+    ]
+  },
+  "result": {
+    "item": "minecraft:bone",
+    "count": 2
+  }
+}

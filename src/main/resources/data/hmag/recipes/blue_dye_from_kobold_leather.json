@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "hmag:kobold_leather"
+    }
+  ],
+  "result": {
+    "item": "minecraft:blue_dye"
+  }
+}
