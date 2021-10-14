@@ -1,9 +1,9 @@
 package hmag.registry;
 
 import hmag.HMaG;
-import hmag.loot.loot_modifiers.AdditionalEntityLootModifier;
-import hmag.loot.loot_modifiers.NuggetLootModifier;
-import hmag.loot.loot_modifiers.ReplaceLootModifier;
+import hmag.loot.modifiers.AdditionalEntityLootModifier;
+import hmag.loot.modifiers.NuggetLootModifier;
+import hmag.loot.modifiers.ReplaceLootModifier;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

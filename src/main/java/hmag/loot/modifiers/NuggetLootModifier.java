@@ -1,4 +1,4 @@
-package hmag.loot.loot_modifiers;
+package hmag.loot.modifiers;
 
 import java.util.List;
 
