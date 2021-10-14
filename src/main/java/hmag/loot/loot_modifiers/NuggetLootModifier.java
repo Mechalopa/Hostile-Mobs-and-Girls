@@ -25,7 +25,7 @@ import net.minecraftforge.common.loot.LootModifier;
 
 public class NuggetLootModifier extends LootModifier
 {
-	private static final Gson GSON_INSTANCE = LootSerializers.createFunctionSerializer().create();
+	private static final Gson GSON = LootSerializers.createFunctionSerializer().create();
 	private final ILootFunction[] functions;
 
 	public NuggetLootModifier(ILootCondition[] conditionsIn, ILootFunction[] functions)
@@ -73,7 +73,7 @@ public class NuggetLootModifier extends LootModifier
 		@Override
 		public NuggetLootModifier read(ResourceLocation name, JsonObject object, ILootCondition[] conditionsIn)
 		{
-	        ILootFunction[] functions = object.has("functions") ? GSON_INSTANCE.fromJson(object.get("functions"), ILootFunction[].class) : new ILootFunction[0];
+	        ILootFunction[] functions = object.has("functions") ? GSON.fromJson(object.get("functions"), ILootFunction[].class) : new ILootFunction[0];
 			return new NuggetLootModifier(conditionsIn, functions);
 		}
 
@@ -84,7 +84,7 @@ public class NuggetLootModifier extends LootModifier
 
 			if (!ArrayUtils.isEmpty(instance.functions))
 			{
-				json.add("functions", GSON_INSTANCE.toJsonTree(instance.functions));
+				json.add("functions", GSON.toJsonTree(instance.functions));
 			}
 
 			return json;

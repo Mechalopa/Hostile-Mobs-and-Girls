@@ -26,7 +26,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class AdditionalEntityLootModifier extends LootModifier
 {
-	private static final Gson GSON_INSTANCE = LootSerializers.createFunctionSerializer().create();
+	private static final Gson GSON = LootSerializers.createFunctionSerializer().create();
 	private final ILootFunction[] functions;
 	private final Item addition;
 
@@ -66,7 +66,7 @@ public class AdditionalEntityLootModifier extends LootModifier
 		@Override
 		public AdditionalEntityLootModifier read(ResourceLocation name, JsonObject object, ILootCondition[] conditionsIn)
 		{
-	        ILootFunction[] functions = object.has("functions") ? GSON_INSTANCE.fromJson(object.get("functions"), ILootFunction[].class) : new ILootFunction[0];
+	        ILootFunction[] functions = object.has("functions") ? GSON.fromJson(object.get("functions"), ILootFunction[].class) : new ILootFunction[0];
 			Item addition = ForgeRegistries.ITEMS.getValue(new ResourceLocation((JSONUtils.getAsString(object, "addition"))));
 			return new AdditionalEntityLootModifier(conditionsIn, functions, addition);
 		}
@@ -78,7 +78,7 @@ public class AdditionalEntityLootModifier extends LootModifier
 
 			if (!ArrayUtils.isEmpty(instance.functions))
 			{
-				json.add("functions", GSON_INSTANCE.toJsonTree(instance.functions));
+				json.add("functions", GSON.toJsonTree(instance.functions));
 			}
 
 			json.addProperty("addition", ForgeRegistries.ITEMS.getKey(instance.addition).toString());

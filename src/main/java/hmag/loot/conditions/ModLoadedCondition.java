@@ -13,7 +13,7 @@ import net.minecraftforge.fml.ModList;
 
 public class ModLoadedCondition implements ILootCondition
 {
-	public static final LootConditionType ID = new LootConditionType(new ModLoadedCondition.Serializer());
+	public static final LootConditionType TYPE = new LootConditionType(new ModLoadedCondition.Serializer());
 	private final String modid;
 
 	private ModLoadedCondition(String modid)
@@ -24,7 +24,7 @@ public class ModLoadedCondition implements ILootCondition
 	@Override
 	public LootConditionType getType()
 	{
-		return ID;
+		return TYPE;
 	}
 
 	@Override
