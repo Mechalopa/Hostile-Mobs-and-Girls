@@ -1,11 +1,9 @@
-package hmag.loot;
+package hmag;
 
 import java.util.List;
 
 import com.google.common.collect.ImmutableList;
 
-import hmag.HMaG;
-import hmag.ModConfigs;
 import hmag.util.ModUtils;
 import net.minecraft.loot.LootEntry;
 import net.minecraft.loot.LootPool;
@@ -16,7 +14,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = HMaG.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
-public class AddLootTables
+public class ModLootTableLoadingEvent
 {
 	private static final List<String> CHEST_TABLES = ImmutableList.of(
 			"abandoned_mineshaft",
@@ -44,7 +42,7 @@ public class AddLootTables
 			"village/village_weaponsmith");
 
 	@SubscribeEvent
-	public static void loadLootTable(LootTableLoadEvent event)
+	public static void onLootTableLoad(LootTableLoadEvent event)
 	{
 		if (event.getName() != null && event.getTable() != null)
 		{

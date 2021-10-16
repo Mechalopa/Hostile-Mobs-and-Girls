@@ -31,11 +31,7 @@ public class ModBrewingRecipe extends BrewingRecipe
 		{
 			ItemStack[] stacks = this.input.getItems();
 
-			if (stacks.length == 0)
-			{
-				return stack.isEmpty();
-			}
-			else
+			if (stacks.length > 0)
 			{
 				for (ItemStack stack1 : stacks)
 				{
@@ -44,6 +40,10 @@ public class ModBrewingRecipe extends BrewingRecipe
 						return true;
 					}
 				}
+			}
+			else
+			{
+				return stack.isEmpty();
 			}
 		}
 
