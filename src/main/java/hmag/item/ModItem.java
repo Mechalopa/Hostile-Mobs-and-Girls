@@ -9,7 +9,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.tags.ITag;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 
 public class ModItem extends Item
@@ -50,23 +49,32 @@ public class ModItem extends Item
 	}
 
 	@Override
-	public void fillItemCategory(ItemGroup group, NonNullList<ItemStack> list)
+	protected boolean allowdedIn(ItemGroup group)
 	{
-		if (this.isCreativeTabChecking)
+		if (super.allowdedIn(group))
 		{
-			if (this.tagId != null)
+			if (this.isCreativeTabChecking)
 			{
-				ITag<Item> tag = ModTags.getItemTag(this.tagId);
-
-				if (tag != null && !tag.getValues().isEmpty())
+				if (this.tagId != null)
 				{
-					super.fillItemCategory(group, list);
+					ITag<Item> tag = ModTags.getItemTag(this.tagId);
+
+					if (tag != null && !tag.getValues().isEmpty())
+					{
+						return true;
+					}
 				}
+
+				return false;
+			}
+			else
+			{
+				return true;
 			}
 		}
 		else
 		{
-			super.fillItemCategory(group, list);
+			return false;
 		}
 	}
 

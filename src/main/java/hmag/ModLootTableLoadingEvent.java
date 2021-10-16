@@ -46,11 +46,11 @@ public class ModLootTableLoadingEvent
 	{
 		if (event.getName() != null && event.getTable() != null)
 		{
-			String prefix = ModUtils.MINECRAFT_ID + ":chests/";
-			String name = event.getName().toString();
-
 			if (ModConfigs.cachedServer.ADDITIONAL_CHEST_LOOTS)
 			{
+				String prefix = ModUtils.MINECRAFT_ID + ":chests/";
+				String name = event.getName().toString();
+
 				if (name.startsWith(prefix) && CHEST_TABLES.contains(name.substring(prefix.length())))
 				{
 					String file = name.substring((ModUtils.MINECRAFT_ID + ":").length());
