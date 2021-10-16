@@ -50,7 +50,6 @@ public class HMaG
 		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
 		modEventBus.addListener(ModConfigs::loadConfig);
-//		modEventBus.addGenericListener(IRecipeSerializer.class, this::registerRecipeSerializers);
 
 		ModBlocks.register(modEventBus);
 		ModEffects.register(modEventBus);
@@ -64,13 +63,5 @@ public class HMaG
 		ModSoundEvents.register(modEventBus);
 
 		MinecraftForge.EVENT_BUS.register(new ModEvents());
-//		MinecraftForge.EVENT_BUS.register(this);
 	}
-
-//	private void registerRecipeSerializers(final RegistryEvent.Register<IRecipeSerializer<?>> event)
-//	{
-//		event.getRegistry().register(ItemTagShapedRecipe.SERIALIZER);
-//		event.getRegistry().register(RemoveCurseRecipe.SERIALIZER);
-//		event.getRegistry().register(EnchantmentUpgradeRecipe.SERIALIZER);
-//	}
 }
