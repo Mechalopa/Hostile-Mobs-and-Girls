@@ -6,6 +6,7 @@
     }
   ],
   "result": {
-    "item": "minecraft:blue_dye"
+    "item": "minecraft:blue_dye",
+    "count": 3
   }
 }
