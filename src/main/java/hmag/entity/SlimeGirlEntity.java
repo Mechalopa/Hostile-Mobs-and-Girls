@@ -342,7 +342,6 @@ public class SlimeGirlEntity extends MonsterEntity implements IModMob
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 
-	@OnlyIn(Dist.CLIENT)
 	public static enum ColorVariant
 	{
 		PINK1(0, 16678066),
