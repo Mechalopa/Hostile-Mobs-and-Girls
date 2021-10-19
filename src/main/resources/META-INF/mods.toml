@@ -4,7 +4,7 @@ license="LGPL-3.0"
 issueTrackerURL="https://github.com/Mechalopa/Hostile-Mobs-and-Girls/issues"
 [[mods]]
 modId="hmag"
-version="4.4.1"
+version="${file.jarVersion}"
 displayName="Hostile Mobs and Girls"
 #updateJSONURL="http://myurl.me/"
 displayURL="https://github.com/Mechalopa/Hostile-Mobs-and-Girls"
