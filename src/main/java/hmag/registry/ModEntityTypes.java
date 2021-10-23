@@ -7,6 +7,7 @@ import hmag.entity.CatoblepasEntity;
 import hmag.entity.CreeperGirlEntity;
 import hmag.entity.CrimsonSlaughtererEntity;
 import hmag.entity.CursedDollEntity;
+import hmag.entity.DodomekiEntity;
 import hmag.entity.DoguEntity;
 import hmag.entity.DrownedGirlEntity;
 import hmag.entity.DullahanEntity;
@@ -173,6 +174,9 @@ public class ModEntityTypes
 	public static final RegistryObject<EntityType<NecroticReaperEntity>> NECROTIC_REAPER = REGISTRY.register("necrotic_reaper", () -> EntityType.Builder
 			.of(NecroticReaperEntity::new, EntityClassification.MONSTER).sized(0.6F, 1.95F).setTrackingRange(6).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
 			.build(new ResourceLocation(HMaG.MODID, "necrotic_reaper").toString()));
+	public static final RegistryObject<EntityType<DodomekiEntity>> DODOMEKI = REGISTRY.register("dodomeki", () -> EntityType.Builder
+			.of(DodomekiEntity::new, EntityClassification.MONSTER).sized(0.6F, 1.95F).setTrackingRange(6).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
+			.build(new ResourceLocation(HMaG.MODID, "dodomeki").toString()));
 
 	public static final RegistryObject<EntityType<MagicBulletEntity>> MAGIC_BULLET = REGISTRY.register("magic_bullet", () -> EntityType.Builder
 			.<MagicBulletEntity>of(MagicBulletEntity::new, EntityClassification.MISC).sized(0.3215F, 0.3215F).setTrackingRange(4).setUpdateInterval(1).setShouldReceiveVelocityUpdates(true)

@@ -8,6 +8,7 @@ import hmag.client.renderer.CatoblepasRenderer;
 import hmag.client.renderer.CreeperGirlRenderer;
 import hmag.client.renderer.CrimsonSlaughtererRenderer;
 import hmag.client.renderer.CursedDollRenderer;
+import hmag.client.renderer.DodomekiRenderer;
 import hmag.client.renderer.DoguRenderer;
 import hmag.client.renderer.DrownedGirlRenderer;
 import hmag.client.renderer.DullahanRenderer;
@@ -109,6 +110,7 @@ public class ModClientEventBusSubscriber
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.SAVAGEFANG.get(), SavagefangRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.FORTRESS_KEEPER.get(), FortressKeeperRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.NECROTIC_REAPER.get(), NecroticReaperRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.DODOMEKI.get(), DodomekiRenderer::new);
 
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.MAGIC_BULLET.get(), MagicBulletRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.HARD_SNOWBALL.get(), ModSpriteRenderer::new);

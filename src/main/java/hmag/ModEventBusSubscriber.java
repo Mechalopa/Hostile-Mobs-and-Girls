@@ -6,6 +6,7 @@ import hmag.entity.CatoblepasEntity;
 import hmag.entity.CreeperGirlEntity;
 import hmag.entity.CrimsonSlaughtererEntity;
 import hmag.entity.CursedDollEntity;
+import hmag.entity.DodomekiEntity;
 import hmag.entity.DoguEntity;
 import hmag.entity.DrownedGirlEntity;
 import hmag.entity.DullahanEntity;
@@ -185,6 +186,7 @@ public class ModEventBusSubscriber
 		EntitySpawnPlacementRegistry.register(ModEntityTypes.SAVAGEFANG.get(), EntitySpawnPlacementRegistry.PlacementType.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, SavagefangEntity::checkSavagefangSpawnRules);
 		EntitySpawnPlacementRegistry.register(ModEntityTypes.FORTRESS_KEEPER.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MonsterEntity::checkAnyLightMonsterSpawnRules);
 		EntitySpawnPlacementRegistry.register(ModEntityTypes.NECROTIC_REAPER.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkMonsterSpawnInLightUnderY32Rules);
+		EntitySpawnPlacementRegistry.register(ModEntityTypes.DODOMEKI.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkMonsterSpawnInLightOverY64Rules);
 
 		ModSpawnEggItem.initSpawnEggs();
 	}
@@ -230,6 +232,7 @@ public class ModEventBusSubscriber
 		event.put(ModEntityTypes.SAVAGEFANG.get(), SavagefangEntity.createAttributes().build());
 		event.put(ModEntityTypes.FORTRESS_KEEPER.get(), FortressKeeperEntity.createAttributes().build());
 		event.put(ModEntityTypes.NECROTIC_REAPER.get(), NecroticReaperEntity.createAttributes().build());
+		event.put(ModEntityTypes.DODOMEKI.get(), DodomekiEntity.createAttributes().build());
 	}
 
 	private static void registerBrewingRecipe(Potion inputPotion, Item item, Potion outputPotion)
