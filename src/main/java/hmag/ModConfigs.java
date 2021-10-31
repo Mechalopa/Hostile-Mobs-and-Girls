@@ -16,7 +16,7 @@ public class ModConfigs
 	public static ForgeConfigSpec SERVER_CONFIG;
 //	public static ForgeConfigSpec CLIENT_CONFIG;
 
-//	public static ForgeConfigSpec.IntValue CCC;
+//	public static ForgeConfigSpec.IntValue TEST;
 
 	public static ForgeConfigSpec.BooleanValue ENDER_EXECUTOR_REDUCE_DAMAGE;
 	public static ForgeConfigSpec.BooleanValue ENDER_EXECUTOR_BEAM_ATTACK;
@@ -147,7 +147,7 @@ public class ModConfigs
 	{
 //		CLIENT_BUILDER.push("client");
 //
-//		CCC = CLIENT_BUILDER.defineInRange("", 0, 0, 1);
+//		TEST = CLIENT_BUILDER.defineInRange("test", 0, 0, 1);
 //
 //		CLIENT_BUILDER.pop();
 //
@@ -577,11 +577,11 @@ public class ModConfigs
 
 //	public static class cached
 //	{
-//		public static int CCC;
+//		public static int TEST;
 //
 //		public static void refresh()
 //		{
-//			CCC = ModConfigs.CCC.get();
+//			TEST = ModConfigs.TEST.get();
 //		}
 //	}
 
