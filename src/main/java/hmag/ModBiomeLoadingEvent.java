@@ -58,11 +58,13 @@ public class ModBiomeLoadingEvent
 					if (ModConfigs.cachedServer.DULLAHAN_SPAWN_WEIGHT > 0
 							&& (BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.MOUNTAIN)
 							|| (BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.FOREST)
-							&& BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.SPOOKY))))
+							&& BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.SPOOKY)))
+							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.SANDY))
 						event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.DULLAHAN.get(), ModConfigs.cachedServer.DULLAHAN_SPAWN_WEIGHT, 1, 2));
 					if (ModConfigs.cachedServer.BANSHEE_SPAWN_WEIGHT > 0
 							&& (BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.MOUNTAIN)
-							|| BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.CONIFEROUS)))
+							|| BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.CONIFEROUS))
+							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.SANDY))
 						event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.BANSHEE.get(), ModConfigs.cachedServer.BANSHEE_SPAWN_WEIGHT, 1, 2));
 					if (ModConfigs.cachedServer.ARURAUNE_SPAWN_WEIGHT > 0
 							&& BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.JUNGLE)
@@ -113,6 +115,9 @@ public class ModBiomeLoadingEvent
 						event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.SAVAGEFANG.get(), ModConfigs.cachedServer.SAVAGEFANG_SPAWN_WEIGHT_IN_JUNGLE, 4, 8));
 					if (ModConfigs.cachedServer.NECROTIC_REAPER_SPAWN_WEIGHT > 0)
 						event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.NECROTIC_REAPER.get(), ModConfigs.cachedServer.NECROTIC_REAPER_SPAWN_WEIGHT, 1, 1));
+					if (ModConfigs.cachedServer.DODOMEKI_SPAWN_WEIGHT > 0
+							&& BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.CONIFEROUS))
+						event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.DODOMEKI.get(), ModConfigs.cachedServer.DODOMEKI_SPAWN_WEIGHT, 1, 2));
 
 					if (ModConfigs.cachedServer.MELTY_MONSTER_SPAWN_WEIGHT > 0)
 					{
@@ -149,6 +154,8 @@ public class ModBiomeLoadingEvent
 							event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.WITHER_GHOST.get(), ModConfigs.cachedServer.WITHER_GHOST_SPAWN_WEIGHT_IN_BASALT_DELTAS, 2, 2));
 						if (ModConfigs.cachedServer.GHSATLY_SHEEKER_SPAWN_WEIGHT_IN_BASALT_DELTAS > 0)
 							event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.GHSATLY_SHEEKER.get(), ModConfigs.cachedServer.GHSATLY_SHEEKER_SPAWN_WEIGHT_IN_BASALT_DELTAS, 1, 1));
+						if (ModConfigs.cachedServer.IMP_SPAWN_WEIGHT_IN_BASALT_DELTAS > 0)
+							event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.IMP.get(), ModConfigs.cachedServer.IMP_SPAWN_WEIGHT_IN_BASALT_DELTAS, 1, 2));
 					}
 					else if (biomeKey.location().toString().equals("biomesoplenty:withered_abyss"))
 					{
@@ -163,11 +170,16 @@ public class ModBiomeLoadingEvent
 							event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.KASHA.get(), ModConfigs.cachedServer.KASHA_SPAWN_WEIGHT, 1, 2));
 						if (ModConfigs.cachedServer.GHSATLY_SHEEKER_SPAWN_WEIGHT > 0)
 							event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.GHSATLY_SHEEKER.get(), ModConfigs.cachedServer.GHSATLY_SHEEKER_SPAWN_WEIGHT, 1, 1));
+						if (ModConfigs.cachedServer.IMP_SPAWN_WEIGHT > 0)
+							event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.IMP.get(), ModConfigs.cachedServer.IMP_SPAWN_WEIGHT, 1, 2));
 					}
 
-					if (ModConfigs.cachedServer.CRIMSON_SLAUGHTERER_SPAWN_WEIGHT > 0 && (biomeKey == Biomes.CRIMSON_FOREST || (biomeKey != Biomes.WARPED_FOREST && BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.FOREST))))
+					if (biomeKey == Biomes.CRIMSON_FOREST || (biomeKey != Biomes.WARPED_FOREST && BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.FOREST)))
 					{
-						event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.CRIMSON_SLAUGHTERER.get(), ModConfigs.cachedServer.CRIMSON_SLAUGHTERER_SPAWN_WEIGHT, 1, 1));
+						if (ModConfigs.cachedServer.CRIMSON_SLAUGHTERER_SPAWN_WEIGHT > 0)
+							event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.CRIMSON_SLAUGHTERER.get(), ModConfigs.cachedServer.CRIMSON_SLAUGHTERER_SPAWN_WEIGHT, 1, 1));
+						if (ModConfigs.cachedServer.IMP_SPAWN_WEIGHT_IN_CRIMSON_FOREST > 0)
+							event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.IMP.get(), ModConfigs.cachedServer.IMP_SPAWN_WEIGHT_IN_CRIMSON_FOREST, 1, 2));
 					}
 
 					if (ModConfigs.cachedServer.MELTY_MONSTER_SPAWN_WEIGHT_IN_NETHER > 0)

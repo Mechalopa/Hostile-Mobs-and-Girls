@@ -101,6 +101,10 @@ public class ModConfigs
 	public static ForgeConfigSpec.IntValue SAVAGEFANG_SPAWN_WEIGHT_IN_JUNGLE;
 	public static ForgeConfigSpec.IntValue FORTRESS_KEEPER_SPAWN_WEIGHT_IN_NETHER_FORTRESS;
 	public static ForgeConfigSpec.IntValue NECROTIC_REAPER_SPAWN_WEIGHT;
+	public static ForgeConfigSpec.IntValue DODOMEKI_SPAWN_WEIGHT;
+	public static ForgeConfigSpec.IntValue IMP_SPAWN_WEIGHT;
+	public static ForgeConfigSpec.IntValue IMP_SPAWN_WEIGHT_IN_CRIMSON_FOREST;
+	public static ForgeConfigSpec.IntValue IMP_SPAWN_WEIGHT_IN_BASALT_DELTAS;
 
 	public static ForgeConfigSpec.DoubleValue GHSATLY_SHEEKER_SPAWN_CHANCE;
 	public static ForgeConfigSpec.DoubleValue CRIMSON_SLAUGHTERER_SPAWN_CHANCE;
@@ -242,6 +246,10 @@ public class ModConfigs
 		SAVAGEFANG_SPAWN_WEIGHT_IN_JUNGLE = SERVER_BUILDER.defineInRange("savagefangSpawnWeightInJungle", 20, 0, Integer.MAX_VALUE);
 		FORTRESS_KEEPER_SPAWN_WEIGHT_IN_NETHER_FORTRESS = SERVER_BUILDER.defineInRange("fortressKeeperSpawnWeightInNetherFortress", 6, 0, Integer.MAX_VALUE);
 		NECROTIC_REAPER_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("necroticReaperSpawnWeight", 8, 0, Integer.MAX_VALUE);
+		DODOMEKI_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("dodomekiSpawnWeight", 15, 0, Integer.MAX_VALUE);
+		IMP_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("impSpawnWeight", 5, 0, Integer.MAX_VALUE);
+		IMP_SPAWN_WEIGHT_IN_CRIMSON_FOREST = SERVER_BUILDER.defineInRange("impSpawnWeightInCrimsonForest", 2, 0, Integer.MAX_VALUE);
+		IMP_SPAWN_WEIGHT_IN_BASALT_DELTAS = SERVER_BUILDER.defineInRange("impSpawnWeightInBasaltDeltas", 2, 0, Integer.MAX_VALUE);
 
 		SERVER_BUILDER.pop();
 
@@ -396,6 +404,10 @@ public class ModConfigs
 		public static int SAVAGEFANG_SPAWN_WEIGHT_IN_JUNGLE;
 		public static int FORTRESS_KEEPER_SPAWN_WEIGHT_IN_NETHER_FORTRESS;
 		public static int NECROTIC_REAPER_SPAWN_WEIGHT;
+		public static int DODOMEKI_SPAWN_WEIGHT;
+		public static int IMP_SPAWN_WEIGHT;
+		public static int IMP_SPAWN_WEIGHT_IN_CRIMSON_FOREST;
+		public static int IMP_SPAWN_WEIGHT_IN_BASALT_DELTAS;
 
 		public static double GHSATLY_SHEEKER_SPAWN_CHANCE;
 		public static double CRIMSON_SLAUGHTERER_SPAWN_CHANCE;
@@ -519,6 +531,10 @@ public class ModConfigs
 			SAVAGEFANG_SPAWN_WEIGHT_IN_JUNGLE = ModConfigs.SAVAGEFANG_SPAWN_WEIGHT_IN_JUNGLE.get();
 			FORTRESS_KEEPER_SPAWN_WEIGHT_IN_NETHER_FORTRESS = ModConfigs.FORTRESS_KEEPER_SPAWN_WEIGHT_IN_NETHER_FORTRESS.get();
 			NECROTIC_REAPER_SPAWN_WEIGHT = ModConfigs.NECROTIC_REAPER_SPAWN_WEIGHT.get();
+			DODOMEKI_SPAWN_WEIGHT = ModConfigs.DODOMEKI_SPAWN_WEIGHT.get();
+			IMP_SPAWN_WEIGHT = ModConfigs.IMP_SPAWN_WEIGHT.get();
+			IMP_SPAWN_WEIGHT_IN_CRIMSON_FOREST = ModConfigs.IMP_SPAWN_WEIGHT_IN_CRIMSON_FOREST.get();
+			IMP_SPAWN_WEIGHT_IN_BASALT_DELTAS = ModConfigs.IMP_SPAWN_WEIGHT_IN_BASALT_DELTAS.get();
 
 			GHSATLY_SHEEKER_SPAWN_CHANCE = ModConfigs.GHSATLY_SHEEKER_SPAWN_CHANCE.get();
 			CRIMSON_SLAUGHTERER_SPAWN_CHANCE = ModConfigs.CRIMSON_SLAUGHTERER_SPAWN_CHANCE.get();
