@@ -102,7 +102,7 @@ public class HarpyEntity extends MonsterEntity implements IModMob
 
 		if (this.level.isClientSide)
 		{
-			if (!this.isOnGround() && !this.isPassenger())
+			if (!this.isOnGround() && !this.isInWaterOrBubble() && !this.isPassenger())
 			{
 				if (this.animationTick < 10)
 				{
