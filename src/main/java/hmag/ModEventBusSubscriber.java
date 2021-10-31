@@ -18,6 +18,7 @@ import hmag.entity.GhostEntity;
 import hmag.entity.HarpyEntity;
 import hmag.entity.HornetEntity;
 import hmag.entity.HuskGirlEntity;
+import hmag.entity.ImpEntity;
 import hmag.entity.JackFrostEntity;
 import hmag.entity.KashaEntity;
 import hmag.entity.KoboldEntity;
@@ -187,6 +188,7 @@ public class ModEventBusSubscriber
 		EntitySpawnPlacementRegistry.register(ModEntityTypes.FORTRESS_KEEPER.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MonsterEntity::checkAnyLightMonsterSpawnRules);
 		EntitySpawnPlacementRegistry.register(ModEntityTypes.NECROTIC_REAPER.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkMonsterSpawnInLightUnderY32Rules);
 		EntitySpawnPlacementRegistry.register(ModEntityTypes.DODOMEKI.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkMonsterSpawnInLightOverY64Rules);
+		EntitySpawnPlacementRegistry.register(ModEntityTypes.IMP.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MonsterEntity::checkAnyLightMonsterSpawnRules);
 
 		ModSpawnEggItem.initSpawnEggs();
 	}
@@ -233,6 +235,7 @@ public class ModEventBusSubscriber
 		event.put(ModEntityTypes.FORTRESS_KEEPER.get(), FortressKeeperEntity.createAttributes().build());
 		event.put(ModEntityTypes.NECROTIC_REAPER.get(), NecroticReaperEntity.createAttributes().build());
 		event.put(ModEntityTypes.DODOMEKI.get(), DodomekiEntity.createAttributes().build());
+		event.put(ModEntityTypes.IMP.get(), ImpEntity.createAttributes().build());
 	}
 
 	private static void registerBrewingRecipe(Potion inputPotion, Item item, Potion outputPotion)

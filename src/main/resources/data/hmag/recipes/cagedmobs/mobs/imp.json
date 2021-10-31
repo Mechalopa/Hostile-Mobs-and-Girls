@@ -1,0 +1,15 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cagedmobs"
+    }
+  ],
+  "type": "cagedmobs:mob_data",
+  "entity": "hmag:imp",
+  "samplerTier": 2,
+  "environments": ["nether"],
+  "growTicks": 1200,
+  "results": [
+  ]
+}

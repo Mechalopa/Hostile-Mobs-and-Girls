@@ -20,6 +20,7 @@ import hmag.client.renderer.GhostRenderer;
 import hmag.client.renderer.HarpyRenderer;
 import hmag.client.renderer.HornetRenderer;
 import hmag.client.renderer.HuskGirlRenderer;
+import hmag.client.renderer.ImpRenderer;
 import hmag.client.renderer.JackFrostRenderer;
 import hmag.client.renderer.KashaRenderer;
 import hmag.client.renderer.KoboldRenderer;
@@ -111,6 +112,7 @@ public class ModClientEventBusSubscriber
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.FORTRESS_KEEPER.get(), FortressKeeperRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.NECROTIC_REAPER.get(), NecroticReaperRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.DODOMEKI.get(), DodomekiRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.IMP.get(), ImpRenderer::new);
 
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.MAGIC_BULLET.get(), MagicBulletRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.HARD_SNOWBALL.get(), ModSpriteRenderer::new);
