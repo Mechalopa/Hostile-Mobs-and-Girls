@@ -64,7 +64,7 @@ public class CursedDollEntity extends MonsterEntity implements IModMob
 	{
 		return MonsterEntity.createMonsterAttributes()
 				.add(Attributes.MAX_HEALTH, 40.0D)
-				.add(Attributes.MOVEMENT_SPEED, 0.32D)
+				.add(Attributes.MOVEMENT_SPEED, 0.285D)
 				.add(Attributes.ATTACK_DAMAGE, 4.0D)
 				.add(Attributes.ATTACK_KNOCKBACK, 1.0D)
 				.add(Attributes.KNOCKBACK_RESISTANCE, 0.25D);
