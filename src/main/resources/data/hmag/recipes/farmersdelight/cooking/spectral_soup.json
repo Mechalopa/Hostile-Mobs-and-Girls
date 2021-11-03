@@ -1,0 +1,28 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "farmersdelight"
+    }
+  ],
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    {
+      "item": "minecraft:brown_mushroom"
+    },
+    {
+      "item": "minecraft:red_mushroom"
+    },
+    {
+      "tag": "forge:dusts/glowstone"
+    }
+  ],
+  "result": {
+    "item": "hmag:spectral_soup"
+  },
+  "container": {
+    "item": "minecraft:bowl"
+  },
+  "experience": 0.35,
+  "cookingtime": 200
+}
