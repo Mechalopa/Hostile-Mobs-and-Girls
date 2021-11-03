@@ -1,5 +1,14 @@
 {
   "type": "hmag:crafting_item_tag_shaped",
+  "conditions": [
+  {
+    "type": "forge:not",
+    "value": {
+        "type": "forge:tag_empty",
+        "tag": "forge:ingots/silver"
+      }
+    }
+  ],
   "pattern": [
     "###",
     "###",
@@ -12,14 +21,5 @@
   },
   "result": {
     "tag": "forge:ingots/silver"
-  },
-  "conditions": [
-  {
-    "type": "forge:not",
-    "value": {
-        "type": "forge:tag_empty",
-        "tag": "forge:ingots/silver"
-      }
-    }
-  ]
+  }
 }

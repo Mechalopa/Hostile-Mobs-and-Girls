@@ -1,14 +1,5 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    {
-      "tag": "forge:gems/ruby"
-    }
-  ],
-  "result": {
-    "item": "hmag:ruby_fragment",
-    "count": 9
-  },
   "conditions": [
   {
     "type": "forge:not",
@@ -17,5 +8,14 @@
         "tag": "forge:gems/ruby"
       }
     }
-  ]
+  ],
+  "ingredients": [
+    {
+      "tag": "forge:gems/ruby"
+    }
+  ],
+  "result": {
+    "item": "hmag:ruby_fragment",
+    "count": 9
+  }
 }
