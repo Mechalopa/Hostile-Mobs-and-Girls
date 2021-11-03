@@ -5,6 +5,7 @@
     "hmag:creeper_girl"
   ],
   "optional": [
-    "cactusmod:cactus_creeper"
+    "cactusmod:cactus_creeper",
+    "graveyard:skeleton_creeper"
   ]
 }
