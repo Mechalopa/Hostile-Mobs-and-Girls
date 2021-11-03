@@ -56,15 +56,17 @@ public class ModBiomeLoadingEvent
 							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.SPOOKY))
 						event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.HORNET.get(), ModConfigs.cachedServer.HORNET_SPAWN_WEIGHT, 1, 2));
 					if (ModConfigs.cachedServer.DULLAHAN_SPAWN_WEIGHT > 0
-							&& (BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.MOUNTAIN)
+							&& ((BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.MOUNTAIN)
+							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.SANDY)
+							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.COLD))
 							|| (BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.FOREST)
-							&& BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.SPOOKY)))
-							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.SANDY))
+							&& BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.SPOOKY))))
 						event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.DULLAHAN.get(), ModConfigs.cachedServer.DULLAHAN_SPAWN_WEIGHT, 1, 2));
 					if (ModConfigs.cachedServer.BANSHEE_SPAWN_WEIGHT > 0
-							&& (BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.MOUNTAIN)
-							|| BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.CONIFEROUS))
-							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.SANDY))
+							&& ((BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.MOUNTAIN)
+							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.SANDY)
+							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.COLD))
+							|| BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.CONIFEROUS)))
 						event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.BANSHEE.get(), ModConfigs.cachedServer.BANSHEE_SPAWN_WEIGHT, 1, 2));
 					if (ModConfigs.cachedServer.ARURAUNE_SPAWN_WEIGHT > 0
 							&& BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.JUNGLE)
