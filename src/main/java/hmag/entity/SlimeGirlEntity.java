@@ -221,7 +221,7 @@ public class SlimeGirlEntity extends MonsterEntity implements IModMob
 				slimeentity.setInvulnerable(this.isInvulnerable());
 				slimeentity.setSize(j, true);
 
-				if (this.getRandom().nextInt(4) != 0)
+				if (this.getRandom().nextInt(8) != 0)
 				{
 					slimeentity.setVariant(this.getVariant());
 				}
@@ -355,12 +355,27 @@ public class SlimeGirlEntity extends MonsterEntity implements IModMob
 		PURPLE1(8, 13393626),
 		PURPLE2(9, 13269976),
 		LAVENDER(10, 12360685),
-		WHITE(11, 16766945),
+		WHITE1(11, 16766945),
 		RED1(12, 16216690),
 		RED2(13, 16605268),
 		SLIME(14, 9489279),
 		MINT(15, 7077059),
-		BLACK(16, 3946552);
+		BLACK(16, 3946552),
+		SLATEBLUE(17, 6970061),
+		WHITE2(18, 16768685),
+		DARK_RED1(19, 9109504),
+		DARK_RED2(20, 14423100),
+		ORANGE(21, 16747520),
+		BROWN(22, 9127187),
+		GOLD(23, 16766720),
+		DARK_KHAKI(24, 12433259),
+		GREEN_YELLOW(25, 11403055),
+		GREEN1(26, 7048739),
+		GREEN2(27, 3050327),
+		BLUE1(28, 8900331),
+		BLUE2(29, 2003199),
+		TURQUOISE(30, 4251856),
+		GRAY(31, 7833753);
 
 		private final int id;
 		private final float[] colors;
