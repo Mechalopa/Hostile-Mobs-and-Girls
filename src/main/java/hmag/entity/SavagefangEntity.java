@@ -112,7 +112,7 @@ public class SavagefangEntity extends MonsterEntity implements IModMob
 		return MonsterEntity.createMonsterAttributes()
 				.add(Attributes.MAX_HEALTH, 12.0D)
 				.add(Attributes.MOVEMENT_SPEED, 3.0D)
-				.add(Attributes.ATTACK_DAMAGE, 3.5D);
+				.add(Attributes.ATTACK_DAMAGE, 4.0D);
 	}
 
 	@Override

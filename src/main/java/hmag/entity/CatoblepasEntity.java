@@ -59,7 +59,7 @@ public class CatoblepasEntity extends MonsterEntity implements IModMob
 		return MonsterEntity.createMonsterAttributes()
 				.add(Attributes.MAX_HEALTH, 40.0D)
 				.add(Attributes.MOVEMENT_SPEED, 0.28D)
-				.add(Attributes.ATTACK_DAMAGE, 5.5D)
+				.add(Attributes.ATTACK_DAMAGE, 6.0D)
 				.add(Attributes.ATTACK_KNOCKBACK, 1.0D)
 				.add(Attributes.ARMOR, 4.0D)
 				.add(Attributes.KNOCKBACK_RESISTANCE, 0.5D)
