@@ -95,11 +95,11 @@ public class KashaEntity extends MonsterEntity implements IModMob
 
 				if (this.level.getDifficulty() == Difficulty.NORMAL)
 				{
-					i = 7;
+					i = 5;
 				}
 				else if (this.level.getDifficulty() == Difficulty.HARD)
 				{
-					i = 15;
+					i = 10;
 				}
 
 				if (i > 0)

@@ -66,7 +66,7 @@ public class DullahanEntity extends MonsterEntity implements IModMob
 				.add(Attributes.MAX_HEALTH, 60.0D)
 				.add(Attributes.MOVEMENT_SPEED, 0.31D)
 				.add(Attributes.ATTACK_DAMAGE, 6.0D)
-				.add(Attributes.ARMOR, 4.0D)
+				.add(Attributes.ARMOR, 5.0D)
 				.add(Attributes.KNOCKBACK_RESISTANCE, 0.5D)
 				.add(Attributes.FOLLOW_RANGE, 20.0D);
 	}

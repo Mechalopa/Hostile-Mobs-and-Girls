@@ -3,6 +3,7 @@ package hmag.entity;
 import javax.annotation.Nonnull;
 
 import hmag.ModConfigs;
+import hmag.entity.goal.RangedAttackGoal2;
 import hmag.entity.projectile.PoisonSeedEntity;
 import hmag.registry.ModSoundEvents;
 import net.minecraft.block.BlockState;
@@ -17,7 +18,6 @@ import net.minecraft.entity.ai.goal.HurtByTargetGoal;
 import net.minecraft.entity.ai.goal.LookAtGoal;
 import net.minecraft.entity.ai.goal.LookRandomlyGoal;
 import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
-import net.minecraft.entity.ai.goal.RangedAttackGoal;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
 import net.minecraft.entity.merchant.villager.AbstractVillagerEntity;
@@ -51,7 +51,7 @@ public class ArurauneEntity extends MonsterEntity implements IModMob, IRangedAtt
 	protected void registerGoals()
 	{
 		this.goalSelector.addGoal(1, new SwimGoal(this));
-		this.goalSelector.addGoal(4, new RangedAttackGoal(this, 1.0D, 40, 60, 10.0F));
+		this.goalSelector.addGoal(4, new RangedAttackGoal2(this, 1.0D, 40, 60, 10.0F, 4.0F, false));
 		this.goalSelector.addGoal(5, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
 		this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 8.0F));
 		this.goalSelector.addGoal(6, new LookRandomlyGoal(this));
@@ -67,7 +67,7 @@ public class ArurauneEntity extends MonsterEntity implements IModMob, IRangedAtt
 		return MonsterEntity.createMonsterAttributes()
 				.add(Attributes.MAX_HEALTH, 60.0D)
 				.add(Attributes.MOVEMENT_SPEED, 0.12D)
-				.add(Attributes.ARMOR, 4.0D)
+				.add(Attributes.ARMOR, 5.0D)
 				.add(Attributes.KNOCKBACK_RESISTANCE, 0.98D);
 	}
 

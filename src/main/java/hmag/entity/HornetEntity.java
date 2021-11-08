@@ -56,7 +56,7 @@ public class HornetEntity extends AbstractFlyingMonsterEntity implements IModMob
 		return MonsterEntity.createMonsterAttributes()
 				.add(Attributes.MAX_HEALTH, 60.0D)
 				.add(Attributes.MOVEMENT_SPEED, 0.28D)
-				.add(Attributes.ATTACK_DAMAGE, 3.0D)
+				.add(Attributes.ATTACK_DAMAGE, 4.0D)
 				.add(Attributes.FOLLOW_RANGE, 24.0D);
 	}
 
