@@ -60,19 +60,19 @@ public enum MobTier
 		switch (mobTier)
 		{
 		case IRON:
-			return rand.nextBoolean() && ModTags.getItem(ModTags.FORGE_COPPER_INGOTS) != null ? ModItems.COPPER_NUGGET.get() : Items.IRON_NUGGET;
+			return (rand.nextBoolean() && ModTags.getItem(ModTags.FORGE_COPPER_INGOTS) != null) ? ModItems.COPPER_NUGGET.get() : Items.IRON_NUGGET;
 		case GOLD:
 			return rand.nextInt(5) == 0 ? Items.IRON_NUGGET : Items.GOLD_NUGGET;
 		case SILVER:
-			return  rand.nextInt(5) == 0 ? Items.IRON_NUGGET : ModTags.getItem(ModTags.FORGE_SILVER_INGOTS) != null ? ModItems.SILVER_NUGGET.get() : Items.GOLD_NUGGET;
+			return  rand.nextInt(5) == 0 ? Items.IRON_NUGGET : (ModTags.getItem(ModTags.FORGE_SILVER_INGOTS) != null ? ModItems.SILVER_NUGGET.get() : Items.GOLD_NUGGET);
 		case EMERALD:
-			return  rand.nextInt(3) == 0 ? Items.GOLD_NUGGET : ModItems.EMERALD_FRAGMENT.get();
+			return  rand.nextInt(4) == 0 ? Items.GOLD_NUGGET : ModItems.EMERALD_FRAGMENT.get();
 		case DIAMOND:
 			return ModItems.DIAMOND_FRAGMENT.get();
 		case RUBY:
-			return rand.nextInt(5) != 0 && ModTags.getItem(ModTags.FORGE_RUBY_GEMS) != null ? ModItems.RUBY_FRAGMENT.get() : ModItems.DIAMOND_FRAGMENT.get();
+			return ModTags.getItem(ModTags.FORGE_RUBY_GEMS) != null ? (rand.nextInt(4) == 0 ? ModItems.DIAMOND_FRAGMENT.get() : ModItems.RUBY_FRAGMENT.get()) : (rand.nextInt(4) == 0 ? ModItems.EMERALD_FRAGMENT.get() : ModItems.DIAMOND_FRAGMENT.get());
 		case SAPPHIRE:
-			return rand.nextInt(5) != 0 && ModTags.getItem(ModTags.FORGE_SAPPHIRE_GEMS) != null ? ModItems.SAPPHIRE_FRAGMENT.get() : ModItems.DIAMOND_FRAGMENT.get();
+			return ModTags.getItem(ModTags.FORGE_SAPPHIRE_GEMS) != null ? (rand.nextInt(4) == 0 ? ModItems.DIAMOND_FRAGMENT.get() : ModItems.SAPPHIRE_FRAGMENT.get()) : (rand.nextInt(4) == 0 ? ModItems.EMERALD_FRAGMENT.get() : ModItems.DIAMOND_FRAGMENT.get());
 		default:
 			return null;
 		}
