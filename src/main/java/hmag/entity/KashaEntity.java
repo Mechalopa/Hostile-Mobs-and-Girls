@@ -73,7 +73,7 @@ public class KashaEntity extends MonsterEntity implements IModMob
 	{
 		return MonsterEntity.createMonsterAttributes()
 				.add(Attributes.MAX_HEALTH, 40.0D)
-				.add(Attributes.MOVEMENT_SPEED, 0.34D)
+				.add(Attributes.MOVEMENT_SPEED, 0.325D)
 				.add(Attributes.ATTACK_DAMAGE, 5.0D)
 				.add(Attributes.ATTACK_KNOCKBACK, 1.0D);
 	}
