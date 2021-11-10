@@ -36,7 +36,7 @@ public class MeleeAttackGoal2 extends MeleeAttackGoal
 	@Override
 	protected double getAttackReachSqr(LivingEntity attackTarget)
 	{
-		return (double)(this.reach * this.reach + attackTarget.getBbWidth());
+		return this.reach <= 0.0F ? super.getAttackReachSqr(attackTarget) : (double)(this.reach * this.reach + attackTarget.getBbWidth());
 	}
 
 	protected boolean isValidDistance(LivingEntity attackTarget)

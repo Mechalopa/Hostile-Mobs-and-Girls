@@ -3,10 +3,12 @@ package hmag.entity;
 import javax.annotation.Nonnull;
 
 import hmag.ModConfigs;
+import hmag.entity.goal.MeleeAttackGoal2;
 import hmag.entity.goal.RangedAttackGoal2;
 import hmag.entity.projectile.PoisonSeedEntity;
 import hmag.registry.ModSoundEvents;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntitySize;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.IRangedAttackMob;
@@ -33,6 +35,7 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.PotionEvent;
@@ -51,7 +54,8 @@ public class ArurauneEntity extends MonsterEntity implements IModMob, IRangedAtt
 	protected void registerGoals()
 	{
 		this.goalSelector.addGoal(1, new SwimGoal(this));
-		this.goalSelector.addGoal(4, new RangedAttackGoal2(this, 1.0D, 40, 60, 10.0F, 4.0F, false));
+		this.goalSelector.addGoal(3, new MeleeAttackGoal2(this, 1.5D, false, -1.0F, 3.0F));
+		this.goalSelector.addGoal(4, new RangedAttackGoal2(this, 1.0D, 40, 60, 9.0F, 4.0F, false));
 		this.goalSelector.addGoal(5, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
 		this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 8.0F));
 		this.goalSelector.addGoal(6, new LookRandomlyGoal(this));
@@ -67,6 +71,7 @@ public class ArurauneEntity extends MonsterEntity implements IModMob, IRangedAtt
 		return MonsterEntity.createMonsterAttributes()
 				.add(Attributes.MAX_HEALTH, 60.0D)
 				.add(Attributes.MOVEMENT_SPEED, 0.12D)
+				.add(Attributes.ATTACK_DAMAGE, 6.0D)
 				.add(Attributes.ARMOR, 5.0D)
 				.add(Attributes.KNOCKBACK_RESISTANCE, 0.98D);
 	}
@@ -82,6 +87,40 @@ public class ArurauneEntity extends MonsterEntity implements IModMob, IRangedAtt
 			{
 				this.addEffect(new EffectInstance(Effects.REGENERATION, 10 * 20, 2));
 			}
+		}
+	}
+
+	@Override
+	public boolean doHurtTarget(Entity entityIn)
+	{
+		if (super.doHurtTarget(entityIn))
+		{
+			if (entityIn instanceof LivingEntity)
+			{
+				int i = 0;
+
+				if (this.level.getDifficulty() == Difficulty.NORMAL)
+				{
+					i = 5;
+				}
+				else if (this.level.getDifficulty() == Difficulty.HARD)
+				{
+					i = 10;
+				}
+
+				if (i > 0)
+				{
+					((LivingEntity)entityIn).addEffect(new EffectInstance(Effects.POISON, i * 20, 1));
+					((LivingEntity)entityIn).addEffect(new EffectInstance(Effects.WEAKNESS, i * 20, 1));
+					((LivingEntity)entityIn).addEffect(new EffectInstance(Effects.MOVEMENT_SLOWDOWN, i * 20, 2));
+				}
+			}
+
+			return true;
+		}
+		else
+		{
+			return false;
 		}
 	}
 
