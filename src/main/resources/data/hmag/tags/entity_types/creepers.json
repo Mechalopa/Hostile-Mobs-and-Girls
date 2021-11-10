@@ -2,10 +2,14 @@
   "replace": false,
   "values": [
     "minecraft:creeper",
-    "hmag:creeper_girl"
-  ],
-  "optional": [
-    "cactusmod:cactus_creeper",
-    "graveyard:skeleton_creeper"
+    "hmag:creeper_girl",
+    {
+      "id": "cactusmod:cactus_creeper",
+      "required": false
+    },
+    {
+      "id": "graveyard:skeleton_creeper",
+      "required": false
+    }
   ]
 }

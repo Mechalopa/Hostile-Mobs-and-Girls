@@ -8,12 +8,22 @@
     "hmag:canine_tooth",
     "hmag:burning_core",
     "hmag:necrofiber",
-    "hmag:cubic_nucleus"
-  ],
-  "optional": [
-    "turtlemancy:magma_scute",
-    "thermal:basalz_rod",
-    "thermal:blitz_rod",
-    "omnis:ravaged_scrap"
+    "hmag:cubic_nucleus",
+    {
+      "id": "turtlemancy:magma_scute",
+      "required": false
+    },
+    {
+      "id": "thermal:basalz_rod",
+      "required": false
+    },
+    {
+      "id": "thermal:blitz_rod",
+      "required": false
+    },
+    {
+      "id": "omnis:ravaged_scrap",
+      "required": false
+    }
   ]
 }

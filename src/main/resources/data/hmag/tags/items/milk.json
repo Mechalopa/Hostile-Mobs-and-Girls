@@ -1,12 +1,22 @@
 {
   "replace": false,
   "values": [
-    "minecraft:milk_bucket"
-  ],
-  "optional": [
-    "#forge:buckets/milk",
-    "#forge:milk",
-    "#forge:milk/milk",
-    "#forge:milk/milk_bottle"
+    "minecraft:milk_bucket",
+    {
+      "id": "#forge:buckets/milk",
+      "required": false
+    },
+    {
+      "id": "#forge:milk",
+      "required": false
+    },
+    {
+      "id": "#forge:milk/milk",
+      "required": false
+    },
+    {
+      "id": "#forge:milk/milk_bottle",
+      "required": false
+    }
   ]
 }

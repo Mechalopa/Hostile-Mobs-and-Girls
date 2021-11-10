@@ -1,11 +1,25 @@
 {
   "replace": false,
-  "values": [],
-  "optional": [
-    "quark:dragon_scale",
-    "forbidden_arcanus:dragon_scale",
-    "bountifulbaubles:ender_dragon_scale",
-    "cagedmobs:dragon_scale",
-    "tconstruct:dragon_scale"
+  "values": [
+    {
+      "id": "quark:dragon_scale",
+      "required": false
+    },
+    {
+      "id": "forbidden_arcanus:dragon_scale",
+      "required": false
+    },
+    {
+      "id": "bountifulbaubles:ender_dragon_scale",
+      "required": false
+    },
+    {
+      "id": "cagedmobs:dragon_scale",
+      "required": false
+    },
+    {
+      "id": "tconstruct:dragon_scale",
+      "required": false
+    }
   ]
 }

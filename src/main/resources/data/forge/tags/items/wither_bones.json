@@ -1,8 +1,13 @@
 {
   "replace": false,
-  "values": [],
-  "optional": [
-    "#forge:bones/wither",
-    "iceandfire:witherbone"
+  "values": [
+    {
+      "id": "#forge:bones/wither",
+      "required": false
+    },
+    {
+      "id": "iceandfire:witherbone",
+      "required": false
+    }
   ]
 }

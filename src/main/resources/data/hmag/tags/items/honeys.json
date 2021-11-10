@@ -1,11 +1,22 @@
 {
   "replace": false,
   "values": [
-    "minecraft:honey_bottle"
-  ],
-  "optional": [
-    "#forge:honey_bottle",
-    "#forge:honey",
-    "#forge:honey/honey"
+    "minecraft:honey_bottle",
+    {
+      "id": "#forge:honey_bottle",
+      "required": false
+    },
+    {
+      "id": "#forge:honey",
+      "required": false
+    },
+    {
+      "id": "#forge:honey/honey",
+      "required": false
+    },
+    {
+      "id": "#forge:honey/honey_bottle",
+      "required": false
+    }
   ]
 }
