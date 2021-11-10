@@ -6,13 +6,15 @@ import hmag.entity.KashaEntity;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class KashaRenderer extends MobRenderer<KashaEntity, KashaModel<KashaEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/kasha.png");
+	private static final ResourceLocation TEX0 = new ResourceLocation(HMaG.MODID, "textures/entity/kasha0.png");
+	private static final ResourceLocation TEX1 = new ResourceLocation(HMaG.MODID, "textures/entity/kasha1.png");
 
 	public KashaRenderer(EntityRendererManager renderManagerIn)
 	{
@@ -20,8 +22,20 @@ public class KashaRenderer extends MobRenderer<KashaEntity, KashaModel<KashaEnti
 	}
 
 	@Override
+	protected int getBlockLightLevel(KashaEntity entityIn, BlockPos pos)
+	{
+		return 15;
+	}
+
+	@Override
 	public ResourceLocation getTextureLocation(KashaEntity entityIn)
 	{
-		return TEX;
+		switch (entityIn.getVariant())
+		{
+		case 1:
+			return TEX1;
+		default:
+			return TEX0;
+		}
 	}
 }

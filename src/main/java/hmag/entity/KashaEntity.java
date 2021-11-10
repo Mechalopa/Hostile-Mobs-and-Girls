@@ -1,12 +1,18 @@
 package hmag.entity;
 
+import java.util.UUID;
+
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import hmag.ModConfigs;
 import hmag.registry.ModSoundEvents;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ILivingEntityData;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.HurtByTargetGoal;
@@ -24,16 +30,28 @@ import net.minecraft.entity.passive.ChickenEntity;
 import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.entity.passive.TurtleEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.pathfinding.PathNodeType;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.Difficulty;
+import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
 public class KashaEntity extends MonsterEntity implements IModMob
 {
+	private static final UUID ATTACK_DAMAGE_MODIFIER_UUID = UUID.fromString("7DDA541D-ABAA-BBF4-D099-AAC57D64ADA9");
+	private static final AttributeModifier ATTACK_DAMAGE_MODIFIER = new AttributeModifier(ATTACK_DAMAGE_MODIFIER_UUID, "Soul variant attack damage bonus", 1.0D, AttributeModifier.Operation.ADDITION);
+	private static final DataParameter<Integer> DATA_VARIANT_ID = EntityDataManager.defineId(KashaEntity.class, DataSerializers.INT);
+
 	public KashaEntity(EntityType<? extends KashaEntity> type, World worldIn)
 	{
 		super(type, worldIn);
@@ -43,6 +61,13 @@ public class KashaEntity extends MonsterEntity implements IModMob
 		this.setPathfindingMalus(PathNodeType.DAMAGE_FIRE, 0.0F);
 		this.maxUpStep = 2.0F;
 		this.xpReward = 12;
+	}
+
+	@Override
+	protected void defineSynchedData()
+	{
+		super.defineSynchedData();
+		this.entityData.define(DATA_VARIANT_ID, 0);
 	}
 
 	@Override
@@ -76,6 +101,25 @@ public class KashaEntity extends MonsterEntity implements IModMob
 				.add(Attributes.MOVEMENT_SPEED, 0.325D)
 				.add(Attributes.ATTACK_DAMAGE, 5.0D)
 				.add(Attributes.ATTACK_KNOCKBACK, 1.0D);
+	}
+
+	@Override
+	public void aiStep()
+	{
+		if (this.level.isClientSide)
+		{
+			if (this.tickCount % 10 == 0)
+			{
+				this.level.addParticle(ParticleTypes.LARGE_SMOKE, this.getRandomX(0.5D), this.getRandomY() + 0.25D, this.getRandomZ(0.5D), 0.0D, 0.0D, 0.0D);
+			}
+
+			if (this.tickCount % 2 == 0)
+			{
+				this.level.addParticle(this.getVariant() == 1 ? ParticleTypes.SOUL_FIRE_FLAME : ParticleTypes.FLAME, this.getRandomX(0.75D), this.getRandomY() - 0.1D, this.getRandomZ(0.75D), 0.0D, 0.0D, 0.0D);
+			}
+		}
+
+		super.aiStep();
 	}
 
 	@Override
@@ -123,9 +167,60 @@ public class KashaEntity extends MonsterEntity implements IModMob
 	}
 
 	@Override
-	public boolean isOnFire()
+	@Nullable
+	public ILivingEntityData finalizeSpawn(IServerWorld worldIn, DifficultyInstance difficultyIn, SpawnReason reason, @Nullable ILivingEntityData spawnDataIn, @Nullable CompoundNBT dataTag)
 	{
-		return !this.isInWaterRainOrBubble();
+		spawnDataIn = super.finalizeSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
+
+		if (this.level.getBlockState(this.blockPosition().below()).is(BlockTags.SOUL_FIRE_BASE_BLOCKS))
+		{
+			this.setVariant(1);
+		}
+		else
+		{
+			this.setVariant(0);
+		}
+
+		return spawnDataIn;
+	}
+
+	public int getVariant()
+	{
+		return this.entityData.get(DATA_VARIANT_ID);
+	}
+
+	private void setVariant(int typeIn)
+	{
+		if (typeIn < 0 || typeIn >= 2)
+		{
+			typeIn = 0;
+		}
+
+		if (!this.level.isClientSide)
+		{
+			this.getAttribute(Attributes.ATTACK_DAMAGE).removeModifier(ATTACK_DAMAGE_MODIFIER);
+
+			if (typeIn == 1)
+			{
+				this.getAttribute(Attributes.ATTACK_DAMAGE).addPermanentModifier(ATTACK_DAMAGE_MODIFIER);
+			}
+		}
+
+		this.entityData.set(DATA_VARIANT_ID, typeIn);
+	}
+
+	@Override
+	public void readAdditionalSaveData(CompoundNBT compound)
+	{
+		super.readAdditionalSaveData(compound);
+		this.setVariant(compound.getInt("Variant"));
+	}
+
+	@Override
+	public void addAdditionalSaveData(CompoundNBT compound)
+	{
+		super.addAdditionalSaveData(compound);
+		compound.putInt("Variant", this.getVariant());
 	}
 
 	@Override
