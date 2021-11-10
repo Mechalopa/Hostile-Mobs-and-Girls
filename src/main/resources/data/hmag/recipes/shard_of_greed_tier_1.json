@@ -14,7 +14,7 @@
       "item": "minecraft:golden_apple"
     },
     {
-      "item": "minecraft:rabbit_foot"
+      "tag": "hmag:fortune_materials"
     },
     [
       {

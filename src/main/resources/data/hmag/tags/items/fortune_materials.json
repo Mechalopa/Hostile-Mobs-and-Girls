@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:rabbit_foot",
+    {
+      "id": "buzzier_bees:four_leaf_clover",
+      "required": false
+    }
+  ]
+}
