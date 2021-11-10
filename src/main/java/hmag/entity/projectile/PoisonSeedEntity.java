@@ -58,7 +58,7 @@ public class PoisonSeedEntity extends ProjectileItemEntity
 	@Override
 	protected Item getDefaultItem()
 	{
-		return Items.WHEAT_SEEDS;
+		return Items.BEETROOT_SEEDS;
 	}
 
 	@OnlyIn(Dist.CLIENT)
