@@ -8,6 +8,58 @@
     "minecraft:purpur_block",
     "minecraft:purpur_pillar",
     "minecraft:purpur_slab",
-    "minecraft:purpur_stairs"
+    "minecraft:purpur_stairs",
+    {
+      "id": "addendum:chiseled_purpur_bricks",
+      "required": false
+    },
+    {
+      "id": "addendum:chorusy_end_stone_bricks",
+      "required": false
+    },
+    {
+      "id": "addendum:purpur_brick_slab",
+      "required": false
+    },
+    {
+      "id": "addendum:purpur_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "addendum:purpur_brick_vertical_slab",
+      "required": false
+    },
+    {
+      "id": "endreborn:chiseled_end_bricks",
+      "required": false
+    },
+    {
+      "id": "endreborn:cracked_end_bricks",
+      "required": false
+    },
+    {
+      "id": "endreborn:cracked_purpur",
+      "required": false
+    },
+    {
+      "id": "endergetic:chiseled_end_stone_bricks",
+      "required": false
+    },
+    {
+      "id": "endergetic:cracked_end_stone_bricks",
+      "required": false
+    },
+    {
+      "id": "endergetic:cracked_purpur_block",
+      "required": false
+    },
+    {
+      "id": "quark:end_stone_brick_vertical_slab",
+      "required": false
+    },
+    {
+      "id": "quark:purpur_vertical_slab",
+      "required": false
+    }
   ]
 }
