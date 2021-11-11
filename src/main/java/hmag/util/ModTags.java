@@ -32,6 +32,7 @@ public class ModTags
 	public static final ITag.INamedTag<EntityType<?>> DIAMOND_TIER = makeEntityTag("tiered/diamond");
 	public static final ITag.INamedTag<EntityType<?>> TIERED = makeEntityTag("tiered");
 	public static final ITag.INamedTag<EntityType<?>> CRIMSON_SLAUGHTERER_TARGET_ANIMAL_BLACKLIST = makeEntityTag("crimson_slaughterer_target_animal_blacklist");
+	public static final ITag.INamedTag<EntityType<?>> HARD_SNOWBALL_HURTS_EXTRA_TYPES = makeEntityTag("hard_snowball_hurts_extra_types");
 	public static final ITag.INamedTag<EntityType<?>> MONOLITH_TARGET_BLACKLIST = makeEntityTag("monolith_target_blacklist");
 	public static final ITag.INamedTag<EntityType<?>> SAVAGEFANG_TARGET_BLACKLIST = makeEntityTag("savagefang_target_blacklist");
 
@@ -87,7 +88,7 @@ public class ModTags
 
 	public static <T> boolean checkTagContains(ITag<T> tag, T value)
 	{
-		if (tag != null)
+		if (tag != null && value != null)
 		{
 			try
 			{

@@ -2,12 +2,11 @@ package hmag.entity.projectile;
 
 import javax.annotation.Nonnull;
 
-import hmag.entity.MeltyMonsterEntity;
 import hmag.registry.ModEntityTypes;
+import hmag.util.ModTags;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.monster.BlazeEntity;
 import net.minecraft.entity.projectile.ProjectileItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -101,7 +100,7 @@ public class HardSnowballEntity extends ProjectileItemEntity
 		float f = this.getDamage();
 		Entity entity = result.getEntity();
 
-		if (entity instanceof BlazeEntity || entity instanceof MeltyMonsterEntity)
+		if (ModTags.checkTagContains(ModTags.HARD_SNOWBALL_HURTS_EXTRA_TYPES, entity.getType()))
 		{
 			f *= 2.0;
 		}
