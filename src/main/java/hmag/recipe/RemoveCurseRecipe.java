@@ -26,7 +26,6 @@ import net.minecraftforge.registries.ForgeRegistryEntry;
 
 public class RemoveCurseRecipe extends SmithingRecipe
 {
-//	public static final Serializer SERIALIZER = new RemoveCurseRecipe.Serializer();
 	private final ResourceLocation recipeId;
 
 	public RemoveCurseRecipe(ResourceLocation recipeId)
@@ -107,17 +106,11 @@ public class RemoveCurseRecipe extends SmithingRecipe
 	@Override
 	public IRecipeSerializer<?> getSerializer()
 	{
-//		return SERIALIZER;
 		return ModRecipes.REMOVE_CURSE.get();
 	}
 
 	public static class Serializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<RemoveCurseRecipe>
 	{
-//		public Serializer()
-//		{
-//			this.setRegistryName(HMaG.MODID, "remove_curse");
-//		}
-
 		@Override
 		public RemoveCurseRecipe fromJson(ResourceLocation recipeId, JsonObject json)
 		{

@@ -23,8 +23,6 @@ import net.minecraft.world.World;
 
 public class ItemTagShapedRecipe extends ShapedRecipe
 {
-//	public static final Serializer SERIALIZER = new ItemTagShapedRecipe.Serializer();
-
 	public ItemTagShapedRecipe(ShapedRecipe recipe, ItemStack resultIn)
 	{
 		super(recipe.getId(), recipe.getGroup(), recipe.getWidth(), recipe.getHeight(), recipe.getIngredients(), resultIn);
@@ -52,17 +50,11 @@ public class ItemTagShapedRecipe extends ShapedRecipe
 	@Override
 	public IRecipeSerializer<?> getSerializer()
 	{
-//		return SERIALIZER;
 		return ModRecipes.CRAFTING_ITEM_TAG_SHAPED.get();
 	}
 
 	public static class Serializer extends ShapedRecipe.Serializer
 	{
-//		public Serializer()
-//		{
-//			this.setRegistryName(HMaG.MODID, "crafting_item_tag_shaped");
-//		}
-
 		@Override
 		public ItemTagShapedRecipe fromJson(ResourceLocation recipeId, JsonObject json)
 		{
