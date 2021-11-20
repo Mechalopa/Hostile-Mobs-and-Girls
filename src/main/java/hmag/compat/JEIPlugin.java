@@ -9,7 +9,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 
 import hmag.HMaG;
-import hmag.item.IEnchantmentUpgradeItem;
+import hmag.item.EnchantmentUpgradeItem;
 import hmag.recipe.EnchantmentUpgradeRecipe;
 import hmag.recipe.RemoveCurseRecipe;
 import hmag.util.ModTags;
@@ -119,12 +119,12 @@ public class JEIPlugin implements IModPlugin
 
 						for (Item item : items1)
 						{
-							if (item != null && item instanceof IEnchantmentUpgradeItem)
+							if (item != null && item instanceof EnchantmentUpgradeItem)
 							{
-								IEnchantmentUpgradeItem ieui = (IEnchantmentUpgradeItem)item;
-								Enchantment[] enchantments = ieui.getEnchantments();
-								final int minLevel = ieui.getMinLevel();
-								final int maxLevel = ieui.getMaxLevel();
+								EnchantmentUpgradeItem eui = (EnchantmentUpgradeItem)item;
+								Enchantment[] enchantments = eui.getEnchantments();
+								final int minLevel = eui.getMinLevel();
+								final int maxLevel = eui.getMaxLevel();
 
 								for (int j = 0; j < enchantments.length; ++j)
 								{
@@ -160,11 +160,6 @@ public class JEIPlugin implements IModPlugin
 						}
 					}
 				}
-
-				if (flag && flag1)
-				{
-					break;
-				}
 //				else if (recipe instanceof EnchantmentUpgradeRecipe)
 //				{
 //					EnchantmentUpgradeRecipe enchantmentUpgradeRecipe = (EnchantmentUpgradeRecipe)recipe;
@@ -194,6 +189,11 @@ public class JEIPlugin implements IModPlugin
 //						}
 //					}
 //				}
+
+				if (flag && flag1)
+				{
+					break;
+				}
 			}
 		}
 

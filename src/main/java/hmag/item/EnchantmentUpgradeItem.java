@@ -3,7 +3,7 @@ package hmag.item;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
 
-public class EnchantmentUpgradeItem extends ModItem implements IEnchantmentUpgradeItem
+public class EnchantmentUpgradeItem extends ModItem
 {
 	private final Enchantment[] enchantments;
 	private final int minLevel;
@@ -42,19 +42,16 @@ public class EnchantmentUpgradeItem extends ModItem implements IEnchantmentUpgra
 		this.maxLevel = max;
 	}
 
-	@Override
 	public Enchantment[] getEnchantments()
 	{
 		return this.enchantments;
 	}
 
-	@Override
 	public int getMinLevel()
 	{
 		return this.minLevel;
 	}
 
-	@Override
 	public int getMaxLevel()
 	{
 		return this.maxLevel;

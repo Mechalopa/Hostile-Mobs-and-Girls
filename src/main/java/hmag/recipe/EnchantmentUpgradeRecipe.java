@@ -9,7 +9,7 @@ import javax.annotation.Nonnull;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.JsonObject;
 
-import hmag.item.IEnchantmentUpgradeItem;
+import hmag.item.EnchantmentUpgradeItem;
 import hmag.registry.ModRecipes;
 import hmag.util.ModTags;
 import net.minecraft.enchantment.Enchantment;
@@ -42,16 +42,16 @@ public class EnchantmentUpgradeRecipe extends SmithingRecipe
 		ItemStack stack = inv.getItem(0);
 		ItemStack stack1 = inv.getItem(1);
 
-		if (!stack.isEmpty() && stack.getItem() != Items.ENCHANTED_BOOK && !stack1.isEmpty() && stack1.getItem() != null && stack1.getItem() instanceof IEnchantmentUpgradeItem && ModTags.checkTagContains(ModTags.ENCHANTMENT_UPGRADE_ITEMS, stack1.getItem()))
+		if (!stack.isEmpty() && stack.getItem() != Items.ENCHANTED_BOOK && !stack1.isEmpty() && stack1.getItem() != null && stack1.getItem() instanceof EnchantmentUpgradeItem && ModTags.checkTagContains(ModTags.ENCHANTMENT_UPGRADE_ITEMS, stack1.getItem()))
 		{
-			IEnchantmentUpgradeItem ieui = (IEnchantmentUpgradeItem)stack1.getItem();
-			Enchantment[] enchantments = ieui.getEnchantments();
+			EnchantmentUpgradeItem eui = (EnchantmentUpgradeItem)stack1.getItem();
+			Enchantment[] enchantments = eui.getEnchantments();
 
 			for (int i = 0; i < enchantments.length; ++i)
 			{
 				final Enchantment enchantment = enchantments[i];
 
-				if (enchantment != null && checkEnchantableItem(stack, enchantment, ieui.getMinLevel(), ieui.getMaxLevel()))
+				if (enchantment != null && checkEnchantableItem(stack, enchantment, eui.getMinLevel(), eui.getMaxLevel()))
 				{
 					return true;
 				}
@@ -88,10 +88,10 @@ public class EnchantmentUpgradeRecipe extends SmithingRecipe
 	{
 		ItemStack stack = inv.getItem(1);
 
-		if (stack.getItem() instanceof IEnchantmentUpgradeItem)
+		if (stack.getItem() instanceof EnchantmentUpgradeItem)
 		{
-			IEnchantmentUpgradeItem ieui = (IEnchantmentUpgradeItem)stack.getItem();
-			Enchantment[] enchantments = ieui.getEnchantments();
+			EnchantmentUpgradeItem eui = (EnchantmentUpgradeItem)stack.getItem();
+			Enchantment[] enchantments = eui.getEnchantments();
 
 			for (int i = 0; i < enchantments.length; ++i)
 			{
@@ -101,7 +101,7 @@ public class EnchantmentUpgradeRecipe extends SmithingRecipe
 				{
 					ItemStack stack1 = inv.getItem(0);
 
-					if (checkEnchantableItem(stack1, enchantment, ieui.getMinLevel(), ieui.getMaxLevel()))
+					if (checkEnchantableItem(stack1, enchantment, eui.getMinLevel(), eui.getMaxLevel()))
 					{
 						ItemStack stack2 = stack1.copy();
 
