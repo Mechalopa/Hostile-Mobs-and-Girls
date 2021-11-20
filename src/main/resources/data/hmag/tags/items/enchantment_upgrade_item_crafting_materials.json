@@ -3,61 +3,9 @@
   "values": [
     "#forge:nuggets/netherite_scrap",
     "#forge:nuggets/nether_star",
-    "#forge:dragon_scale",
+    "#hmag:dragon_scales",
     {
       "id": "#forge:ingots/manyullyn",
-      "required": false
-    },
-    {
-      "id": "#forge:scales/dragon",
-      "required": false
-    },
-    {
-      "id": "iceandfire:dragonscales_red",
-      "required": false
-    },
-    {
-      "id": "iceandfire:dragonscales_green",
-      "required": false
-    },
-    {
-      "id": "iceandfire:dragonscales_bronze",
-      "required": false
-    },
-    {
-      "id": "iceandfire:dragonscales_gray",
-      "required": false
-    },
-    {
-      "id": "iceandfire:dragonscales_blue",
-      "required": false
-    },
-    {
-      "id": "iceandfire:dragonscales_white",
-      "required": false
-    },
-    {
-      "id": "iceandfire:dragonscales_sapphire",
-      "required": false
-    },
-    {
-      "id": "iceandfire:dragonscales_silver",
-      "required": false
-    },
-    {
-      "id": "iceandfire:dragonscales_electric",
-      "required": false
-    },
-    {
-      "id": "iceandfire:dragonscales_amythest",
-      "required": false
-    },
-    {
-      "id": "iceandfire:dragonscales_copper",
-      "required": false
-    },
-    {
-      "id": "iceandfire:dragonscales_black",
       "required": false
     }
   ]

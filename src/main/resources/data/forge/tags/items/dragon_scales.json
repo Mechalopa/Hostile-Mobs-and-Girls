@@ -6,10 +6,6 @@
       "required": false
     },
     {
-      "id": "forbidden_arcanus:dragon_scale",
-      "required": false
-    },
-    {
       "id": "bountifulbaubles:ender_dragon_scale",
       "required": false
     },

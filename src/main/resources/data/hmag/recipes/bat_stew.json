@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "tag": "forge:bat_wing"
+      "tag": "forge:bat_wings"
     },
     {
       "tag": "hmag:bat_stew_crafting_vegetables"
