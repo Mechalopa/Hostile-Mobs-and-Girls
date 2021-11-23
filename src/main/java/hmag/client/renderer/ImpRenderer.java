@@ -1,5 +1,7 @@
 package hmag.client.renderer;
 
+import com.mojang.blaze3d.matrix.MatrixStack;
+
 import hmag.HMaG;
 import hmag.client.model.ImpModel;
 import hmag.entity.ImpEntity;
@@ -15,7 +17,14 @@ public class ImpRenderer extends AbstractGirlRenderer<ImpEntity, ImpModel<ImpEnt
 
 	public ImpRenderer(EntityRendererManager renderManagerIn)
 	{
-		super(renderManagerIn, new ImpModel<>(), 0.5F);
+		super(renderManagerIn, new ImpModel<>(), 0.5F, -1);
+	}
+
+	@Override
+	protected void scale(ImpEntity entityIn, MatrixStack matrixStackIn, float partialTickTime)
+	{
+		matrixStackIn.scale(0.875F, 0.875F, 0.875F);
+		super.scale(entityIn, matrixStackIn, partialTickTime);
 	}
 
 	@Override

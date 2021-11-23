@@ -136,7 +136,7 @@ public class KoboldEntity extends MonsterEntity implements IModMob
 	@Override
 	protected float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn)
 	{
-		return 1.45F;
+		return 1.52F;
 	}
 
 	@Override

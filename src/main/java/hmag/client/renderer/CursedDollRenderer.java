@@ -25,6 +25,7 @@ public class CursedDollRenderer extends AbstractGirlRenderer<CursedDollEntity, C
 	@Override
 	protected void scale(CursedDollEntity entityIn, MatrixStack matrixStackIn, float partialTickTime)
 	{
+		matrixStackIn.scale(0.75F, 0.75F, 0.75F);
 		super.scale(entityIn, matrixStackIn, partialTickTime);
 		float f = (float)entityIn.tickCount + partialTickTime;
 		matrixStackIn.translate(0.0F, -0.12F + MathHelper.sin(f * 0.06F) * 0.08F, 0.0F);

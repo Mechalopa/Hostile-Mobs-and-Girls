@@ -66,8 +66,8 @@ public class ImpEntity extends MonsterEntity implements IModMob
 	{
 		return MonsterEntity.createMonsterAttributes()
 				.add(Attributes.MAX_HEALTH, 40.0D)
-				.add(Attributes.MOVEMENT_SPEED, 0.28D)
-				.add(Attributes.ATTACK_DAMAGE, 4.0D)
+				.add(Attributes.MOVEMENT_SPEED, 0.265D)
+				.add(Attributes.ATTACK_DAMAGE, 6.0D)
 				.add(Attributes.ARMOR, 2.0D)
 				.add(Attributes.KNOCKBACK_RESISTANCE, 0.5D);
 	}
@@ -142,13 +142,13 @@ public class ImpEntity extends MonsterEntity implements IModMob
 	@Override
 	public double getMyRidingOffset()
 	{
-		return -0.45D;
+		return -0.32D;
 	}
 
 	@Override
 	protected float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn)
 	{
-		return 1.74F;
+		return 1.52F;
 	}
 
 	@Override

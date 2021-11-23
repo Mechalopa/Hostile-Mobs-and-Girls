@@ -19,7 +19,7 @@ public class SlimeGirlRenderer extends AbstractGirlRenderer<SlimeGirlEntity, Sli
 
 	public SlimeGirlRenderer(EntityRendererManager renderManagerIn)
 	{
-		super(renderManagerIn, new SlimeGirlModel<>(), 0.5F);
+		super(renderManagerIn, new SlimeGirlModel<>(), 0.5F, -1);
 		this.addLayer(new SlimeGirlLayer(this));
 	}
 

@@ -172,13 +172,13 @@ public class CursedDollEntity extends MonsterEntity implements IModMob
 	@Override
 	public double getMyRidingOffset()
 	{
-		return -0.45D;
+		return -0.36D;
 	}
 
 	@Override
 	protected float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn)
 	{
-		return 1.74F;
+		return 1.33F;
 	}
 
 	@Override

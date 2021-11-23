@@ -15,7 +15,7 @@ public class ArurauneRenderer extends AbstractGirlRenderer<ArurauneEntity, Arura
 
 	public ArurauneRenderer(EntityRendererManager renderManagerIn)
 	{
-		super(renderManagerIn, new ArurauneModel<>(), 0.5F);
+		super(renderManagerIn, new ArurauneModel<>(), 0.5F, -1);
 	}
 
 	@Override

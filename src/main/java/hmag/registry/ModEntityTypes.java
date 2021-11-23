@@ -107,13 +107,13 @@ public class ModEntityTypes
 			.of(MeltyMonsterEntity::new, EntityClassification.MONSTER).fireImmune().sized(0.6F, 1.95F).setTrackingRange(6).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
 			.build(new ResourceLocation(HMaG.MODID, "melty_monster").toString()));
 	public static final RegistryObject<EntityType<CursedDollEntity>> CURSED_DOLL = REGISTRY.register("cursed_doll", () -> EntityType.Builder
-			.of(CursedDollEntity::new, EntityClassification.MONSTER).sized(0.6F, 1.95F).setTrackingRange(6).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
+			.of(CursedDollEntity::new, EntityClassification.MONSTER).sized(0.54F, 1.55F).setTrackingRange(6).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
 			.build(new ResourceLocation(HMaG.MODID, "cursed_doll").toString()));
 	public static final RegistryObject<EntityType<JackFrostEntity>> JACK_FROST = REGISTRY.register("jack_frost", () -> EntityType.Builder
 			.of(JackFrostEntity::new, EntityClassification.MONSTER).sized(0.6F, 1.95F).setTrackingRange(6).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
 			.build(new ResourceLocation(HMaG.MODID, "jack_frost").toString()));
 	public static final RegistryObject<EntityType<HornetEntity>> HORNET = REGISTRY.register("hornet", () -> EntityType.Builder
-			.of(HornetEntity::new, EntityClassification.MONSTER).sized(0.5F, 1.55F).setTrackingRange(6).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
+			.of(HornetEntity::new, EntityClassification.MONSTER).sized(0.6F, 1.7F).setTrackingRange(6).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
 			.build(new ResourceLocation(HMaG.MODID, "hornet").toString()));
 	public static final RegistryObject<EntityType<DullahanEntity>> DULLAHAN = REGISTRY.register("dullahan", () -> EntityType.Builder
 			.of(DullahanEntity::new, EntityClassification.MONSTER).sized(0.6F, 1.75F).setTrackingRange(6).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
@@ -179,7 +179,7 @@ public class ModEntityTypes
 			.of(DodomekiEntity::new, EntityClassification.MONSTER).sized(0.6F, 1.95F).setTrackingRange(6).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
 			.build(new ResourceLocation(HMaG.MODID, "dodomeki").toString()));
 	public static final RegistryObject<EntityType<ImpEntity>> IMP = REGISTRY.register("imp", () -> EntityType.Builder
-			.of(ImpEntity::new, EntityClassification.MONSTER).sized(0.6F, 1.95F).setTrackingRange(6).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
+			.of(ImpEntity::new, EntityClassification.MONSTER).sized(0.6F, 1.7F).setTrackingRange(6).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
 			.build(new ResourceLocation(HMaG.MODID, "imp").toString()));
 
 	public static final RegistryObject<EntityType<MagicBulletEntity>> MAGIC_BULLET = REGISTRY.register("magic_bullet", () -> EntityType.Builder

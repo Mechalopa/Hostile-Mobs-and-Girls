@@ -5,10 +5,12 @@ import javax.annotation.Nullable;
 import hmag.registry.ModItems;
 import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntitySize;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ILivingEntityData;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MobEntity;
+import net.minecraft.entity.Pose;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
@@ -130,6 +132,18 @@ public class HornetEntity extends AbstractFlyingMonsterEntity implements IModMob
 	public int getMaxSpawnClusterSize()
 	{
 		return 2;
+	}
+
+	@Override
+	public double getMyRidingOffset()
+	{
+		return -0.32D;
+	}
+
+	@Override
+	protected float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn)
+	{
+		return 1.52F;
 	}
 
 	@Override

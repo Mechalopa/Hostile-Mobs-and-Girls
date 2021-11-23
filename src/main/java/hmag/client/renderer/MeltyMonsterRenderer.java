@@ -19,7 +19,7 @@ public class MeltyMonsterRenderer extends AbstractGirlRenderer<MeltyMonsterEntit
 
 	public MeltyMonsterRenderer(EntityRendererManager renderManagerIn)
 	{
-		super(renderManagerIn, new MeltyMonsterModel<>(), 0.5F);
+		super(renderManagerIn, new MeltyMonsterModel<>(), 0.5F, -1);
 		this.addLayer(new MeltyMonsterLayer(this));
 		this.addLayer(new MeltyMonsterClothingLayer<>(this));
 		this.addLayer(new MeltyMonsterEyesLayer<>(this));

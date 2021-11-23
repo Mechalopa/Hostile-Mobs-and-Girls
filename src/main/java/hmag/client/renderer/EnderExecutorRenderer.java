@@ -9,7 +9,7 @@ import hmag.HMaG;
 import hmag.client.model.EnderExecutorModel;
 import hmag.client.renderer.layers.EnderExecutorEyesLayer;
 import hmag.client.renderer.layers.EnderExecutorHeldBlockLayer;
-import hmag.client.renderer.layers.GirlHeldItemLayer;
+import hmag.client.renderer.layers.HeldItemLayer2;
 import hmag.client.util.ModClientUtils;
 import hmag.entity.EnderExecutorEntity;
 import net.minecraft.block.BlockState;
@@ -40,7 +40,7 @@ public class EnderExecutorRenderer extends MobRenderer<EnderExecutorEntity, Ende
 	{
 		super(renderManagerIn, new EnderExecutorModel<>(), 0.5F);
 		this.addLayer(new EnderExecutorEyesLayer<>(this));
-		this.addLayer(new GirlHeldItemLayer<>(this, -1));
+		this.addLayer(new HeldItemLayer2<>(this, -1));
 		this.addLayer(new EnderExecutorHeldBlockLayer(this));
 	}
 

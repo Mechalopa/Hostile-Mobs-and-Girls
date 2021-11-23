@@ -4,8 +4,10 @@ import javax.annotation.Nonnull;
 
 import hmag.registry.ModSoundEvents;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntitySize;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.Pose;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
@@ -20,10 +22,14 @@ import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.IPacket;
+import net.minecraft.particles.ParticleTypes;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
@@ -39,7 +45,7 @@ public class DodomekiEntity extends MonsterEntity implements IModMob
 	protected void registerGoals()
 	{
 		this.goalSelector.addGoal(1, new SwimGoal(this));
-		this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.2D, false));
+		this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.0D, false));
 		this.goalSelector.addGoal(5, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
 		this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 8.0F));
 		this.goalSelector.addGoal(6, new LookRandomlyGoal(this));
@@ -52,11 +58,54 @@ public class DodomekiEntity extends MonsterEntity implements IModMob
 	{
 		return MonsterEntity.createMonsterAttributes()
 				.add(Attributes.MAX_HEALTH, 40.0D)
-				.add(Attributes.MOVEMENT_SPEED, 0.22D)
+				.add(Attributes.MOVEMENT_SPEED, 0.23D)
 				.add(Attributes.ATTACK_DAMAGE, 7.0D)
 				.add(Attributes.ARMOR, 5.0D)
 				.add(Attributes.KNOCKBACK_RESISTANCE, 0.5D)
 				.add(Attributes.FOLLOW_RANGE, 20.0D);
+	}
+
+	@Override
+	public void aiStep()
+	{
+		if (this.level.isClientSide)
+		{
+			this.level.addParticle(ParticleTypes.MYCELIUM, this.getRandomX(0.75D), this.getRandomY() - 0.5D, this.getRandomZ(0.75D), (this.getRandom().nextDouble() - 0.5D) * 3.0D, -this.getRandom().nextDouble(), (this.getRandom().nextDouble() - 0.5D) * 3.0D);
+		}
+
+		super.aiStep();
+	}
+
+	@Override
+	public boolean doHurtTarget(Entity entityIn)
+	{
+		if (super.doHurtTarget(entityIn))
+		{
+			if (entityIn instanceof LivingEntity)
+			{
+				int i = 0;
+
+				if (this.level.getDifficulty() == Difficulty.NORMAL)
+				{
+					i = 7;
+				}
+				else if (this.level.getDifficulty() == Difficulty.HARD)
+				{
+					i = 15;
+				}
+
+				if (i > 0)
+				{
+					((LivingEntity)entityIn).addEffect(new EffectInstance(Effects.MOVEMENT_SLOWDOWN, i * 20, 0));
+				}
+			}
+
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	@Override

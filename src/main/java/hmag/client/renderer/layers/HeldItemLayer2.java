@@ -17,16 +17,16 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class GirlHeldItemLayer<T extends LivingEntity, M extends EntityModel<T> & IHasArm> extends HeldItemLayer<T, M>
+public class HeldItemLayer2<T extends LivingEntity, M extends EntityModel<T> & IHasArm> extends HeldItemLayer<T, M>
 {
 	private final int translateX;
 
-	public GirlHeldItemLayer(IEntityRenderer<T, M> entityRendererIn)
+	public HeldItemLayer2(IEntityRenderer<T, M> entityRendererIn)
 	{
 		this(entityRendererIn, 0);
 	}
 
-	public GirlHeldItemLayer(IEntityRenderer<T, M> entityRendererIn, int heldItemTranslateX)
+	public HeldItemLayer2(IEntityRenderer<T, M> entityRendererIn, int heldItemTranslateX)
 	{
 		super(entityRendererIn);
 		this.translateX = heldItemTranslateX;
@@ -36,10 +36,10 @@ public class GirlHeldItemLayer<T extends LivingEntity, M extends EntityModel<T> 
 	public void render(MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn, T livingEntityIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch)
 	{
 		boolean flag = livingEntityIn.getMainArm() == HandSide.RIGHT;
-		ItemStack itemstack = flag ? livingEntityIn.getOffhandItem() : livingEntityIn.getMainHandItem();
-		ItemStack itemstack1 = flag ? livingEntityIn.getMainHandItem() : livingEntityIn.getOffhandItem();
+		ItemStack stack = flag ? livingEntityIn.getOffhandItem() : livingEntityIn.getMainHandItem();
+		ItemStack stack1 = flag ? livingEntityIn.getMainHandItem() : livingEntityIn.getOffhandItem();
 
-		if (!itemstack.isEmpty() || !itemstack1.isEmpty())
+		if (!stack.isEmpty() || !stack1.isEmpty())
 		{
 			matrixStackIn.pushPose();
 
@@ -49,8 +49,8 @@ public class GirlHeldItemLayer<T extends LivingEntity, M extends EntityModel<T> 
 				matrixStackIn.scale(0.5F, 0.5F, 0.5F);
 			}
 
-			this.renderArmWithItem(livingEntityIn, itemstack1, ItemCameraTransforms.TransformType.THIRD_PERSON_RIGHT_HAND, HandSide.RIGHT, matrixStackIn, bufferIn, packedLightIn);
-			this.renderArmWithItem(livingEntityIn, itemstack, ItemCameraTransforms.TransformType.THIRD_PERSON_LEFT_HAND, HandSide.LEFT, matrixStackIn, bufferIn, packedLightIn);
+			this.renderArmWithItem(livingEntityIn, stack1, ItemCameraTransforms.TransformType.THIRD_PERSON_RIGHT_HAND, HandSide.RIGHT, matrixStackIn, bufferIn, packedLightIn);
+			this.renderArmWithItem(livingEntityIn, stack, ItemCameraTransforms.TransformType.THIRD_PERSON_LEFT_HAND, HandSide.LEFT, matrixStackIn, bufferIn, packedLightIn);
 			matrixStackIn.popPose();
 		}
 	}

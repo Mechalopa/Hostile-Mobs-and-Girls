@@ -23,7 +23,7 @@ public class HornetRenderer extends AbstractGirlRenderer<HornetEntity, HornetMod
 	@Override
 	protected void scale(HornetEntity entityIn, MatrixStack matrixStackIn, float partialTickTime)
 	{
-		matrixStackIn.scale(0.75F, 0.75F, 0.75F);
+		matrixStackIn.scale(0.875F, 0.875F, 0.875F);
 		super.scale(entityIn, matrixStackIn, partialTickTime);
 	}
 

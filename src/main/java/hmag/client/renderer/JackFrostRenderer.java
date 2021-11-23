@@ -15,7 +15,7 @@ public class JackFrostRenderer extends AbstractGirlRenderer<JackFrostEntity, Jac
 
 	public  JackFrostRenderer(EntityRendererManager renderManagerIn)
 	{
-		super(renderManagerIn, new JackFrostModel<>(), 0.5F);
+		super(renderManagerIn, new JackFrostModel<>(), 0.5F, -1);
 	}
 
 	@Override

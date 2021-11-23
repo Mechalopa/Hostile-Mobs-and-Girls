@@ -521,7 +521,6 @@ public class NecroticReaperModel<T extends MobEntity> extends AbstractGirlModel<
 			this.rightSkirtPart[i].yRot = (float)Math.PI * ((float)(i - 3)) / 7.0F + f2;
 			this.rightSkirtPart[i].xRot = (float)Math.PI * 2.0F / 5.0F - f2;
 			this.rightSkirtPart[i].xRot += MathHelper.sin(ageInTicks * 0.09F + (float)Math.PI * (float)i / 7.0F) * 0.15F - 0.03F;
-
 			this.leftSkirtPart[i].yRot = -((float)Math.PI * ((float)(i - 3)) / 7.0F + f2);
 			this.leftSkirtPart[i].xRot = (float)Math.PI * 2.0F / 5.0F - f2;
 			this.leftSkirtPart[i].xRot += MathHelper.sin(ageInTicks * 0.09F + (float)Math.PI * (float)i / 7.0F) * 0.15F - 0.03F;

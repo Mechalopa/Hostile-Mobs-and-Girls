@@ -187,7 +187,7 @@ public class KoboldModel<T extends MobEntity> extends AbstractGirlModel<T>
 		this.tail2.addChild(this.tail3);
 
 		this.hairPart = new ModelRenderer(this, 0, 64);
-		this.hairPart.addBox(-4.0F, 0.0F, -1.0F, 8, 2, 1, modelSize);
+		this.hairPart.addBox(-4.0F, 0.0F, -1.0F, 8.0F, 2.0F, 1.0F, modelSize);
 		this.hairPart.setPos(0.0F, 0.0F, 4.0F);
 		this.head.addChild(this.hairPart);
 	}

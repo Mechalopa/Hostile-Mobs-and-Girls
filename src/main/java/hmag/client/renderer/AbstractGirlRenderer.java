@@ -1,6 +1,6 @@
 package hmag.client.renderer;
 
-import hmag.client.renderer.layers.GirlHeldItemLayer;
+import hmag.client.renderer.layers.HeldItemLayer2;
 import net.minecraft.client.renderer.entity.BipedRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.layers.HeldItemLayer;
@@ -29,6 +29,6 @@ public abstract class AbstractGirlRenderer<T extends MobEntity, M extends BipedM
 				break;
 			}
 		}
-		this.addLayer(new GirlHeldItemLayer<>(this, heldItemTranslateX));
+		this.addLayer(new HeldItemLayer2<>(this, heldItemTranslateX));
 	}
 }
