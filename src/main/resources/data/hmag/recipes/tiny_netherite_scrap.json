@@ -30,6 +30,7 @@
     }
   ],
   "result": {
-    "item": "hmag:tiny_netherite_scrap"
+    "item": "hmag:tiny_netherite_scrap",
+    "count": 2
   }
 }

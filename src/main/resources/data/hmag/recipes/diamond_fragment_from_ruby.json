@@ -35,11 +35,20 @@
       }
     ],
     {
-      "item": "hmag:evil_crystal"
+      "item": "hmag:evil_crystal_fragment"
+    },
+    {
+      "item": "hmag:evil_crystal_fragment"
+    },
+    {
+      "item": "hmag:evil_crystal_fragment"
+    },
+    {
+      "item": "hmag:evil_crystal_fragment"
     }
   ],
   "result": {
     "item": "hmag:diamond_fragment",
-    "count": 3
+    "count": 6
   }
 }
