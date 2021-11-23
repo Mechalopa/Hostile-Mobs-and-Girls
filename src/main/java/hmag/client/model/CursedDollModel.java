@@ -15,7 +15,8 @@ public class CursedDollModel<T extends MobEntity> extends AbstractGirlModel<T>
 	private ModelRenderer skirt3;
 	private ModelRenderer skirt4;
 	private ModelRenderer skirt5;
-	private ModelRenderer hairPart;
+	private ModelRenderer hairPart1;
+	private ModelRenderer hairPart2;
 	private ModelRenderer ribbon;
 	private ModelRenderer ribbonRightPart;
 	private ModelRenderer ribbonLeftPart;
@@ -51,10 +52,14 @@ public class CursedDollModel<T extends MobEntity> extends AbstractGirlModel<T>
 		this.skirt5.setPos(0.0F, 1.0F, 0.0F);
 		this.skirt4.addChild(this.skirt5);
 
-		this.hairPart = new ModelRenderer(this, 40, 48);
-		this.hairPart.addBox(-4.0F, 0.0F, -1.0F, 8.0F, 12.0F, 1.0F, modelSize + 1.0F);
-		this.hairPart.setPos(0.0F, 0.75F, 3.0F);
-		this.head.addChild(this.hairPart);
+		this.hairPart1 = new ModelRenderer(this, 40, 48);
+		this.hairPart1.addBox(-4.0F, 0.0F, -1.0F, 8.0F, 4.0F, 1.0F, modelSize);
+		this.hairPart1.setPos(0.0F, 0.0F, 4.0F);
+		this.head.addChild(this.hairPart1);
+		this.hairPart2 = new ModelRenderer(this, 42, 56);
+		this.hairPart2.addBox(-4.0F, 0.0F, -1.0F, 8.0F, 8.0F, 1.0F, modelSize);
+		this.hairPart2.setPos(0.0F, 4.0F, 0.0F);
+		this.hairPart1.addChild(this.hairPart2);
 
 		this.ribbon = new ModelRenderer(this, 16, 32);
 		this.ribbon.addBox(-1.0F, -1.5F, -0.5F, 2.0F, 3.0F, 1.0F, modelSize);
@@ -95,8 +100,10 @@ public class CursedDollModel<T extends MobEntity> extends AbstractGirlModel<T>
 		this.rightLeg.zRot = (float)Math.PI / 18.0F;
 		this.leftLeg.zRot = -((float)Math.PI / 18.0F);
 
-		this.hairPart.xRot = (float)Math.PI / 36.0F;
-		this.hairPart.xRot += MathHelper.sin(ageInTicks * 0.075F) * 0.06F;
+		this.hairPart1.xRot = (float)Math.PI / 24.0F;
+		this.hairPart1.xRot += MathHelper.sin(ageInTicks * 0.075F) * 0.06F;
+		this.hairPart2.xRot = (float)Math.PI / 24.0F;
+		this.hairPart2.xRot += MathHelper.sin(ageInTicks * 0.075F + (float)Math.PI / 4.0F) * 0.06F;
 
 		float f2 = MathHelper.sin(ageInTicks * 0.075F + (float)Math.PI / 2.0F);
 		this.ribbon.xRot = (float)Math.PI / 18.0F;
