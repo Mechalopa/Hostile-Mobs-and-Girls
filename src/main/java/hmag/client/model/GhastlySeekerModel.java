@@ -47,60 +47,60 @@ public class GhastlySeekerModel<T extends GhastlySeekerEntity> extends AbstractG
 		super(modelSize, 0.0F, 64, 128, false);
 
 		this.rightArm = new ModelRenderer(this, 40, 16);
-		this.rightArm.addBox(-1.0F, -2.0F, -1.5F, 3, 5, 3, modelSize);
+		this.rightArm.addBox(-1.0F, -2.0F, -1.5F, 3.0F, 5.0F, 3.0F, modelSize);
 		this.rightArm.setPos(-5.0F, 2.0F, 0.0F);
 		this.leftArm = new ModelRenderer(this, 40, 16);
 		this.leftArm.mirror = true;
-		this.leftArm.addBox(-2.0F, -2.0F, -1.5F, 3, 5, 3, modelSize);
+		this.leftArm.addBox(-2.0F, -2.0F, -1.5F, 3.0F, 5.0F, 3.0F, modelSize);
 		this.leftArm.setPos(5.0F, 2.0F, 0.0F);
 
 		this.rightArmPart1 = new ModelRenderer(this, 40, 48);
-		this.rightArmPart1.addBox(-1.5F, 0.0F, -2.0F, 4, 4, 4, modelSize);
+		this.rightArmPart1.addBox(-1.5F, 0.0F, -2.0F, 4.0F, 4.0F, 4.0F, modelSize);
 		this.rightArmPart1.setPos(0.0F, 2.5F, 0.0F);
 		this.rightArm.addChild(this.rightArmPart1);
 		this.rightArmPart2 = new ModelRenderer(this, 40, 56);
-		this.rightArmPart2.addBox(-2.5F, 0.0F, -2.5F, 5, 4, 5, modelSize);
+		this.rightArmPart2.addBox(-2.5F, 0.0F, -2.5F, 5.0F, 4.0F, 5.0F, modelSize);
 		this.rightArmPart2.setPos(0.0F, 3.5F, 0.0F);
 		this.rightArmPart1.addChild(this.rightArmPart2);
 
 		this.leftArmPart1 = new ModelRenderer(this, 40, 48);
 		this.leftArmPart1.mirror = true;
-		this.leftArmPart1.addBox(-2.5F, 0.0F, -2.0F, 4, 4, 4, modelSize);
+		this.leftArmPart1.addBox(-2.5F, 0.0F, -2.0F, 4.0F, 4.0F, 4.0F, modelSize);
 		this.leftArmPart1.setPos(0.0F, 2.5F, 0.0F);
 		this.leftArm.addChild(this.leftArmPart1);
 		this.leftArmPart2 = new ModelRenderer(this, 40, 56);
 		this.leftArmPart2.mirror = true;
-		this.leftArmPart2.addBox(-2.5F, 0.0F, -2.5F, 5, 4, 5, modelSize);
+		this.leftArmPart2.addBox(-2.5F, 0.0F, -2.5F, 5.0F, 4.0F, 5.0F, modelSize);
 		this.leftArmPart2.setPos(0.0F, 3.5F, 0.0F);
 		this.leftArmPart1.addChild(this.leftArmPart2);
 
 		this.rightLeg = new ModelRenderer(this, 0, 16);
-		this.rightLeg.addBox(-0.5F, 0.0F, -0.5F, 1, 1, 1, modelSize);
+		this.rightLeg.addBox(-0.5F, 0.0F, -0.5F, 1.0F, 1.0F, 1.0F, modelSize);
 		this.rightLeg.setPos(-2.0F, 12.0F, 0.0F);
 		this.leftLeg = new ModelRenderer(this, 0, 16);
 		this.leftLeg.mirror = true;
-		this.leftLeg.addBox(-0.5F, 0.0F, -0.5F, 1, 1, 1, modelSize);
+		this.leftLeg.addBox(-0.5F, 0.0F, -0.5F, 1.0F, 1.0F, 1.0F, modelSize);
 		this.leftLeg.setPos(2.0F, 12.0F, 0.0F);
 
 		this.bodyPart2 = new ModelRenderer(this, 32, 40);
-		this.bodyPart2.addBox(-3.0F, 0.0F, -1.5F, 6, 2, 3, modelSize);
+		this.bodyPart2.addBox(-3.0F, 0.0F, -1.5F, 6.0F, 2.0F, 3.0F, modelSize);
 		this.bodyPart2.setPos(0.0F, 2.5F, 0.0F);
 		this.bodyPart1.addChild(this.bodyPart2);
 
 		this.skirt1 = new ModelRenderer(this, 0, 38);
-		this.skirt1.addBox(-4.0F, 0.0F, -2.5F, 8, 2, 5, modelSize);
+		this.skirt1.addBox(-4.0F, 0.0F, -2.5F, 8.0F, 2.0F, 5.0F, modelSize);
 		this.skirt1.setPos(0.0F, 10.0F, 0.0F);
 		this.body.addChild(this.skirt1);
 		this.skirt2 = new ModelRenderer(this, 0, 46);
-		this.skirt2.addBox(-4.5F, 0.0F, -3.0F, 9, 2, 7, modelSize);
+		this.skirt2.addBox(-4.5F, 0.0F, -3.0F, 9.0F, 2.0F, 7.0F, modelSize);
 		this.skirt2.setPos(0.0F, 11.0F, 0.0F);
 		this.body.addChild(this.skirt2);
 		this.skirt3 = new ModelRenderer(this, 0, 56);
-		this.skirt3.addBox(-5.0F, 0.0F, -3.5F, 10, 2, 9, modelSize);
+		this.skirt3.addBox(-5.0F, 0.0F, -3.5F, 10.0F, 2.0F, 9.0F, modelSize);
 		this.skirt3.setPos(0.0F, 1.0F, 0.0F);
 		this.skirt2.addChild(this.skirt3);
 		this.skirt4 = new ModelRenderer(this, 0, 72);
-		this.skirt4.addBox(-5.5F, 0.0F, -4.0F, 11, 3, 11, modelSize);
+		this.skirt4.addBox(-5.5F, 0.0F, -4.0F, 11.0F, 3.0F, 11.0F, modelSize);
 		this.skirt4.setPos(0.0F, 1.0F, 0.0F);
 		this.skirt3.addChild(this.skirt4);
 
@@ -120,63 +120,63 @@ public class GhastlySeekerModel<T extends GhastlySeekerEntity> extends AbstractG
 		}
 
 		this.rightHairPart1 = new ModelRenderer(this, 16, 88);
-		this.rightHairPart1.addBox(-1.0F, -1.0F, -1.0F, 2, 3, 2, modelSize);
+		this.rightHairPart1.addBox(-1.0F, -1.0F, -1.0F, 2.0F, 3.0F, 2.0F, modelSize);
 		this.rightHairPart1.setPos(-3.75F, -7.0F, -0.5F);
 		this.head.addChild(this.rightHairPart1);
 		this.leftHairPart1 = new ModelRenderer(this, 16, 88);
-		this.leftHairPart1.addBox(-1.0F, -1.0F, -1.0F, 2, 3, 2, modelSize);
+		this.leftHairPart1.addBox(-1.0F, -1.0F, -1.0F, 2.0F, 3.0F, 2.0F, modelSize);
 		this.leftHairPart1.setPos(3.75F, -7.0F, -0.5F);
 		this.head.addChild(this.leftHairPart1);
 
 		this.rightHairPart2 = new ModelRenderer(this, 24, 88);
-		this.rightHairPart2.addBox(-0.5F, -2.0F, -2.0F, 1, 4, 4, modelSize);
+		this.rightHairPart2.addBox(-0.5F, -2.0F, -2.0F, 1.0F, 4.0F, 4.0F, modelSize);
 		this.rightHairPart2.setPos(-1.5F, 0.0F, -0.25F);
 		this.rightHairPart1.addChild(this.rightHairPart2);
 		this.leftHairPart2 = new ModelRenderer(this, 24, 88);
-		this.leftHairPart2.addBox(-0.5F, -2.0F, -2.0F, 1, 4, 4, modelSize);
+		this.leftHairPart2.addBox(-0.5F, -2.0F, -2.0F, 1.0F, 4.0F, 4.0F, modelSize);
 		this.leftHairPart2.setPos(1.5F, 0.0F, -0.25F);
 		this.leftHairPart1.addChild(this.leftHairPart2);
 
 		this.rightHairPart3 = new ModelRenderer(this, 48, 72);
-		this.rightHairPart3.addBox(-1.0F, -1.5F, -1.0F, 2, 5, 2, modelSize);
+		this.rightHairPart3.addBox(-1.0F, -1.5F, -1.0F, 2.0F, 5.0F, 2.0F, modelSize);
 		this.rightHairPart3.setPos(-1.5F, 1.0F, 1.5F);
 		this.rightHairPart1.addChild(this.rightHairPart3);
 		this.rightHairPart4 = new ModelRenderer(this, 40, 88);
-		this.rightHairPart4.addBox(-1.0F, 0.0F, -1.0F, 2, 8, 2, modelSize + 0.25F);
+		this.rightHairPart4.addBox(-1.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, modelSize + 0.25F);
 		this.rightHairPart4.setPos(0.0F, 3.5F, 0.0F);
 		this.rightHairPart3.addChild(this.rightHairPart4);
 		this.rightHairPart5 = new ModelRenderer(this, 48, 88);
-		this.rightHairPart5.addBox(-1.5F, 0.0F, -1.5F, 3, 6, 3, modelSize);
+		this.rightHairPart5.addBox(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F, modelSize);
 		this.rightHairPart5.setPos(0.0F, 8.0F, 0.0F);
 		this.rightHairPart4.addChild(this.rightHairPart5);
 		this.rightHairPart6 = new ModelRenderer(this, 48, 80);
-		this.rightHairPart6.addBox(-1.0F, 0.0F, -1.0F, 2, 5, 2, modelSize);
+		this.rightHairPart6.addBox(-1.0F, 0.0F, -1.0F, 2.0F, 5.0F, 2.0F, modelSize);
 		this.rightHairPart6.setPos(0.0F, 6.0F, 0.0F);
 		this.rightHairPart5.addChild(this.rightHairPart6);
 
 		this.leftHairPart3 = new ModelRenderer(this, 48, 72);
 		this.leftHairPart3.mirror = true;
-		this.leftHairPart3.addBox(-1.0F, -1.5F, -1.0F, 2, 5, 2, modelSize);
+		this.leftHairPart3.addBox(-1.0F, -1.5F, -1.0F, 2.0F, 5.0F, 2.0F, modelSize);
 		this.leftHairPart3.setPos(1.5F, 1.0F, 1.5F);
 		this.leftHairPart1.addChild(this.leftHairPart3);
 		this.leftHairPart4 = new ModelRenderer(this, 40, 88);
 		this.leftHairPart4.mirror = true;
-		this.leftHairPart4.addBox(-1.0F, 0.0F, -1.0F, 2, 8, 2, modelSize + 0.25F);
+		this.leftHairPart4.addBox(-1.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, modelSize + 0.25F);
 		this.leftHairPart4.setPos(0.0F, 3.5F, 0.0F);
 		this.leftHairPart3.addChild(this.leftHairPart4);
 		this.leftHairPart5 = new ModelRenderer(this, 48, 88);
 		this.leftHairPart5.mirror = true;
-		this.leftHairPart5.addBox(-1.5F, 0.0F, -1.5F, 3, 6, 3, modelSize);
+		this.leftHairPart5.addBox(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F, modelSize);
 		this.leftHairPart5.setPos(0.0F, 8.0F, 0.0F);
 		this.leftHairPart4.addChild(this.leftHairPart5);
 		this.leftHairPart6 = new ModelRenderer(this, 48, 80);
 		this.leftHairPart6.mirror = true;
-		this.leftHairPart6.addBox(-1.0F, 0.0F, -1.0F, 2, 5, 2, modelSize);
+		this.leftHairPart6.addBox(-1.0F, 0.0F, -1.0F, 2.0F, 5.0F, 2.0F, modelSize);
 		this.leftHairPart6.setPos(0.0F, 6.0F, 0.0F);
 		this.leftHairPart5.addChild(this.leftHairPart6);
 
 		this.hairPart = new ModelRenderer(this, 0, 104);
-		this.hairPart.addBox(-4.0F, 0.0F, -1.0F, 8, 2, 1, modelSize);
+		this.hairPart.addBox(-4.0F, 0.0F, -1.0F, 8.0F, 2.0F, 1.0F, modelSize);
 		this.hairPart.setPos(0.0F, 0.0F, 4.0F);
 		this.head.addChild(this.hairPart);
 

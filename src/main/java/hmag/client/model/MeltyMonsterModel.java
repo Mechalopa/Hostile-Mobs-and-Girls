@@ -146,23 +146,23 @@ public class MeltyMonsterModel<T extends MeltyMonsterEntity> extends AbstractGir
 		this.leftHairAPart4.addChild(this.leftHairAPart5);
 
 		this.rightHairBPart1 = new ModelRenderer(this, 32, 48);
-		this.rightHairBPart1.addBox(-1.0F, -1.0F, -1.0F, 2, 3, 2, modelSize);
+		this.rightHairBPart1.addBox(-1.0F, -1.0F, -1.0F, 2.0F, 3.0F, 2.0F, modelSize);
 		this.rightHairBPart1.setPos(-3.0F, -7.0F, 3.75F);
 		this.head.addChild(this.rightHairBPart1);
 		this.rightHairBPart2 = new ModelRenderer(this, 32, 56);
-		this.rightHairBPart2.addBox(-1.0F, -1.5F, -1.0F, 2, 5, 2, modelSize);
+		this.rightHairBPart2.addBox(-1.0F, -1.5F, -1.0F, 2.0F, 5.0F, 2.0F, modelSize);
 		this.rightHairBPart2.setPos(0.5F, 0.75F, 1.5F);
 		this.rightHairBPart1.addChild(this.rightHairBPart2);
 		this.rightHairBPart3 = new ModelRenderer(this, 40, 56);
-		this.rightHairBPart3.addBox(-1.0F, 0.0F, -1.0F, 2, 6, 2, modelSize + 0.25F);
+		this.rightHairBPart3.addBox(-1.0F, 0.0F, -1.0F, 2.0F, 6.0F, 2.0F, modelSize + 0.25F);
 		this.rightHairBPart3.setPos(0.0F, 3.5F, 0.0F);
 		this.rightHairBPart2.addChild(this.rightHairBPart3);
 		this.rightHairBPart4 = new ModelRenderer(this, 48, 56);
-		this.rightHairBPart4.addBox(-1.5F, 0.0F, -1.5F, 3, 3, 3, modelSize);
+		this.rightHairBPart4.addBox(-1.5F, 0.0F, -1.5F, 3.0F, 3.0F, 3.0F, modelSize);
 		this.rightHairBPart4.setPos(0.0F, 6.0F, 0.0F);
 		this.rightHairBPart3.addChild(this.rightHairBPart4);
 		this.rightHairBPart5 = new ModelRenderer(this, 32, 64);
-		this.rightHairBPart5.addBox(-1.0F, 0.0F, -1.0F, 2, 4, 2, modelSize);
+		this.rightHairBPart5.addBox(-1.0F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F, modelSize);
 		this.rightHairBPart5.setPos(0.0F, 2.5F, 0.0F);
 		this.rightHairBPart4.addChild(this.rightHairAPart5);
 

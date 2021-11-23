@@ -36,56 +36,56 @@ public class LichModel<T extends MobEntity> extends BipedModel<T>
 		float f = yOffsetIn;
 
 		this.rightArm = new ModelRenderer(this, 40, 16);
-		this.rightArm.addBox(-2.0F, -2.0F, -1.0F, 2, 12, 2, modelSize);
+		this.rightArm.addBox(-2.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F, modelSize);
 		this.rightArm.setPos(-5.0F, 2.0F + f, 0.0F);
 		this.leftArm = new ModelRenderer(this, 40, 16);
 		this.leftArm.mirror = true;
-		this.leftArm.addBox(0.0F, -2.0F, -1.0F, 2, 12, 2, modelSize);
+		this.leftArm.addBox(0.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F, modelSize);
 		this.leftArm.setPos(5.0F, 2.0F + f, 0.0F);
 
 		this.rightArmSleeve = new ModelRenderer(this, 40, 32);
-		this.rightArmSleeve.addBox(-3.0F, 0.0F, -2.0F, 4, 8, 4, modelSize);
+		this.rightArmSleeve.addBox(-3.0F, 0.0F, -2.0F, 4.0F, 8.0F, 4.0F, modelSize);
 		this.rightArmSleeve.setPos(0.0F, -2.0F, 0.0F);
 		this.rightArm.addChild(this.rightArmSleeve);
 		this.leftArmSleeve = new ModelRenderer(this, 40, 32);
 		this.leftArmSleeve.mirror = true;
-		this.leftArmSleeve.addBox(-1.0F, 0.0F, -2.0F, 4, 8, 4, modelSize);
+		this.leftArmSleeve.addBox(-1.0F, 0.0F, -2.0F, 4.0F, 8.0F, 4.0F, modelSize);
 		this.leftArmSleeve.setPos(0.0F, -2.0F, 0.0F);
 		this.leftArm.addChild(this.leftArmSleeve);
 
 		this.rightLeg = new ModelRenderer(this, 0, 16);
-		this.rightLeg.addBox(-1.0F, 0.0F, -1.0F, 2, 16, 2, modelSize);
+		this.rightLeg.addBox(-1.0F, 0.0F, -1.0F, 2.0F, 16.0F, 2.0F, modelSize);
 		this.rightLeg.setPos(-2.0F, 12.0F + f, 0.0F);
 		this.leftLeg = new ModelRenderer(this, 0, 16);
 		this.leftLeg.mirror = true;
-		this.leftLeg.addBox(-1.0F, 0.0F, -1.0F, 2, 16, 2, modelSize);
+		this.leftLeg.addBox(-1.0F, 0.0F, -1.0F, 2.0F, 16.0F, 2.0F, modelSize);
 		this.leftLeg.setPos(2.0F, 12.0F + f, 0.0F);
 
 		this.rightLegPants1 = new ModelRenderer(this, 0, 34);
-		this.rightLegPants1.addBox(-2.0F, 0.0F, -2.0F, 4, 6, 4, modelSize);
+		this.rightLegPants1.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, modelSize);
 		this.rightLegPants1.setPos(0.0F, 0.0F, 0.0F);
 		this.rightLeg.addChild(this.rightLegPants1);
 		this.leftLegPants1 = new ModelRenderer(this, 0, 34);
 		this.leftLegPants1.mirror = true;
-		this.leftLegPants1.addBox(-2.0F, 0.0F, -2.0F, 4, 6, 4, modelSize);
+		this.leftLegPants1.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, modelSize);
 		this.leftLegPants1.setPos(0.0F, 0.0F, 0.0F);
 		this.leftLeg.addChild(this.leftLegPants1);
 		this.rightLegPants2 = new ModelRenderer(this, 0, 44);
-		this.rightLegPants2.addBox(-2.0F, 0.0F, -2.0F, 4, 8, 4, modelSize);
+		this.rightLegPants2.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 8.0F, 4.0F, modelSize);
 		this.rightLegPants2.setPos(0.0F, 8.0F, 0.0F);
 		this.rightLeg.addChild(this.rightLegPants2);
 		this.leftLegPants2 = new ModelRenderer(this, 0, 44);
 		this.leftLegPants2.mirror = true;
-		this.leftLegPants2.addBox(-2.0F, 0.0F, -2.0F, 4, 8, 4, modelSize);
+		this.leftLegPants2.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 8.0F, 4.0F, modelSize);
 		this.leftLegPants2.setPos(0.0F, 8.0F, 0.0F);
 		this.leftLeg.addChild(this.leftLegPants2);
 
 		this.wand = new ModelRenderer(this, 16, 40);
-		this.wand.addBox(-1.0F, -14.0F, -1.0F, 2, 22, 2, modelSize);
+		this.wand.addBox(-1.0F, -14.0F, -1.0F, 2.0F, 22.0F, 2.0F, modelSize);
 		this.wand.setPos(-0.5F, 8.5F, 0.0F);
 		this.rightArm.addChild(this.wand);
 		this.wandTop = new ModelRenderer(this, 16, 32);
-		this.wandTop.addBox(-2.0F, -16.0F, -2.0F, 4, 4, 4, modelSize);
+		this.wandTop.addBox(-2.0F, -16.0F, -2.0F, 4.0F, 4.0F, 4.0F, modelSize);
 		this.wandTop.setPos(0.0F, 22.0F, 0.0F);
 		this.wand.addChild(this.wandTop);
 	}
