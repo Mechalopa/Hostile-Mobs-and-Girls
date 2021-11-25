@@ -6,18 +6,18 @@ import net.minecraft.entity.ai.goal.MeleeAttackGoal;
 
 public class MeleeAttackGoal2 extends MeleeAttackGoal
 {
-	private final float reach;
+	private final float reachScale;
 	private final float maxAttackDistance;
 
-	public MeleeAttackGoal2(CreatureEntity creature, double speedIn, boolean useLongMemory, float reachIn)
+	public MeleeAttackGoal2(CreatureEntity creature, double speedIn, boolean useLongMemory, float reachScaleIn)
 	{
-		this(creature, speedIn, useLongMemory, reachIn, -1.0F);
+		this(creature, speedIn, useLongMemory, reachScaleIn, -1.0F);
 	}
 
-	public MeleeAttackGoal2(CreatureEntity creature, double speedIn, boolean useLongMemory, float reachIn, float maxAttackDistance)
+	public MeleeAttackGoal2(CreatureEntity creature, double speedIn, boolean useLongMemory, float reachScaleIn, float maxAttackDistance)
 	{
 		super(creature, speedIn, useLongMemory);
-		this.reach = reachIn;
+		this.reachScale = reachScaleIn;
 		this.maxAttackDistance = maxAttackDistance;
 	}
 
@@ -36,7 +36,15 @@ public class MeleeAttackGoal2 extends MeleeAttackGoal
 	@Override
 	protected double getAttackReachSqr(LivingEntity attackTarget)
 	{
-		return this.reach <= 0.0F ? super.getAttackReachSqr(attackTarget) : (double)(this.reach * this.reach + attackTarget.getBbWidth());
+		if (this.reachScale > 0.0F)
+		{
+			final float f = this.mob.getBbWidth() * this.reachScale * 2.0F;
+			return (double)(f * f + attackTarget.getBbWidth());
+		}
+		else
+		{
+			return super.getAttackReachSqr(attackTarget);
+		}
 	}
 
 	protected boolean isValidDistance(LivingEntity attackTarget)

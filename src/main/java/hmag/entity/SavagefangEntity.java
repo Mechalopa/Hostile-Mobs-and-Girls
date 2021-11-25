@@ -644,7 +644,7 @@ public class SavagefangEntity extends MonsterEntity implements IModMob
 
 		public AttackGoal(SavagefangEntity mob)
 		{
-			super(mob, 1.5D, false, 1.05F);
+			super(mob, 1.5D, false, 0.7F);
 			this.mob = mob;
 		}
 

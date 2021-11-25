@@ -107,7 +107,7 @@ public class ModEntityTypes
 			.of(MeltyMonsterEntity::new, EntityClassification.MONSTER).fireImmune().sized(0.6F, 1.95F).setTrackingRange(6).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
 			.build(new ResourceLocation(HMaG.MODID, "melty_monster").toString()));
 	public static final RegistryObject<EntityType<CursedDollEntity>> CURSED_DOLL = REGISTRY.register("cursed_doll", () -> EntityType.Builder
-			.of(CursedDollEntity::new, EntityClassification.MONSTER).sized(0.54F, 1.55F).setTrackingRange(6).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
+			.of(CursedDollEntity::new, EntityClassification.MONSTER).sized(0.6F, 1.7F).setTrackingRange(6).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
 			.build(new ResourceLocation(HMaG.MODID, "cursed_doll").toString()));
 	public static final RegistryObject<EntityType<JackFrostEntity>> JACK_FROST = REGISTRY.register("jack_frost", () -> EntityType.Builder
 			.of(JackFrostEntity::new, EntityClassification.MONSTER).sized(0.6F, 1.95F).setTrackingRange(6).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
@@ -167,7 +167,7 @@ public class ModEntityTypes
 			.of(HarpyEntity::new, EntityClassification.MONSTER).sized(0.6F, 1.95F).setTrackingRange(6).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
 			.build(new ResourceLocation(HMaG.MODID, "harpy").toString()));
 	public static final RegistryObject<EntityType<SavagefangEntity>> SAVAGEFANG = REGISTRY.register("savagefang", () -> EntityType.Builder
-			.of(SavagefangEntity::new, EntityClassification.MONSTER).sized(0.72F, 0.55F).setTrackingRange(6).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
+			.of(SavagefangEntity::new, EntityClassification.MONSTER).sized(0.75F, 0.55F).setTrackingRange(6).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
 			.build(new ResourceLocation(HMaG.MODID, "savagefang").toString()));
 	public static final RegistryObject<EntityType<FortressKeeperEntity>> FORTRESS_KEEPER = REGISTRY.register("fortress_keeper", () -> EntityType.Builder
 			.of(FortressKeeperEntity::new, EntityClassification.MONSTER).fireImmune().sized(1.2F, 2.15F).setTrackingRange(6).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)

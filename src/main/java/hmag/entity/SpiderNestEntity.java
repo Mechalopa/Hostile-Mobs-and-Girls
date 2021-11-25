@@ -302,7 +302,7 @@ public class SpiderNestEntity extends MonsterEntity implements IModMob
 
 		public MeleeAttackAndSummonGoal(SpiderNestEntity mob, double speedIn, boolean useLongMemory, int intervalIn, float radiusIn, int maxSpawnIn)
 		{
-			super(mob, speedIn, useLongMemory, 1.6F);
+			super(mob, speedIn, useLongMemory, 8.0F / 9.0F);
 			this.summonInterval = intervalIn;
 			this.summonRadius = radiusIn;
 			this.maxSpawn = maxSpawnIn;

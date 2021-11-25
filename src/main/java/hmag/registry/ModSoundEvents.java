@@ -29,6 +29,7 @@ public class ModSoundEvents
 	public static final RegistryObject<SoundEvent> SPIDER_NEST_HURT = REGISTRY.register("entity.spider_nest.hurt", () -> new SoundEvent(new ResourceLocation(HMaG.MODID, "entity.spider_nest.hurt")));
 	public static final RegistryObject<SoundEvent> SPIDER_NEST_DEATH = REGISTRY.register("entity.spider_nest.death", () -> new SoundEvent(new ResourceLocation(HMaG.MODID, "entity.spider_nest.death")));
 	public static final RegistryObject<SoundEvent> SPIDER_NEST_SUMMON = REGISTRY.register("entity.spider_nest.summon", () -> new SoundEvent(new ResourceLocation(HMaG.MODID, "entity.spider_nest.summon")));
+	public static final RegistryObject<SoundEvent> HORNET_IDLE = REGISTRY.register("entity.hornet.idle", () -> new SoundEvent(new ResourceLocation(HMaG.MODID, "entity.hornet.idle")));
 	public static final RegistryObject<SoundEvent> CATOBLEPAS_IDLE = REGISTRY.register("entity.catoblepas.idle", () -> new SoundEvent(new ResourceLocation(HMaG.MODID, "entity.catoblepas.idle")));
 	public static final RegistryObject<SoundEvent> CATOBLEPAS_HURT = REGISTRY.register("entity.catoblepas.hurt", () -> new SoundEvent(new ResourceLocation(HMaG.MODID, "entity.catoblepas.hurt")));
 	public static final RegistryObject<SoundEvent> CATOBLEPAS_DEATH = REGISTRY.register("entity.catoblepas.death", () -> new SoundEvent(new ResourceLocation(HMaG.MODID, "entity.catoblepas.death")));

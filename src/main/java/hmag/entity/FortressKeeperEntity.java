@@ -66,7 +66,7 @@ public class FortressKeeperEntity extends MonsterEntity implements IModMob, IRan
 	@Override
 	protected void registerGoals()
 	{
-		this.goalSelector.addGoal(3, new MeleeAttackGoal2(this, 1.2D, false, 1.6F, 4.0F));
+		this.goalSelector.addGoal(3, new MeleeAttackGoal2(this, 1.2D, false, 2.0F / 3.0F, 4.0F));
 		this.goalSelector.addGoal(4, new FortressKeeperEntity.RangedAttackGoal(this));
 		this.goalSelector.addGoal(5, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
 		this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 8.0F));

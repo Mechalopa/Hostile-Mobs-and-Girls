@@ -192,6 +192,31 @@
       "hmag:entity/summon"
     ]
   },
+  "entity.hornet.idle": {
+    "sounds": [
+      {
+        "name": "block/beehive/work1",
+        "volume": 1.2,
+        "pitch": 1.25
+      },
+      {
+        "name": "block/beehive/work2",
+        "volume": 1.2,
+        "pitch": 1.25
+      },
+      {
+        "name": "block/beehive/work3",
+        "volume": 1.2,
+        "pitch": 1.25
+      },
+      {
+        "name": "block/beehive/work4",
+        "volume": 1.2,
+        "pitch": 1.25
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.hornet.idle"
+  },
   "entity.catoblepas.idle": {
     "sounds": [
       {

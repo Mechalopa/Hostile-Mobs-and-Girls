@@ -703,7 +703,7 @@ public class StoneularEntity extends MonsterEntity implements IModMob
 	{
 		public AttackGoal(StoneularEntity mob)
 		{
-			super(mob, 1.0D, false, 1.2F);
+			super(mob, 1.0D, false, 2.0F / 3.0F);
 		}
 
 		@Override

@@ -113,10 +113,10 @@ public class ModBiomeLoadingEvent
 						event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.HARPY.get(), ModConfigs.cachedServer.HARPY_SPAWN_WEIGHT, 1, 2));
 					if (ModConfigs.cachedServer.SAVAGEFANG_SPAWN_WEIGHT_IN_SWAMP > 0
 							&& BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.SWAMP))
-						event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.SAVAGEFANG.get(), ModConfigs.cachedServer.SAVAGEFANG_SPAWN_WEIGHT_IN_SWAMP, 4, 8));
+						event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.SAVAGEFANG.get(), ModConfigs.cachedServer.SAVAGEFANG_SPAWN_WEIGHT_IN_SWAMP, 6, 8));
 					else if (ModConfigs.cachedServer.SAVAGEFANG_SPAWN_WEIGHT_IN_JUNGLE > 0
 							&& BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.JUNGLE))
-						event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.SAVAGEFANG.get(), ModConfigs.cachedServer.SAVAGEFANG_SPAWN_WEIGHT_IN_JUNGLE, 4, 8));
+						event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.SAVAGEFANG.get(), ModConfigs.cachedServer.SAVAGEFANG_SPAWN_WEIGHT_IN_JUNGLE, 6, 8));
 					if (ModConfigs.cachedServer.NECROTIC_REAPER_SPAWN_WEIGHT > 0)
 						event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.NECROTIC_REAPER.get(), ModConfigs.cachedServer.NECROTIC_REAPER_SPAWN_WEIGHT, 1, 2));
 					if (ModConfigs.cachedServer.DODOMEKI_SPAWN_WEIGHT > 0

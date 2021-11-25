@@ -3,6 +3,7 @@ package hmag.entity;
 import javax.annotation.Nullable;
 
 import hmag.registry.ModItems;
+import hmag.registry.ModSoundEvents;
 import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntitySize;
@@ -58,7 +59,7 @@ public class HornetEntity extends AbstractFlyingMonsterEntity implements IModMob
 		return MonsterEntity.createMonsterAttributes()
 				.add(Attributes.MAX_HEALTH, 60.0D)
 				.add(Attributes.MOVEMENT_SPEED, 0.28D)
-				.add(Attributes.ATTACK_DAMAGE, 4.0D)
+				.add(Attributes.ATTACK_DAMAGE, 5.0D)
 				.add(Attributes.FOLLOW_RANGE, 24.0D);
 	}
 
@@ -79,11 +80,11 @@ public class HornetEntity extends AbstractFlyingMonsterEntity implements IModMob
 
 				if (this.level.getDifficulty() == Difficulty.NORMAL)
 				{
-					i = 7;
+					i = 5;
 				}
 				else if (this.level.getDifficulty() == Difficulty.HARD)
 				{
-					i = 15;
+					i = 10;
 				}
 
 				if (i > 0)
@@ -149,7 +150,7 @@ public class HornetEntity extends AbstractFlyingMonsterEntity implements IModMob
 	@Override
 	protected SoundEvent getAmbientSound()
 	{
-		return SoundEvents.BEE_LOOP_AGGRESSIVE;
+		return ModSoundEvents.HORNET_IDLE.get();
 	}
 
 	@Override

@@ -151,7 +151,7 @@ public class MagmaBulletEntity extends DamagingProjectileEntity
 		if (!this.level.isClientSide)
 		{
 			boolean flag = ForgeEventFactory.getMobGriefingEvent(this.level, this.getOwner());
-			this.level.explode((Entity)null, this.getX(), this.getY(), this.getZ(), 0.5F, flag, flag ? Explosion.Mode.DESTROY : Explosion.Mode.NONE);
+			this.level.explode((Entity)null, this.getX(), this.getY(), this.getZ(), 0.75F, flag, flag ? Explosion.Mode.DESTROY : Explosion.Mode.NONE);
 			this.level.broadcastEntityEvent(this, (byte)3);
 			this.remove();
 		}

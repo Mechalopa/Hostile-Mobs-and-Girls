@@ -7,6 +7,7 @@ import hmag.client.model.HornetModel;
 import hmag.entity.HornetEntity;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.vector.Vector3f;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -25,6 +26,13 @@ public class HornetRenderer extends AbstractGirlRenderer<HornetEntity, HornetMod
 	{
 		matrixStackIn.scale(0.875F, 0.875F, 0.875F);
 		super.scale(entityIn, matrixStackIn, partialTickTime);
+	}
+
+	@Override
+	protected void setupRotations(HornetEntity entityLiving, MatrixStack matrixStackIn, float ageInTicks, float rotationYaw, float partialTicks)
+	{
+		super.setupRotations(entityLiving, matrixStackIn, ageInTicks, rotationYaw, partialTicks);
+		matrixStackIn.mulPose(Vector3f.XP.rotationDegrees(-6.0F));
 	}
 
 	@Override

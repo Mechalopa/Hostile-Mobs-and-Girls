@@ -45,7 +45,7 @@ public class CatoblepasEntity extends MonsterEntity implements IModMob
 	protected void registerGoals()
 	{
 		this.goalSelector.addGoal(1, new SwimGoal(this));
-		this.goalSelector.addGoal(4, new MeleeAttackGoal2(this, 1.0D, false, 1.6F));
+		this.goalSelector.addGoal(4, new MeleeAttackGoal2(this, 1.0D, false, 8.0F / 9.0F));
 		this.goalSelector.addGoal(5, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
 		this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 8.0F));
 		this.goalSelector.addGoal(6, new LookRandomlyGoal(this));
