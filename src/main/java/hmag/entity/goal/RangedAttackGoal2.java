@@ -45,7 +45,7 @@ public class RangedAttackGoal2 extends Goal
 	{
 		if (!(attacker instanceof LivingEntity))
 		{
-			throw new IllegalArgumentException("ArrowAttackGoal requires Mob implements RangedAttackMob");
+			throw new IllegalArgumentException("RangedAttackGoal2 requires Mob implements RangedAttackMob");
 		}
 		else
 		{
