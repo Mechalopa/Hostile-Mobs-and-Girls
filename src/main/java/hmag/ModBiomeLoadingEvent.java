@@ -33,7 +33,7 @@ public class ModBiomeLoadingEvent
 					if (ModConfigs.cachedServer.GHOST_SPAWN_WEIGHT > 0)
 						event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.GHOST.get(), ModConfigs.cachedServer.GHOST_SPAWN_WEIGHT, 4, 4));
 					if (ModConfigs.cachedServer.KOBOLD_SPAWN_WEIGHT > 0)
-						event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.KOBOLD.get(), ModConfigs.cachedServer.KOBOLD_SPAWN_WEIGHT, 1, 3));
+						event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.KOBOLD.get(), ModConfigs.cachedServer.KOBOLD_SPAWN_WEIGHT, 1, 2));
 					if (ModConfigs.cachedServer.LICH_SPAWN_WEIGHT > 0)
 						event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.LICH.get(), ModConfigs.cachedServer.LICH_SPAWN_WEIGHT, 1, 1));
 					if (ModConfigs.cachedServer.OGRE_SPAWN_WEIGHT > 0)

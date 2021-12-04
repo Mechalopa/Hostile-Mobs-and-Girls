@@ -173,7 +173,7 @@ public class ModEvents
 				{
 					if (livingentity.getRandom().nextInt(5) == 0)
 					{
-						source.getEntity().setSecondsOnFire(5);
+						source.getEntity().setSecondsOnFire(8);
 					}
 				}
 			}
