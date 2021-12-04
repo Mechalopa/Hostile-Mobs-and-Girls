@@ -51,12 +51,12 @@ public class ImpModel<T extends MobEntity> extends AbstractGirlModel<T>
 
 		this.rightFeelerPart1 = new ModelRenderer(this, 22, 36);
 		this.rightFeelerPart1.addBox(-0.5F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F, modelSize);
-		this.rightFeelerPart1.setPos(-1.75F, -7.75F, -1.25F);
+		this.rightFeelerPart1.setPos(-1.75F, -7.75F, -1.0F);
 		this.head.addChild(this.rightFeelerPart1);
 		this.leftFeelerPart1 = new ModelRenderer(this, 22, 36);
 		this.leftFeelerPart1.mirror = true;
 		this.leftFeelerPart1.addBox(-0.5F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F, modelSize);
-		this.leftFeelerPart1.setPos(1.75F, -7.75F, -1.25F);
+		this.leftFeelerPart1.setPos(1.75F, -7.75F, -1.0F);
 		this.head.addChild(this.leftFeelerPart1);
 		this.rightFeelerPart2 = new ModelRenderer(this, 22, 38);
 		this.rightFeelerPart2.addBox(-0.5F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F, modelSize);
@@ -229,18 +229,18 @@ public class ImpModel<T extends MobEntity> extends AbstractGirlModel<T>
 			this.skirt2.xRot = this.body.xRot;
 		}
 
-		this.rightFeelerPart1.yRot = (float)Math.PI / 6.0F;
-		this.leftFeelerPart1.yRot = -((float)Math.PI / 6.0F);
+		this.rightFeelerPart1.yRot = (float)Math.PI / 9.0F;
+		this.leftFeelerPart1.yRot = -((float)Math.PI / 9.0F);
 		this.rightFeelerPart1.zRot = -((float)Math.PI / 15.0F);
 		this.leftFeelerPart1.zRot = (float)Math.PI / 15.0F;
 		this.rightFeelerPart1.xRot = (float)Math.PI / 8.0F;
 		this.leftFeelerPart1.xRot = (float)Math.PI / 8.0F;
 		this.rightFeelerPart1.xRot += MathHelper.sin(ageInTicks * 0.12F) * 0.09F;
 		this.leftFeelerPart1.xRot += MathHelper.sin(ageInTicks * 0.12F) * 0.09F;
-		this.rightFeelerPart2.xRot = -((float)Math.PI * 2.0F / 5.0F);
-		this.leftFeelerPart2.xRot = -((float)Math.PI * 2.0F / 5.0F);
-		this.rightFeelerPart3.xRot -= MathHelper.sin(ageInTicks * 0.12F + (float)Math.PI / 6.0F) * 0.15F;
-		this.leftFeelerPart3.xRot -= MathHelper.sin(ageInTicks * 0.12F + (float)Math.PI / 6.0F) * 0.15F;
+		this.rightFeelerPart2.xRot = -((float)Math.PI / 3.0F);
+		this.leftFeelerPart2.xRot = -((float)Math.PI / 3.0F);
+		this.rightFeelerPart3.xRot -= MathHelper.sin(ageInTicks * 0.12F + (float)Math.PI / 6.0F) * 0.081F;
+		this.leftFeelerPart3.xRot -= MathHelper.sin(ageInTicks * 0.12F + (float)Math.PI / 6.0F) * 0.081F;
 		this.rightFeelerPart3.xRot = (float)Math.PI * 3.0F / 7.0F;
 		this.leftFeelerPart3.xRot = (float)Math.PI * 3.0F / 7.0F;
 		this.rightFeelerPart3.xRot += MathHelper.sin(ageInTicks * 0.12F + (float)Math.PI / 3.0F) * 0.12F;
