@@ -31,7 +31,7 @@ public class WitherSkeletonGirlEntity extends WitherSkeletonEntity implements IM
 	public static AttributeModifierMap.MutableAttribute createAttributes()
 	{
 		return MonsterEntity.createMonsterAttributes()
-				.add(Attributes.MAX_HEALTH, 40.0D)
+				.add(Attributes.MAX_HEALTH, 36.0D)
 				.add(Attributes.MOVEMENT_SPEED, 0.26D)
 				.add(Attributes.ATTACK_DAMAGE, 4.5D)
 				.add(Attributes.ARMOR, 4.0D)
