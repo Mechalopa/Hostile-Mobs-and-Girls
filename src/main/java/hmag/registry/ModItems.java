@@ -98,6 +98,7 @@ public class ModItems
 	public static final RegistryObject<Item> INSOMNIA_SWORD = REGISTRY.register("insomnia_sword", () -> new InsomniaSwordItem(ItemTier.DIAMOND, new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.RARE)));
 	public static final RegistryObject<Item> NEMESIS_BLADE = REGISTRY.register("nemesis_blade", () -> new NemesisBladeItem(ItemTier.NETHERITE, new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.EPIC).fireResistant()));
 	public static final RegistryObject<Item> IRON_SPEAR = REGISTRY.register("iron_spear", () -> new ModSwordItem(ItemTier.IRON, 2.0F, -2.4F, new Item.Properties().tab(HMaG.MODTAB)));
+	public static final RegistryObject<Item> GOLDEN_FORK = REGISTRY.register("golden_fork", () -> new ModSwordItem(ItemTier.GOLD, 2.0F, -2.4F, new Item.Properties().tab(HMaG.MODTAB)));
 	public static final RegistryObject<Item> CRIMSON_BOW = REGISTRY.register("crimson_bow", () -> new CrimsonBowItem(new Item.Properties().tab(HMaG.MODTAB).durability(575).rarity(Rarity.RARE)));
 	public static final RegistryObject<Item> ANCIENT_HELMET = REGISTRY.register("ancient_helmet", () -> new ArmorItem(ModArmorMaterial.ANCIENT, EquipmentSlotType.HEAD, (new Item.Properties()).tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON)));
 	public static final RegistryObject<Item> ANCIENT_CHESTPLATE = REGISTRY.register("ancient_chestplate", () -> new ArmorItem(ModArmorMaterial.ANCIENT, EquipmentSlotType.CHEST, (new Item.Properties()).tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON)));
@@ -172,7 +173,7 @@ public class ModItems
 	public static final RegistryObject<ModSpawnEggItem> FORTRESS_KEEPER_SPAWN_EGG = createSpawnEggRegistryObject("fortress_keeper", ModEntityTypes.FORTRESS_KEEPER, 0x291519, 0xF48522);
 	public static final RegistryObject<ModSpawnEggItem> NECROTIC_REAPER_SPAWN_EGG = createSpawnEggRegistryObject("necrotic_reaper", ModEntityTypes.NECROTIC_REAPER, 0x6A4B54, 0xADB5A7);
 	public static final RegistryObject<ModSpawnEggItem> DODOMEKI_SPAWN_EGG = createSpawnEggRegistryObject("dodomeki", ModEntityTypes.DODOMEKI, 0x000000, 0xFFFFFF);
-	public static final RegistryObject<ModSpawnEggItem> IMP_SPAWN_EGG = createSpawnEggRegistryObject("imp", ModEntityTypes.IMP, 0xFF0000, 0x000000);
+	public static final RegistryObject<ModSpawnEggItem> IMP_SPAWN_EGG = createSpawnEggRegistryObject("imp", ModEntityTypes.IMP, 0x5E2E78, 0x5B1F23);
 
 	@SubscribeEvent
 	public static void register(IEventBus eventBus)
