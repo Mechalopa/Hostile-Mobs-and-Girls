@@ -26,8 +26,8 @@ public class ImpModel<T extends MobEntity> extends AbstractGirlModel<T>
 	private ModelRenderer rightHair3;
 	private ModelRenderer leftHair3;
 	private ModelRenderer hairPart;
-	private ModelRenderer rightArmSleeve;
-	private ModelRenderer leftArmSleeve;
+	private ModelRenderer rightArmPart;
+	private ModelRenderer leftArmPart;
 	private ModelRenderer clothPart;
 	private ModelRenderer skirt1;
 	private ModelRenderer skirt2;
@@ -139,15 +139,15 @@ public class ImpModel<T extends MobEntity> extends AbstractGirlModel<T>
 		this.leftArm.addBox(-2.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F, modelSize);
 		this.leftArm.setPos(5.0F, 2.0F, 0.0F);
 
-		this.rightArmSleeve = new ModelRenderer(this, 48, 32);
-		this.rightArmSleeve.addBox(-0.5F, 0.0F, -1.5F, 3.0F, 2.0F, 3.0F, modelSize);
-		this.rightArmSleeve.setPos(0.0F, 2.0F, 0.0F);
-		this.rightArm.addChild(this.rightArmSleeve);
-		this.leftArmSleeve = new ModelRenderer(this, 48, 32);
-		this.leftArmSleeve.mirror = true;
-		this.leftArmSleeve.addBox(-2.5F, 0.0F, -1.5F, 3.0F, 2.0F, 3.0F, modelSize);
-		this.leftArmSleeve.setPos(0.0F, 2.0F, 0.0F);
-		this.leftArm.addChild(this.leftArmSleeve);
+		this.rightArmPart = new ModelRenderer(this, 48, 32);
+		this.rightArmPart.addBox(-0.5F, 0.0F, -1.5F, 3.0F, 2.0F, 3.0F, modelSize);
+		this.rightArmPart.setPos(0.0F, 2.0F, 0.0F);
+		this.rightArm.addChild(this.rightArmPart);
+		this.leftArmPart = new ModelRenderer(this, 48, 32);
+		this.leftArmPart.mirror = true;
+		this.leftArmPart.addBox(-2.5F, 0.0F, -1.5F, 3.0F, 2.0F, 3.0F, modelSize);
+		this.leftArmPart.setPos(0.0F, 2.0F, 0.0F);
+		this.leftArm.addChild(this.leftArmPart);
 
 		this.clothPart = new ModelRenderer(this, 32, 48);
 		this.clothPart.addBox(-3.0F, 0.0F, -1.5F, 6.0F, 3.0F, 3.0F, modelSize);
