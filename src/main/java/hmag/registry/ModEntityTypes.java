@@ -179,7 +179,7 @@ public class ModEntityTypes
 			.of(DodomekiEntity::new, EntityClassification.MONSTER).sized(0.6F, 1.95F).setTrackingRange(6).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
 			.build(new ResourceLocation(HMaG.MODID, "dodomeki").toString()));
 	public static final RegistryObject<EntityType<ImpEntity>> IMP = REGISTRY.register("imp", () -> EntityType.Builder
-			.of(ImpEntity::new, EntityClassification.MONSTER).sized(0.6F, 1.7F).setTrackingRange(6).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
+			.of(ImpEntity::new, EntityClassification.MONSTER).fireImmune().sized(0.6F, 1.7F).setTrackingRange(6).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
 			.build(new ResourceLocation(HMaG.MODID, "imp").toString()));
 
 	public static final RegistryObject<EntityType<MagicBulletEntity>> MAGIC_BULLET = REGISTRY.register("magic_bullet", () -> EntityType.Builder

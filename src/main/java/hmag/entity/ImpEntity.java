@@ -3,6 +3,7 @@ package hmag.entity;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import hmag.registry.ModItems;
 import hmag.registry.ModSoundEvents;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
@@ -26,7 +27,6 @@ import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
 import net.minecraft.potion.EffectInstance;
@@ -67,7 +67,7 @@ public class ImpEntity extends MonsterEntity implements IModMob
 		return MonsterEntity.createMonsterAttributes()
 				.add(Attributes.MAX_HEALTH, 40.0D)
 				.add(Attributes.MOVEMENT_SPEED, 0.265D)
-				.add(Attributes.ATTACK_DAMAGE, 6.0D)
+				.add(Attributes.ATTACK_DAMAGE, 7.0D)
 				.add(Attributes.ARMOR, 2.0D)
 				.add(Attributes.KNOCKBACK_RESISTANCE, 0.5D);
 	}
@@ -119,7 +119,7 @@ public class ImpEntity extends MonsterEntity implements IModMob
 	@Override
 	protected void populateDefaultEquipmentSlots(DifficultyInstance difficulty)
 	{
-		this.setItemSlot(EquipmentSlotType.MAINHAND, new ItemStack(Items.STONE_SWORD));
+		this.setItemSlot(EquipmentSlotType.MAINHAND, new ItemStack(ModItems.GOLDEN_FORK.get()));
 	}
 
 	@Override

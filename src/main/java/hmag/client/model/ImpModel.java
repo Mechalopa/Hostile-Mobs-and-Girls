@@ -51,12 +51,12 @@ public class ImpModel<T extends MobEntity> extends AbstractGirlModel<T>
 
 		this.rightFeelerPart1 = new ModelRenderer(this, 22, 36);
 		this.rightFeelerPart1.addBox(-0.5F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F, modelSize);
-		this.rightFeelerPart1.setPos(-1.75F, -7.75F, -1.25F);
+		this.rightFeelerPart1.setPos(-2.5F, -7.75F, -1.75F);
 		this.head.addChild(this.rightFeelerPart1);
 		this.leftFeelerPart1 = new ModelRenderer(this, 22, 36);
 		this.leftFeelerPart1.mirror = true;
 		this.leftFeelerPart1.addBox(-0.5F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F, modelSize);
-		this.leftFeelerPart1.setPos(1.75F, -7.75F, -1.25F);
+		this.leftFeelerPart1.setPos(2.5F, -7.75F, -1.75F);
 		this.head.addChild(this.leftFeelerPart1);
 		this.rightFeelerPart2 = new ModelRenderer(this, 22, 38);
 		this.rightFeelerPart2.addBox(-0.5F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F, modelSize);
@@ -77,12 +77,12 @@ public class ImpModel<T extends MobEntity> extends AbstractGirlModel<T>
 		this.leftFeelerPart3.setPos(0.0F, -1.0F, 0.0F);
 		this.leftFeelerPart2.addChild(this.leftFeelerPart3);
 		this.rightFeelerPart4 = new ModelRenderer(this, 20, 32);
-		this.rightFeelerPart4.addBox(-3.0F, -1.5F, -1.0F, 5.0F, 2.0F, 1.0F, modelSize);
+		this.rightFeelerPart4.addBox(-4.5F, -1.5F, -1.0F, 5.0F, 3.0F, 1.0F, modelSize);
 		this.rightFeelerPart4.setPos(0.0F, -0.75F, -0.001F);
 		this.rightFeelerPart3.addChild(this.rightFeelerPart4);
 		this.leftFeelerPart4 = new ModelRenderer(this, 20, 32);
 		this.leftFeelerPart4.mirror = true;
-		this.leftFeelerPart4.addBox(-2.0F, -1.5F, -1.0F, 5.0F, 2.0F, 1.0F, modelSize);
+		this.leftFeelerPart4.addBox(-0.5F, -1.5F, -1.0F, 5.0F, 3.0F, 1.0F, modelSize);
 		this.leftFeelerPart4.setPos(0.0F, -0.75F, -0.001F);
 		this.leftFeelerPart3.addChild(this.leftFeelerPart4);
 
@@ -229,24 +229,26 @@ public class ImpModel<T extends MobEntity> extends AbstractGirlModel<T>
 			this.skirt2.xRot = this.body.xRot;
 		}
 
-		this.rightFeelerPart1.yRot = (float)Math.PI / 6.0F;
-		this.leftFeelerPart1.yRot = -((float)Math.PI / 6.0F);
-		this.rightFeelerPart1.zRot = -((float)Math.PI / 15.0F);
-		this.leftFeelerPart1.zRot = (float)Math.PI / 15.0F;
+		this.rightFeelerPart1.yRot = (float)Math.PI / 9.0F;
+		this.leftFeelerPart1.yRot = -((float)Math.PI / 9.0F);
+		this.rightFeelerPart1.zRot = -((float)Math.PI / 20.0F);
+		this.leftFeelerPart1.zRot = (float)Math.PI / 20.0F;
 		this.rightFeelerPart1.xRot = (float)Math.PI / 8.0F;
 		this.leftFeelerPart1.xRot = (float)Math.PI / 8.0F;
-		this.rightFeelerPart1.xRot += MathHelper.sin(ageInTicks * 0.12F) * 0.09F;
-		this.leftFeelerPart1.xRot += MathHelper.sin(ageInTicks * 0.12F) * 0.09F;
-		this.rightFeelerPart2.xRot = -((float)Math.PI * 2.0F / 5.0F);
-		this.leftFeelerPart2.xRot = -((float)Math.PI * 2.0F / 5.0F);
-		this.rightFeelerPart3.xRot -= MathHelper.sin(ageInTicks * 0.12F + (float)Math.PI / 6.0F) * 0.15F;
-		this.leftFeelerPart3.xRot -= MathHelper.sin(ageInTicks * 0.12F + (float)Math.PI / 6.0F) * 0.15F;
-		this.rightFeelerPart3.xRot = (float)Math.PI * 3.0F / 7.0F;
-		this.leftFeelerPart3.xRot = (float)Math.PI * 3.0F / 7.0F;
-		this.rightFeelerPart3.xRot += MathHelper.sin(ageInTicks * 0.12F + (float)Math.PI / 3.0F) * 0.12F;
-		this.leftFeelerPart3.xRot += MathHelper.sin(ageInTicks * 0.12F + (float)Math.PI / 3.0F) * 0.12F;
-		this.rightFeelerPart4.zRot = -((float)Math.PI / 9.0F);
-		this.leftFeelerPart4.zRot = (float)Math.PI / 9.0F;
+		this.rightFeelerPart1.xRot += MathHelper.sin(ageInTicks * 0.09F) * 0.072F;
+		this.leftFeelerPart1.xRot += MathHelper.sin(ageInTicks * 0.09F) * 0.072F;
+		this.rightFeelerPart2.xRot = -((float)Math.PI * 8.0F / 15.0F);
+		this.leftFeelerPart2.xRot = -((float)Math.PI * 8.0F / 15.0F);
+		this.rightFeelerPart3.xRot -= MathHelper.sin(ageInTicks * 0.09F + (float)Math.PI / 6.0F) * 0.105F;
+		this.leftFeelerPart3.xRot -= MathHelper.sin(ageInTicks * 0.09F + (float)Math.PI / 6.0F) * 0.105F;
+		this.rightFeelerPart3.xRot = (float)Math.PI * 7.0F / 15.0F;
+		this.leftFeelerPart3.xRot = (float)Math.PI * 7.0F / 15.0F;
+		this.rightFeelerPart3.xRot += MathHelper.sin(ageInTicks * 0.09F + (float)Math.PI / 3.0F) * 0.105F;
+		this.leftFeelerPart3.xRot += MathHelper.sin(ageInTicks * 0.09F + (float)Math.PI / 3.0F) * 0.105F;
+		this.rightFeelerPart4.zRot = (float)Math.PI / 5.0F;
+		this.leftFeelerPart4.zRot = -((float)Math.PI / 5.0F);
+		this.rightFeelerPart4.zRot += MathHelper.cos(ageInTicks * 0.12F + (float)Math.PI / 3.0F) * 0.045F;
+		this.leftFeelerPart4.zRot -= MathHelper.cos(ageInTicks * 0.12F + (float)Math.PI / 3.0F) * 0.045F;
 
 		this.rightEar.zRot = (float)Math.PI / 12.0F;
 		this.leftEar.zRot = -((float)Math.PI / 12.0F);
@@ -261,12 +263,16 @@ public class ImpModel<T extends MobEntity> extends AbstractGirlModel<T>
 		this.leftHair.zRot += MathHelper.sin(ageInTicks * 0.075F) * 0.03F;
 		this.rightHair2.zRot = -((float)Math.PI / 15.0F);
 		this.leftHair2.zRot = (float)Math.PI / 15.0F;
+		this.rightHair2.yRot = (float)Math.PI / 21.0F;
+		this.leftHair2.yRot = -((float)Math.PI / 21.0F);
 		this.rightHair2.zRot -= MathHelper.sin(ageInTicks * 0.06F + (float)Math.PI / 3.0F) * 0.03F;
 		this.leftHair2.zRot += MathHelper.sin(ageInTicks * 0.06F + (float)Math.PI / 3.0F) * 0.03F;
 		this.rightHair3.zRot = -((float)Math.PI / 12.0F);
 		this.leftHair3.zRot = (float)Math.PI / 12.0F;
 		this.rightHair3.zRot -= MathHelper.sin(ageInTicks * 0.06F + (float)Math.PI / 6.0F) * 0.015F;
 		this.leftHair3.zRot += MathHelper.sin(ageInTicks * 0.06F + (float)Math.PI / 6.0F) * 0.015F;
+		this.rightHair3.yRot = (float)Math.PI / 21.0F;
+		this.leftHair3.yRot = -((float)Math.PI / 21.0F);
 
 		this.hairPart.xRot = (float)Math.PI / 12.0F;
 		this.hairPart.xRot += MathHelper.sin(ageInTicks * 0.06F + (float)Math.PI / 2.0F) * 0.06F;
