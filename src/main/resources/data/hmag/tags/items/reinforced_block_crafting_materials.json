@@ -8,6 +8,10 @@
       "required": false
     },
     {
+      "id": "#forge:ingots/terrasteel",
+      "required": false
+    },
+    {
       "id": "turtlemancy:fragment_of_bedrock",
       "required": false
     },

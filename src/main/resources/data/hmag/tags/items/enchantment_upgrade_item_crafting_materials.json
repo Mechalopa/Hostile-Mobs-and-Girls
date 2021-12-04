@@ -7,6 +7,10 @@
     {
       "id": "#forge:ingots/manyullyn",
       "required": false
+    },
+    {
+      "id": "#forge:ingots/terrasteel",
+      "required": false
     }
   ]
 }

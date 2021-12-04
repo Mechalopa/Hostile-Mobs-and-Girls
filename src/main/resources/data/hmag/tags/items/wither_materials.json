@@ -6,6 +6,10 @@
     {
       "id": "xreliquary:withered_rib",
       "required": false
+    },
+    {
+      "id": "wstweaks:fragment",
+      "required": false
     }
   ]
 }
