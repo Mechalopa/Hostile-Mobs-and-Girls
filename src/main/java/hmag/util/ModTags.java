@@ -31,6 +31,14 @@ public class ModTags
 	public static final ITag.INamedTag<EntityType<?>> SAPPHIRE_TIER = makeEntityTag("tiered/sapphire");
 	public static final ITag.INamedTag<EntityType<?>> DIAMOND_TIER = makeEntityTag("tiered/diamond");
 	public static final ITag.INamedTag<EntityType<?>> TIERED = makeEntityTag("tiered");
+	public static final ITag.INamedTag<EntityType<?>> ZOMBIE_GIRL_REPLACEABLES = makeEntityTag("zombie_girl_replaceables");
+	public static final ITag.INamedTag<EntityType<?>> HUSK_GIRL_REPLACEABLES = makeEntityTag("husk_girl_replaceables");
+	public static final ITag.INamedTag<EntityType<?>> DROWNED_GIRL_REPLACEABLES = makeEntityTag("drowned_girl_replaceables");
+	public static final ITag.INamedTag<EntityType<?>> SKELETON_GIRL_REPLACEABLES = makeEntityTag("skeleton_girl_replaceables");
+	public static final ITag.INamedTag<EntityType<?>> WITHER_SKELETON_GIRL_REPLACEABLES = makeEntityTag("wither_skeleton_girl_replaceables");
+	public static final ITag.INamedTag<EntityType<?>> STRAY_GIRL_REPLACEABLES = makeEntityTag("stray_girl_replaceables");
+	public static final ITag.INamedTag<EntityType<?>> CREEPER_GIRL_REPLACEABLES = makeEntityTag("creeper_girl_replaceables");
+	public static final ITag.INamedTag<EntityType<?>> ENDER_EXECUTOR_REPLACEABLES = makeEntityTag("ender_executor_replaceables");
 	public static final ITag.INamedTag<EntityType<?>> CRIMSON_SLAUGHTERER_TARGET_ANIMAL_BLACKLIST = makeEntityTag("crimson_slaughterer_target_animal_blacklist");
 	public static final ITag.INamedTag<EntityType<?>> HARD_SNOWBALL_HURTS_EXTRA_TYPES = makeEntityTag("hard_snowball_hurts_extra_types");
 	public static final ITag.INamedTag<EntityType<?>> MONOLITH_TARGET_BLACKLIST = makeEntityTag("monolith_target_blacklist");

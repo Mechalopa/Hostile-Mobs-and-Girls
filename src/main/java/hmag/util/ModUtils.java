@@ -37,6 +37,7 @@ public class ModUtils
 	public static final EquipmentSlotType[] ARMOR_SLOTS = new EquipmentSlotType[]{EquipmentSlotType.HEAD, EquipmentSlotType.CHEST, EquipmentSlotType.LEGS, EquipmentSlotType.FEET};
 	public static final String LIVING_UPDATE_CHECKING_KEY = HMaG.MODID + ".checking";
 	public static final String LIVING_UPDATE_CHECKED_KEY = HMaG.MODID + ".checked";
+	public static final String LIVING_NOT_REPLACED_KEY = HMaG.MODID + ".notReplaced";
 	public static final String WITH_SPAWN_PARTICLE_KEY = HMaG.MODID + ".withSpawnParticle";
 	public static final String LEVEL_KEY = HMaG.MODID + ".level";
 
