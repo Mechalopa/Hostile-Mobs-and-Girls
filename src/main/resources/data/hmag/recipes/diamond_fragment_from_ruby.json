@@ -21,7 +21,7 @@
       "tag": "forge:gems/ruby"
     },
     {
-      "tag": "forge:gems/ruby"
+      "tag": "forge:storage_blocks/coal"
     },
     {
       "tag": "forge:storage_blocks/coal"
@@ -34,15 +34,6 @@
         "item": "hmag:ogre_horn"
       }
     ],
-    {
-      "item": "hmag:evil_crystal_fragment"
-    },
-    {
-      "item": "hmag:evil_crystal_fragment"
-    },
-    {
-      "item": "hmag:evil_crystal_fragment"
-    },
     {
       "item": "hmag:evil_crystal_fragment"
     }
