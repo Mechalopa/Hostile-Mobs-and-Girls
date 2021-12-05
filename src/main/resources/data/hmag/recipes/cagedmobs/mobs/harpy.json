@@ -20,9 +20,25 @@
       "maxAmount": 2
     },
     {
-      "chance": 0.025,
+      "chance": 0.05,
       "output": {
         "item": "minecraft:cookie"
+      },
+      "minAmount": 1,
+      "maxAmount": 3
+    },
+    {
+      "chance": 0.025,
+      "output": {
+        "item": "minecraft:carrot"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.025,
+      "output": {
+        "item": "minecraft:potato"
       },
       "minAmount": 1,
       "maxAmount": 1
