@@ -84,6 +84,7 @@ public class ModConfigs
 	public static ForgeConfigSpec.IntValue SCORPION_SPAWN_WEIGHT;
 	public static ForgeConfigSpec.IntValue KASHA_SPAWN_WEIGHT;
 	public static ForgeConfigSpec.IntValue KASHA_SPAWN_WEIGHT_IN_SOUL_SAND_VALLEY;
+	public static ForgeConfigSpec.IntValue KASHA_SPAWN_WEIGHT_IN_BASALT_DELTAS;
 	public static ForgeConfigSpec.IntValue DOGU_SPAWN_WEIGHT;
 	public static ForgeConfigSpec.IntValue GHSATLY_SHEEKER_SPAWN_WEIGHT;
 	public static ForgeConfigSpec.IntValue GHSATLY_SHEEKER_SPAWN_WEIGHT_IN_SOUL_SAND_VALLEY;
@@ -229,6 +230,7 @@ public class ModConfigs
 		SCORPION_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("scorpionSpawnWeight", 15, 0, Integer.MAX_VALUE);
 		KASHA_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("kashaSpawnWeight", 5, 0, Integer.MAX_VALUE);
 		KASHA_SPAWN_WEIGHT_IN_SOUL_SAND_VALLEY = SERVER_BUILDER.defineInRange("kashaSpawnWeightInSoulSandValley", 3, 0, Integer.MAX_VALUE);
+		KASHA_SPAWN_WEIGHT_IN_BASALT_DELTAS = SERVER_BUILDER.defineInRange("kashaSpawnWeightInBasaltDeltas", 2, 0, Integer.MAX_VALUE);
 		DOGU_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("doguSpawnWeight", 10, 0, Integer.MAX_VALUE);
 		GHSATLY_SHEEKER_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("ghastlySeekerSpawnWeight", 7, 0, Integer.MAX_VALUE);
 		GHSATLY_SHEEKER_SPAWN_WEIGHT_IN_SOUL_SAND_VALLEY = SERVER_BUILDER.defineInRange("ghastlySeekerSpawnWeightInSoulSandValley", 4, 0, Integer.MAX_VALUE);
@@ -244,7 +246,7 @@ public class ModConfigs
 		HARPY_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("harpySpawnWeight", 15, 0, Integer.MAX_VALUE);
 		SAVAGEFANG_SPAWN_WEIGHT_IN_SWAMP = SERVER_BUILDER.defineInRange("savagefangSpawnWeightInSwamp", 10, 0, Integer.MAX_VALUE);
 		SAVAGEFANG_SPAWN_WEIGHT_IN_JUNGLE = SERVER_BUILDER.defineInRange("savagefangSpawnWeightInJungle", 20, 0, Integer.MAX_VALUE);
-		FORTRESS_KEEPER_SPAWN_WEIGHT_IN_NETHER_FORTRESS = SERVER_BUILDER.defineInRange("fortressKeeperSpawnWeightInNetherFortress", 6, 0, Integer.MAX_VALUE);
+		FORTRESS_KEEPER_SPAWN_WEIGHT_IN_NETHER_FORTRESS = SERVER_BUILDER.defineInRange("fortressKeeperSpawnWeightInNetherFortress", 5, 0, Integer.MAX_VALUE);
 		NECROTIC_REAPER_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("necroticReaperSpawnWeight", 8, 0, Integer.MAX_VALUE);
 		DODOMEKI_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("dodomekiSpawnWeight", 15, 0, Integer.MAX_VALUE);
 		IMP_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("impSpawnWeight", 5, 0, Integer.MAX_VALUE);
@@ -387,6 +389,7 @@ public class ModConfigs
 		public static int SCORPION_SPAWN_WEIGHT;
 		public static int KASHA_SPAWN_WEIGHT;
 		public static int KASHA_SPAWN_WEIGHT_IN_SOUL_SAND_VALLEY;
+		public static int KASHA_SPAWN_WEIGHT_IN_BASALT_DELTAS;
 		public static int DOGU_SPAWN_WEIGHT;
 		public static int GHSATLY_SHEEKER_SPAWN_WEIGHT;
 		public static int GHSATLY_SHEEKER_SPAWN_WEIGHT_IN_SOUL_SAND_VALLEY;
@@ -514,6 +517,7 @@ public class ModConfigs
 			SCORPION_SPAWN_WEIGHT = ModConfigs.SCORPION_SPAWN_WEIGHT.get();
 			KASHA_SPAWN_WEIGHT = ModConfigs.KASHA_SPAWN_WEIGHT.get();
 			KASHA_SPAWN_WEIGHT_IN_SOUL_SAND_VALLEY = ModConfigs.KASHA_SPAWN_WEIGHT_IN_SOUL_SAND_VALLEY.get();
+			KASHA_SPAWN_WEIGHT_IN_BASALT_DELTAS = ModConfigs.KASHA_SPAWN_WEIGHT_IN_BASALT_DELTAS.get();;
 			DOGU_SPAWN_WEIGHT = ModConfigs.DOGU_SPAWN_WEIGHT.get();
 			GHSATLY_SHEEKER_SPAWN_WEIGHT = ModConfigs.GHSATLY_SHEEKER_SPAWN_WEIGHT.get();
 			GHSATLY_SHEEKER_SPAWN_WEIGHT_IN_SOUL_SAND_VALLEY = ModConfigs.GHSATLY_SHEEKER_SPAWN_WEIGHT_IN_SOUL_SAND_VALLEY.get();

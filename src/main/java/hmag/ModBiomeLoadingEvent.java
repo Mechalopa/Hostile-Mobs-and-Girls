@@ -156,6 +156,8 @@ public class ModBiomeLoadingEvent
 					{
 						if (ModConfigs.cachedServer.WITHER_GHOST_SPAWN_WEIGHT_IN_BASALT_DELTAS > 0)
 							event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.WITHER_GHOST.get(), ModConfigs.cachedServer.WITHER_GHOST_SPAWN_WEIGHT_IN_BASALT_DELTAS, 2, 2));
+						if (ModConfigs.cachedServer.KASHA_SPAWN_WEIGHT_IN_BASALT_DELTAS > 0)
+							event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.KASHA.get(), ModConfigs.cachedServer.KASHA_SPAWN_WEIGHT_IN_BASALT_DELTAS, 1, 2));
 						if (ModConfigs.cachedServer.GHSATLY_SHEEKER_SPAWN_WEIGHT_IN_BASALT_DELTAS > 0)
 							event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.GHSATLY_SHEEKER.get(), ModConfigs.cachedServer.GHSATLY_SHEEKER_SPAWN_WEIGHT_IN_BASALT_DELTAS, 1, 1));
 						if (ModConfigs.cachedServer.IMP_SPAWN_WEIGHT_IN_BASALT_DELTAS > 0)
