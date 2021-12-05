@@ -2,7 +2,9 @@ package hmag.entity;
 
 import javax.annotation.Nonnull;
 
+import hmag.client.util.ModClientUtils;
 import hmag.registry.ModSoundEvents;
+import hmag.util.ModUtils;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntitySize;
@@ -29,12 +31,19 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.Difficulty;
+import net.minecraft.world.LightType;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.network.NetworkHooks;
 
 public class DodomekiEntity extends MonsterEntity implements IModMob
 {
+	private float eyesGlowingAnimation;
+	private float eyesGlowingAnimationO;
+
 	public DodomekiEntity(EntityType<? extends DodomekiEntity> type, World worldIn)
 	{
 		super(type, worldIn);
@@ -58,11 +67,43 @@ public class DodomekiEntity extends MonsterEntity implements IModMob
 	{
 		return MonsterEntity.createMonsterAttributes()
 				.add(Attributes.MAX_HEALTH, 40.0D)
-				.add(Attributes.MOVEMENT_SPEED, 0.23D)
+				.add(Attributes.MOVEMENT_SPEED, 0.24D)
 				.add(Attributes.ATTACK_DAMAGE, 7.0D)
 				.add(Attributes.ARMOR, 5.0D)
 				.add(Attributes.KNOCKBACK_RESISTANCE, 0.5D)
 				.add(Attributes.FOLLOW_RANGE, 20.0D);
+	}
+
+	@Override
+	public void tick()
+	{
+		if (this.level.isClientSide)
+		{
+			this.eyesGlowingAnimationO = this.eyesGlowingAnimation;
+		}
+
+		super.tick();
+
+		if (this.level.isClientSide)
+		{
+			if (this.isAggressive())
+			{
+				BlockPos pos = new BlockPos(this.getEyePosition(1.0F));
+
+				if (Math.max(this.level.getBrightness(LightType.SKY, pos) - ModClientUtils.getSkyDarken(this.level), this.level.getBrightness(LightType.BLOCK, pos)) < 7)
+				{
+					this.eyesGlowingAnimation = Math.min(1.0F, this.eyesGlowingAnimation + 0.025F);
+				}
+				else
+				{
+					this.eyesGlowingAnimation = Math.max(0.0F, this.eyesGlowingAnimation - 0.02F);
+				}
+			}
+			else
+			{
+				this.eyesGlowingAnimation = Math.max(0.0F, this.eyesGlowingAnimation - 0.02F);
+			}
+		}
 	}
 
 	@Override
@@ -73,6 +114,8 @@ public class DodomekiEntity extends MonsterEntity implements IModMob
 			this.level.addParticle(ParticleTypes.MYCELIUM, this.getRandomX(0.75D), this.getRandomY() - 0.5D, this.getRandomZ(0.75D), (this.getRandom().nextDouble() - 0.5D) * 3.0D, -this.getRandom().nextDouble(), (this.getRandom().nextDouble() - 0.5D) * 3.0D);
 		}
 
+		ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick(), 8);
+
 		super.aiStep();
 	}
 
@@ -81,6 +124,13 @@ public class DodomekiEntity extends MonsterEntity implements IModMob
 	{
 		if (super.doHurtTarget(entityIn))
 		{
+			float f = this.level.getCurrentDifficultyAt(this.blockPosition()).getEffectiveDifficulty();
+
+			if (this.getMainHandItem().isEmpty() && this.isOnFire() && this.getRandom().nextFloat() < f * 0.3F)
+			{
+				entityIn.setSecondsOnFire(2 * (int)f);
+			}
+
 			if (entityIn instanceof LivingEntity)
 			{
 				int i = 0;
@@ -124,6 +174,12 @@ public class DodomekiEntity extends MonsterEntity implements IModMob
 	protected float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn)
 	{
 		return 1.74F;
+	}
+
+	@OnlyIn(Dist.CLIENT)
+	public float getEyesGlowingAnimationScale(float f)
+	{
+		return MathHelper.lerp(f, this.eyesGlowingAnimationO, this.eyesGlowingAnimation);
 	}
 
 	@Override

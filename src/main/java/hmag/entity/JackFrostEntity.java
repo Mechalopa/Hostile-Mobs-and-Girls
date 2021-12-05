@@ -155,7 +155,7 @@ public class JackFrostEntity extends MonsterEntity implements IModMob, IRangedAt
 	@Override
 	public double getMyRidingOffset()
 	{
-		return -0.6D;
+		return -0.45D;
 	}
 
 	@Override

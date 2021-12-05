@@ -56,7 +56,7 @@ public class EnderExecutorEntity extends EndermanEntity implements IModMob, IBea
 		return EndermanEntity.createAttributes()
 				.add(Attributes.MAX_HEALTH, 120.0D)
 				.add(Attributes.MOVEMENT_SPEED, 0.3D)
-				.add(Attributes.ATTACK_DAMAGE, 9.0D)
+				.add(Attributes.ATTACK_DAMAGE, 8.0D)
 				.add(Attributes.ARMOR, 4.0D);
 	}
 
@@ -87,7 +87,7 @@ public class EnderExecutorEntity extends EndermanEntity implements IModMob, IBea
 						{
 							if (this.getActiveAttackTarget() != null)
 							{
-								if (this.attackEntityWithBeamAttack(this.getActiveAttackTarget(), 4.0F) && this.random.nextInt(10) == 0)
+								if (this.attackEntityWithBeamAttack(this.getActiveAttackTarget(), 6.0F) && this.random.nextInt(10) == 0)
 								{
 									this.teleport();
 								}

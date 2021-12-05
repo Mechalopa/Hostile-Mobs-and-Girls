@@ -12,6 +12,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Matrix3f;
 import net.minecraft.util.math.vector.Matrix4f;
 import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -63,5 +64,13 @@ public class ModClientUtils
 	public static void drawVertex(IVertexBuilder vertexBuilder, Matrix4f matrix, Matrix3f normals, float f, float f1, float f2, int i, int j, int k, float f3, float f4)
 	{
 		vertexBuilder.vertex(matrix, f, f1, f2).color(i, j, k, 255).uv(f3, f4).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(15728880).normal(normals, 0.0F, 1.0F, 0.0F).endVertex();
+	}
+
+	public static int getSkyDarken(World worldIn)
+	{
+		double d0 = 1.0D - (double)(worldIn.getRainLevel(1.0F) * 5.0F) / 16.0D;
+		double d1 = 1.0D - (double)(worldIn.getThunderLevel(1.0F) * 5.0F) / 16.0D;
+		double d2 = 0.5D + 2.0D * MathHelper.clamp((double)MathHelper.cos(worldIn.getTimeOfDay(1.0F) * ((float)Math.PI * 2.0F)), -0.25D, 0.25D);
+		return (int)((1.0D - d2 * d0 * d1) * 11.0D);
 	}
 }

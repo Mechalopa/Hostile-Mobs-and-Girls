@@ -140,7 +140,7 @@ public class NecroticReaperEntity extends MonsterEntity implements IModMob
 	@Override
 	public double getMyRidingOffset()
 	{
-		return -0.6D;
+		return -0.45D;
 	}
 
 	@Override

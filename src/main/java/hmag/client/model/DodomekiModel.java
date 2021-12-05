@@ -56,7 +56,7 @@ public class DodomekiModel<T extends MobEntity> extends AbstractGirlModel<T>
 		this.skirt2.setPos(0.0F, 12.0F, 0.0F);
 		this.body.addChild(this.skirt2);
 		this.skirt3 = new ModelRenderer(this, 32, 64);
-		this.skirt3.addBox(-4.5F, 0.0F, -3.0F, 9.0F, 5.0F, 6.0F, modelSize);
+		this.skirt3.addBox(-4.5F, 0.0F, -3.0F, 9.0F, 7.0F, 6.0F, modelSize);
 		this.skirt3.setPos(0.0F, 2.0F, 0.0F);
 		this.skirt2.addChild(this.skirt3);
 

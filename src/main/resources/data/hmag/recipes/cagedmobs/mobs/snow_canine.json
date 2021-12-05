@@ -25,7 +25,7 @@
         "item": "hmag:blueberry"
       },
       "minAmount": 1,
-      "maxAmount": 2
+      "maxAmount": 3
     },
     {
       "chance": 0.025,

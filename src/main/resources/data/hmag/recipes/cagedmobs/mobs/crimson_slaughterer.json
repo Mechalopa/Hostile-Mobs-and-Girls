@@ -50,6 +50,14 @@
       },
       "minAmount": 1,
       "maxAmount": 1
+    },
+    {
+      "chance": 0.025,
+      "output": {
+        "item": "minecraft:golden_apple"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
     }
   ]
 }

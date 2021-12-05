@@ -172,8 +172,8 @@ public class ModItems
 	public static final RegistryObject<ModSpawnEggItem> SAVAGEFANG_SPAWN_EGG = createSpawnEggRegistryObject("savagefang", ModEntityTypes.SAVAGEFANG, 0x415A4E, 0x690C1B);
 	public static final RegistryObject<ModSpawnEggItem> FORTRESS_KEEPER_SPAWN_EGG = createSpawnEggRegistryObject("fortress_keeper", ModEntityTypes.FORTRESS_KEEPER, 0x291519, 0xF48522);
 	public static final RegistryObject<ModSpawnEggItem> NECROTIC_REAPER_SPAWN_EGG = createSpawnEggRegistryObject("necrotic_reaper", ModEntityTypes.NECROTIC_REAPER, 0x6A4B54, 0xADB5A7);
-	public static final RegistryObject<ModSpawnEggItem> DODOMEKI_SPAWN_EGG = createSpawnEggRegistryObject("dodomeki", ModEntityTypes.DODOMEKI, 0x000000, 0xFFFFFF);
-	public static final RegistryObject<ModSpawnEggItem> IMP_SPAWN_EGG = createSpawnEggRegistryObject("imp", ModEntityTypes.IMP, 0x5E2E78, 0x5B1F23);
+	public static final RegistryObject<ModSpawnEggItem> DODOMEKI_SPAWN_EGG = createSpawnEggRegistryObject("dodomeki", ModEntityTypes.DODOMEKI, 0x242121, 0xB3ACAB);
+	public static final RegistryObject<ModSpawnEggItem> IMP_SPAWN_EGG = createSpawnEggRegistryObject("imp", ModEntityTypes.IMP, 0x5E2E78, 0x4E181B);
 
 	@SubscribeEvent
 	public static void register(IEventBus eventBus)

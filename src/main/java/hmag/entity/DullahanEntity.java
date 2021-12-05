@@ -4,6 +4,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import hmag.registry.ModSoundEvents;
+import hmag.util.ModUtils;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntitySize;
@@ -69,6 +70,14 @@ public class DullahanEntity extends MonsterEntity implements IModMob
 				.add(Attributes.ARMOR, 5.0D)
 				.add(Attributes.KNOCKBACK_RESISTANCE, 0.5D)
 				.add(Attributes.FOLLOW_RANGE, 20.0D);
+	}
+
+	@Override
+	public void aiStep()
+	{
+		ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick(), 8);
+
+		super.aiStep();
 	}
 
 	@Override

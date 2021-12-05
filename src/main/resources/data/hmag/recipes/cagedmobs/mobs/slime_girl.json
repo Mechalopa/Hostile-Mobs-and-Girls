@@ -20,6 +20,14 @@
       "maxAmount": 1
     },
     {
+      "chance": 0.375,
+      "output": {
+        "item": "minecraft:slime_ball"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
       "chance": 0.025,
       "output": {
         "item": "minecraft:gold_ingot"

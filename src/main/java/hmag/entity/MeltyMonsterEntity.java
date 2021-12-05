@@ -250,7 +250,7 @@ public class MeltyMonsterEntity extends MonsterEntity implements IModMob, IRange
 	@Override
 	public double getMyRidingOffset()
 	{
-		return -0.6D;
+		return -0.45D;
 	}
 
 	@Override

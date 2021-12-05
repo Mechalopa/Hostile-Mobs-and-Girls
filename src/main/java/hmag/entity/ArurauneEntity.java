@@ -179,7 +179,7 @@ public class ArurauneEntity extends MonsterEntity implements IModMob, IRangedAtt
 	@Override
 	public double getMyRidingOffset()
 	{
-		return -0.6D;
+		return -0.45D;
 	}
 
 	@Override

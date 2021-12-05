@@ -33,7 +33,7 @@
         "item": "minecraft:white_wool"
       },
       "minAmount": 1,
-      "maxAmount": 1
+      "maxAmount": 2
     },
     {
       "chance": 0.5,

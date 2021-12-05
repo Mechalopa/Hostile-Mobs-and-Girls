@@ -29,6 +29,7 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
+import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.DamageSource;
@@ -46,6 +47,9 @@ public class ImpEntity extends MonsterEntity implements IModMob
 	public ImpEntity(EntityType<? extends ImpEntity> type, World worldIn)
 	{
 		super(type, worldIn);
+		this.setPathfindingMalus(PathNodeType.LAVA, 8.0F);
+		this.setPathfindingMalus(PathNodeType.DANGER_FIRE, 0.0F);
+		this.setPathfindingMalus(PathNodeType.DAMAGE_FIRE, 0.0F);
 		this.xpReward = 12;
 	}
 
