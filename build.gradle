@@ -140,22 +140,23 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 tasks.withType(Jar) {compileJava.options.encoding = 'UTF-8'}
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.5-36.2.0'
+    minecraft 'net.minecraftforge:forge:1.16.5-36.2.19'
 
     // compile against the JEI API but do not include it at runtime
-    compileOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.1.110:api")
+    compileOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.1.137:api")
     // at runtime, use the full JEI jar
-    runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.1.110")
+    runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.1.137")
 
-    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.16.5-4.0.5.2:api")
-    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.16.5-4.0.5.2")
+    //compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.16.5-4.0.5.2:api")
+    //runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.16.5-4.0.5.2")
 
     // Visit https://www.curseforge.com/minecraft/mc-mods/jade/files/all
     // to get the latest version
-    implementation fg.deobf("curse.maven:jade-324717:3389760")
+    implementation fg.deobf("curse.maven:jade-324717:3467445")
 
     implementation fg.deobf("curse.maven:neat-238372:3182258")
-    implementation fg.deobf("curse.maven:just-enough-resources-jer-240630:3336760")
+    implementation fg.deobf("curse.maven:just-enough-resources-jer-240630:3545538")
+    implementation fg.deobf("curse.maven:trofers-482265:3492735")
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..
