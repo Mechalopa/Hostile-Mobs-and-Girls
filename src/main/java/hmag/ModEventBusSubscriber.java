@@ -40,7 +40,6 @@ import hmag.entity.StrayGirlEntity;
 import hmag.entity.WitherGhostEntity;
 import hmag.entity.WitherSkeletonGirlEntity;
 import hmag.entity.ZombieGirlEntity;
-import hmag.item.ModSpawnEggItem;
 import hmag.loot.conditions.ModLoadedCondition;
 import hmag.registry.ModEntityTypes;
 import hmag.registry.ModItems;
@@ -189,8 +188,6 @@ public class ModEventBusSubscriber
 		EntitySpawnPlacementRegistry.register(ModEntityTypes.NECROTIC_REAPER.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkMonsterSpawnInLightUnderY32Rules);
 		EntitySpawnPlacementRegistry.register(ModEntityTypes.DODOMEKI.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkMonsterSpawnInLightOverY64Rules);
 		EntitySpawnPlacementRegistry.register(ModEntityTypes.IMP.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MonsterEntity::checkAnyLightMonsterSpawnRules);
-
-		ModSpawnEggItem.initSpawnEggs();
 	}
 
 	@SubscribeEvent

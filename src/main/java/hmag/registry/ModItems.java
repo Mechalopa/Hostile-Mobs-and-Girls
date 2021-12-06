@@ -15,7 +15,6 @@ import hmag.item.LightningSoupItem;
 import hmag.item.ModArmorMaterial;
 import hmag.item.ModFoodItem;
 import hmag.item.ModItem;
-import hmag.item.ModSpawnEggItem;
 import hmag.item.ModSwordItem;
 import hmag.item.NemesisBladeItem;
 import hmag.item.NetherStarBlockItem;
@@ -34,6 +33,7 @@ import net.minecraft.item.Rarity;
 import net.minecraft.item.SoupItem;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.RegistryObject;
@@ -134,46 +134,46 @@ public class ModItems
 	public static final RegistryObject<Item> PURIFICATION_CLOTH = REGISTRY.register("purification_cloth", () -> new PurificationClothItem(new Item.Properties().tab(HMaG.MODTAB).stacksTo(16).rarity(Rarity.UNCOMMON)));
 	public static final RegistryObject<Item> ENDLESS_PEARL = REGISTRY.register("endless_pearl", () -> new EndlessPearlItem(new Item.Properties().tab(HMaG.MODTAB).stacksTo(1).rarity(Rarity.UNCOMMON)));
 
-	public static final RegistryObject<ModSpawnEggItem> ZOMBIE_GIRL_SPAWN_EGG = createSpawnEggRegistryObject("zombie_girl", ModEntityTypes.ZOMBIE_GIRL, 0xB4AD53, 0x577431);
-	public static final RegistryObject<ModSpawnEggItem> HUSK_GIRL_SPAWN_EGG = createSpawnEggRegistryObject("husk_girl", ModEntityTypes.HUSK_GIRL, 0xD3B87D, 0x62453D);
-	public static final RegistryObject<ModSpawnEggItem> DROWNED_GIRL_SPAWN_EGG = createSpawnEggRegistryObject("drowned_girl", ModEntityTypes.DROWNED_GIRL, 0x7DBAAC, 0x0E6866);
-	public static final RegistryObject<ModSpawnEggItem> SKELETON_GIRL_SPAWN_EGG = createSpawnEggRegistryObject("skeleton_girl", ModEntityTypes.SKELETON_GIRL, 0xB6A28D, 0x615042);
-	public static final RegistryObject<ModSpawnEggItem> WITHER_SKELETON_GIRL_SPAWN_EGG = createSpawnEggRegistryObject("wither_skeleton_girl", ModEntityTypes.WITHER_SKELETON_GIRL, 0x2F2E37, 0x5B5B63);
-	public static final RegistryObject<ModSpawnEggItem> STRAY_GIRL_SPAWN_EGG = createSpawnEggRegistryObject("stray_girl", ModEntityTypes.STRAY_GIRL, 0xA6B6B7, 0x576C6D);
-	public static final RegistryObject<ModSpawnEggItem> CREEPER_GIRL_SPAWN_EGG = createSpawnEggRegistryObject("creeper_girl", ModEntityTypes.CREEPER_GIRL, 0x00A500, 0xFF7E00);
-	public static final RegistryObject<ModSpawnEggItem> GHOST_SPAWN_EGG = createSpawnEggRegistryObject("ghost", ModEntityTypes.GHOST, 0xC3EEEE, 0xC4C495);
-	public static final RegistryObject<ModSpawnEggItem> WITHER_GHOST_SPAWN_EGG = createSpawnEggRegistryObject("wither_ghost", ModEntityTypes.WITHER_GHOST, 0x7B4B3E, 0x2C2C2C);
-	public static final RegistryObject<ModSpawnEggItem> ENDER_EXECUTOR_SPAWN_EGG = createSpawnEggRegistryObject("ender_executor", ModEntityTypes.ENDER_EXECUTOR, 0x100A1A, 0xD3D3A0);
-	public static final RegistryObject<ModSpawnEggItem> KOBOLD_SPAWN_EGG = createSpawnEggRegistryObject("kobold", ModEntityTypes.KOBOLD, 0x0D1B27, 0xA9AF8D);
-	public static final RegistryObject<ModSpawnEggItem> LICH_SPAWN_EGG = createSpawnEggRegistryObject("lich", ModEntityTypes.LICH, 0x391010, 0x55666A);
-	public static final RegistryObject<ModSpawnEggItem> OGRE_SPAWN_EGG = createSpawnEggRegistryObject("ogre", ModEntityTypes.OGRE, 0x4A4839, 0x6E1C02);
-	public static final RegistryObject<ModSpawnEggItem> SPIDER_NEST_SPAWN_EGG = createSpawnEggRegistryObject("spider_nest", ModEntityTypes.SPIDER_NEST, 0xE8E8DC, 0x828D85);
-	public static final RegistryObject<ModSpawnEggItem> MELTY_MONSTER_SPAWN_EGG = createSpawnEggRegistryObject("melty_monster", ModEntityTypes.MELTY_MONSTER, 0xA80000, 0xFF9100);
-	public static final RegistryObject<ModSpawnEggItem> CURSED_DOLL_SPAWN_EGG = createSpawnEggRegistryObject("cursed_doll", ModEntityTypes.CURSED_DOLL, 0x050000, 0xB53A95);
-	public static final RegistryObject<ModSpawnEggItem> JACK_FROST_SPAWN_EGG = createSpawnEggRegistryObject("jack_frost", ModEntityTypes.JACK_FROST, 0xEEFFFF, 0x53629B);
-	public static final RegistryObject<ModSpawnEggItem> HORNET_SPAWN_EGG = createSpawnEggRegistryObject("hornet", ModEntityTypes.HORNET, 0xFF770F, 0x851A05);
-	public static final RegistryObject<ModSpawnEggItem> DULLAHAN_SPAWN_EGG = createSpawnEggRegistryObject("dullahan", ModEntityTypes.DULLAHAN, 0x6E2424, 0xA97D48);
-	public static final RegistryObject<ModSpawnEggItem> BANSHEE_SPAWN_EGG = createSpawnEggRegistryObject("banshee", ModEntityTypes.BANSHEE, 0xDC8BC7, 0xC36CAA);
-	public static final RegistryObject<ModSpawnEggItem> ARURAUNE_SPAWN_EGG = createSpawnEggRegistryObject("aruraune", ModEntityTypes.ARURAUNE, 0x23AA23, 0xD52B39);
-	public static final RegistryObject<ModSpawnEggItem> CATOBLEPAS_SPAWN_EGG = createSpawnEggRegistryObject("catoblepas", ModEntityTypes.CATOBLEPAS, 0x74620B, 0x4E2310);
-	public static final RegistryObject<ModSpawnEggItem> SCORPION_SPAWN_EGG = createSpawnEggRegistryObject("scorpion", ModEntityTypes.SCORPION, 0xDAB68F, 0x625358);
-	public static final RegistryObject<ModSpawnEggItem> KASHA_SPAWN_EGG = createSpawnEggRegistryObject("kasha", ModEntityTypes.KASHA, 0x200000, 0xFFAE4A);
-	public static final RegistryObject<ModSpawnEggItem> DOGU_SPAWN_EGG = createSpawnEggRegistryObject("dogu", ModEntityTypes.DOGU, 0xB45927, 0x692707);
-	public static final RegistryObject<ModSpawnEggItem> GHASTLY_SEEKER_SPAWN_EGG = createSpawnEggRegistryObject("ghastly_seeker", ModEntityTypes.GHSATLY_SHEEKER, 0xF4E6D7, 0xC3B5A6);
-	public static final RegistryObject<ModSpawnEggItem> REDCAP_SPAWN_EGG = createSpawnEggRegistryObject("redcap", ModEntityTypes.REDCAP, 0x73530D, 0x8E2323);
-	public static final RegistryObject<ModSpawnEggItem> SLIME_GIRL_SPAWN_EGG = createSpawnEggRegistryObject("slime_girl", ModEntityTypes.SLIME_GIRL, 0xFD73AC, 0xFA476B);
-	public static final RegistryObject<ModSpawnEggItem> MAGICAL_SLIME_SPAWN_EGG = createSpawnEggRegistryObject("magical_slime", ModEntityTypes.MAGICAL_SLIME, 0xFD73AC, 0xFF7D98);
-	public static final RegistryObject<ModSpawnEggItem> MONOLITH_SPAWN_EGG = createSpawnEggRegistryObject("monolith", ModEntityTypes.MONOLITH, 0x4A3B71, 0x99A6C7);
-	public static final RegistryObject<ModSpawnEggItem> CRIMSON_SLAUGHTERER_SPAWN_EGG = createSpawnEggRegistryObject("crimson_slaughterer", ModEntityTypes.CRIMSON_SLAUGHTERER, 0x942020, 0x562C3E);
-	public static final RegistryObject<ModSpawnEggItem> DYSSOMNIA_SPAWN_EGG = createSpawnEggRegistryObject("dyssomnia", ModEntityTypes.DYSSOMNIA, 0x374377, 0xC3B9A1);
-	public static final RegistryObject<ModSpawnEggItem> SNOW_CANINE_SPAWN_EGG = createSpawnEggRegistryObject("snow_canine", ModEntityTypes.SNOW_CANINE, 0xE9E3DF, 0xB19B8A);
-	public static final RegistryObject<ModSpawnEggItem> STONEULAR_SPAWN_EGG = createSpawnEggRegistryObject("stoneular", ModEntityTypes.STONEULAR, 0x525252, 0xB5B5B5);
-	public static final RegistryObject<ModSpawnEggItem> HARPY_SPAWN_EGG = createSpawnEggRegistryObject("harpy", ModEntityTypes.HARPY, 0xD29741, 0x6B5244);
-	public static final RegistryObject<ModSpawnEggItem> SAVAGEFANG_SPAWN_EGG = createSpawnEggRegistryObject("savagefang", ModEntityTypes.SAVAGEFANG, 0x415A4E, 0x690C1B);
-	public static final RegistryObject<ModSpawnEggItem> FORTRESS_KEEPER_SPAWN_EGG = createSpawnEggRegistryObject("fortress_keeper", ModEntityTypes.FORTRESS_KEEPER, 0x291519, 0xF48522);
-	public static final RegistryObject<ModSpawnEggItem> NECROTIC_REAPER_SPAWN_EGG = createSpawnEggRegistryObject("necrotic_reaper", ModEntityTypes.NECROTIC_REAPER, 0x6A4B54, 0xADB5A7);
-	public static final RegistryObject<ModSpawnEggItem> DODOMEKI_SPAWN_EGG = createSpawnEggRegistryObject("dodomeki", ModEntityTypes.DODOMEKI, 0x242121, 0xB3ACAB);
-	public static final RegistryObject<ModSpawnEggItem> IMP_SPAWN_EGG = createSpawnEggRegistryObject("imp", ModEntityTypes.IMP, 0x5E2E78, 0x4E181B);
+	public static final RegistryObject<Item> ZOMBIE_GIRL_SPAWN_EGG = createSpawnEggRegistryObject("zombie_girl", ModEntityTypes.ZOMBIE_GIRL, 0xB4AD53, 0x577431);
+	public static final RegistryObject<Item> HUSK_GIRL_SPAWN_EGG = createSpawnEggRegistryObject("husk_girl", ModEntityTypes.HUSK_GIRL, 0xD3B87D, 0x62453D);
+	public static final RegistryObject<Item> DROWNED_GIRL_SPAWN_EGG = createSpawnEggRegistryObject("drowned_girl", ModEntityTypes.DROWNED_GIRL, 0x7DBAAC, 0x0E6866);
+	public static final RegistryObject<Item> SKELETON_GIRL_SPAWN_EGG = createSpawnEggRegistryObject("skeleton_girl", ModEntityTypes.SKELETON_GIRL, 0xB6A28D, 0x615042);
+	public static final RegistryObject<Item> WITHER_SKELETON_GIRL_SPAWN_EGG = createSpawnEggRegistryObject("wither_skeleton_girl", ModEntityTypes.WITHER_SKELETON_GIRL, 0x2F2E37, 0x5B5B63);
+	public static final RegistryObject<Item> STRAY_GIRL_SPAWN_EGG = createSpawnEggRegistryObject("stray_girl", ModEntityTypes.STRAY_GIRL, 0xA6B6B7, 0x576C6D);
+	public static final RegistryObject<Item> CREEPER_GIRL_SPAWN_EGG = createSpawnEggRegistryObject("creeper_girl", ModEntityTypes.CREEPER_GIRL, 0x00A500, 0xFF7E00);
+	public static final RegistryObject<Item> GHOST_SPAWN_EGG = createSpawnEggRegistryObject("ghost", ModEntityTypes.GHOST, 0xC3EEEE, 0xC4C495);
+	public static final RegistryObject<Item> WITHER_GHOST_SPAWN_EGG = createSpawnEggRegistryObject("wither_ghost", ModEntityTypes.WITHER_GHOST, 0x7B4B3E, 0x2C2C2C);
+	public static final RegistryObject<Item> ENDER_EXECUTOR_SPAWN_EGG = createSpawnEggRegistryObject("ender_executor", ModEntityTypes.ENDER_EXECUTOR, 0x100A1A, 0xD3D3A0);
+	public static final RegistryObject<Item> KOBOLD_SPAWN_EGG = createSpawnEggRegistryObject("kobold", ModEntityTypes.KOBOLD, 0x0D1B27, 0xA9AF8D);
+	public static final RegistryObject<Item> LICH_SPAWN_EGG = createSpawnEggRegistryObject("lich", ModEntityTypes.LICH, 0x391010, 0x55666A);
+	public static final RegistryObject<Item> OGRE_SPAWN_EGG = createSpawnEggRegistryObject("ogre", ModEntityTypes.OGRE, 0x4A4839, 0x6E1C02);
+	public static final RegistryObject<Item> SPIDER_NEST_SPAWN_EGG = createSpawnEggRegistryObject("spider_nest", ModEntityTypes.SPIDER_NEST, 0xE8E8DC, 0x828D85);
+	public static final RegistryObject<Item> MELTY_MONSTER_SPAWN_EGG = createSpawnEggRegistryObject("melty_monster", ModEntityTypes.MELTY_MONSTER, 0xA80000, 0xFF9100);
+	public static final RegistryObject<Item> CURSED_DOLL_SPAWN_EGG = createSpawnEggRegistryObject("cursed_doll", ModEntityTypes.CURSED_DOLL, 0x050000, 0xB53A95);
+	public static final RegistryObject<Item> JACK_FROST_SPAWN_EGG = createSpawnEggRegistryObject("jack_frost", ModEntityTypes.JACK_FROST, 0xEEFFFF, 0x53629B);
+	public static final RegistryObject<Item> HORNET_SPAWN_EGG = createSpawnEggRegistryObject("hornet", ModEntityTypes.HORNET, 0xFF770F, 0x851A05);
+	public static final RegistryObject<Item> DULLAHAN_SPAWN_EGG = createSpawnEggRegistryObject("dullahan", ModEntityTypes.DULLAHAN, 0x6E2424, 0xA97D48);
+	public static final RegistryObject<Item> BANSHEE_SPAWN_EGG = createSpawnEggRegistryObject("banshee", ModEntityTypes.BANSHEE, 0xDC8BC7, 0xC36CAA);
+	public static final RegistryObject<Item> ARURAUNE_SPAWN_EGG = createSpawnEggRegistryObject("aruraune", ModEntityTypes.ARURAUNE, 0x23AA23, 0xD52B39);
+	public static final RegistryObject<Item> CATOBLEPAS_SPAWN_EGG = createSpawnEggRegistryObject("catoblepas", ModEntityTypes.CATOBLEPAS, 0x74620B, 0x4E2310);
+	public static final RegistryObject<Item> SCORPION_SPAWN_EGG = createSpawnEggRegistryObject("scorpion", ModEntityTypes.SCORPION, 0xDAB68F, 0x625358);
+	public static final RegistryObject<Item> KASHA_SPAWN_EGG = createSpawnEggRegistryObject("kasha", ModEntityTypes.KASHA, 0x200000, 0xFFAE4A);
+	public static final RegistryObject<Item> DOGU_SPAWN_EGG = createSpawnEggRegistryObject("dogu", ModEntityTypes.DOGU, 0xB45927, 0x692707);
+	public static final RegistryObject<Item> GHASTLY_SEEKER_SPAWN_EGG = createSpawnEggRegistryObject("ghastly_seeker", ModEntityTypes.GHSATLY_SHEEKER, 0xF4E6D7, 0xC3B5A6);
+	public static final RegistryObject<Item> REDCAP_SPAWN_EGG = createSpawnEggRegistryObject("redcap", ModEntityTypes.REDCAP, 0x73530D, 0x8E2323);
+	public static final RegistryObject<Item> SLIME_GIRL_SPAWN_EGG = createSpawnEggRegistryObject("slime_girl", ModEntityTypes.SLIME_GIRL, 0xFD73AC, 0xFA476B);
+	public static final RegistryObject<Item> MAGICAL_SLIME_SPAWN_EGG = createSpawnEggRegistryObject("magical_slime", ModEntityTypes.MAGICAL_SLIME, 0xFD73AC, 0xFF7D98);
+	public static final RegistryObject<Item> MONOLITH_SPAWN_EGG = createSpawnEggRegistryObject("monolith", ModEntityTypes.MONOLITH, 0x4A3B71, 0x99A6C7);
+	public static final RegistryObject<Item> CRIMSON_SLAUGHTERER_SPAWN_EGG = createSpawnEggRegistryObject("crimson_slaughterer", ModEntityTypes.CRIMSON_SLAUGHTERER, 0x942020, 0x562C3E);
+	public static final RegistryObject<Item> DYSSOMNIA_SPAWN_EGG = createSpawnEggRegistryObject("dyssomnia", ModEntityTypes.DYSSOMNIA, 0x374377, 0xC3B9A1);
+	public static final RegistryObject<Item> SNOW_CANINE_SPAWN_EGG = createSpawnEggRegistryObject("snow_canine", ModEntityTypes.SNOW_CANINE, 0xE9E3DF, 0xB19B8A);
+	public static final RegistryObject<Item> STONEULAR_SPAWN_EGG = createSpawnEggRegistryObject("stoneular", ModEntityTypes.STONEULAR, 0x525252, 0xB5B5B5);
+	public static final RegistryObject<Item> HARPY_SPAWN_EGG = createSpawnEggRegistryObject("harpy", ModEntityTypes.HARPY, 0xD29741, 0x6B5244);
+	public static final RegistryObject<Item> SAVAGEFANG_SPAWN_EGG = createSpawnEggRegistryObject("savagefang", ModEntityTypes.SAVAGEFANG, 0x415A4E, 0x690C1B);
+	public static final RegistryObject<Item> FORTRESS_KEEPER_SPAWN_EGG = createSpawnEggRegistryObject("fortress_keeper", ModEntityTypes.FORTRESS_KEEPER, 0x291519, 0xF48522);
+	public static final RegistryObject<Item> NECROTIC_REAPER_SPAWN_EGG = createSpawnEggRegistryObject("necrotic_reaper", ModEntityTypes.NECROTIC_REAPER, 0x6A4B54, 0xADB5A7);
+	public static final RegistryObject<Item> DODOMEKI_SPAWN_EGG = createSpawnEggRegistryObject("dodomeki", ModEntityTypes.DODOMEKI, 0x242121, 0xB3ACAB);
+	public static final RegistryObject<Item> IMP_SPAWN_EGG = createSpawnEggRegistryObject("imp", ModEntityTypes.IMP, 0x5E2E78, 0x4E181B);
 
 	@SubscribeEvent
 	public static void register(IEventBus eventBus)
@@ -181,8 +181,8 @@ public class ModItems
 		REGISTRY.register(eventBus);
 	}
 
-	protected static RegistryObject<ModSpawnEggItem> createSpawnEggRegistryObject(String name, RegistryObject<? extends EntityType<?>> entityTypeSupplier, int primaryColorIn, int secondaryColorIn)
+	protected static RegistryObject<Item> createSpawnEggRegistryObject(String name, RegistryObject<? extends EntityType<?>> entityTypeSupplier, int primaryColorIn, int secondaryColorIn)
 	{
-		return REGISTRY.register(name + "_spawn_egg", () -> new ModSpawnEggItem(entityTypeSupplier, primaryColorIn, secondaryColorIn, new Item.Properties().tab(HMaG.MODTAB)));
+		return REGISTRY.register(name + "_spawn_egg", () -> new ForgeSpawnEggItem(entityTypeSupplier, primaryColorIn, secondaryColorIn, new Item.Properties().tab(HMaG.MODTAB)));
 	}
 }
