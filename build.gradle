@@ -140,7 +140,7 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 tasks.withType(Jar) {compileJava.options.encoding = 'UTF-8'}
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.5-36.2.19'
+    minecraft 'net.minecraftforge:forge:1.16.5-36.2.20'
 
     // compile against the JEI API but do not include it at runtime
     compileOnly fg.deobf("mezz.jei:jei-1.16.5:7.7.1.137:api")
