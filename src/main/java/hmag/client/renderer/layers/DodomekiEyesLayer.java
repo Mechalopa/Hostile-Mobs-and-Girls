@@ -29,9 +29,13 @@ public class DodomekiEyesLayer<T extends DodomekiEntity, M extends DodomekiModel
 	@Override
 	public void render(MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn, T livingEntityIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch)
 	{
-		IVertexBuilder ivertexbuilder = bufferIn.getBuffer(this.renderType());
 		final float f = MathHelper.clamp(livingEntityIn.getEyesGlowingAnimationScale(partialTicks), 0.0F, 1.0F);
-		this.getParentModel().renderToBuffer(matrixStackIn, ivertexbuilder, 15728640, OverlayTexture.NO_OVERLAY, f, f, f, 1.0F);
+
+		if (f > 0.0F)
+		{
+			IVertexBuilder ivertexbuilder = bufferIn.getBuffer(this.renderType());
+			this.getParentModel().renderToBuffer(matrixStackIn, ivertexbuilder, 15728640, OverlayTexture.NO_OVERLAY, f, f, f, 1.0F);
+		}
 	}
 
 	public RenderType renderType()
