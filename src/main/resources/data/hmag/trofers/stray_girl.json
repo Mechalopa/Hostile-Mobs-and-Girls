@@ -1,0 +1,31 @@
+{
+  "name": {
+    "color": "#607576",
+    "translate": "trophy.trofers.composed",
+    "with": [
+      {
+        "translate": "entity.hmag.stray_girl"
+      }
+    ]
+  },
+  "display": {
+    "scale": 0.25
+  },
+  "entity": {
+    "type": "hmag:stray_girl",
+    "nbt": "{HandItems:[{id:\"minecraft:bow\",Count:1b,tag:{Damage:0}},{}]}"
+  },
+  "colors": {
+    "base": "#606060",
+    "accent": "#607576"
+  },
+  "effects": {
+    "sound": {
+      "soundEvent": "minecraft:entity.stray.ambient"
+    },
+    "rewards": {
+      "lootTable": "hmag:trophies/stray_girl",
+      "cooldown": 9600
+    }
+  }
+}

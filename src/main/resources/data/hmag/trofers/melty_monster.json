@@ -1,0 +1,32 @@
+{
+  "name": {
+    "color": "#FF4600",
+    "translate": "trophy.trofers.composed",
+    "with": [
+      {
+        "translate": "entity.hmag.melty_monster"
+      }
+    ]
+  },
+  "display": {
+    "scale": 0.25
+  },
+  "entity": {
+    "type": "hmag:melty_monster"
+  },
+  "colors": {
+    "base": "#606060",
+    "accent": "#FF4600"
+  },
+  "effects": {
+    "sound": {
+      "soundEvent": "minecraft:entity.magma_cube.jump"
+    },
+    "rewards": {
+      "statusEffect": {
+        "effect": "minecraft:fire_resistance",
+        "duration": 800
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": {
+    "color": "#BDBDBD",
+    "translate": "trophy.trofers.composed",
+    "with": [
+      {
+        "translate": "entity.hmag.skeleton_girl"
+      }
+    ]
+  },
+  "display": {
+    "scale": 0.25
+  },
+  "entity": {
+    "type": "hmag:skeleton_girl",
+    "nbt": "{HandItems:[{id:\"minecraft:bow\",Count:1b,tag:{Damage:0}},{}]}"
+  },
+  "colors": {
+    "base": "#606060",
+    "accent": "#BDBDBD"
+  },
+  "effects": {
+    "sound": {
+      "soundEvent": "minecraft:entity.skeleton.ambient"
+    },
+    "rewards": {
+      "lootTable": "hmag:trophies/skeleton_girl",
+      "cooldown": 9600
+    }
+  }
+}

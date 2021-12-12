@@ -1,0 +1,31 @@
+{
+  "name": {
+    "color": "#B5B5B5",
+    "translate": "trophy.trofers.composed",
+    "with": [
+      {
+        "translate": "entity.hmag.stoneular"
+      }
+    ]
+  },
+  "display": {
+    "scale": 0.25
+  },
+  "entity": {
+    "type": "hmag:stoneular",
+    "nbt": "{ActionPhase:1}"
+  },
+  "colors": {
+    "base": "#606060",
+    "accent": "#B5B5B5"
+  },
+  "effects": {
+    "sound": {
+      "soundEvent": "hmag:entity.stoneular.idle"
+    },
+    "rewards": {
+      "lootTable": "hmag:trophies/stoneular",
+      "cooldown": 9600
+    }
+  }
+}

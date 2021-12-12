@@ -1,0 +1,33 @@
+{
+  "name": {
+    "color": "#56847E",
+    "translate": "trophy.trofers.composed",
+    "with": [
+      {
+        "translate": "entity.hmag.drowned_girl"
+      }
+    ]
+  },
+  "display": {
+    "scale": 0.25
+  },
+  "entity": {
+    "type": "hmag:drowned_girl",
+    "nbt": "{HandItems:[{id:\"minecraft:trident\",Count:1b,tag:{Damage:0}},{}]}"
+  },
+  "colors": {
+    "base": "#606060",
+    "accent": "#56847E"
+  },
+  "effects": {
+    "sound": {
+      "soundEvent": "minecraft:entity.drowned.ambient"
+    },
+    "rewards": {
+      "statusEffect": {
+        "effect": "minecraft:water_breathing",
+        "duration": 800
+      }
+    }
+  }
+}

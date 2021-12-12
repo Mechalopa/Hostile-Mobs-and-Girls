@@ -1,0 +1,33 @@
+{
+  "name": {
+    "color": "#5161A5",
+    "translate": "trophy.trofers.composed",
+    "with": [
+      {
+        "translate": "entity.hmag.dyssomnia"
+      }
+    ]
+  },
+  "display": {
+    "offset": {
+      "y": 1.0
+    },
+    "scale": 0.15625
+  },
+  "entity": {
+    "type": "hmag:dyssomnia"
+  },
+  "colors": {
+    "base": "#606060",
+    "accent": "#5161A5"
+  },
+  "effects": {
+    "sound": {
+      "soundEvent": "hmag:entity.dyssomnia.idle"
+    },
+    "rewards": {
+      "lootTable": "hmag:trophies/dyssomnia",
+      "cooldown": 9600
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": {
+    "color": "#FD73AC",
+    "translate": "trophy.trofers.composed",
+    "with": [
+      {
+        "translate": "entity.hmag.magical_slime"
+      }
+    ]
+  },
+  "display": {
+    "scale": 0.25
+  },
+  "entity": {
+    "type": "hmag:magical_slime",
+    "nbt": "{Size:1}"
+  },
+  "colors": {
+    "base": "#606060",
+    "accent": "#FD73AC"
+  },
+  "effects": {
+    "sound": {
+      "soundEvent": "minecraft:entity.slime.squish"
+    },
+    "rewards": {
+      "lootTable": "hmag:trophies/magical_slime",
+      "cooldown": 9600
+    }
+  }
+}

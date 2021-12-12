@@ -1,0 +1,23 @@
+{
+  "pools": [
+    {
+      "rolls": {
+        "min": 2.0,
+        "max": 8.0,
+        "type": "minecraft:uniform"
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Potion:\"minecraft:slowness\"}"
+            }
+          ],
+          "name": "minecraft:tipped_arrow"
+        }
+      ]
+    }
+  ]
+}

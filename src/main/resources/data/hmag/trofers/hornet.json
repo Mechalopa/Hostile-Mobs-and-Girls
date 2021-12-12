@@ -1,0 +1,31 @@
+{
+  "name": {
+    "color": "#FF770F",
+    "translate": "trophy.trofers.composed",
+    "with": [
+      {
+        "translate": "entity.hmag.hornet"
+      }
+    ]
+  },
+  "display": {
+    "scale": 0.25
+  },
+  "entity": {
+    "type": "hmag:hornet",
+    "nbt": "{HandItems:[{id:\"hmag:iron_spear\",Count:1b,tag:{Damage:0}},{}]}"
+  },
+  "colors": {
+    "base": "#606060",
+    "accent": "#FF770F"
+  },
+  "effects": {
+    "sound": {
+      "soundEvent": "hmag:entity.hornet.idle"
+    },
+    "rewards": {
+      "lootTable": "hmag:trophies/hornet",
+      "cooldown": 9600
+    }
+  }
+}

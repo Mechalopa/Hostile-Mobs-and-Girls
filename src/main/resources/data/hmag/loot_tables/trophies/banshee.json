@@ -1,0 +1,27 @@
+{
+  "pools": [
+    {
+      "rolls": {
+        "min": 1.0,
+        "max": 3.0,
+        "type": "minecraft:uniform"
+      },
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "weight": 2,
+          "name": "hmag:soul_powder"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:allium"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "hmag:lemon"
+        }
+      ]
+    }
+  ]
+}

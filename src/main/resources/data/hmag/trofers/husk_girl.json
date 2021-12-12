@@ -1,0 +1,30 @@
+{
+  "name": {
+    "color": "#C7AB6F",
+    "translate": "trophy.trofers.composed",
+    "with": [
+      {
+        "translate": "entity.hmag.husk_girl"
+      }
+    ]
+  },
+  "display": {
+    "scale": 0.25
+  },
+  "entity": {
+    "type": "hmag:husk_girl"
+  },
+  "colors": {
+    "base": "#606060",
+    "accent": "#C7AB6F"
+  },
+  "effects": {
+    "sound": {
+      "soundEvent": "minecraft:entity.husk.ambient"
+    },
+    "rewards": {
+      "lootTable": "hmag:trophies/husk_girl",
+      "cooldown": 9600
+    }
+  }
+}

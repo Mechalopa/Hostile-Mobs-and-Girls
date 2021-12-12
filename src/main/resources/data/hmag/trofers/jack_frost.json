@@ -1,0 +1,30 @@
+{
+  "name": {
+    "color": "#53629B",
+    "translate": "trophy.trofers.composed",
+    "with": [
+      {
+        "translate": "entity.hmag.jack_frost"
+      }
+    ]
+  },
+  "display": {
+    "scale": 0.25
+  },
+  "entity": {
+    "type": "hmag:jack_frost"
+  },
+  "colors": {
+    "base": "#606060",
+    "accent": "#53629B"
+  },
+  "effects": {
+    "sound": {
+      "soundEvent": "hmag:entity.girls.idle"
+    },
+    "rewards": {
+      "lootTable": "hmag:trophies/jack_frost",
+      "cooldown": 9600
+    }
+  }
+}

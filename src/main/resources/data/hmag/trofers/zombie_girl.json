@@ -1,0 +1,30 @@
+{
+  "name": {
+    "color": "#70955C",
+    "translate": "trophy.trofers.composed",
+    "with": [
+      {
+        "translate": "entity.hmag.zombie_girl"
+      }
+    ]
+  },
+  "display": {
+    "scale": 0.25
+  },
+  "entity": {
+    "type": "hmag:zombie_girl"
+  },
+  "colors": {
+    "base": "#606060",
+    "accent": "#70955C"
+  },
+  "effects": {
+    "sound": {
+      "soundEvent": "minecraft:entity.zombie.ambient"
+    },
+    "rewards": {
+      "lootTable": "hmag:trophies/zombie_girl",
+      "cooldown": 9600
+    }
+  }
+}

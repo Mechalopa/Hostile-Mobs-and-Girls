@@ -1,0 +1,34 @@
+{
+  "name": {
+    "color": "#23AA23",
+    "translate": "trophy.trofers.composed",
+    "with": [
+      {
+        "translate": "entity.hmag.aruraune"
+      }
+    ]
+  },
+  "display": {
+    "scale": 0.25
+  },
+  "entity": {
+    "type": "hmag:aruraune"
+  },
+  "colors": {
+    "base": "#606060",
+    "accent": "#23AA23"
+  },
+  "effects": {
+    "sound": {
+      "soundEvent": "hmag:entity.girls.idle"
+    },
+    "rewards": {
+      "statusEffect": {
+        "effect": "minecraft:regeneration",
+        "duration": 2400,
+        "amplifier": 2
+      },
+      "cooldown": 9600
+    }
+  }
+}
