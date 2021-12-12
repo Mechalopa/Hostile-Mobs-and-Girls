@@ -36,7 +36,7 @@
       "maxAmount": 1
     },
     {
-      "chance": 0.025,
+      "chance": 0.05,
       "output": {
         "item": "minecraft:pumpkin_pie"
       },

@@ -20,7 +20,7 @@
       "maxAmount": 1
     },
     {
-      "chance": 0.025,
+      "chance": 0.05,
       "output": {
         "item": "minecraft:ender_eye"
       },

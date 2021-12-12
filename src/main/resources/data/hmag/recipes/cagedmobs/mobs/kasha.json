@@ -36,17 +36,17 @@
       "maxAmount": 1
     },
     {
-      "chance": 0.025,
+      "chance": 0.05,
       "output": {
-        "item": "minecraft:gold_ingot"
+        "item": "minecraft:fire_charge"
       },
       "minAmount": 1,
-      "maxAmount": 1
+      "maxAmount": 2
     },
     {
       "chance": 0.025,
       "output": {
-        "item": "minecraft:fire_charge"
+        "item": "minecraft:gold_ingot"
       },
       "minAmount": 1,
       "maxAmount": 1
