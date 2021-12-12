@@ -156,7 +156,6 @@ dependencies {
 
     implementation fg.deobf("curse.maven:neat-238372:3182258")
     implementation fg.deobf("curse.maven:just-enough-resources-jer-240630:3545538")
-    implementation fg.deobf("curse.maven:trofers-482265:3492735")
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..
