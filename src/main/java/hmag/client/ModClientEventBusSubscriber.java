@@ -117,8 +117,7 @@ public class ModClientEventBusSubscriber
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.MAGIC_BULLET.get(), MagicBulletRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.HARD_SNOWBALL.get(), ModSpriteRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.POISON_SEED.get(), ModSpriteRenderer::new);
-		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.FIRE_BOTTLE.get(), ModSpriteRenderer::new);
-		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.LIGHTNING_BOTTLE.get(), ModSpriteRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.THROWABLE_BOTTLE.get(), ModSpriteRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.MAGMA_BULLET.get(), MagmaBulletRenderer::new);
 
 		RenderTypeLookup.setRenderLayer(ModBlocks.REINFORCED_GLASS.get(), RenderType.cutout());

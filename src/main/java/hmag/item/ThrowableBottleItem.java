@@ -1,6 +1,6 @@
 package hmag.item;
 
-import hmag.entity.projectile.LightningBottleEntity;
+import hmag.entity.projectile.ThrowableBottleEntity;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.dispenser.IPosition;
 import net.minecraft.dispenser.ProjectileDispenseBehavior;
@@ -16,17 +16,22 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.util.Util;
 import net.minecraft.world.World;
 
-public class LightningBottleItem extends Item
+public class ThrowableBottleItem extends ModItem
 {
-	public LightningBottleItem(Item.Properties builder)
+	public ThrowableBottleItem(Item.Properties builder)
 	{
-		super(builder);
+		this(builder, new ModItem.Properties());
+	}
+
+	public ThrowableBottleItem(Item.Properties builder, ModItem.Properties builder1)
+	{
+		super(builder, builder1);
 		DispenserBlock.registerBehavior(this, new ProjectileDispenseBehavior()
 		{
 			@Override
 			protected ProjectileEntity getProjectile(World worldIn, IPosition position, ItemStack stackIn)
 			{
-				return Util.make(new LightningBottleEntity(worldIn, position.x(), position.y(), position.x()), (e) -> {
+				return Util.make(new ThrowableBottleEntity(worldIn, position.x(), position.y(), position.z()), (e) -> {
 					e.setItem(stackIn);
 				});
 			}
@@ -46,12 +51,6 @@ public class LightningBottleItem extends Item
 	}
 
 	@Override
-	public boolean isFoil(ItemStack stack)
-	{
-		return true;
-	}
-
-	@Override
 	public ActionResult<ItemStack> use(World worldIn, PlayerEntity playerIn, Hand handIn)
 	{
 		ItemStack stack = playerIn.getItemInHand(handIn);
@@ -60,7 +59,7 @@ public class LightningBottleItem extends Item
 
 		if (!worldIn.isClientSide)
 		{
-			LightningBottleEntity bottleentity = new LightningBottleEntity(worldIn, playerIn);
+			ThrowableBottleEntity bottleentity = new ThrowableBottleEntity(worldIn, playerIn);
 			bottleentity.setItem(stack);
 			bottleentity.shootFromRotation(playerIn, playerIn.xRot, playerIn.yRot, -20.0F, 0.7F, 1.0F);
 			worldIn.addFreshEntity(bottleentity);

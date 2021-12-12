@@ -41,12 +41,11 @@ import hmag.entity.StrayGirlEntity;
 import hmag.entity.WitherGhostEntity;
 import hmag.entity.WitherSkeletonGirlEntity;
 import hmag.entity.ZombieGirlEntity;
-import hmag.entity.projectile.FireBottleEntity;
 import hmag.entity.projectile.HardSnowballEntity;
-import hmag.entity.projectile.LightningBottleEntity;
 import hmag.entity.projectile.MagicBulletEntity;
 import hmag.entity.projectile.MagmaBulletEntity;
 import hmag.entity.projectile.PoisonSeedEntity;
+import hmag.entity.projectile.ThrowableBottleEntity;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
@@ -191,12 +190,9 @@ public class ModEntityTypes
 	public static final RegistryObject<EntityType<PoisonSeedEntity>> POISON_SEED = REGISTRY.register("poison_seed", () -> EntityType.Builder
 			.<PoisonSeedEntity>of(PoisonSeedEntity::new, EntityClassification.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(10).setShouldReceiveVelocityUpdates(true)
 			.build(new ResourceLocation(HMaG.MODID, "poison_seed").toString()));
-	public static final RegistryObject<EntityType<FireBottleEntity>> FIRE_BOTTLE = REGISTRY.register("fire_bottle", () -> EntityType.Builder
-			.<FireBottleEntity>of(FireBottleEntity::new, EntityClassification.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(10).setShouldReceiveVelocityUpdates(true)
-			.build(new ResourceLocation(HMaG.MODID, "fire_bottle").toString()));
-	public static final RegistryObject<EntityType<LightningBottleEntity>> LIGHTNING_BOTTLE = REGISTRY.register("lightning_bottle", () -> EntityType.Builder
-			.<LightningBottleEntity>of(LightningBottleEntity::new, EntityClassification.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(10).setShouldReceiveVelocityUpdates(true)
-			.build(new ResourceLocation(HMaG.MODID, "lightning_bottle").toString()));
+	public static final RegistryObject<EntityType<ThrowableBottleEntity>> THROWABLE_BOTTLE = REGISTRY.register("throwable_bottle", () -> EntityType.Builder
+			.<ThrowableBottleEntity>of(ThrowableBottleEntity::new, EntityClassification.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(10).setShouldReceiveVelocityUpdates(true)
+			.build(new ResourceLocation(HMaG.MODID, "throwable_bottle").toString()));
 	public static final RegistryObject<EntityType<MagmaBulletEntity>> MAGMA_BULLET = REGISTRY.register("magma_bullet", () -> EntityType.Builder
 			.<MagmaBulletEntity>of(MagmaBulletEntity::new, EntityClassification.MISC).sized(0.5F, 0.5F).setTrackingRange(4).setUpdateInterval(1).setShouldReceiveVelocityUpdates(true)
 			.build(new ResourceLocation(HMaG.MODID, "magma_bullet").toString()));
