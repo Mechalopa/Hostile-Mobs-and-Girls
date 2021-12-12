@@ -48,6 +48,7 @@ public class ModItems
 	public static final RegistryObject<Item> SOUL_POWDER_BLOCK = REGISTRY.register("soul_powder_block", () -> new BlockItem(ModBlocks.SOUL_POWDER_BLOCK.get(), new Item.Properties().tab(HMaG.MODTAB)));
 	public static final RegistryObject<Item> ANCIENT_STONE_BLOCK = REGISTRY.register("ancient_stone_block", () -> new BlockItem(ModBlocks.ANCIENT_STONE_BLOCK.get(), new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON)));
 	public static final RegistryObject<Item> NETHER_STAR_BLOCK = REGISTRY.register("nether_star_block", () -> new NetherStarBlockItem(ModBlocks.NETHER_STAR_BLOCK.get(), new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON)));
+	public static final RegistryObject<Item> HEART_OF_THE_SEA_BLOCK = REGISTRY.register("heart_of_the_sea_block", () -> new BlockItem(ModBlocks.HEART_OF_THE_SEA_BLOCK.get(), new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON)));
 	public static final RegistryObject<Item> THORN_SAND = REGISTRY.register("thorn_sand", () -> new BlockItem(ModBlocks.THORN_SAND.get(), new Item.Properties().tab(HMaG.MODTAB)));
 	public static final RegistryObject<Item> POISON_SAND = REGISTRY.register("poison_sand", () -> new BlockItem(ModBlocks.POISON_SAND.get(), new Item.Properties().tab(HMaG.MODTAB)));
 	public static final RegistryObject<Item> WITHER_SAND = REGISTRY.register("wither_sand", () -> new BlockItem(ModBlocks.WITHER_SAND.get(), new Item.Properties().tab(HMaG.MODTAB)));
