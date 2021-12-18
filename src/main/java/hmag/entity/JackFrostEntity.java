@@ -133,7 +133,7 @@ public class JackFrostEntity extends MonsterEntity implements IModMob, IRangedAt
 		for (int i = 0; i < c; ++i)
 		{
 			HardSnowballEntity snowballentity = new HardSnowballEntity(this.level, this);
-			double d0 = (double)target.getEyeHeight() - (double)1.1F;
+			double d0 = target.getEyeY() - (double)1.1F;
 			double d1 = target.getX() - this.getX();
 			double d2 = d0 - snowballentity.getY();
 			double d3 = target.getZ() - this.getZ();
