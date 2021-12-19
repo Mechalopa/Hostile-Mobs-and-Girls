@@ -604,7 +604,6 @@ public class ModEvents
 			{
 				trades.get(3).add(new BasicTrade(new ItemStack(ModItems.BAT_WING.get(), 6), new ItemStack(Items.EMERALD, 1), 12, 15, 0.05F));
 
-
 				if (ModConfigs.cachedServer.KOBOLD_SPAWN_WEIGHT > 0)
 				{
 					trades.get(4).add(new BasicTrade(new ItemStack(ModItems.KOBOLD_LEATHER.get(), 4), new ItemStack(Items.EMERALD, 1), 12, 20, 0.05F));
