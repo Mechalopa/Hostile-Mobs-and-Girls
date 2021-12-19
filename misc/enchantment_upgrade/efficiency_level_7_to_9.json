@@ -1,0 +1,9 @@
+{
+  "type": "hmag:enchantment_upgrade",
+  "addition": {
+    "item": "hmag:shatter_effector_tier_2"
+  },
+  "enchantment": "minecraft:efficiency",
+  "minLevel": 7,
+  "maxLevel": 9
+}

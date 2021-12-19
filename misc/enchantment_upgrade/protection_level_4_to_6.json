@@ -1,0 +1,9 @@
+{
+  "type": "hmag:enchantment_upgrade",
+  "addition": {
+    "item": "hmag:reinforced_protector_tier_1"
+  },
+  "enchantment": "minecraft:protection",
+  "minLevel": 4,
+  "maxLevel": 6
+}

@@ -1,0 +1,9 @@
+{
+  "type": "hmag:enchantment_upgrade",
+  "addition": {
+    "item": "hmag:evil_thorn"
+  },
+  "enchantment": "minecraft:thorns",
+  "minLevel": 0,
+  "maxLevel": 9
+}

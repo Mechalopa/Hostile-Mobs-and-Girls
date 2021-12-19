@@ -160,35 +160,36 @@ public class JEIPlugin implements IModPlugin
 						}
 					}
 				}
-//				else if (recipe instanceof EnchantmentUpgradeRecipe)
-//				{
-//					EnchantmentUpgradeRecipe enchantmentUpgradeRecipe = (EnchantmentUpgradeRecipe)recipe;
-//					Enchantment enchantment = enchantmentUpgradeRecipe.getEnchantment();
-//
-//					if (enchantment != null)
-//					{
-//						ItemStack stack1 = getEnchantableItemStack(registration, items, enchantment);
-//
-//						if (!stack1.isEmpty())
-//						{
-//							for (int i = enchantmentUpgradeRecipe.getMinLevel(); i <= enchantmentUpgradeRecipe.getMaxLevel(); ++i)
-//							{
-//								ResourceLocation resourcelocation = new ResourceLocation(HMaG.MODID, "jei." + enchantmentUpgradeRecipe.getId().getPath() + "." + i);
-//								ItemStack stack2 = stack1.copy();
-//								ItemStack stack3 = stack1.copy();
-//
-//								if (i > 0)
-//								{
-//									EnchantmentHelper.setEnchantments(ImmutableMap.of(enchantment, i), stack2);
-//								}
-//
-//								EnchantmentHelper.setEnchantments(ImmutableMap.of(enchantment, i + 1), stack3);
-//								SmithingRecipe smithingRecipe = new SmithingRecipe(resourcelocation, Ingredient.of(stack2), enchantmentUpgradeRecipe.getAdditionIngredient(), stack3);
-//								smithingRecipes.add(smithingRecipe);
-//							}
-//						}
-//					}
-//				}
+
+/*				else if (recipe instanceof EnchantmentUpgradeRecipe)
+				{
+					EnchantmentUpgradeRecipe enchantmentUpgradeRecipe = (EnchantmentUpgradeRecipe)recipe;
+					Enchantment enchantment = enchantmentUpgradeRecipe.getEnchantment();
+
+					if (enchantment != null)
+					{
+						ItemStack stack1 = getEnchantableItemStack(registration, items, enchantment);
+
+						if (!stack1.isEmpty())
+						{
+							for (int i = enchantmentUpgradeRecipe.getMinLevel(); i <= enchantmentUpgradeRecipe.getMaxLevel(); ++i)
+							{
+								ResourceLocation resourcelocation = new ResourceLocation(HMaG.MODID, "jei." + enchantmentUpgradeRecipe.getId().getPath() + "." + i);
+								ItemStack stack2 = stack1.copy();
+								ItemStack stack3 = stack1.copy();
+
+								if (i > 0)
+								{
+									EnchantmentHelper.setEnchantments(ImmutableMap.of(enchantment, i), stack2);
+								}
+
+								EnchantmentHelper.setEnchantments(ImmutableMap.of(enchantment, i + 1), stack3);
+								SmithingRecipe smithingRecipe = new SmithingRecipe(resourcelocation, Ingredient.of(stack2), enchantmentUpgradeRecipe.getAddition(), stack3);
+								smithingRecipes.add(smithingRecipe);
+							}
+						}
+					}
+				}*/
 
 				if (flag && flag1)
 				{

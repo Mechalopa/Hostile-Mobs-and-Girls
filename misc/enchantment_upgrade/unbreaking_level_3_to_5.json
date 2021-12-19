@@ -1,0 +1,9 @@
+{
+  "type": "hmag:enchantment_upgrade",
+  "addition": {
+    "item": "hmag:shard_of_immortality_tier_1"
+  },
+  "enchantment": "minecraft:unbreaking",
+  "minLevel": 3,
+  "maxLevel": 5
+}

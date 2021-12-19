@@ -1,0 +1,9 @@
+{
+  "type": "hmag:enchantment_upgrade",
+  "addition": {
+    "item": "hmag:repulsion_gadget"
+  },
+  "enchantment": "minecraft:punch",
+  "minLevel": 0,
+  "maxLevel": 9
+}
