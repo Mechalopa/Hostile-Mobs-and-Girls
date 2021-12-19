@@ -36,6 +36,14 @@
       "maxAmount": 2
     },
     {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:wither_rose"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
       "lightning": true,
       "chance": 0.2,
       "output": {
