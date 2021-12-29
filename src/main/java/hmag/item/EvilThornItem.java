@@ -15,7 +15,7 @@ public class EvilThornItem extends EnchantmentUpgradeItem
 {
 	public EvilThornItem(Item.Properties builder)
 	{
-		super(builder, Enchantments.THORNS, 0, 9);
+		super(builder, new EnchantmentUpgradeItem.Properties().enchantment(Enchantments.THORNS, 0, 9));
 	}
 
 	@Override

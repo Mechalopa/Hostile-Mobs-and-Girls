@@ -1,59 +1,82 @@
 package hmag.item;
 
+import java.util.List;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import com.google.common.collect.Lists;
+
+import hmag.item.EnchantmentUpgradeItem.Properties.EnchantmentUpgradeProp;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
 
 public class EnchantmentUpgradeItem extends ModItem
 {
-	private final Enchantment[] enchantments;
-	private final int minLevel;
-	private final int maxLevel;
+	@Nonnull
+	private final List<EnchantmentUpgradeProp> eups;
 
-	public EnchantmentUpgradeItem(Item.Properties builder, Enchantment enchantmentIn, int min)
+	public EnchantmentUpgradeItem(Item.Properties builder, EnchantmentUpgradeItem.Properties builder2)
 	{
-		this(builder, new ModItem.Properties(), enchantmentIn, min);
+		this(builder, new ModItem.Properties(), builder2);
 	}
 
-	public EnchantmentUpgradeItem(Item.Properties builder, Enchantment enchantmentIn, int min, int max)
-	{
-		this(builder, new ModItem.Properties(), enchantmentIn, min, max);
-	}
-
-	public EnchantmentUpgradeItem(Item.Properties builder, Enchantment[] enchantmentsIn, int min, int max)
-	{
-		this(builder, new ModItem.Properties(), enchantmentsIn, min, max);
-	}
-
-	public EnchantmentUpgradeItem(Item.Properties builder, ModItem.Properties builder1, Enchantment enchantmentIn, int min)
-	{
-		this(builder, builder1, enchantmentIn, min, min);
-	}
-
-	public EnchantmentUpgradeItem(Item.Properties builder, ModItem.Properties builder1, Enchantment enchantmentIn, int min, int max)
-	{
-		this(builder, builder1, new Enchantment[]{enchantmentIn}, min, max);
-	}
-
-	public EnchantmentUpgradeItem(Item.Properties builder, ModItem.Properties builder1, Enchantment[] enchantmentsIn, int min, int max)
+	public EnchantmentUpgradeItem(Item.Properties builder, ModItem.Properties builder1, EnchantmentUpgradeItem.Properties builder2)
 	{
 		super(builder, builder1);
-		this.enchantments = enchantmentsIn;
-		this.minLevel = min;
-		this.maxLevel = max;
+		this.eups = builder2.eups;
 	}
 
-	public Enchantment[] getEnchantments()
+	@Nonnull
+	public List<EnchantmentUpgradeProp> getEnchantmentUpgradeProps()
 	{
-		return this.enchantments;
+		return this.eups;
 	}
 
-	public int getMinLevel()
+	public static class Properties
 	{
-		return this.minLevel;
-	}
+		private final List<EnchantmentUpgradeProp> eups = Lists.newArrayList();
 
-	public int getMaxLevel()
-	{
-		return this.maxLevel;
+		public EnchantmentUpgradeItem.Properties enchantment(Enchantment enchantmentIn, int min, int max)
+		{
+			return this.enchantment(new EnchantmentUpgradeProp(enchantmentIn, min, max));
+		}
+
+		public EnchantmentUpgradeItem.Properties enchantment(EnchantmentUpgradeProp eupIn)
+		{
+			this.eups.add(eupIn);
+			return this;
+		}
+
+		public class EnchantmentUpgradeProp
+		{
+			@Nullable
+			private final Enchantment enchantment;
+			private final int minLevel;
+			private final int maxLevel;
+
+			public EnchantmentUpgradeProp(@Nullable Enchantment enchantmentIn, int min, int max)
+			{
+				this.enchantment = enchantmentIn;
+				this.minLevel = min;
+				this.maxLevel = max;
+			}
+
+			@Nullable
+			public Enchantment getEnchantment()
+			{
+				return this.enchantment;
+			}
+
+			public int getMinLevel()
+			{
+				return this.minLevel;
+			}
+
+			public int getMaxLevel()
+			{
+				return this.maxLevel;
+			}
+		}
 	}
 }

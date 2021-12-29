@@ -10,6 +10,7 @@ import com.google.common.collect.Lists;
 
 import hmag.HMaG;
 import hmag.item.EnchantmentUpgradeItem;
+import hmag.item.EnchantmentUpgradeItem.Properties.EnchantmentUpgradeProp;
 import hmag.recipe.EnchantmentUpgradeRecipe;
 import hmag.recipe.RemoveCurseRecipe;
 import hmag.util.ModTags;
@@ -121,41 +122,50 @@ public class JEIPlugin implements IModPlugin
 						{
 							if (item != null && item instanceof EnchantmentUpgradeItem)
 							{
-								EnchantmentUpgradeItem eui = (EnchantmentUpgradeItem)item;
-								Enchantment[] enchantments = eui.getEnchantments();
-								final int minLevel = eui.getMinLevel();
-								final int maxLevel = eui.getMaxLevel();
+								final List<EnchantmentUpgradeProp> eups = ((EnchantmentUpgradeItem)item).getEnchantmentUpgradeProps();
 
-								for (int j = 0; j < enchantments.length; ++j)
+								if (!eups.isEmpty())
 								{
-									final Enchantment enchantment = enchantments[j];
+									int j = 0;
 
-									if (enchantment != null)
+									for (EnchantmentUpgradeProp eup : eups)
 									{
-										ItemStack stack1 = getEnchantableItemStack(registration, items, enchantment);
-
-										if (!stack1.isEmpty())
+										if (eup != null)
 										{
-											for (int k = minLevel; k <= maxLevel; ++k)
+											Enchantment enchantment = eup.getEnchantment();
+
+											if (enchantment != null)
 											{
-												ResourceLocation resourcelocation = new ResourceLocation(HMaG.MODID, "jei." + recipe.getId().getPath() + "." + i + "." + j + "." + k);
-												ItemStack stack2 = stack1.copy();
-												ItemStack stack3 = stack1.copy();
+												final int minLevel = eup.getMinLevel();
+												final int maxLevel = eup.getMaxLevel();
+												ItemStack stack1 = getEnchantableItemStack(registration, items, enchantment);
 
-												if (k > 0)
+												if (!stack1.isEmpty())
 												{
-													EnchantmentHelper.setEnchantments(ImmutableMap.of(enchantment, k), stack2);
-												}
+													for (int k = minLevel; k <= maxLevel; ++k)
+													{
+														ResourceLocation resourcelocation = new ResourceLocation(HMaG.MODID, "jei." + recipe.getId().getPath() + "." + i + "." + j + "." + k);
+														ItemStack stack2 = stack1.copy();
+														ItemStack stack3 = stack1.copy();
 
-												EnchantmentHelper.setEnchantments(ImmutableMap.of(enchantment, k + 1), stack3);
-												SmithingRecipe smithingRecipe = new SmithingRecipe(resourcelocation, Ingredient.of(stack2), Ingredient.of(item), stack3);
-												smithingRecipes.add(smithingRecipe);
+														if (k > 0)
+														{
+															EnchantmentHelper.setEnchantments(ImmutableMap.of(enchantment, k), stack2);
+														}
+
+														EnchantmentHelper.setEnchantments(ImmutableMap.of(enchantment, k + 1), stack3);
+														SmithingRecipe smithingRecipe = new SmithingRecipe(resourcelocation, Ingredient.of(stack2), Ingredient.of(item), stack3);
+														smithingRecipes.add(smithingRecipe);
+													}
+
+													++j;
+												}
 											}
 										}
 									}
-								}
 
-								++i;
+									++i;
+								}
 							}
 						}
 					}
