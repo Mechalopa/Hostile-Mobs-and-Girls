@@ -32,6 +32,7 @@ import hmag.client.renderer.MeltyMonsterRenderer;
 import hmag.client.renderer.ModSpriteRenderer;
 import hmag.client.renderer.MonolithRenderer;
 import hmag.client.renderer.NecroticReaperRenderer;
+import hmag.client.renderer.NemesisBulletRenderer;
 import hmag.client.renderer.OgreRenderer;
 import hmag.client.renderer.RedcapRenderer;
 import hmag.client.renderer.SavagefangRenderer;
@@ -119,6 +120,7 @@ public class ModClientEventBusSubscriber
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.POISON_SEED.get(), ModSpriteRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.THROWABLE_BOTTLE.get(), ModSpriteRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.MAGMA_BULLET.get(), MagmaBulletRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.NEMESIS_BULLET.get(), NemesisBulletRenderer::new);
 
 		RenderTypeLookup.setRenderLayer(ModBlocks.REINFORCED_GLASS.get(), RenderType.cutout());
 

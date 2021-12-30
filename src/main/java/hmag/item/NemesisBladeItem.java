@@ -4,24 +4,22 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import hmag.entity.projectile.NemesisBulletEntity;
 import hmag.util.ModUtils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.item.ArmorStandEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.UseAction;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.particles.ParticleTypes;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EntityPredicates;
 import net.minecraft.util.Hand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.SoundCategory;
@@ -31,7 +29,6 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -96,42 +93,29 @@ public class NemesisBladeItem extends ModSwordItem
 			final int i = ModUtils.getLevel(stack);
 			PlayerEntity player = (PlayerEntity)livingEntity;
 
-			if (this.getUseDuration(stack) - count < 8 || !((player.experienceLevel > 0 && i > 0) || player.isCreative()))
+			if (this.getUseDuration(stack) - count < 12 || !((player.experienceLevel > 0 && i > 0) || player.isCreative()))
 			{
 				return;
 			}
 
 			if (!world.isClientSide)
 			{
-				int j = 0;
+				NemesisBulletEntity bulletentity = new NemesisBulletEntity(world, player, 0.0D, 0.0D, 0.0D);
+				bulletentity.setPos(bulletentity.getX(), player.getY(0.5F), bulletentity.getZ());
+				bulletentity.shootFromRotation(player, player.xRot, player.yRot, 0.0F, 1.2F, 0.1F);
+				bulletentity.setDamage(2.5F + (float)i * 2.5F);
+				bulletentity.setPierceLevel((byte)MathHelper.clamp(i - 2, 0, 255));
+				bulletentity.setEffectLevel((byte)MathHelper.clamp(i, 0, 255));
 
-				for (LivingEntity livingentity : world.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(4.0D, 0.25D, 4.0D), EntityPredicates.LIVING_ENTITY_STILL_ALIVE))
+				stack.hurtAndBreak(1, player, (p) -> {
+					p.broadcastBreakEvent(player.getUsedItemHand());
+				});
+
+				world.addFreshEntity(bulletentity);
+
+				if (!player.isCreative())
 				{
-					if (livingentity != player && !player.isAlliedTo(livingentity) && (!(livingentity instanceof ArmorStandEntity) || !((ArmorStandEntity)livingentity).isMarker()) && player.distanceToSqr(livingentity) < 25.0D)
-					{
-						livingentity.knockback(1.0F * ((float)i / 6.0F) + 0.5F, (double)MathHelper.sin(player.yRot * ((float)Math.PI / 180.0F)), (double)(-MathHelper.cos(player.yRot * ((float)Math.PI / 180.0F))));
-						livingentity.hurt(DamageSource.indirectMagic(player, player), 0.0F);
-						livingentity.addEffect(new EffectInstance(Effects.WITHER, (i * 2 + 3) * 20, 1));
-						++j;
-
-						for (int k = 0; k < 12; ++k)
-						{
-							((ServerWorld)world).sendParticles(ParticleTypes.LARGE_SMOKE, livingentity.getRandomX(0.5D), livingentity.getRandomY() - 0.5D, livingentity.getRandomZ(0.5D), 1, 0.0D, 0.0D, 0.0D, 0.0D);
-						}
-					}
-				}
-
-				double d0 = (double)(-MathHelper.sin(player.yRot * ((float)Math.PI / 180.0F)));
-				double d1 = (double)MathHelper.cos(player.yRot * ((float)Math.PI / 180.0F));
-
-				if (world instanceof ServerWorld)
-				{
-					((ServerWorld)world).sendParticles(ParticleTypes.SWEEP_ATTACK, player.getX() + d0, player.getY(0.5D), player.getZ() + d1, 0, d0, 0.0D, d1, 0.0D);
-				}
-
-				if (j > 0 && !player.isCreative())
-				{
-					player.giveExperienceLevels(-Math.min(j, player.experienceLevel));
+					player.giveExperienceLevels(-1);
 				}
 			}
 
@@ -148,24 +132,12 @@ public class NemesisBladeItem extends ModSwordItem
 		{
 			PlayerEntity player = (PlayerEntity)livingEntity;
 
-			if (!((player.experienceLevel > 0 && ModUtils.getLevel(stack) > 0) || player.isCreative()) || count % 10 != 1)
+			if (this.getUseDuration(stack) - count != 12 || !((player.experienceLevel > 0 && ModUtils.getLevel(stack) > 0) || player.isCreative()))
 			{
 				return;
 			}
 
-			if (!world.isClientSide)
-			{
-				for (LivingEntity livingentity : world.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(4.0D, 0.25D, 4.0D), EntityPredicates.LIVING_ENTITY_STILL_ALIVE))
-				{
-					if (livingentity != player && !player.isAlliedTo(livingentity) && (!(livingentity instanceof ArmorStandEntity) || !((ArmorStandEntity)livingentity).isMarker()) && player.distanceToSqr(livingentity) < 25.0D)
-					{
-						for (int k = 0; k < 2; ++k)
-						{
-							((ServerWorld)world).sendParticles(ParticleTypes.LARGE_SMOKE, livingentity.getRandomX(0.5D), livingentity.getRandomY() - 0.5D, livingentity.getRandomZ(0.5D), 1, 0.0D, 0.0D, 0.0D, 0.0D);
-						}
-					}
-				}
-			}
+			world.playSound((PlayerEntity)null, player.getX(), player.getY(), player.getZ(), SoundEvents.CROSSBOW_LOADING_END, SoundCategory.PLAYERS, 1.0F, 1.0F / (random.nextFloat() * 0.5F + 1.0F) + 0.2F);
 		}
 	}
 

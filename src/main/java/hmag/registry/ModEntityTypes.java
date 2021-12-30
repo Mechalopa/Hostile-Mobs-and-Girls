@@ -44,6 +44,7 @@ import hmag.entity.ZombieGirlEntity;
 import hmag.entity.projectile.HardSnowballEntity;
 import hmag.entity.projectile.MagicBulletEntity;
 import hmag.entity.projectile.MagmaBulletEntity;
+import hmag.entity.projectile.NemesisBulletEntity;
 import hmag.entity.projectile.PoisonSeedEntity;
 import hmag.entity.projectile.ThrowableBottleEntity;
 import net.minecraft.block.Blocks;
@@ -196,6 +197,9 @@ public class ModEntityTypes
 	public static final RegistryObject<EntityType<MagmaBulletEntity>> MAGMA_BULLET = REGISTRY.register("magma_bullet", () -> EntityType.Builder
 			.<MagmaBulletEntity>of(MagmaBulletEntity::new, EntityClassification.MISC).sized(0.5F, 0.5F).setTrackingRange(4).setUpdateInterval(1).setShouldReceiveVelocityUpdates(true)
 			.build(new ResourceLocation(HMaG.MODID, "magma_bullet").toString()));
+	public static final RegistryObject<EntityType<NemesisBulletEntity>> NEMESIS_BULLET = REGISTRY.register("nemesis_bullet", () -> EntityType.Builder
+			.<NemesisBulletEntity>of(NemesisBulletEntity::new, EntityClassification.MISC).sized(0.5F, 0.5F).setTrackingRange(4).setUpdateInterval(1).setShouldReceiveVelocityUpdates(true)
+			.build(new ResourceLocation(HMaG.MODID, "nemesis_bullet").toString()));
 
 	@SubscribeEvent
 	public static void register(IEventBus eventBus)
