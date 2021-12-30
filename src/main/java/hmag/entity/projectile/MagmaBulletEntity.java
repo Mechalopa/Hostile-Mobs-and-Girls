@@ -1,19 +1,13 @@
 package hmag.entity.projectile;
 
-import javax.annotation.Nonnull;
-
 import hmag.registry.ModEntityTypes;
-import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntitySize;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.Pose;
-import net.minecraft.entity.projectile.DamagingProjectileEntity;
-import net.minecraft.fluid.FluidState;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.IPacket;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
@@ -21,20 +15,16 @@ import net.minecraft.particles.BlockParticleData;
 import net.minecraft.particles.IParticleData;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.Explosion;
-import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.ForgeEventFactory;
-import net.minecraftforge.fml.network.NetworkHooks;
 
-public class MagmaBulletEntity extends DamagingProjectileEntity
+public class MagmaBulletEntity extends ModDamagingProjectileEntity
 {
-	private static final DataParameter<Float> DAMAGE = EntityDataManager.defineId(MagmaBulletEntity.class, DataSerializers.FLOAT);
 	private static final DataParameter<Integer> LIFE_TIME = EntityDataManager.defineId(MagmaBulletEntity.class, DataSerializers.INT);
 	private int life = 25;
 
@@ -58,7 +48,6 @@ public class MagmaBulletEntity extends DamagingProjectileEntity
 	protected void defineSynchedData()
 	{
 		super.defineSynchedData();
-		this.entityData.define(DAMAGE, Float.valueOf(3.0F));
 		this.entityData.define(LIFE_TIME, 25);
 	}
 
@@ -69,24 +58,9 @@ public class MagmaBulletEntity extends DamagingProjectileEntity
 	}
 
 	@Override
-	public boolean isOnFire()
+	protected void tick2()
 	{
-		return false;
-	}
-
-	@Override
-	public float getBlockExplosionResistance(Explosion explosionIn, IBlockReader worldIn, BlockPos pos, BlockState blockStateIn, FluidState fluidState, float explosionPower)
-	{
-		return explosionPower;
-	}
-
-	@Override
-	public void tick()
-	{
-		if (!this.level.isClientSide && (this.tickCount >= 200 || this.getOwner() == null))
-		{
-			this.remove();
-		}
+		super.tick2();
 
 		if (this.life > 0)
 		{
@@ -111,8 +85,6 @@ public class MagmaBulletEntity extends DamagingProjectileEntity
 			this.yPower *= 0.97D;
 			this.zPower *= 0.97D;
 		}
-
-		super.tick();
 	}
 
 	@Override
@@ -135,7 +107,7 @@ public class MagmaBulletEntity extends DamagingProjectileEntity
 				{
 					entity.setRemainingFireTicks(i);
 				}
-				else if (entity1 instanceof LivingEntity)
+				else if (entity1 != null && entity1 instanceof LivingEntity)
 				{
 					this.doEnchantDamageEffects((LivingEntity)entity1, entity);
 				}
@@ -144,17 +116,12 @@ public class MagmaBulletEntity extends DamagingProjectileEntity
 	}
 
 	@Override
-	protected void onHit(RayTraceResult result)
+	protected void onHitServer(RayTraceResult result)
 	{
-		super.onHit(result);
-
-		if (!this.level.isClientSide)
-		{
-			boolean flag = ForgeEventFactory.getMobGriefingEvent(this.level, this.getOwner());
-			this.level.explode((Entity)null, this.getX(), this.getY(), this.getZ(), 0.75F, flag, flag ? Explosion.Mode.DESTROY : Explosion.Mode.NONE);
-			this.level.broadcastEntityEvent(this, (byte)3);
-			this.remove();
-		}
+		boolean flag = ForgeEventFactory.getMobGriefingEvent(this.level, this.getOwner());
+		this.level.explode((Entity)null, this.getX(), this.getY(), this.getZ(), 0.75F, flag, flag ? Explosion.Mode.DESTROY : Explosion.Mode.NONE);
+		this.level.broadcastEntityEvent(this, (byte)3);
+		super.onHitServer(result);
 	}
 
 	@OnlyIn(Dist.CLIENT)
@@ -178,34 +145,6 @@ public class MagmaBulletEntity extends DamagingProjectileEntity
 				}
 			}
 		}
-	}
-
-	@Override
-	public boolean canBeCollidedWith()
-	{
-		return false;
-	}
-
-	@Override
-	public boolean isPickable()
-	{
-		return false;
-	}
-
-	@Override
-	public boolean hurt(DamageSource source, float amount)
-	{
-		return false;
-	}
-
-	public void setDamage(float amount)
-	{
-		this.entityData.set(DAMAGE, amount);
-	}
-
-	public float getDamage()
-	{
-		return this.entityData.get(DAMAGE).floatValue();
 	}
 
 	public void setLifeTime(int amount)
@@ -239,7 +178,6 @@ public class MagmaBulletEntity extends DamagingProjectileEntity
 	public void addAdditionalSaveData(CompoundNBT compound)
 	{
 		super.addAdditionalSaveData(compound);
-		compound.putFloat("Damage", this.getDamage());
 		compound.putShort("Life", (short)this.getLife());
 	}
 
@@ -247,7 +185,6 @@ public class MagmaBulletEntity extends DamagingProjectileEntity
 	public void readAdditionalSaveData(CompoundNBT compound)
 	{
 		super.readAdditionalSaveData(compound);
-		this.setDamage(compound.getFloat("Damage"));
 		this.setLifeTime(compound.getShort("Life"));
 	}
 
@@ -258,21 +195,8 @@ public class MagmaBulletEntity extends DamagingProjectileEntity
 	}
 
 	@Override
-	protected boolean shouldBurn()
-	{
-		return false;
-	}
-
-	@Override
 	protected float getEyeHeight(Pose poseIn, EntitySize sizeIn)
 	{
 		return 0.15F;
-	}
-
-	@Nonnull
-	@Override
-	public IPacket<?> getAddEntityPacket()
-	{
-		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 }

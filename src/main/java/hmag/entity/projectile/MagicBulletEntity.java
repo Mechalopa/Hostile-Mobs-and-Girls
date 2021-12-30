@@ -1,18 +1,12 @@
 package hmag.entity.projectile;
 
-import javax.annotation.Nonnull;
-
 import hmag.entity.LichEntity;
 import hmag.registry.ModEntityTypes;
-import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.monster.VexEntity;
-import net.minecraft.entity.projectile.DamagingProjectileEntity;
-import net.minecraft.fluid.FluidState;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.IPacket;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
@@ -21,21 +15,15 @@ import net.minecraft.particles.ParticleTypes;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.EntityRayTraceResult;
-import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.Difficulty;
-import net.minecraft.world.Explosion;
-import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.fml.network.NetworkHooks;
 
-public class MagicBulletEntity extends DamagingProjectileEntity
+public class MagicBulletEntity extends ModDamagingProjectileEntity
 {
 	private static final DataParameter<Integer> DATA_VARIANT_ID = EntityDataManager.defineId(MagicBulletEntity.class, DataSerializers.INT);
-	private static final DataParameter<Float> DAMAGE = EntityDataManager.defineId(MagicBulletEntity.class, DataSerializers.FLOAT);
 
 	public MagicBulletEntity(EntityType<? extends MagicBulletEntity> type, World worldIn)
 	{
@@ -58,7 +46,6 @@ public class MagicBulletEntity extends DamagingProjectileEntity
 	{
 		super.defineSynchedData();
 		this.entityData.define(DATA_VARIANT_ID, 0);
-		this.entityData.define(DAMAGE, Float.valueOf(3.0F));
 	}
 
 	@Override
@@ -75,29 +62,6 @@ public class MagicBulletEntity extends DamagingProjectileEntity
 	}
 
 	@Override
-	public boolean isOnFire()
-	{
-		return false;
-	}
-
-	@Override
-	public float getBlockExplosionResistance(Explosion explosionIn, IBlockReader worldIn, BlockPos pos, BlockState blockStateIn, FluidState fluidState, float explosionPower)
-	{
-		return explosionPower;
-	}
-
-	@Override
-	public void tick()
-	{
-		if (!this.level.isClientSide && (this.tickCount >= 200 || this.getOwner() == null))
-		{
-			this.remove();
-		}
-
-		super.tick();
-	}
-
-	@Override
 	protected void onHitEntity(EntityRayTraceResult result)
 	{
 		super.onHitEntity(result);
@@ -109,7 +73,7 @@ public class MagicBulletEntity extends DamagingProjectileEntity
 			float damage = this.getDamage();
 			boolean flag;
 
-			if (entity1 instanceof LivingEntity)
+			if (entity1 != null && entity1 instanceof LivingEntity)
 			{
 				LivingEntity livingentity = (LivingEntity)entity1;
 
@@ -179,35 +143,6 @@ public class MagicBulletEntity extends DamagingProjectileEntity
 		}
 	}
 
-	@Override
-	protected void onHit(RayTraceResult result)
-	{
-		super.onHit(result);
-
-		if (!this.level.isClientSide)
-		{
-			this.remove();
-		}
-	}
-
-	@Override
-	public boolean canBeCollidedWith()
-	{
-		return false;
-	}
-
-	@Override
-	public boolean isPickable()
-	{
-		return false;
-	}
-
-	@Override
-	public boolean hurt(DamageSource source, float amount)
-	{
-		return false;
-	}
-
 	public int getVariant()
 	{
 		return this.entityData.get(DATA_VARIANT_ID);
@@ -223,22 +158,11 @@ public class MagicBulletEntity extends DamagingProjectileEntity
 		this.entityData.set(DATA_VARIANT_ID, typeIn);
 	}
 
-	public void setDamage(float amount)
-	{
-		this.entityData.set(DAMAGE, amount);
-	}
-
-	public float getDamage()
-	{
-		return this.entityData.get(DAMAGE).floatValue();
-	}
-
 	@Override
 	public void addAdditionalSaveData(CompoundNBT compound)
 	{
 		super.addAdditionalSaveData(compound);
 		compound.putInt("Variant", this.getVariant());
-		compound.putFloat("Damage", this.getDamage());
 	}
 
 	@Override
@@ -246,7 +170,6 @@ public class MagicBulletEntity extends DamagingProjectileEntity
 	{
 		super.readAdditionalSaveData(compound);
 		this.setVariant(compound.getInt("Variant"));
-		this.setDamage(compound.getFloat("Damage"));
 	}
 
 	@Override
@@ -260,18 +183,5 @@ public class MagicBulletEntity extends DamagingProjectileEntity
 		default:
 			return ParticleTypes.DRAGON_BREATH;
 		}
-	}
-
-	@Override
-	protected boolean shouldBurn()
-	{
-		return false;
-	}
-
-	@Nonnull
-	@Override
-	public IPacket<?> getAddEntityPacket()
-	{
-		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 }
