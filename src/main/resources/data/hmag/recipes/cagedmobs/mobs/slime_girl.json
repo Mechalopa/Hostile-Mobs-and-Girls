@@ -30,7 +30,7 @@
     {
       "chance": 0.025,
       "output": {
-        "item": "minecraft:exp_berry"
+        "item": "hmag:exp_berry"
       },
       "minAmount": 1,
       "maxAmount": 1
