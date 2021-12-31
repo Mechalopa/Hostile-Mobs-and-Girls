@@ -1,6 +1,7 @@
 package hmag.entity.projectile;
 
 import hmag.registry.ModEntityTypes;
+import hmag.registry.ModParticleTypes;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -64,6 +65,11 @@ public class NemesisBulletEntity extends ModDamagingProjectileEntity
 		{
 			this.remove();
 		}
+
+		if (this.level.isClientSide)
+		{
+			this.level.addParticle(ModParticleTypes.NEMESIS_FLAME.get(), this.getRandomX(0.5D), this.getY(this.random.nextDouble() * 0.5D), this.getRandomZ(0.5D), 0.0D, 0.0D, 0.0D);
+		}
 	}
 
 	@Override
@@ -114,7 +120,7 @@ public class NemesisBulletEntity extends ModDamagingProjectileEntity
 
 			if (flag && entity instanceof LivingEntity && this.getEffectLevel() > 0)
 			{
-				final int i = (this.getEffectLevel() * 2 + 5) * 20;
+				final int i = (this.getEffectLevel() * 2 + 4) * 20;
 				((LivingEntity)entity).addEffect(new EffectInstance(Effects.WEAKNESS, i, 1));
 				((LivingEntity)entity).addEffect(new EffectInstance(Effects.MOVEMENT_SLOWDOWN, i, 1));
 				((LivingEntity)entity).addEffect(new EffectInstance(Effects.DIG_SLOWDOWN, i, 1));
@@ -139,7 +145,6 @@ public class NemesisBulletEntity extends ModDamagingProjectileEntity
 	@Override
 	protected void onHitServer(RayTraceResult result)
 	{
-
 		if (result.getType() != RayTraceResult.Type.ENTITY || this.getPierceLevel() <= 0 || this.piercingIgnoreEntityIds.size() >= this.getPierceLevel() + 1)
 		{
 			this.remove();
@@ -152,9 +157,9 @@ public class NemesisBulletEntity extends ModDamagingProjectileEntity
 	{
 		if (id == 3)
 		{
-			for (int i = 0; i < 16; ++i)
+			for (int i = 0; i < 12; ++i)
 			{
-				this.level.addParticle(ParticleTypes.LARGE_SMOKE, this.getRandomX(1.5D), this.getY(this.random.nextDouble() * 1.5D) - 0.1D, this.getRandomZ(1.5D), 0.0D, 0.0D, 0.0D);
+				this.level.addParticle(ModParticleTypes.NEMESIS_FLAME.get(), this.getRandomX(1.75D), this.getY(this.random.nextDouble() * 1.75D), this.getRandomZ(1.75D), 0.0D, 0.0D, 0.0D);
 			}
 		}
 	}

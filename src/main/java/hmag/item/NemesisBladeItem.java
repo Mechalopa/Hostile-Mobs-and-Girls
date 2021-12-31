@@ -103,8 +103,8 @@ public class NemesisBladeItem extends ModSwordItem
 				NemesisBulletEntity bulletentity = new NemesisBulletEntity(world, player, 0.0D, 0.0D, 0.0D);
 				bulletentity.setPos(bulletentity.getX(), player.getY(0.5F), bulletentity.getZ());
 				bulletentity.shootFromRotation(player, player.xRot, player.yRot, 0.0F, 1.2F, 0.1F);
-				bulletentity.setDamage(2.5F + (float)i * 2.5F);
-				bulletentity.setPierceLevel((byte)MathHelper.clamp(i - 2, 0, 255));
+				bulletentity.setDamage((float)i * 3.0F);
+				bulletentity.setPierceLevel((byte)MathHelper.clamp(i - 1, 0, 255));
 				bulletentity.setEffectLevel((byte)MathHelper.clamp(i, 0, 255));
 
 				stack.hurtAndBreak(1, player, (p) -> {

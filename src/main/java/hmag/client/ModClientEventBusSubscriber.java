@@ -53,6 +53,7 @@ import hmag.registry.ModItems;
 import hmag.registry.ModParticleTypes;
 import hmag.util.ModUtils;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.ItemModelsProperties;
@@ -147,5 +148,6 @@ public class ModClientEventBusSubscriber
 	public static void registerParticleFactories(final ParticleFactoryRegisterEvent event)
 	{
 		Minecraft.getInstance().particleEngine.register(ModParticleTypes.ENCHANTMENT_RUNE.get(), EnchantmentRuneParticle.Factory::new);
+		Minecraft.getInstance().particleEngine.register(ModParticleTypes.NEMESIS_FLAME.get(), FlameParticle.Factory::new);
 	}
 }
