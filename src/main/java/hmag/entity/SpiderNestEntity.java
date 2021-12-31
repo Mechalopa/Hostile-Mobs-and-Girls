@@ -260,7 +260,7 @@ public class SpiderNestEntity extends MonsterEntity implements IModMob
 	@Override
 	protected SoundEvent getAmbientSound()
 	{
-		return ModSoundEvents.SPIDER_NEST_IDLE.get();
+		return ModSoundEvents.SPIDER_NEST_AMBIENT.get();
 	}
 
 	@Override

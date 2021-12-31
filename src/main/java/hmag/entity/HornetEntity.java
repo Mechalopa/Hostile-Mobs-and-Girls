@@ -144,7 +144,7 @@ public class HornetEntity extends AbstractFlyingMonsterEntity implements IModMob
 	@Override
 	protected SoundEvent getAmbientSound()
 	{
-		return ModSoundEvents.HORNET_IDLE.get();
+		return ModSoundEvents.HORNET_AMBIENT.get();
 	}
 
 	@Override

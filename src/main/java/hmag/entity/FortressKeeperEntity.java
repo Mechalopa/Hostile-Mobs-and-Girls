@@ -347,7 +347,7 @@ public class FortressKeeperEntity extends MonsterEntity implements IModMob, IRan
 	@Override
 	protected SoundEvent getAmbientSound()
 	{
-		return ModSoundEvents.DOLL_IDLE.get();
+		return ModSoundEvents.DOLL_AMBIENT.get();
 	}
 
 	@Override

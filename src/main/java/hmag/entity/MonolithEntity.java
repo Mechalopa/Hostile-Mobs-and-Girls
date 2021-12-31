@@ -124,15 +124,15 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 		{
 			if (this.isAlive())
 			{
-				AttackPhase phase = this.getAttackPhase();
+				MonolithEntity.AttackPhase phase = this.getAttackPhase();
 
-				if (phase == AttackPhase.BEAM_END || phase == AttackPhase.ROAR_END)
+				if (phase == MonolithEntity.AttackPhase.BEAM_END || phase == MonolithEntity.AttackPhase.ROAR_END)
 				{
 					++this.eyeCloseTimer;
 
 					if (this.eyeCloseTimer >= 10)
 					{
-						this.setAttackPhase(AttackPhase.WAIT);
+						this.setAttackPhase(MonolithEntity.AttackPhase.WAIT);
 						this.eyeCloseTimer = 0;
 					}
 				}
@@ -200,12 +200,12 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 		super.aiStep();
 	}
 
-	public AttackPhase getAttackPhase()
+	public MonolithEntity.AttackPhase getAttackPhase()
 	{
-		return AttackPhase.byId((int)this.entityData.get(ATTACK_PHASE));
+		return MonolithEntity.AttackPhase.byId((int)this.entityData.get(ATTACK_PHASE));
 	}
 
-	private void setAttackPhase(AttackPhase phase)
+	private void setAttackPhase(MonolithEntity.AttackPhase phase)
 	{
 		this.entityData.set(ATTACK_PHASE, (byte)(phase.getId() & 255));
 	}
@@ -488,8 +488,8 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 		private final int id;
 		private final boolean isBeam;
 		private final boolean isRoar;
-		private static final AttackPhase[] BY_ID = Arrays.stream(values()).sorted(Comparator.comparingInt(AttackPhase::getId)).toArray((p) -> {
-			return new AttackPhase[p];
+		private static final MonolithEntity.AttackPhase[] BY_ID = Arrays.stream(values()).sorted(Comparator.comparingInt(MonolithEntity.AttackPhase::getId)).toArray((p) -> {
+			return new MonolithEntity.AttackPhase[p];
 		});
 
 		private AttackPhase(int idIn, boolean isBeamIn, boolean isRoarIn)
@@ -519,7 +519,7 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 			return this.isRoar;
 		}
 
-		public static AttackPhase byId(int idIn)
+		public static MonolithEntity.AttackPhase byId(int idIn)
 		{
 			if (idIn < 0 || idIn >= BY_ID.length)
 			{
@@ -544,7 +544,7 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 		@Override
 		public boolean canUse()
 		{
-			if (this.parent.getTarget() != null && this.parent.getTarget().isAlive() && this.parent.getAttackPhase().isWait() && this.parent.getAttackPhase() != AttackPhase.ROAR_END)
+			if (this.parent.getTarget() != null && this.parent.getTarget().isAlive() && this.parent.getAttackPhase().isWait() && this.parent.getAttackPhase() != MonolithEntity.AttackPhase.ROAR_END)
 			{
 				return this.parent.distanceToSqr(this.parent.getTarget()) <= 3.0D * 3.0D;
 			}
@@ -571,13 +571,13 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 		public void start()
 		{
 			this.tickCounter = -5;
-			this.parent.setAttackPhase(AttackPhase.ROAR_CHARGE);
+			this.parent.setAttackPhase(MonolithEntity.AttackPhase.ROAR_CHARGE);
 		}
 
 		@Override
 		public void stop()
 		{
-			this.parent.setAttackPhase(AttackPhase.ROAR_END);
+			this.parent.setAttackPhase(MonolithEntity.AttackPhase.ROAR_END);
 		}
 
 		@Override
@@ -587,7 +587,7 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 
 			if (target == null || !this.parent.canSee(target))
 			{
-				this.parent.setAttackPhase(AttackPhase.ROAR_END);
+				this.parent.setAttackPhase(MonolithEntity.AttackPhase.ROAR_END);
 				this.parent.setTarget((LivingEntity)null);
 			}
 			else
@@ -597,7 +597,7 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 				if (this.tickCounter == 0)
 				{
 					this.parent.playSound(SoundEvents.EVOKER_CAST_SPELL, 1.0F, 1.0F);
-					this.parent.setAttackPhase(AttackPhase.ROAR_ATTACK);
+					this.parent.setAttackPhase(MonolithEntity.AttackPhase.ROAR_ATTACK);
 				}
 				else if (this.tickCounter >= 15)
 				{
@@ -636,7 +636,7 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 					Vector3d vector3d = this.parent.getDeltaMovement();
 					Vector3d vector3d1 = (new Vector3d(target.getX() - this.parent.getX(), 0.0D, target.getZ() - this.parent.getZ())).normalize().scale(0.25D);
 					this.parent.setDeltaMovement(vector3d.x / 2.0D - vector3d1.x, vector3d.y, vector3d.z / 2.0D - vector3d1.z);
-					this.parent.setAttackPhase(AttackPhase.ROAR_END);
+					this.parent.setAttackPhase(MonolithEntity.AttackPhase.ROAR_END);
 				}
 			}
 		}
@@ -677,7 +677,7 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 		public void start()
 		{
 			this.tickCounter = -20;
-			this.parent.setAttackPhase(AttackPhase.BEAM_CHARGE);
+			this.parent.setAttackPhase(MonolithEntity.AttackPhase.BEAM_CHARGE);
 		}
 
 		@Override
@@ -685,7 +685,7 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 		{
 			this.parent.setActiveAttackTarget(0);
 			this.parent.setTarget((LivingEntity)null);
-			this.parent.setAttackPhase(AttackPhase.BEAM_END);
+			this.parent.setAttackPhase(MonolithEntity.AttackPhase.BEAM_END);
 		}
 
 		@Override
@@ -695,20 +695,20 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 
 			if (target == null || !this.parent.canSee(target))
 			{
-				this.parent.setAttackPhase(AttackPhase.BEAM_END);
+				this.parent.setAttackPhase(MonolithEntity.AttackPhase.BEAM_END);
 				this.parent.setTarget((LivingEntity)null);
 			}
 			else
 			{
 				++this.tickCounter;
 
-				if (this.tickCounter >= -5 && this.tickCounter < 0 && this.parent.getAttackPhase() != AttackPhase.BEAM_CHARGE2)
+				if (this.tickCounter >= -5 && this.tickCounter < 0 && this.parent.getAttackPhase() != MonolithEntity.AttackPhase.BEAM_CHARGE2)
 				{
-					this.parent.setAttackPhase(AttackPhase.BEAM_CHARGE2);
+					this.parent.setAttackPhase(MonolithEntity.AttackPhase.BEAM_CHARGE2);
 				}
 				else if (this.tickCounter == 0)
 				{
-					this.parent.setAttackPhase(AttackPhase.BEAM_ATTACK);
+					this.parent.setAttackPhase(MonolithEntity.AttackPhase.BEAM_ATTACK);
 					this.parent.playSound(SoundEvents.EVOKER_CAST_SPELL, 1.0F, 1.0F);
 					this.parent.setActiveAttackTarget(target.getId());
 
@@ -725,7 +725,7 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 						this.parent.attackEntityWithBeamAttack(this.parent.getActiveAttackTarget(), 1.0F);
 					}
 
-					this.parent.setAttackPhase(AttackPhase.BEAM_END);
+					this.parent.setAttackPhase(MonolithEntity.AttackPhase.BEAM_END);
 					this.parent.setTarget((LivingEntity)null);
 				}
 			}

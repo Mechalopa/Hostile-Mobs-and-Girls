@@ -8,7 +8,6 @@ import hmag.HMaG;
 import hmag.client.model.DyssomniaModel;
 import hmag.client.renderer.layers.DyssomniaEyesLayer;
 import hmag.entity.DyssomniaEntity;
-import hmag.entity.DyssomniaEntity.AttackPhase;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;
@@ -46,7 +45,7 @@ public class DyssomniaRenderer extends MobRenderer<DyssomniaEntity, DyssomniaMod
 	@Override
 	public Vector3d getRenderOffset(DyssomniaEntity entityIn, float partialTicks)
 	{
-		if (entityIn.getAttackingTime() >= 0 && entityIn.getAttackPhase() == AttackPhase.SUMMON)
+		if (entityIn.getAttackingTime() >= 0 && entityIn.getAttackPhase() == DyssomniaEntity.AttackPhase.SUMMON)
 		{
 			return new Vector3d(this.rand.nextGaussian() * 0.03D, this.rand.nextGaussian() * 0.03D, this.rand.nextGaussian() * 0.03D);
 		}

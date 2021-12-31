@@ -206,7 +206,7 @@ public class GhostEntity extends AbstractFlyingMonsterEntity implements IModMob
 	@Override
 	protected SoundEvent getAmbientSound()
 	{
-		return ModSoundEvents.GHOST_IDLE.get();
+		return ModSoundEvents.GHOST_AMBIENT.get();
 	}
 
 	@Override

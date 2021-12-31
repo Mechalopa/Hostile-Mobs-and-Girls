@@ -1,5 +1,7 @@
 package hmag.entity;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.UUID;
 
 import javax.annotation.Nonnull;
@@ -115,7 +117,7 @@ public class KashaEntity extends MonsterEntity implements IModMob
 
 			if (this.tickCount % 2 == 0)
 			{
-				this.level.addParticle(this.getVariant() == 1 ? ParticleTypes.SOUL_FIRE_FLAME : ParticleTypes.FLAME, this.getRandomX(0.75D), this.getRandomY() - 0.1D, this.getRandomZ(0.75D), 0.0D, 0.0D, 0.0D);
+				this.level.addParticle(this.getVariant() == KashaEntity.Variant.SOUL ? ParticleTypes.SOUL_FIRE_FLAME : ParticleTypes.FLAME, this.getRandomX(0.75D), this.getRandomY() - 0.1D, this.getRandomZ(0.75D), 0.0D, 0.0D, 0.0D);
 			}
 		}
 
@@ -174,53 +176,48 @@ public class KashaEntity extends MonsterEntity implements IModMob
 
 		if (this.level.getBlockState(this.blockPosition().below()).is(BlockTags.SOUL_FIRE_BASE_BLOCKS))
 		{
-			this.setVariant(1);
+			this.setVariant(KashaEntity.Variant.SOUL);
 		}
 		else
 		{
-			this.setVariant(0);
+			this.setVariant(KashaEntity.Variant.NORMAL);
 		}
 
 		return spawnDataIn;
 	}
 
-	public int getVariant()
+	public KashaEntity.Variant getVariant()
 	{
-		return this.entityData.get(DATA_VARIANT_ID);
+		return KashaEntity.Variant.byId(this.entityData.get(DATA_VARIANT_ID));
 	}
 
-	private void setVariant(int typeIn)
+	private void setVariant(KashaEntity.Variant variant)
 	{
-		if (typeIn < 0 || typeIn >= 2)
-		{
-			typeIn = 0;
-		}
-
 		if (!this.level.isClientSide)
 		{
 			this.getAttribute(Attributes.ATTACK_DAMAGE).removeModifier(ATTACK_DAMAGE_MODIFIER);
 
-			if (typeIn == 1)
+			if (variant == KashaEntity.Variant.SOUL)
 			{
 				this.getAttribute(Attributes.ATTACK_DAMAGE).addPermanentModifier(ATTACK_DAMAGE_MODIFIER);
 			}
 		}
 
-		this.entityData.set(DATA_VARIANT_ID, typeIn);
+		this.entityData.set(DATA_VARIANT_ID, variant.getId());
 	}
 
 	@Override
 	public void readAdditionalSaveData(CompoundNBT compound)
 	{
 		super.readAdditionalSaveData(compound);
-		this.setVariant(compound.getInt("Variant"));
+		this.setVariant(KashaEntity.Variant.byId(compound.getInt("Variant")));
 	}
 
 	@Override
 	public void addAdditionalSaveData(CompoundNBT compound)
 	{
 		super.addAdditionalSaveData(compound);
-		compound.putInt("Variant", this.getVariant());
+		compound.putInt("Variant", this.getVariant().getId());
 	}
 
 	@Override
@@ -244,7 +241,7 @@ public class KashaEntity extends MonsterEntity implements IModMob
 	@Override
 	protected SoundEvent getAmbientSound()
 	{
-		return ModSoundEvents.KASHA_IDLE.get();
+		return ModSoundEvents.KASHA_AMBIENT.get();
 	}
 
 	@Override
@@ -264,5 +261,36 @@ public class KashaEntity extends MonsterEntity implements IModMob
 	public IPacket<?> getAddEntityPacket()
 	{
 		return NetworkHooks.getEntitySpawningPacket(this);
+	}
+
+	public static enum Variant
+	{
+		NORMAL(0),
+		SOUL(1);
+
+		private final int id;
+		private static final KashaEntity.Variant[] BY_ID = Arrays.stream(values()).sorted(Comparator.comparingInt(KashaEntity.Variant::getId)).toArray((p) -> {
+			return new KashaEntity.Variant[p];
+		});
+
+		private Variant(int idIn)
+		{
+			this.id = idIn;
+		}
+
+		public int getId()
+		{
+			return this.id;
+		}
+
+		public static KashaEntity.Variant byId(int idIn)
+		{
+			if (idIn < 0 || idIn >= BY_ID.length)
+			{
+				idIn = 0;
+			}
+
+			return BY_ID[idIn];
+		}
 	}
 }

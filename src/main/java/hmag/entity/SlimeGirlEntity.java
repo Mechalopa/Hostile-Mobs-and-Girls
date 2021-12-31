@@ -251,7 +251,7 @@ public class SlimeGirlEntity extends MonsterEntity implements IModMob
 	{
 		spawnDataIn = super.finalizeSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
 
-		this.setVariant(this.getRandom().nextInt(ColorVariant.values().length));
+		this.setVariant(this.getRandom().nextInt(SlimeGirlEntity.ColorVariant.values().length));
 
 		return spawnDataIn;
 	}
@@ -277,7 +277,7 @@ public class SlimeGirlEntity extends MonsterEntity implements IModMob
 	@OnlyIn(Dist.CLIENT)
 	public float[] getColor()
 	{
-		return ColorVariant.byId(this.getVariant()).getColors();
+		return SlimeGirlEntity.ColorVariant.byId(this.getVariant()).getColors();
 	}
 
 	public int getVariant()
@@ -287,9 +287,9 @@ public class SlimeGirlEntity extends MonsterEntity implements IModMob
 
 	private void setVariant(int typeIn)
 	{
-		if (typeIn < 0 || typeIn >= ColorVariant.values().length)
+		if (typeIn < 0 || typeIn >= SlimeGirlEntity.ColorVariant.values().length)
 		{
-			typeIn = this.getRandom().nextInt(ColorVariant.values().length);
+			typeIn = this.getRandom().nextInt(SlimeGirlEntity.ColorVariant.values().length);
 		}
 
 		this.entityData.set(DATA_VARIANT_ID, typeIn);
@@ -379,8 +379,8 @@ public class SlimeGirlEntity extends MonsterEntity implements IModMob
 
 		private final int id;
 		private final float[] colors;
-		private static final ColorVariant[] BY_ID = Arrays.stream(values()).sorted(Comparator.comparingInt(ColorVariant::getId)).toArray((p) -> {
-			return new ColorVariant[p];
+		private static final SlimeGirlEntity.ColorVariant[] BY_ID = Arrays.stream(values()).sorted(Comparator.comparingInt(SlimeGirlEntity.ColorVariant::getId)).toArray((p) -> {
+			return new SlimeGirlEntity.ColorVariant[p];
 		});
 
 		private ColorVariant(int idIn, int colorIn)
@@ -402,7 +402,7 @@ public class SlimeGirlEntity extends MonsterEntity implements IModMob
 			return this.colors;
 		}
 
-		public static ColorVariant byId(int idIn)
+		public static SlimeGirlEntity.ColorVariant byId(int idIn)
 		{
 			if (idIn < 0 || idIn >= BY_ID.length)
 			{

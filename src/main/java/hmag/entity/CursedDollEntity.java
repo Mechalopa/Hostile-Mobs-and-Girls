@@ -187,7 +187,7 @@ public class CursedDollEntity extends MonsterEntity implements IModMob
 	@Override
 	protected SoundEvent getAmbientSound()
 	{
-		return ModSoundEvents.DOLL_IDLE.get();
+		return ModSoundEvents.DOLL_AMBIENT.get();
 	}
 
 	@Override

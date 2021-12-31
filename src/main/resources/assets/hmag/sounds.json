@@ -1,23 +1,22 @@
 {
-  "entity.girls.idle": {
-    "subtitle": "subtitles.hmag.entity.girls.idle",
+  "entity.girls.ambient": {
     "sounds": [
       {
-        "name": "hmag:entity/girls/idle1",
+        "name": "hmag:entity/girls/ambient1",
         "volume": 0.8
       },
       {
-        "name": "hmag:entity/girls/idle2",
+        "name": "hmag:entity/girls/ambient2",
         "volume": 0.8
       },
       {
-        "name": "hmag:entity/girls/idle3",
+        "name": "hmag:entity/girls/ambient3",
         "volume": 0.8
       }
-    ]
+    ],
+    "subtitle": "subtitles.hmag.entity.girls.ambient"
   },
   "entity.girls.hurt": {
-    "subtitle": "subtitles.hmag.entity.girls.hurt",
     "sounds": [
       {
         "name": "hmag:entity/girls/hurt1",
@@ -31,32 +30,32 @@
         "name": "hmag:entity/girls/hurt3",
         "volume": 0.9
       }
-    ]
+    ],
+    "subtitle": "subtitles.hmag.entity.girls.hurt"
   },
   "entity.girls.death": {
-    "subtitle": "subtitles.hmag.entity.girls.death",
     "sounds": [
       {
         "name": "hmag:entity/girls/death",
         "volume": 0.9
       }
-    ]
+    ],
+    "subtitle": "subtitles.hmag.entity.girls.death"
   },
-  "entity.ghost.idle": {
-    "subtitle": "subtitles.hmag.entity.ghost.idle",
+  "entity.ghost.ambient": {
     "sounds": [
       {
-        "name": "hmag:entity/ghost/idle1",
+        "name": "hmag:entity/ghost/ambient1",
         "volume": 0.8
       },
       {
-        "name": "hmag:entity/ghost/idle2",
+        "name": "hmag:entity/ghost/ambient2",
         "volume": 0.8
       }
-    ]
+    ],
+    "subtitle": "subtitles.hmag.entity.ghost.ambient"
   },
   "entity.ghost.hurt": {
-    "subtitle": "subtitles.hmag.entity.ghost.hurt",
     "sounds": [
       {
         "name": "hmag:entity/ghost/hurt1",
@@ -66,36 +65,36 @@
         "name": "hmag:entity/ghost/hurt2",
         "volume": 0.95
       }
-    ]
+    ],
+    "subtitle": "subtitles.hmag.entity.ghost.hurt"
   },
   "entity.ghost.death": {
-    "subtitle": "subtitles.hmag.entity.ghost.death",
     "sounds": [
       {
         "name": "hmag:entity/ghost/death",
         "volume": 0.9
       }
-    ]
+    ],
+    "subtitle": "subtitles.hmag.entity.ghost.death"
   },
-  "entity.ogre.idle": {
-    "subtitle": "subtitles.hmag.entity.ogre.idle",
+  "entity.ogre.ambient": {
     "sounds": [
       {
-        "name": "hmag:entity/ogre/idle1",
+        "name": "hmag:entity/ogre/ambient1",
         "volume": 1.5
       },
       {
-        "name": "hmag:entity/ogre/idle2",
+        "name": "hmag:entity/ogre/ambient2",
         "volume": 1.5
       },
       {
-        "name": "hmag:entity/ogre/idle3",
+        "name": "hmag:entity/ogre/ambient3",
         "volume": 1.5
       }
-    ]
+    ],
+    "subtitle": "subtitles.hmag.entity.ogre.ambient"
   },
   "entity.ogre.hurt": {
-    "subtitle": "subtitles.hmag.entity.ogre.hurt",
     "sounds": [
       {
         "name": "hmag:entity/ogre/hurt1",
@@ -105,37 +104,38 @@
         "name": "hmag:entity/ogre/hurt2",
         "volume": 1.3
       }
-    ]
+    ],
+    "subtitle": "subtitles.hmag.entity.ogre.hurt"
   },
   "entity.ogre.death": {
-    "subtitle": "subtitles.hmag.entity.ogre.death",
     "sounds": [
       {
         "name": "hmag:entity/ogre/death",
         "volume": 1.5
       }
-    ]
+    ],
+    "subtitle": "subtitles.hmag.entity.ogre.death"
   },
-  "entity.doll.idle": {
-    "subtitle": "subtitles.hmag.entity.doll.idle",
+  "entity.doll.ambient": {
     "sounds": [
-      "hmag:entity/doll/idle"
-    ]
+      "hmag:entity/doll/ambient"
+    ],
+    "subtitle": "subtitles.hmag.entity.doll.ambient"
   },
   "entity.doll.hurt": {
-    "subtitle": "subtitles.hmag.entity.doll.hurt",
     "sounds": [
       "hmag:entity/doll/hurt1",
       "hmag:entity/doll/hurt2"
-    ]
+    ],
+    "subtitle": "subtitles.hmag.entity.doll.hurt"
   },
   "entity.doll.death": {
-    "subtitle": "subtitles.hmag.entity.doll.death",
     "sounds": [
       "hmag:entity/doll/death"
-    ]
+    ],
+    "subtitle": "subtitles.hmag.entity.doll.death"
   },
-  "entity.spider_nest.idle": {
+  "entity.spider_nest.ambient": {
     "sounds": [
       {
         "name": "minecraft:mob/spider/say1",
@@ -154,7 +154,7 @@
         "pitch": 0.55
       }
     ],
-    "subtitle": "subtitles.hmag.entity.spider_nest.idle"
+    "subtitle": "subtitles.hmag.entity.spider_nest.ambient"
   },
   "entity.spider_nest.hurt": {
     "sounds": [
@@ -187,12 +187,12 @@
     "subtitle": "subtitles.hmag.entity.spider_nest.death"
   },
   "entity.spider_nest.summon": {
-    "subtitle": "subtitles.hmag.entity.spider_nest.summon",
     "sounds": [
       "hmag:entity/summon"
-    ]
+    ],
+    "subtitle": "subtitles.hmag.entity.spider_nest.summon"
   },
-  "entity.hornet.idle": {
+  "entity.hornet.ambient": {
     "sounds": [
       {
         "name": "block/beehive/work1",
@@ -215,9 +215,9 @@
         "pitch": 1.25
       }
     ],
-    "subtitle": "subtitles.hmag.entity.hornet.idle"
+    "subtitle": "subtitles.hmag.entity.hornet.ambient"
   },
-  "entity.catoblepas.idle": {
+  "entity.catoblepas.ambient": {
     "sounds": [
       {
         "name": "minecraft:mob/cow/say1",
@@ -236,7 +236,7 @@
         "pitch": 0.7
       }
     ],
-    "subtitle": "subtitles.hmag.entity.catoblepas.idle"
+    "subtitle": "subtitles.hmag.entity.catoblepas.ambient"
   },
   "entity.catoblepas.death": {
     "sounds": [
@@ -272,7 +272,7 @@
     ],
     "subtitle": "subtitles.hmag.entity.catoblepas.hurt"
   },
-  "entity.kasha.idle": {
+  "entity.kasha.ambient": {
     "sounds": [
       {
         "name": "minecraft:mob/cat/ocelot/idle1",
@@ -295,7 +295,7 @@
         "pitch": 0.75
       }
     ],
-    "subtitle": "subtitles.hmag.entity.kasha.idle"
+    "subtitle": "subtitles.hmag.entity.kasha.ambient"
   },
   "entity.kasha.hurt": {
     "sounds": [
@@ -337,7 +337,7 @@
     ],
     "subtitle": "subtitles.hmag.entity.kasha.death"
   },
-  "entity.dyssomnia.idle": {
+  "entity.dyssomnia.ambient": {
     "sounds": [
       {
         "name": "minecraft:mob/phantom/idle1",
@@ -405,12 +405,12 @@
     "subtitle": "subtitles.hmag.entity.dyssomnia.hurt"
   },
   "entity.dyssomnia.summon": {
-    "subtitle": "subtitles.hmag.entity.dyssomnia.summon",
     "sounds": [
       "hmag:entity/summon"
-    ]
+    ],
+    "subtitle": "subtitles.hmag.entity.dyssomnia.summon"
   },
-  "entity.stoneular.idle": {
+  "entity.stoneular.ambient": {
     "sounds": [
       {
         "name": "minecraft:mob/strider/idle1",
@@ -437,7 +437,7 @@
         "pitch": 0.55
       }
     ],
-    "subtitle": "subtitles.hmag.entity.stoneular.idle"
+    "subtitle": "subtitles.hmag.entity.stoneular.ambient"
   },
   "entity.stoneular.hurt": {
     "sounds": [

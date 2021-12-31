@@ -73,7 +73,7 @@ public class StoneularEntity extends MonsterEntity implements IModMob
 		this.xpReward = 12;
 		this.maxUpStep = 1.0F;
 		this.moveControl = new StoneularEntity.MoveHelperController(this);
-		this.setActionPhase(ActionPhase.WALK);
+		this.setActionPhase(StoneularEntity.ActionPhase.WALK);
 	}
 
 	@Override
@@ -199,7 +199,7 @@ public class StoneularEntity extends MonsterEntity implements IModMob
 						{
 							if (!this.isInWaterOrBubble() && !this.isInLava() && this.findTargetPos())
 							{
-								this.setActionPhase(ActionPhase.RISE);
+								this.setActionPhase(StoneularEntity.ActionPhase.RISE);
 								this.toRiseTick = 0;
 							}
 							else
@@ -223,7 +223,7 @@ public class StoneularEntity extends MonsterEntity implements IModMob
 								{
 									if (this.findTargetPos())
 									{
-										this.setActionPhase(ActionPhase.RISE);
+										this.setActionPhase(StoneularEntity.ActionPhase.RISE);
 										this.toRiseTick = 0;
 									}
 								}
@@ -304,7 +304,7 @@ public class StoneularEntity extends MonsterEntity implements IModMob
 						if (isRedstoneConductorBlock(this.level, pos1))
 						{
 							this.setTargetPos(pos1);
-							this.setActionPhase(ActionPhase.AWAIT);
+							this.setActionPhase(StoneularEntity.ActionPhase.AWAIT);
 							this.riseTick = 0;
 						}
 						else if (!this.level.isEmptyBlock(pos1))
@@ -333,7 +333,7 @@ public class StoneularEntity extends MonsterEntity implements IModMob
 				if (flag)
 				{
 					this.riseTick = 0;
-					this.setActionPhase(ActionPhase.WALK);
+					this.setActionPhase(StoneularEntity.ActionPhase.WALK);
 					this.playFallSoundAndParticles();
 
 					if (this.getTarget() == null)
@@ -421,7 +421,7 @@ public class StoneularEntity extends MonsterEntity implements IModMob
 	{
 		spawnDataIn = super.finalizeSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
 
-		this.setActionPhase(ActionPhase.WALK);
+		this.setActionPhase(StoneularEntity.ActionPhase.WALK);
 		this.toRiseTick = 200;
 
 		return spawnDataIn;
@@ -483,7 +483,7 @@ public class StoneularEntity extends MonsterEntity implements IModMob
 				{
 					if (!this.hasLevitation())
 					{
-						this.setActionPhase(ActionPhase.WALK);
+						this.setActionPhase(StoneularEntity.ActionPhase.WALK);
 						this.playFallSoundAndParticles();
 					}
 				}
@@ -502,7 +502,7 @@ public class StoneularEntity extends MonsterEntity implements IModMob
 	{
 		super.readAdditionalSaveData(compound);
 
-		this.setActionPhase(ActionPhase.byId(compound.getInt("ActionPhase")));
+		this.setActionPhase(StoneularEntity.ActionPhase.byId(compound.getInt("ActionPhase")));
 
 		if (compound.contains("TargetPos"))
 		{
@@ -523,18 +523,18 @@ public class StoneularEntity extends MonsterEntity implements IModMob
 		}
 	}
 
-	public ActionPhase getActionPhase()
+	public StoneularEntity.ActionPhase getActionPhase()
 	{
-		return ActionPhase.byId((int)this.entityData.get(ACTION_PHASE));
+		return StoneularEntity.ActionPhase.byId((int)this.entityData.get(ACTION_PHASE));
 	}
 
-	private void setActionPhase(ActionPhase phase)
+	private void setActionPhase(StoneularEntity.ActionPhase phase)
 	{
 		if (!this.level.isClientSide)
 		{
 			this.getAttribute(Attributes.ARMOR).removeModifier(ARMOR_MODIFIER);
 
-			if (phase != ActionPhase.WALK)
+			if (phase != StoneularEntity.ActionPhase.WALK)
 			{
 				this.getAttribute(Attributes.ARMOR).addPermanentModifier(ARMOR_MODIFIER);
 			}
@@ -566,12 +566,12 @@ public class StoneularEntity extends MonsterEntity implements IModMob
 
 	public boolean isRising()
 	{
-		return this.getActionPhase() == ActionPhase.RISE;
+		return this.getActionPhase() == StoneularEntity.ActionPhase.RISE;
 	}
 
 	public boolean isAwaiting()
 	{
-		return this.getActionPhase() == ActionPhase.AWAIT;
+		return this.getActionPhase() == StoneularEntity.ActionPhase.AWAIT;
 	}
 
 	@OnlyIn(Dist.CLIENT)
@@ -633,8 +633,8 @@ public class StoneularEntity extends MonsterEntity implements IModMob
 		RISE(2);
 
 		private final int id;
-		private static final ActionPhase[] BY_ID = Arrays.stream(values()).sorted(Comparator.comparingInt(ActionPhase::getId)).toArray((p) -> {
-			return new ActionPhase[p];
+		private static final StoneularEntity.ActionPhase[] BY_ID = Arrays.stream(values()).sorted(Comparator.comparingInt(StoneularEntity.ActionPhase::getId)).toArray((p) -> {
+			return new StoneularEntity.ActionPhase[p];
 		});
 
 		private ActionPhase(int idIn)
@@ -647,7 +647,7 @@ public class StoneularEntity extends MonsterEntity implements IModMob
 			return this.id;
 		}
 
-		public static ActionPhase byId(int idIn)
+		public static StoneularEntity.ActionPhase byId(int idIn)
 		{
 			if (idIn < 0 || idIn >= BY_ID.length)
 			{

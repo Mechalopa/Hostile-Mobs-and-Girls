@@ -165,7 +165,7 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 
 			if (this.getAttackingTime() >= 0)
 			{
-				if (this.getAttackPhase() == AttackPhase.SHOT)
+				if (this.getAttackPhase() == DyssomniaEntity.AttackPhase.SHOT)
 				{
 					double d0 = 1.75D;
 					double d1 = 1.5D;
@@ -273,12 +273,12 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 		return ModSpawnRules.checkMobSpawnInLightRules(type, worldIn, reason, pos, randomIn) && (reason == SpawnReason.SPAWNER || (worldIn.canSeeSky(pos) && randomIn.nextFloat() < worldIn.getMoonBrightness()));
 	}
 
-	public AttackPhase getAttackPhase()
+	public DyssomniaEntity.AttackPhase getAttackPhase()
 	{
-		return AttackPhase.byId((int)this.entityData.get(ATTACK_PHASE));
+		return DyssomniaEntity.AttackPhase.byId((int)this.entityData.get(ATTACK_PHASE));
 	}
 
-	private void setAttackPhase(AttackPhase phase)
+	private void setAttackPhase(DyssomniaEntity.AttackPhase phase)
 	{
 		this.entityData.set(ATTACK_PHASE, (byte)(phase.getId() & 255));
 	}
@@ -362,7 +362,7 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 	@Override
 	protected SoundEvent getAmbientSound()
 	{
-		return ModSoundEvents.DYSSOMNIA_IDLE.get();
+		return ModSoundEvents.DYSSOMNIA_AMBIENT.get();
 	}
 
 	@Override
@@ -397,8 +397,8 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 		SHOT(2);
 
 		private final int id;
-		private static final AttackPhase[] BY_ID = Arrays.stream(values()).sorted(Comparator.comparingInt(AttackPhase::getId)).toArray((p) -> {
-			return new AttackPhase[p];
+		private static final DyssomniaEntity.AttackPhase[] BY_ID = Arrays.stream(values()).sorted(Comparator.comparingInt(DyssomniaEntity.AttackPhase::getId)).toArray((p) -> {
+			return new DyssomniaEntity.AttackPhase[p];
 		});
 
 		private AttackPhase(int idIn)
@@ -411,7 +411,7 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 			return this.id;
 		}
 
-		public static AttackPhase byId(int idIn)
+		public static DyssomniaEntity.AttackPhase byId(int idIn)
 		{
 			if (idIn < 0 || idIn >= BY_ID.length)
 			{
@@ -436,7 +436,7 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 		@Override
 		public boolean canUse()
 		{
-			if (!this.parent.isRetreating() && this.parent.getTarget() != null && this.parent.getTarget() instanceof PlayerEntity && this.parent.getAttackPhase() == AttackPhase.WAIT && (this.parent.getRandom().nextInt(6) == 0 || this.parent.isOnFire()) && this.parent.distanceToSqr(this.parent.getTarget()) < 16.0D * 16.0D)
+			if (!this.parent.isRetreating() && this.parent.getTarget() != null && this.parent.getTarget() instanceof PlayerEntity && this.parent.getAttackPhase() == DyssomniaEntity.AttackPhase.WAIT && (this.parent.getRandom().nextInt(6) == 0 || this.parent.isOnFire()) && this.parent.distanceToSqr(this.parent.getTarget()) < 16.0D * 16.0D)
 			{
 				return this.parent.level.getNearbyEntities(PhantomEntity.class, this.phantomCountTargeting, this.parent, this.parent.getBoundingBox().inflate(32.0D)).size() < 1;
 			}
@@ -449,21 +449,21 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 		@Override
 		public boolean canContinueToUse()
 		{
-			return this.parent.getTarget() != null && this.parent.getTarget() instanceof PlayerEntity && this.parent.getAttackPhase() == AttackPhase.SUMMON;
+			return this.parent.getTarget() != null && this.parent.getTarget() instanceof PlayerEntity && this.parent.getAttackPhase() == DyssomniaEntity.AttackPhase.SUMMON;
 		}
 
 		@Override
 		public void start()
 		{
 			this.attackTimer = -30;
-			this.parent.setAttackPhase(AttackPhase.SUMMON);
+			this.parent.setAttackPhase(DyssomniaEntity.AttackPhase.SUMMON);
 		}
 
 		@Override
 		public void stop()
 		{
 			this.parent.setAttackingTime(-1);
-			this.parent.setAttackPhase(AttackPhase.WAIT);
+			this.parent.setAttackPhase(DyssomniaEntity.AttackPhase.WAIT);
 		}
 
 		@Override
@@ -480,7 +480,7 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 				if (this.attackTimer == 20)
 				{
 					this.parent.summonPhantom((ServerWorld)world, this.parent, target, this.parent.getRandom(), 1 + this.parent.getRandom().nextInt(this.parent.level.getDifficulty() == Difficulty.HARD ? 3 : 2));
-					this.parent.setAttackPhase(AttackPhase.WAIT);
+					this.parent.setAttackPhase(DyssomniaEntity.AttackPhase.WAIT);
 				}
 			}
 			else
@@ -489,7 +489,7 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 
 				if (this.attackTimer <= -40)
 				{
-					this.parent.setAttackPhase(AttackPhase.WAIT);
+					this.parent.setAttackPhase(DyssomniaEntity.AttackPhase.WAIT);
 				}
 			}
 
@@ -510,27 +510,27 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 		@Override
 		public boolean canUse()
 		{
-			return this.parent.getTarget() != null && this.parent.getAttackPhase() == AttackPhase.WAIT && this.parent.distanceToSqr(this.parent.getTarget()) < 24.0D * 24.0D;
+			return this.parent.getTarget() != null && this.parent.getAttackPhase() == DyssomniaEntity.AttackPhase.WAIT && this.parent.distanceToSqr(this.parent.getTarget()) < 24.0D * 24.0D;
 		}
 
 		@Override
 		public boolean canContinueToUse()
 		{
-			return this.parent.getTarget() != null && this.parent.getAttackPhase() == AttackPhase.SHOT;
+			return this.parent.getTarget() != null && this.parent.getAttackPhase() == DyssomniaEntity.AttackPhase.SHOT;
 		}
 
 		@Override
 		public void start()
 		{
 			this.attackTimer = -50;
-			this.parent.setAttackPhase(AttackPhase.SHOT);
+			this.parent.setAttackPhase(DyssomniaEntity.AttackPhase.SHOT);
 		}
 
 		@Override
 		public void stop()
 		{
 			this.parent.setAttackingTime(-1);
-			this.parent.setAttackPhase(AttackPhase.WAIT);
+			this.parent.setAttackPhase(DyssomniaEntity.AttackPhase.WAIT);
 		}
 
 		@Override
@@ -564,7 +564,7 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 					mugicbulletentity.setDamage(5.0F);
 					mugicbulletentity.setVariant(1);
 					world.addFreshEntity(mugicbulletentity);
-					this.parent.setAttackPhase(AttackPhase.WAIT);
+					this.parent.setAttackPhase(DyssomniaEntity.AttackPhase.WAIT);
 				}
 			}
 			else
@@ -573,7 +573,7 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 
 				if (this.attackTimer <= -60)
 				{
-					this.parent.setAttackPhase(AttackPhase.WAIT);
+					this.parent.setAttackPhase(DyssomniaEntity.AttackPhase.WAIT);
 				}
 			}
 
@@ -600,7 +600,7 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 		@Override
 		public void tick()
 		{
-			if (this.parent.getTarget() == null || (this.parent.isActuallyRetreating() && this.parent.getAttackPhase() == AttackPhase.WAIT))
+			if (this.parent.getTarget() == null || (this.parent.isActuallyRetreating() && this.parent.getAttackPhase() == DyssomniaEntity.AttackPhase.WAIT))
 			{
 				Vector3d vector3d = this.parent.getDeltaMovement().normalize();
 				double d0 = vector3d.x;

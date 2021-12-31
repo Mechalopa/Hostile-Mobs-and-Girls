@@ -127,7 +127,7 @@ public class CatoblepasEntity extends MonsterEntity implements IModMob
 	@Override
 	protected SoundEvent getAmbientSound()
 	{
-		return ModSoundEvents.CATOBLEPAS_IDLE.get();
+		return ModSoundEvents.CATOBLEPAS_AMBIENT.get();
 	}
 
 	@Override

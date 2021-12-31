@@ -239,7 +239,7 @@ public class OgreEntity extends MonsterEntity implements IModMob
 	@Override
 	protected SoundEvent getAmbientSound()
 	{
-		return ModSoundEvents.OGRE_IDLE.get();
+		return ModSoundEvents.OGRE_AMBIENT.get();
 	}
 
 	@Override

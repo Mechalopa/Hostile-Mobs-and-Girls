@@ -22,7 +22,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class NemesisBulletRenderer extends EntityRenderer<NemesisBulletEntity>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/nemesis_bullet.png");
+	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/projectile/nemesis_bullet.png");
 
 	public NemesisBulletRenderer(EntityRendererManager renderManagerIn)
 	{

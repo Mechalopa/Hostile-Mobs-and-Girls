@@ -191,7 +191,7 @@ public class ArurauneEntity extends MonsterEntity implements IModMob, IRangedAtt
 	@Override
 	protected SoundEvent getAmbientSound()
 	{
-		return ModSoundEvents.GIRL_MOB_IDLE.get();
+		return ModSoundEvents.GIRL_MOB_AMBIENT.get();
 	}
 
 	@Override

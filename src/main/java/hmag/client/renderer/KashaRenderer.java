@@ -13,8 +13,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class KashaRenderer extends MobRenderer<KashaEntity, KashaModel<KashaEntity>>
 {
-	private static final ResourceLocation TEX0 = new ResourceLocation(HMaG.MODID, "textures/entity/kasha0.png");
-	private static final ResourceLocation TEX1 = new ResourceLocation(HMaG.MODID, "textures/entity/kasha1.png");
+	private static final ResourceLocation TEX0 = new ResourceLocation(HMaG.MODID, "textures/entity/kasha_0.png");
+	private static final ResourceLocation TEX1 = new ResourceLocation(HMaG.MODID, "textures/entity/kasha_1.png");
 
 	public KashaRenderer(EntityRendererManager renderManagerIn)
 	{
@@ -32,7 +32,7 @@ public class KashaRenderer extends MobRenderer<KashaEntity, KashaModel<KashaEnti
 	{
 		switch (entityIn.getVariant())
 		{
-		case 1:
+		case SOUL:
 			return TEX1;
 		default:
 			return TEX0;

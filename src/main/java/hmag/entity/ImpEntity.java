@@ -158,7 +158,7 @@ public class ImpEntity extends MonsterEntity implements IModMob
 	@Override
 	protected SoundEvent getAmbientSound()
 	{
-		return ModSoundEvents.GIRL_MOB_IDLE.get();
+		return ModSoundEvents.GIRL_MOB_AMBIENT.get();
 	}
 
 	@Override

@@ -2,7 +2,6 @@ package hmag.entity;
 
 import javax.annotation.Nonnull;
 
-import hmag.entity.SlimeGirlEntity.ColorVariant;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
@@ -59,7 +58,7 @@ public class MagicalSlimeEntity extends SlimeEntity implements IModMob
 	protected void setSize(int size, boolean resetHealth)
 	{
 		super.setSize(size, resetHealth);
-		this.setVariant(this.getRandom().nextInt(ColorVariant.values().length));
+		this.setVariant(this.getRandom().nextInt(SlimeGirlEntity.ColorVariant.values().length));
 		this.getAttribute(Attributes.ARMOR).setBaseValue((double)(size * 2));
 	}
 
@@ -96,7 +95,7 @@ public class MagicalSlimeEntity extends SlimeEntity implements IModMob
 	@OnlyIn(Dist.CLIENT)
 	public float[] getColor()
 	{
-		return ColorVariant.byId(this.getVariant()).getColors();
+		return SlimeGirlEntity.ColorVariant.byId(this.getVariant()).getColors();
 	}
 
 	public int getVariant()
@@ -106,9 +105,9 @@ public class MagicalSlimeEntity extends SlimeEntity implements IModMob
 
 	public void setVariant(int typeIn)
 	{
-		if (typeIn < 0 || typeIn >= ColorVariant.values().length)
+		if (typeIn < 0 || typeIn >= SlimeGirlEntity.ColorVariant.values().length)
 		{
-			typeIn = this.getRandom().nextInt(ColorVariant.values().length);
+			typeIn = this.getRandom().nextInt(SlimeGirlEntity.ColorVariant.values().length);
 		}
 
 		this.entityData.set(DATA_VARIANT_ID, typeIn);
