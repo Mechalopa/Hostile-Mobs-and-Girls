@@ -30,10 +30,10 @@
     {
       "chance": 0.05,
       "output": {
-        "item": "minecraft:sweet_berries"
+        "item": "hmag:exp_berry"
       },
       "minAmount": 1,
-      "maxAmount": 2
+      "maxAmount": 3
     },
     {
       "chance": 0.025,

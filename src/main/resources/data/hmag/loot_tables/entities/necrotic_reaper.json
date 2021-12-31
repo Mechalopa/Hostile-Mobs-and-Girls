@@ -68,10 +68,6 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:sweet_berries"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:quartz"
         }
       ],
       "conditions": [

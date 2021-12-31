@@ -30,7 +30,7 @@
     {
       "chance": 0.4,
       "output": {
-        "item": "hmag:strawberry"
+        "item": "hmag:exp_berry"
       },
       "minAmount": 1,
       "maxAmount": 2

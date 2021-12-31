@@ -30,6 +30,14 @@
     {
       "chance": 0.025,
       "output": {
+        "item": "minecraft:exp_berry"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.025,
+      "output": {
         "item": "minecraft:gold_ingot"
       },
       "minAmount": 1,

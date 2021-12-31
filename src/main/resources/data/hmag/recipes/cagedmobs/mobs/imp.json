@@ -28,20 +28,12 @@
       "maxAmount": 2
     },
     {
-      "chance": 0.4,
+      "chance": 0.05,
       "output": {
         "item": "minecraft:quartz"
       },
       "minAmount": 1,
-      "maxAmount": 1
-    },
-    {
-      "chance": 0.05,
-      "output": {
-        "item": "minecraft:bread"
-      },
-      "minAmount": 1,
-      "maxAmount": 1
+      "maxAmount": 3
     },
     {
       "chance": 0.05,
