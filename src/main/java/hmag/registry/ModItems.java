@@ -3,8 +3,10 @@ package hmag.registry;
 import hmag.HMaG;
 import hmag.item.AncientShieldItem;
 import hmag.item.CrimsonBowItem;
+import hmag.item.EXPBerryItem;
 import hmag.item.EnchantmentUpgradeItem;
 import hmag.item.EndlessPearlItem;
+import hmag.item.EvilFlameItem;
 import hmag.item.EvilThornItem;
 import hmag.item.FortressShieldItem;
 import hmag.item.InsomniaSwordItem;
@@ -81,6 +83,7 @@ public class ModItems
 	public static final RegistryObject<Item> LEMON = REGISTRY.register("lemon", () -> new Item(new Item.Properties().tab(HMaG.MODTAB).food((new Food.Builder()).nutrition(2).saturationMod(0.1F).build())));
 	public static final RegistryObject<Item> STRAWBERRY = REGISTRY.register("strawberry", () -> new Item(new Item.Properties().tab(HMaG.MODTAB).food((new Food.Builder()).nutrition(2).saturationMod(0.1F).build())));
 	public static final RegistryObject<Item> BLUEBERRY = REGISTRY.register("blueberry", () -> new Item(new Item.Properties().tab(HMaG.MODTAB).food((new Food.Builder()).nutrition(2).saturationMod(0.1F).build())));
+	public static final RegistryObject<Item> EXP_BERRY = REGISTRY.register("exp_berry", () -> new EXPBerryItem(new Item.Properties().tab(HMaG.MODTAB).food((new Food.Builder()).nutrition(3).saturationMod(0.2F).alwaysEat().build()).rarity(Rarity.UNCOMMON)));
 	public static final RegistryObject<Item> SOUL_APPLE = REGISTRY.register("soul_apple", () -> new ModFoodItem(new Item.Properties().tab(HMaG.MODTAB).food((new Food.Builder()).nutrition(3).saturationMod(0.3F).effect(() -> new EffectInstance(Effects.INVISIBILITY, 3 * 20, 0), 1.0F).alwaysEat().build()), new ModFoodItem.Properties().eatDuration(16).healAmount(1.0F)));
 	public static final RegistryObject<Item> PHANTOM_APPLE = REGISTRY.register("phantom_apple", () -> new ModFoodItem(new Item.Properties().tab(HMaG.MODTAB).food((new Food.Builder()).nutrition(4).saturationMod(0.9F).effect(() -> new EffectInstance(Effects.SLOW_FALLING, 30 * 20, 0), 1.0F).alwaysEat().build()), new ModFoodItem.Properties().healAmount(1.0F)));
 	public static final RegistryObject<Item> HONEYED_APPLE = REGISTRY.register("honeyed_apple", () -> new ModFoodItem(new Item.Properties().tab(HMaG.MODTAB).food((new Food.Builder()).nutrition(6).saturationMod(0.4F).alwaysEat().build()), new ModFoodItem.Properties().eatDuration(24).removePoison()));
@@ -116,6 +119,7 @@ public class ModItems
 	public static final RegistryObject<Item> SHARD_OF_IMMORTALITY_TIER_1 = REGISTRY.register("shard_of_immortality_tier_1", () -> new EnchantmentUpgradeItem(new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON), new EnchantmentUpgradeItem.Properties().enchantment(Enchantments.UNBREAKING, 3, 5)));
 	public static final RegistryObject<Item> SHARD_OF_IMMORTALITY_TIER_2 = REGISTRY.register("shard_of_immortality_tier_2", () -> new EnchantmentUpgradeItem(new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.RARE), new ModItem.Properties().foil(), new EnchantmentUpgradeItem.Properties().enchantment(Enchantments.UNBREAKING, 6, 9)));
 	public static final RegistryObject<Item> REPULSION_GADGET = REGISTRY.register("repulsion_gadget", () -> new EnchantmentUpgradeItem(new Item.Properties().tab(HMaG.MODTAB), new EnchantmentUpgradeItem.Properties().enchantment(Enchantments.KNOCKBACK, 0, 9).enchantment(Enchantments.PUNCH_ARROWS, 0, 9)));
+	public static final RegistryObject<Item> EVIL_FLAME = REGISTRY.register("evil_flame", () -> new EvilFlameItem(new Item.Properties().tab(HMaG.MODTAB)));
 	public static final RegistryObject<Item> EVIL_THORN = REGISTRY.register("evil_thorn", () -> new EvilThornItem(new Item.Properties().tab(HMaG.MODTAB)));
 	public static final RegistryObject<Item> SHATTER_EFFECTOR_TIER_1 = REGISTRY.register("shatter_effector_tier_1", () -> new EnchantmentUpgradeItem(new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON), new EnchantmentUpgradeItem.Properties().enchantment(Enchantments.BLOCK_EFFICIENCY, 5, 6)));
 	public static final RegistryObject<Item> SHATTER_EFFECTOR_TIER_2 = REGISTRY.register("shatter_effector_tier_2", () -> new EnchantmentUpgradeItem(new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.RARE), new ModItem.Properties().foil(), new EnchantmentUpgradeItem.Properties().enchantment(Enchantments.BLOCK_EFFICIENCY, 7, 9)));

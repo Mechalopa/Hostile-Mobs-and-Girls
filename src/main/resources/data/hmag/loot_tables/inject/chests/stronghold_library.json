@@ -22,6 +22,21 @@
             }
           ],
           "name": "hmag:purification_cloth"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2.0,
+                "max": 7.0,
+                "type": "minecraft:uniform"
+              }
+            }
+          ],
+          "name": "hmag:exp_berry"
         }
       ]
     }

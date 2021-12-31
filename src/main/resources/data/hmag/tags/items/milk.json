@@ -17,6 +17,14 @@
     {
       "id": "#forge:milk/milk_bottle",
       "required": false
+    },
+    {
+      "id": "#forge:milks",
+      "required": false
+    },
+    {
+      "id": "#forge:milk_bottles",
+      "required": false
     }
   ]
 }
