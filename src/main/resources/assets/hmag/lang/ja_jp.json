@@ -229,5 +229,7 @@
   "text.hmag.level": "レベル %s",
   "message.hmag.insomnia_sword": "不眠者の剣を持っているため眠れません",
   "enchantment.hmag.health_boost.desc": "着用者の最大体力を増加させます。",
-  "enchantment.hmag.water_aspect.desc": "水に濡れるとダメージを受けるモブに対する攻撃力を増加させます。また、炎上しているモブを消火します。"
+  "enchantment.hmag.water_aspect.desc": "水に濡れるとダメージを受けるモブに対する攻撃力を増加させます。また、炎上しているモブを消火します。",
+  "effect.hmag.ender_rage.description": "影響を受けたモブに、視線と関係なくエンダーマンが敵対します。",
+  "effect.hmag.combustion.description": "影響を受けたモブは、濡れていない限り常に燃えます。"
 }

@@ -230,6 +230,8 @@
   "message.hmag.insomnia_sword": "You may not rest now; you have a Sword of Insomnia",
   "enchantment.hmag.health_boost.desc": "Increases the wearer's max health.",
   "enchantment.hmag.water_aspect.desc": "Increases damage against mobs that are hurt by water, such as Blazes and Endermans. Also extinguish mobs that are on fire.",
+  "effect.hmag.ender_rage.description": "Endermen become hostile to the affected mobs, regardless of gaze.",
+  "effect.hmag.combustion.description": "Affected mobs will always burns, unless they are wet.",
   "item.spartanweaponry.proj_tipped.effect.hmag.kobold": "%s of the Kobold's Wisdom",
   "item.spartanweaponry.proj_tipped.effect.hmag.kobold_strong": "%s of the Kobold's Wisdom",
   "item.spartanweaponry.proj_tipped.effect.hmag.healing_3": "%s of Healing",
