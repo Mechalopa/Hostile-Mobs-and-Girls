@@ -15,14 +15,9 @@
     "Y": {
       "item": "minecraft:spider_eye"
     },
-    "Z": [
-      {
-        "item": "minecraft:poisonous_potato"
-      },
-      {
-        "item": "minecraft:pufferfish"
-      }
-    ]
+    "Z": {
+      "tag": "hmag:poison_sand_crafting_materials"
+    }
   },
   "result": {
     "item": "hmag:poison_sand",
