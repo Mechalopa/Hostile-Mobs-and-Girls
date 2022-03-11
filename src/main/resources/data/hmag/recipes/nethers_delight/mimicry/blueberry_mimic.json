@@ -1,0 +1,26 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "farmersdelight"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "nethers_delight:mimicarnation"
+    }
+  ],
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    {
+      "item": "hmag:blueberry"
+    },
+    {
+      "item": "nethers_delight:mimicarnation"
+    }
+  ],
+  "result": {
+    "item": "hmag:blueberry",
+    "count": 3
+  },
+  "cookingtime": 200
+}
