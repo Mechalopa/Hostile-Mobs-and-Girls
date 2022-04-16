@@ -65,7 +65,7 @@ public class MonolithRenderer extends MobRenderer<MonolithEntity, MonolithModel<
 		if (target != null)
 		{
 			float f = entityIn.getAttackAnimationScale(partialTicks);
-			float f1 = (float)entityIn.level.getGameTime() + partialTicks;
+			float f1 = (float)(entityIn.level.getGameTime() % 24000L) + partialTicks;
 			float f2 = f1 * 0.5F % 1.0F;
 			float f3 = entityIn.getEyeHeight();
 			matrixStackIn.pushPose();

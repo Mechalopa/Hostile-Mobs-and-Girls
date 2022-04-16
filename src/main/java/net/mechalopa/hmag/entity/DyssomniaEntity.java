@@ -735,7 +735,7 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 			double d1 = this.parent.getY();
 			double d2 = this.parent.getZ();
 
-			if (flag && this.parent.level.canSeeSky(blockpos) && blockpos.getY() < (this.parent.level.getMaxBuildHeight() + 32))
+			if (flag && this.parent.level.canSeeSky(blockpos) && blockpos.getY() < (this.parent.level.getMaxBuildHeight() + 64))
 			{
 				d0 = d0 + (double)((random.nextFloat() * 2.0F - 1.0F) * 8.0F);
 				d1 = d1 + (double)((random.nextFloat() * 4.0F) + 8.0F);
