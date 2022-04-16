@@ -231,7 +231,7 @@
   "enchantment.hmag.health_boost.desc": "增加穿戴者的最大生命值上限.",
   "enchantment.hmag.water_aspect.desc": "攻击在水里会受到伤害的生物时增加伤害，比如烈焰人和末影人，并且会熄灭着火生物身上的火焰",
   "effect.hmag.ender_rage.description": "末影人无视凝视阶段，直接对受影响的生物保持仇恨。",
-  "effect.hmag.combustion.description": "被影响的生物会一直燃烧，除非触碰到水",																																																
+  "effect.hmag.combustion.description": "被影响的生物会一直燃烧，除非触碰到水",
   "item.spartanweaponry.proj_tipped.effect.hmag.kobold": "%s 狗头人的智慧",
   "item.spartanweaponry.proj_tipped.effect.hmag.kobold_strong": "%s 狗头人的智慧",
   "item.spartanweaponry.proj_tipped.effect.hmag.healing_3": "%s 治愈",
