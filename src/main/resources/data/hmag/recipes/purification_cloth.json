@@ -5,19 +5,16 @@
       "item": "hmag:lich_cloth"
     },
     {
-      "item": "hmag:soul_apple"
+      "item": "hmag:soul_powder"
     },
     {
-      "tag": "hmag:milk"
-    },
-    {
-      "item": "minecraft:fermented_spider_eye"
+      "item": "minecraft:phantom_membrane"
     },
     {
       "tag": "forge:gems/lapis"
     },
     {
-      "item": "minecraft:warped_roots"
+      "tag": "hmag:milk"
     }
   ],
   "result": {
