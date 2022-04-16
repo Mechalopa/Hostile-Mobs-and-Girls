@@ -109,12 +109,12 @@ public class HarpyModel<T extends HarpyEntity> extends AbstractGirlModel<T>
 		this.leftArmPart1.addChild(this.leftArmPart2);
 
 		this.rightArmPart3 = new ModelRenderer(this, 26, 32);
-		this.rightArmPart3.addBox(0.0F, -0.5F, -1.5F, 1.0F, 5.0F, 2.0F, modelSize);
+		this.rightArmPart3.addBox(0.0F, -0.5F, -1.5F, 1.0F, 7.0F, 2.0F, modelSize);
 		this.rightArmPart3.setPos(0.5F, 5.0F, 0.0F);
 		this.rightArmPart2.addChild(this.rightArmPart3);
 		this.leftArmPart3 = new ModelRenderer(this, 26, 32);
 		this.leftArmPart3.mirror = true;
-		this.leftArmPart3.addBox(-1.0F, -0.5F, -1.5F, 1.0F, 5.0F, 2.0F, modelSize);
+		this.leftArmPart3.addBox(-1.0F, -0.5F, -1.5F, 1.0F, 7.0F, 2.0F, modelSize);
 		this.leftArmPart3.setPos(-0.5F, 5.0F, 0.0F);
 		this.leftArmPart2.addChild(this.leftArmPart3);
 
@@ -129,12 +129,12 @@ public class HarpyModel<T extends HarpyEntity> extends AbstractGirlModel<T>
 		this.leftArmPart2.addChild(this.leftArmPart2Wing);
 
 		this.rightArmPart3Wing = new ModelRenderer(this, 16, 56);
-		this.rightArmPart3Wing.addBox(0.0F, 0.0F, 0.0F, 1.0F, 6.0F, 7.0F, modelSize - 0.001F);
+		this.rightArmPart3Wing.addBox(0.0F, 0.0F, 0.0F, 1.0F, 8.0F, 7.0F, modelSize - 0.001F);
 		this.rightArmPart3Wing.setPos(0.0F, 0.0F, -1.0F);
 		this.rightArmPart3.addChild(this.rightArmPart3Wing);
 		this.leftArmPart3Wing = new ModelRenderer(this, 16, 56);
 		this.leftArmPart3Wing.mirror = true;
-		this.leftArmPart3Wing.addBox(-1.0F, 0.0F, 0.0F, 1.0F, 6.0F, 7.0F, modelSize - 0.001F);
+		this.leftArmPart3Wing.addBox(-1.0F, 0.0F, 0.0F, 1.0F, 8.0F, 7.0F, modelSize - 0.001F);
 		this.leftArmPart3Wing.setPos(0.0F, 0.0F, -1.0F);
 		this.leftArmPart3.addChild(this.leftArmPart3Wing);
 
@@ -283,17 +283,18 @@ public class HarpyModel<T extends HarpyEntity> extends AbstractGirlModel<T>
 
 		this.rightArm.xRot *= 0.5F;
 		this.leftArm.xRot *= 0.5F;
-		this.rightArm.zRot = (float)Math.PI / 8.0F;
-		this.leftArm.zRot = -((float)Math.PI / 8.0F);
-		this.rightArm.zRot += (MathHelper.cos(ageInTicks * 0.75F) * 0.45F + 0.6F) * this.animationAmount;
-		this.leftArm.zRot -= (MathHelper.cos(ageInTicks * 0.75F) * 0.45F + 0.6F) * this.animationAmount;
-		this.rightArm.xRot += MathHelper.sin(ageInTicks * 0.105F + (float)Math.PI * 0.5F) * 0.072F;
+		this.rightArm.zRot = (float)Math.PI * 3.0F / 16.0F;
+		this.leftArm.zRot = -((float)Math.PI * 3.0F / 16.0F);
+
+		float f = (MathHelper.cos(ageInTicks * 0.81F) * ((float)Math.PI / 7.0F) + ((float)Math.PI / 4.0F)) * this.animationAmount;
+
+		this.rightArm.zRot += f * 0.6F;
+		this.leftArm.zRot -= f * 0.6F;
+		this.rightArm.xRot += MathHelper.sin(ageInTicks * 0.105F + (float)Math.PI * 0.6F) * 0.072F;
 		this.leftArm.xRot -= MathHelper.sin(ageInTicks * 0.105F) * 0.072F;
 
 		this.rightArmPart2Wing.yRot = -((float)Math.PI * 0.021F);
 		this.leftArmPart2Wing.yRot = (float)Math.PI * 0.021F;
-		this.rightArmPart3Wing.yRot = (float)Math.PI * 0.015F;
-		this.leftArmPart3Wing.yRot = -((float)Math.PI * 0.015F);
 
 		this.rightLeg.xRot *= (1.0F - this.animationAmount) * 0.9F;
 		this.leftLeg.xRot *= (1.0F - this.animationAmount) * 0.9F;
@@ -307,16 +308,30 @@ public class HarpyModel<T extends HarpyEntity> extends AbstractGirlModel<T>
 
 		this.rightArmPart1.xRot = (float)Math.PI / 11.0F;
 		this.leftArmPart1.xRot = (float)Math.PI / 11.0F;
-		this.rightArmPart2.xRot = -((float)Math.PI / 3.0F);
-		this.leftArmPart2.xRot = -((float)Math.PI / 3.0F);
+		this.rightArmPart1.xRot -= ((float)Math.PI / 12.0F) * this.animationAmount;
+		this.leftArmPart1.xRot -= ((float)Math.PI / 12.0F) * this.animationAmount;
+		this.rightArmPart1.yRot = (float)Math.PI / 12.0F;
+		this.leftArmPart1.yRot = -((float)Math.PI / 12.0F);
+		this.rightArmPart1.yRot += ((float)Math.PI / 16.0F) * this.animationAmount;
+		this.leftArmPart1.yRot -= ((float)Math.PI / 16.0F) * this.animationAmount;
+		this.rightArmPart2.xRot = -((float)Math.PI / 5.0F);
+		this.leftArmPart2.xRot = -((float)Math.PI / 5.0F);
 		this.rightArmPart2.xRot -= MathHelper.sin(ageInTicks * 0.045F + (float)Math.PI / 4.0F) * 0.024F;
 		this.leftArmPart2.xRot -= MathHelper.sin(ageInTicks * 0.045F + (float)Math.PI / 4.0F) * 0.024F;
+		this.rightArmPart3.xRot += ((float)Math.PI / 6.0F) * this.animationAmount;
+		this.leftArmPart3.xRot += ((float)Math.PI / 6.0F) * this.animationAmount;
+		this.rightArmPart2.yRot = (float)Math.PI / 7.0F;
+		this.leftArmPart2.yRot = -((float)Math.PI / 7.0F);
+		this.rightArmPart2.zRot = -((float)Math.PI / 9.0F);
+		this.leftArmPart2.zRot = (float)Math.PI / 9.0F;
+		this.rightArmPart2.zRot += f * 0.4F;
+		this.leftArmPart2.zRot -= f * 0.4F;
 		this.rightArmPart3.xRot = (float)Math.PI / 6.0F;
 		this.leftArmPart3.xRot = (float)Math.PI / 6.0F;
 		this.rightArmPart3.xRot += MathHelper.sin(ageInTicks * 0.045F + (float)Math.PI / 4.0F) * 0.033F;
 		this.leftArmPart3.xRot += MathHelper.sin(ageInTicks * 0.045F + (float)Math.PI / 4.0F) * 0.033F;
-		this.rightArmPart3.xRot += ((float)Math.PI / 12.0F) * this.animationAmount;
-		this.leftArmPart3.xRot += ((float)Math.PI / 12.0F) * this.animationAmount;
+		this.rightArmPart3.xRot -= ((float)Math.PI / 8.0F) * this.animationAmount;
+		this.leftArmPart3.xRot -= ((float)Math.PI / 8.0F) * this.animationAmount;
 
 		this.rightLegPart1.xRot = -((float)Math.PI / 14.0F);
 		this.leftLegPart1.xRot = -((float)Math.PI / 14.0F);
@@ -326,12 +341,12 @@ public class HarpyModel<T extends HarpyEntity> extends AbstractGirlModel<T>
 		this.rightLegPart4.xRot = -((float)Math.PI / 25.0F);
 		this.leftLegPart4.xRot = -((float)Math.PI / 25.0F);
 
-		float f = ((float)Math.PI / 9.0F) * this.animationAmount;
+		float f1 = ((float)Math.PI / 9.0F) * this.animationAmount;
 
 		for (int i = 0; i < this.rightLegPart5.length; ++i)
 		{
 			this.rightLegPart5[i].xRot = -((float)Math.PI / 3.0F);
-			this.rightLegPart5[i].xRot += f;
+			this.rightLegPart5[i].xRot += f1;
 			this.rightLegPart5[i].yRot = (float)Math.PI * 0.15F * ((float)i - 0.5F);
 			this.rightLegPart5[i].zRot = (float)Math.PI * 0.07F * ((float)i - 0.5F);
 		}
@@ -339,19 +354,19 @@ public class HarpyModel<T extends HarpyEntity> extends AbstractGirlModel<T>
 		for (int i = 0; i < this.leftLegPart5.length; ++i)
 		{
 			this.leftLegPart5[i].xRot = -((float)Math.PI / 3.0F);
-			this.leftLegPart5[i].xRot += f;
+			this.leftLegPart5[i].xRot += f1;
 			this.leftLegPart5[i].yRot = (float)Math.PI * 0.15F * (0.5F - (float)i);
 			this.leftLegPart5[i].zRot = (float)Math.PI * 0.07F * (0.5F - (float)i);
 		}
 
 		this.rightLegPart6.xRot = (float)Math.PI * 1.0F / 5.0F;
 		this.leftLegPart6.xRot = (float)Math.PI * 1.0F / 5.0F;
-		this.rightLegPart6.xRot -= f;
-		this.leftLegPart6.xRot -= f;
+		this.rightLegPart6.xRot -= f1;
+		this.leftLegPart6.xRot -= f1;
 
 		this.tail1.xRot = (float)Math.PI * 2.0F / 5.0F;
 		this.tail1.xRot += MathHelper.sin(ageInTicks * 0.06F) * 0.021F;
-		this.tail1.xRot += (MathHelper.sin(ageInTicks * 0.375F) * 0.08F + 0.08F) * this.animationAmount;
+		this.tail1.xRot += (MathHelper.sin(ageInTicks * 0.405F) * 0.08F + 0.08F) * this.animationAmount;
 
 		for (int i = 0; i < this.tail2.length; ++i)
 		{
@@ -370,12 +385,12 @@ public class HarpyModel<T extends HarpyEntity> extends AbstractGirlModel<T>
 		this.leftHeadWing.xRot += MathHelper.sin(ageInTicks * 0.06F + (float)Math.PI / 2.0F) * 0.03F;
 		this.rightHeadWing.xRot += 0.15F * MathHelper.sin(limbSwing * 1.25F * 0.5F) * limbSwingAmount;
 		this.leftHeadWing.xRot += 0.15F * MathHelper.sin(limbSwing * 1.25F * 0.5F) * limbSwingAmount;
-		this.rightHeadWing.yRot = -((float)Math.PI / 15.0F);
-		this.leftHeadWing.yRot = (float)Math.PI / 15.0F;
+		this.rightHeadWing.yRot = -((float)Math.PI / 10.0F);
+		this.leftHeadWing.yRot = (float)Math.PI / 10.0F;
 		this.rightHeadWing.xRot += MathHelper.cos(ageInTicks * 0.03F) * 0.06F;
 		this.leftHeadWing.xRot -= MathHelper.cos(ageInTicks * 0.03F) * 0.06F;
-		this.rightHeadWing.yRot -= (MathHelper.cos(ageInTicks * 0.375F) * 0.15F + 0.12F) * this.animationAmount;
-		this.leftHeadWing.yRot += (MathHelper.cos(ageInTicks * 0.375F) * 0.15F + 0.12F) * this.animationAmount;
+		this.rightHeadWing.yRot -= (MathHelper.cos(ageInTicks * 0.81F + (float)Math.PI / 3.0F) * 0.15F + 0.12F) * this.animationAmount;
+		this.leftHeadWing.yRot += (MathHelper.cos(ageInTicks * 0.81F + (float)Math.PI / 3.0F) * 0.15F + 0.12F) * this.animationAmount;
 
 		this.hairPart.xRot = (float)Math.PI / 12.0F;
 		this.hairPart.xRot += MathHelper.sin(ageInTicks * 0.06F + (float)Math.PI / 2.0F) * 0.06F;

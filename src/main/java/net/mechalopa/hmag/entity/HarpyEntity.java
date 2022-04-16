@@ -71,7 +71,7 @@ public class HarpyEntity extends MonsterEntity implements IModMob
 	protected void registerGoals()
 	{
 		this.goalSelector.addGoal(1, new SwimGoal(this));
-		this.goalSelector.addGoal(3, new LeapAtTargetGoal2(this, 0.375F, 0.45F, 7.0F, 24));
+		this.goalSelector.addGoal(3, new LeapAtTargetGoal2(this, 0.39F, 0.45F, 7.0F, 24));
 		this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.0D, false));
 		this.goalSelector.addGoal(5, new HarpyEntity.RandomWalkingGoal(this));
 		this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 8.0F));
@@ -106,7 +106,7 @@ public class HarpyEntity extends MonsterEntity implements IModMob
 			{
 				if (this.animationTick < 10)
 				{
-					++this.animationTick;
+					this.animationTick = Math.min(this.animationTick + 2, 10);
 				}
 			}
 			else if (this.animationTick > 0)
