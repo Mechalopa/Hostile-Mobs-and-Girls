@@ -2,7 +2,6 @@ package com.github.mechalopa.hmag;
 
 import java.util.List;
 
-import com.github.mechalopa.hmag.util.ModUtils;
 import com.google.common.collect.ImmutableList;
 
 import net.minecraft.loot.LootEntry;
@@ -48,12 +47,12 @@ public class ModLootTableLoadingEvent
 		{
 			if (ModConfigs.cachedServer.ADDITIONAL_CHEST_LOOTS)
 			{
-				String prefix = ModUtils.MINECRAFT_ID + ":chests/";
+				String prefix = "minecraft:chests/";
 				String name = event.getName().toString();
 
 				if (name.startsWith(prefix) && CHEST_TABLES.contains(name.substring(prefix.length())))
 				{
-					String file = name.substring((ModUtils.MINECRAFT_ID + ":").length());
+					String file = name.substring(("minecraft:").length());
 					event.getTable().addPool(getInjectPool(file));
 				}
 			}
