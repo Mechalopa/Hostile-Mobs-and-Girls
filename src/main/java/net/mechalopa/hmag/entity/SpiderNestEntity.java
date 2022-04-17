@@ -36,6 +36,7 @@ import net.minecraft.network.IPacket;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.DamageSource;
@@ -95,6 +96,17 @@ public class SpiderNestEntity extends MonsterEntity implements IModMob
 	public CreatureAttribute getMobType()
 	{
 		return CreatureAttribute.ARTHROPOD;
+	}
+
+	@Override
+	public void aiStep()
+	{
+		if (this.level.isClientSide)
+		{
+			this.level.addParticle(ParticleTypes.ASH, this.getRandomX(0.5D), this.getRandomY() - 0.25D, this.getRandomZ(0.5D), (this.getRandom().nextDouble() - 0.5D) * 3.0D, -this.getRandom().nextDouble(), (this.getRandom().nextDouble() - 0.5D) * 3.0D);
+		}
+
+		super.aiStep();
 	}
 
 	@Override
@@ -293,7 +305,7 @@ public class SpiderNestEntity extends MonsterEntity implements IModMob
 		private final int summonInterval;
 		private final float summonRadius;
 		private final int maxSpawn;
-		private final EntityPredicate caveSpiderCountTargeting = (new EntityPredicate()).range(16.0D).allowUnseeable().ignoreInvisibilityTesting().allowInvulnerable();
+		private final EntityPredicate caveSpiderCountTargeting = (new EntityPredicate()).range(12.0D).allowUnseeable().ignoreInvisibilityTesting().allowInvulnerable();
 
 		public MeleeAttackAndSummonGoal(SpiderNestEntity mob)
 		{
@@ -302,7 +314,7 @@ public class SpiderNestEntity extends MonsterEntity implements IModMob
 
 		public MeleeAttackAndSummonGoal(SpiderNestEntity mob, double speedIn, boolean useLongMemory, int intervalIn, float radiusIn, int maxSpawnIn)
 		{
-			super(mob, speedIn, useLongMemory, 8.0F / 9.0F);
+			super(mob, speedIn, useLongMemory, 0.625F);
 			this.summonInterval = intervalIn;
 			this.summonRadius = radiusIn;
 			this.maxSpawn = maxSpawnIn;
@@ -337,7 +349,7 @@ public class SpiderNestEntity extends MonsterEntity implements IModMob
 					}
 					else
 					{
-						if (attacker.level.getNearbyEntities(CaveSpiderEntity.class, this.caveSpiderCountTargeting, attacker, attacker.getBoundingBox().inflate(16.0D)).size() >= 6)
+						if (attacker.level.getNearbyEntities(CaveSpiderEntity.class, this.caveSpiderCountTargeting, attacker, attacker.getBoundingBox().inflate(12.0D)).size() >= 6)
 						{
 							attacker.setSummonDelay(20);
 						}

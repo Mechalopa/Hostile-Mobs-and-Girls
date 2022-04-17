@@ -4,6 +4,7 @@ import net.minecraft.client.renderer.entity.model.BipedModel;
 import net.minecraft.client.renderer.model.ModelHelper;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.entity.MobEntity;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -18,6 +19,9 @@ public class LichModel<T extends MobEntity> extends BipedModel<T>
 	private ModelRenderer leftLegPants2;
 	private ModelRenderer wand;
 	private ModelRenderer wandTop;
+	private ModelRenderer cloak;
+	private ModelRenderer cloakPart1;
+	private ModelRenderer cloakPart2;
 
 	public LichModel()
 	{
@@ -88,6 +92,19 @@ public class LichModel<T extends MobEntity> extends BipedModel<T>
 		this.wandTop.addBox(-2.0F, -16.0F, -2.0F, 4.0F, 4.0F, 4.0F, modelSize);
 		this.wandTop.setPos(0.0F, 22.0F, 0.0F);
 		this.wand.addChild(this.wandTop);
+
+		this.cloak = new ModelRenderer(this, 24, 44);
+		this.cloak.addBox(-4.5F, 0.0F, -1.0F, 9.0F, 7.0F, 1.0F, modelSize);
+		this.cloak.setPos(0.0F, 0.0F, 2.0F);
+		this.body.addChild(this.cloak);
+		this.cloakPart1 = new ModelRenderer(this, 24, 52);
+		this.cloakPart1.addBox(-4.5F, 0.0F, -1.0F, 9.0F, 7.0F, 1.0F, modelSize);
+		this.cloakPart1.setPos(0.0F, 7.0F, 0.0F);
+		this.cloak.addChild(this.cloakPart1);
+		this.cloakPart2 = new ModelRenderer(this, 44, 44);
+		this.cloakPart2.addBox(-4.5F, 0.0F, -1.0F, 9.0F, 8.0F, 1.0F, modelSize);
+		this.cloakPart2.setPos(0.0F, 7.0F, 0.0F);
+		this.cloakPart1.addChild(this.cloakPart2);
 	}
 
 	@Override
@@ -107,6 +124,14 @@ public class LichModel<T extends MobEntity> extends BipedModel<T>
 		this.leftLeg.y = 12.0F + f;
 
 		this.wand.xRot = -((float)Math.PI * 17.0F / 36.0F);
+
+		this.cloak.xRot = (float)Math.PI / 15.0F;
+		this.cloak.xRot -= MathHelper.cos(limbSwing * 0.45F) * 2.0F * limbSwingAmount * 0.15F;
+		this.cloak.xRot += MathHelper.sin(ageInTicks * 0.067F) * 0.036F;
+		this.cloakPart1.xRot = (float)Math.PI / 12.0F;
+		this.cloakPart1.xRot += MathHelper.sin(ageInTicks * 0.067F + (float)Math.PI / 8.0F) * 0.015F;
+		this.cloakPart2.xRot = (float)Math.PI / 12.0F;
+		this.cloakPart2.xRot += MathHelper.sin(ageInTicks * 0.067F + (float)Math.PI / 4.0F) * 0.015F;
 	}
 
 	public boolean isAggressive(T entityIn)

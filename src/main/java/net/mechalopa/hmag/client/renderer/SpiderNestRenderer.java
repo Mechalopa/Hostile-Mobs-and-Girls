@@ -32,7 +32,7 @@ public class SpiderNestRenderer extends MobRenderer<SpiderNestEntity, SpiderNest
 	protected void scale(SpiderNestEntity entityIn, MatrixStack matrixStackIn, float partialTickTime)
 	{
 		float f = (float)entityIn.tickCount + partialTickTime;
-		float f1 = MathHelper.sin(f * 0.04F) * 0.03F;
+		float f1 = MathHelper.sin(f * 0.09F) * 0.015F;
 		matrixStackIn.scale(1.2F, 1.2F, 1.2F);
 		matrixStackIn.scale(1.0F + f1, 1.0F - f1, 1.0F + f1);
 		super.scale(entityIn, matrixStackIn, partialTickTime);

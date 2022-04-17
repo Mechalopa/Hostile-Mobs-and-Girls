@@ -10,6 +10,14 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class EnderExecutorModel<T extends EnderExecutorEntity> extends AbstractGirlModel<T>
 {
+	private ModelRenderer rightArmPart1;
+	private ModelRenderer leftArmPart1;
+	private ModelRenderer rightArmPart2;
+	private ModelRenderer leftArmPart2;
+	private ModelRenderer rightLegPart1;
+	private ModelRenderer leftLegPart1;
+	private ModelRenderer rightLegPart2;
+	private ModelRenderer leftLegPart2;
 	private ModelRenderer skirt1;
 	private ModelRenderer skirt2;
 	private ModelRenderer skirt3;
@@ -17,10 +25,13 @@ public class EnderExecutorModel<T extends EnderExecutorEntity> extends AbstractG
 	private ModelRenderer skirt5;
 	private ModelRenderer rightHair;
 	private ModelRenderer leftHair;
+	private ModelRenderer rightHairPart1;
+	private ModelRenderer leftHairPart1;
 
 	public boolean isAttacking;
 	public boolean isCarrying;
 	public boolean isBeamAttacking;
+	private float animationAmount;
 
 	public EnderExecutorModel()
 	{
@@ -41,6 +52,25 @@ public class EnderExecutorModel<T extends EnderExecutorEntity> extends AbstractG
 		this.leftArm.addBox(-2.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F, modelSize);
 		this.leftArm.setPos(5.0F, 2.0F + f, 0.0F);
 
+		this.rightArmPart1 = new ModelRenderer(this, 0, 40);
+		this.rightArmPart1.addBox(-0.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, modelSize);
+		this.rightArmPart1.setPos(0.0F, 3.0F, 0.0F);
+		this.rightArm.addChild(this.rightArmPart1);
+		this.leftArmPart1 = new ModelRenderer(this, 0, 40);
+		this.leftArmPart1.mirror = true;
+		this.leftArmPart1.addBox(-2.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, modelSize);
+		this.leftArmPart1.setPos(0.0F, 3.0F, 0.0F);
+		this.leftArm.addChild(this.leftArmPart1);
+		this.rightArmPart2 = new ModelRenderer(this, 0, 40);
+		this.rightArmPart2.addBox(-0.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, modelSize);
+		this.rightArmPart2.setPos(0.0F, 7.0F, 0.0F);
+		this.rightArm.addChild(this.rightArmPart2);
+		this.leftArmPart2 = new ModelRenderer(this, 0, 40);
+		this.leftArmPart2.mirror = true;
+		this.leftArmPart2.addBox(-2.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, modelSize);
+		this.leftArmPart2.setPos(0.0F, 7.0F, 0.0F);
+		this.leftArm.addChild(this.leftArmPart2);
+
 		this.rightLeg = new ModelRenderer(this, 16, 32);
 		this.rightLeg.addBox(-1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F, modelSize);
 		this.rightLeg.setPos(-2.0F, 12.0F + f, 0.0F);
@@ -48,6 +78,25 @@ public class EnderExecutorModel<T extends EnderExecutorEntity> extends AbstractG
 		this.leftLeg.mirror = true;
 		this.leftLeg.addBox(-1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F, modelSize);
 		this.leftLeg.setPos(2.0F, 12.0F + f, 0.0F);
+
+		this.rightLegPart1 = new ModelRenderer(this, 0, 44);
+		this.rightLegPart1.addBox(-1.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, modelSize);
+		this.rightLegPart1.setPos(0.0F, 16.0F, 0.0F);
+		this.rightLeg.addChild(this.rightLegPart1);
+		this.leftLegPart1 = new ModelRenderer(this, 0, 44);
+		this.leftLegPart1.mirror = true;
+		this.leftLegPart1.addBox(-1.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, modelSize);
+		this.leftLegPart1.setPos(0.0F, 16.0F, 0.0F);
+		this.leftLeg.addChild(this.leftLegPart1);
+		this.rightLegPart2 = new ModelRenderer(this, 0, 44);
+		this.rightLegPart2.addBox(-1.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, modelSize);
+		this.rightLegPart2.setPos(0.0F, 18.0F, 0.0F);
+		this.rightLeg.addChild(this.rightLegPart2);
+		this.leftLegPart2 = new ModelRenderer(this, 0, 44);
+		this.leftLegPart2.mirror = true;
+		this.leftLegPart2.addBox(-1.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, modelSize);
+		this.leftLegPart2.setPos(0.0F, 18.0F, 0.0F);
+		this.leftLeg.addChild(this.leftLegPart2);
 
 		this.bust = new ModelRenderer(this, 0, 32);
 		this.bust.addBox(-3.0F, -1.5F, -1.5F, 6.0F, 3.0F, 3.0F, modelSize - 0.001F);
@@ -76,34 +125,31 @@ public class EnderExecutorModel<T extends EnderExecutorEntity> extends AbstractG
 		this.skirt4.addChild(this.skirt5);
 
 		this.rightHair = new ModelRenderer(this, 24, 32);
-		this.rightHair.addBox(-1.0F, -1.5F, -1.0F, 2.0F, 20.0F, 2.0F, modelSize);
+		this.rightHair.addBox(-1.0F, -1.5F, -1.0F, 2.0F, 14.0F, 2.0F, modelSize);
 		this.rightHair.setPos(-4.25F, -8.0F, 3.5F);
 		this.head.addChild(this.rightHair);
 		this.leftHair = new ModelRenderer(this, 24, 32);
 		this.leftHair.mirror = true;
-		this.leftHair.addBox(-1.0F, -1.5F, -1.0F, 2.0F, 20.0F, 2.0F, modelSize);
+		this.leftHair.addBox(-1.0F, -1.5F, -1.0F, 2.0F, 14.0F, 2.0F, modelSize);
 		this.leftHair.setPos(4.25F, -8.0F, 3.5F);
 		this.head.addChild(this.leftHair);
+
+		this.rightHairPart1 = new ModelRenderer(this, 32, 32);
+		this.rightHairPart1.addBox(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F, modelSize);
+		this.rightHairPart1.setPos(0.0F, 12.5F, 0.0F);
+		this.rightHair.addChild(this.rightHairPart1);
+		this.leftHairPart1 = new ModelRenderer(this, 32, 32);
+		this.leftHairPart1.mirror = true;
+		this.leftHairPart1.addBox(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F, modelSize);
+		this.leftHairPart1.setPos(0.0F, 12.5F, 0.0F);
+		this.leftHair.addChild(this.leftHairPart1);
 	}
 
 	@Override
 	public void prepareMobModel(T entityIn, float limbSwing, float limbSwingAmount, float partialTick)
 	{
 		super.prepareMobModel(entityIn, limbSwing, limbSwingAmount, partialTick);
-
-		if (this.isBeamAttacking)
-		{
-			this.rightHair.zRot = ((float)Math.PI / 9.0F);
-			this.leftHair.zRot = -((float)Math.PI / 9.0F);
-
-			float f = entityIn.getAttackAnimationScale(partialTick);
-
-			if (f > 0.0F)
-			{
-				this.rightHair.zRot += MathHelper.sin(f * f * ((float)Math.PI / 1.2F)) * 0.75F;
-				this.leftHair.zRot -= MathHelper.sin(f * f * ((float)Math.PI / 1.2F)) * 0.75F;
-			}
-		}
+		this.animationAmount = entityIn.getAttackAnimationScale(partialTick);
 	}
 
 	@Override
@@ -189,13 +235,22 @@ public class EnderExecutorModel<T extends EnderExecutorEntity> extends AbstractG
 		this.leftHair.xRot = ((float)Math.PI / 18.0F);
 		this.rightHair.xRot += MathHelper.sin(ageInTicks * 0.06F) * 0.03F;
 		this.leftHair.xRot += MathHelper.sin(ageInTicks * 0.06F) * 0.03F;
+		this.rightHairPart1.xRot = ((float)Math.PI / 32.0F);
+		this.leftHairPart1.xRot = ((float)Math.PI / 32.0F);
 
-		if (!this.isBeamAttacking)
+		this.rightHair.zRot = ((float)Math.PI / 9.0F);
+		this.leftHair.zRot = -((float)Math.PI / 9.0F);
+		this.rightHair.zRot -= MathHelper.sin(ageInTicks * 0.09F) * 0.03F;
+		this.leftHair.zRot += MathHelper.sin(ageInTicks * 0.09F) * 0.03F;
+		this.rightHairPart1.zRot = ((float)Math.PI / 27.0F);
+		this.leftHairPart1.zRot = -((float)Math.PI / 27.0F);
+		this.rightHairPart1.zRot -= MathHelper.sin(ageInTicks * 0.09F + (float)Math.PI / 4.0F) * 0.024F;
+		this.leftHairPart1.zRot += MathHelper.sin(ageInTicks * 0.09F + (float)Math.PI / 4.0F) * 0.024F;
+
+		if (this.animationAmount > 0.0F)
 		{
-			this.rightHair.zRot = ((float)Math.PI / 9.0F);
-			this.leftHair.zRot = -((float)Math.PI / 9.0F);
-			this.rightHair.zRot -= MathHelper.sin(ageInTicks * 0.09F) * 0.03F;
-			this.leftHair.zRot += MathHelper.sin(ageInTicks * 0.09F) * 0.03F;
+			this.rightHair.zRot += MathHelper.sin(this.animationAmount * this.animationAmount * ((float)Math.PI / 1.2F)) * 0.75F;
+			this.leftHair.zRot -= MathHelper.sin(this.animationAmount * this.animationAmount * ((float)Math.PI / 1.2F)) * 0.75F;
 		}
 	}
 }
