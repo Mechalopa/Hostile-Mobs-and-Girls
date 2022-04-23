@@ -2,12 +2,25 @@
   "type": "hmag:additional_entity_loot",
   "conditions": [
     {
-      "condition": "minecraft:entity_properties",
-      "entity": "this",
-      "predicate": {
-        "type": "#hmag:creepers",
-        "nbt": "{powered:true}"
-      }
+      "condition": "minecraft:alternative",
+      "terms": [
+        {
+          "condition": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "type": "#hmag:creepers",
+            "nbt": "{powered:true}"
+          }
+        },
+        {
+          "condition": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "type": "#hmag:creepers",
+            "nbt": "{Powered:true}"
+          }
+        }
+      ]
     }
   ],
   "functions": [
