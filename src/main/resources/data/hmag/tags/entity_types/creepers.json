@@ -17,6 +17,10 @@
     {
       "id": "apocalypse:breecher",
       "required": false
+    },
+    {
+      "id": "dungeons_mobs:icy_creeper",
+      "required": false
     }
   ]
 }
