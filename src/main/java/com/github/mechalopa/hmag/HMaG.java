@@ -45,7 +45,6 @@ public class HMaG
 
 	public HMaG()
 	{
-//		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ModConfigs.CLIENT_CONFIG);
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ModConfigs.SERVER_CONFIG);
 
 		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();

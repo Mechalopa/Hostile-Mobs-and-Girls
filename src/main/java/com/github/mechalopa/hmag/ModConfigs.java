@@ -12,9 +12,7 @@ import net.minecraftforge.fml.config.ModConfig;
 public class ModConfigs
 {
 	private static final ForgeConfigSpec.Builder SERVER_BUILDER = new ForgeConfigSpec.Builder();
-//	private static final ForgeConfigSpec.Builder CLIENT_BUILDER = new ForgeConfigSpec.Builder();
 	public static ForgeConfigSpec SERVER_CONFIG;
-//	public static ForgeConfigSpec CLIENT_CONFIG;
 
 	public static ForgeConfigSpec.BooleanValue ENDER_EXECUTOR_REDUCE_DAMAGE;
 	public static ForgeConfigSpec.BooleanValue ENDER_EXECUTOR_BEAM_ATTACK;
@@ -145,12 +143,6 @@ public class ModConfigs
 
 	static
 	{
-//		CLIENT_BUILDER.push("client");
-//
-//		CLIENT_BUILDER.pop();
-//
-//		CLIENT_CONFIG = CLIENT_BUILDER.build();
-
 		SERVER_BUILDER.push("entity");
 
 		ENDER_EXECUTOR_REDUCE_DAMAGE = SERVER_BUILDER.define("enableEnderExecutorReduceDamage", true);
@@ -579,21 +571,9 @@ public class ModConfigs
 		}
 	}
 
-//	public static class cached
-//	{
-//		public static void refresh()
-//		{
-//		}
-//	}
-
 	@SubscribeEvent
 	public static void loadConfig(final ModConfig.ModConfigEvent event)
 	{
-//		if (event.getConfig().getSpec() == CLIENT_CONFIG)
-//		{
-//			cached.refresh();
-//		}
-
 		if (event.getConfig().getSpec() == SERVER_CONFIG)
 		{
 			cachedServer.refresh();
