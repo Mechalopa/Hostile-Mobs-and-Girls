@@ -121,6 +121,7 @@ public class LichEntity extends MonsterEntity implements IModMob, IRangedAttackM
 			MagicBulletEntity mugicbulletentity = new MagicBulletEntity(this.level, this, d1 + this.getRandom().nextGaussian() * (double)f, d2, d3 + this.getRandom().nextGaussian() * (double)f);
 			mugicbulletentity.setPos(mugicbulletentity.getX(), this.getY(0.5D) + 0.25D, mugicbulletentity.getZ());
 			mugicbulletentity.setDamage(6.0F);
+			mugicbulletentity.setEffectLevel((byte)1);
 			mugicbulletentity.setVariant(0);
 			this.level.addFreshEntity(mugicbulletentity);
 			this.playSound(SoundEvents.BLAZE_SHOOT, 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
