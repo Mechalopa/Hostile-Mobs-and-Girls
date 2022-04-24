@@ -28,6 +28,7 @@ import net.minecraft.item.Items;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.item.crafting.SmithingRecipe;
+import net.minecraft.tags.ITag;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -59,7 +60,10 @@ public class JEIPlugin implements IModPlugin
 				Items.CROSSBOW,
 				Items.TRIDENT,
 				Items.FISHING_ROD,
-				Items.SHEARS);
+				Items.SHEARS,
+				Items.FLINT_AND_STEEL,
+				Items.SHULKER_BOX,
+				Items.DIAMOND);
 
 		@SuppressWarnings("resource")
 		Iterable<IRecipe<?>> recipes = Minecraft.getInstance().level.getRecipeManager().getRecipes();
@@ -82,7 +86,7 @@ public class JEIPlugin implements IModPlugin
 						{
 							if (enchantment != null && enchantment.isCurse())
 							{
-								ItemStack stack1 = getEnchantableItemStack(registration, items, enchantment);
+								ItemStack stack1 = getEnchantableItemStack(registration, items, enchantment, ModTags.CURSE_REMOVABLE_BLACKLIST);
 
 								if (!stack1.isEmpty())
 								{
@@ -138,7 +142,7 @@ public class JEIPlugin implements IModPlugin
 											{
 												final int minLevel = eup.getMinLevel();
 												final int maxLevel = eup.getMaxLevel();
-												ItemStack stack1 = getEnchantableItemStack(registration, items, enchantment);
+												ItemStack stack1 = getEnchantableItemStack(registration, items, enchantment, ModTags.ENCHANTMENT_UPGRADEABLE_BLACKLIST);
 
 												if (!stack1.isEmpty())
 												{
@@ -211,13 +215,13 @@ public class JEIPlugin implements IModPlugin
 		registration.addRecipes(smithingRecipes, VanillaRecipeCategoryUid.SMITHING);
 	}
 
-	private static ItemStack getEnchantableItemStack(IRecipeRegistration registration, List<Item> list, Enchantment enchantment)
+	private static ItemStack getEnchantableItemStack(IRecipeRegistration registration, List<Item> list, Enchantment enchantment, ITag<Item> blacklist)
 	{
 		for (Item item : list)
 		{
 			ItemStack stack = new ItemStack(item);
 
-			if (enchantment.canEnchant(stack))
+			if (enchantment.canEnchant(stack) && !ModTags.checkTagContains(blacklist, item))
 			{
 				return stack;
 			}
@@ -227,7 +231,7 @@ public class JEIPlugin implements IModPlugin
 
 		for (ItemStack stack2 : stacks)
 		{
-			if (!stack2.isEmpty() && stack2.getItem() != Items.ENCHANTED_BOOK && enchantment.canEnchant(stack2))
+			if (!stack2.isEmpty() && stack2.getItem() != Items.ENCHANTED_BOOK && enchantment.canEnchant(stack2) && !ModTags.checkTagContains(blacklist, stack2.getItem()))
 			{
 				return stack2;
 			}
