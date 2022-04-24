@@ -1,9 +1,0 @@
-{
-  "type": "hmag:enchantment_upgrade",
-  "addition": {
-    "item": "hmag:powerful_bowstring_tier_2"
-  },
-  "enchantment": "minecraft:power",
-  "minLevel": 7,
-  "maxLevel": 9
-}

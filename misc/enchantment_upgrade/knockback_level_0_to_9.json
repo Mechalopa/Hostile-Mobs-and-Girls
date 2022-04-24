@@ -1,9 +1,0 @@
-{
-  "type": "hmag:enchantment_upgrade",
-  "addition": {
-    "item": "hmag:repulsion_gadget"
-  },
-  "enchantment": "minecraft:knockback",
-  "minLevel": 0,
-  "maxLevel": 9
-}

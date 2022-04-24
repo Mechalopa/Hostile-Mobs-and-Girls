@@ -1,9 +1,0 @@
-{
-  "type": "hmag:enchantment_upgrade",
-  "addition": {
-    "item": "hmag:shard_of_greed_tier_1"
-  },
-  "enchantment": "minecraft:looting",
-  "minLevel": 3,
-  "maxLevel": 4
-}

@@ -1,9 +1,0 @@
-{
-  "type": "hmag:enchantment_upgrade",
-  "addition": {
-    "item": "hmag:reinforcing_plate"
-  },
-  "enchantment": "minecraft:unbreaking",
-  "minLevel": 0,
-  "maxLevel": 2
-}

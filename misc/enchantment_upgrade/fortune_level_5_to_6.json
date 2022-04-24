@@ -1,9 +1,0 @@
-{
-  "type": "hmag:enchantment_upgrade",
-  "addition": {
-    "item": "hmag:shard_of_fortune_tier_2"
-  },
-  "enchantment": "minecraft:fortune",
-  "minLevel": 5,
-  "maxLevel": 6
-}

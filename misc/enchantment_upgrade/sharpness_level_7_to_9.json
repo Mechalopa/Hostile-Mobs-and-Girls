@@ -1,9 +1,0 @@
-{
-  "type": "hmag:enchantment_upgrade",
-  "addition": {
-    "item": "hmag:wicked_whetstone_tier_2"
-  },
-  "enchantment": "minecraft:sharpness",
-  "minLevel": 7,
-  "maxLevel": 9
-}
