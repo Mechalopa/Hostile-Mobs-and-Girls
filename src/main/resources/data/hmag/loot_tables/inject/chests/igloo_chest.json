@@ -16,7 +16,7 @@
               "function": "minecraft:set_count",
               "count": {
                 "min": 1.0,
-                "max": 5.0,
+                "max": 7.0,
                 "type": "minecraft:uniform"
               }
             }
@@ -31,7 +31,7 @@
               "function": "minecraft:set_count",
               "count": {
                 "min": 1.0,
-                "max": 5.0,
+                "max": 7.0,
                 "type": "minecraft:uniform"
               }
             }
@@ -61,7 +61,7 @@
               "function": "minecraft:set_count",
               "count": {
                 "min": 1.0,
-                "max": 3.0,
+                "max": 12.0,
                 "type": "minecraft:uniform"
               }
             }
@@ -97,6 +97,21 @@
             }
           ],
           "name": "hmag:evil_crystal_fragment"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1.0,
+                "max": 3.0,
+                "type": "minecraft:uniform"
+              }
+            }
+          ],
+          "name": "hmag:canine_tooth"
         }
       ]
     }

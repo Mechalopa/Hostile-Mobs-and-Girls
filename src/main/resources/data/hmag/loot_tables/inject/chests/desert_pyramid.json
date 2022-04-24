@@ -21,6 +21,21 @@
               "function": "minecraft:set_count",
               "count": {
                 "min": 1.0,
+                "max": 8.0,
+                "type": "minecraft:uniform"
+              }
+            }
+          ],
+          "name": "hmag:soul_powder"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1.0,
                 "max": 3.0,
                 "type": "minecraft:uniform"
               }
@@ -36,7 +51,7 @@
               "function": "minecraft:set_count",
               "count": {
                 "min": 1.0,
-                "max": 3.0,
+                "max": 12.0,
                 "type": "minecraft:uniform"
               }
             }

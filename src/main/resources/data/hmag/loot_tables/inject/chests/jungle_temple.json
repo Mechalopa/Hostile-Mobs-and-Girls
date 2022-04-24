@@ -16,7 +16,7 @@
               "function": "minecraft:set_count",
               "count": {
                 "min": 1.0,
-                "max": 5.0,
+                "max": 7.0,
                 "type": "minecraft:uniform"
               }
             }
@@ -31,12 +31,27 @@
               "function": "minecraft:set_count",
               "count": {
                 "min": 1.0,
-                "max": 5.0,
+                "max": 7.0,
                 "type": "minecraft:uniform"
               }
             }
           ],
           "name": "hmag:blueberry"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1.0,
+                "max": 7.0,
+                "type": "minecraft:uniform"
+              }
+            }
+          ],
+          "name": "hmag:cooked_savagefang_meat"
         },
         {
           "type": "minecraft:item",
@@ -66,7 +81,7 @@
               "function": "minecraft:set_count",
               "count": {
                 "min": 1.0,
-                "max": 3.0,
+                "max": 12.0,
                 "type": "minecraft:uniform"
               }
             }
