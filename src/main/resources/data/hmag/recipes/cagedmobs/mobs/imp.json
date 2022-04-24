@@ -33,7 +33,7 @@
         "item": "minecraft:quartz"
       },
       "minAmount": 1,
-      "maxAmount": 3
+      "maxAmount": 2
     },
     {
       "chance": 0.05,
@@ -46,7 +46,7 @@
     {
       "chance": 0.025,
       "output": {
-        "item": "minecraft:gold_ingot"
+        "item": "minecraft:apple"
       },
       "minAmount": 1,
       "maxAmount": 1

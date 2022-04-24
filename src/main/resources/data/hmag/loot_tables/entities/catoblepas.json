@@ -72,10 +72,6 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:brick"
-        },
-        {
-          "type": "minecraft:item",
           "name": "minecraft:iron_ingot"
         }
       ],

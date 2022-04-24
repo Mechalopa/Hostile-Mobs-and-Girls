@@ -69,10 +69,6 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:golden_carrot"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:iron_ingot"
         }
       ],
       "conditions": [

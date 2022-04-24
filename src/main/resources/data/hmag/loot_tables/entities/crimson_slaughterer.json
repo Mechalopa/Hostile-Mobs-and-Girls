@@ -119,10 +119,6 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:redstone_block"
-        },
-        {
-          "type": "minecraft:item",
           "name": "minecraft:golden_apple"
         }
       ],

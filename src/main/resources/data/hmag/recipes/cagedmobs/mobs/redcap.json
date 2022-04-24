@@ -78,7 +78,7 @@
     {
       "chance": 0.025,
       "output": {
-        "item": "minecraft:apple"
+        "item": "minecraft:beetroot"
       },
       "minAmount": 1,
       "maxAmount": 1

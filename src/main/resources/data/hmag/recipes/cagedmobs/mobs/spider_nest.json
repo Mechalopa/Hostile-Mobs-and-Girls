@@ -30,26 +30,18 @@
     {
       "chance": 0.625,
       "output": {
-        "item": "minecraft:white_wool"
-      },
-      "minAmount": 1,
-      "maxAmount": 2
-    },
-    {
-      "chance": 0.5,
-      "output": {
         "item": "minecraft:cobweb"
       },
       "minAmount": 1,
       "maxAmount": 1
     },
     {
-      "chance": 0.025,
+      "chance": 0.05,
       "output": {
-        "item": "minecraft:gold_ingot"
+        "item": "hmag:exp_berry"
       },
       "minAmount": 1,
-      "maxAmount": 1
+      "maxAmount": 2
     },
     {
       "chance": 0.025,

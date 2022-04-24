@@ -112,10 +112,6 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:emerald"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:golden_carrot"
         }
       ],
       "conditions": [

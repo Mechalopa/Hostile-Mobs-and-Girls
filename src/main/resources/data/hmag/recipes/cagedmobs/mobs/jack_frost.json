@@ -38,23 +38,23 @@
     {
       "chance": 0.05,
       "output": {
-        "item": "minecraft:blue_ice"
-      },
-      "minAmount": 1,
-      "maxAmount": 1
-    },
-    {
-      "chance": 0.025,
-      "output": {
         "item": "hmag:exp_berry"
       },
       "minAmount": 1,
-      "maxAmount": 1
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:packed_ice"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
     },
     {
       "chance": 0.025,
       "output": {
-        "item": "minecraft:sweet_berries"
+        "item": "minecraft:blue_ice"
       },
       "minAmount": 1,
       "maxAmount": 1

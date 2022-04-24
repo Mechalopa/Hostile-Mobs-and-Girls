@@ -73,7 +73,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "hmag:ancient_stone"
+          "name": "hmag:exp_berry"
         }
       ],
       "conditions": [

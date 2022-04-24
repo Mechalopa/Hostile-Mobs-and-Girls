@@ -63,11 +63,43 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:bamboo"
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1.0,
+                "max": 3.0,
+                "type": "minecraft:uniform"
+              }
+            },
+            {
+              "function": "minecraft:looting_enchant",
+              "count": {
+                "min": 0.0,
+                "max": 1.0
+              }
+            }
+          ],
+          "name": "minecraft:sweet_berries"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:killed_by_player"
         },
         {
+          "condition": "minecraft:random_chance_with_looting",
+          "chance": 0.11,
+          "looting_multiplier": 0.02
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
           "type": "minecraft:item",
-          "name": "minecraft:sweet_berries"
+          "name": "minecraft:golden_carrot"
         }
       ],
       "conditions": [

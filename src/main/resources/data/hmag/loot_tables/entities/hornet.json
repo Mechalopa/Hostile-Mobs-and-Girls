@@ -167,10 +167,6 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:gold_ingot"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:beetroot_seeds"
         }
       ],
       "conditions": [

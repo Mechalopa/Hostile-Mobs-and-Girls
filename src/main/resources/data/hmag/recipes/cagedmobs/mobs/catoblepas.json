@@ -33,14 +33,6 @@
     {
       "chance": 0.025,
       "output": {
-        "item": "minecraft:brick"
-      },
-      "minAmount": 1,
-      "maxAmount": 1
-    },
-    {
-      "chance": 0.025,
-      "output": {
         "item": "minecraft:iron_ingot"
       },
       "minAmount": 1,

@@ -28,17 +28,17 @@
       "maxAmount": 2
     },
     {
-      "chance": 0.025,
+      "chance": 0.05,
       "output": {
-        "item": "minecraft:bamboo"
+        "item": "minecraft:sweet_berries"
       },
       "minAmount": 1,
-      "maxAmount": 1
+      "maxAmount": 3
     },
     {
       "chance": 0.025,
       "output": {
-        "item": "minecraft:sweet_berries"
+        "item": "minecraft:golden_carrot"
       },
       "minAmount": 1,
       "maxAmount": 1

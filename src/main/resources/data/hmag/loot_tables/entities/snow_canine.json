@@ -68,10 +68,6 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:rabbit_hide"
-        },
-        {
-          "type": "minecraft:item",
           "name": "minecraft:iron_ingot"
         }
       ],

@@ -49,7 +49,7 @@
     {
       "chance": 0.025,
       "output": {
-        "item": "hmag:ancient_stone"
+        "item": "hmag:exp_berry"
       },
       "minAmount": 1,
       "maxAmount": 1
