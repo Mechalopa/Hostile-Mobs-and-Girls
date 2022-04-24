@@ -40,7 +40,7 @@ public class RemoveCurseRecipe extends SmithingRecipe
 		ItemStack stack = inv.getItem(0);
 		ItemStack stack1 = inv.getItem(1);
 
-		if (!stack.isEmpty() && !stack1.isEmpty() && stack1.getItem() != null && ModTags.checkTagContains(ModTags.CURSE_REMOVE_ITEMS, stack1.getItem()))
+		if (!stack.isEmpty() && !stack1.isEmpty() && stack1.getItem() != null && ModTags.checkTagContains(ModTags.CURSE_REMOVE_ITEMS, stack1.getItem()) && !ModTags.checkTagContains(ModTags.CURSE_REMOVABLE_BLACKLIST, stack.getItem()))
 		{
 			Map<Enchantment, Integer> map = EnchantmentHelper.getEnchantments(stack);
 

@@ -24,6 +24,7 @@ public class MagicBulletRenderer extends EntityRenderer<MagicBulletEntity>
 {
 	private static final ResourceLocation TEX0 = new ResourceLocation(HMaG.MODID, "textures/entity/projectile/magic_bullet_0.png");
 	private static final ResourceLocation TEX1 = new ResourceLocation(HMaG.MODID, "textures/entity/projectile/magic_bullet_1.png");
+	private static final ResourceLocation TEX2 = new ResourceLocation(HMaG.MODID, "textures/entity/projectile/magic_bullet_2.png");
 
 	public MagicBulletRenderer(EntityRendererManager renderManagerIn)
 	{
@@ -50,7 +51,7 @@ public class MagicBulletRenderer extends EntityRenderer<MagicBulletEntity>
 		matrixStackIn.mulPose(this.entityRenderDispatcher.cameraOrientation());
 		matrixStackIn.mulPose(Vector3f.YP.rotationDegrees(180.0F));
 		float f = (float)entityIn.tickCount + partialTicks;
-		float f1 = 0.5F + MathHelper.sin(f * 0.4F) * 0.09F;
+		float f1 = 0.5F + (entityIn.getVariant() == 2 ? MathHelper.sin(f * 0.8F) * 0.03F : MathHelper.sin(f * 0.4F) * 0.09F);
 		matrixStackIn.scale(f1, f1, f1);
 		MatrixStack.Entry matrixstack$entry = matrixStackIn.last();
 		Matrix4f matrix4f = matrixstack$entry.pose();
@@ -76,6 +77,8 @@ public class MagicBulletRenderer extends EntityRenderer<MagicBulletEntity>
 		{
 		case 1:
 			return TEX1;
+		case 2:
+			return TEX2;
 		default:
 			return TEX0;
 		}

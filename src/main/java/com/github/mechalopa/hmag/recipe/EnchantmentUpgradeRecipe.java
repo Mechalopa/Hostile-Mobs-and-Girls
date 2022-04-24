@@ -44,7 +44,7 @@ public class EnchantmentUpgradeRecipe extends SmithingRecipe
 		ItemStack stack = inv.getItem(0);
 		ItemStack stack1 = inv.getItem(1);
 
-		if (!stack.isEmpty() && stack.getItem() != Items.ENCHANTED_BOOK && !stack1.isEmpty() && stack1.getItem() != null && stack1.getItem() instanceof EnchantmentUpgradeItem && ModTags.checkTagContains(ModTags.ENCHANTMENT_UPGRADE_ITEMS, stack1.getItem()))
+		if (!stack.isEmpty() && !(stack.getItem() == null || stack.getItem() == Items.ENCHANTED_BOOK) && !stack1.isEmpty() && stack1.getItem() != null && stack1.getItem() instanceof EnchantmentUpgradeItem && ModTags.checkTagContains(ModTags.ENCHANTMENT_UPGRADE_ITEMS, stack1.getItem()) && !ModTags.checkTagContains(ModTags.ENCHANTMENT_UPGRADEABLE_BLACKLIST, stack.getItem()))
 		{
 			final List<EnchantmentUpgradeProp> eups = ((EnchantmentUpgradeItem)stack1.getItem()).getEnchantmentUpgradeProps();
 

@@ -32,7 +32,6 @@ import com.github.mechalopa.hmag.client.renderer.MeltyMonsterRenderer;
 import com.github.mechalopa.hmag.client.renderer.ModSpriteRenderer;
 import com.github.mechalopa.hmag.client.renderer.MonolithRenderer;
 import com.github.mechalopa.hmag.client.renderer.NecroticReaperRenderer;
-import com.github.mechalopa.hmag.client.renderer.NemesisBulletRenderer;
 import com.github.mechalopa.hmag.client.renderer.OgreRenderer;
 import com.github.mechalopa.hmag.client.renderer.RedcapRenderer;
 import com.github.mechalopa.hmag.client.renderer.SavagefangRenderer;
@@ -122,7 +121,6 @@ public class ModClientEventBusSubscriber
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.POISON_SEED.get(), ModSpriteRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.THROWABLE_BOTTLE.get(), ModSpriteRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.MAGMA_BULLET.get(), MagmaBulletRenderer::new);
-		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.NEMESIS_BULLET.get(), NemesisBulletRenderer::new);
 
 		RenderTypeLookup.setRenderLayer(ModBlocks.REINFORCED_GLASS.get(), RenderType.cutout());
 
