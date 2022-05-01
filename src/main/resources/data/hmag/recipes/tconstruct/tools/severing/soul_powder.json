@@ -1,0 +1,17 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "type": "tconstruct:severing",
+  "entity": {
+    "types": [
+      "hmag:ghost",
+      "hmag:wither_ghost",
+      "hmag:banshee"
+    ]
+  },
+  "result": "hmag:soul_powder"
+}

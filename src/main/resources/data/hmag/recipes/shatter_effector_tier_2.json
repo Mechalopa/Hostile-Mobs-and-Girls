@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "hmag:shatter_effector_tier_1"
+    },
+    {
+      "item": "hmag:repulsion_gadget"
+    },
+    {
+      "item": "minecraft:golden_pickaxe"
+    },
+    {
+      "item": "minecraft:soul_campfire"
+    },
+    {
+      "tag": "forge:storage_blocks/redstone"
+    },
+    {
+      "item": "hmag:ancient_stone"
+    },
+    {
+      "tag": "hmag:emerald_block_and_ruby_block_and_sapphire_block"
+    },
+    {
+      "tag": "forge:gems/diamond"
+    },
+    {
+      "tag": "hmag:enchantment_upgrade_item_crafting_materials"
+    }
+  ],
+  "result": {
+    "item": "hmag:shatter_effector_tier_2"
+  }
+}

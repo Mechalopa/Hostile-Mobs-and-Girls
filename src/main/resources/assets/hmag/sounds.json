@@ -1,0 +1,484 @@
+{
+  "entity.girls.ambient": {
+    "sounds": [
+      {
+        "name": "hmag:entity/girls/ambient1",
+        "volume": 0.8
+      },
+      {
+        "name": "hmag:entity/girls/ambient2",
+        "volume": 0.8
+      },
+      {
+        "name": "hmag:entity/girls/ambient3",
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.girls.ambient"
+  },
+  "entity.girls.hurt": {
+    "sounds": [
+      {
+        "name": "hmag:entity/girls/hurt1",
+        "volume": 0.9
+      },
+      {
+        "name": "hmag:entity/girls/hurt2",
+        "volume": 0.9
+      },
+      {
+        "name": "hmag:entity/girls/hurt3",
+        "volume": 0.9
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.girls.hurt"
+  },
+  "entity.girls.death": {
+    "sounds": [
+      {
+        "name": "hmag:entity/girls/death",
+        "volume": 0.9
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.girls.death"
+  },
+  "entity.ghost.ambient": {
+    "sounds": [
+      {
+        "name": "hmag:entity/ghost/ambient1",
+        "volume": 0.8
+      },
+      {
+        "name": "hmag:entity/ghost/ambient2",
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.ghost.ambient"
+  },
+  "entity.ghost.hurt": {
+    "sounds": [
+      {
+        "name": "hmag:entity/ghost/hurt1",
+        "volume": 0.9
+      },
+      {
+        "name": "hmag:entity/ghost/hurt2",
+        "volume": 0.95
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.ghost.hurt"
+  },
+  "entity.ghost.death": {
+    "sounds": [
+      {
+        "name": "hmag:entity/ghost/death",
+        "volume": 0.9
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.ghost.death"
+  },
+  "entity.ogre.ambient": {
+    "sounds": [
+      {
+        "name": "hmag:entity/ogre/ambient1",
+        "volume": 1.5
+      },
+      {
+        "name": "hmag:entity/ogre/ambient2",
+        "volume": 1.5
+      },
+      {
+        "name": "hmag:entity/ogre/ambient3",
+        "volume": 1.5
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.ogre.ambient"
+  },
+  "entity.ogre.hurt": {
+    "sounds": [
+      {
+        "name": "hmag:entity/ogre/hurt1",
+        "volume": 1.3
+      },
+      {
+        "name": "hmag:entity/ogre/hurt2",
+        "volume": 1.3
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.ogre.hurt"
+  },
+  "entity.ogre.death": {
+    "sounds": [
+      {
+        "name": "hmag:entity/ogre/death",
+        "volume": 1.5
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.ogre.death"
+  },
+  "entity.doll.ambient": {
+    "sounds": [
+      "hmag:entity/doll/ambient"
+    ],
+    "subtitle": "subtitles.hmag.entity.doll.ambient"
+  },
+  "entity.doll.hurt": {
+    "sounds": [
+      "hmag:entity/doll/hurt1",
+      "hmag:entity/doll/hurt2"
+    ],
+    "subtitle": "subtitles.hmag.entity.doll.hurt"
+  },
+  "entity.doll.death": {
+    "sounds": [
+      "hmag:entity/doll/death"
+    ],
+    "subtitle": "subtitles.hmag.entity.doll.death"
+  },
+  "entity.spider_nest.ambient": {
+    "sounds": [
+      {
+        "name": "minecraft:mob/spider/say1",
+        "pitch": 0.55
+      },
+      {
+        "name": "minecraft:mob/spider/say2",
+        "pitch": 0.55
+      },
+      {
+        "name": "minecraft:mob/spider/say3",
+        "pitch": 0.55
+      },
+      {
+        "name": "minecraft:mob/spider/say4",
+        "pitch": 0.55
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.spider_nest.ambient"
+  },
+  "entity.spider_nest.hurt": {
+    "sounds": [
+      {
+        "name": "minecraft:mob/spider/say1",
+        "pitch": 0.6
+      },
+      {
+        "name": "minecraft:mob/spider/say2",
+        "pitch": 0.6
+      },
+      {
+        "name": "minecraft:mob/spider/say3",
+        "pitch": 0.6
+      },
+      {
+        "name": "minecraft:mob/spider/say4",
+        "pitch": 0.6
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.spider_nest.hurt"
+  },
+  "entity.spider_nest.death": {
+    "sounds": [
+      {
+        "name": "minecraft:mob/spider/death",
+        "pitch": 0.5
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.spider_nest.death"
+  },
+  "entity.spider_nest.summon": {
+    "sounds": [
+      "hmag:entity/summon"
+    ],
+    "subtitle": "subtitles.hmag.entity.spider_nest.summon"
+  },
+  "entity.hornet.ambient": {
+    "sounds": [
+      {
+        "name": "block/beehive/work1",
+        "volume": 1.2,
+        "pitch": 1.25
+      },
+      {
+        "name": "block/beehive/work2",
+        "volume": 1.2,
+        "pitch": 1.25
+      },
+      {
+        "name": "block/beehive/work3",
+        "volume": 1.2,
+        "pitch": 1.25
+      },
+      {
+        "name": "block/beehive/work4",
+        "volume": 1.2,
+        "pitch": 1.25
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.hornet.ambient"
+  },
+  "entity.catoblepas.ambient": {
+    "sounds": [
+      {
+        "name": "minecraft:mob/cow/say1",
+        "pitch": 0.7
+      },
+      {
+        "name": "minecraft:mob/cow/say2",
+        "pitch": 0.7
+      },
+      {
+        "name": "minecraft:mob/cow/say3",
+        "pitch": 0.7
+      },
+      {
+        "name": "minecraft:mob/cow/say4",
+        "pitch": 0.7
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.catoblepas.ambient"
+  },
+  "entity.catoblepas.death": {
+    "sounds": [
+      {
+        "name": "minecraft:mob/cow/hurt1",
+        "pitch": 0.7
+      },
+      {
+        "name": "minecraft:mob/cow/hurt2",
+        "pitch": 0.7
+      },
+      {
+        "name": "minecraft:mob/cow/hurt3",
+        "pitch": 0.7
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.catoblepas.death"
+  },
+  "entity.catoblepas.hurt": {
+    "sounds": [
+      {
+        "name": "minecraft:mob/cow/hurt1",
+        "pitch": 0.7
+      },
+      {
+        "name": "minecraft:mob/cow/hurt2",
+        "pitch": 0.7
+      },
+      {
+        "name": "minecraft:mob/cow/hurt3",
+        "pitch": 0.7
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.catoblepas.hurt"
+  },
+  "entity.kasha.ambient": {
+    "sounds": [
+      {
+        "name": "minecraft:mob/cat/ocelot/idle1",
+        "volume": 0.3,
+        "pitch": 0.75
+      },
+      {
+        "name": "minecraft:mob/cat/ocelot/idle2",
+        "volume": 0.3,
+        "pitch": 0.75
+      },
+      {
+        "name": "minecraft:mob/cat/ocelot/idle3",
+        "volume": 0.35,
+        "pitch": 0.75
+      },
+      {
+        "name": "minecraft:mob/cat/ocelot/idle4",
+        "volume": 0.45,
+        "pitch": 0.75
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.kasha.ambient"
+  },
+  "entity.kasha.hurt": {
+    "sounds": [
+      {
+        "name": "minecraft:mob/cat/hitt1",
+        "volume": 0.45,
+        "pitch": 0.75
+      },
+      {
+        "name": "minecraft:mob/cat/hitt2",
+        "volume": 0.45,
+        "pitch": 0.75
+      },
+      {
+        "name": "minecraft:mob/cat/hitt3",
+        "volume": 0.45,
+        "pitch": 0.75
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.kasha.hurt"
+  },
+  "entity.kasha.death": {
+    "sounds": [
+      {
+        "name": "minecraft:mob/cat/ocelot/death1",
+        "volume": 0.45,
+        "pitch": 0.75
+      },
+      {
+        "name": "minecraft:mob/cat/ocelot/death2",
+        "volume": 0.45,
+        "pitch": 0.75
+      },
+      {
+        "name": "minecraft:mob/cat/ocelot/death3",
+        "volume": 0.45,
+        "pitch": 0.75
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.kasha.death"
+  },
+  "entity.dyssomnia.ambient": {
+    "sounds": [
+      {
+        "name": "minecraft:mob/phantom/idle1",
+        "volume": 0.8,
+        "pitch": 0.75
+      },
+      {
+        "name": "minecraft:mob/phantom/idle2",
+        "volume": 0.8,
+        "pitch": 0.75
+      },
+      {
+        "name": "minecraft:mob/phantom/idle3",
+        "volume": 0.8,
+        "pitch": 0.75
+      },
+      {
+        "name": "minecraft:mob/phantom/idle4",
+        "volume": 0.8,
+        "pitch": 0.75
+      },
+      {
+        "name": "minecraft:mob/phantom/idle5",
+        "volume": 0.8,
+        "pitch": 0.75
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.dyssomnia.ambient"
+  },
+  "entity.dyssomnia.death": {
+    "sounds": [
+      {
+        "name": "minecraft:mob/phantom/death1",
+        "pitch": 0.75
+      },
+      {
+        "name": "minecraft:mob/phantom/death2",
+        "pitch": 0.75
+      },
+      {
+        "name": "minecraft:mob/phantom/death3",
+        "pitch": 0.75
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.dyssomnia.death"
+  },
+  "entity.dyssomnia.hurt": {
+    "sounds": [
+      {
+        "name": "minecraft:mob/phantom/hurt1",
+        "volume": 0.75,
+        "pitch": 0.75
+      },
+      {
+        "name": "minecraft:mob/phantom/hurt2",
+        "volume": 0.75,
+        "pitch": 0.75
+      },
+      {
+        "name": "minecraft:mob/phantom/hurt3",
+        "volume": 0.75,
+        "pitch": 0.75
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.dyssomnia.hurt"
+  },
+  "entity.dyssomnia.summon": {
+    "sounds": [
+      "hmag:entity/summon"
+    ],
+    "subtitle": "subtitles.hmag.entity.dyssomnia.summon"
+  },
+  "entity.stoneular.ambient": {
+    "sounds": [
+      {
+        "name": "minecraft:mob/strider/idle1",
+        "pitch": 0.55
+      },
+      {
+        "name": "minecraft:mob/strider/idle2",
+        "pitch": 0.55
+      },
+      {
+        "name": "minecraft:mob/strider/idle3",
+        "pitch": 0.55
+      },
+      {
+        "name": "minecraft:mob/strider/idle4",
+        "pitch": 0.55
+      },
+      {
+        "name": "minecraft:mob/strider/idle5",
+        "pitch": 0.55
+      },
+      {
+        "name": "minecraft:mob/strider/idle6",
+        "pitch": 0.55
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.stoneular.ambient"
+  },
+  "entity.stoneular.hurt": {
+    "sounds": [
+      {
+        "name": "minecraft:mob/strider/hurt1",
+        "pitch": 0.55
+      },
+      {
+        "name": "minecraft:mob/strider/hurt2",
+        "pitch": 0.55
+      },
+      {
+        "name": "minecraft:mob/strider/hurt3",
+        "pitch": 0.55
+      },
+      {
+        "name": "minecraft:mob/strider/hurt4",
+        "pitch": 0.55
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.stoneular.hurt"
+  },
+  "entity.stoneular.death": {
+    "sounds": [
+      {
+        "name": "minecraft:mob/strider/death1",
+        "pitch": 0.55
+      },
+      {
+        "name": "minecraft:mob/strider/death2",
+        "pitch": 0.55
+      },
+      {
+        "name": "minecraft:mob/strider/death3",
+        "pitch": 0.55
+      },
+      {
+        "name": "minecraft:mob/strider/death4",
+        "pitch": 0.55
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.stoneular.death"
+  }
+}

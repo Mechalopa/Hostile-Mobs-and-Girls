@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "hmag:item/shard_of_greed_tier_3"
+  }
+}

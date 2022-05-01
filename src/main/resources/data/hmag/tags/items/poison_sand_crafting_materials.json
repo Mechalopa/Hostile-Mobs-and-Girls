@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:poisonous_potato",
+    "minecraft:pufferfish",
+    {
+      "id": "jafohana:red_spider_lily",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "type": "forge:not",
+      "value": {
+        "type": "forge:tag_empty",
+        "tag": "forge:ingots/copper"
+      }
+    }
+  ],
+  "ingredients": [
+    {
+      "tag": "forge:ingots/copper"
+    }
+  ],
+  "result": {
+    "item": "hmag:copper_nugget",
+    "count": 9
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "hmag:ogre_horn"
+    }
+  ],
+  "result": {
+    "item": "minecraft:bone_meal",
+    "count": 5
+  }
+}

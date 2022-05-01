@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:piston"
+    },
+    {
+      "tag": "minecraft:logs"
+    },
+    {
+      "tag": "forge:nuggets/iron"
+    },
+    {
+      "tag": "forge:dusts/redstone"
+    }
+  ],
+  "result": {
+    "item": "hmag:repulsion_gadget",
+    "count": 2
+  }
+}

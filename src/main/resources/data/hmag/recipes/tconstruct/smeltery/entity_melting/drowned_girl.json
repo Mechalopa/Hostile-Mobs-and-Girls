@@ -1,0 +1,17 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "type": "tconstruct:entity_melting",
+  "entity": {
+    "type": "hmag:drowned_girl"
+  },
+  "result": {
+    "fluid": "minecraft:water",
+    "amount": 20
+  },
+  "damage": 2
+}

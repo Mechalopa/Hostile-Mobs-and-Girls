@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:drowned",
+    "minecraft:husk",
+    "minecraft:zombie",
+    "hmag:drowned_girl",
+    "hmag:husk_girl",
+    "hmag:zombie_girl"
+  ]
+}

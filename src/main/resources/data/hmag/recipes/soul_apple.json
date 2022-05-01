@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "hmag:soul_powder"
+    },
+    "X": {
+      "tag": "forge:crops/apple"
+    }
+  },
+  "result": {
+    "item": "hmag:soul_apple"
+  }
+}

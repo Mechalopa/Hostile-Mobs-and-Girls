@@ -1,0 +1,17 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "type": "tconstruct:entity_melting",
+  "entity": {
+    "type": "hmag:spider_nest"
+  },
+  "result": {
+    "fluid": "tconstruct:venom",
+    "amount": 25
+  },
+  "damage": 4
+}

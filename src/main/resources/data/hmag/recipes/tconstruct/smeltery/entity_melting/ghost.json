@@ -1,0 +1,20 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "type": "tconstruct:entity_melting",
+  "entity": {
+    "types": [
+      "hmag:ghost",
+      "hmag:wither_ghost"
+    ]
+  },
+  "result": {
+    "fluid": "tconstruct:liquid_soul",
+    "amount": 5
+  },
+  "damage": 2
+}

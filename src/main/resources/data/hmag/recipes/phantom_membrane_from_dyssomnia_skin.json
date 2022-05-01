@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "hmag:dyssomnia_skin"
+    }
+  ],
+  "result": {
+    "item": "minecraft:phantom_membrane",
+    "count": 3
+  }
+}

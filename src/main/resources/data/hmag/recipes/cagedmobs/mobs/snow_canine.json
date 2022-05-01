@@ -1,0 +1,39 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cagedmobs"
+    }
+  ],
+  "type": "cagedmobs:mob_data",
+  "entity": "hmag:snow_canine",
+  "samplerTier": 2,
+  "environments": ["snow"],
+  "growTicks": 1200,
+  "results": [
+    {
+      "chance": 0.5,
+      "output": {
+        "item": "hmag:canine_tooth"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "hmag:blueberry"
+      },
+      "minAmount": 1,
+      "maxAmount": 3
+    },
+    {
+      "chance": 0.025,
+      "output": {
+        "item": "minecraft:iron_ingot"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    }
+  ]
+}

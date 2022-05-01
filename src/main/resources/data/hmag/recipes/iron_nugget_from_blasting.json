@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": [
+    {
+      "item": "hmag:iron_spear"
+    }
+  ],
+  "result": "minecraft:iron_nugget",
+  "experience": 0.1,
+  "cookingtime": 100
+}

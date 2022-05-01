@@ -1,0 +1,55 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cagedmobs"
+    }
+  ],
+  "type": "cagedmobs:mob_data",
+  "entity": "hmag:spider_nest",
+  "samplerTier": 2,
+  "environments": ["cave"],
+  "growTicks": 1200,
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "minecraft:string"
+      },
+      "minAmount": 1,
+      "maxAmount": 3
+    },
+    {
+      "chance": 0.5,
+      "output": {
+        "item": "minecraft:spider_eye"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.625,
+      "output": {
+        "item": "minecraft:cobweb"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "hmag:exp_berry"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.025,
+      "output": {
+        "item": "minecraft:experience_bottle"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    }
+  ]
+}

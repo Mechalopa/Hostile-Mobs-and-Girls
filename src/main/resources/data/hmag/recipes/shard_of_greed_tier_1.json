@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:golden_sword"
+    },
+    {
+      "tag": "hmag:emerald_block_and_ruby_block_and_sapphire_block"
+    },
+    {
+      "item": "minecraft:gilded_blackstone"
+    },
+    {
+      "item": "minecraft:golden_apple"
+    },
+    {
+      "tag": "hmag:lucky_materials"
+    },
+    [
+      {
+        "item": "hmag:ogre_horn"
+      },
+      {
+        "item": "hmag:crimson_cuticula"
+      }
+    ],
+    {
+      "item": "minecraft:nautilus_shell"
+    },
+    {
+      "item": "minecraft:phantom_membrane"
+    }
+  ],
+  "result": {
+    "item": "hmag:shard_of_greed_tier_1"
+  }
+}

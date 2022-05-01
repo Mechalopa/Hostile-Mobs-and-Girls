@@ -1,0 +1,33 @@
+{
+  "replace": false,
+  "values": [
+    "hmag:aruraune",
+    "hmag:banshee",
+    "hmag:creeper_girl",
+    "hmag:cursed_doll",
+    "hmag:dodomeki",
+    "hmag:dogu",
+    "hmag:drowned_girl",
+    "hmag:dullahan",
+    "hmag:ender_executor",
+    "hmag:ghost",
+    "hmag:harpy",
+    "hmag:hornet",
+    "hmag:husk_girl",
+    "hmag:imp",
+    "hmag:jack_frost",
+    "hmag:kobold",
+    "hmag:lich",
+    "hmag:melty_monster",
+    "hmag:necrotic_reaper",
+    "hmag:ogre",
+    "hmag:redcap",
+    "hmag:skeleton_girl",
+    "hmag:slime_girl",
+    "hmag:snow_canine",
+    "hmag:stray_girl",
+    "hmag:wither_ghost",
+    "hmag:wither_skeleton_girl",
+    "hmag:zombie_girl"
+  ]
+}

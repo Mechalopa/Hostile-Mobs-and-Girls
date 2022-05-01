@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X#Y",
+    "#Z#",
+    "Y#X"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:soul_sand"
+    },
+    "X": {
+      "item": "minecraft:red_mushroom"
+    },
+    "Y": {
+      "item": "minecraft:spider_eye"
+    },
+    "Z": {
+      "tag": "hmag:poison_sand_crafting_materials"
+    }
+  },
+  "result": {
+    "item": "hmag:poison_sand",
+    "count": 4
+  }
+}

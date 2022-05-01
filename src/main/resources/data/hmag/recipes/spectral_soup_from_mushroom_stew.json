@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:mushroom_stew"
+    },
+    {
+      "tag": "forge:dusts/glowstone"
+    }
+  ],
+  "result": {
+    "item": "hmag:spectral_soup"
+  }
+}

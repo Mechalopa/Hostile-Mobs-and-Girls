@@ -1,0 +1,13 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "type": "tconstruct:severing",
+  "entity": {
+    "type": "hmag:melty_monster"
+  },
+  "result": "minecraft:magma_cream"
+}

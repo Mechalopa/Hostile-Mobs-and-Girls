@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "NMN",
+    "GCG",
+    "NEN"
+  ],
+  "key": {
+    "M": {
+      "item": "hmag:burning_core"
+    },
+    "E": {
+      "item": "hmag:evil_crystal"
+    },
+    "N": {
+      "item": "minecraft:nether_bricks"
+    },
+    "C": {
+      "item": "minecraft:chiseled_nether_bricks"
+    },
+    "G": {
+      "tag": "forge:ingots/gold"
+    }
+  },
+  "result": {
+    "item": "hmag:fortress_shield"
+  }
+}

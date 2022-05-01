@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:gems/emerald",
+    {
+      "id": "#forge:gems/ruby",
+      "required": false
+    },
+    {
+      "id": "#forge:gems/sapphire",
+      "required": false
+    }
+  ]
+}

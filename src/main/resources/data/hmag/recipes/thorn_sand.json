@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X#X",
+    "#Y#",
+    "X#X"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:soul_sand"
+    },
+    "X": {
+      "tag": "forge:cactus"
+    },
+    "Y": {
+      "item": "minecraft:golden_sword"
+    }
+  },
+  "result": {
+    "item": "hmag:thorn_sand",
+    "count": 4
+  }
+}

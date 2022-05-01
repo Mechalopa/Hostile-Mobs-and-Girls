@@ -1,0 +1,20 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "type": "tconstruct:entity_melting",
+  "entity": {
+    "types": [
+      "hmag:zombie_girl",
+      "hmag:husk_girl"
+    ]
+  },
+  "result": {
+    "fluid": "tconstruct:blood",
+    "amount": 25
+  },
+  "damage": 2
+}

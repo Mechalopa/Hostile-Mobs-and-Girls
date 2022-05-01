@@ -1,0 +1,35 @@
+{
+  "type": "hmag:crafting_item_tag_shaped",
+  "conditions": [
+    {
+      "type": "forge:not",
+      "value": {
+        "type": "forge:tag_empty",
+        "tag": "forge:dusts/iron"
+      }
+    },
+    {
+      "type": "forge:not",
+      "value": {
+        "type": "forge:tag_empty",
+        "tag": "forge:dusts/cobalt"
+      }
+    }
+  ],
+  "pattern": [
+    " # ",
+    "#I#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "hmag:kobold_leather"
+    },
+    "I": {
+      "tag": "forge:dusts/iron"
+    }
+  },
+  "result": {
+    "tag": "forge:dusts/cobalt"
+  }
+}

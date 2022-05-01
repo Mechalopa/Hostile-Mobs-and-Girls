@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:cactus"
+    },
+    {
+      "item": "hmag:evil_crystal_fragment"
+    }
+  ],
+  "result": {
+    "item": "hmag:evil_thorn",
+    "count": 2
+  }
+}

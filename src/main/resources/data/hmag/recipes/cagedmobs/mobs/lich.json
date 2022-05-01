@@ -1,0 +1,47 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cagedmobs"
+    }
+  ],
+  "type": "cagedmobs:mob_data",
+  "entity": "hmag:lich",
+  "samplerTier": 2,
+  "environments": ["cave"],
+  "growTicks": 1800,
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "minecraft:bone"
+      },
+      "minAmount": 1,
+      "maxAmount": 3
+    },
+    {
+      "chance": 0.375,
+      "output": {
+        "item": "hmag:lich_cloth"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "hmag:exp_berry"
+      },
+      "minAmount": 1,
+      "maxAmount": 3
+    },
+    {
+      "chance": 0.025,
+      "output": {
+        "item": "minecraft:emerald"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    }
+  ]
+}

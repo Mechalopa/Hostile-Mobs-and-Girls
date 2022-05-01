@@ -1,0 +1,25 @@
+{
+  "type": "hmag:crafting_item_tag_shaped",
+  "conditions": [
+    {
+      "type": "forge:not",
+      "value": {
+        "type": "forge:tag_empty",
+        "tag": "forge:ingots/copper"
+      }
+    }
+  ],
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:nuggets/copper"
+    }
+  },
+  "result": {
+    "tag": "forge:ingots/copper"
+  }
+}

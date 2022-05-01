@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:golden_pickaxe"
+    },
+    {
+      "tag": "hmag:emerald_block_and_ruby_block_and_sapphire_block"
+    },
+    {
+      "item": "minecraft:gilded_blackstone"
+    },
+    {
+      "item": "minecraft:golden_apple"
+    },
+    {
+      "tag": "hmag:lucky_materials"
+    },
+    [
+      {
+        "item": "hmag:lich_cloth"
+      },
+      {
+        "item": "hmag:dyssomnia_skin"
+      }
+    ],
+    {
+      "tag": "minecraft:music_discs"
+    },
+    {
+      "tag": "forge:gems/prismarine"
+    }
+  ],
+  "result": {
+    "item": "hmag:shard_of_fortune_tier_1"
+  }
+}

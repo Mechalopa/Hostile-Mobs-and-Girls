@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:crops/carrot",
+    {
+      "id": "#forge:crops/spinach",
+      "required": false
+    },
+    {
+      "id": "#forge:crops/turnip",
+      "required": false
+    }
+  ]
+}

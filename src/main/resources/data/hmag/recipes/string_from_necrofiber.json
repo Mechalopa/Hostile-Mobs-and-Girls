@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "hmag:necrofiber"
+    }
+  ],
+  "result": {
+    "item": "minecraft:string",
+    "count": 2
+  }
+}

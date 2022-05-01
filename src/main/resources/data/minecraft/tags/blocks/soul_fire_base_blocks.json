@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "hmag:soul_powder_block",
+    "hmag:thorn_sand",
+    "hmag:poison_sand",
+    "hmag:wither_sand",
+    "hmag:healing_sand"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "hmag:wicked_whetstone_tier_1"
+    },
+    {
+      "item": "minecraft:prismarine"
+    },
+    {
+      "item": "minecraft:magma_block"
+    },
+    {
+      "item": "minecraft:crying_obsidian"
+    },
+    {
+      "item": "hmag:ogre_horn"
+    },
+    {
+      "item": "hmag:lightning_particle"
+    },
+    {
+      "tag": "hmag:emerald_block_and_ruby_block_and_sapphire_block"
+    },
+    {
+      "tag": "forge:gems/diamond"
+    },
+    {
+      "tag": "hmag:enchantment_upgrade_item_crafting_materials"
+    }
+  ],
+  "result": {
+    "item": "hmag:wicked_whetstone_tier_2"
+  }
+}

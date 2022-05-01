@@ -1,0 +1,45 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "type": "forge:not",
+      "value": {
+        "type": "forge:tag_empty",
+        "tag": "forge:gems/sapphire"
+      }
+    },
+    {
+      "type": "forge:tag_empty",
+      "tag": "forge:gems/ruby"
+    }
+  ],
+  "ingredients": [
+    {
+      "tag": "forge:gems/emerald"
+    },
+    {
+      "tag": "forge:gems/sapphire"
+    },
+    {
+      "tag": "forge:storage_blocks/coal"
+    },
+    {
+      "tag": "forge:storage_blocks/coal"
+    },
+    [
+      {
+        "item": "hmag:kobold_leather"
+      },
+      {
+        "item": "hmag:ogre_horn"
+      }
+    ],
+    {
+      "item": "hmag:evil_crystal_fragment"
+    }
+  ],
+  "result": {
+    "item": "hmag:diamond_fragment",
+    "count": 6
+  }
+}

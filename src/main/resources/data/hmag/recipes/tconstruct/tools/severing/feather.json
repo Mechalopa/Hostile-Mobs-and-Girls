@@ -1,0 +1,16 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "type": "tconstruct:severing",
+  "entity": {
+    "type": "hmag:harpy"
+  },
+  "result": {
+    "item": "minecraft:feather",
+    "count": 2
+  }
+}

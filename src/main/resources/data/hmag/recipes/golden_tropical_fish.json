@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:ingots/gold"
+    },
+    "X": {
+      "item": "minecraft:tropical_fish"
+    }
+  },
+  "result": {
+    "item": "hmag:golden_tropical_fish"
+  }
+}

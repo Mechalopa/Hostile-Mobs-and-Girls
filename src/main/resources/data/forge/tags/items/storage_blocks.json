@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:storage_blocks/nether_star",
+    "#forge:storage_blocks/heart_of_the_sea"
+  ]
+}

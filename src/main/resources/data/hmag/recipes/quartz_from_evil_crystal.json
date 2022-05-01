@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "hmag:evil_crystal"
+    },
+    {
+      "item": "hmag:evil_crystal"
+    },
+    {
+      "item": "hmag:evil_crystal"
+    },
+    {
+      "item": "hmag:evil_crystal"
+    },
+    {
+      "item": "hmag:purification_cloth"
+    }
+  ],
+  "result": {
+    "item": "minecraft:quartz",
+    "count": 64
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "hmag:evil_crystal_block"
+    }
+  ],
+  "result": {
+    "item": "hmag:evil_crystal",
+    "count": 9
+  }
+}

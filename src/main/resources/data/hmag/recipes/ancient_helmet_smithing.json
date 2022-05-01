@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft:diamond_helmet"
+  },
+  "addition": {
+    "item": "hmag:ancient_stone_block"
+  },
+  "result": {
+    "item": "hmag:ancient_helmet"
+  }
+}

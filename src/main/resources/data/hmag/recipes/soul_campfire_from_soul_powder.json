@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:campfire"
+    },
+    {
+      "item": "hmag:soul_powder"
+    },
+    {
+      "item": "hmag:soul_powder"
+    },
+    {
+      "item": "hmag:soul_powder"
+    },
+    {
+      "item": "hmag:soul_powder"
+    }
+  ],
+  "result": {
+    "item": "minecraft:soul_campfire"
+  }
+}

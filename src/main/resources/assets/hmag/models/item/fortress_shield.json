@@ -1,0 +1,14 @@
+{
+  "parent": "hmag:item/shield",
+  "textures": {
+    "particle": "minecraft:block/nether_bricks"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "blocking": 1
+      },
+      "model": "hmag:item/fortress_shield_blocking"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "type": "tconstruct:severing",
+  "entity": {
+    "type": "hmag:creeper_girl"
+  },
+  "result": "minecraft:tnt"
+}

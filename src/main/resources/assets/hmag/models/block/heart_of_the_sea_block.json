@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "hmag:block/heart_of_the_sea_block_top",
+    "side": "hmag:block/heart_of_the_sea_block_side"
+  }
+}

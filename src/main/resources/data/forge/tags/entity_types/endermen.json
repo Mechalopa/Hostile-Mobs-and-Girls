@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:enderman",
+    "hmag:ender_executor"
+  ]
+}

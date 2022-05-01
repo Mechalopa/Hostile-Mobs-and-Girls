@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:nuggets/netherite_scrap",
+    "#forge:nuggets/nether_star",
+    "#hmag:dragon_scales",
+    {
+      "id": "#forge:ingots/manyullyn",
+      "required": false
+    },
+    {
+      "id": "#forge:ingots/terrasteel",
+      "required": false
+    }
+  ]
+}

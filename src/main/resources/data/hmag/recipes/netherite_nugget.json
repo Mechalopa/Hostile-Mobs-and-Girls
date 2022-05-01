@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:ingots/netherite"
+    }
+  ],
+  "result": {
+    "item": "hmag:netherite_nugget",
+    "count": 9
+  }
+}

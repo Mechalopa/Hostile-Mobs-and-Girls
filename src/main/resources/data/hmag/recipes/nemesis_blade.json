@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "LNN",
+    "AXN",
+    "CAL"
+  ],
+  "key": {
+    "N": {
+      "tag": "forge:ingots/netherite"
+    },
+    "X": {
+      "tag": "forge:nether_stars"
+    },
+    "A": {
+      "item": "hmag:ancient_stone_block"
+    },
+    "L": {
+      "item": "hmag:lightning_particle"
+    },
+    "C": {
+      "item": "hmag:crimson_cuticula"
+    }
+  },
+  "result": {
+    "item": "hmag:nemesis_blade"
+  }
+}

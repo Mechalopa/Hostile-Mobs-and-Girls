@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:storage_blocks/emerald",
+    {
+      "id": "#forge:storage_blocks/ruby",
+      "required": false
+    },
+    {
+      "id": "#forge:storage_blocks/sapphire",
+      "required": false
+    }
+  ]
+}

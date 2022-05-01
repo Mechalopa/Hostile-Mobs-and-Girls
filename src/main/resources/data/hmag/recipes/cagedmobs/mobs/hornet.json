@@ -1,0 +1,79 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cagedmobs"
+    }
+  ],
+  "type": "cagedmobs:mob_data",
+  "entity": "hmag:hornet",
+  "samplerTier": 2,
+  "environments": ["cave"],
+  "growTicks": 1200,
+  "results": [
+    {
+      "chance": 0.5,
+      "output": {
+        "item": "minecraft:honeycomb"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.375,
+      "output": {
+        "item": "minecraft:poppy"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.375,
+      "output": {
+        "item": "minecraft:dandelion"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.375,
+      "output": {
+        "item": "minecraft:oxeye_daisy"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.375,
+      "output": {
+        "item": "minecraft:cornflower"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.125,
+      "output": {
+        "item": "minecraft:honey_bottle"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "hmag:iron_spear"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.025,
+      "output": {
+        "item": "minecraft:gold_ingot"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    }
+  ]
+}

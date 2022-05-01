@@ -1,0 +1,27 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:nuggets/nether_star",
+    "#hmag:dragon_scales",
+    {
+      "id": "#forge:ingots/manyullyn",
+      "required": false
+    },
+    {
+      "id": "#forge:ingots/terrasteel",
+      "required": false
+    },
+    {
+      "id": "turtlemancy:fragment_of_bedrock",
+      "required": false
+    },
+    {
+      "id": "#forge:nuggets/bedrock",
+      "required": false
+    },
+    {
+      "id": "#forge:nuggets/bedrockium",
+      "required": false
+    }
+  ]
+}
