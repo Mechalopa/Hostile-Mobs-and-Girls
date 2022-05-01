@@ -26,6 +26,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -70,9 +71,9 @@ public class ModEvents
 	private static final UUID NEMESIS_BLADE_ATTACK_DAMAGE_UUID = UUID.fromString("FD835C41-1211-AC72-0CD4-66F3061FB156");
 	private static final UUID NEMESIS_BLADE_ATTACK_SPEED_UUID = UUID.fromString("1911699B-779B-820E-064A-112D1EB232F7");
 	private static final UUID NEMESIS_BLADE_MOVEMENT_SPEED_UUID = UUID.fromString("C80A68DD-F985-4245-4EC4-64884C8EBA4C");
-	private static final AttributeModifier NEMESIS_BLADE_MOVEMENT_SPEED_MODIFIER = new AttributeModifier(NEMESIS_BLADE_MOVEMENT_SPEED_UUID, "Nemesis blade move speed penalty", (double)-0.5F, AttributeModifier.Operation.MULTIPLY_TOTAL);
+	private static final AttributeModifier NEMESIS_BLADE_MOVEMENT_SPEED_MODIFIER = new AttributeModifier(NEMESIS_BLADE_MOVEMENT_SPEED_UUID, "Nemesis blade move speed penalty", -0.5F, AttributeModifier.Operation.MULTIPLY_TOTAL);
 	private static final UUID ANCIENT_SHIELD_KNOCKBACK_RESISTANCE_UUID = UUID.fromString("0915B1C7-492D-2776-EFF2-436BF1072692");
-	private static final AttributeModifier ANCIENT_SHIELD_KNOCKBACK_RESISTANCE_MODIFIER = new AttributeModifier(ANCIENT_SHIELD_KNOCKBACK_RESISTANCE_UUID, "Ancient shield knockback resistance bonus", (double)0.05F, AttributeModifier.Operation.ADDITION);
+	private static final AttributeModifier ANCIENT_SHIELD_KNOCKBACK_RESISTANCE_MODIFIER = new AttributeModifier(ANCIENT_SHIELD_KNOCKBACK_RESISTANCE_UUID, "Ancient shield knockback resistance bonus", 0.05F, AttributeModifier.Operation.ADDITION);
 	private static final ITextComponent INSOMNIA_SWORD_MESSAGE = new TranslationTextComponent("message.hmag.insomnia_sword");
 
 	@SubscribeEvent
@@ -108,7 +109,7 @@ public class ModEvents
 
 							if (livingentity.isSensitiveToWater())
 							{
-								event.setAmount(event.getAmount() + ((float)level * 2.5F));
+								event.setAmount(event.getAmount() + (level * 2.5F));
 							}
 						}
 					}
@@ -183,108 +184,108 @@ public class ModEvents
 		{
 			event.getEntityLiving().getPersistentData().putBoolean(ModUtils.LIVING_UPDATE_CHECKED_KEY, true);
 
-			if (event.getEntityLiving() instanceof MobEntity)
+			if (event.getEntityLiving() instanceof Mob)
 			{
-				MobEntity mobentity = (MobEntity)event.getEntityLiving();
+				Mob Mob = (Mob)event.getEntityLiving();
 
-				if (mobentity.getPersistentData().getBoolean(ModUtils.WITH_SPAWN_PARTICLE_KEY))
+				if (Mob.getPersistentData().getBoolean(ModUtils.WITH_SPAWN_PARTICLE_KEY))
 				{
-					mobentity.spawnAnim();
-					mobentity.getPersistentData().remove(ModUtils.WITH_SPAWN_PARTICLE_KEY);
+					Mob.spawnAnim();
+					Mob.getPersistentData().remove(ModUtils.WITH_SPAWN_PARTICLE_KEY);
 				}
 
-				if (mobentity.isEffectiveAi() && mobentity.getPersistentData().getBoolean(ModUtils.LIVING_UPDATE_CHECKING_KEY) && !mobentity.getPersistentData().getBoolean(ModUtils.LIVING_NOT_REPLACED_KEY) && !mobentity.isPersistenceRequired() && !mobentity.requiresCustomPersistence() && !mobentity.isVehicle() && !mobentity.isPassenger())
+				if (Mob.isEffectiveAi() && Mob.getPersistentData().getBoolean(ModUtils.LIVING_UPDATE_CHECKING_KEY) && !Mob.getPersistentData().getBoolean(ModUtils.LIVING_NOT_REPLACED_KEY) && !Mob.isPersistenceRequired() && !Mob.requiresCustomPersistence() && !Mob.isVehicle() && !Mob.isPassenger())
 				{
 					ServerWorld serverworld = (ServerWorld)event.getEntityLiving().getCommandSenderWorld();
 					final double d = event.getEntityLiving().getRandom().nextDouble();
 
-					if (ModConfigs.cachedServer.ZOMBIE_GIRL_REPLACE_CHANCE > d && ModTags.checkTagContains(ModTags.ZOMBIE_GIRL_REPLACEABLES, mobentity.getType()))
+					if (ModConfigs.cachedServer.ZOMBIE_GIRL_REPLACE_CHANCE > d && ModTags.checkTagContains(ModTags.ZOMBIE_GIRL_REPLACEABLES, Mob.getType()))
 					{
-						replace(serverworld, mobentity, ModEntityTypes.ZOMBIE_GIRL.get());
+						replace(serverworld, Mob, ModEntityTypes.ZOMBIE_GIRL.get());
 					}
-					else if (ModConfigs.cachedServer.HUSK_GIRL_REPLACE_CHANCE > d && ModTags.checkTagContains(ModTags.HUSK_GIRL_REPLACEABLES, mobentity.getType()))
+					else if (ModConfigs.cachedServer.HUSK_GIRL_REPLACE_CHANCE > d && ModTags.checkTagContains(ModTags.HUSK_GIRL_REPLACEABLES, Mob.getType()))
 					{
-						replace(serverworld, mobentity, ModEntityTypes.HUSK_GIRL.get());
+						replace(serverworld, Mob, ModEntityTypes.HUSK_GIRL.get());
 					}
-					else if (ModConfigs.cachedServer.DROWNED_GIRL_REPLACE_CHANCE > d && ModTags.checkTagContains(ModTags.DROWNED_GIRL_REPLACEABLES, mobentity.getType()))
+					else if (ModConfigs.cachedServer.DROWNED_GIRL_REPLACE_CHANCE > d && ModTags.checkTagContains(ModTags.DROWNED_GIRL_REPLACEABLES, Mob.getType()))
 					{
-						replace(serverworld, mobentity, ModEntityTypes.DROWNED_GIRL.get());
+						replace(serverworld, Mob, ModEntityTypes.DROWNED_GIRL.get());
 					}
-					else if (ModConfigs.cachedServer.SKELETON_GIRL_REPLACE_CHANCE > d && ModTags.checkTagContains(ModTags.SKELETON_GIRL_REPLACEABLES, mobentity.getType()))
+					else if (ModConfigs.cachedServer.SKELETON_GIRL_REPLACE_CHANCE > d && ModTags.checkTagContains(ModTags.SKELETON_GIRL_REPLACEABLES, Mob.getType()))
 					{
-						replace(serverworld, mobentity, ModEntityTypes.SKELETON_GIRL.get());
+						replace(serverworld, Mob, ModEntityTypes.SKELETON_GIRL.get());
 					}
-					else if (ModConfigs.cachedServer.WITHER_SKELETON_GIRL_REPLACE_CHANCE > d && ModTags.checkTagContains(ModTags.WITHER_SKELETON_GIRL_REPLACEABLES, mobentity.getType()))
+					else if (ModConfigs.cachedServer.WITHER_SKELETON_GIRL_REPLACE_CHANCE > d && ModTags.checkTagContains(ModTags.WITHER_SKELETON_GIRL_REPLACEABLES, Mob.getType()))
 					{
-						replace(serverworld, mobentity, ModEntityTypes.WITHER_SKELETON_GIRL.get());
+						replace(serverworld, Mob, ModEntityTypes.WITHER_SKELETON_GIRL.get());
 					}
-					else if (ModConfigs.cachedServer.STRAY_GIRL_REPLACE_CHANCE > d && ModTags.checkTagContains(ModTags.STRAY_GIRL_REPLACEABLES, mobentity.getType()))
+					else if (ModConfigs.cachedServer.STRAY_GIRL_REPLACE_CHANCE > d && ModTags.checkTagContains(ModTags.STRAY_GIRL_REPLACEABLES, Mob.getType()))
 					{
-						replace(serverworld, mobentity, ModEntityTypes.STRAY_GIRL.get());
+						replace(serverworld, Mob, ModEntityTypes.STRAY_GIRL.get());
 					}
-					else if (ModConfigs.cachedServer.CREEPER_GIRL_REPLACE_CHANCE > d && ModTags.checkTagContains(ModTags.CREEPER_GIRL_REPLACEABLES, mobentity.getType()))
+					else if (ModConfigs.cachedServer.CREEPER_GIRL_REPLACE_CHANCE > d && ModTags.checkTagContains(ModTags.CREEPER_GIRL_REPLACEABLES, Mob.getType()))
 					{
-						replace(serverworld, mobentity, ModEntityTypes.CREEPER_GIRL.get());
+						replace(serverworld, Mob, ModEntityTypes.CREEPER_GIRL.get());
 					}
-					else if (ModConfigs.cachedServer.ENDER_EXECUTOR_REPLACE_CHANCE > d && ModTags.checkTagContains(ModTags.ENDER_EXECUTOR_REPLACEABLES, mobentity.getType()))
+					else if (ModConfigs.cachedServer.ENDER_EXECUTOR_REPLACE_CHANCE > d && ModTags.checkTagContains(ModTags.ENDER_EXECUTOR_REPLACEABLES, Mob.getType()))
 					{
-						replace(serverworld, mobentity, ModEntityTypes.ENDER_EXECUTOR.get());
+						replace(serverworld, Mob, ModEntityTypes.ENDER_EXECUTOR.get());
 					}
 				}
 			}
 		}
 	}
 
-	private static boolean replace(ServerWorld worldIn, MobEntity mobEntityIn, EntityType<?> type)
+	private static boolean replace(ServerWorld worldIn, Mob MobIn, EntityType<?> type)
 	{
-		if (mobEntityIn.getType().equals(type))
+		if (MobIn.getType().equals(type))
 		{
 			return false;
 		}
 
-		MobEntity mobentity = createMob(worldIn, type);
+		Mob Mob = createMob(worldIn, type);
 
-		if (mobentity == null)
+		if (Mob == null)
 		{
 			return false;
 		}
 
 		ILivingEntityData ilivingentitydata = null;
-		mobentity.copyPosition(mobEntityIn);
-		ilivingentitydata = mobentity.finalizeSpawn(worldIn, worldIn.getCurrentDifficultyAt(new BlockPos(mobEntityIn.position())), SpawnReason.NATURAL, ilivingentitydata, (CompoundTag)null);
-		mobentity.setNoAi(mobEntityIn.isNoAi());
+		Mob.copyPosition(MobIn);
+		ilivingentitydata = Mob.finalizeSpawn(worldIn, worldIn.getCurrentDifficultyAt(new BlockPos(MobIn.position())), SpawnReason.NATURAL, ilivingentitydata, (CompoundTag)null);
+		Mob.setNoAi(MobIn.isNoAi());
 
-		if (mobEntityIn.hasCustomName())
+		if (MobIn.hasCustomName())
 		{
-			mobentity.setCustomName(mobEntityIn.getCustomName());
-			mobentity.setCustomNameVisible(mobEntityIn.isCustomNameVisible());
+			Mob.setCustomName(MobIn.getCustomName());
+			Mob.setCustomNameVisible(MobIn.isCustomNameVisible());
 		}
 
-		mobentity.getPersistentData().putBoolean(ModUtils.LIVING_NOT_REPLACED_KEY, true);
-		worldIn.addFreshEntityWithPassengers(mobentity);
-		mobEntityIn.remove();
+		Mob.getPersistentData().putBoolean(ModUtils.LIVING_NOT_REPLACED_KEY, true);
+		worldIn.addFreshEntityWithPassengers(Mob);
+		MobIn.remove();
 		return true;
 	}
 
 	@Nullable
-	private static MobEntity createMob(ServerWorld worldIn, EntityType<?> type)
+	private static Mob createMob(ServerWorld worldIn, EntityType<?> type)
 	{
 		try
 		{
 			Entity entity = type.create(worldIn);
 
-			if (!(entity instanceof MobEntity))
+			if (!(entity instanceof Mob))
 			{
 				throw new IllegalStateException("Trying to spawn a non-mob: " + ForgeRegistries.ENTITIES.getKey(type));
 			}
 			else
 			{
-				return (MobEntity)entity;
+				return (Mob)entity;
 			}
 		}
 		catch (Exception e)
 		{
-			HMaG.LOGGER.warn("Failed to create hmag mob", (Throwable)e);
+			HMaG.LOGGER.warn("Failed to create hmag mob", e);
 			return null;
 		}
 	}
@@ -380,7 +381,7 @@ public class ModEvents
 		}
 		catch (Exception e)
 		{
-			HMaG.LOGGER.warn("Failed to add goals to mobs", (Throwable)e);
+			HMaG.LOGGER.warn("Failed to add goals to mobs", e);
 		}
 	}
 
@@ -455,7 +456,7 @@ public class ModEvents
 		{
 			ItemStack stack = event.getItemStack();
 
-			if (event.getSlotType() == MobEntity.getEquipmentSlotForItem(stack))
+			if (event.getSlotType() == Mob.getEquipmentSlotForItem(stack))
 			{
 				final int i = event.getSlotType().getIndex();
 
@@ -465,13 +466,13 @@ public class ModEvents
 
 					if (level > 0)
 					{
-						event.addModifier(Attributes.MAX_HEALTH, new AttributeModifier(HEALTH_BOOST_ENCHANTMENT_MAX_HEALTH_UUIDS[i], "Health boost enchantment " + event.getSlotType().getName() + " max health bonus", (double)((float)level * 1.0F), AttributeModifier.Operation.ADDITION));
+						event.addModifier(Attributes.MAX_HEALTH, new AttributeModifier(HEALTH_BOOST_ENCHANTMENT_MAX_HEALTH_UUIDS[i], "Health boost enchantment " + event.getSlotType().getName() + " max health bonus", level * 1.0F, AttributeModifier.Operation.ADDITION));
 					}
 				}
 
 				if (stack.getItem() instanceof ArmorItem && ((ArmorItem)stack.getItem()).getMaterial() == ModArmorMaterial.NECROTIC_CHAIN)
 				{
-					event.addModifier(Attributes.ATTACK_SPEED, new AttributeModifier(NECROTIC_CHAINMAIL_ARMOR_ATTACK_SPEED_UUIDS[i], "Necrotic chainmail armor " + event.getSlotType().getName() + " attack speed bonus", (double)0.1F, AttributeModifier.Operation.MULTIPLY_TOTAL));
+					event.addModifier(Attributes.ATTACK_SPEED, new AttributeModifier(NECROTIC_CHAINMAIL_ARMOR_ATTACK_SPEED_UUIDS[i], "Necrotic chainmail armor " + event.getSlotType().getName() + " attack speed bonus", 0.1F, AttributeModifier.Operation.MULTIPLY_TOTAL));
 				}
 				else if (stack.getItem() == ModItems.INSOMNIA_SWORD.get())
 				{
@@ -479,7 +480,7 @@ public class ModEvents
 
 					if (level1 > 0)
 					{
-						event.addModifier(Attributes.ATTACK_DAMAGE, new AttributeModifier(INSOMNIA_SWORD_ATTACK_DAMAGE_UUID, "Insomnia sword attack damage bonus", (double)((float)level1 * 1.0F + 1.0F), AttributeModifier.Operation.ADDITION));
+						event.addModifier(Attributes.ATTACK_DAMAGE, new AttributeModifier(INSOMNIA_SWORD_ATTACK_DAMAGE_UUID, "Insomnia sword attack damage bonus", level1 * 1.0F + 1.0F, AttributeModifier.Operation.ADDITION));
 					}
 				}
 				else if (stack.getItem() == ModItems.NEMESIS_BLADE.get())
@@ -488,8 +489,8 @@ public class ModEvents
 
 					if (level2 > 0)
 					{
-						event.addModifier(Attributes.ATTACK_DAMAGE, new AttributeModifier(NEMESIS_BLADE_ATTACK_DAMAGE_UUID, "Nemesis blade attack damage bonus", (double)((float)level2 * 1.0F), AttributeModifier.Operation.ADDITION));
-						event.addModifier(Attributes.ATTACK_SPEED, new AttributeModifier(NEMESIS_BLADE_ATTACK_SPEED_UUID, "Nemesis blade attack speed bonus", (double)((float)level2 * 0.25F), AttributeModifier.Operation.ADDITION));
+						event.addModifier(Attributes.ATTACK_DAMAGE, new AttributeModifier(NEMESIS_BLADE_ATTACK_DAMAGE_UUID, "Nemesis blade attack damage bonus", level2 * 1.0F, AttributeModifier.Operation.ADDITION));
+						event.addModifier(Attributes.ATTACK_SPEED, new AttributeModifier(NEMESIS_BLADE_ATTACK_SPEED_UUID, "Nemesis blade attack speed bonus", level2 * 0.25F, AttributeModifier.Operation.ADDITION));
 					}
 					else
 					{

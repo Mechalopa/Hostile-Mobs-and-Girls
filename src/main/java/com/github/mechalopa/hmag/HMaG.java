@@ -14,6 +14,7 @@ import com.github.mechalopa.hmag.registry.ModPotions;
 import com.github.mechalopa.hmag.registry.ModRecipes;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
 
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -32,7 +33,7 @@ public class HMaG
 
 	public static final Logger LOGGER = LogManager.getLogger();
 
-	public static final ItemGroup MODTAB = new ItemGroup(HMaG.MODID + ".tab")
+	public static final CreativeModeTab MODTAB = new CreativeModeTab(HMaG.MODID + ".tab")
 	{
 		@OnlyIn(Dist.CLIENT)
 		@Override

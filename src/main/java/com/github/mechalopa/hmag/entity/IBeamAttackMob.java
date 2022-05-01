@@ -2,7 +2,7 @@ package com.github.mechalopa.hmag.entity;
 
 import javax.annotation.Nullable;
 
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.world.entity.LivingEntity;
 
 public interface IBeamAttackMob
 {

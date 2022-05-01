@@ -6,11 +6,14 @@ import java.util.Random;
 import javax.annotation.Nonnull;
 
 import com.github.mechalopa.hmag.HMaG;
-import com.mojang.math.Vector3d;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -23,8 +26,12 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TridentItem;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LightLayer;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 
 public class ModUtils
 {
@@ -74,13 +81,13 @@ public class ModUtils
 		}
 	}
 
-	public static boolean canReach(@Nonnull LivingEntity livingEntityIn, Vector3d vector3dIn, int countIn)
+	public static boolean canReach(@Nonnull LivingEntity livingEntityIn, Vec3 vec3In, int countIn)
 	{
 		AABB axisalignedbb = livingEntityIn.getBoundingBox();
 
 		for (int i = 1; i < countIn; ++i)
 		{
-			axisalignedbb = axisalignedbb.move(vector3dIn);
+			axisalignedbb = axisalignedbb.move(vec3In);
 
 			if (!livingEntityIn.level.noCollision(livingEntityIn, axisalignedbb))
 			{
@@ -93,18 +100,22 @@ public class ModUtils
 
 	public static boolean closerThan(Entity entity, BlockPos pos, int distance)
 	{
-		return pos.closerThan(entity.blockPosition(), (double)distance);
+		return pos.closerThan(entity.blockPosition(), distance);
 	}
 
-	public static boolean isDarkEnoughToSpawn(IServerWorld worldIn, BlockPos pos, Random randomIn)
+	public static boolean isDarkEnoughToSpawn(ServerLevelAccessor worldIn, BlockPos pos, Random randomIn)
 	{
-		if (worldIn.getBrightness(LightType.SKY, pos) > randomIn.nextInt(32))
+		if (worldIn.getBrightness(LightLayer.SKY, pos) > randomIn.nextInt(32))
+		{
+			return false;
+		}
+		else if (worldIn.getBrightness(LightLayer.BLOCK, pos) > 0)
 		{
 			return false;
 		}
 		else
 		{
-			final int i = worldIn.getLevel().isThundering() ? worldIn.getMaxLocalRawBrightness(pos, 10) : worldIn.getMaxLocalRawBrightness(pos);
+			int i = worldIn.getLevel().isThundering() ? worldIn.getMaxLocalRawBrightness(pos, 10) : worldIn.getMaxLocalRawBrightness(pos);
 			return i <= randomIn.nextInt(8);
 		}
 	}
@@ -116,7 +127,7 @@ public class ModUtils
 
 	public static float rotlerp(float f, float f1, float f2, boolean flag)
 	{
-		float f3 = MathHelper.wrapDegrees(f1 - f);
+		float f3 = Mth.wrapDegrees(f1 - f);
 
 		if (f3 > f2)
 		{
@@ -176,12 +187,12 @@ public class ModUtils
 			f += 360.0F;
 		}
 
-		return MathHelper.lerp(f2, f, f1);
+		return Mth.lerp(f2, f, f1);
 	}
 
 	public static boolean matchItemBothHands(LivingEntity livingEntity, Item item)
 	{
-		for (Hand hand : Hand.values())
+		for (InteractionHand hand : InteractionHand.values())
 		{
 			ItemStack stack = livingEntity.getItemInHand(hand);
 
@@ -262,29 +273,29 @@ public class ModUtils
 		}
 	}
 
-	public static boolean checkBiomeList(World worldIn, BlockPos pos, List<? extends String> list)
+	public static boolean checkBiomeList(Level worldIn, BlockPos pos, List<? extends String> list)
 	{
 		if (worldIn != null)
 		{
-			Biome biome = worldIn.getBiome(pos);
+			Holder<Biome> biome = worldIn.getBiome(pos);
 
 			if (biome != null)
 			{
-				return checkList(biome.getRegistryName(), list);
+				return checkList(biome.value().getRegistryName(), list);
 			}
 		}
 
 		return false;
 	}
 
-	public static boolean checkDimensionList(World worldIn, List<? extends String> list)
+	public static boolean checkDimensionList(Level worldIn, List<? extends String> list)
 	{
 		if (worldIn != null)
 			return checkDimensionList(worldIn.dimension(), list);
 		return false;
 	}
 
-	public static boolean checkDimensionList(RegistryKey<World> key, List<? extends String> list)
+	public static boolean checkDimensionList(ResourceKey<Level> key, List<? extends String> list)
 	{
 		if (key != null)
 			return checkList(key.location(), list);

@@ -7,31 +7,31 @@ import javax.annotation.Nullable;
 
 import com.github.mechalopa.hmag.util.ModUtils;
 
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.controller.MovementController;
-import net.minecraft.entity.ai.goal.Goal;
-import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.IPacket;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.network.NetworkHooks;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.control.MoveControl;
+import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.network.NetworkHooks;
 
-public abstract class AbstractFlyingMonsterEntity extends MonsterEntity
+public abstract class AbstractFlyingMonsterEntity extends Monster
 {
-	protected static final DataParameter<Byte> ATTACK_PHASE = EntityDataManager.defineId(AbstractFlyingMonsterEntity.class, DataSerializers.BYTE);
+	protected static final EntityDataAccessor<Byte> ATTACK_PHASE = SynchedEntityData.defineId(AbstractFlyingMonsterEntity.class, EntityDataSerializers.BYTE);
 	private BlockPos boundOrigin;
 
-	public AbstractFlyingMonsterEntity(EntityType<? extends AbstractFlyingMonsterEntity> type, World worldIn)
+	public AbstractFlyingMonsterEntity(EntityType<? extends AbstractFlyingMonsterEntity> type, Level worldIn)
 	{
 		super(type, worldIn);
 		this.moveControl = new AbstractFlyingMonsterEntity.MoveHelperController(this);
@@ -52,7 +52,7 @@ public abstract class AbstractFlyingMonsterEntity extends MonsterEntity
 	}
 
 	@Override
-	public boolean causeFallDamage(float distance, float damageMultiplier)
+	public boolean causeFallDamage(float distance, float damageMultiplier, DamageSource source)
 	{
 		return false;
 	}
@@ -76,7 +76,7 @@ public abstract class AbstractFlyingMonsterEntity extends MonsterEntity
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundNBT compound)
+	public void readAdditionalSaveData(CompoundTag compound)
 	{
 		super.readAdditionalSaveData(compound);
 		compound.putInt("AttackPhase", this.getAttackPhase());
@@ -88,7 +88,7 @@ public abstract class AbstractFlyingMonsterEntity extends MonsterEntity
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundNBT compound)
+	public void addAdditionalSaveData(CompoundTag compound)
 	{
 		super.addAdditionalSaveData(compound);
 		this.setAttackPhase(compound.getInt("AttackPhase"));
@@ -103,7 +103,7 @@ public abstract class AbstractFlyingMonsterEntity extends MonsterEntity
 
 	@Nonnull
 	@Override
-	public IPacket<?> getAddEntityPacket()
+	public Packet<?> getAddEntityPacket()
 	{
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
@@ -121,7 +121,7 @@ public abstract class AbstractFlyingMonsterEntity extends MonsterEntity
 
 	public int getAttackPhase()
 	{
-		return (int)this.entityData.get(ATTACK_PHASE);
+		return this.entityData.get(ATTACK_PHASE);
 	}
 
 	public void setAttackPhase(int value)
@@ -171,7 +171,7 @@ public abstract class AbstractFlyingMonsterEntity extends MonsterEntity
 		{
 			if (AbstractFlyingMonsterEntity.this.getTarget() != null && !AbstractFlyingMonsterEntity.this.getMoveControl().hasWanted() && AbstractFlyingMonsterEntity.this.getRandom().nextInt(this.chance) == 0)
 			{
-				return AbstractFlyingMonsterEntity.this.distanceToSqr(AbstractFlyingMonsterEntity.this.getTarget()) > (double)this.attackRadius;
+				return AbstractFlyingMonsterEntity.this.distanceToSqr(AbstractFlyingMonsterEntity.this.getTarget()) > this.attackRadius;
 			}
 			else
 			{
@@ -190,10 +190,10 @@ public abstract class AbstractFlyingMonsterEntity extends MonsterEntity
 		{
 			LivingEntity livingentity = AbstractFlyingMonsterEntity.this.getTarget();
 
-			if (AbstractFlyingMonsterEntity.this.canSee(livingentity) || AbstractFlyingMonsterEntity.this.getAttackPhase() != 0)
+			if (AbstractFlyingMonsterEntity.this.hasLineOfSight(livingentity) || AbstractFlyingMonsterEntity.this.getAttackPhase() != 0)
 			{
-				Vector3d vector3d = livingentity.getEyePosition(1.0F);
-				AbstractFlyingMonsterEntity.this.moveControl.setWantedPosition(vector3d.x, vector3d.y - 0.75D, vector3d.z, this.moveSpeed);
+				Vec3 vec3 = livingentity.getEyePosition();
+				AbstractFlyingMonsterEntity.this.moveControl.setWantedPosition(vec3.x, vec3.y - 0.75D, vec3.z, this.moveSpeed);
 				AbstractFlyingMonsterEntity.this.setAttackPhase(2);
 			}
 		}
@@ -218,18 +218,18 @@ public abstract class AbstractFlyingMonsterEntity extends MonsterEntity
 			if (d0 <= d1 && this.attackTime <= 0)
 			{
 				this.attackTime = 20;
-				attacker.swing(Hand.MAIN_HAND);
+				attacker.swing(InteractionHand.MAIN_HAND);
 				attacker.doHurtTarget(livingentity);
 				attacker.setAttackPhase(1);
 			}
 			else
 			{
-				if (attacker.canSee(livingentity))
+				if (attacker.hasLineOfSight(livingentity))
 				{
-					if (d0 < (double)(this.attackRadius + 15.0F))
+					if (d0 < this.attackRadius + 15.0F)
 					{
-						Vector3d vector3d = livingentity.getEyePosition(1.0F);
-						attacker.moveControl.setWantedPosition(vector3d.x, vector3d.y - 0.75D, vector3d.z, this.moveSpeed);
+						Vec3 vec3 = livingentity.getEyePosition();
+						attacker.moveControl.setWantedPosition(vec3.x, vec3.y - 0.75D, vec3.z, this.moveSpeed);
 					}
 				}
 				else if (attacker.getRandom().nextInt(16) == 0)
@@ -241,11 +241,11 @@ public abstract class AbstractFlyingMonsterEntity extends MonsterEntity
 
 		protected double getAttackReachSqr(LivingEntity attackTarget)
 		{
-			return (double)(AbstractFlyingMonsterEntity.this.getBbWidth() * 2.0F * AbstractFlyingMonsterEntity.this.getBbWidth() * 2.0F + attackTarget.getBbWidth());
+			return AbstractFlyingMonsterEntity.this.getBbWidth() * 2.0F * AbstractFlyingMonsterEntity.this.getBbWidth() * 2.0F + attackTarget.getBbWidth();
 		}
 	}
 
-	protected class MoveHelperController extends MovementController
+	protected class MoveHelperController extends MoveControl
 	{
 		public MoveHelperController(AbstractFlyingMonsterEntity mob)
 		{
@@ -257,33 +257,33 @@ public abstract class AbstractFlyingMonsterEntity extends MonsterEntity
 		{
 			AbstractFlyingMonsterEntity flyingentity = AbstractFlyingMonsterEntity.this;
 
-			if (this.operation == MovementController.Action.MOVE_TO)
+			if (this.operation == MoveControl.Operation.MOVE_TO)
 			{
-				Vector3d vector3d = new Vector3d(this.wantedX - flyingentity.getX(), this.wantedY - flyingentity.getY(), this.wantedZ - flyingentity.getZ());
-				double d0 = vector3d.length();
+	            Vec3 vec3 = new Vec3(this.wantedX - flyingentity.getX(), this.wantedY - flyingentity.getY(), this.wantedZ - flyingentity.getZ());
+	            double d0 = vec3.length();
 
-				if (d0 < flyingentity.getBoundingBox().getSize() || !ModUtils.canReach(flyingentity, vector3d.normalize(), MathHelper.ceil(d0)))
+				if (d0 < flyingentity.getBoundingBox().getSize() || !ModUtils.canReach(flyingentity, vec3.normalize(), Mth.ceil(d0)))
 				{
-					this.operation = MovementController.Action.WAIT;
+					this.operation = MoveControl.Operation.WAIT;
 					flyingentity.setDeltaMovement(flyingentity.getDeltaMovement().scale(0.5D));
 				}
 				else
 				{
 					float f = (float)flyingentity.getAttributeValue(Attributes.MOVEMENT_SPEED);
-					flyingentity.setDeltaMovement(flyingentity.getDeltaMovement().add(vector3d.scale((float)this.speedModifier * f * 0.2D / d0)));
+					flyingentity.setDeltaMovement(flyingentity.getDeltaMovement().add(vec3.scale((float)this.speedModifier * f * 0.2D / d0)));
 
 					if (flyingentity.getTarget() == null)
 					{
-						Vector3d vector3d1 = flyingentity.getDeltaMovement();
-						flyingentity.yRot = -((float)MathHelper.atan2(vector3d1.x, vector3d1.z)) * (180.0F / (float)Math.PI);
-						flyingentity.yBodyRot = flyingentity.yRot;
+						Vec3 vec31 = flyingentity.getDeltaMovement();
+						flyingentity.setYRot(-((float)Mth.atan2(vec31.x, vec31.z)) * (180.0F / (float)Math.PI));
+						flyingentity.yBodyRot = flyingentity.getYRot();
 					}
 					else
 					{
 						double d2 = flyingentity.getTarget().getX() - flyingentity.getX();
 						double d1 = flyingentity.getTarget().getZ() - flyingentity.getZ();
-						flyingentity.yRot = -((float)MathHelper.atan2(d2, d1)) * (180.0F / (float)Math.PI);
-						flyingentity.yBodyRot = flyingentity.yRot;
+						flyingentity.setYRot(-((float)Mth.atan2(d2, d1)) * (180.0F / (float)Math.PI));
+						flyingentity.yBodyRot = flyingentity.getYRot();
 					}
 				}
 			}
@@ -354,11 +354,11 @@ public abstract class AbstractFlyingMonsterEntity extends MonsterEntity
 
 				if (flyingentity.level.isEmptyBlock(blockpos1))
 				{
-					flyingentity.moveControl.setWantedPosition((double)blockpos1.getX() + 0.5D, (double)blockpos1.getY() + 0.5D, (double)blockpos1.getZ() + 0.5D, this.moveSpeed);
+					flyingentity.moveControl.setWantedPosition(blockpos1.getX() + 0.5D, blockpos1.getY() + 0.5D, blockpos1.getZ() + 0.5D, this.moveSpeed);
 
 					if (flyingentity.getTarget() == null)
 					{
-						flyingentity.getLookControl().setLookAt((double)blockpos1.getX() + 0.5D, (double)blockpos1.getY() + 0.5D, (double)blockpos1.getZ() + 0.5D, 180.0F, 20.0F);
+						flyingentity.getLookControl().setLookAt(blockpos1.getX() + 0.5D, blockpos1.getY() + 0.5D, blockpos1.getZ() + 0.5D, 180.0F, 20.0F);
 					}
 
 					break;

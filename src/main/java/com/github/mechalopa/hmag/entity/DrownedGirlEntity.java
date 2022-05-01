@@ -2,44 +2,42 @@ package com.github.mechalopa.hmag.entity;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoField;
-import java.util.Objects;
-import java.util.Optional;
 import java.util.Random;
 
 import javax.annotation.Nonnull;
 
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.monster.DrownedEntity;
-import net.minecraft.entity.monster.ZombieEntity;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.network.IPacket;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.network.protocol.Packet;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RegistryKey;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.IServerWorld;
-import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.Biomes;
-import net.minecraftforge.fml.network.NetworkHooks;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.monster.Drowned;
+import net.minecraft.world.entity.monster.Zombie;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
+import net.minecraftforge.network.NetworkHooks;
 
-public class DrownedGirlEntity extends DrownedEntity implements IModMob
+public class DrownedGirlEntity extends Drowned implements IModMob
 {
-	public DrownedGirlEntity(EntityType<? extends DrownedGirlEntity> type, World worldIn)
+	public DrownedGirlEntity(EntityType<? extends DrownedGirlEntity> type, Level worldIn)
 	{
 		super(type, worldIn);
 		this.xpReward = 8;
 	}
 
-	public static AttributeModifierMap.MutableAttribute createAttributes()
+	public static AttributeSupplier.Builder createAttributes()
 	{
-		return ZombieEntity.createAttributes()
+		return Zombie.createAttributes()
 				.add(Attributes.MAX_HEALTH, 30.0D)
 				.add(Attributes.MOVEMENT_SPEED, 0.245D)
 				.add(Attributes.ATTACK_DAMAGE, 4.0D)
@@ -51,7 +49,7 @@ public class DrownedGirlEntity extends DrownedEntity implements IModMob
 	{
 		super.populateDefaultEquipmentSlots(difficulty);
 
-		if (this.getItemBySlot(EquipmentSlotType.MAINHAND).isEmpty())
+		if (this.getItemBySlot(EquipmentSlot.MAINHAND).isEmpty())
 		{
 			if (this.getRandom().nextFloat() < (this.level.getDifficulty() == Difficulty.HARD ? 0.05F : 0.01F))
 			{
@@ -59,11 +57,11 @@ public class DrownedGirlEntity extends DrownedEntity implements IModMob
 
 				if (i == 0)
 				{
-					this.setItemSlot(EquipmentSlotType.MAINHAND, new ItemStack(Items.GOLDEN_SWORD));
+					this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.GOLDEN_SWORD));
 				}
 				else
 				{
-					this.setItemSlot(EquipmentSlotType.MAINHAND, new ItemStack(Items.GOLDEN_SHOVEL));
+					this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.GOLDEN_SHOVEL));
 				}
 			}
 			else
@@ -74,31 +72,38 @@ public class DrownedGirlEntity extends DrownedEntity implements IModMob
 
 				if (j == 4 && i == 1 && this.getRandom().nextFloat() < 0.5F)
 				{
-					this.setItemSlot(EquipmentSlotType.MAINHAND, new ItemStack(Items.WOODEN_HOE));
+					this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.WOODEN_HOE));
 				}
 			}
 		}
 	}
 
 	@SuppressWarnings("deprecation")
-	public static boolean checkDrownedGirlSpawnRules(EntityType<DrownedGirlEntity> type, IServerWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn)
+	public static boolean checkDrownedGirlSpawnRules(EntityType<Drowned> type, ServerLevelAccessor worldIn, MobSpawnType spawnType, BlockPos pos, Random randomIn)
 	{
-		Optional<RegistryKey<Biome>> optional = worldIn.getBiomeName(pos);
-		boolean flag = worldIn.getDifficulty() != Difficulty.PEACEFUL && isDarkEnoughToSpawn(worldIn, pos, randomIn) && (reason == SpawnReason.SPAWNER || worldIn.getFluidState(pos).is(FluidTags.WATER));
-
-		if (!Objects.equals(optional, Optional.of(Biomes.RIVER)) && !Objects.equals(optional, Optional.of(Biomes.FROZEN_RIVER)))
+		if (!worldIn.getFluidState(pos.below()).is(FluidTags.WATER))
 		{
-			return randomIn.nextInt(40) == 0 && (pos.getY() < worldIn.getSeaLevel() - 5) && flag;
+			return false;
 		}
 		else
 		{
-			return randomIn.nextInt(15) == 0 && flag;
+			Holder<Biome> holder = worldIn.getBiome(pos);
+			boolean flag = worldIn.getDifficulty() != Difficulty.PEACEFUL && isDarkEnoughToSpawn(worldIn, pos, randomIn) && (spawnType == MobSpawnType.SPAWNER || worldIn.getFluidState(pos).is(FluidTags.WATER));
+
+			if (!holder.is(Biomes.RIVER) && !holder.is(Biomes.FROZEN_RIVER))
+			{
+				return randomIn.nextInt(40) == 0 && (pos.getY() < worldIn.getSeaLevel() - 5) && flag;
+			}
+			else
+			{
+				return randomIn.nextInt(15) == 0 && flag;
+			}
 		}
 	}
 
 	@Nonnull
 	@Override
-	public IPacket<?> getAddEntityPacket()
+	public Packet<?> getAddEntityPacket()
 	{
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}

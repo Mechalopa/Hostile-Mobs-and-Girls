@@ -7,31 +7,31 @@ import javax.annotation.Nonnull;
 
 import com.github.mechalopa.hmag.registry.ModEntityTypes;
 
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.monster.HuskEntity;
-import net.minecraft.entity.monster.ZombieEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.network.IPacket;
+import net.minecraft.network.protocol.Packet;
 import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.network.NetworkHooks;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.monster.Husk;
+import net.minecraft.world.entity.monster.Zombie;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
+import net.minecraftforge.network.NetworkHooks;
 
-public class HuskGirlEntity extends HuskEntity implements IModMob
+public class HuskGirlEntity extends Husk implements IModMob
 {
-	public HuskGirlEntity(EntityType<? extends HuskGirlEntity> type, World worldIn)
+	public HuskGirlEntity(EntityType<? extends HuskGirlEntity> type, Level worldIn)
 	{
 		super(type, worldIn);
 		this.xpReward = 8;
 	}
 
-	public static AttributeModifierMap.MutableAttribute createAttributes()
+	public static AttributeSupplier.Builder createAttributes()
 	{
-		return ZombieEntity.createAttributes()
+		return Zombie.createAttributes()
 				.add(Attributes.MAX_HEALTH, 30.0D)
 				.add(Attributes.MOVEMENT_SPEED, 0.28D)
 				.add(Attributes.ATTACK_DAMAGE, 4.0D)
@@ -43,7 +43,7 @@ public class HuskGirlEntity extends HuskEntity implements IModMob
 	{
 		super.populateDefaultEquipmentSlots(difficulty);
 
-		if (this.getItemBySlot(EquipmentSlotType.MAINHAND).isEmpty())
+		if (this.getItemBySlot(EquipmentSlot.MAINHAND).isEmpty())
 		{
 			LocalDate localdate = LocalDate.now();
 			int i = localdate.get(ChronoField.DAY_OF_MONTH);
@@ -51,7 +51,7 @@ public class HuskGirlEntity extends HuskEntity implements IModMob
 
 			if (j == 4 && i == 1 && this.getRandom().nextFloat() < 0.5F)
 			{
-				this.setItemSlot(EquipmentSlotType.MAINHAND, new ItemStack(Items.WOODEN_HOE));
+				this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.WOODEN_HOE));
 			}
 		}
 	}
@@ -63,13 +63,13 @@ public class HuskGirlEntity extends HuskEntity implements IModMob
 
 		if (!this.isSilent())
 		{
-			this.level.levelEvent((PlayerEntity)null, 1041, this.blockPosition(), 0);
+			this.level.levelEvent((Player)null, 1041, this.blockPosition(), 0);
 		}
 	}
 
 	@Nonnull
 	@Override
-	public IPacket<?> getAddEntityPacket()
+	public Packet<?> getAddEntityPacket()
 	{
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
