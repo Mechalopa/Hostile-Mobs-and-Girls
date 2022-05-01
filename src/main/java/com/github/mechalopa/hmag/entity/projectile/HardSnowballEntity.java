@@ -3,35 +3,31 @@ package com.github.mechalopa.hmag.entity.projectile;
 import com.github.mechalopa.hmag.registry.ModEntityTypes;
 import com.github.mechalopa.hmag.util.ModTags;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.particles.IParticleData;
-import net.minecraft.particles.ItemParticleData;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.math.EntityRayTraceResult;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.world.World;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class HardSnowballEntity extends ModProjectileItemEntity
 {
-	public HardSnowballEntity(EntityType<? extends HardSnowballEntity> type, World worldIn)
+	public HardSnowballEntity(EntityType<? extends HardSnowballEntity> type, Level worldIn)
 	{
 		super(type, worldIn);
 	}
 
-	public HardSnowballEntity(World worldIn, LivingEntity throwerIn)
+	public HardSnowballEntity(Level worldIn, LivingEntity throwerIn)
 	{
 		super(ModEntityTypes.HARD_SNOWBALL.get(), throwerIn, worldIn);
 	}
 
-	public HardSnowballEntity(World worldIn, double x, double y, double z)
+	public HardSnowballEntity(Level worldIn, double x, double y, double z)
 	{
 		super(ModEntityTypes.HARD_SNOWBALL.get(), x, y, z, worldIn);
 	}

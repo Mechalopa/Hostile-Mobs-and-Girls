@@ -1,14 +1,12 @@
 package com.github.mechalopa.hmag.block;
 
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.SoulSandBlock;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.client.renderer.EffectInstance;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.block.SoulSandBlock;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class HealingSandBlock extends SoulSandBlock
 {
@@ -24,7 +22,7 @@ public class HealingSandBlock extends SoulSandBlock
 		{
 			LivingEntity livingentity = (LivingEntity)entityIn;
 
-			if (!livingentity.hasEffect(Effects.REGENERATION))
+			if (!livingentity.hasEffect(MobEffects.REGENERATION))
 			{
 				livingentity.addEffect(new EffectInstance(Effects.REGENERATION, 5 * 20, 0));
 			}

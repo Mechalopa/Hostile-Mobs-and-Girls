@@ -8,8 +8,8 @@ import javax.annotation.Nullable;
 import com.github.mechalopa.hmag.item.EnchantmentUpgradeItem.Properties.EnchantmentUpgradeProp;
 import com.google.common.collect.Lists;
 
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.item.Item;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.enchantment.Enchantment;
 
 public class EnchantmentUpgradeItem extends ModItem
 {

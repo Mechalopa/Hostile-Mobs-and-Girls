@@ -2,37 +2,31 @@ package com.github.mechalopa.hmag.entity.projectile;
 
 import javax.annotation.Nonnull;
 
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.projectile.DamagingProjectileEntity;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.IPacket;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.world.World;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.projectile.AbstractHurtingProjectile;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.fml.network.NetworkHooks;
+import net.minecraftforge.network.NetworkHooks;
 
-public abstract class ModDamagingProjectileEntity extends DamagingProjectileEntity
+public abstract class ModDamagingProjectileEntity extends AbstractHurtingProjectile
 {
 	private static final DataParameter<Float> DAMAGE = EntityDataManager.defineId(ModDamagingProjectileEntity.class, DataSerializers.FLOAT);
 
-	public ModDamagingProjectileEntity(EntityType<? extends ModDamagingProjectileEntity> type, World worldIn)
+	public ModDamagingProjectileEntity(EntityType<? extends ModDamagingProjectileEntity> type, Level worldIn)
 	{
 		super(type, worldIn);
 	}
 
-	public ModDamagingProjectileEntity(EntityType<? extends ModDamagingProjectileEntity> type, LivingEntity shooter, double accelX, double accelY, double accelZ, World worldIn)
+	public ModDamagingProjectileEntity(EntityType<? extends ModDamagingProjectileEntity> type, LivingEntity shooter, double accelX, double accelY, double accelZ, Level worldIn)
 	{
 		super(type, shooter, accelX, accelY, accelZ, worldIn);
 	}
 
 	@OnlyIn(Dist.CLIENT)
-	public ModDamagingProjectileEntity(EntityType<? extends ModDamagingProjectileEntity> type, double x, double y, double z, double accelX, double accelY, double accelZ, World worldIn)
+	public ModDamagingProjectileEntity(EntityType<? extends ModDamagingProjectileEntity> type, double x, double y, double z, double accelX, double accelY, double accelZ, Level worldIn)
 	{
 		super(type, x, y, z, accelX, accelY, accelZ, worldIn);
 	}
@@ -110,14 +104,14 @@ public abstract class ModDamagingProjectileEntity extends DamagingProjectileEnti
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundNBT compound)
+	public void addAdditionalSaveData(CompoundTag compound)
 	{
 		super.addAdditionalSaveData(compound);
 		compound.putFloat("Damage", this.getDamage());
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundNBT compound)
+	public void readAdditionalSaveData(CompoundTag compound)
 	{
 		super.readAdditionalSaveData(compound);
 		this.setDamage(compound.getFloat("Damage"));

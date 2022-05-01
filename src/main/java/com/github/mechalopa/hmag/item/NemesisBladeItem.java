@@ -7,29 +7,19 @@ import javax.annotation.Nullable;
 import com.github.mechalopa.hmag.entity.projectile.MagicBulletEntity;
 import com.github.mechalopa.hmag.util.ModUtils;
 
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.UseAction;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
+import net.minecraft.ChatFormatting;
+import net.minecraft.core.NonNullList;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.Hand;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -41,15 +31,15 @@ public class NemesisBladeItem extends ModSwordItem
 	}
 
 	@Override
-	public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean isSelected)
+	public void inventoryTick(ItemStack stack, Level world, Entity entity, int slot, boolean isSelected)
 	{
 		if (!world.isClientSide)
 		{
-			if (entity.tickCount % 5 == 0 && entity instanceof PlayerEntity)
+			if (entity.tickCount % 5 == 0 && entity instanceof Player)
 			{
-				CompoundNBT compoundnbt = stack.getOrCreateTag();
+				CompoundTag compoundnbt = stack.getOrCreateTag();
 				int level = !compoundnbt.contains("hmag.level") ? 0 : (int)compoundnbt.getByte(ModUtils.LEVEL_KEY);
-				final int i = Math.max(((PlayerEntity)entity).experienceLevel, 0);
+				final int i = Math.max(((Player)entity).experienceLevel, 0);
 				int j = 0;
 
 				if (i < 30)
@@ -75,7 +65,7 @@ public class NemesisBladeItem extends ModSwordItem
 			if (i > 0)
 			{
 				final int j = random.nextInt(3);
-				target.addEffect(new EffectInstance(j == 2 ? Effects.WEAKNESS : (j == 1 ? Effects.MOVEMENT_SLOWDOWN : Effects.DIG_SLOWDOWN), (i + 4) * 20, 0));
+				target.addEffect(new MobEffectInstance(j == 2 ? MobEffects.WEAKNESS : (j == 1 ? MobEffects.MOVEMENT_SLOWDOWN : MobEffects.DIG_SLOWDOWN), (i + 4) * 20, 0));
 			}
 
 			return true;
@@ -87,12 +77,12 @@ public class NemesisBladeItem extends ModSwordItem
 	}
 
 	@Override
-	public void releaseUsing(ItemStack stack, World world, LivingEntity livingEntity, int count)
+	public void releaseUsing(ItemStack stack, Level world, LivingEntity livingEntity, int count)
 	{
-		if (livingEntity instanceof PlayerEntity)
+		if (livingEntity instanceof Player)
 		{
 			final int i = ModUtils.getLevel(stack);
-			PlayerEntity player = (PlayerEntity)livingEntity;
+			Player player = (Player)livingEntity;
 
 			if (this.getUseDuration(stack) - count < 12 || !((player.experienceLevel > 0 && i > 0) || player.isCreative()))
 			{
@@ -103,8 +93,8 @@ public class NemesisBladeItem extends ModSwordItem
 			{
 				MagicBulletEntity bulletentity = new MagicBulletEntity(world, player, 0.0D, 0.0D, 0.0D);
 				bulletentity.setPos(bulletentity.getX(), player.getY(0.5F), bulletentity.getZ());
-				bulletentity.shootFromRotation(player, player.xRot, player.yRot, 0.0F, 1.2F, 0.1F);
-				bulletentity.setDamage((float)i * 3.0F + 6.0F);
+				bulletentity.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.2F, 0.1F);
+				bulletentity.setDamage(i * 3.0F + 6.0F);
 				bulletentity.setPierceLevel((byte)MathHelper.clamp(i - 1, 0, 255));
 				bulletentity.setEffectLevel((byte)MathHelper.clamp(i, 0, 255));
 				bulletentity.setVariant(2);
@@ -122,24 +112,24 @@ public class NemesisBladeItem extends ModSwordItem
 			}
 
 			player.swing(player.getUsedItemHand());
-			world.playSound((PlayerEntity)null, player.getX(), player.getY(), player.getZ(), SoundEvents.WITHER_SHOOT, SoundCategory.PLAYERS, 0.75F, random.nextFloat() * 0.2F + 0.9F);
+			world.playSound((Player)null, player.getX(), player.getY(), player.getZ(), SoundEvents.WITHER_SHOOT, SoundCategory.PLAYERS, 0.75F, random.nextFloat() * 0.2F + 0.9F);
 			player.awardStat(Stats.ITEM_USED.get(this));
 		}
 	}
 
 	@Override
-	public void onUseTick(World world, LivingEntity livingEntity, ItemStack stack, int count)
+	public void onUseTick(Level world, LivingEntity livingEntity, ItemStack stack, int count)
 	{
-		if (livingEntity instanceof PlayerEntity)
+		if (livingEntity instanceof Player)
 		{
-			PlayerEntity player = (PlayerEntity)livingEntity;
+			Player player = (Player)livingEntity;
 
 			if (this.getUseDuration(stack) - count != 12 || !((player.experienceLevel > 0 && ModUtils.getLevel(stack) > 0) || player.isCreative()))
 			{
 				return;
 			}
 
-			world.playSound((PlayerEntity)null, player.getX(), player.getY(), player.getZ(), SoundEvents.CROSSBOW_LOADING_END, SoundCategory.PLAYERS, 1.0F, 1.0F / (random.nextFloat() * 0.5F + 1.0F) + 0.2F);
+			world.playSound((Player)null, player.getX(), player.getY(), player.getZ(), SoundEvents.CROSSBOW_LOADING_END, SoundCategory.PLAYERS, 1.0F, 1.0F / (random.nextFloat() * 0.5F + 1.0F) + 0.2F);
 		}
 	}
 
@@ -150,7 +140,7 @@ public class NemesisBladeItem extends ModSwordItem
 	}
 
 	@Override
-	public ActionResult<ItemStack> use(World worldIn, PlayerEntity playerIn, Hand hand)
+	public ActionResult<ItemStack> use(World worldIn, Player playerIn, Hand hand)
 	{
 		ItemStack stack = playerIn.getItemInHand(hand);
 		boolean flag = (playerIn.experienceLevel > 0 && ModUtils.getLevel(stack) > 0) || playerIn.isCreative();
@@ -178,7 +168,7 @@ public class NemesisBladeItem extends ModSwordItem
 	{
 		final int i = (stack != null && !stack.isEmpty()) ? ModUtils.getLevel(stack) : 0;
 		TranslationTextComponent textcomponent = new TranslationTextComponent("text.hmag.level", i + 1);
-		textcomponent.withStyle(i >= 6 ? TextFormatting.LIGHT_PURPLE : (i >= 5 ? TextFormatting.AQUA : (i >= 3 ? TextFormatting.YELLOW : (i <= 0 ? TextFormatting.RED : TextFormatting.GRAY))));
+		textcomponent.withStyle(i >= 6 ? ChatFormatting.LIGHT_PURPLE : (i >= 5 ? ChatFormatting.AQUA : (i >= 3 ? ChatFormatting.YELLOW : (i <= 0 ? ChatFormatting.RED : ChatFormatting.GRAY))));
 		list.add(textcomponent);
 	}
 
@@ -188,7 +178,7 @@ public class NemesisBladeItem extends ModSwordItem
 		if (this.allowdedIn(group))
 		{
 			ItemStack stack = new ItemStack(this);
-			CompoundNBT compoundnbt = stack.getOrCreateTag();
+			CompoundTag compoundnbt = stack.getOrCreateTag();
 			compoundnbt.putByte(ModUtils.LEVEL_KEY, (byte)6);
 			list.add(stack);
 		}

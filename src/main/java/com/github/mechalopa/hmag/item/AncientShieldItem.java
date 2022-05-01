@@ -2,8 +2,8 @@ package com.github.mechalopa.hmag.item;
 
 import com.github.mechalopa.hmag.registry.ModItems;
 
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 
 public class AncientShieldItem extends ModShieldItem
 {

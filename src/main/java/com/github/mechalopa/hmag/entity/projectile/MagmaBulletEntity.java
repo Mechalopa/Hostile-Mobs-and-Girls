@@ -2,24 +2,16 @@ package com.github.mechalopa.hmag.entity.projectile;
 
 import com.github.mechalopa.hmag.registry.ModEntityTypes;
 
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntitySize;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.Pose;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.particles.BlockParticleData;
-import net.minecraft.particles.IParticleData;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.math.EntityRayTraceResult;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.world.Explosion;
-import net.minecraft.world.World;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.level.Explosion;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.ForgeEventFactory;
@@ -29,18 +21,18 @@ public class MagmaBulletEntity extends ModDamagingProjectileEntity
 	private static final DataParameter<Integer> LIFE_TIME = EntityDataManager.defineId(MagmaBulletEntity.class, DataSerializers.INT);
 	private int life = 25;
 
-	public MagmaBulletEntity(EntityType<? extends MagmaBulletEntity> type, World worldIn)
+	public MagmaBulletEntity(EntityType<? extends MagmaBulletEntity> type, Level worldIn)
 	{
 		super(type, worldIn);
 	}
 
-	public MagmaBulletEntity(World worldIn, LivingEntity shooter, double accelX, double accelY, double accelZ)
+	public MagmaBulletEntity(Level worldIn, LivingEntity shooter, double accelX, double accelY, double accelZ)
 	{
 		super(ModEntityTypes.MAGMA_BULLET.get(), shooter, accelX, accelY, accelZ, worldIn);
 	}
 
 	@OnlyIn(Dist.CLIENT)
-	public MagmaBulletEntity(World worldIn, double x, double y, double z, double accelX, double accelY, double accelZ)
+	public MagmaBulletEntity(Level worldIn, double x, double y, double z, double accelX, double accelY, double accelZ)
 	{
 		super(ModEntityTypes.MAGMA_BULLET.get(), x, y, z, accelX, accelY, accelZ, worldIn);
 	}
@@ -120,7 +112,7 @@ public class MagmaBulletEntity extends ModDamagingProjectileEntity
 	protected void onHitServer(RayTraceResult result)
 	{
 		boolean flag = ForgeEventFactory.getMobGriefingEvent(this.level, this.getOwner());
-		this.level.explode((Entity)null, this.getX(), this.getY(), this.getZ(), 0.75F, flag, flag ? Explosion.Mode.DESTROY : Explosion.Mode.NONE);
+		this.level.explode((Entity)null, this.getX(), this.getY(), this.getZ(), 0.75F, flag, flag ? Explosion.BlockInteraction.DESTROY : Explosion.BlockInteraction.NONE);
 		this.level.broadcastEntityEvent(this, (byte)3);
 		super.onHitServer(result);
 	}
@@ -176,14 +168,14 @@ public class MagmaBulletEntity extends ModDamagingProjectileEntity
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundNBT compound)
+	public void addAdditionalSaveData(CompoundTag compound)
 	{
 		super.addAdditionalSaveData(compound);
 		compound.putShort("Life", (short)this.getLife());
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundNBT compound)
+	public void readAdditionalSaveData(CompoundTag compound)
 	{
 		super.readAdditionalSaveData(compound);
 		this.setLifeTime(compound.getShort("Life"));
@@ -196,7 +188,7 @@ public class MagmaBulletEntity extends ModDamagingProjectileEntity
 	}
 
 	@Override
-	protected float getEyeHeight(Pose poseIn, EntitySize sizeIn)
+	protected float getEyeHeight(Pose poseIn, Size sizeIn)
 	{
 		return 0.15F;
 	}

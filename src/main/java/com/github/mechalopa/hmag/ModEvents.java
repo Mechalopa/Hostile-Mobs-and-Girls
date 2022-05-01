@@ -16,41 +16,31 @@ import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.util.ModUtils;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityClassification;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ILivingEntityData;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.AvoidEntityGoal;
-import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
-import net.minecraft.entity.merchant.villager.VillagerProfession;
-import net.minecraft.entity.merchant.villager.VillagerTrades;
-import net.minecraft.entity.monster.CreeperEntity;
-import net.minecraft.entity.monster.EndermanEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerEntity.SleepResult;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.potion.Effect;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.biome.MobSpawnInfo;
-import net.minecraft.world.gen.feature.structure.Structure;
-import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.common.BasicTrade;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.monster.Creeper;
+import net.minecraft.world.entity.monster.EnderMan;
+import net.minecraft.world.entity.npc.VillagerProfession;
+import net.minecraft.world.entity.npc.VillagerTrades;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraftforge.event.ItemAttributeModifierEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
@@ -167,7 +157,7 @@ public class ModEvents
 					if (livingentity.getRandom().nextInt(5) == 0)
 					{
 						final int i = livingentity.getRandom().nextInt(3);
-						((LivingEntity)source.getEntity()).addEffect(new EffectInstance(i == 2 ? Effects.WEAKNESS : (i == 1 ? Effects.MOVEMENT_SLOWDOWN : Effects.DIG_SLOWDOWN), 5 * 20, 0));
+						((LivingEntity)source.getEntity()).addEffect(new MobEffectInstance(i == 2 ? MobEffects.WEAKNESS : (i == 1 ? MobEffects.MOVEMENT_SLOWDOWN : MobEffects.DIG_SLOWDOWN), 5 * 20, 0));
 					}
 				}
 				else if (livingentity.getUseItem().getItem() == ModItems.FORTRESS_SHIELD.get())
@@ -261,7 +251,7 @@ public class ModEvents
 
 		ILivingEntityData ilivingentitydata = null;
 		mobentity.copyPosition(mobEntityIn);
-		ilivingentitydata = mobentity.finalizeSpawn(worldIn, worldIn.getCurrentDifficultyAt(new BlockPos(mobEntityIn.position())), SpawnReason.NATURAL, ilivingentitydata, (CompoundNBT)null);
+		ilivingentitydata = mobentity.finalizeSpawn(worldIn, worldIn.getCurrentDifficultyAt(new BlockPos(mobEntityIn.position())), SpawnReason.NATURAL, ilivingentitydata, (CompoundTag)null);
 		mobentity.setNoAi(mobEntityIn.isNoAi());
 
 		if (mobEntityIn.hasCustomName())
@@ -366,11 +356,11 @@ public class ModEvents
 		{
 			if (event.getEntity() != null)
 			{
-				if (event.getEntity() instanceof EndermanEntity)
+				if (event.getEntity() instanceof EnderMan)
 				{
-					EndermanEntity endermanentity = (EndermanEntity)event.getEntity();
+					EnderMan endermanentity = (EnderMan)event.getEntity();
 					endermanentity.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(endermanentity, LivingEntity.class, 10, false, false, (p) -> {
-						if (!(p instanceof EndermanEntity) && p.hasEffect(ModEffects.ENDER_RAGE.get()))
+						if (!(p instanceof EnderMan) && p.hasEffect(ModEffects.ENDER_RAGE.get()))
 						{
 							final double d0 = 8.0D + p.getEffect(ModEffects.ENDER_RAGE.get()).getAmplifier() * 12.0D;
 							return p.distanceToSqr(endermanentity) <= d0 * d0;
@@ -381,9 +371,9 @@ public class ModEvents
 						}
 					}).setUnseenMemoryTicks(30));
 				}
-				else if (event.getEntity() instanceof CreeperEntity)
+				else if (event.getEntity() instanceof Creeper)
 				{
-					CreeperEntity creeerentity = (CreeperEntity)event.getEntity();
+					Creeper creeerentity = (Creeper)event.getEntity();
 					creeerentity.goalSelector.addGoal(3, new AvoidEntityGoal<>(creeerentity, KashaEntity.class, 6.0F, 1.0D, 1.2D));
 				}
 			}
@@ -400,9 +390,9 @@ public class ModEvents
 		if (event.getEntityLiving() != null && event.getPotionEffect() != null)
 		{
 			LivingEntity livingentity = event.getEntityLiving();
-			Effect effect = event.getPotionEffect().getEffect();
+			MobEffect effect = event.getPotionEffect().getEffect();
 
-			if (effect == Effects.MOVEMENT_SLOWDOWN || effect == Effects.DIG_SLOWDOWN || effect == Effects.WEAKNESS)
+			if (effect == MobEffects.MOVEMENT_SLOWDOWN || effect == MobEffects.DIG_SLOWDOWN || effect == MobEffects.WEAKNESS)
 			{
 				int i = 0;
 
@@ -429,9 +419,9 @@ public class ModEvents
 					event.setResult(Result.DENY);
 				}
 			}
-			else if (effect == Effects.BLINDNESS)
+			else if (effect == MobEffects.BLINDNESS)
 			{
-				if (livingentity instanceof PlayerEntity)
+				if (livingentity instanceof Player)
 				{
 					ItemStack stack1 = livingentity.getMainHandItem();
 
@@ -450,7 +440,7 @@ public class ModEvents
 			}
 			else if (effect == ModEffects.ENDER_RAGE.get())
 			{
-				if (livingentity instanceof EndermanEntity)
+				if (livingentity instanceof EnderMan)
 				{
 					event.setResult(Result.DENY);
 				}
@@ -469,7 +459,7 @@ public class ModEvents
 			{
 				final int i = event.getSlotType().getIndex();
 
-				if (event.getSlotType().getType() == EquipmentSlotType.Group.ARMOR && i >= 0 && i < HEALTH_BOOST_ENCHANTMENT_MAX_HEALTH_UUIDS.length)
+				if (event.getSlotType().getType() == EquipmentSlot.Type.ARMOR && i >= 0 && i < HEALTH_BOOST_ENCHANTMENT_MAX_HEALTH_UUIDS.length)
 				{
 					int level = EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.HEALTH_BOOST.get(), stack);
 
@@ -508,7 +498,7 @@ public class ModEvents
 				}
 			}
 
-			if (event.getSlotType().getType() == EquipmentSlotType.Group.HAND)
+			if (event.getSlotType().getType() == EquipmentSlot.Type.HAND)
 			{
 				if (stack.getItem() == ModItems.ANCIENT_SHIELD.get())
 				{
@@ -523,7 +513,7 @@ public class ModEvents
 	{
 		if (event.getResultStatus() == null)
 		{
-			if (event.getPlayer().inventory.contains(new ItemStack(ModItems.INSOMNIA_SWORD.get())))
+			if (event.getPlayer().getInventory().contains(new ItemStack(ModItems.INSOMNIA_SWORD.get())))
 			{
 				event.setResult(SleepResult.OTHER_PROBLEM);
 				event.getPlayer().displayClientMessage(INSOMNIA_SWORD_MESSAGE, true);
@@ -555,7 +545,7 @@ public class ModEvents
 	@SubscribeEvent
 	public void onLivingEquipmentChange(LivingEquipmentChangeEvent event)
 	{
-		if (event.getEntityLiving() != null && !(event.getEntityLiving() instanceof PlayerEntity) && event.getTo() != null && !event.getTo().isEmpty())
+		if (event.getEntityLiving() != null && !(event.getEntityLiving() instanceof Player) && event.getTo() != null && !event.getTo().isEmpty())
 		{
 			if (event.getTo().getItem() == ModItems.INSOMNIA_SWORD.get())
 			{
@@ -573,17 +563,17 @@ public class ModEvents
 	{
 		if (ModConfigs.cachedServer.MONOLITH_SPAWN_WEIGHT_IN_END_CITY > 0)
 		{
-			if (event.getStructure() == Structure.END_CITY)
+			if (event.getStructure() == StructureFeature.END_CITY)
 			{
-				event.addEntitySpawn(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(ModEntityTypes.MONOLITH.get(), ModConfigs.cachedServer.MONOLITH_SPAWN_WEIGHT_IN_END_CITY, 1, 2));
+				event.addEntitySpawn(MobCategory.MONSTER, new MobSpawnInfo.Spawners(ModEntityTypes.MONOLITH.get(), ModConfigs.cachedServer.MONOLITH_SPAWN_WEIGHT_IN_END_CITY, 1, 2));
 			}
 		}
 
 		if (ModConfigs.cachedServer.FORTRESS_KEEPER_SPAWN_WEIGHT_IN_NETHER_FORTRESS > 0)
 		{
-			if (event.getStructure() == Structure.NETHER_BRIDGE)
+			if (event.getStructure() == StructureFeature.FORTRESS)
 			{
-				event.addEntitySpawn(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(ModEntityTypes.FORTRESS_KEEPER.get(), ModConfigs.cachedServer.FORTRESS_KEEPER_SPAWN_WEIGHT_IN_NETHER_FORTRESS, 1, 1));
+				event.addEntitySpawn(MobCategory.MONSTER, new MobSpawnInfo.Spawners(ModEntityTypes.FORTRESS_KEEPER.get(), ModConfigs.cachedServer.FORTRESS_KEEPER_SPAWN_WEIGHT_IN_NETHER_FORTRESS, 1, 1));
 			}
 		}
 	}

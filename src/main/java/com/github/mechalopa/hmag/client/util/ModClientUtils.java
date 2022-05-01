@@ -2,17 +2,14 @@ package com.github.mechalopa.hmag.client.util;
 
 import com.github.mechalopa.hmag.entity.IBeamAttackMob;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
+import com.mojang.math.Matrix3f;
+import com.mojang.math.Matrix4f;
+import com.mojang.math.Vector3d;
 
-import net.minecraft.client.renderer.culling.ClippingHelper;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.IItemPropertyGetter;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.vector.Matrix3f;
-import net.minecraft.util.math.vector.Matrix4f;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.World;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -52,9 +49,9 @@ public class ModClientUtils
 
 			if (target != null)
 			{
-				Vector3d vector3d = ModClientUtils.getPosition(target, (double)target.getBbHeight() * 0.5D, 1.0F);
-				Vector3d vector3d1 = ModClientUtils.getPosition(livingEntityIn, (double)livingEntityIn.getEyeHeight(), 1.0F);
-				return camera.isVisible(new AxisAlignedBB(vector3d1.x, vector3d1.y, vector3d1.z, vector3d.x, vector3d.y, vector3d.z));
+				Vector3d vector3d = ModClientUtils.getPosition(target, target.getBbHeight() * 0.5D, 1.0F);
+				Vector3d vector3d1 = ModClientUtils.getPosition(livingEntityIn, livingEntityIn.getEyeHeight(), 1.0F);
+				return camera.isVisible(new AABB(vector3d1.x, vector3d1.y, vector3d1.z, vector3d.x, vector3d.y, vector3d.z));
 			}
 		}
 
@@ -66,10 +63,10 @@ public class ModClientUtils
 		vertexBuilder.vertex(matrix, f, f1, f2).color(i, j, k, 255).uv(f3, f4).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(15728880).normal(normals, 0.0F, 1.0F, 0.0F).endVertex();
 	}
 
-	public static int getSkyDarken(World worldIn)
+	public static int getSkyDarken(Level worldIn)
 	{
-		double d0 = 1.0D - (double)(worldIn.getRainLevel(1.0F) * 5.0F) / 16.0D;
-		double d1 = 1.0D - (double)(worldIn.getThunderLevel(1.0F) * 5.0F) / 16.0D;
+		double d0 = 1.0D - worldIn.getRainLevel(1.0F) * 5.0F / 16.0D;
+		double d1 = 1.0D - worldIn.getThunderLevel(1.0F) * 5.0F / 16.0D;
 		double d2 = 0.5D + 2.0D * MathHelper.clamp((double)MathHelper.cos(worldIn.getTimeOfDay(1.0F) * ((float)Math.PI * 2.0F)), -0.25D, 0.25D);
 		return (int)((1.0D - d2 * d0 * d1) * 11.0D);
 	}

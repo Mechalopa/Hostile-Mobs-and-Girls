@@ -6,35 +6,29 @@ import java.util.Random;
 import javax.annotation.Nonnull;
 
 import com.github.mechalopa.hmag.HMaG;
+import com.mojang.math.Vector3d;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.BowItem;
-import net.minecraft.item.CrossbowItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.TridentItem;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionUtils;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.Hand;
-import net.minecraft.util.RegistryKey;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.IServerWorld;
-import net.minecraft.world.LightType;
-import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.BowItem;
+import net.minecraft.world.item.CrossbowItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.TridentItem;
+import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.phys.AABB;
 
 public class ModUtils
 {
-	public static final EquipmentSlotType[] ARMOR_SLOTS = new EquipmentSlotType[]{EquipmentSlotType.HEAD, EquipmentSlotType.CHEST, EquipmentSlotType.LEGS, EquipmentSlotType.FEET};
+	public static final EquipmentSlot[] ARMOR_SLOTS = new EquipmentSlot[]{EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET};
 	public static final String LIVING_UPDATE_CHECKING_KEY = HMaG.MODID + ".checking";
 	public static final String LIVING_UPDATE_CHECKED_KEY = HMaG.MODID + ".checked";
 	public static final String LIVING_NOT_REPLACED_KEY = HMaG.MODID + ".notReplaced";
@@ -54,7 +48,7 @@ public class ModUtils
 
 			if (flag)
 			{
-				ItemStack itemstack = livingEntityIn.getItemBySlot(EquipmentSlotType.HEAD);
+				ItemStack itemstack = livingEntityIn.getItemBySlot(EquipmentSlot.HEAD);
 
 				if (!itemstack.isEmpty())
 				{
@@ -64,8 +58,8 @@ public class ModUtils
 
 						if (itemstack.getDamageValue() >= itemstack.getMaxDamage())
 						{
-							livingEntityIn.broadcastBreakEvent(EquipmentSlotType.HEAD);
-							livingEntityIn.setItemSlot(EquipmentSlotType.HEAD, ItemStack.EMPTY);
+							livingEntityIn.broadcastBreakEvent(EquipmentSlot.HEAD);
+							livingEntityIn.setItemSlot(EquipmentSlot.HEAD, ItemStack.EMPTY);
 						}
 					}
 
@@ -82,7 +76,7 @@ public class ModUtils
 
 	public static boolean canReach(@Nonnull LivingEntity livingEntityIn, Vector3d vector3dIn, int countIn)
 	{
-		AxisAlignedBB axisalignedbb = livingEntityIn.getBoundingBox();
+		AABB axisalignedbb = livingEntityIn.getBoundingBox();
 
 		for (int i = 1; i < countIn; ++i)
 		{
@@ -254,13 +248,13 @@ public class ModUtils
 
 	public static int getLevel(ItemStack stack)
 	{
-		CompoundNBT compoundnbt = stack.getTag();
+		CompoundTag compoundnbt = stack.getTag();
 		return compoundnbt != null && compoundnbt.contains(LEVEL_KEY) ? (int)compoundnbt.getByte(LEVEL_KEY) : 0;
 	}
 
 	public static void removeLevelTag(ItemStack stack)
 	{
-		CompoundNBT compoundnbt = stack.getTag();
+		CompoundTag compoundnbt = stack.getTag();
 
 		if (compoundnbt != null && compoundnbt.contains(LEVEL_KEY))
 		{

@@ -2,12 +2,10 @@ package com.github.mechalopa.hmag.item;
 
 import com.github.mechalopa.hmag.registry.ModItems;
 
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.FoodStats;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.food.FoodData;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -21,9 +19,9 @@ public class CrimsonBowItem extends ModBowItem
 	@Override
 	public float getBowDamage(ItemStack stack, LivingEntity livingEntity)
 	{
-		if (livingEntity != null && livingEntity instanceof PlayerEntity)
+		if (livingEntity != null && livingEntity instanceof Player)
 		{
-			FoodStats foodstats = ((PlayerEntity)livingEntity).getFoodData();
+			FoodData foodstats = ((Player)livingEntity).getFoodData();
 
 			if (foodstats != null)
 			{
@@ -42,7 +40,7 @@ public class CrimsonBowItem extends ModBowItem
 
 	@OnlyIn(Dist.CLIENT)
 	@Override
-	public float getBowFOV(ItemStack stack, PlayerEntity player)
+	public float getBowFOV(ItemStack stack, Player player)
 	{
 		return 0.05F;
 	}

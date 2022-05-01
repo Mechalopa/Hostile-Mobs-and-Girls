@@ -1,14 +1,11 @@
 package com.github.mechalopa.hmag.item;
 
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantments;
 
 public class EvilFlameItem extends EnchantmentUpgradeItem
 {
@@ -18,13 +15,13 @@ public class EvilFlameItem extends EnchantmentUpgradeItem
 	}
 
 	@Override
-	public ActionResultType interactLivingEntity(ItemStack stack, PlayerEntity player, LivingEntity entity, Hand hand)
+	public ActionResultType interactLivingEntity(ItemStack stack, Player player, LivingEntity entity, Hand hand)
 	{
 		if (!player.level.isClientSide)
 		{
 			entity.setSecondsOnFire(3);
 			player.crit(entity);
-			player.level.playSound((PlayerEntity)null, player.getX(), player.getY(), player.getZ(), SoundEvents.FLINTANDSTEEL_USE, SoundCategory.NEUTRAL, 1.0F, random.nextFloat() * 0.4F + 0.8F);
+			player.level.playSound((Player)null, player.getX(), player.getY(), player.getZ(), SoundEvents.FLINTANDSTEEL_USE, SoundCategory.NEUTRAL, 1.0F, random.nextFloat() * 0.4F + 0.8F);
 			stack.shrink(1);
 			return ActionResultType.SUCCESS;
 		}

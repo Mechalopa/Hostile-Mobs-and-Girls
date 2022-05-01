@@ -6,20 +6,15 @@ import java.util.Set;
 import com.google.common.collect.Sets;
 
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.SimpleFoiledItem;
-import net.minecraft.item.UseAction;
-import net.minecraft.potion.EffectInstance;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.world.World;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.SimpleFoiledItem;
 
 public class PurificationClothItem extends SimpleFoiledItem
 {
@@ -33,12 +28,12 @@ public class PurificationClothItem extends SimpleFoiledItem
 	{
 		if (!worldIn.isClientSide)
 		{
-			Iterator<EffectInstance> itr = livingEntityIn.getActiveEffects().iterator();
-			Set<EffectInstance> set = Sets.newHashSet();
+			Iterator<MobEffectInstance> itr = livingEntityIn.getActiveEffects().iterator();
+			Set<MobEffectInstance> set = Sets.newHashSet();
 
 			while (itr.hasNext())
 			{
-				EffectInstance effect = itr.next();
+				MobEffectInstance effect = itr.next();
 
 				if (effect.getEffect() != null && !effect.getEffect().isBeneficial())
 				{
@@ -48,23 +43,23 @@ public class PurificationClothItem extends SimpleFoiledItem
 
 			if (!set.isEmpty())
 			{
-				for (EffectInstance effect : set)
+				for (MobEffectInstance effect : set)
 				{
 					livingEntityIn.removeEffect(effect.getEffect());
 				}
 			}
 
-			worldIn.playSound((PlayerEntity)null, livingEntityIn.getX(), livingEntityIn.getY(), livingEntityIn.getZ(), SoundEvents.ZOMBIE_VILLAGER_CURE, SoundCategory.NEUTRAL, 0.25F, random.nextFloat() * 0.1F + 0.9F);
+			worldIn.playSound((Player)null, livingEntityIn.getX(), livingEntityIn.getY(), livingEntityIn.getZ(), SoundEvents.ZOMBIE_VILLAGER_CURE, SoundCategory.NEUTRAL, 0.25F, random.nextFloat() * 0.1F + 0.9F);
 		}
 
-		if (livingEntityIn instanceof ServerPlayerEntity)
+		if (livingEntityIn instanceof ServerPlayer)
 		{
-			ServerPlayerEntity serverplayerentity = (ServerPlayerEntity)livingEntityIn;
+			ServerPlayer serverplayerentity = (ServerPlayer)livingEntityIn;
 			CriteriaTriggers.CONSUME_ITEM.trigger(serverplayerentity, stackIn);
 			serverplayerentity.awardStat(Stats.ITEM_USED.get(this));
 		}
 
-		if (livingEntityIn instanceof PlayerEntity && !((PlayerEntity)livingEntityIn).abilities.instabuild)
+		if (livingEntityIn instanceof Player && !((Player)livingEntityIn).getAbilities().instabuild)
 		{
 			stackIn.shrink(1);
 		}
@@ -79,15 +74,15 @@ public class PurificationClothItem extends SimpleFoiledItem
 	}
 
 	@Override
-	public ActionResult<ItemStack> use(World worldIn, PlayerEntity playerIn, Hand hand)
+	public ActionResult<ItemStack> use(World worldIn, Player playerIn, Hand hand)
 	{
 		boolean flag = false;
 		ItemStack stack = playerIn.getItemInHand(hand);
-		Iterator<EffectInstance> itr = playerIn.getActiveEffects().iterator();
+		Iterator<MobEffectInstance> itr = playerIn.getActiveEffects().iterator();
 
 		while (itr.hasNext())
 		{
-			EffectInstance effect = itr.next();
+			MobEffectInstance effect = itr.next();
 
 			if (effect.getEffect() != null && !effect.getEffect().isBeneficial())
 			{

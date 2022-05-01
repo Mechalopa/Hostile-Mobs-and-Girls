@@ -1,17 +1,14 @@
 package com.github.mechalopa.hmag.item;
 
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.LightningBoltEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.SoupItem;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import com.mojang.math.Vector3d;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LightningBolt;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 
 public class LightningSoupItem extends SoupItem
 {
@@ -35,7 +32,7 @@ public class LightningSoupItem extends SoupItem
 		{
 			BlockPos blockpos = livingEntity.blockPosition();
 
-			LightningBoltEntity lightningboltentity = EntityType.LIGHTNING_BOLT.create(worldIn);
+			LightningBolt lightningboltentity = EntityType.LIGHTNING_BOLT.create(worldIn);
 			lightningboltentity.moveTo(Vector3d.atBottomCenterOf(blockpos));
 			lightningboltentity.setCause(livingEntity instanceof ServerPlayerEntity ? (ServerPlayerEntity)livingEntity : null);
 			worldIn.addFreshEntity(lightningboltentity);

@@ -2,18 +2,17 @@ package com.github.mechalopa.hmag.registry;
 
 import com.github.mechalopa.hmag.HMaG;
 
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
-import net.minecraft.potion.Potion;
+import net.minecraft.client.renderer.EffectInstance;
+import net.minecraft.world.item.alchemy.Potion;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 public class ModPotions
 {
-	private static final DeferredRegister<Potion> REGISTRY = DeferredRegister.create(ForgeRegistries.POTION_TYPES, HMaG.MODID);
+	private static final DeferredRegister<Potion> REGISTRY = DeferredRegister.create(ForgeRegistries.POTIONS, HMaG.MODID);
 
 	public static final RegistryObject<Potion> KOBOLD = REGISTRY.register("hmag.kobold", () -> new Potion(new EffectInstance(Effects.DIG_SPEED, 180 * 20, 0), new EffectInstance(Effects.WEAKNESS, 180 * 20, 0)));
 	public static final RegistryObject<Potion> KOBOLD_STRONG = REGISTRY.register("hmag.kobold_strong", () -> new Potion(new EffectInstance(Effects.DIG_SPEED, 90 * 20, 1), new EffectInstance(Effects.WEAKNESS, 90 * 20, 1)));

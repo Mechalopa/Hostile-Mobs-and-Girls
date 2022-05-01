@@ -3,28 +3,19 @@ package com.github.mechalopa.hmag.entity.projectile;
 import com.github.mechalopa.hmag.entity.LichEntity;
 import com.github.mechalopa.hmag.registry.ModEntityTypes;
 import com.github.mechalopa.hmag.registry.ModParticleTypes;
+import com.mojang.math.Vector3d;
 
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntitySize;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.Pose;
-import net.minecraft.entity.monster.VexEntity;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.particles.IParticleData;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.math.EntityRayTraceResult;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.Difficulty;
-import net.minecraft.world.World;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.Vex;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -35,18 +26,18 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 	private static final DataParameter<Byte> PIERCE_LEVEL = EntityDataManager.defineId(MagicBulletEntity.class, DataSerializers.BYTE);
 	private IntOpenHashSet piercingIgnoreEntityIds;
 
-	public MagicBulletEntity(EntityType<? extends MagicBulletEntity> type, World worldIn)
+	public MagicBulletEntity(EntityType<? extends MagicBulletEntity> type, Level worldIn)
 	{
 		super(type, worldIn);
 	}
 
-	public MagicBulletEntity(World worldIn, LivingEntity shooter, double accelX, double accelY, double accelZ)
+	public MagicBulletEntity(Level worldIn, LivingEntity shooter, double accelX, double accelY, double accelZ)
 	{
 		super(ModEntityTypes.MAGIC_BULLET.get(), shooter, accelX, accelY, accelZ, worldIn);
 	}
 
 	@OnlyIn(Dist.CLIENT)
-	public MagicBulletEntity(World worldIn, double x, double y, double z, double accelX, double accelY, double accelZ)
+	public MagicBulletEntity(Level worldIn, double x, double y, double z, double accelX, double accelY, double accelZ)
 	{
 		super(ModEntityTypes.MAGIC_BULLET.get(), x, y, z, accelX, accelY, accelZ, worldIn);
 	}
@@ -129,7 +120,7 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 
 				if (this.getVariant() == 0)
 				{
-					if (livingentity instanceof LichEntity && entity instanceof VexEntity && livingentity.isAlliedTo((entity)))
+					if (livingentity instanceof LichEntity && entity instanceof Vex && livingentity.isAlliedTo((entity)))
 					{
 						damage *= 5.0F;
 					}
@@ -168,7 +159,7 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 
 					if (i > 0)
 					{
-						((LivingEntity)entity).addEffect(new EffectInstance(Effects.WEAKNESS, 20 * i, 0));
+						((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 20 * i, 0));
 					}
 
 					break;
@@ -184,20 +175,20 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 
 					if (i > 0)
 					{
-						((LivingEntity)entity).addEffect(new EffectInstance(Effects.BLINDNESS, 20 * i, 0));
+						((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 20 * i, 0));
 					}
 
 					break;
 				case 2:
 					i = (this.getEffectLevel() * 2 + 4) * 20;
-					((LivingEntity)entity).addEffect(new EffectInstance(Effects.WEAKNESS, i, 1));
-					((LivingEntity)entity).addEffect(new EffectInstance(Effects.MOVEMENT_SLOWDOWN, i, 1));
-					((LivingEntity)entity).addEffect(new EffectInstance(Effects.DIG_SLOWDOWN, i, 1));
-					((LivingEntity)entity).addEffect(new EffectInstance(Effects.WITHER, i, 1));
+					((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.WEAKNESS, i, 1));
+					((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, i, 1));
+					((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, i, 1));
+					((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.WITHER, i, 1));
 
 					if (vector3d.lengthSqr() > 0.0D)
 					{
-						((LivingEntity)entity).knockback(1.0F * ((float)this.getEffectLevel() / 12.0F) + 0.1F, -vector3d.x, -vector3d.z);
+						((LivingEntity)entity).knockback(1.0F * (this.getEffectLevel() / 12.0F) + 0.1F, -vector3d.x, -vector3d.z);
 					}
 
 					break;
@@ -299,7 +290,7 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundNBT compound)
+	public void addAdditionalSaveData(CompoundTag compound)
 	{
 		super.addAdditionalSaveData(compound);
 		compound.putInt("Variant", this.getVariant());
@@ -308,7 +299,7 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundNBT compound)
+	public void readAdditionalSaveData(CompoundTag compound)
 	{
 		super.readAdditionalSaveData(compound);
 		this.setVariant(compound.getInt("Variant"));

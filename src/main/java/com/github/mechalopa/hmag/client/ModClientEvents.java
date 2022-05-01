@@ -3,10 +3,9 @@ package com.github.mechalopa.hmag.client;
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.item.ModBowItem;
 
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.event.FOVUpdateEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -19,7 +18,7 @@ public class ModClientEvents
 	{
 		if (event.getEntity() != null)
 		{
-			PlayerEntity player = event.getEntity();
+			Player player = event.getEntity();
 
 			if (player.isUsingItem() && player.getUseItem() != null && !player.getUseItem().isEmpty() && player.getUseItem().getItem() instanceof ModBowItem)
 			{

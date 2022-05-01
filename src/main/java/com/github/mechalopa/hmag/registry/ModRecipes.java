@@ -5,21 +5,21 @@ import com.github.mechalopa.hmag.recipe.EnchantmentUpgradeRecipe;
 import com.github.mechalopa.hmag.recipe.ItemTagShapedRecipe;
 import com.github.mechalopa.hmag.recipe.RemoveCurseRecipe;
 
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.ShapedRecipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 public class ModRecipes
 {
-	private static final DeferredRegister<IRecipeSerializer<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, HMaG.MODID);
+	private static final DeferredRegister<RecipeSerializer<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, HMaG.MODID);
 
-	public static final RegistryObject<IRecipeSerializer<ShapedRecipe>> CRAFTING_ITEM_TAG_SHAPED = REGISTRY.register("crafting_item_tag_shaped", () -> new ItemTagShapedRecipe.Serializer());
-	public static final RegistryObject<IRecipeSerializer<RemoveCurseRecipe>> REMOVE_CURSE = REGISTRY.register("remove_curse", () -> new RemoveCurseRecipe.Serializer());
-	public static final RegistryObject<IRecipeSerializer<EnchantmentUpgradeRecipe>> ENCHANTMENT_UPGRADE = REGISTRY.register("enchantment_upgrade", () -> new EnchantmentUpgradeRecipe.Serializer());
+	public static final RegistryObject<RecipeSerializer<ShapedRecipe>> CRAFTING_ITEM_TAG_SHAPED = REGISTRY.register("crafting_item_tag_shaped", () -> new ItemTagShapedRecipe.Serializer());
+	public static final RegistryObject<RecipeSerializer<RemoveCurseRecipe>> REMOVE_CURSE = REGISTRY.register("remove_curse", () -> new RemoveCurseRecipe.Serializer());
+	public static final RegistryObject<RecipeSerializer<EnchantmentUpgradeRecipe>> ENCHANTMENT_UPGRADE = REGISTRY.register("enchantment_upgrade", () -> new EnchantmentUpgradeRecipe.Serializer());
 
 	@SubscribeEvent
 	public static void register(IEventBus eventBus)

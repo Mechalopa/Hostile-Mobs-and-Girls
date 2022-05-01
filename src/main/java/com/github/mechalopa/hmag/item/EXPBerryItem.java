@@ -1,11 +1,11 @@
 package com.github.mechalopa.hmag.item;
 
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.item.ExperienceOrbEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
+import net.minecraft.world.entity.ExperienceOrb;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 
 public class EXPBerryItem extends Item
 {
@@ -15,14 +15,14 @@ public class EXPBerryItem extends Item
 	}
 
 	@Override
-	public ItemStack finishUsingItem(ItemStack stack, World worldIn, LivingEntity livingEntity)
+	public ItemStack finishUsingItem(ItemStack stack, Level worldIn, LivingEntity livingEntity)
 	{
 		ItemStack stack1 = super.finishUsingItem(stack, worldIn, livingEntity);
 
-		if (!worldIn.isClientSide && livingEntity instanceof PlayerEntity)
+		if (!worldIn.isClientSide && livingEntity instanceof Player)
 		{
-			PlayerEntity player = (PlayerEntity)livingEntity;
-            worldIn.addFreshEntity(new ExperienceOrbEntity(worldIn, player.getX(), player.getY() - 1.0D, player.getZ(), random.nextInt(9) + 12));
+			Player player = (Player)livingEntity;
+            worldIn.addFreshEntity(new ExperienceOrb(worldIn, player.getX(), player.getY() - 1.0D, player.getZ(), random.nextInt(9) + 12));
 		}
 
 		return stack1;

@@ -2,10 +2,10 @@ package com.github.mechalopa.hmag.item;
 
 import javax.annotation.Nullable;
 
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.util.DamageSource;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeType;
 
 public class ModItem extends Item
 {
@@ -34,7 +34,7 @@ public class ModItem extends Item
 	}
 
 	@Override
-	public int getBurnTime(ItemStack stack, @Nullable IRecipeType<?> recipeType)
+	public int getBurnTime(ItemStack stack, @Nullable RecipeType<?> recipeType)
 	{
 		return this.burnTime > 0 ? this.burnTime : -1;
 	}

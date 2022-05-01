@@ -2,19 +2,20 @@ package com.github.mechalopa.hmag.item;
 
 import java.util.function.Supplier;
 
+import javax.swing.UIDefaults.LazyValue;
+
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.registry.ModItems;
 
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.IArmorMaterial;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.LazyValue;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public enum ModArmorMaterial implements IArmorMaterial
+public enum ModArmorMaterial implements ArmorMaterial
 {
 	ANCIENT(HMaG.MODID + ":ancient", 34, new int[]{3, 6, 8, 3}, 15, SoundEvents.ARMOR_EQUIP_IRON, 2.5F, 0.05F, () -> {
 		return Ingredient.of(ModItems.ANCIENT_STONE.get());
@@ -46,13 +47,13 @@ public enum ModArmorMaterial implements IArmorMaterial
 	}
 
 	@Override
-	public int getDurabilityForSlot(EquipmentSlotType slot)
+	public int getDurabilityForSlot(EquipmentSlot slot)
 	{
 		return HEALTH_PER_SLOT[slot.getIndex()] * this.durabilityMultiplier;
 	}
 
 	@Override
-	public int getDefenseForSlot(EquipmentSlotType slot)
+	public int getDefenseForSlot(EquipmentSlot slot)
 	{
 		return this.slotProtections[slot.getIndex()];
 	}

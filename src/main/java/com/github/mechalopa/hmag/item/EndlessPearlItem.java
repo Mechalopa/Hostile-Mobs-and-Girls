@@ -1,17 +1,13 @@
 package com.github.mechalopa.hmag.item;
 
-import net.minecraft.entity.item.EnderPearlEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.SimpleFoiledItem;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.world.World;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.ThrownEnderpearl;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.SimpleFoiledItem;
 
 public class EndlessPearlItem extends SimpleFoiledItem
 {
@@ -21,17 +17,17 @@ public class EndlessPearlItem extends SimpleFoiledItem
 	}
 
 	@Override
-	public ActionResult<ItemStack> use(World worldIn, PlayerEntity playerIn, Hand handIn)
+	public ActionResult<ItemStack> use(World worldIn, Player playerIn, Hand handIn)
 	{
 		ItemStack itemstack = playerIn.getItemInHand(handIn);
-		worldIn.playSound((PlayerEntity)null, playerIn.getX(), playerIn.getY(), playerIn.getZ(), SoundEvents.ENDER_PEARL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (random.nextFloat() * 0.4F + 0.8F));
+		worldIn.playSound((Player)null, playerIn.getX(), playerIn.getY(), playerIn.getZ(), SoundEvents.ENDER_PEARL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (random.nextFloat() * 0.4F + 0.8F));
 		playerIn.getCooldowns().addCooldown(this, 20);
 
 		if (!worldIn.isClientSide)
 		{
-			EnderPearlEntity enderpearlentity = new EnderPearlEntity(worldIn, playerIn);
+			ThrownEnderpearl enderpearlentity = new ThrownEnderpearl(worldIn, playerIn);
 			enderpearlentity.setItem(new ItemStack(Items.ENDER_PEARL));
-			enderpearlentity.shootFromRotation(playerIn, playerIn.xRot, playerIn.yRot, 0.0F, 1.5F, 1.0F);
+			enderpearlentity.shootFromRotation(playerIn, playerIn.getXRot(), playerIn.getYRot(), 0.0F, 1.5F, 1.0F);
 
 			if (playerIn.isCrouching())
 			{

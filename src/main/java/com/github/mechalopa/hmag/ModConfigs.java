@@ -7,7 +7,7 @@ import com.google.common.collect.Lists;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.config.ModConfigEvent;
 
 public class ModConfigs
 {
@@ -572,7 +572,7 @@ public class ModConfigs
 	}
 
 	@SubscribeEvent
-	public static void loadConfig(final ModConfig.ModConfigEvent event)
+	public static void loadConfig(final ModConfigEvent event)
 	{
 		if (event.getConfig().getSpec() == SERVER_CONFIG)
 		{

@@ -6,30 +6,17 @@ import javax.annotation.Nullable;
 
 import com.github.mechalopa.hmag.util.ModUtils;
 
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.UseAction;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
-import net.minecraft.stats.ServerStatisticsManager;
+import net.minecraft.ChatFormatting;
+import net.minecraft.core.NonNullList;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -47,7 +34,7 @@ public class InsomniaSwordItem extends ModSwordItem
 		{
 			if (entity.tickCount % 5 == 0 && entity instanceof ServerPlayerEntity)
 			{
-				CompoundNBT compoundnbt = stack.getOrCreateTag();
+				CompoundTag compoundnbt = stack.getOrCreateTag();
 				int level = !compoundnbt.contains(ModUtils.LEVEL_KEY) ? 0 : (int)compoundnbt.getByte(ModUtils.LEVEL_KEY);
 				ServerStatisticsManager serverstatisticsmanager = ((ServerPlayerEntity)entity).getStats();
 				final int i = 24000;
@@ -66,21 +53,21 @@ public class InsomniaSwordItem extends ModSwordItem
 	@Override
 	public void releaseUsing(ItemStack stack, World world, LivingEntity livingEntity, int count)
 	{
-		if (livingEntity instanceof PlayerEntity)
+		if (livingEntity instanceof Player)
 		{
 			if (this.getUseDuration(stack) - count < 8)
 			{
 				return;
 			}
 
-			PlayerEntity player = (PlayerEntity)livingEntity;
+			Player player = (Player)livingEntity;
 
 			if (!world.isClientSide)
 			{
-				player.addEffect(new EffectInstance(Effects.SLOW_FALLING, 10 * 20, 0));
+				player.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 10 * 20, 0));
 			}
 
-			world.playSound((PlayerEntity)null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENCHANTMENT_TABLE_USE, SoundCategory.PLAYERS, 1.0F, random.nextFloat() * 0.2F + 0.9F);
+			world.playSound((Player)null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENCHANTMENT_TABLE_USE, SoundCategory.PLAYERS, 1.0F, random.nextFloat() * 0.2F + 0.9F);
 			player.awardStat(Stats.ITEM_USED.get(this));
 		}
 	}
@@ -92,7 +79,7 @@ public class InsomniaSwordItem extends ModSwordItem
 	}
 
 	@Override
-	public ActionResult<ItemStack> use(World worldIn, PlayerEntity playerIn, Hand hand)
+	public ActionResult<ItemStack> use(World worldIn, Player playerIn, Hand hand)
 	{
 		ItemStack stack = playerIn.getItemInHand(hand);
 		boolean flag = ModUtils.getLevel(stack) > 0 || playerIn.isCreative();
@@ -120,7 +107,7 @@ public class InsomniaSwordItem extends ModSwordItem
 	{
 		final int i = (stack != null && !stack.isEmpty()) ? ModUtils.getLevel(stack) : 0;
 		TranslationTextComponent textcomponent = new TranslationTextComponent("text.hmag.level", i + 1);
-		textcomponent.withStyle(i >= 5 ? TextFormatting.LIGHT_PURPLE : (i >= 4 ? TextFormatting.AQUA : (i >= 2 ? TextFormatting.YELLOW : (i <= 0 ? TextFormatting.RED : TextFormatting.GRAY))));
+		textcomponent.withStyle(i >= 5 ? ChatFormatting.LIGHT_PURPLE : (i >= 4 ? ChatFormatting.AQUA : (i >= 2 ? ChatFormatting.YELLOW : (i <= 0 ? ChatFormatting.RED : ChatFormatting.GRAY))));
 		list.add(textcomponent);
 	}
 
@@ -130,7 +117,7 @@ public class InsomniaSwordItem extends ModSwordItem
 		if (this.allowdedIn(group))
 		{
 			ItemStack stack = new ItemStack(this);
-			CompoundNBT compoundnbt = stack.getOrCreateTag();
+			CompoundTag compoundnbt = stack.getOrCreateTag();
 			compoundnbt.putByte(ModUtils.LEVEL_KEY, (byte)5);
 			list.add(stack);
 		}

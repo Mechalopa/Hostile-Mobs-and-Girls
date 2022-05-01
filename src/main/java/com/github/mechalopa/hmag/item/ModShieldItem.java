@@ -4,10 +4,10 @@ import javax.annotation.Nullable;
 
 import com.github.mechalopa.hmag.client.renderer.ModItemStackTileEntityRenderer;
 
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ShieldItem;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ShieldItem;
 
 public abstract class ModShieldItem extends ShieldItem
 {

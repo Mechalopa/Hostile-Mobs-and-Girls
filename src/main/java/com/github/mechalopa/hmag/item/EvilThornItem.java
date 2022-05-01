@@ -1,15 +1,12 @@
 package com.github.mechalopa.hmag.item;
 
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.Hand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantments;
 
 public class EvilThornItem extends EnchantmentUpgradeItem
 {
@@ -19,14 +16,14 @@ public class EvilThornItem extends EnchantmentUpgradeItem
 	}
 
 	@Override
-	public ActionResultType interactLivingEntity(ItemStack stack, PlayerEntity player, LivingEntity entity, Hand hand)
+	public ActionResultType interactLivingEntity(ItemStack stack, Player player, LivingEntity entity, Hand hand)
 	{
 		if (!player.level.isClientSide)
 		{
 			if (entity.hurt(DamageSource.thorns(player), 1.0F))
 			{
 				player.crit(entity);
-				player.level.playSound((PlayerEntity)null, player.getX(), player.getY(), player.getZ(), SoundEvents.GENERIC_HURT, SoundCategory.NEUTRAL, 0.5F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
+				player.level.playSound((Player)null, player.getX(), player.getY(), player.getZ(), SoundEvents.GENERIC_HURT, SoundCategory.NEUTRAL, 0.5F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
 				stack.shrink(1);
 				return ActionResultType.SUCCESS;
 			}
