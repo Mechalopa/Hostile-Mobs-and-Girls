@@ -2,46 +2,46 @@ package com.github.mechalopa.hmag.entity.goal;
 
 import java.util.EnumSet;
 
-import net.minecraft.entity.IRangedAttackMob;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.entity.ai.goal.Goal;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.monster.RangedAttackMob;
 
 public class RangedAttackGoal2 extends Goal
 {
-	private final MobEntity mob;
-	private final IRangedAttackMob rangedAttackMob;
+	private final Mob mob;
+	private final RangedAttackMob rangedAttackMob;
 	private LivingEntity target;
 	private int rangedAttackTime = -1;
 	private final double speedModifier;
 	private int seeTime;
 	private final int attackIntervalMin;
-	private final int maxRangedAttackTime;
+	private final int attackIntervalMax;
 	private final float attackRadius;
-	private final float maxAttackDistance;
-	private final float minAttackDistance;
+	private final float maxAttackDistanceSqr;
+	private final float minAttackDistanceSqr;
 	private final boolean canStrafe;
 	private boolean strafingClockwise;
 	private boolean strafingBackwards;
 	private int strafingTime = -1;
 
-	public RangedAttackGoal2(IRangedAttackMob attacker, double movespeed, int maxAttackTime, float maxAttackDistance)
+	public RangedAttackGoal2(RangedAttackMob attacker, double movespeed, int attackIntervalMin, float maxAttackDistance)
 	{
-		this(attacker, movespeed, maxAttackTime, maxAttackTime, maxAttackDistance);
+		this(attacker, movespeed, attackIntervalMin, attackIntervalMin, maxAttackDistance);
 	}
 
-	public RangedAttackGoal2(IRangedAttackMob attacker, double movespeed, int attackInterval, int maxAttackTime, float maxAttackDistance)
+	public RangedAttackGoal2(RangedAttackMob attacker, double movespeed, int attackIntervalMin, int attackIntervalMax, float maxAttackDistance)
 	{
-		this(attacker, movespeed, attackInterval, maxAttackTime, maxAttackDistance, maxAttackDistance, false);
+		this(attacker, movespeed, attackIntervalMin, attackIntervalMax, maxAttackDistance, maxAttackDistance, false);
 	}
 
-	public RangedAttackGoal2(IRangedAttackMob attacker, double movespeed, int attackInterval, int maxAttackTime, float maxAttackDistance, boolean canStrafe)
+	public RangedAttackGoal2(RangedAttackMob attacker, double movespeed, int attackIntervalMin, int attackIntervalMax, float maxAttackDistance, boolean canStrafe)
 	{
-		this(attacker, movespeed, attackInterval, maxAttackTime, maxAttackDistance, maxAttackDistance, canStrafe);
+		this(attacker, movespeed, attackIntervalMin, attackIntervalMax, maxAttackDistance, maxAttackDistance, canStrafe);
 	}
 
-	public RangedAttackGoal2(IRangedAttackMob attacker, double movespeed, int attackInterval, int maxAttackTime, float maxAttackDistance, float minAttackDistance, boolean canStrafe)
+	public RangedAttackGoal2(RangedAttackMob attacker, double movespeed, int attackIntervalMin, int attackIntervalMax, float maxAttackDistance, float minAttackDistance, boolean canStrafe)
 	{
 		if (!(attacker instanceof LivingEntity))
 		{
@@ -50,13 +50,13 @@ public class RangedAttackGoal2 extends Goal
 		else
 		{
 			this.rangedAttackMob = attacker;
-			this.mob = (MobEntity)attacker;
+			this.mob = (Mob)attacker;
 			this.speedModifier = movespeed;
-			this.attackIntervalMin = attackInterval;
-			this.maxRangedAttackTime = maxAttackTime;
+			this.attackIntervalMin = attackIntervalMin;
+			this.attackIntervalMax = attackIntervalMax;
 			this.attackRadius = maxAttackDistance;
-			this.maxAttackDistance = maxAttackDistance * maxAttackDistance;
-			this.minAttackDistance = minAttackDistance * minAttackDistance;
+			this.maxAttackDistanceSqr = maxAttackDistance * maxAttackDistance;
+			this.minAttackDistanceSqr = minAttackDistance * minAttackDistance;
 			this.canStrafe = canStrafe;
 			this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
 		}
@@ -93,10 +93,16 @@ public class RangedAttackGoal2 extends Goal
 	}
 
 	@Override
+	public boolean requiresUpdateEveryTick()
+	{
+		return true;
+	}
+
+	@Override
 	public void tick()
 	{
 		double d0 = this.mob.distanceToSqr(this.target.getX(), this.target.getY(), this.target.getZ());
-		boolean flag = this.mob.getSensing().canSee(this.target);
+		boolean flag = this.mob.getSensing().hasLineOfSight(this.target);
 
 		if (flag)
 		{
@@ -107,7 +113,7 @@ public class RangedAttackGoal2 extends Goal
 			this.seeTime = 0;
 		}
 
-		if (!(d0 > (double)this.maxAttackDistance || (d0 > (double)this.minAttackDistance && this.rangedAttackTime > 10)) && this.seeTime >= (this.canStrafe ? 20 : 5))
+		if (!(d0 > this.maxAttackDistanceSqr || (d0 > this.minAttackDistanceSqr && this.rangedAttackTime > 10)) && this.seeTime >= (this.canStrafe ? 20 : 5))
 		{
 			this.mob.getNavigation().stop();
 
@@ -128,12 +134,12 @@ public class RangedAttackGoal2 extends Goal
 
 		if (this.canStrafe && this.strafingTime >= 20)
 		{
-			if ((double)this.mob.getRandom().nextFloat() < 0.3D)
+			if (this.mob.getRandom().nextFloat() < 0.3D)
 			{
 				this.strafingClockwise = !this.strafingClockwise;
 			}
 
-			if ((double)this.mob.getRandom().nextFloat() < 0.3D)
+			if (this.mob.getRandom().nextFloat() < 0.3D)
 			{
 				this.strafingBackwards = !this.strafingBackwards;
 			}
@@ -143,11 +149,11 @@ public class RangedAttackGoal2 extends Goal
 
 		if (this.canStrafe && this.strafingTime > -1)
 		{
-			if (d0 > (double)(this.maxAttackDistance * 0.75F))
+			if (d0 > this.maxAttackDistanceSqr * 0.75F)
 			{
 				this.strafingBackwards = false;
 			}
-			else if (d0 < (double)(this.maxAttackDistance * 0.25F))
+			else if (d0 < this.maxAttackDistanceSqr * 0.25F)
 			{
 				this.strafingBackwards = true;
 			}
@@ -167,15 +173,14 @@ public class RangedAttackGoal2 extends Goal
 				return;
 			}
 
-			float f = MathHelper.sqrt(d0) / this.attackRadius;
-			float f1 = MathHelper.clamp(f, 0.1F, 1.0F);
+			float f = (float)Math.sqrt(d0) / this.attackRadius;
+			float f1 = Mth.clamp(f, 0.1F, 1.0F);
 			this.rangedAttackMob.performRangedAttack(this.target, f1);
-			this.rangedAttackTime = MathHelper.floor(f * (float)(this.maxRangedAttackTime - this.attackIntervalMin) + (float)this.attackIntervalMin);
+			this.rangedAttackTime = Mth.floor(f * (this.attackIntervalMax - this.attackIntervalMin) + this.attackIntervalMin);
 		}
 		else if (this.rangedAttackTime < 0)
 		{
-			float f2 = MathHelper.sqrt(d0) / this.attackRadius;
-			this.rangedAttackTime = MathHelper.floor(f2 * (float)(this.maxRangedAttackTime - this.attackIntervalMin) + (float)this.attackIntervalMin);
+			this.rangedAttackTime = Mth.floor(Mth.lerp(Math.sqrt(d0) / this.attackRadius, this.attackIntervalMin, this.attackIntervalMax));
 		}
 	}
 

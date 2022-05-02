@@ -6,83 +6,83 @@ import javax.annotation.Nonnull;
 
 import com.github.mechalopa.hmag.ModConfigs;
 
-import net.minecraft.block.AbstractFireBlock;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.FlowingFluidBlock;
-import net.minecraft.entity.EntitySize;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.IRangedAttackMob;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.Pose;
-import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.AvoidEntityGoal;
-import net.minecraft.entity.ai.goal.HurtByTargetGoal;
-import net.minecraft.entity.ai.goal.LookAtGoal;
-import net.minecraft.entity.ai.goal.LookRandomlyGoal;
-import net.minecraft.entity.ai.goal.MoveToBlockGoal;
-import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
-import net.minecraft.entity.ai.goal.RangedAttackGoal;
-import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
-import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.passive.StriderEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.SmallFireballEntity;
-import net.minecraft.fluid.Fluid;
-import net.minecraft.network.IPacket;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.pathfinding.GroundPathNavigator;
-import net.minecraft.pathfinding.PathFinder;
-import net.minecraft.pathfinding.PathNavigator;
-import net.minecraft.pathfinding.PathNodeType;
-import net.minecraft.pathfinding.PathType;
-import net.minecraft.pathfinding.WalkNodeProcessor;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.Direction;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.world.IServerWorld;
-import net.minecraft.world.IWorldReader;
-import net.minecraft.world.World;
+import net.minecraft.util.Mth;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
+import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.MoveToBlockGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.ai.goal.RangedAttackGoal;
+import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
+import net.minecraft.world.entity.ai.navigation.PathNavigation;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.RangedAttackMob;
+import net.minecraft.world.entity.monster.Strider;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.SmallFireball;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.BaseFireBlock;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LiquidBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.level.pathfinder.PathComputationType;
+import net.minecraft.world.level.pathfinder.PathFinder;
+import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
+import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraftforge.event.ForgeEventFactory;
-import net.minecraftforge.fml.network.NetworkHooks;
+import net.minecraftforge.network.NetworkHooks;
 
-public class MeltyMonsterEntity extends MonsterEntity implements IModMob, IRangedAttackMob
+public class MeltyMonsterEntity extends Monster implements IModMob, RangedAttackMob
 {
-	public MeltyMonsterEntity(EntityType<? extends MeltyMonsterEntity> type, World worldIn)
+	public MeltyMonsterEntity(EntityType<? extends MeltyMonsterEntity> type, Level worldIn)
 	{
 		super(type, worldIn);
-		this.setPathfindingMalus(PathNodeType.WATER, -1.0F);
-		this.setPathfindingMalus(PathNodeType.LAVA, 0.0F);
-		this.setPathfindingMalus(PathNodeType.DANGER_FIRE, 0.0F);
-		this.setPathfindingMalus(PathNodeType.DAMAGE_FIRE, 0.0F);
+		this.setPathfindingMalus(BlockPathTypes.WATER, -1.0F);
+		this.setPathfindingMalus(BlockPathTypes.LAVA, 0.0F);
+		this.setPathfindingMalus(BlockPathTypes.DANGER_FIRE, 0.0F);
+		this.setPathfindingMalus(BlockPathTypes.DAMAGE_FIRE, 0.0F);
 		this.xpReward = 15;
 	}
 
 	@Override
 	protected void registerGoals()
 	{
-		this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, StriderEntity.class, 10.0F, 1.0D, 1.5D));
-		this.goalSelector.addGoal(3, new MeltyMonsterEntity.MoveToLavaGoal(this, 1.5D));
+		this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, Strider.class, 10.0F, 1.0D, 1.5D));
+		this.goalSelector.addGoal(3, new MeltyMonsterEntity.GoToLavaGoal(this, 1.5D));
 		this.goalSelector.addGoal(5, new RangedAttackGoal(this, 1.0D, 30, 40, 8.0F));
-		this.goalSelector.addGoal(6, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
-		this.goalSelector.addGoal(7, new LookAtGoal(this, PlayerEntity.class, 8.0F));
-		this.goalSelector.addGoal(7, new LookRandomlyGoal(this));
+		this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+		this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 8.0F));
+		this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
 		this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
-		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, 10, true, false, (p) -> {
-			return !(p.getVehicle() instanceof StriderEntity);
+		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, (p) -> {
+			return !(p.getVehicle() instanceof Strider);
 		}));
 	}
 
-	public static AttributeModifierMap.MutableAttribute createAttributes()
+	public static AttributeSupplier.Builder createAttributes()
 	{
-		return MonsterEntity.createMonsterAttributes()
+		return Monster.createMonsterAttributes()
 				.add(Attributes.MAX_HEALTH, 25.0D)
 				.add(Attributes.MOVEMENT_SPEED, 0.18D);
 	}
@@ -110,22 +110,22 @@ public class MeltyMonsterEntity extends MonsterEntity implements IModMob, IRange
 
 		if (!this.level.isClientSide)
 		{
-			if (ModConfigs.cachedServer.MELTY_MONSTER_SET_FIRE && !this.isInLava() && !this.isInWaterOrRain() && ForgeEventFactory.getMobGriefingEvent(this.level, this))
+			if (ModConfigs.cachedServer.MELTY_MONSTER_SET_FIRE && !this.isInLava() && !this.isInWaterRainOrBubble() && !this.isFreezing() && ForgeEventFactory.getMobGriefingEvent(this.level, this))
 			{
-				int i = MathHelper.floor(this.getX());
-				int j = MathHelper.floor(this.getY());
-				int k = MathHelper.floor(this.getZ());
+				int i = Mth.floor(this.getX());
+				int j = Mth.floor(this.getY());
+				int k = Mth.floor(this.getZ());
 
 				for (int l = 0; l < 4; ++l)
 				{
-					i = MathHelper.floor(this.getX() + (double)((float)(l % 2 * 2 - 1) * 0.25F));
-					j = MathHelper.floor(this.getY());
-					k = MathHelper.floor(this.getZ() + (double)((float)(l / 2 % 2 * 2 - 1) * 0.25F));
+					i = Mth.floor(this.getX() + (l % 2 * 2 - 1) * 0.25F);
+					j = Mth.floor(this.getY());
+					k = Mth.floor(this.getZ() + (l / 2 % 2 * 2 - 1) * 0.25F);
 					BlockPos blockpos = new BlockPos(i, j, k);
 
 					if (this.level.isEmptyBlock(blockpos))
 					{
-						this.level.setBlockAndUpdate(blockpos, AbstractFireBlock.getState(this.level, blockpos));
+						this.level.setBlockAndUpdate(blockpos, BaseFireBlock.getState(this.level, blockpos));
 		            }
 				}
 			}
@@ -142,39 +142,38 @@ public class MeltyMonsterEntity extends MonsterEntity implements IModMob, IRange
 	public void performRangedAttack(LivingEntity target, float distanceFactor)
 	{
 		double d1 = target.getX() - this.getX();
-		double d2 = target.getY() + (double)target.getEyeHeight() * 0.5D - this.getY(0.5D);
+		double d2 = target.getY() + target.getEyeHeight() * 0.5D - this.getY(0.5D);
 		double d3 = target.getZ() - this.getZ();
-		float f = MathHelper.sqrt(d1 * d1 + d3 * d3) * 0.02F;
-		SmallFireballEntity fireballentity = new SmallFireballEntity(this.level, this, d1 + this.getRandom().nextGaussian() * (double)f, d2, d3 + this.getRandom().nextGaussian() * (double)f);
+		double d4 = Math.sqrt(d1 * d1 + d3 * d3) * 0.02D;
+		SmallFireball fireballentity = new SmallFireball(this.level, this, d1 + this.getRandom().nextGaussian() * d4, d2, d3 + this.getRandom().nextGaussian() * d4);
 		fireballentity.setPos(fireballentity.getX(), this.getY(0.5D) + 0.5D, fireballentity.getZ());
 		this.level.addFreshEntity(fireballentity);
 		this.playSound(SoundEvents.BLAZE_SHOOT, 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
 	}
 
-	@SuppressWarnings("deprecation")
-	public static boolean checkMeltyMonsterSpawnRules(EntityType<MeltyMonsterEntity> type, IServerWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn)
+	public static boolean checkMeltyMonsterSpawnRules(EntityType<MeltyMonsterEntity> type, LevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, Random randomIn)
 	{
-		BlockPos.Mutable blockpos$mutable = pos.mutable();
+		BlockPos.MutableBlockPos blockpos$mutable = pos.mutable();
 
 		do
 		{
 			blockpos$mutable.move(Direction.UP);
 		}
-		while (worldIn.getFluidState(blockpos$mutable).is(FluidTags.LAVA));
+		while(levelAccessor.getFluidState(blockpos$mutable).is(FluidTags.LAVA));
 
-		return worldIn.getBlockState(blockpos$mutable).isAir() && (reason == SpawnReason.SPAWNER || pos.getY() < 32 || randomIn.nextBoolean());
+		return levelAccessor.getBlockState(blockpos$mutable).isAir() && (spawnType == MobSpawnType.SPAWNER || pos.getY() < 32 || randomIn.nextBoolean());
 	}
 
 	@Override
-	public boolean checkSpawnObstruction(IWorldReader worldIn)
+	public boolean checkSpawnObstruction(LevelReader levelReader)
 	{
-		return worldIn.isUnobstructed(this);
+		return levelReader.isUnobstructed(this);
 	}
 
 	@Override
-	public boolean canStandOnFluid(Fluid fluidIn)
+	public boolean canStandOnFluid(FluidState state)
 	{
-		return fluidIn.is(FluidTags.LAVA);
+		return state.is(FluidTags.LAVA);
 	}
 
 	@Override
@@ -204,9 +203,9 @@ public class MeltyMonsterEntity extends MonsterEntity implements IModMob, IRange
 	{
 		if (this.isInLava())
 		{
-			ISelectionContext iselectioncontext = ISelectionContext.of(this);
+			CollisionContext collisioncontext = CollisionContext.of(this);
 
-			if (iselectioncontext.isAbove(FlowingFluidBlock.STABLE_SHAPE, this.blockPosition(), true) && !this.level.getFluidState(this.blockPosition().above()).is(FluidTags.LAVA))
+			if (collisioncontext.isAbove(LiquidBlock.STABLE_SHAPE, this.blockPosition(), true) && !this.level.getFluidState(this.blockPosition().above()).is(FluidTags.LAVA))
 			{
 				this.onGround = true;
 			}
@@ -218,15 +217,15 @@ public class MeltyMonsterEntity extends MonsterEntity implements IModMob, IRange
 	}
 
 	@Override
-	protected PathNavigator createNavigation(World worldIn)
+	protected PathNavigation createNavigation(Level level)
 	{
-		return new MeltyMonsterEntity.LavaPathNavigator(this, worldIn);
+		return new MeltyMonsterEntity.StriderPathNavigation(this, level);
 	}
 
 	@Override
-	public float getWalkTargetValue(BlockPos pos, IWorldReader worldIn)
+	public float getWalkTargetValue(BlockPos pos, LevelReader levelReader)
 	{
-		if (worldIn.getBlockState(pos).getFluidState().is(FluidTags.LAVA))
+		if (levelReader.getBlockState(pos).getFluidState().is(FluidTags.LAVA))
 		{
 			return 10.0F;
 		}
@@ -255,7 +254,7 @@ public class MeltyMonsterEntity extends MonsterEntity implements IModMob, IRange
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn)
+	protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn)
 	{
 		return 1.74F;
 	}
@@ -292,29 +291,29 @@ public class MeltyMonsterEntity extends MonsterEntity implements IModMob, IRange
 
 	@Nonnull
 	@Override
-	public IPacket<?> getAddEntityPacket()
+	public Packet<?> getAddEntityPacket()
 	{
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 
-	private static class LavaPathNavigator extends GroundPathNavigator
+	private static class StriderPathNavigation extends GroundPathNavigation
 	{
-		public LavaPathNavigator(MeltyMonsterEntity mob, World worldIn)
+		public StriderPathNavigation(MeltyMonsterEntity mob, Level level)
 		{
-			super(mob, worldIn);
+			super(mob, level);
 		}
 
 		@Override
-		protected PathFinder createPathFinder(int i)
+		protected PathFinder createPathFinder(int maxVisitedNodes)
 		{
-			this.nodeEvaluator = new WalkNodeProcessor();
-			return new PathFinder(this.nodeEvaluator, i);
+			this.nodeEvaluator = new WalkNodeEvaluator();
+			return new PathFinder(this.nodeEvaluator, maxVisitedNodes);
 		}
 
 		@Override
-		protected boolean hasValidPathType(PathNodeType pathNodeTypeIn)
+		protected boolean hasValidPathType(BlockPathTypes blockPathTypesIn)
 		{
-			return pathNodeTypeIn != PathNodeType.LAVA && pathNodeTypeIn != PathNodeType.DAMAGE_FIRE && pathNodeTypeIn != PathNodeType.DANGER_FIRE ? super.hasValidPathType(pathNodeTypeIn) : true;
+			return blockPathTypesIn != BlockPathTypes.LAVA && blockPathTypesIn != BlockPathTypes.DAMAGE_FIRE && blockPathTypesIn != BlockPathTypes.DANGER_FIRE ? super.hasValidPathType(blockPathTypesIn) : true;
 		}
 
 		@Override
@@ -324,11 +323,11 @@ public class MeltyMonsterEntity extends MonsterEntity implements IModMob, IRange
 		}
 	}
 
-	private static class MoveToLavaGoal extends MoveToBlockGoal
+	private static class GoToLavaGoal extends MoveToBlockGoal
 	{
 		private final MeltyMonsterEntity parent;
 
-		private MoveToLavaGoal(MeltyMonsterEntity mob, double d0)
+		private GoToLavaGoal(MeltyMonsterEntity mob, double d0)
 		{
 			super(mob, d0, 8, 2);
 			this.parent = mob;
@@ -353,9 +352,9 @@ public class MeltyMonsterEntity extends MonsterEntity implements IModMob, IRange
 		}
 
 		@Override
-		protected boolean isValidTarget(IWorldReader world, BlockPos pos)
+		protected boolean isValidTarget(LevelReader levelReader, BlockPos pos)
 		{
-			return world.getBlockState(pos).is(Blocks.LAVA) && world.getBlockState(pos.above()).isPathfindable(world, pos, PathType.LAND);
+			return levelReader.getBlockState(pos).is(Blocks.LAVA) && levelReader.getBlockState(pos.above()).isPathfindable(levelReader, pos, PathComputationType.LAND);
 		}
 	}
 }

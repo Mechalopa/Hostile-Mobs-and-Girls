@@ -10,21 +10,18 @@ import com.github.mechalopa.hmag.registry.ModRecipes;
 import com.github.mechalopa.hmag.util.ModTags;
 import com.google.gson.JsonObject;
 
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.container.RepairContainer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.item.crafting.SmithingRecipe;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.UpgradeRecipe;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
-public class RemoveCurseRecipe extends SmithingRecipe
+public class RemoveCurseRecipe extends UpgradeRecipe
 {
 	private final ResourceLocation recipeId;
 
@@ -104,12 +101,12 @@ public class RemoveCurseRecipe extends SmithingRecipe
 	}
 
 	@Override
-	public IRecipeSerializer<?> getSerializer()
+	public RecipeSerializer<?> getSerializer()
 	{
 		return ModRecipes.REMOVE_CURSE.get();
 	}
 
-	public static class Serializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<RemoveCurseRecipe>
+	public static class Serializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<RemoveCurseRecipe>
 	{
 		@Override
 		public RemoveCurseRecipe fromJson(ResourceLocation recipeId, JsonObject json)
@@ -119,12 +116,12 @@ public class RemoveCurseRecipe extends SmithingRecipe
 
 		@Override
 		@Nonnull
-		public RemoveCurseRecipe fromNetwork(@Nonnull ResourceLocation recipeId, PacketBuffer buffer)
+		public RemoveCurseRecipe fromNetwork(@Nonnull ResourceLocation recipeId, FriendlyByteBuf buffer)
 		{
 			return new RemoveCurseRecipe(this.getRegistryName());
 		}
 
 		@Override
-		public void toNetwork(PacketBuffer buffer, RemoveCurseRecipe recipe){}
+		public void toNetwork(FriendlyByteBuf buffer, RemoveCurseRecipe recipe){}
 	}
 }

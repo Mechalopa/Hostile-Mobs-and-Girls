@@ -14,21 +14,18 @@ import com.github.mechalopa.hmag.util.ModTags;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.JsonObject;
 
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.container.RepairContainer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.item.crafting.SmithingRecipe;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.UpgradeRecipe;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
-public class EnchantmentUpgradeRecipe extends SmithingRecipe
+public class EnchantmentUpgradeRecipe extends UpgradeRecipe
 {
 	private final ResourceLocation recipeId;
 
@@ -163,12 +160,12 @@ public class EnchantmentUpgradeRecipe extends SmithingRecipe
 	}
 
 	@Override
-	public IRecipeSerializer<?> getSerializer()
+	public RecipeSerializer<?> getSerializer()
 	{
 		return ModRecipes.ENCHANTMENT_UPGRADE.get();
 	}
 
-	public static class Serializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<EnchantmentUpgradeRecipe>
+	public static class Serializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<EnchantmentUpgradeRecipe>
 	{
 		@Override
 		public EnchantmentUpgradeRecipe fromJson(ResourceLocation recipeId, JsonObject json)
@@ -178,181 +175,12 @@ public class EnchantmentUpgradeRecipe extends SmithingRecipe
 
 		@Override
 		@Nonnull
-		public EnchantmentUpgradeRecipe fromNetwork(@Nonnull ResourceLocation recipeId, PacketBuffer buffer)
+		public EnchantmentUpgradeRecipe fromNetwork(@Nonnull ResourceLocation recipeId, FriendlyByteBuf buffer)
 		{
 			return new EnchantmentUpgradeRecipe(this.getRegistryName());
 		}
 
 		@Override
-		public void toNetwork(PacketBuffer buffer, EnchantmentUpgradeRecipe recipe){}
+		public void toNetwork(FriendlyByteBuf buffer, EnchantmentUpgradeRecipe recipe){}
 	}
 }
-
-/*public class EnchantmentUpgradeRecipe extends SmithingRecipe
-{
-	private final Ingredient addition;
-	private final Enchantment enchantment;
-	private final int minLevel;
-	private final int maxLevel;
-
-	public EnchantmentUpgradeRecipe(ResourceLocation recipeId, Ingredient addition, Enchantment enchantmentIn, int min, int max)
-	{
-		super(recipeId, Ingredient.EMPTY, addition, ItemStack.EMPTY);
-		this.addition = addition;
-		this.enchantment = enchantmentIn;
-		this.minLevel = min;
-		this.maxLevel = max;
-	}
-
-	@Override
-	public boolean matches(IInventory inv, World worldIn)
-	{
-		if (this.getEnchantment() != null)
-		{
-			ItemStack stack = inv.getItem(0);
-			final Enchantment ench = this.getEnchantment();
-
-			if (!stack.isEmpty() && stack.getItem() != Items.ENCHANTED_BOOK && ench.canEnchant(stack) && this.addition.test(inv.getItem(1)))
-			{
-				int i = EnchantmentHelper.getItemEnchantmentLevel(ench, stack);
-
-				if (i == 0 && this.minLevel == 0 && this.maxLevel >= 0)
-				{
-					if (EnchantmentHelper.isEnchantmentCompatible(EnchantmentHelper.getEnchantments(stack).keySet(), ench))
-					{
-						return true;
-					}
-				}
-				else if (i >= this.minLevel && i <= this.maxLevel)
-				{
-					return true;
-				}
-			}
-		}
-
-		return false;
-	}
-
-	@Override
-	public ItemStack assemble(IInventory inv)
-	{
-		if (this.getEnchantment() != null)
-		{
-			ItemStack stack = inv.getItem(0);
-			ItemStack stack1 = stack.copy();
-			final Enchantment ench = this.getEnchantment();
-
-			if (stack.isEnchanted())
-			{
-				stack1.removeTagKey("Enchantments");
-				stack1.removeTagKey("StoredEnchantments");
-				int i = EnchantmentHelper.getItemEnchantmentLevel(ench, stack);
-
-				Map<Enchantment, Integer> map = EnchantmentHelper.getEnchantments(stack).entrySet().stream().filter((p) -> {
-					return p.getKey() != ench;
-				}).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
-
-				map.put(ench, i + 1);
-				EnchantmentHelper.setEnchantments(map, stack1);
-				stack1.setRepairCost(0);
-
-				for (int j = 0; j < map.size(); ++j)
-				{
-					stack1.setRepairCost(RepairContainer.calculateIncreasedRepairCost(stack.getBaseRepairCost()));
-				}
-			}
-			else
-			{
-				EnchantmentHelper.setEnchantments(ImmutableMap.of(ench, 1), stack1);
-			}
-
-			return stack1;
-		}
-		else
-		{
-			return ItemStack.EMPTY;
-		}
-	}
-
-	public Ingredient getAddition()
-	{
-		return this.addition;
-	}
-
-	@Nullable
-	public Enchantment getEnchantment()
-	{
-		return this.enchantment;
-	}
-
-	public int getMinLevel()
-	{
-		return this.minLevel;
-	}
-
-	public int getMaxLevel()
-	{
-		return this.maxLevel;
-	}
-
-	@Override
-	public boolean isSpecial()
-	{
-		return true;
-	}
-
-	@Override
-	public IRecipeSerializer<?> getSerializer()
-	{
-		return ModRecipes.ENCHANTMENT_UPGRADE.get();
-	}
-
-	public static class Serializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<EnchantmentUpgradeRecipe>
-	{
-		@Override
-		public EnchantmentUpgradeRecipe fromJson(ResourceLocation recipeId, JsonObject json)
-		{
-			Ingredient ingredient = Ingredient.fromJson(JSONUtils.getAsJsonObject(json, "addition"));
-			String s = JSONUtils.getAsString(json, "enchantment", "");
-			ResourceLocation resourcelocation = new ResourceLocation(s);
-			Enchantment enchantment = ForgeRegistries.ENCHANTMENTS.getValue(resourcelocation);
-
-			if (enchantment == null)
-			{
-				throw new JsonSyntaxException("Unknown enchantment '" + resourcelocation + "'");
-			}
-
-			int min = MathHelper.clamp(JSONUtils.getAsInt(json, "minLevel", 0), 0, 254);
-			int max = MathHelper.clamp(JSONUtils.getAsInt(json, "maxLevel", min), 0, 254);
-			return new EnchantmentUpgradeRecipe(recipeId, ingredient, enchantment, min, max);
-		}
-
-		@Override
-		@Nonnull
-		public EnchantmentUpgradeRecipe fromNetwork(@Nonnull ResourceLocation recipeId, PacketBuffer buffer)
-		{
-			Ingredient ingredient = Ingredient.fromNetwork(buffer);
-			String s = buffer.readUtf(Short.MAX_VALUE);
-			ResourceLocation resourcelocation = new ResourceLocation(s);
-			Enchantment enchantment = ForgeRegistries.ENCHANTMENTS.getValue(resourcelocation);
-
-			if (enchantment == null)
-			{
-				throw new JsonSyntaxException("Unknown enchantment '" + resourcelocation + "'");
-			}
-
-			int min = buffer.readInt();
-			int max = buffer.readInt();
-			return new EnchantmentUpgradeRecipe(recipeId, ingredient, enchantment, min, max);
-		}
-
-		@Override
-		public void toNetwork(PacketBuffer buffer, EnchantmentUpgradeRecipe recipe)
-		{
-			recipe.addition.toNetwork(buffer);
-			buffer.writeUtf(ForgeRegistries.ENCHANTMENTS.getKey(recipe.enchantment).toString());
-			buffer.writeVarInt(recipe.minLevel);
-			buffer.writeVarInt(recipe.maxLevel);
-		}
-	}
-}*/

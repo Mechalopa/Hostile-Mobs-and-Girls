@@ -2,37 +2,37 @@ package com.github.mechalopa.hmag.entity.goal;
 
 import java.util.EnumSet;
 
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.entity.ai.goal.Goal;
-import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.phys.Vec3;
 
 public class LeapAtTargetGoal2 extends Goal
 {
-	private final MobEntity mob;
+	private final Mob mob;
 	private LivingEntity target;
-	private final float leapMotionY;
-	private final float leapMotionWidth;
+	private final float yd;
+	private final float xzd;
 	private final float maxAttackDistance;
 	private final int chance;
 
-	public LeapAtTargetGoal2(MobEntity mobEntityIn, float leapMotionYIn)
+	public LeapAtTargetGoal2(Mob mob, float yd)
 	{
-		this(mobEntityIn, leapMotionYIn, 0.4F);
+		this(mob, yd, 0.4F);
 	}
 
-	public LeapAtTargetGoal2(MobEntity mobEntityIn, float leapMotionYIn, float leapMotionWidthIn)
+	public LeapAtTargetGoal2(Mob mob, float yd, float xzd)
 	{
-		this(mobEntityIn, leapMotionYIn, leapMotionWidthIn, 4.0F, 5);
+		this(mob, yd, xzd, 4.0F, 5);
 	}
 
-	public LeapAtTargetGoal2(MobEntity mobEntityIn, float leapMotionYIn, float leapMotionWidthIn, float maxAttackDistanceIn, int chanceIn)
+	public LeapAtTargetGoal2(Mob mob, float yd, float xzd, float maxAttackDistance, int chance)
 	{
-		this.mob = mobEntityIn;
-		this.leapMotionY = leapMotionYIn;
-		this.leapMotionWidth = leapMotionWidthIn;
-		this.maxAttackDistance = maxAttackDistanceIn * maxAttackDistanceIn;
-		this.chance = chanceIn;
+		this.mob = mob;
+		this.yd = yd;
+		this.xzd = xzd;
+		this.maxAttackDistance = maxAttackDistance * maxAttackDistance;
+		this.chance = chance;
 		this.setFlags(EnumSet.of(Goal.Flag.JUMP, Goal.Flag.MOVE));
 	}
 
@@ -55,7 +55,7 @@ public class LeapAtTargetGoal2 extends Goal
 			{
 				double d0 = this.mob.distanceToSqr(this.target);
 
-				if (!(d0 < 4.0D) && !(d0 > (double)this.maxAttackDistance))
+				if (!(d0 < 4.0D) && !(d0 > this.maxAttackDistance))
 				{
 					if (!this.mob.isOnGround())
 					{
@@ -63,7 +63,7 @@ public class LeapAtTargetGoal2 extends Goal
 					}
 					else
 					{
-						return this.mob.getRandom().nextInt(this.chance) == 0;
+						return this.mob.getRandom().nextInt(reducedTickDelay(this.chance)) == 0;
 					}
 				}
 				else
@@ -83,15 +83,15 @@ public class LeapAtTargetGoal2 extends Goal
 	@Override
 	public void start()
 	{
-		Vector3d vector3d = this.mob.getDeltaMovement();
-		Vector3d vector3d1 = new Vector3d(this.target.getX() - this.mob.getX(), 0.0D, this.target.getZ() - this.mob.getZ());
+		Vec3 vec3 = this.mob.getDeltaMovement();
+		Vec3 vec31 = new Vec3(this.target.getX() - this.mob.getX(), 0.0D, this.target.getZ() - this.mob.getZ());
 
-		if (vector3d1.lengthSqr() > 1.0E-7D)
+		if (vec31.lengthSqr() > 1.0E-7D)
 		{
-			vector3d1 = vector3d1.normalize().scale((double)this.leapMotionWidth).add(vector3d.scale(0.2D));
+			vec31 = vec31.normalize().scale(this.xzd).add(vec3.scale(0.2D));
 		}
 
-		this.mob.setDeltaMovement(vector3d1.x, (double)this.leapMotionY, vector3d1.z);
+		this.mob.setDeltaMovement(vec31.x, this.yd, vec31.z);
 	}
 
 	@Override

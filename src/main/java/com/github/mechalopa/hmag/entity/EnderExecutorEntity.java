@@ -5,40 +5,40 @@ import javax.annotation.Nullable;
 
 import com.github.mechalopa.hmag.ModConfigs;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ILivingEntityData;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.monster.EndermanEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.IPacket;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.IndirectEntityDamageSource;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.IServerWorld;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.network.NetworkHooks;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.IndirectEntityDamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.monster.EnderMan;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraftforge.network.NetworkHooks;
 
-public class EnderExecutorEntity extends EndermanEntity implements IModMob, IBeamAttackMob
+public class EnderExecutorEntity extends EnderMan implements IModMob, IBeamAttackMob
 {
-	private static final DataParameter<Integer> ATTACKING_TIME = EntityDataManager.defineId(EnderExecutorEntity.class, DataSerializers.INT);
-	private static final DataParameter<Integer> ATTACK_TARGET = EntityDataManager.defineId(EnderExecutorEntity.class, DataSerializers.INT);
+	private static final EntityDataAccessor<Integer> ATTACKING_TIME = SynchedEntityData.defineId(EnderExecutorEntity.class, EntityDataSerializers.INT);
+	private static final EntityDataAccessor<Integer> ATTACK_TARGET = SynchedEntityData.defineId(EnderExecutorEntity.class, EntityDataSerializers.INT);
 	private LivingEntity targetedEntity;
 	private int clientAttackTime;
 
-	public EnderExecutorEntity(EntityType<? extends EndermanEntity> type, World worldIn)
+	public EnderExecutorEntity(EntityType<? extends EnderMan> type, Level worldIn)
 	{
 		super(type, worldIn);
 		this.xpReward = 25;
@@ -52,9 +52,9 @@ public class EnderExecutorEntity extends EndermanEntity implements IModMob, IBea
 		this.entityData.define(ATTACKING_TIME, -20);
 	}
 
-	public static AttributeModifierMap.MutableAttribute createAttributes()
+	public static AttributeSupplier.Builder createAttributes()
 	{
-		return EndermanEntity.createAttributes()
+		return EnderMan.createAttributes()
 				.add(Attributes.MAX_HEALTH, 120.0D)
 				.add(Attributes.MOVEMENT_SPEED, 0.3D)
 				.add(Attributes.ATTACK_DAMAGE, 8.0D)
@@ -74,7 +74,7 @@ public class EnderExecutorEntity extends EndermanEntity implements IModMob, IBea
 				{
 					double d0 = this.distanceToSqr(target);
 
-					if (this.canSee(target) && d0 > 1.0D * 1.0D && d0 <= 24.0D * 24.0D)
+					if (this.hasLineOfSight(target) && d0 > 1.0D * 1.0D && d0 <= 24.0D * 24.0D)
 					{
 						int i = this.getAttackingTime();
 						++i;
@@ -198,13 +198,23 @@ public class EnderExecutorEntity extends EndermanEntity implements IModMob, IBea
 
 	@Nullable
 	@Override
-	public ILivingEntityData finalizeSpawn(IServerWorld worldIn, DifficultyInstance difficultyIn, SpawnReason reason, @Nullable ILivingEntityData spawnDataIn, @Nullable CompoundNBT dataTag)
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor worldIn, DifficultyInstance difficultyIn, MobSpawnType spawnType, @Nullable SpawnGroupData spawnDataIn, @Nullable CompoundTag dataTag)
 	{
-		ILivingEntityData ilivingentitydata = super.finalizeSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
+		SpawnGroupData spawngroupdata = super.finalizeSpawn(worldIn, difficultyIn, spawnType, spawnDataIn, dataTag);
 
-		this.setItemSlot(EquipmentSlotType.MAINHAND, new ItemStack(Items.STONE_SWORD));
+		this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.STONE_SWORD));
 
-		return ilivingentitydata;
+		return spawngroupdata;
+	}
+
+	@Override
+	protected void populateDefaultEquipmentSlots(DifficultyInstance difficulty)
+	{
+		super.populateDefaultEquipmentSlots(difficulty);
+
+		if (this.getRandom().nextFloat() < 0.05F)
+		{
+		}
 	}
 
 	@Override
@@ -242,7 +252,7 @@ public class EnderExecutorEntity extends EndermanEntity implements IModMob, IBea
 	}
 
 	@Override
-	public void onSyncedDataUpdated(DataParameter<?> key)
+	public void onSyncedDataUpdated(EntityDataAccessor<?> key)
 	{
 		super.onSyncedDataUpdated(key);
 
@@ -264,7 +274,7 @@ public class EnderExecutorEntity extends EndermanEntity implements IModMob, IBea
 	{
 		if (!this.isSilent())
 		{
-			this.level.playSound((PlayerEntity)null, target.getX(), target.getY(), target.getZ(), SoundEvents.ENCHANTMENT_TABLE_USE, this.getSoundSource(), 1.0F, this.random.nextFloat() * 0.2F + 0.9F);
+			this.level.playSound((Player)null, target.getX(), target.getY(), target.getZ(), SoundEvents.ENCHANTMENT_TABLE_USE, this.getSoundSource(), 1.0F, this.random.nextFloat() * 0.2F + 0.9F);
 		}
 
 		float f = damage;
@@ -327,12 +337,12 @@ public class EnderExecutorEntity extends EndermanEntity implements IModMob, IBea
 	@Override
 	public float getAttackAnimationScale(float f)
 	{
-		return ((float)this.clientAttackTime + f) / (float)this.getAttackDuration();
+		return (this.clientAttackTime + f) / this.getAttackDuration();
 	}
 
 	@Nonnull
 	@Override
-	public IPacket<?> getAddEntityPacket()
+	public Packet<?> getAddEntityPacket()
 	{
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}

@@ -15,6 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -42,16 +43,16 @@ public class ModUtils
 	public static final String WITH_SPAWN_PARTICLE_KEY = HMaG.MODID + ".withSpawnParticle";
 	public static final String LEVEL_KEY = HMaG.MODID + ".level";
 
-	public static void burnInDay(@Nonnull LivingEntity livingEntityIn, Random rand, Boolean isInDaylight, int seconds)
+	public static void burnInDay(@Nonnull LivingEntity livingEntityIn, Random rand, Boolean isSunBurnTick, int seconds)
 	{
-		burnInDay(livingEntityIn, rand, isInDaylight, true, seconds);
+		burnInDay(livingEntityIn, rand, isSunBurnTick, true, seconds);
 	}
 
-	public static void burnInDay(@Nonnull LivingEntity livingEntityIn, Random rand, Boolean isInDaylight, Boolean shouldBurn, int seconds)
+	public static void burnInDay(@Nonnull LivingEntity livingEntityIn, Random rand, Boolean isSunBurnTick, Boolean shouldBurn, int seconds)
 	{
 		if (livingEntityIn != null && livingEntityIn.level != null && !livingEntityIn.level.isClientSide && livingEntityIn.isAlive())
 		{
-			boolean flag = isInDaylight && shouldBurn && !livingEntityIn.isInWaterOrRain();
+			boolean flag = isSunBurnTick && shouldBurn && !livingEntityIn.isInWaterOrRain();
 
 			if (flag)
 			{
@@ -122,7 +123,12 @@ public class ModUtils
 
 	public static boolean isThornsDamage(DamageSource source)
 	{
-		return source.getMsgId() == "thorns" || source == DamageSource.CACTUS || source == DamageSource.SWEET_BERRY_BUSH;
+		return source == DamageSource.CACTUS || source == DamageSource.SWEET_BERRY_BUSH || (source instanceof EntityDamageSource && ((EntityDamageSource)source).isThorns());
+	}
+
+	public static boolean isStalagmiteDamage(DamageSource source)
+	{
+		return source == DamageSource.STALAGMITE || source == DamageSource.FALLING_STALACTITE;
 	}
 
 	public static float rotlerp(float f, float f1, float f2, boolean flag)

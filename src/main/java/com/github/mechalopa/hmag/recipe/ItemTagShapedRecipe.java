@@ -7,19 +7,12 @@ import com.github.mechalopa.hmag.util.ModTags;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 
-import net.minecraft.inventory.CraftingInventory;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.ShapedRecipe;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.tags.ITag;
-import net.minecraft.tags.TagCollectionManager;
-import net.minecraft.util.JSONUtils;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.ShapedRecipe;
+import net.minecraftforge.registries.tags.ITag;
 
 public class ItemTagShapedRecipe extends ShapedRecipe
 {
@@ -48,7 +41,7 @@ public class ItemTagShapedRecipe extends ShapedRecipe
 	}
 
 	@Override
-	public IRecipeSerializer<?> getSerializer()
+	public RecipeSerializer<?> getSerializer()
 	{
 		return ModRecipes.CRAFTING_ITEM_TAG_SHAPED.get();
 	}
@@ -93,13 +86,13 @@ public class ItemTagShapedRecipe extends ShapedRecipe
 
 		@Override
 		@Nonnull
-		public ItemTagShapedRecipe fromNetwork(@Nonnull ResourceLocation recipeId, PacketBuffer buffer)
+		public ItemTagShapedRecipe fromNetwork(@Nonnull ResourceLocation recipeId, FriendlyByteBuf buffer)
 		{
 			return new ItemTagShapedRecipe(super.fromNetwork(recipeId, buffer), buffer.readItem());
 		}
 
 		@Override
-		public void toNetwork(PacketBuffer buffer, ShapedRecipe recipe)
+		public void toNetwork(FriendlyByteBuf buffer, ShapedRecipe recipe)
 		{
 			super.toNetwork(buffer, recipe);
 			buffer.writeItem(recipe.getResultItem());

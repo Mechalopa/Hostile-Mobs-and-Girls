@@ -54,6 +54,7 @@ import com.github.mechalopa.hmag.util.ModUtils;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.FlameParticle;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
@@ -119,7 +120,7 @@ public class ModClientEventBusSubscriber
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.THROWABLE_BOTTLE.get(), ModSpriteRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.MAGMA_BULLET.get(), MagmaBulletRenderer::new);
 
-		RenderTypeLookup.setRenderLayer(ModBlocks.REINFORCED_GLASS.get(), RenderType.cutout());
+		ItemBlockRenderTypes.setRenderLayer(ModBlocks.REINFORCED_GLASS.get(), RenderType.cutout());
 
 		event.enqueueWork(() -> {
 			ItemModelsProperties.register(ModItems.INSOMNIA_SWORD.get(), new ResourceLocation("level"), (stack, world, livingentity) -> {

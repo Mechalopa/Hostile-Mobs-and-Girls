@@ -4,11 +4,15 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializationContext;
 
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.Serializer;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 import net.minecraftforge.fml.ModList;
 
-public class ModLoadedCondition implements ILootCondition
+public class ModLoadedCondition implements LootItemCondition
 {
-	public static final LootConditionType TYPE = new LootConditionType(new ModLoadedCondition.Serializer());
+	public static final LootItemConditionType TYPE = new LootItemConditionType(new ModLoadedCondition.ConditionSerializer());
 	private final String modid;
 
 	private ModLoadedCondition(String modid)
@@ -17,7 +21,7 @@ public class ModLoadedCondition implements ILootCondition
 	}
 
 	@Override
-	public LootConditionType getType()
+	public LootItemConditionType getType()
 	{
 		return TYPE;
 	}
@@ -33,7 +37,7 @@ public class ModLoadedCondition implements ILootCondition
 		return new Builder(modid);
 	}
 
-	public static class Builder implements ILootCondition.IBuilder
+	public static class Builder implements LootItemCondition.Builder
 	{
 		private final String modid;
 
@@ -48,13 +52,13 @@ public class ModLoadedCondition implements ILootCondition
 		}
 
 		@Override
-		public ILootCondition build()
+		public LootItemCondition build()
 		{
 			return new ModLoadedCondition(this.modid);
 		}
 	}
 
-	public static class Serializer implements ILootSerializer<ModLoadedCondition>
+	public static class ConditionSerializer implements Serializer<ModLoadedCondition>
 	{
 		@Override
 		public void serialize(JsonObject object, ModLoadedCondition instance, JsonSerializationContext ctx)
@@ -63,9 +67,9 @@ public class ModLoadedCondition implements ILootCondition
 		}
 
 		@Override
-		public ModLoadedCondition deserialize(JsonObject object, JsonDeserializationContext ctx)
+		public ModLoadedCondition deserialize(JsonObject json, JsonDeserializationContext ctx)
 		{
-			return new ModLoadedCondition(JSONUtils.getAsString(object, "modid"));
+			return new ModLoadedCondition(json.get("modid").getAsString());
 		}
 	}
 }

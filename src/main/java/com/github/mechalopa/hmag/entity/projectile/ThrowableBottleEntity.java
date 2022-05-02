@@ -4,8 +4,10 @@ import javax.annotation.Nonnull;
 
 import com.github.mechalopa.hmag.registry.ModEntityTypes;
 import com.github.mechalopa.hmag.registry.ModItems;
-import com.mojang.math.Vector3d;
 
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.protocol.Packet;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -16,6 +18,9 @@ import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Explosion;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.network.NetworkHooks;
 
@@ -43,13 +48,13 @@ public class ThrowableBottleEntity extends ThrowableItemProjectile
 	}
 
 	@Override
-	protected ITextComponent getTypeName()
+	protected Component getTypeName()
 	{
-		return this.getItem().isEmpty() ? super.getTypeName() : new TranslationTextComponent(this.getItem().getDescriptionId());
+		return this.getItem().isEmpty() ? super.getTypeName() : new TranslatableComponent(this.getItem().getDescriptionId());
 	}
 
 	@Override
-	protected void onHit(RayTraceResult result)
+	protected void onHit(HitResult result)
 	{
 		super.onHit(result);
 
@@ -65,11 +70,11 @@ public class ThrowableBottleEntity extends ThrowableItemProjectile
 			}
 			else if (item == ModItems.LIGHTNING_BOTTLE.get())
 			{
-				LightningBolt lightningboltentity = EntityType.LIGHTNING_BOLT.create(this.level);
-				lightningboltentity.moveTo(Vector3d.atBottomCenterOf(this.blockPosition()));
+				LightningBolt lightningbolt = EntityType.LIGHTNING_BOLT.create(this.level);
+				lightningbolt.moveTo(Vec3.atBottomCenterOf(this.blockPosition()));
 				Entity owner = this.getOwner();
-				lightningboltentity.setCause((owner != null && owner instanceof ServerPlayer) ? (ServerPlayer)owner : null);
-				this.level.addFreshEntity(lightningboltentity);
+				lightningbolt.setCause((owner != null && owner instanceof ServerPlayer) ? (ServerPlayer)owner : null);
+				this.level.addFreshEntity(lightningbolt);
 				this.level.levelEvent(2002, this.blockPosition(), MobEffects.NIGHT_VISION.getColor());
 			}
 			else
@@ -77,7 +82,7 @@ public class ThrowableBottleEntity extends ThrowableItemProjectile
 				this.level.levelEvent(2002, this.blockPosition(), MobEffects.HARM.getColor());
 			}
 
-			this.remove();
+			this.discard();
 		}
 	}
 
@@ -95,7 +100,7 @@ public class ThrowableBottleEntity extends ThrowableItemProjectile
 
 	@Nonnull
 	@Override
-	public IPacket<?> getAddEntityPacket()
+	public Packet<?> getAddEntityPacket()
 	{
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}

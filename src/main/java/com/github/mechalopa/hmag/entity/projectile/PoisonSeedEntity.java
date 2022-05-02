@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.github.mechalopa.hmag.registry.ModEntityTypes;
 
+import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
@@ -15,6 +16,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -49,16 +52,16 @@ public class PoisonSeedEntity extends ModProjectileItemEntity
 		{
 			for (int i = 0; i < 8; ++i)
 			{
-				this.level.addParticle(new ItemParticleData(ParticleTypes.ITEM, this.getItem()), this.getX(), this.getY(), this.getZ(), (this.random.nextFloat() - 0.5D) * 0.08D, (this.random.nextFloat() - 0.5D) * 0.08D, (this.random.nextFloat() - 0.5D) * 0.08D);
+				this.level.addParticle(new ItemParticleOption(ParticleTypes.ITEM, this.getItem()), this.getX(), this.getY(), this.getZ(), (this.random.nextFloat() - 0.5D) * 0.08D, (this.random.nextFloat() - 0.5D) * 0.08D, (this.random.nextFloat() - 0.5D) * 0.08D);
 			}
 		}
 	}
 
 	@Override
-	protected void onHitServer(RayTraceResult result)
+	protected void onHitServer(HitResult result)
 	{
-		AABB axisalignedbb = this.getBoundingBox().inflate(4.0D, 2.0D, 4.0D);
-		List<LivingEntity> list = this.level.getEntitiesOfClass(LivingEntity.class, axisalignedbb);
+		AABB aabb = this.getBoundingBox().inflate(4.0D, 2.0D, 4.0D);
+		List<LivingEntity> list = this.level.getEntitiesOfClass(LivingEntity.class, aabb);
 
 		if (!list.isEmpty())
 		{
@@ -72,7 +75,7 @@ public class PoisonSeedEntity extends ModProjectileItemEntity
 					{
 						double d1 = 1.0D - Math.sqrt(d0) / 4.0D;
 
-						if (result.getType() == RayTraceResult.Type.ENTITY && ((EntityRayTraceResult)result).getEntity() == livingEntity)
+						if (result.getType() == HitResult.Type.ENTITY && ((EntityHitResult)result).getEntity() == livingEntity)
 						{
 							d1 = 1.0D;
 						}
@@ -107,7 +110,7 @@ public class PoisonSeedEntity extends ModProjectileItemEntity
 	}
 
 	@Override
-	protected void onHitEntity(EntityRayTraceResult result)
+	protected void onHitEntity(EntityHitResult result)
 	{
 		super.onHitEntity(result);
 		result.getEntity().hurt(DamageSource.thrown(this, this.getOwner()), this.getDamage());

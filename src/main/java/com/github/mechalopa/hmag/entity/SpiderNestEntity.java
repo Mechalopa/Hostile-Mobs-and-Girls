@@ -9,55 +9,55 @@ import com.github.mechalopa.hmag.entity.goal.MeleeAttackGoal2;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
 import com.github.mechalopa.hmag.util.ModUtils;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.CreatureAttribute;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityPredicate;
-import net.minecraft.entity.EntitySize;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ILivingEntityData;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.Pose;
-import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.HurtByTargetGoal;
-import net.minecraft.entity.ai.goal.LookAtGoal;
-import net.minecraft.entity.ai.goal.LookRandomlyGoal;
-import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
-import net.minecraft.entity.ai.goal.SwimGoal;
-import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
-import net.minecraft.entity.monster.CaveSpiderEntity;
-import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.passive.IronGolemEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.IPacket;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.Difficulty;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.MobType;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
+import net.minecraft.world.entity.animal.IronGolem;
+import net.minecraft.world.entity.monster.CaveSpider;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.PotionEvent;
 import net.minecraftforge.eventbus.api.Event;
-import net.minecraftforge.fml.network.NetworkHooks;
+import net.minecraftforge.network.NetworkHooks;
 
-public class SpiderNestEntity extends MonsterEntity implements IModMob
+public class SpiderNestEntity extends Monster implements IModMob
 {
-	private static final DataParameter<Integer> SUMMON_DELAY = EntityDataManager.defineId(SpiderNestEntity.class, DataSerializers.INT);
+	private static final EntityDataAccessor<Integer> SUMMON_DELAY = SynchedEntityData.defineId(SpiderNestEntity.class, EntityDataSerializers.INT);
 
-	public SpiderNestEntity(EntityType<? extends SpiderNestEntity> type, World worldIn)
+	public SpiderNestEntity(EntityType<? extends SpiderNestEntity> type, Level worldIn)
 	{
 		super(type, worldIn);
 		this.xpReward = 15;
@@ -66,14 +66,14 @@ public class SpiderNestEntity extends MonsterEntity implements IModMob
 	@Override
 	protected void registerGoals()
 	{
-		this.goalSelector.addGoal(1, new SwimGoal(this));
-		this.goalSelector.addGoal(4, new SpiderNestEntity.MeleeAttackAndSummonGoal(this));
-		this.goalSelector.addGoal(5, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
-		this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 8.0F));
-		this.goalSelector.addGoal(6, new LookRandomlyGoal(this));
+		this.goalSelector.addGoal(1, new FloatGoal(this));
+		this.goalSelector.addGoal(4, new SpiderNestEntity.MeleeAttackAndSummonGoal(this, 1.0D, false, 120, 10.0F, 2));
+		this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+		this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
+		this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
 		this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
-		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
-		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolemEntity.class, true));
+		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
+		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
 	}
 
 	@Override
@@ -83,9 +83,9 @@ public class SpiderNestEntity extends MonsterEntity implements IModMob
 		this.entityData.define(SUMMON_DELAY, 60);
 	}
 
-	public static AttributeModifierMap.MutableAttribute createAttributes()
+	public static AttributeSupplier.Builder createAttributes()
 	{
-		return MonsterEntity.createMonsterAttributes()
+		return Monster.createMonsterAttributes()
 				.add(Attributes.MAX_HEALTH, 60.0D)
 				.add(Attributes.MOVEMENT_SPEED, 0.175D)
 				.add(Attributes.ATTACK_DAMAGE, 4.0D)
@@ -94,9 +94,9 @@ public class SpiderNestEntity extends MonsterEntity implements IModMob
 	}
 
 	@Override
-	public CreatureAttribute getMobType()
+	public MobType getMobType()
 	{
-		return CreatureAttribute.ARTHROPOD;
+		return MobType.ARTHROPOD;
 	}
 
 	@Override
@@ -130,8 +130,8 @@ public class SpiderNestEntity extends MonsterEntity implements IModMob
 
 				if (i > 0)
 				{
-					((LivingEntity)entityIn).addEffect(new EffectInstance(Effects.POISON, i * 20, 0));
-					((LivingEntity)entityIn).addEffect(new EffectInstance(Effects.MOVEMENT_SLOWDOWN, i * 20, 1));
+					((LivingEntity)entityIn).addEffect(new MobEffectInstance(MobEffects.POISON, i * 20, 0));
+					((LivingEntity)entityIn).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, i * 20, 1));
 				}
 			}
 
@@ -143,31 +143,30 @@ public class SpiderNestEntity extends MonsterEntity implements IModMob
 		}
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
-	public void remove(boolean keepData)
+	public void remove(Entity.RemovalReason reason)
 	{
-		if (!this.level.isClientSide && ModConfigs.cachedServer.SPIDER_NEST_SUMMON_CAVE_SPIDER && !this.isNoAi() && this.isDeadOrDying() && !this.removed)
+		if (!this.level.isClientSide && ModConfigs.cachedServer.SPIDER_NEST_SUMMON_CAVE_SPIDER && !this.isNoAi() && this.isDeadOrDying())
 		{
-			this.summonSpider((ServerWorld)this.level, this, this.getTarget(), this.getRandom(), 2 + this.getRandom().nextInt(3));
+			this.summonSpider((ServerLevel)this.level, this, this.getTarget(), this.getRandom(), 2 + this.getRandom().nextInt(3));
 		}
 
-		super.remove(keepData);
+		super.remove(reason);
 	}
 
 	@Override
-	public void makeStuckInBlock(BlockState state, Vector3d motionMultiplierIn)
+	public void makeStuckInBlock(BlockState state, Vec3 stuckSpeedMultiplierIn)
 	{
 		if (!state.is(Blocks.COBWEB))
 		{
-			super.makeStuckInBlock(state, motionMultiplierIn);
+			super.makeStuckInBlock(state, stuckSpeedMultiplierIn);
 		}
 	}
 
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.isProjectile() || source.isExplosion() || ModUtils.isThornsDamage(source))
+		if (source.isProjectile() || source.isExplosion() || ModUtils.isThornsDamage(source) || ModUtils.isStalagmiteDamage(source))
 		{
 			amount = amount * 0.5F;
 		}
@@ -180,9 +179,9 @@ public class SpiderNestEntity extends MonsterEntity implements IModMob
 	}
 
 	@Override
-	public boolean canBeAffected(EffectInstance potioneffectIn)
+	public boolean canBeAffected(MobEffectInstance potioneffectIn)
 	{
-		if (potioneffectIn.getEffect() == Effects.POISON)
+		if (potioneffectIn.getEffect() == MobEffects.POISON)
 		{
 			PotionEvent.PotionApplicableEvent event = new PotionEvent.PotionApplicableEvent(this, potioneffectIn);
 			MinecraftForge.EVENT_BUS.post(event);
@@ -192,7 +191,7 @@ public class SpiderNestEntity extends MonsterEntity implements IModMob
 		return super.canBeAffected(potioneffectIn);
 	}
 
-	private void summonSpider(ServerWorld serverworld, LivingEntity attacker, LivingEntity target, Random random, int count)
+	private void summonSpider(ServerLevel serverlevel, LivingEntity attacker, LivingEntity target, Random random, int count)
 	{
 		for (int i = 0; i < count; ++i)
 		{
@@ -200,17 +199,17 @@ public class SpiderNestEntity extends MonsterEntity implements IModMob
 			double d2 = attacker.getY() + 0.5D;
 			double d3 = attacker.getZ() + (random.nextDouble() - random.nextDouble()) * 1.5D;
 
-			CaveSpiderEntity cavespiderentity = EntityType.CAVE_SPIDER.create(attacker.level);
-			cavespiderentity.moveTo(d1, d2, d3, random.nextFloat() * 360.0F, 0.0F);
-			cavespiderentity.finalizeSpawn(serverworld, attacker.level.getCurrentDifficultyAt(attacker.blockPosition()), SpawnReason.MOB_SUMMONED, (ILivingEntityData)null, (CompoundNBT)null);
-			serverworld.addFreshEntityWithPassengers(cavespiderentity);
+			CaveSpider cavespider = EntityType.CAVE_SPIDER.create(attacker.level);
+			cavespider.moveTo(d1, d2, d3, random.nextFloat() * 360.0F, 0.0F);
+			cavespider.finalizeSpawn(serverlevel, attacker.level.getCurrentDifficultyAt(attacker.blockPosition()), MobSpawnType.MOB_SUMMONED, (SpawnGroupData)null, (CompoundTag)null);
+			serverlevel.addFreshEntityWithPassengers(cavespider);
 
 			if (target != null && target.isAlive())
 			{
-				cavespiderentity.setTarget(target);
+				cavespider.setTarget(target);
 			}
 
-			cavespiderentity.getPersistentData().putBoolean(ModUtils.WITH_SPAWN_PARTICLE_KEY, true);
+			cavespider.getPersistentData().putBoolean(ModUtils.WITH_SPAWN_PARTICLE_KEY, true);
 		}
 
 		attacker.level.levelEvent(2004, attacker.blockPosition(), 0);
@@ -224,7 +223,7 @@ public class SpiderNestEntity extends MonsterEntity implements IModMob
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn)
+	protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn)
 	{
 		return 1.1F;
 	}
@@ -257,14 +256,14 @@ public class SpiderNestEntity extends MonsterEntity implements IModMob
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundNBT compound)
+	public void addAdditionalSaveData(CompoundTag compound)
 	{
 		super.addAdditionalSaveData(compound);
 		compound.putInt("Delay", this.getSummonDelay());
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundNBT compound)
+	public void readAdditionalSaveData(CompoundTag compound)
 	{
 		super.readAdditionalSaveData(compound);
 		this.setSummonDelay(compound.getShort("Delay"));
@@ -296,7 +295,7 @@ public class SpiderNestEntity extends MonsterEntity implements IModMob
 
 	@Nonnull
 	@Override
-	public IPacket<?> getAddEntityPacket()
+	public Packet<?> getAddEntityPacket()
 	{
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
@@ -306,12 +305,7 @@ public class SpiderNestEntity extends MonsterEntity implements IModMob
 		private final int summonInterval;
 		private final float summonRadius;
 		private final int maxSpawn;
-		private final EntityPredicate caveSpiderCountTargeting = (new EntityPredicate()).range(12.0D).allowUnseeable().ignoreInvisibilityTesting().allowInvulnerable();
-
-		public MeleeAttackAndSummonGoal(SpiderNestEntity mob)
-		{
-			this(mob, 1.0D, false, 120, 10.0F, 2);
-		}
+		private final TargetingConditions caveSpiderCountTargeting = TargetingConditions.forNonCombat().range(12.0D).ignoreLineOfSight().ignoreInvisibilityTesting();
 
 		public MeleeAttackAndSummonGoal(SpiderNestEntity mob, double speedIn, boolean useLongMemory, int intervalIn, float radiusIn, int maxSpawnIn)
 		{
@@ -337,7 +331,7 @@ public class SpiderNestEntity extends MonsterEntity implements IModMob
 				LivingEntity target = attacker.getTarget();
 				double d0 = attacker.distanceToSqr(target.getX(), target.getY(), target.getZ());
 
-				if (d0 <= this.summonRadius * this.summonRadius && attacker.canSee(target))
+				if (d0 <= this.summonRadius * this.summonRadius && attacker.hasLineOfSight(target))
 				{
 					if (attacker.getSummonDelay() == -1)
 					{
@@ -350,13 +344,13 @@ public class SpiderNestEntity extends MonsterEntity implements IModMob
 					}
 					else
 					{
-						if (attacker.level.getNearbyEntities(CaveSpiderEntity.class, this.caveSpiderCountTargeting, attacker, attacker.getBoundingBox().inflate(12.0D)).size() >= 6)
+						if (attacker.level.getNearbyEntities(CaveSpider.class, this.caveSpiderCountTargeting, attacker, attacker.getBoundingBox().inflate(12.0D)).size() >= 6)
 						{
 							attacker.setSummonDelay(20);
 						}
 						else
 						{
-							attacker.summonSpider((ServerWorld)attacker.level, attacker, target, attacker.getRandom(), 1 + attacker.getRandom().nextInt(this.maxSpawn));
+							attacker.summonSpider((ServerLevel)attacker.level, attacker, target, attacker.getRandom(), 1 + attacker.getRandom().nextInt(this.maxSpawn));
 							this.resetTimer(attacker);
 						}
 					}

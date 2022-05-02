@@ -1,22 +1,22 @@
 package com.github.mechalopa.hmag.entity.goal;
 
-import net.minecraft.entity.CreatureEntity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 
 public class MeleeAttackGoal2 extends MeleeAttackGoal
 {
 	private final float reachScale;
 	private final float maxAttackDistance;
 
-	public MeleeAttackGoal2(CreatureEntity creature, double speedIn, boolean useLongMemory, float reachScaleIn)
+	public MeleeAttackGoal2(PathfinderMob mob, double speedIn, boolean useLongMemory, float reachScaleIn)
 	{
-		this(creature, speedIn, useLongMemory, reachScaleIn, -1.0F);
+		this(mob, speedIn, useLongMemory, reachScaleIn, -1.0F);
 	}
 
-	public MeleeAttackGoal2(CreatureEntity creature, double speedIn, boolean useLongMemory, float reachScaleIn, float maxAttackDistance)
+	public MeleeAttackGoal2(PathfinderMob mob, double speedIn, boolean useLongMemory, float reachScaleIn, float maxAttackDistance)
 	{
-		super(creature, speedIn, useLongMemory);
+		super(mob, speedIn, useLongMemory);
 		this.reachScale = reachScaleIn;
 		this.maxAttackDistance = maxAttackDistance;
 	}
@@ -39,7 +39,7 @@ public class MeleeAttackGoal2 extends MeleeAttackGoal
 		if (this.reachScale > 0.0F)
 		{
 			final float f = this.mob.getBbWidth() * this.reachScale * 2.0F;
-			return (double)(f * f + attackTarget.getBbWidth());
+			return f * f + attackTarget.getBbWidth();
 		}
 		else
 		{

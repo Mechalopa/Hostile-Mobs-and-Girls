@@ -7,54 +7,53 @@ import com.github.mechalopa.hmag.registry.ModSoundEvents;
 import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.util.ModUtils;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntitySize;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.Pose;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.HurtByTargetGoal;
-import net.minecraft.entity.ai.goal.LookAtGoal;
-import net.minecraft.entity.ai.goal.LookRandomlyGoal;
-import net.minecraft.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
-import net.minecraft.entity.ai.goal.SwimGoal;
-import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
-import net.minecraft.entity.merchant.villager.AbstractVillagerEntity;
-import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.passive.IronGolemEntity;
-import net.minecraft.entity.passive.TurtleEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.network.IPacket;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.Hand;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.Mth;
 import net.minecraft.world.Difficulty;
-import net.minecraft.world.World;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.animal.IronGolem;
+import net.minecraft.world.entity.animal.Turtle;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.npc.AbstractVillager;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.ForgeEventFactory;
-import net.minecraftforge.fml.network.NetworkHooks;
+import net.minecraftforge.network.NetworkHooks;
 
-public class OgreEntity extends MonsterEntity implements IModMob
+public class OgreEntity extends Monster implements IModMob
 {
-	private static final DataParameter<Boolean> IS_ARM_SWING = EntityDataManager.defineId(OgreEntity.class, DataSerializers.BOOLEAN);
+	private static final EntityDataAccessor<Boolean> IS_ARM_SWING = SynchedEntityData.defineId(OgreEntity.class, EntityDataSerializers.BOOLEAN);
 	private int armSwingTimer;
 	private float attackAnimation;
 	private float attackAnimationO;
 
-	public OgreEntity(EntityType<? extends OgreEntity> type, World worldIn)
+	public OgreEntity(EntityType<? extends OgreEntity> type, Level worldIn)
 	{
 		super(type, worldIn);
 		this.xpReward = 25;
@@ -63,18 +62,18 @@ public class OgreEntity extends MonsterEntity implements IModMob
 	@Override
 	protected void registerGoals()
 	{
-		this.goalSelector.addGoal(1, new SwimGoal(this));
+		this.goalSelector.addGoal(1, new FloatGoal(this));
 		this.goalSelector.addGoal(4, new MeleeAttackAndDestroyGoal(this, 1.0D, true));
-		this.goalSelector.addGoal(5, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
-		this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 8.0F));
-		this.goalSelector.addGoal(6, new LookRandomlyGoal(this));
+		this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+		this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
+		this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
 		this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
-		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
+		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
 		if (ModConfigs.cachedServer.OGRE_ATTACK_VILLAGERS)
-			this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillagerEntity.class, false));
-		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolemEntity.class, true));
+			this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, false));
+		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
 		if (ModConfigs.cachedServer.OGRE_ATTACK_BABY_TURTLES)
-			this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, TurtleEntity.class, 10, true, false, TurtleEntity.BABY_ON_LAND_SELECTOR));
+			this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Turtle.class, 10, true, false, Turtle.BABY_ON_LAND_SELECTOR));
 	}
 
 	@Override
@@ -84,9 +83,9 @@ public class OgreEntity extends MonsterEntity implements IModMob
 		this.entityData.define(IS_ARM_SWING, false);
 	}
 
-	public static AttributeModifierMap.MutableAttribute createAttributes()
+	public static AttributeSupplier.Builder createAttributes()
 	{
-		return MonsterEntity.createMonsterAttributes()
+		return Monster.createMonsterAttributes()
 				.add(Attributes.MAX_HEALTH, 80.0D)
 				.add(Attributes.MOVEMENT_SPEED, 0.285D)
 				.add(Attributes.ATTACK_DAMAGE, 12.0D)
@@ -171,7 +170,7 @@ public class OgreEntity extends MonsterEntity implements IModMob
 
 				if (i > 0)
 				{
-					((LivingEntity)entityIn).addEffect(new EffectInstance(Effects.MOVEMENT_SLOWDOWN, i * 20, 3));
+					((LivingEntity)entityIn).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, i * 20, 3));
 				}
 			}
 
@@ -186,7 +185,7 @@ public class OgreEntity extends MonsterEntity implements IModMob
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source == DamageSource.IN_WALL || source == DamageSource.CRAMMING || ModUtils.isThornsDamage(source))
+		if (source == DamageSource.IN_WALL || source == DamageSource.CRAMMING || ModUtils.isThornsDamage(source) || ModUtils.isStalagmiteDamage(source))
 		{
 			amount = amount * 0.25F;
 
@@ -195,7 +194,7 @@ public class OgreEntity extends MonsterEntity implements IModMob
 				this.destroyBlock();
 			}
 		}
-		else if (source.isProjectile() || source.isExplosion() || source.isFire() || source == DamageSource.FALL || source == DamageSource.FALLING_BLOCK)
+		else if (source.isProjectile() || source.isExplosion() || source.isFire() || source == DamageSource.FALL || source == DamageSource.FALLING_BLOCK || source == DamageSource.FREEZE)
 		{
 			amount = amount * 0.5F;
 		}
@@ -216,7 +215,7 @@ public class OgreEntity extends MonsterEntity implements IModMob
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn)
+	protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn)
 	{
 		return 2.5F;
 	}
@@ -234,7 +233,7 @@ public class OgreEntity extends MonsterEntity implements IModMob
 	@OnlyIn(Dist.CLIENT)
 	public float getAnimationScale(float f)
 	{
-		return MathHelper.lerp(f, this.attackAnimationO, this.attackAnimation);
+		return Mth.lerp(f, this.attackAnimationO, this.attackAnimation);
 	}
 
 	@Override
@@ -270,9 +269,9 @@ public class OgreEntity extends MonsterEntity implements IModMob
 	{
 		if (ModConfigs.cachedServer.OGRE_DESTROY_BLOCKS && this.level.getDifficulty().getId() > 1 && ForgeEventFactory.getMobGriefingEvent(this.level, this))
 		{
-			int i1 = MathHelper.floor(this.getY());
-			int l1 = MathHelper.floor(this.getX());
-			int i2 = MathHelper.floor(this.getZ());
+			int i1 = Mth.floor(this.getY());
+			int l1 = Mth.floor(this.getX());
+			int i2 = Mth.floor(this.getZ());
 			boolean flag = false;
 
 			for (int k2 = -1; k2 <= 1; ++k2)
@@ -287,7 +286,7 @@ public class OgreEntity extends MonsterEntity implements IModMob
 						BlockPos blockpos = new BlockPos(i3, k, l);
 						BlockState blockstate = this.level.getBlockState(blockpos);
 
-						if (this.canDestroyBlock(blockstate.getBlock(), blockstate, this.level, blockpos, this, 5.0F))
+						if (this.canDestroyBlock(blockstate, this.level, blockpos, this, 5.0F))
 						{
 							flag = this.level.destroyBlock(blockpos, true, this) || flag;
 						}
@@ -309,15 +308,15 @@ public class OgreEntity extends MonsterEntity implements IModMob
 		}
 	}
 
-	private boolean canDestroyBlock(Block blockIn, BlockState stateIn, World worldIn, BlockPos pos, LivingEntity entityIn, float maxHardness)
+	private boolean canDestroyBlock(BlockState state, Level level, BlockPos pos, LivingEntity entityIn, float maxHardness)
 	{
-		if (ModTags.checkTagContains(ModTags.OGRE_IMMUNE, blockIn) || blockIn.isAir(stateIn, worldIn, pos) || stateIn.getMaterial().isLiquid() || !blockIn.canEntityDestroy(stateIn, worldIn, pos, entityIn))
+		if (state.is(ModTags.OGRE_IMMUNE) || state.isAir() || state.getMaterial().isLiquid() || !(state.canEntityDestroy(this.level, pos, this) && ForgeEventFactory.onEntityDestroyBlock(this, pos, state)))
 		{
 			return false;
 		}
 		else
 		{
-			float f = stateIn.getDestroySpeed(worldIn, pos);
+			float f = state.getDestroySpeed(level, pos);
 
 			return f >= 0.0F && f <= maxHardness && f / maxHardness <= this.getRandom().nextFloat() + 0.05F && this.getRandom().nextBoolean();
 		}
@@ -325,7 +324,7 @@ public class OgreEntity extends MonsterEntity implements IModMob
 
 	@Nonnull
 	@Override
-	public IPacket<?> getAddEntityPacket()
+	public Packet<?> getAddEntityPacket()
 	{
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
@@ -347,10 +346,10 @@ public class OgreEntity extends MonsterEntity implements IModMob
 				if (distToEnemySqr <= d0)
 				{
 					this.resetAttackCooldown();
-					this.mob.swing(Hand.MAIN_HAND);
+					this.mob.swing(InteractionHand.MAIN_HAND);
 					this.mob.doHurtTarget(attackTarget);
 				}
-				else if (((distToEnemySqr < 10.0D * 10.0D && !this.mob.getSensing().canSee(attackTarget)) || distToEnemySqr < 3.0D * 3.0D) && this.mob.getRandom().nextInt(12) == 0)
+				else if (((distToEnemySqr < 10.0D * 10.0D && !this.mob.getSensing().hasLineOfSight(attackTarget)) || distToEnemySqr < 3.0D * 3.0D) && this.mob.getRandom().nextInt(12) == 0)
 				{
 					OgreEntity.this.destroyBlock();
 				}

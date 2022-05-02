@@ -3,27 +3,36 @@ package com.github.mechalopa.hmag.entity.projectile;
 import com.github.mechalopa.hmag.entity.LichEntity;
 import com.github.mechalopa.hmag.registry.ModEntityTypes;
 import com.github.mechalopa.hmag.registry.ModParticleTypes;
-import com.mojang.math.Vector3d;
 
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.monster.Vex;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class MagicBulletEntity extends ModDamagingProjectileEntity
 {
-	private static final DataParameter<Integer> DATA_VARIANT_ID = EntityDataManager.defineId(MagicBulletEntity.class, DataSerializers.INT);
-	private static final DataParameter<Byte> EFFECT_LEVEL = EntityDataManager.defineId(MagicBulletEntity.class, DataSerializers.BYTE);
-	private static final DataParameter<Byte> PIERCE_LEVEL = EntityDataManager.defineId(MagicBulletEntity.class, DataSerializers.BYTE);
+	private static final EntityDataAccessor<Integer> DATA_VARIANT_ID = SynchedEntityData.defineId(MagicBulletEntity.class, EntityDataSerializers.INT);
+	private static final EntityDataAccessor<Byte> EFFECT_LEVEL = SynchedEntityData.defineId(MagicBulletEntity.class, EntityDataSerializers.BYTE);
+	private static final EntityDataAccessor<Byte> PIERCE_LEVEL = SynchedEntityData.defineId(MagicBulletEntity.class, EntityDataSerializers.BYTE);
 	private IntOpenHashSet piercingIgnoreEntityIds;
 
 	public MagicBulletEntity(EntityType<? extends MagicBulletEntity> type, Level worldIn)
@@ -73,7 +82,7 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 		{
 			if (!this.level.isClientSide && (this.tickCount >= 60 || this.getOwner() == null))
 			{
-				this.remove();
+				this.discard();
 			}
 
 			if (this.level.isClientSide)
@@ -88,12 +97,12 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 	}
 
 	@Override
-	protected void onHitEntity(EntityRayTraceResult result)
+	protected void onHitEntity(EntityHitResult result)
 	{
 		super.onHitEntity(result);
 
 		Entity entity = result.getEntity();
-		Vector3d vector3d = this.getDeltaMovement().multiply(1.0D, 0.0D, 1.0D).normalize();
+		Vec3 vec3 = this.getDeltaMovement().multiply(1.0D, 0.0D, 1.0D).normalize();
 
 		if (this.getPierceLevel() > 0)
 		{
@@ -186,9 +195,9 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 					((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, i, 1));
 					((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.WITHER, i, 1));
 
-					if (vector3d.lengthSqr() > 0.0D)
+					if (vec3.lengthSqr() > 0.0D)
 					{
-						((LivingEntity)entity).knockback(1.0F * (this.getEffectLevel() / 12.0F) + 0.1F, -vector3d.x, -vector3d.z);
+						((LivingEntity)entity).knockback(1.0F * (this.getEffectLevel() / 12.0F) + 0.1F, -vec3.x, -vec3.z);
 					}
 
 					break;
@@ -206,16 +215,16 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 	}
 
 	@Override
-	protected void onHitServer(RayTraceResult result)
+	protected void onHitServer(HitResult result)
 	{
-		if (result.getType() != RayTraceResult.Type.ENTITY || this.getPierceLevel() <= 0 || this.piercingIgnoreEntityIds.size() >= this.getPierceLevel() + 1)
+		if (result.getType() != HitResult.Type.ENTITY || this.getPierceLevel() <= 0 || this.piercingIgnoreEntityIds.size() >= this.getPierceLevel() + 1)
 		{
-			this.remove();
+			this.discard();
 		}
 	}
 
 	@Override
-	public void onSyncedDataUpdated(DataParameter<?> data)
+	public void onSyncedDataUpdated(EntityDataAccessor<?> data)
 	{
 		if (DATA_VARIANT_ID.equals(data))
 		{
@@ -226,7 +235,7 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 	}
 
 	@Override
-	public EntitySize getDimensions(Pose pose)
+	public EntityDimensions getDimensions(Pose pose)
 	{
 		if (this.getVariant() == 2)
 		{
@@ -308,7 +317,7 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 	}
 
 	@Override
-	protected IParticleData getTrailParticle()
+	protected ParticleOptions getTrailParticle()
 	{
 		switch (this.getVariant())
 		{

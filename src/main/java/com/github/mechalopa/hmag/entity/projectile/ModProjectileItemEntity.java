@@ -3,14 +3,20 @@ package com.github.mechalopa.hmag.entity.projectile;
 import javax.annotation.Nonnull;
 
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.network.NetworkHooks;
 
 public abstract class ModProjectileItemEntity extends ThrowableItemProjectile
 {
-	private static final DataParameter<Float> DAMAGE = EntityDataManager.defineId(ModProjectileItemEntity.class, DataSerializers.FLOAT);
+	private static final EntityDataAccessor<Float> DAMAGE = SynchedEntityData.defineId(ModProjectileItemEntity.class, EntityDataSerializers.FLOAT);
 
 	public ModProjectileItemEntity(EntityType<? extends ModProjectileItemEntity> type, Level worldIn)
 	{
@@ -35,7 +41,7 @@ public abstract class ModProjectileItemEntity extends ThrowableItemProjectile
 	}
 
 	@Override
-	protected void onHit(RayTraceResult result)
+	protected void onHit(HitResult result)
 	{
 		super.onHit(result);
 
@@ -45,9 +51,9 @@ public abstract class ModProjectileItemEntity extends ThrowableItemProjectile
 		}
 	}
 
-	protected void onHitServer(RayTraceResult result)
+	protected void onHitServer(HitResult result)
 	{
-		this.remove();
+		this.discard();
 	}
 
 	public void setDamage(float amount)
@@ -76,7 +82,7 @@ public abstract class ModProjectileItemEntity extends ThrowableItemProjectile
 
 	@Nonnull
 	@Override
-	public IPacket<?> getAddEntityPacket()
+	public Packet<?> getAddEntityPacket()
 	{
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
