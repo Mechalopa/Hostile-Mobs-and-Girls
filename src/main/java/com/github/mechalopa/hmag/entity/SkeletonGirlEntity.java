@@ -20,7 +20,7 @@ import net.minecraftforge.fml.network.NetworkHooks;
 
 public class SkeletonGirlEntity extends SkeletonEntity implements IModMob
 {
-	public SkeletonGirlEntity(EntityType<? extends SkeletonEntity> type, World worldIn)
+	public SkeletonGirlEntity(EntityType<? extends SkeletonGirlEntity> type, World worldIn)
 	{
 		super(type, worldIn);
 		this.xpReward = 8;

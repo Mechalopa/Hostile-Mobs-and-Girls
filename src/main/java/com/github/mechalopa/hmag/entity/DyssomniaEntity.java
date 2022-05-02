@@ -560,12 +560,12 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 					}
 
 					float f = MathHelper.sqrt(d3 * d3 + d5 * d5) * 0.02F;
-					MagicBulletEntity mugicbulletentity = new MagicBulletEntity(world, this.parent, d3 + this.parent.getRandom().nextGaussian() * (double)f, d4, d5 + this.parent.getRandom().nextGaussian() * (double)f);
-					mugicbulletentity.setPos(this.parent.getX() + vector3d.x * d1, this.parent.getEyeY() - vector3d.y * d2, this.parent.getZ() + vector3d.z * d1);
-					mugicbulletentity.setDamage(5.0F);
-					mugicbulletentity.setEffectLevel((byte)1);
-					mugicbulletentity.setVariant(1);
-					world.addFreshEntity(mugicbulletentity);
+					MagicBulletEntity magicbulletentity = new MagicBulletEntity(world, this.parent, d3 + this.parent.getRandom().nextGaussian() * (double)f, d4, d5 + this.parent.getRandom().nextGaussian() * (double)f);
+					magicbulletentity.setPos(this.parent.getX() + vector3d.x * d1, this.parent.getEyeY() - vector3d.y * d2, this.parent.getZ() + vector3d.z * d1);
+					magicbulletentity.setDamage(5.0F);
+					magicbulletentity.setEffectLevel((byte)1);
+					magicbulletentity.setVariant(1);
+					world.addFreshEntity(magicbulletentity);
 					this.parent.setAttackPhase(DyssomniaEntity.AttackPhase.WAIT);
 				}
 			}

@@ -20,6 +20,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionUtils;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.Hand;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
@@ -117,7 +118,7 @@ public class ModUtils
 
 	public static boolean isThornsDamage(DamageSource source)
 	{
-		return source.getMsgId() == "thorns" || source == DamageSource.CACTUS || source == DamageSource.SWEET_BERRY_BUSH;
+		return source == DamageSource.CACTUS || source == DamageSource.SWEET_BERRY_BUSH || (source instanceof EntityDamageSource && ((EntityDamageSource)source).isThorns());
 	}
 
 	public static float rotlerp(float f, float f1, float f2, boolean flag)

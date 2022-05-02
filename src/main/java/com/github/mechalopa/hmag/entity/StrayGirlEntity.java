@@ -20,7 +20,7 @@ import net.minecraftforge.fml.network.NetworkHooks;
 
 public class StrayGirlEntity extends StrayEntity implements IModMob
 {
-	public StrayGirlEntity(EntityType<? extends StrayEntity> type, World worldIn)
+	public StrayGirlEntity(EntityType<? extends StrayGirlEntity> type, World worldIn)
 	{
 		super(type, worldIn);
 		this.xpReward = 8;

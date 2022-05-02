@@ -37,7 +37,7 @@ public class BansheeEntity extends AbstractFlyingMonsterEntity implements IModMo
 	{
 		this.goalSelector.addGoal(0, new SwimGoal(this));
 		this.goalSelector.addGoal(4, new AbstractFlyingMonsterEntity.ChargeAttackGoal(0.5D, 1.5F));
-		this.goalSelector.addGoal(8, new AbstractFlyingMonsterEntity.MoveRandomGoal());
+		this.goalSelector.addGoal(5, new AbstractFlyingMonsterEntity.MoveRandomGoal());
 		this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 8.0F));
 		this.goalSelector.addGoal(6, new LookRandomlyGoal(this));
 		this.targetSelector.addGoal(1, new HurtByTargetGoal(this));

@@ -22,7 +22,7 @@ import net.minecraftforge.fml.network.NetworkHooks;
 
 public class WitherSkeletonGirlEntity extends WitherSkeletonEntity implements IModMob
 {
-	public WitherSkeletonGirlEntity(EntityType<? extends WitherSkeletonEntity> type, World worldIn)
+	public WitherSkeletonGirlEntity(EntityType<? extends WitherSkeletonGirlEntity> type, World worldIn)
 	{
 		super(type, worldIn);
 		this.xpReward = 10;

@@ -36,7 +36,7 @@ public class CreeperGirlEntity extends CreeperEntity implements IModMob
 {
 	private static final DataParameter<Integer> DATA_VARIANT_ID = EntityDataManager.defineId(CreeperGirlEntity.class, DataSerializers.INT);
 
-	public CreeperGirlEntity(EntityType<? extends CreeperEntity> type, World worldIn)
+	public CreeperGirlEntity(EntityType<? extends CreeperGirlEntity> type, World worldIn)
 	{
 		super(type, worldIn);
 		this.xpReward = 8;

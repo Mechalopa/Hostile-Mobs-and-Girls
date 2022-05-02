@@ -110,7 +110,7 @@ public class MeltyMonsterEntity extends MonsterEntity implements IModMob, IRange
 
 		if (!this.level.isClientSide)
 		{
-			if (ModConfigs.cachedServer.MELTY_MONSTER_SET_FIRE && !this.isInLava() && !this.isInWaterOrRain() && ForgeEventFactory.getMobGriefingEvent(this.level, this))
+			if (ModConfigs.cachedServer.MELTY_MONSTER_SET_FIRE && !this.isInLava() && !this.isInWaterRainOrBubble() && ForgeEventFactory.getMobGriefingEvent(this.level, this))
 			{
 				int i = MathHelper.floor(this.getX());
 				int j = MathHelper.floor(this.getY());
