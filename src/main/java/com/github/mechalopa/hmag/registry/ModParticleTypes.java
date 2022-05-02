@@ -3,6 +3,7 @@ package com.github.mechalopa.hmag.registry;
 import com.github.mechalopa.hmag.HMaG;
 
 import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.DeferredRegister;
@@ -13,8 +14,8 @@ public class ModParticleTypes
 {
 	private static final DeferredRegister<ParticleType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, HMaG.MODID);
 
-	public static final RegistryObject<BasicParticleType> ENCHANTMENT_RUNE = REGISTRY.register("enchantment_rune", () -> new BasicParticleType(false));
-	public static final RegistryObject<BasicParticleType> NEMESIS_FLAME = REGISTRY.register("nemesis_flame", () -> new BasicParticleType(false));
+	public static final RegistryObject<SimpleParticleType> ENCHANTMENT_RUNE = REGISTRY.register("enchantment_rune", () -> new SimpleParticleType(false));
+	public static final RegistryObject<SimpleParticleType> NEMESIS_FLAME = REGISTRY.register("nemesis_flame", () -> new SimpleParticleType(false));
 
 	@SubscribeEvent
 	public static void register(IEventBus eventBus)

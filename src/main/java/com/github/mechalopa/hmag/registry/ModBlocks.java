@@ -11,8 +11,10 @@ import com.github.mechalopa.hmag.block.WitherSandBlock;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
@@ -26,17 +28,17 @@ public class ModBlocks
 {
 	private static final DeferredRegister<Block> REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCKS, HMaG.MODID);
 
-	public static final RegistryObject<Block> EVIL_CRYSTAL_BLOCK = REGISTRY.register("evil_crystal_block", () -> new Block(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(1.25F, 1.0F).sound(SoundType.STONE)));
-	public static final RegistryObject<Block> SOUL_POWDER_BLOCK = REGISTRY.register("soul_powder_block", () -> new Block(AbstractBlock.Properties.of(Material.SAND, MaterialColor.COLOR_CYAN).strength(0.5F).lightLevel((state) -> 5).sound(SoundType.SAND)));
-	public static final RegistryObject<Block> ANCIENT_STONE_BLOCK = REGISTRY.register("ancient_stone_block", () -> new ModBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_BROWN).requiresCorrectToolForDrops().strength(1.25F, 4.2F).lightLevel((state) -> 5).sound(SoundType.STONE), new ModBlock.Properties().enchantPowerBonus(1.0F)));
-	public static final RegistryObject<Block> NETHER_STAR_BLOCK = REGISTRY.register("nether_star_block", () -> new ModBlock(AbstractBlock.Properties.of(Material.METAL, MaterialColor.QUARTZ).requiresCorrectToolForDrops().strength(2.0F, 2000.0F).lightLevel((state) -> 10).sound(SoundType.STONE), new ModBlock.Properties().enchantPowerBonus(5.0F)));
-	public static final RegistryObject<Block> HEART_OF_THE_SEA_BLOCK = REGISTRY.register("heart_of_the_sea_block", () -> new ModBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_CYAN).requiresCorrectToolForDrops().strength(2.0F, 6.0F).lightLevel((state) -> 10).sound(SoundType.STONE), new ModBlock.Properties().setConduitFrame()));
-	public static final RegistryObject<Block> THORN_SAND = REGISTRY.register("thorn_sand", () -> new ThornSandBlock(AbstractBlock.Properties.of(Material.SAND, MaterialColor.COLOR_GREEN).strength(0.5F).speedFactor(0.4F).sound(SoundType.SOUL_SAND).harvestTool(ToolType.SHOVEL).isValidSpawn(ModBlocks::always).isRedstoneConductor(ModBlocks::always).isViewBlocking(ModBlocks::always).isSuffocating(ModBlocks::always)));
-	public static final RegistryObject<Block> POISON_SAND = REGISTRY.register("poison_sand", () -> new PoisonSandBlock(AbstractBlock.Properties.of(Material.SAND, MaterialColor.COLOR_MAGENTA).strength(0.5F).speedFactor(0.4F).sound(SoundType.SOUL_SAND).harvestTool(ToolType.SHOVEL).isValidSpawn(ModBlocks::always).isRedstoneConductor(ModBlocks::always).isViewBlocking(ModBlocks::always).isSuffocating(ModBlocks::always)));
-	public static final RegistryObject<Block> WITHER_SAND = REGISTRY.register("wither_sand", () -> new WitherSandBlock(AbstractBlock.Properties.of(Material.SAND, MaterialColor.COLOR_GRAY).strength(0.5F).speedFactor(0.4F).sound(SoundType.SOUL_SAND).harvestTool(ToolType.SHOVEL).isValidSpawn(ModBlocks::always).isRedstoneConductor(ModBlocks::always).isViewBlocking(ModBlocks::always).isSuffocating(ModBlocks::always)));
-	public static final RegistryObject<Block> HEALING_SAND = REGISTRY.register("healing_sand", () -> new HealingSandBlock(AbstractBlock.Properties.of(Material.SAND, MaterialColor.COLOR_PINK).strength(0.5F).speedFactor(0.4F).sound(SoundType.SOUL_SAND).harvestTool(ToolType.SHOVEL).isValidSpawn(ModBlocks::always).isRedstoneConductor(ModBlocks::always).isViewBlocking(ModBlocks::always).isSuffocating(ModBlocks::always)));
-	public static final RegistryObject<Block> REINFORCED_BLOCK = REGISTRY.register("reinforced_block", () -> new ReinforcedBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).strength(5.0F, 3600000.0F).sound(SoundType.STONE).harvestTool(ToolType.PICKAXE)));
-	public static final RegistryObject<Block> REINFORCED_GLASS = REGISTRY.register("reinforced_glass", () -> new ReinforcedGlassBlock(AbstractBlock.Properties.of(Material.GLASS, MaterialColor.COLOR_BLACK).strength(5.0F, 3600000.0F).sound(SoundType.GLASS).harvestTool(ToolType.PICKAXE).noOcclusion().isValidSpawn(ModBlocks::never).isRedstoneConductor(ModBlocks::never).isSuffocating(ModBlocks::never).isViewBlocking(ModBlocks::never)));
+	public static final RegistryObject<Block> EVIL_CRYSTAL_BLOCK = REGISTRY.register("evil_crystal_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(1.25F, 1.0F).sound(SoundType.STONE)));
+	public static final RegistryObject<Block> SOUL_POWDER_BLOCK = REGISTRY.register("soul_powder_block", () -> new Block(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.COLOR_CYAN).strength(0.5F).lightLevel((state) -> 5).sound(SoundType.SAND)));
+	public static final RegistryObject<Block> ANCIENT_STONE_BLOCK = REGISTRY.register("ancient_stone_block", () -> new ModBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BROWN).requiresCorrectToolForDrops().strength(1.25F, 4.2F).lightLevel((state) -> 5).sound(SoundType.STONE), new ModBlock.Properties().enchantPowerBonus(1.0F)));
+	public static final RegistryObject<Block> NETHER_STAR_BLOCK = REGISTRY.register("nether_star_block", () -> new ModBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.QUARTZ).requiresCorrectToolForDrops().strength(2.0F, 2000.0F).lightLevel((state) -> 10).sound(SoundType.STONE), new ModBlock.Properties().enchantPowerBonus(5.0F)));
+	public static final RegistryObject<Block> HEART_OF_THE_SEA_BLOCK = REGISTRY.register("heart_of_the_sea_block", () -> new ModBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_CYAN).requiresCorrectToolForDrops().strength(2.0F, 6.0F).lightLevel((state) -> 10).sound(SoundType.STONE), new ModBlock.Properties().setConduitFrame()));
+	public static final RegistryObject<Block> THORN_SAND = REGISTRY.register("thorn_sand", () -> new ThornSandBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.COLOR_GREEN).strength(0.5F).speedFactor(0.4F).sound(SoundType.SOUL_SAND).isValidSpawn(ModBlocks::always).isRedstoneConductor(ModBlocks::always).isViewBlocking(ModBlocks::always).isSuffocating(ModBlocks::always)));
+	public static final RegistryObject<Block> POISON_SAND = REGISTRY.register("poison_sand", () -> new PoisonSandBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.COLOR_MAGENTA).strength(0.5F).speedFactor(0.4F).sound(SoundType.SOUL_SAND).isValidSpawn(ModBlocks::always).isRedstoneConductor(ModBlocks::always).isViewBlocking(ModBlocks::always).isSuffocating(ModBlocks::always)));
+	public static final RegistryObject<Block> WITHER_SAND = REGISTRY.register("wither_sand", () -> new WitherSandBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.COLOR_GRAY).strength(0.5F).speedFactor(0.4F).sound(SoundType.SOUL_SAND).isValidSpawn(ModBlocks::always).isRedstoneConductor(ModBlocks::always).isViewBlocking(ModBlocks::always).isSuffocating(ModBlocks::always)));
+	public static final RegistryObject<Block> HEALING_SAND = REGISTRY.register("healing_sand", () -> new HealingSandBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.COLOR_PINK).strength(0.5F).speedFactor(0.4F).sound(SoundType.SOUL_SAND).isValidSpawn(ModBlocks::always).isRedstoneConductor(ModBlocks::always).isViewBlocking(ModBlocks::always).isSuffocating(ModBlocks::always)));
+	public static final RegistryObject<Block> REINFORCED_BLOCK = REGISTRY.register("reinforced_block", () -> new ReinforcedBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).strength(5.0F, 3600000.0F).sound(SoundType.STONE)));
+	public static final RegistryObject<Block> REINFORCED_GLASS = REGISTRY.register("reinforced_glass", () -> new ReinforcedGlassBlock(BlockBehaviour.Properties.of(Material.GLASS, MaterialColor.COLOR_BLACK).strength(5.0F, 3600000.0F).sound(SoundType.GLASS).noOcclusion().isValidSpawn(ModBlocks::never).isRedstoneConductor(ModBlocks::never).isSuffocating(ModBlocks::never).isViewBlocking(ModBlocks::never)));
 
 	@SubscribeEvent
 	public static void register(IEventBus eventBus)
@@ -44,22 +46,22 @@ public class ModBlocks
 		REGISTRY.register(eventBus);
 	}
 
-	private static boolean never(BlockState state, IBlockReader reader, BlockPos pos, EntityType<?> entity)
+	private static boolean never(BlockState state, BlockGetter getter, BlockPos pos, EntityType<?> entityType)
 	{
 		return false;
 	}
 
-	private static boolean always(BlockState state, IBlockReader reader, BlockPos pos, EntityType<?> entity)
+	private static boolean always(BlockState state, BlockGetter getter, BlockPos pos, EntityType<?> entityType)
 	{
 		return true;
 	}
 
-	private static boolean always(BlockState state, IBlockReader reader, BlockPos pos)
+	private static boolean always(BlockState state, BlockGetter getter, BlockPos pos)
 	{
 		return true;
 	}
 
-	private static boolean never(BlockState state, IBlockReader reader, BlockPos pos)
+	private static boolean never(BlockState state, BlockGetter getter, BlockPos pos)
 	{
 		return false;
 	}

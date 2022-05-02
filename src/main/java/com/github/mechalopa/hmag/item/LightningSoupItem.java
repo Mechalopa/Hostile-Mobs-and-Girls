@@ -7,10 +7,11 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.BowlFoodItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
-public class LightningSoupItem extends SoupItem
+public class LightningSoupItem extends BowlFoodItem
 {
 	public LightningSoupItem(Item.Properties builder)
 	{

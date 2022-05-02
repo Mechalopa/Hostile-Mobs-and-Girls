@@ -143,7 +143,7 @@ public class ModClientEventBusSubscriber
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public static void registerParticleFactories(final ParticleFactoryRegisterEvent event)
 	{
-		Minecraft.getInstance().particleEngine.register(ModParticleTypes.ENCHANTMENT_RUNE.get(), EnchantmentRuneParticle.Factory::new);
-		Minecraft.getInstance().particleEngine.register(ModParticleTypes.NEMESIS_FLAME.get(), FlameParticle.Factory::new);
+		Minecraft.getInstance().particleEngine.register(ModParticleTypes.ENCHANTMENT_RUNE.get(), EnchantmentRuneParticle.Provider::new);
+		Minecraft.getInstance().particleEngine.register(ModParticleTypes.NEMESIS_FLAME.get(), FlameParticle.Provider::new);
 	}
 }

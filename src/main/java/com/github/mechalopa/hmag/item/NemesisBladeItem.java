@@ -19,13 +19,14 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Tier;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class NemesisBladeItem extends ModSwordItem
 {
-	public NemesisBladeItem(IItemTier tier, Properties builderIn)
+	public NemesisBladeItem(Tier tier, Properties builderIn)
 	{
 		super(tier, 4.0F, -3.5F, 2537, 17, builderIn);
 	}

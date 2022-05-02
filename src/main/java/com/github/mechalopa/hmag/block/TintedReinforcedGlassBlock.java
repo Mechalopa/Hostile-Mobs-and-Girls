@@ -7,11 +7,23 @@ import net.minecraft.world.level.block.AbstractGlassBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class ReinforcedGlassBlock extends AbstractGlassBlock
+public class TintedReinforcedGlassBlock extends AbstractGlassBlock
 {
-	public ReinforcedGlassBlock(BlockBehaviour.Properties properties)
+	public TintedReinforcedGlassBlock(BlockBehaviour.Properties properties)
 	{
 		super(properties);
+	}
+
+	@Override
+	public boolean propagatesSkylightDown(BlockState state, BlockGetter getter, BlockPos pos)
+	{
+		return false;
+	}
+
+	@Override
+	public int getLightBlock(BlockState state, BlockGetter getter, BlockPos pos)
+	{
+		return getter.getMaxLightLevel();
 	}
 
 	@Override

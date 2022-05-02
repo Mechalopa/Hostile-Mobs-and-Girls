@@ -1,23 +1,23 @@
 package com.github.mechalopa.hmag.client.particle;
 
-import net.minecraft.client.particle.IAnimatedSprite;
-import net.minecraft.client.particle.IParticleFactory;
-import net.minecraft.client.particle.IParticleRenderType;
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.Particle;
-import net.minecraft.client.particle.SpriteTexturedParticle;
-import net.minecraft.client.world.ClientWorld;
-import net.minecraft.particles.BasicParticleType;
+import net.minecraft.client.particle.ParticleProvider;
+import net.minecraft.client.particle.ParticleRenderType;
+import net.minecraft.client.particle.SpriteSet;
+import net.minecraft.client.particle.TextureSheetParticle;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class EnchantmentRuneParticle extends SpriteTexturedParticle
+public class EnchantmentRuneParticle extends TextureSheetParticle
 {
 	private final double xStart;
 	private final double yStart;
 	private final double zStart;
 
-	private EnchantmentRuneParticle(ClientWorld clientWorld, double xIn, double yIn, double zIn, double xdIn, double ydIn, double zdIn)
+	private EnchantmentRuneParticle(ClientLevel clientWorld, double xIn, double yIn, double zIn, double xdIn, double ydIn, double zdIn)
 	{
 		super(clientWorld, xIn, yIn, zIn);
 		this.xd = xdIn;
@@ -39,9 +39,9 @@ public class EnchantmentRuneParticle extends SpriteTexturedParticle
 	}
 
 	@Override
-	public IParticleRenderType getRenderType()
+	public ParticleRenderType getRenderType()
 	{
-		return IParticleRenderType.PARTICLE_SHEET_OPAQUE;
+		return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
 	}
 
 	@Override
@@ -86,24 +86,24 @@ public class EnchantmentRuneParticle extends SpriteTexturedParticle
 			float f = (float)this.age / (float)this.lifetime;
 			float f1 = -f + f * f * 2.0F;
 			float f2 = 1.0F - f1;
-			this.x = this.xStart + this.xd * (double)f2;
-			this.y = this.yStart + this.yd * (double)f2 + (double)(1.0F - f);
-			this.z = this.zStart + this.zd * (double)f2;
+			this.x = this.xStart + this.xd * f2;
+			this.y = this.yStart + this.yd * f2 + (1.0F - f);
+			this.z = this.zStart + this.zd * f2;
 		}
 	}
 
 	@OnlyIn(Dist.CLIENT)
-	public static class Factory implements IParticleFactory<BasicParticleType>
+	public static class Provider implements ParticleProvider<SimpleParticleType>
 	{
-		private final IAnimatedSprite sprite;
+		private final SpriteSet sprite;
 
-		public Factory(IAnimatedSprite spriteIn)
+		public Provider(SpriteSet spriteIn)
 		{
 			this.sprite = spriteIn;
 		}
 
 		@Override
-		public Particle createParticle(BasicParticleType typeIn, ClientWorld clientWorld, double x, double y, double z, double xd, double yd, double zd)
+		public Particle createParticle(SimpleParticleType typeIn, ClientLevel clientWorld, double x, double y, double z, double xd, double yd, double zd)
 		{
 			EnchantmentRuneParticle particle = new EnchantmentRuneParticle(clientWorld, x, y, z, xd, yd, zd);
 			particle.pickSprite(this.sprite);
