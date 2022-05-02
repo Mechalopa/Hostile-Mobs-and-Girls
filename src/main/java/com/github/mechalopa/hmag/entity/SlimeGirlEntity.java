@@ -10,56 +10,58 @@ import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.entity.goal.LeapAtTargetGoal2;
 import com.github.mechalopa.hmag.registry.ModEntityTypes;
 
-import net.minecraft.client.renderer.EffectInstance;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.entity.EntitySize;
-import net.minecraft.entity.ILivingEntityData;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.goal.LookAtGoal;
-import net.minecraft.entity.ai.goal.LookRandomlyGoal;
-import net.minecraft.entity.ai.goal.SwimGoal;
-import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
-import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.passive.IronGolemEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.IPacket;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.potion.Effects;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.Mth;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.IServerWorld;
-import net.minecraft.world.World;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.animal.IronGolem;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.network.NetworkHooks;
 
-public class SlimeGirlEntity extends MonsterEntity implements IModMob
+public class SlimeGirlEntity extends Monster implements IModMob
 {
-	private static final DataParameter<Integer> DATA_VARIANT_ID = EntityDataManager.defineId(SlimeGirlEntity.class, DataSerializers.INT);
+	private static final EntityDataAccessor<Integer> DATA_VARIANT_ID = SynchedEntityData.defineId(SlimeGirlEntity.class, EntityDataSerializers.INT);
 	public float targetSquish;
 	public float squish;
 	public float oSquish;
 	private boolean wasOnGround;
 
-	public SlimeGirlEntity(EntityType<? extends SlimeGirlEntity> type, World worldIn)
+	public SlimeGirlEntity(EntityType<? extends SlimeGirlEntity> type, Level worldIn)
 	{
 		super(type, worldIn);
 		this.xpReward = 15;
@@ -75,20 +77,20 @@ public class SlimeGirlEntity extends MonsterEntity implements IModMob
 	@Override
 	protected void registerGoals()
 	{
-		this.goalSelector.addGoal(1, new SwimGoal(this));
+		this.goalSelector.addGoal(1, new FloatGoal(this));
 		this.goalSelector.addGoal(3, new SlimeGirlEntity.LeapGoal(this));
 		this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.0D, false));
-		this.goalSelector.addGoal(5, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
-		this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 8.0F));
-		this.goalSelector.addGoal(6, new LookRandomlyGoal(this));
+		this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+		this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
+		this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
 		this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
-		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
-		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolemEntity.class, true));
+		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
+		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
 	}
 
-	public static AttributeModifierMap.MutableAttribute createAttributes()
+	public static AttributeSupplier.Builder createAttributes()
 	{
-		return MonsterEntity.createMonsterAttributes()
+		return Monster.createMonsterAttributes()
 				.add(Attributes.MAX_HEALTH, 60.0D)
 				.add(Attributes.MOVEMENT_SPEED, 0.19D)
 				.add(Attributes.ATTACK_DAMAGE, 7.0D)
@@ -137,9 +139,9 @@ public class SlimeGirlEntity extends MonsterEntity implements IModMob
 		{
 			float f = this.getRandom().nextFloat() * ((float)Math.PI * 2.0F);
 			float f1 = this.getRandom().nextFloat() * 0.5F + 0.5F;
-			float f2 = MathHelper.sin(f) * 0.6F * f1;
-			float f3 = MathHelper.cos(f) * 0.6F * f1;
-			this.level.addParticle(ParticleTypes.WITCH, this.getX() + (double)f2, this.getY(), this.getZ() + (double)f3, 0.0D, 0.0D, 0.0D);
+			float f2 = Mth.sin(f) * 0.6F * f1;
+			float f3 = Mth.cos(f) * 0.6F * f1;
+			this.level.addParticle(ParticleTypes.WITCH, this.getX() + f2, this.getY(), this.getZ() + f3, 0.0D, 0.0D, 0.0D);
 		}
 	}
 
@@ -179,7 +181,7 @@ public class SlimeGirlEntity extends MonsterEntity implements IModMob
 
 				if (i > 0)
 				{
-					((LivingEntity)entityIn).addEffect(new EffectInstance(Effects.MOVEMENT_SLOWDOWN, i * 20, 1));
+					((LivingEntity)entityIn).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, i * 20, 1));
 				}
 			}
 
@@ -191,13 +193,12 @@ public class SlimeGirlEntity extends MonsterEntity implements IModMob
 		}
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
-	public void remove(boolean keepData)
+	public void remove(Entity.RemovalReason reason)
 	{
-		if (!this.level.isClientSide && ModConfigs.cachedServer.MAGICAL_SLIME_SPAWNS_ON_SLIME_GIRL_DEATH && this.isDeadOrDying() && !this.removed)
+		if (!this.level.isClientSide && ModConfigs.cachedServer.MAGICAL_SLIME_SPAWNS_ON_SLIME_GIRL_DEATH && this.isDeadOrDying())
 		{
-			ITextComponent itextcomponent = this.getCustomName();
+			Component component = this.getCustomName();
 			boolean flag = this.isNoAi();
 			int i = 2;
 			float f = i / 4.0F;
@@ -208,29 +209,29 @@ public class SlimeGirlEntity extends MonsterEntity implements IModMob
 			{
 				float f1 = (l % 2 - 0.5F) * f;
 				float f2 = (l / 2 - 0.5F) * f;
-				MagicalSlimeEntity slimeentity = ModEntityTypes.MAGICAL_SLIME.get().create(this.level);
+				MagicalSlimeEntity slime = ModEntityTypes.MAGICAL_SLIME.get().create(this.level);
 
 				if (this.isPersistenceRequired())
 				{
-					slimeentity.setPersistenceRequired();
+					slime.setPersistenceRequired();
 				}
 
-				slimeentity.setCustomName(itextcomponent);
-				slimeentity.setNoAi(flag);
-				slimeentity.setInvulnerable(this.isInvulnerable());
-				slimeentity.setSize(j, true);
+				slime.setCustomName(component);
+				slime.setNoAi(flag);
+				slime.setInvulnerable(this.isInvulnerable());
+				slime.setSize(j, true);
 
 				if (this.getRandom().nextInt(8) != 0)
 				{
-					slimeentity.setVariant(this.getVariant());
+					slime.setVariant(this.getVariant());
 				}
 
-				slimeentity.moveTo(this.getX() + (double)f1, this.getY() + 0.5D, this.getZ() + (double)f2, this.getRandom().nextFloat() * 360.0F, 0.0F);
-				this.level.addFreshEntity(slimeentity);
+				slime.moveTo(this.getX() + f1, this.getY() + 0.5D, this.getZ() + f2, this.getRandom().nextFloat() * 360.0F, 0.0F);
+				this.level.addFreshEntity(slime);
 			}
 		}
 
-		super.remove(keepData);
+		super.remove(reason);
 	}
 
 	@Override
@@ -246,10 +247,9 @@ public class SlimeGirlEntity extends MonsterEntity implements IModMob
 
 	@Override
 	@Nullable
-	public ILivingEntityData finalizeSpawn(IServerWorld worldIn, DifficultyInstance difficultyIn, SpawnReason reason, @Nullable ILivingEntityData spawnDataIn, @Nullable CompoundNBT dataTag)
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor worldIn, DifficultyInstance difficultyIn, MobSpawnType spawnType, @Nullable SpawnGroupData spawnDataIn, @Nullable CompoundTag dataTag)
 	{
-		spawnDataIn = super.finalizeSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
-
+		spawnDataIn = super.finalizeSpawn(worldIn, difficultyIn, spawnType, spawnDataIn, dataTag);
 		this.setVariant(this.getRandom().nextInt(SlimeGirlEntity.ColorVariant.values().length));
 
 		return spawnDataIn;
@@ -268,7 +268,7 @@ public class SlimeGirlEntity extends MonsterEntity implements IModMob
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn)
+	protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn)
 	{
 		return 1.74F;
 	}
@@ -295,7 +295,7 @@ public class SlimeGirlEntity extends MonsterEntity implements IModMob
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundNBT compound)
+	public void addAdditionalSaveData(CompoundTag compound)
 	{
 		super.addAdditionalSaveData(compound);
 		compound.putInt("Variant", this.getVariant());
@@ -303,7 +303,7 @@ public class SlimeGirlEntity extends MonsterEntity implements IModMob
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundNBT compound)
+	public void readAdditionalSaveData(CompoundTag compound)
 	{
 		super.readAdditionalSaveData(compound);
 		this.setVariant(compound.getInt("Variant"));
@@ -336,7 +336,7 @@ public class SlimeGirlEntity extends MonsterEntity implements IModMob
 
 	@Nonnull
 	@Override
-	public IPacket<?> getAddEntityPacket()
+	public Packet<?> getAddEntityPacket()
 	{
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
@@ -414,9 +414,9 @@ public class SlimeGirlEntity extends MonsterEntity implements IModMob
 
 	private class LeapGoal extends LeapAtTargetGoal2
 	{
-		private final MobEntity mob;
+		private final Mob mob;
 
-		public LeapGoal(MobEntity mob)
+		public LeapGoal(Mob mob)
 		{
 			super(mob, 0.25F, 0.3F, 6.0F, 6);
 			this.mob = mob;

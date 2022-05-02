@@ -15,77 +15,77 @@ import com.github.mechalopa.hmag.registry.ModSoundEvents;
 import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.util.ModUtils;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.CreatureAttribute;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntitySize;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.FlyingEntity;
-import net.minecraft.entity.ILivingEntityData;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.entity.Pose;
-import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.controller.BodyController;
-import net.minecraft.entity.ai.controller.MovementController;
-import net.minecraft.entity.ai.goal.Goal;
-import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
-import net.minecraft.entity.merchant.villager.AbstractVillagerEntity;
-import net.minecraft.entity.monster.IMob;
-import net.minecraft.entity.passive.GolemEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.IPacket;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.Direction;
-import net.minecraft.util.EntityDamageSource;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.GameRules;
-import net.minecraft.world.IServerWorld;
-import net.minecraft.world.World;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.EntityDamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.FlyingMob;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.MobType;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.control.BodyRotationControl;
+import net.minecraft.world.entity.ai.control.MoveControl;
+import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.animal.AbstractGolem;
+import net.minecraft.world.entity.monster.Enemy;
+import net.minecraft.world.entity.npc.AbstractVillager;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.GameRules;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.PotionEvent;
 import net.minecraftforge.eventbus.api.Event;
-import net.minecraftforge.fml.network.NetworkHooks;
+import net.minecraftforge.network.NetworkHooks;
 
-public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeamAttackMob
+public class MonolithEntity extends FlyingMob implements Enemy, IModMob, IBeamAttackMob
 {
-	private static final DataParameter<Byte> ATTACK_PHASE = EntityDataManager.defineId(MonolithEntity.class, DataSerializers.BYTE);
-	private static final DataParameter<Integer> ATTACK_TARGET = EntityDataManager.defineId(MonolithEntity.class, DataSerializers.INT);
+	private static final EntityDataAccessor<Byte> ATTACK_PHASE = SynchedEntityData.defineId(MonolithEntity.class, EntityDataSerializers.BYTE);
+	private static final EntityDataAccessor<Integer> ATTACK_TARGET = SynchedEntityData.defineId(MonolithEntity.class, EntityDataSerializers.INT);
 	private LivingEntity targetedEntity;
 	private int clientAttackTime;
 	private int eyeCloseTimer = 0;
 
-	public MonolithEntity(EntityType<? extends MonolithEntity> type, World worldIn)
+	public MonolithEntity(EntityType<? extends MonolithEntity> type, Level worldIn)
 	{
 		super(type, worldIn);
 		this.xpReward = 15;
-		this.moveControl = new MonolithEntity.MoveHelperController(this);
+		this.moveControl = new MonolithEntity.MonolithMoveControl(this);
 	}
 
 	@Override
-	protected BodyController createBodyControl()
+	protected BodyRotationControl createBodyControl()
 	{
-		return new MonolithEntity.BodyHelperController(this);
+		return new MonolithEntity.MonolithBodyRotationControl(this);
 	}
 
 	@Override
@@ -107,9 +107,9 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 		this.entityData.define(ATTACK_PHASE, (byte)0);
 	}
 
-	public static AttributeModifierMap.MutableAttribute createAttributes()
+	public static AttributeSupplier.Builder createAttributes()
 	{
-		return MobEntity.createMobAttributes()
+		return Mob.createMobAttributes()
 				.add(Attributes.MAX_HEALTH, 40.0D)
 				.add(Attributes.MOVEMENT_SPEED, 0.16D)
 				.add(Attributes.ATTACK_DAMAGE, 3.0D)
@@ -203,7 +203,7 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 
 	public MonolithEntity.AttackPhase getAttackPhase()
 	{
-		return MonolithEntity.AttackPhase.byId((int)this.entityData.get(ATTACK_PHASE));
+		return MonolithEntity.AttackPhase.byId(this.entityData.get(ATTACK_PHASE));
 	}
 
 	private void setAttackPhase(MonolithEntity.AttackPhase phase)
@@ -220,7 +220,7 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.isProjectile() || source.isFire() || source.isMagic() || ModUtils.isThornsDamage(source))
+		if (source.isProjectile() || source.isFire() || source.isMagic() || ModUtils.isThornsDamage(source) || ModUtils.isStalagmiteDamage(source))
 		{
 			amount = amount * 0.5F;
 		}
@@ -238,9 +238,9 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 	}
 
 	@Override
-	public boolean canBeAffected(EffectInstance potioneffectIn)
+	public boolean canBeAffected(MobEffectInstance potioneffectIn)
 	{
-		if (potioneffectIn.getEffect() == Effects.POISON || potioneffectIn.getEffect() == Effects.BLINDNESS)
+		if (potioneffectIn.getEffect() == MobEffects.POISON || potioneffectIn.getEffect() == MobEffects.BLINDNESS)
 		{
 			PotionEvent.PotionApplicableEvent event = new PotionEvent.PotionApplicableEvent(this, potioneffectIn);
 			MinecraftForge.EVENT_BUS.post(event);
@@ -258,14 +258,14 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 
 	@Override
 	@Nullable
-	public ILivingEntityData finalizeSpawn(IServerWorld worldIn, DifficultyInstance difficultyIn, SpawnReason reason, @Nullable ILivingEntityData spawnDataIn, @Nullable CompoundNBT dataTag)
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor worldIn, DifficultyInstance difficultyIn, MobSpawnType spawnType, @Nullable SpawnGroupData spawnDataIn, @Nullable CompoundTag dataTag)
 	{
-		spawnDataIn = super.finalizeSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
+		spawnDataIn = super.finalizeSpawn(worldIn, difficultyIn, spawnType, spawnDataIn, dataTag);
 
-		if (reason == SpawnReason.NATURAL)
+		if (spawnType == MobSpawnType.NATURAL)
 		{
-			Vector3d vector3d = this.getDeltaMovement();
-			this.setDeltaMovement(new Vector3d(vector3d.x, 0.05D, vector3d.z));
+			Vec3 vec3 = this.getDeltaMovement();
+			this.setDeltaMovement(new Vec3(vec3.x, 0.05D, vec3.z));
 		}
 
 		return spawnDataIn;
@@ -285,13 +285,13 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 	@Override
 	public float getBrightness()
 	{
-		return MathHelper.clamp(super.getBrightness() + 0.8F, 0.0F, 1.0F);
+		return Mth.clamp(super.getBrightness() + 0.8F, 0.0F, 1.0F);
 	}
 
 	@Override
-	public SoundCategory getSoundSource()
+	public SoundSource getSoundSource()
 	{
-		return SoundCategory.HOSTILE;
+		return SoundSource.HOSTILE;
 	}
 
 	@Override
@@ -313,23 +313,23 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn)
+	protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn)
 	{
 		return 1.0F;
 	}
 
-	public static boolean checkMonolithSpawnRules(EntityType<MonolithEntity> type, IServerWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn)
+	public static boolean checkMonolithSpawnRules(EntityType<MonolithEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, Random randomIn)
 	{
-		if (worldIn.getDifficulty() != Difficulty.PEACEFUL && checkMobSpawnRules(type, worldIn, reason, pos, randomIn))
+		if (levelAccessor.getDifficulty() != Difficulty.PEACEFUL && checkMobSpawnRules(type, levelAccessor, spawnType, pos, randomIn))
 		{
-			if (ModUtils.isDarkEnoughToSpawn(worldIn, pos, randomIn))
+			if (ModUtils.isDarkEnoughToSpawn(levelAccessor, pos, randomIn))
 			{
 				return true;
 			}
 			else
 			{
-				BlockState state = worldIn.getBlockState(pos.mutable().move(Direction.DOWN));
-				return state != null && state.getBlock() != null && ModTags.checkTagContains(ModTags.MONOLITH_SPAWNABLE_IN_LIGHT, state.getBlock());
+				BlockState state = levelAccessor.getBlockState(pos.mutable().move(Direction.DOWN));
+				return state != null && state.is(ModTags.MONOLITH_SPAWNABLE_IN_LIGHT);
 			}
 		}
 
@@ -343,7 +343,7 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 	}
 
 	@Override
-	public void onSyncedDataUpdated(DataParameter<?> key)
+	public void onSyncedDataUpdated(EntityDataAccessor<?> key)
 	{
 		super.onSyncedDataUpdated(key);
 
@@ -382,7 +382,7 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 	{
 		if (!this.isSilent())
 		{
-			this.level.playSound((PlayerEntity)null, target.getX(), target.getY(), target.getZ(), SoundEvents.ENCHANTMENT_TABLE_USE, this.getSoundSource(), 1.0F, this.getRandom().nextFloat() * 0.2F + 0.9F);
+			this.level.playSound((Player)null, target.getX(), target.getY(), target.getZ(), SoundEvents.ENCHANTMENT_TABLE_USE, this.getSoundSource(), 1.0F, this.getRandom().nextFloat() * 0.2F + 0.9F);
 		}
 
 		float f = damage;
@@ -406,7 +406,7 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 			if (i > 0)
 			{
 				final int j = this.getRandom().nextInt(3);
-				target.addEffect(new EffectInstance(j == 2 ? Effects.WEAKNESS : (j == 1 ? Effects.MOVEMENT_SLOWDOWN : Effects.DIG_SLOWDOWN), i * 20, 0));
+				target.addEffect(new MobEffectInstance(j == 2 ? MobEffects.WEAKNESS : (j == 1 ? MobEffects.MOVEMENT_SLOWDOWN : MobEffects.DIG_SLOWDOWN), i * 20, 0));
 			}
 
 			return true;
@@ -465,12 +465,12 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 	@Override
 	public float getAttackAnimationScale(float f)
 	{
-		return ((float)this.clientAttackTime + f) / (float)this.getAttackDuration();
+		return (this.clientAttackTime + f) / this.getAttackDuration();
 	}
 
 	@Nonnull
 	@Override
-	public IPacket<?> getAddEntityPacket()
+	public Packet<?> getAddEntityPacket()
 	{
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
@@ -586,7 +586,7 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 		{
 			LivingEntity target = this.parent.getTarget();
 
-			if (target == null || !this.parent.canSee(target))
+			if (target == null || !this.parent.hasLineOfSight(target))
 			{
 				this.parent.setAttackPhase(MonolithEntity.AttackPhase.ROAR_END);
 				this.parent.setTarget((LivingEntity)null);
@@ -604,7 +604,7 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 				{
 					for (LivingEntity livingentity : this.parent.level.getEntitiesOfClass(LivingEntity.class, this.parent.getBoundingBox().inflate(2.0D), new MonolithEntity.RoarTargetPredicate()))
 					{
-						if (!(livingentity instanceof PlayerEntity && (((PlayerEntity)livingentity).isCreative() || ((PlayerEntity)livingentity).isSpectator())))
+						if (!(livingentity instanceof Player && (((Player)livingentity).isCreative() || ((Player)livingentity).isSpectator())))
 						{
 							float f = 3.0F;
 							int i = 0;
@@ -621,10 +621,10 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 
 							if (i > 0)
 							{
-								livingentity.addEffect(new EffectInstance(Effects.BLINDNESS, i * 10, 0));
-								livingentity.addEffect(new EffectInstance(Effects.DIG_SLOWDOWN, i * 20, 1));
-								livingentity.addEffect(new EffectInstance(Effects.MOVEMENT_SLOWDOWN, i * 20, 1));
-								livingentity.addEffect(new EffectInstance(Effects.WEAKNESS, i * 20, 1));
+								livingentity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, i * 10, 0));
+								livingentity.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, i * 20, 1));
+								livingentity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, i * 20, 1));
+								livingentity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, i * 20, 1));
 							}
 
 							livingentity.knockback(1.5F, this.parent.getX() - livingentity.getX(), this.parent.getZ() - livingentity.getZ());
@@ -634,9 +634,9 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 
 					this.parent.playSound(SoundEvents.SHULKER_SHOOT, 1.0F, (this.parent.getRandom().nextFloat() - this.parent.getRandom().nextFloat()) * 0.2F + 1.0F);
 					this.parent.level.broadcastEntityEvent(this.parent, (byte)15);
-					Vector3d vector3d = this.parent.getDeltaMovement();
-					Vector3d vector3d1 = (new Vector3d(target.getX() - this.parent.getX(), 0.0D, target.getZ() - this.parent.getZ())).normalize().scale(0.25D);
-					this.parent.setDeltaMovement(vector3d.x / 2.0D - vector3d1.x, vector3d.y, vector3d.z / 2.0D - vector3d1.z);
+					Vec3 vec3 = this.parent.getDeltaMovement();
+					Vec3 vec31 = (new Vec3(target.getX() - this.parent.getX(), 0.0D, target.getZ() - this.parent.getZ())).normalize().scale(0.25D);
+					this.parent.setDeltaMovement(vec3.x / 2.0D - vec31.x, vec3.y, vec3.z / 2.0D - vec31.z);
 					this.parent.setAttackPhase(MonolithEntity.AttackPhase.ROAR_END);
 				}
 			}
@@ -694,7 +694,7 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 		{
 			LivingEntity target = this.parent.getTarget();
 
-			if (target == null || !this.parent.canSee(target))
+			if (target == null || !this.parent.hasLineOfSight(target))
 			{
 				this.parent.setAttackPhase(MonolithEntity.AttackPhase.BEAM_END);
 				this.parent.setTarget((LivingEntity)null);
@@ -715,8 +715,8 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 
 					if (this.parent.getRandom().nextFloat() < 0.4F)
 					{
-						Vector3d vector3d = target.getEyePosition(1.0F);
-						this.parent.getMoveControl().setWantedPosition(vector3d.x + (double)((this.parent.getRandom().nextFloat() * 2.0F - 1.0F) * 3.0F), vector3d.y - (double)(0.5F + this.parent.getRandom().nextFloat()), vector3d.z + (double)((this.parent.getRandom().nextFloat() * 2.0F - 1.0F) * 3.0F), 0.2D);
+						Vec3 vec3 = target.getEyePosition(1.0F);
+						this.parent.getMoveControl().setWantedPosition(vec3.x + (this.parent.getRandom().nextFloat() * 2.0F - 1.0F) * 3.0F, vec3.y - (0.5F + this.parent.getRandom().nextFloat()), vec3.z + (this.parent.getRandom().nextFloat() * 2.0F - 1.0F) * 3.0F, 0.2D);
 					}
 				}
 				else if (this.tickCounter >= this.parent.getAttackDuration())
@@ -765,8 +765,8 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 			{
 				double d0 = target.getX() - this.parent.getX();
 				double d1 = target.getZ() - this.parent.getZ();
-				this.parent.yRot = -((float)MathHelper.atan2(d0, d1)) * (180.0F / (float)Math.PI);
-				this.parent.yBodyRot = this.parent.yRot;
+				this.parent.setYRot(-((float)Mth.atan2(d0, d1)) * (180.0F / (float)Math.PI));
+				this.parent.yBodyRot = this.parent.getYRot();
 			}
 		}
 	}
@@ -809,16 +809,16 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 		public void tick()
 		{
 			--this.idleTime;
-			this.parent.yRot = -((float)MathHelper.atan2(this.lookX, this.lookZ)) * (180.0F / (float)Math.PI);
-			this.parent.yBodyRot = this.parent.yRot;
+			this.parent.setYRot(-((float)Mth.atan2(this.lookX, this.lookZ)) * (180.0F / (float)Math.PI));
+			this.parent.yBodyRot = this.parent.getYRot();
 		}
 	}
 
-	protected class MoveHelperController extends MovementController
+	protected class MonolithMoveControl extends MoveControl
 	{
 		private final MonolithEntity parent;
 
-		public MoveHelperController(MonolithEntity mob)
+		public MonolithMoveControl(MonolithEntity mob)
 		{
 			super(mob);
 			this.parent = mob;
@@ -827,28 +827,28 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 		@Override
 		public void tick()
 		{
-			if (this.operation == MovementController.Action.MOVE_TO)
+			if (this.operation == MoveControl.Operation.MOVE_TO)
 			{
-				Vector3d vector3d = new Vector3d(this.wantedX - this.parent.getX(), this.wantedY - this.parent.getY(), this.wantedZ - this.parent.getZ());
-				double d0 = vector3d.length();
+				Vec3 vec3 = new Vec3(this.wantedX - this.parent.getX(), this.wantedY - this.parent.getY(), this.wantedZ - this.parent.getZ());
+				double d0 = vec3.length();
 
-				if (d0 < this.parent.getBoundingBox().getSize() || !ModUtils.canReach(this.parent, vector3d.normalize(), MathHelper.ceil(d0)))
+				if (d0 < this.parent.getBoundingBox().getSize() || !ModUtils.canReach(this.parent, vec3.normalize(), Mth.ceil(d0)))
 				{
-					this.operation = MovementController.Action.WAIT;
+					this.operation = MoveControl.Operation.WAIT;
 					this.parent.setDeltaMovement(this.parent.getDeltaMovement().scale(0.5D));
 				}
 				else
 				{
 					float f = (float)this.parent.getAttributeValue(Attributes.MOVEMENT_SPEED);
-					this.parent.setDeltaMovement(this.parent.getDeltaMovement().add(vector3d.scale((float)this.speedModifier * f * 0.2D / d0)));
+					this.parent.setDeltaMovement(this.parent.getDeltaMovement().add(vec3.scale((float)this.speedModifier * f * 0.2D / d0)));
 				}
 			}
 		}
 	}
 
-	protected class BodyHelperController extends BodyController
+	protected class MonolithBodyRotationControl extends BodyRotationControl
 	{
-		public BodyHelperController(MobEntity mob)
+		public MonolithBodyRotationControl(Mob mob)
 		{
 			super(mob);
 		}
@@ -857,7 +857,7 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 		public void clientTick()
 		{
 			MonolithEntity.this.yHeadRot = MonolithEntity.this.yBodyRot;
-			MonolithEntity.this.yBodyRot = MonolithEntity.this.yRot;
+			MonolithEntity.this.yBodyRot = MonolithEntity.this.getYRot();
 		}
 	}
 
@@ -887,9 +887,9 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 		public void start()
 		{
 			Random random = this.parent.getRandom();
-			double d0 = this.parent.getX() + (double)((random.nextFloat() * 2.0F - 1.0F) * 3.0F);
-			double d1 = this.parent.getY() + (double)((random.nextFloat() * 2.0F - 1.0F) * 3.0F);
-			double d2 = this.parent.getZ() + (double)((random.nextFloat() * 2.0F - 1.0F) * 3.0F);
+			double d0 = this.parent.getX() + (random.nextFloat() * 2.0F - 1.0F) * 3.0F;
+			double d1 = this.parent.getY() + (random.nextFloat() * 2.0F - 1.0F) * 3.0F;
+			double d2 = this.parent.getZ() + (random.nextFloat() * 2.0F - 1.0F) * 3.0F;
 			this.parent.getMoveControl().setWantedPosition(d0, d1, d2, 0.15D);
 		}
 	}
@@ -914,11 +914,11 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 			{
 				return livingEntityIn.distanceToSqr(this.parent) <= 9.0D * 9.0D;
 			}
-			else if (ModTags.checkTagContains(ModTags.MONOLITH_TARGET_BLACKLIST, livingEntityIn.getType()))
+			else if (livingEntityIn.getType().is(ModTags.MONOLITH_TARGET_BLACKLIST))
 			{
 				return false;
 			}
-			else if (livingEntityIn instanceof PlayerEntity || (livingEntityIn instanceof GolemEntity && ModConfigs.cachedServer.MONOLITH_ATTACK_GOLEMS) || (livingEntityIn instanceof AbstractVillagerEntity && ModConfigs.cachedServer.MONOLITH_ATTACK_VILLAGERS) || (livingEntityIn.getMobType() == CreatureAttribute.ILLAGER && ModConfigs.cachedServer.MONOLITH_ATTACK_ILLAGERS))
+			else if (livingEntityIn instanceof Player || (livingEntityIn instanceof AbstractGolem && ModConfigs.cachedServer.MONOLITH_ATTACK_GOLEMS) || (livingEntityIn instanceof AbstractVillager && ModConfigs.cachedServer.MONOLITH_ATTACK_VILLAGERS) || (livingEntityIn.getMobType() == MobType.ILLAGER && ModConfigs.cachedServer.MONOLITH_ATTACK_ILLAGERS))
 			{
 				return livingEntityIn.distanceToSqr(this.parent) <= 9.0D * 9.0D;
 			}

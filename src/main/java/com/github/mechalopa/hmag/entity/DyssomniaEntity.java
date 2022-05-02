@@ -14,76 +14,76 @@ import com.github.mechalopa.hmag.registry.ModSoundEvents;
 import com.github.mechalopa.hmag.util.ModSpawnRules;
 import com.github.mechalopa.hmag.util.ModUtils;
 
-import net.minecraft.entity.CreatureAttribute;
-import net.minecraft.entity.EntityPredicate;
-import net.minecraft.entity.EntitySize;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.FlyingEntity;
-import net.minecraft.entity.ILivingEntityData;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.entity.Pose;
-import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.controller.BodyController;
-import net.minecraft.entity.ai.controller.LookController;
-import net.minecraft.entity.ai.controller.MovementController;
-import net.minecraft.entity.ai.goal.Goal;
-import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
-import net.minecraft.entity.monster.IMob;
-import net.minecraft.entity.monster.PhantomEntity;
-import net.minecraft.entity.passive.IronGolemEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.IPacket;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.Direction;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.world.Difficulty;
-import net.minecraft.world.IServerWorld;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.FlyingMob;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.MobType;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.control.BodyRotationControl;
+import net.minecraft.world.entity.ai.control.LookControl;
+import net.minecraft.world.entity.ai.control.MoveControl;
+import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
+import net.minecraft.world.entity.animal.IronGolem;
+import net.minecraft.world.entity.monster.Enemy;
+import net.minecraft.world.entity.monster.Phantom;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.PotionEvent;
 import net.minecraftforge.eventbus.api.Event;
-import net.minecraftforge.fml.network.NetworkHooks;
+import net.minecraftforge.network.NetworkHooks;
 
-public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
+public class DyssomniaEntity extends FlyingMob implements Enemy, IModMob
 {
-	private static final DataParameter<Byte> ATTACK_PHASE = EntityDataManager.defineId(DyssomniaEntity.class, DataSerializers.BYTE);
-	private static final DataParameter<Integer> ATTACKING_TIME = EntityDataManager.defineId(DyssomniaEntity.class, DataSerializers.INT);
-	private static final DataParameter<Boolean> RETREATING = EntityDataManager.defineId(DyssomniaEntity.class, DataSerializers.BOOLEAN);
+	private static final EntityDataAccessor<Byte> ATTACK_PHASE = SynchedEntityData.defineId(DyssomniaEntity.class, EntityDataSerializers.BYTE);
+	private static final EntityDataAccessor<Integer> ATTACKING_TIME = SynchedEntityData.defineId(DyssomniaEntity.class, EntityDataSerializers.INT);
+	private static final EntityDataAccessor<Boolean> RETREATING = SynchedEntityData.defineId(DyssomniaEntity.class, EntityDataSerializers.BOOLEAN);
 	private float xRotAnimation;
 	private float xRotAnimationO;
 	private int animationTick;
 	private int animationTickO;
 
-	public DyssomniaEntity(EntityType<? extends DyssomniaEntity> type, World worldIn)
+	public DyssomniaEntity(EntityType<? extends DyssomniaEntity> type, Level worldIn)
 	{
 		super(type, worldIn);
 		this.xpReward = 25;
-		this.moveControl = new DyssomniaEntity.MoveHelperController(this);
-		this.lookControl = new DyssomniaEntity.LookHelperController(this);
+		this.moveControl = new DyssomniaEntity.DyssomniaMoveControl(this);
+		this.lookControl = new DyssomniaEntity.DyssomniaLookControl(this);
 	}
 
 	@Override
-	protected BodyController createBodyControl()
+	protected BodyRotationControl createBodyControl()
 	{
-		return new DyssomniaEntity.BodyHelperController(this);
+		return new DyssomniaEntity.DyssomniaBodyRotationControl(this);
 	}
 
 	@Override
@@ -95,8 +95,8 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 			this.goalSelector.addGoal(7, new DyssomniaEntity.SummonGoal(this));
 		this.goalSelector.addGoal(8, new DyssomniaEntity.ShotAttackGoal(this));
 		this.targetSelector.addGoal(1, new HurtByTargetGoal2(this));
-		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true).setUnseenMemoryTicks(180));
-		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolemEntity.class, true));
+		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true).setUnseenMemoryTicks(180));
+		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
 	}
 
 	@Override
@@ -108,9 +108,9 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 		this.entityData.define(RETREATING, false);
 	}
 
-	public static AttributeModifierMap.MutableAttribute createAttributes()
+	public static AttributeSupplier.Builder createAttributes()
 	{
-		return MobEntity.createMobAttributes()
+		return Mob.createMobAttributes()
 				.add(Attributes.MAX_HEALTH, 80.0D)
 				.add(Attributes.ARMOR, 5.0D)
 				.add(Attributes.KNOCKBACK_RESISTANCE, 0.5D)
@@ -118,9 +118,9 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 	}
 
 	@Override
-	public CreatureAttribute getMobType()
+	public MobType getMobType()
 	{
-		return CreatureAttribute.UNDEAD;
+		return MobType.UNDEAD;
 	}
 
 	@Override
@@ -136,8 +136,8 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 
 		if (this.level.isClientSide)
 		{
-			float f = MathHelper.cos((float)(this.getId() * 3 + this.tickCount) * 0.13F + (float)Math.PI);
-			float f1 = MathHelper.cos((float)(this.getId() * 3 + this.tickCount + 1) * 0.13F + (float)Math.PI);
+			float f = Mth.cos((this.getId() * 3 + this.tickCount) * 0.13F + (float)Math.PI);
+			float f1 = Mth.cos((this.getId() * 3 + this.tickCount + 1) * 0.13F + (float)Math.PI);
 
 			if (f > 0.0F && f1 <= 0.0F)
 			{
@@ -148,19 +148,19 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 
 			for (int i = 0; i < 3; ++i)
 			{
-				float f2 = MathHelper.cos(this.yRot * ((float)Math.PI / 180.0F)) * ((float)i * 0.4F + 1.7F);
-				float f3 = MathHelper.sin(this.yRot * ((float)Math.PI / 180.0F)) * ((float)i * 0.4F + 1.7F);
-				float f4 = (0.4F + f * ((float)i * 0.05F + 0.5F));
+				float f2 = Mth.cos(this.getYRot() * ((float)Math.PI / 180.0F)) * (i * 0.4F + 1.7F);
+				float f3 = Mth.sin(this.getYRot() * ((float)Math.PI / 180.0F)) * (i * 0.4F + 1.7F);
+				float f4 = (0.4F + f * (i * 0.05F + 0.5F));
 
 				if (flag && this.tickCount % 12 == i * 3)
 				{
-					this.level.addParticle(ParticleTypes.FLAME, this.getX() + (double)f2, this.getY() + (double)f4, this.getZ() + (double)f3, 0.0D, 0.0D, 0.0D);
-					this.level.addParticle(ParticleTypes.FLAME, this.getX() - (double)f2, this.getY() + (double)f4, this.getZ() - (double)f3, 0.0D, 0.0D, 0.0D);
+					this.level.addParticle(ParticleTypes.FLAME, this.getX() + f2, this.getY() + f4, this.getZ() + f3, 0.0D, 0.0D, 0.0D);
+					this.level.addParticle(ParticleTypes.FLAME, this.getX() - f2, this.getY() + f4, this.getZ() - f3, 0.0D, 0.0D, 0.0D);
 				}
 				else
 				{
-					this.level.addParticle(ParticleTypes.MYCELIUM, this.getX() + (double)f2, this.getY() + (double)f4, this.getZ() + (double)f3, 0.0D, 0.0D, 0.0D);
-					this.level.addParticle(ParticleTypes.MYCELIUM, this.getX() - (double)f2, this.getY() + (double)f4, this.getZ() - (double)f3, 0.0D, 0.0D, 0.0D);
+					this.level.addParticle(ParticleTypes.MYCELIUM, this.getX() + f2, this.getY() + f4, this.getZ() + f3, 0.0D, 0.0D, 0.0D);
+					this.level.addParticle(ParticleTypes.MYCELIUM, this.getX() - f2, this.getY() + f4, this.getZ() - f3, 0.0D, 0.0D, 0.0D);
 				}
 			}
 
@@ -170,8 +170,8 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 				{
 					double d0 = 1.75D;
 					double d1 = 1.5D;
-					Vector3d vector3d = this.getViewVector(1.0F);
-					this.level.addParticle(ParticleTypes.SMOKE, this.getX() + vector3d.x * d0, this.getEyeY() - vector3d.y * d1, this.getZ() + vector3d.z * d0, 0.0D, 0.0D, 0.0D);
+					Vec3 vec3 = this.getViewVector(1.0F);
+					this.level.addParticle(ParticleTypes.SMOKE, this.getX() + vec3.x * d0, this.getEyeY() - vec3.y * d1, this.getZ() + vec3.z * d0, 0.0D, 0.0D, 0.0D);
 				}
 
 				if (this.animationTick < 30)
@@ -184,7 +184,7 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 				this.animationTick = Math.max(this.animationTick - 2, 0);
 			}
 
-			this.xRotAnimation = MathHelper.clamp(ModUtils.rotlerp(this.xRotAnimation, this.xRot, 90.0F, false), -180.0F, 180.0F);
+			this.xRotAnimation = Mth.clamp(ModUtils.rotlerp(this.xRotAnimation, this.getXRot(), 90.0F, false), -180.0F, 180.0F);
 		}
 	}
 
@@ -225,9 +225,9 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 	}
 
 	@Override
-	public boolean canBeAffected(EffectInstance potioneffectIn)
+	public boolean canBeAffected(MobEffectInstance potioneffectIn)
 	{
-		if (potioneffectIn.getEffect() == Effects.BLINDNESS)
+		if (potioneffectIn.getEffect() == MobEffects.BLINDNESS)
 		{
 			PotionEvent.PotionApplicableEvent event = new PotionEvent.PotionApplicableEvent(this, potioneffectIn);
 			MinecraftForge.EVENT_BUS.post(event);
@@ -237,7 +237,7 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 		return super.canBeAffected(potioneffectIn);
 	}
 
-	private void summonPhantom(ServerWorld serverworld, LivingEntity attacker, LivingEntity target, Random random, int count)
+	private void summonPhantom(ServerLevel serverlevel, LivingEntity attacker, LivingEntity target, Random random, int count)
 	{
 		boolean flag = false;
 
@@ -247,15 +247,15 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 			double d2 = attacker.getY() + 0.5D;
 			double d3 = attacker.getZ() + (random.nextDouble() - random.nextDouble()) * 3.0D;
 
-			PhantomEntity phantomentity = EntityType.PHANTOM.create(attacker.level);
-			phantomentity.moveTo(d1, d2, d3, this.yRot + (random.nextFloat() - 0.5F) * 12.0F, 0.0F);
-			phantomentity.finalizeSpawn(serverworld, attacker.level.getCurrentDifficultyAt(attacker.blockPosition()), SpawnReason.MOB_SUMMONED, (ILivingEntityData)null, (CompoundNBT)null);
-			serverworld.addFreshEntityWithPassengers(phantomentity);
-			phantomentity.getPersistentData().putBoolean(ModUtils.WITH_SPAWN_PARTICLE_KEY, true);
+			Phantom phantom = EntityType.PHANTOM.create(attacker.level);
+			phantom.moveTo(d1, d2, d3, this.getYRot() + (random.nextFloat() - 0.5F) * 12.0F, 0.0F);
+			phantom.finalizeSpawn(serverlevel, attacker.level.getCurrentDifficultyAt(attacker.blockPosition()), MobSpawnType.MOB_SUMMONED, (SpawnGroupData)null, (CompoundTag)null);
+			serverlevel.addFreshEntityWithPassengers(phantom);
+			phantom.getPersistentData().putBoolean(ModUtils.WITH_SPAWN_PARTICLE_KEY, true);
 
 			if (this.isOnFire())
 			{
-				phantomentity.setSecondsOnFire(this.getRemainingFireTicks() / 20 + 2);
+				phantom.setSecondsOnFire(this.getRemainingFireTicks() / 20 + 2);
 				flag = true;
 			}
 		}
@@ -269,14 +269,14 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 		attacker.playSound(ModSoundEvents.DYSSOMNIA_SUMMON.get(), 5.0F, 1.0F);
 	}
 
-	public static boolean checkDyssomniaSpawnRules(EntityType<DyssomniaEntity> type, IServerWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn)
+	public static boolean checkDyssomniaSpawnRules(EntityType<DyssomniaEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, Random randomIn)
 	{
-		return ModSpawnRules.checkMobSpawnInLightRules(type, worldIn, reason, pos, randomIn) && (reason == SpawnReason.SPAWNER || (worldIn.canSeeSky(pos) && randomIn.nextFloat() < worldIn.getMoonBrightness()));
+		return ModSpawnRules.checkMobSpawnInLightRules(type, levelAccessor, spawnType, pos, randomIn) && (spawnType == MobSpawnType.SPAWNER || (levelAccessor.canSeeSky(pos) && randomIn.nextFloat() < levelAccessor.getMoonBrightness()));
 	}
 
 	public DyssomniaEntity.AttackPhase getAttackPhase()
 	{
-		return DyssomniaEntity.AttackPhase.byId((int)this.entityData.get(ATTACK_PHASE));
+		return DyssomniaEntity.AttackPhase.byId(this.entityData.get(ATTACK_PHASE));
 	}
 
 	private void setAttackPhase(DyssomniaEntity.AttackPhase phase)
@@ -298,13 +298,13 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 	@OnlyIn(Dist.CLIENT)
 	public float getXRotAnimationScale(float f)
 	{
-		return MathHelper.lerp(f, this.xRotAnimationO / 180.0F, this.xRotAnimation / 180.0F);
+		return Mth.lerp(f, this.xRotAnimationO / 180.0F, this.xRotAnimation / 180.0F);
 	}
 
 	@OnlyIn(Dist.CLIENT)
 	public float getAttackAnimationScale(float f)
 	{
-		return MathHelper.lerp(f, (float)this.animationTickO / 30.0F, (float)this.animationTick / 30.0F);
+		return Mth.lerp(f, this.animationTickO / 30.0F, this.animationTick / 30.0F);
 	}
 
 	public boolean isRetreating()
@@ -323,14 +323,14 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundNBT compound)
+	public void readAdditionalSaveData(CompoundTag compound)
 	{
 		super.readAdditionalSaveData(compound);
 		this.setRetreating(compound.getBoolean("isRetreating"));
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundNBT compound)
+	public void addAdditionalSaveData(CompoundTag compound)
 	{
 		super.addAdditionalSaveData(compound);
 		compound.putBoolean("isRetreating", this.isRetreating());
@@ -349,15 +349,15 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn)
+	protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn)
 	{
 		return sizeIn.height * 0.45F;
 	}
 
 	@Override
-	public SoundCategory getSoundSource()
+	public SoundSource getSoundSource()
 	{
-		return SoundCategory.HOSTILE;
+		return SoundSource.HOSTILE;
 	}
 
 	@Override
@@ -386,7 +386,7 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 
 	@Nonnull
 	@Override
-	public IPacket<?> getAddEntityPacket()
+	public Packet<?> getAddEntityPacket()
 	{
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
@@ -427,7 +427,7 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 	{
 		private final DyssomniaEntity parent;
 		public int attackTimer;
-		private final EntityPredicate phantomCountTargeting = (new EntityPredicate()).range(32.0D).allowUnseeable().ignoreInvisibilityTesting().allowInvulnerable();
+		private final TargetingConditions phantomCountTargeting = TargetingConditions.forNonCombat().range(32.0D).ignoreLineOfSight().ignoreInvisibilityTesting();
 
 		public SummonGoal(DyssomniaEntity mob)
 		{
@@ -437,9 +437,9 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 		@Override
 		public boolean canUse()
 		{
-			if (!this.parent.isRetreating() && this.parent.getTarget() != null && this.parent.getTarget() instanceof PlayerEntity && this.parent.getAttackPhase() == DyssomniaEntity.AttackPhase.WAIT && (this.parent.getRandom().nextInt(6) == 0 || this.parent.isOnFire()) && this.parent.distanceToSqr(this.parent.getTarget()) < 16.0D * 16.0D)
+			if (!this.parent.isRetreating() && this.parent.getTarget() != null && this.parent.getTarget() instanceof Player && this.parent.getAttackPhase() == DyssomniaEntity.AttackPhase.WAIT && (this.parent.getRandom().nextInt(6) == 0 || this.parent.isOnFire()) && this.parent.distanceToSqr(this.parent.getTarget()) < 16.0D * 16.0D)
 			{
-				return this.parent.level.getNearbyEntities(PhantomEntity.class, this.phantomCountTargeting, this.parent, this.parent.getBoundingBox().inflate(32.0D)).size() < 1;
+				return this.parent.level.getNearbyEntities(Phantom.class, this.phantomCountTargeting, this.parent, this.parent.getBoundingBox().inflate(32.0D)).size() < 1;
 			}
 			else
 			{
@@ -450,7 +450,7 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 		@Override
 		public boolean canContinueToUse()
 		{
-			return this.parent.getTarget() != null && this.parent.getTarget() instanceof PlayerEntity && this.parent.getAttackPhase() == DyssomniaEntity.AttackPhase.SUMMON;
+			return this.parent.getTarget() != null && this.parent.getTarget() instanceof Player && this.parent.getAttackPhase() == DyssomniaEntity.AttackPhase.SUMMON;
 		}
 
 		@Override
@@ -473,14 +473,14 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 			LivingEntity target = this.parent.getTarget();
 			double d0 = 32.0D;
 
-			if ((target.distanceToSqr(this.parent) < d0 * d0 || this.attackTimer > 10) && this.parent.canSee(target))
+			if ((target.distanceToSqr(this.parent) < d0 * d0 || this.attackTimer > 10) && this.parent.hasLineOfSight(target))
 			{
-				World world = this.parent.level;
+				Level level = this.parent.level;
 				++this.attackTimer;
 
 				if (this.attackTimer == 20)
 				{
-					this.parent.summonPhantom((ServerWorld)world, this.parent, target, this.parent.getRandom(), 1 + this.parent.getRandom().nextInt(this.parent.level.getDifficulty() == Difficulty.HARD ? 3 : 2));
+					this.parent.summonPhantom((ServerLevel)level, this.parent, target, this.parent.getRandom(), 1 + this.parent.getRandom().nextInt(this.parent.level.getDifficulty() == Difficulty.HARD ? 3 : 2));
 					this.parent.setAttackPhase(DyssomniaEntity.AttackPhase.WAIT);
 				}
 			}
@@ -540,32 +540,32 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 			LivingEntity target = this.parent.getTarget();
 			double d0 = 32.0D;
 
-			if ((target.distanceToSqr(this.parent) < d0 * d0 || this.attackTimer > 10) && this.parent.canSee(target))
+			if ((target.distanceToSqr(this.parent) < d0 * d0 || this.attackTimer > 10) && this.parent.hasLineOfSight(target))
 			{
-				World world = this.parent.level;
+				Level level = this.parent.level;
 				++this.attackTimer;
 
 				if (this.attackTimer == 30)
 				{
 					double d1 = 1.75D;
 					double d2 = 1.5D;
-					Vector3d vector3d = this.parent.getViewVector(1.0F);
-					double d3 = target.getX() - (this.parent.getX() + vector3d.x * d1);
-					double d4 = target.getY(0.5D) - (this.parent.getEyeY() - vector3d.y * d2);
-					double d5 = target.getZ() - (this.parent.getZ() + vector3d.z * d1);
+					Vec3 vec3 = this.parent.getViewVector(1.0F);
+					double d3 = target.getX() - (this.parent.getX() + vec3.x * d1);
+					double d4 = target.getY(0.5D) - (this.parent.getEyeY() - vec3.y * d2);
+					double d5 = target.getZ() - (this.parent.getZ() + vec3.z * d1);
 
 					if (!this.parent.isSilent())
 					{
-						world.levelEvent((PlayerEntity)null, 1024, this.parent.blockPosition(), 0);
+						level.levelEvent((Player)null, 1024, this.parent.blockPosition(), 0);
 					}
 
-					float f = MathHelper.sqrt(d3 * d3 + d5 * d5) * 0.02F;
-					MagicBulletEntity mugicbulletentity = new MagicBulletEntity(world, this.parent, d3 + this.parent.getRandom().nextGaussian() * (double)f, d4, d5 + this.parent.getRandom().nextGaussian() * (double)f);
-					mugicbulletentity.setPos(this.parent.getX() + vector3d.x * d1, this.parent.getEyeY() - vector3d.y * d2, this.parent.getZ() + vector3d.z * d1);
-					mugicbulletentity.setDamage(5.0F);
-					mugicbulletentity.setEffectLevel((byte)1);
-					mugicbulletentity.setVariant(1);
-					world.addFreshEntity(mugicbulletentity);
+					double d6 = Math.sqrt(d3 * d3 + d5 * d5) * 0.02F;
+					MagicBulletEntity bullet = new MagicBulletEntity(level, this.parent, d3 + this.parent.getRandom().nextGaussian() * d6, d4, d5 + this.parent.getRandom().nextGaussian() * d6);
+					bullet.setPos(this.parent.getX() + vec3.x * d1, this.parent.getEyeY() - vec3.y * d2, this.parent.getZ() + vec3.z * d1);
+					bullet.setDamage(5.0F);
+					bullet.setEffectLevel((byte)1);
+					bullet.setVariant(1);
+					level.addFreshEntity(bullet);
 					this.parent.setAttackPhase(DyssomniaEntity.AttackPhase.WAIT);
 				}
 			}
@@ -604,13 +604,16 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 		{
 			if (this.parent.getTarget() == null || (this.parent.isActuallyRetreating() && this.parent.getAttackPhase() == DyssomniaEntity.AttackPhase.WAIT))
 			{
-				Vector3d vector3d = this.parent.getDeltaMovement().normalize();
-				double d0 = vector3d.x;
-				double d1 = vector3d.z;
+				Vec3 vec3 = this.parent.getDeltaMovement().normalize();
+				double d0 = vec3.x;
+				double d1 = vec3.z;
 				double d2 = Math.sqrt(d0 * d0 + d1 * d1);
-				this.parent.yRot = -((float)MathHelper.atan2(d0, d1)) * (180.0F / (float)Math.PI);
-				this.parent.yBodyRot = this.parent.yRot;
-				this.parent.xRot = MathHelper.clamp((float)(MathHelper.atan2(vector3d.y, d2) * (180.0F / (float)Math.PI)), -45.0F, 45.0F);
+				this.parent.setYRot(-((float)Mth.atan2(d0, d1)) * (180.0F / (float)Math.PI));
+				this.parent.yBodyRot = this.parent.getYRot();
+				this.parent.setXRot(Mth.clamp((float)(Mth.atan2(vec3.y, d2) * (180.0F / (float)Math.PI)), -45.0F, 45.0F));
+
+				this.parent.setYRot(-((float)Mth.atan2(d0, d1)) * (180.0F / (float)Math.PI));
+				this.parent.yBodyRot = this.parent.getYRot();
 			}
 			else
 			{
@@ -622,20 +625,20 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 					double d1 = target.getY() + target.getEyeHeight();
 					double d2 = target.getZ() - this.parent.getZ();
 					double d3 = Math.sqrt(d0 * d0 + d2 * d2);
-					this.parent.yRot = -((float)MathHelper.atan2(d0, d2)) * (180.0F / (float)Math.PI);
-					this.parent.yBodyRot = this.parent.yRot;
-					this.parent.xRot = MathHelper.clamp(-(float)(MathHelper.atan2(this.parent.getY() - d1, d3) * (180.0F / (float)Math.PI)), -45.0F, 45.0F);
+					this.parent.setYRot(-((float)Mth.atan2(d0, d2)) * (180.0F / (float)Math.PI));
+					this.parent.yBodyRot = this.parent.getYRot();
+					this.parent.setXRot(Mth.clamp(-(float)(Mth.atan2(this.parent.getY() - d1, d3) * (180.0F / (float)Math.PI)), -45.0F, 45.0F));
 				}
 			}
 		}
 	}
 
-	protected class MoveHelperController extends MovementController
+	protected class DyssomniaMoveControl extends MoveControl
 	{
 		private final DyssomniaEntity parent;
-		private int courseChangeCooldown;
+		private int floatDuration;
 
-		public MoveHelperController(DyssomniaEntity mob)
+		public DyssomniaMoveControl(DyssomniaEntity mob)
 		{
 			super(mob);
 			this.parent = mob;
@@ -644,31 +647,31 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 		@Override
 		public void tick()
 		{
-			if (this.operation == MovementController.Action.MOVE_TO)
+			if (this.operation == MoveControl.Operation.MOVE_TO)
 			{
-				if (this.courseChangeCooldown-- <= 0)
+				if (this.floatDuration-- <= 0)
 				{
-					this.courseChangeCooldown += this.parent.getRandom().nextInt(5) + 5;
-					Vector3d vector3d = new Vector3d(this.wantedX - this.parent.getX(), this.wantedY - this.parent.getY(), this.wantedZ - this.parent.getZ());
-					double d0 = vector3d.length();
-					vector3d = vector3d.normalize();
+					this.floatDuration += this.parent.getRandom().nextInt(5) + 5;
+					Vec3 vec3 = new Vec3(this.wantedX - this.parent.getX(), this.wantedY - this.parent.getY(), this.wantedZ - this.parent.getZ());
+					double d0 = vec3.length();
+					vec3 = vec3.normalize();
 
-					if (ModUtils.canReach(this.parent, vector3d, MathHelper.ceil(d0)))
+					if (ModUtils.canReach(this.parent, vec3, Mth.ceil(d0)))
 					{
-						this.parent.setDeltaMovement(this.parent.getDeltaMovement().add(vector3d.scale(0.1D)));
+						this.parent.setDeltaMovement(this.parent.getDeltaMovement().add(vec3.scale(0.1D)));
 					}
 					else
 					{
-						this.operation = MovementController.Action.WAIT;
+						this.operation = MoveControl.Operation.WAIT;
 					}
 				}
 			}
 		}
 	}
 
-	protected class BodyHelperController extends BodyController
+	protected class DyssomniaBodyRotationControl extends BodyRotationControl
 	{
-		public BodyHelperController(MobEntity mob)
+		public DyssomniaBodyRotationControl(Mob mob)
 		{
 			super(mob);
 		}
@@ -677,13 +680,13 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 		public void clientTick()
 		{
 			DyssomniaEntity.this.yHeadRot = DyssomniaEntity.this.yBodyRot;
-			DyssomniaEntity.this.yBodyRot = DyssomniaEntity.this.yRot;
+			DyssomniaEntity.this.yBodyRot = DyssomniaEntity.this.getYRot();
 		}
 	}
 
-	protected class LookHelperController extends LookController
+	protected class DyssomniaLookControl extends LookControl
 	{
-		public LookHelperController(MobEntity mob)
+		public DyssomniaLookControl(Mob mob)
 		{
 			super(mob);
 		}
@@ -705,17 +708,17 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 		@Override
 		public boolean canUse()
 		{
-			MovementController movementcontroller = this.parent.getMoveControl();
+			MoveControl movecontrol = this.parent.getMoveControl();
 
-			if (!movementcontroller.hasWanted())
+			if (!movecontrol.hasWanted())
 			{
 				return true;
 			}
 			else
 			{
-				double d0 = movementcontroller.getWantedX() - this.parent.getX();
-				double d1 = movementcontroller.getWantedY() - this.parent.getY();
-				double d2 = movementcontroller.getWantedZ() - this.parent.getZ();
+				double d0 = movecontrol.getWantedX() - this.parent.getX();
+				double d1 = movecontrol.getWantedY() - this.parent.getY();
+				double d2 = movecontrol.getWantedZ() - this.parent.getZ();
 				double d3 = d0 * d0 + d1 * d1 + d2 * d2;
 				return d3 < 1.0D || d3 > 3600.0D;
 			}
@@ -731,7 +734,7 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 		public void start()
 		{
 			Random random = this.parent.getRandom();
-			BlockPos blockpos = new BlockPos(this.parent.getX(), (double)Math.round(this.parent.getY()), this.parent.getZ());
+			BlockPos blockpos = new BlockPos(this.parent.getX(), Math.round(this.parent.getY()), this.parent.getZ());
 			boolean flag = this.parent.isActuallyRetreating();
 			double d0 = this.parent.getX();
 			double d1 = this.parent.getY();
@@ -739,9 +742,9 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 
 			if (flag && this.parent.level.canSeeSky(blockpos) && blockpos.getY() < (this.parent.level.getMaxBuildHeight() + 64))
 			{
-				d0 = d0 + (double)((random.nextFloat() * 2.0F - 1.0F) * 8.0F);
-				d1 = d1 + (double)((random.nextFloat() * 4.0F) + 8.0F);
-				d2 = d2 + (double)((random.nextFloat() * 2.0F - 1.0F) * 8.0F);
+				d0 = d0 + (random.nextFloat() * 2.0F - 1.0F) * 8.0F;
+				d1 = d1 + ((random.nextFloat() * 4.0F) + 8.0F);
+				d2 = d2 + (random.nextFloat() * 2.0F - 1.0F) * 8.0F;
 			}
 			else
 			{
@@ -754,25 +757,25 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 
 					if (distance < 4096.0D)
 					{
-						Vector3d vector3d = target.getEyePosition(1.0F);
+						Vec3 vec3 = target.getEyePosition(1.0F);
 
 						float f = random.nextFloat() * 2.0F;
 						float f1 = 4.0F + random.nextFloat() * 4.0F;
-						d0 = vector3d.x + (double)(MathHelper.cos(f * (float)Math.PI) * f1);
-						d1 = vector3d.y + 2.0D + random.nextDouble() * 2.0D;
-						d2 = vector3d.z + (double)(MathHelper.sin(f * (float)Math.PI) * f1);
+						d0 = vec3.x + Mth.cos(f * (float)Math.PI) * f1;
+						d1 = vec3.y + 2.0D + random.nextDouble() * 2.0D;
+						d2 = vec3.z + Mth.sin(f * (float)Math.PI) * f1;
 						flag1 = true;
 					}
 				}
 
 				if (!flag1)
 				{
-					World world = this.parent.level;
-					BlockPos.Mutable blockpos$mutable = blockpos.mutable();
+					Level level = this.parent.level;
+					BlockPos.MutableBlockPos blockpos$mutable = blockpos.mutable();
 					boolean flag2 = false;
 					int i = 0;
 
-					while (world.isEmptyBlock(blockpos$mutable) && blockpos$mutable.getY() > 0)
+					while (level.isEmptyBlock(blockpos$mutable) && blockpos$mutable.getY() > 0)
 					{
 						blockpos$mutable.move(Direction.DOWN);
 						++i;
@@ -784,9 +787,9 @@ public class DyssomniaEntity extends FlyingEntity implements IMob, IModMob
 						}
 					}
 
-					d0 = d0 + (double)((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
-					d1 = d1 + (double)(flag2 ? ((random.nextFloat() * -8.0F)) : ((random.nextFloat() * 2.0F - 1.0F) * 8.0F));
-					d2 = d2 + (double)((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
+					d0 = d0 + (random.nextFloat() * 2.0F - 1.0F) * 16.0F;
+					d1 = d1 + (flag2 ? ((random.nextFloat() * -8.0F)) : ((random.nextFloat() * 2.0F - 1.0F) * 8.0F));
+					d2 = d2 + (random.nextFloat() * 2.0F - 1.0F) * 16.0F;
 				}
 			}
 

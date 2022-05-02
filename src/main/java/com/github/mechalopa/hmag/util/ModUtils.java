@@ -104,19 +104,19 @@ public class ModUtils
 		return pos.closerThan(entity.blockPosition(), distance);
 	}
 
-	public static boolean isDarkEnoughToSpawn(ServerLevelAccessor worldIn, BlockPos pos, Random randomIn)
+	public static boolean isDarkEnoughToSpawn(ServerLevelAccessor levelAccessor, BlockPos pos, Random randomIn)
 	{
-		if (worldIn.getBrightness(LightLayer.SKY, pos) > randomIn.nextInt(32))
+		if (levelAccessor.getBrightness(LightLayer.SKY, pos) > randomIn.nextInt(32))
 		{
 			return false;
 		}
-		else if (worldIn.getBrightness(LightLayer.BLOCK, pos) > 0)
+		else if (levelAccessor.getBrightness(LightLayer.BLOCK, pos) > 0)
 		{
 			return false;
 		}
 		else
 		{
-			int i = worldIn.getLevel().isThundering() ? worldIn.getMaxLocalRawBrightness(pos, 10) : worldIn.getMaxLocalRawBrightness(pos);
+			int i = levelAccessor.getLevel().isThundering() ? levelAccessor.getMaxLocalRawBrightness(pos, 10) : levelAccessor.getMaxLocalRawBrightness(pos);
 			return i <= randomIn.nextInt(8);
 		}
 	}

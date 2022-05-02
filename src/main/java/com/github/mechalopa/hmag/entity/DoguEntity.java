@@ -79,6 +79,12 @@ public class DoguEntity extends Monster implements IModMob
 	}
 
 	@Override
+	public boolean canBreatheUnderwater()
+	{
+		return true;
+	}
+
+	@Override
 	public boolean doHurtTarget(Entity entityIn)
 	{
 		if (super.doHurtTarget(entityIn))

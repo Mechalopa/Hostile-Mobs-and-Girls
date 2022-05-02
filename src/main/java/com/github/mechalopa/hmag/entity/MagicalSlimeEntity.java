@@ -2,31 +2,31 @@ package com.github.mechalopa.hmag.entity;
 
 import javax.annotation.Nonnull;
 
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.monster.SlimeEntity;
-import net.minecraft.loot.LootTables;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.IPacket;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.particles.IParticleData;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.Slime;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.fml.network.NetworkHooks;
+import net.minecraftforge.network.NetworkHooks;
 
-public class MagicalSlimeEntity extends SlimeEntity implements IModMob
+public class MagicalSlimeEntity extends Slime implements IModMob
 {
-	private static final DataParameter<Integer> DATA_VARIANT_ID = EntityDataManager.defineId(MagicalSlimeEntity.class, DataSerializers.INT);
+	private static final EntityDataAccessor<Integer> DATA_VARIANT_ID = SynchedEntityData.defineId(MagicalSlimeEntity.class, EntityDataSerializers.INT);
 
-	public MagicalSlimeEntity(EntityType<? extends SlimeEntity> type, World worldIn)
+	public MagicalSlimeEntity(EntityType<? extends MagicalSlimeEntity> type, Level worldIn)
 	{
 		super(type, worldIn);
 	}
@@ -38,9 +38,9 @@ public class MagicalSlimeEntity extends SlimeEntity implements IModMob
 		this.entityData.define(DATA_VARIANT_ID, 0);
 	}
 
-	public static AttributeModifierMap.MutableAttribute createAttributes()
+	public static AttributeSupplier.Builder createAttributes()
 	{
-		return MonsterEntity.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, 0.3D);
+		return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, 0.3D);
 	}
 
 	@Override
@@ -59,19 +59,19 @@ public class MagicalSlimeEntity extends SlimeEntity implements IModMob
 	{
 		super.setSize(size, resetHealth);
 		this.setVariant(this.getRandom().nextInt(SlimeGirlEntity.ColorVariant.values().length));
-		this.getAttribute(Attributes.ARMOR).setBaseValue((double)(size * 2));
+		this.getAttribute(Attributes.ARMOR).setBaseValue(size * 2);
 	}
 
 	@Override
 	protected ResourceLocation getDefaultLootTable()
 	{
-		return this.getSize() == 1 ? this.getType().getDefaultLootTable() : LootTables.EMPTY;
+		return this.isTiny() ? BuiltInLootTables.EMPTY : this.getType().getDefaultLootTable();
 	}
 
 	@Override
 	protected int getJumpDelay()
 	{
-		return (int)((float)super.getJumpDelay() * 0.75F);
+		return (int)(super.getJumpDelay() * 0.75F);
 	}
 
 	@Override
@@ -87,7 +87,7 @@ public class MagicalSlimeEntity extends SlimeEntity implements IModMob
 	}
 
 	@Override
-	protected IParticleData getParticleType()
+	protected ParticleOptions getParticleType()
 	{
 		return ParticleTypes.WITCH;
 	}
@@ -114,14 +114,14 @@ public class MagicalSlimeEntity extends SlimeEntity implements IModMob
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundNBT compound)
+	public void addAdditionalSaveData(CompoundTag compound)
 	{
 		super.addAdditionalSaveData(compound);
 		compound.putInt("Variant", this.getVariant());
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundNBT compound)
+	public void readAdditionalSaveData(CompoundTag compound)
 	{
 		super.readAdditionalSaveData(compound);
 		this.setVariant(compound.getInt("Variant"));
@@ -129,7 +129,7 @@ public class MagicalSlimeEntity extends SlimeEntity implements IModMob
 
 	@Nonnull
 	@Override
-	public IPacket<?> getAddEntityPacket()
+	public Packet<?> getAddEntityPacket()
 	{
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}

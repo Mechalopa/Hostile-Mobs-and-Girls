@@ -8,49 +8,49 @@ import javax.annotation.Nonnull;
 import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.util.ModUtils;
 
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.FlyingEntity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.controller.MovementController;
-import net.minecraft.entity.ai.goal.Goal;
-import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
-import net.minecraft.entity.monster.IMob;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.FireballEntity;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.IPacket;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.world.Difficulty;
-import net.minecraft.world.IServerWorld;
-import net.minecraft.world.World;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.FlyingMob;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.control.MoveControl;
+import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.monster.Enemy;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.LargeFireball;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.fml.network.NetworkHooks;
+import net.minecraftforge.network.NetworkHooks;
 
-public class GhastlySeekerEntity extends FlyingEntity implements IMob, IModMob
+public class GhastlySeekerEntity extends FlyingMob implements Enemy, IModMob
 {
-	private static final DataParameter<Integer> ATTACKING_TIME = EntityDataManager.defineId(GhastlySeekerEntity.class, DataSerializers.INT);
+	private static final EntityDataAccessor<Integer> ATTACKING_TIME = SynchedEntityData.defineId(GhastlySeekerEntity.class, EntityDataSerializers.INT);
 	private int explosionPower = 1;
 
-	public GhastlySeekerEntity(EntityType<? extends GhastlySeekerEntity> type, World worldIn)
+	public GhastlySeekerEntity(EntityType<? extends GhastlySeekerEntity> type, Level worldIn)
 	{
 		super(type, worldIn);
 		this.xpReward = 25;
-		this.moveControl = new GhastlySeekerEntity.MoveHelperController(this);
+		this.moveControl = new GhastlySeekerEntity.GhastlySeekerMoveControl(this);
 	}
 
 	@Override
@@ -59,7 +59,7 @@ public class GhastlySeekerEntity extends FlyingEntity implements IMob, IModMob
 		this.goalSelector.addGoal(1, new GhastlySeekerEntity.RandomFlyGoal(this));
 		this.goalSelector.addGoal(2, new GhastlySeekerEntity.LookAroundGoal(this));
 		this.goalSelector.addGoal(2, new GhastlySeekerEntity.FireballAttackGoal(this));
-		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, 10, true, false, (p) -> {
+		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, (p) -> {
 			return Math.abs(p.getY() - this.getY()) <= 10.0D;
 		}));
 	}
@@ -71,9 +71,9 @@ public class GhastlySeekerEntity extends FlyingEntity implements IMob, IModMob
 		this.entityData.define(ATTACKING_TIME, -1);
 	}
 
-	public static AttributeModifierMap.MutableAttribute createAttributes()
+	public static AttributeSupplier.Builder createAttributes()
 	{
-		return MobEntity.createMobAttributes()
+		return Mob.createMobAttributes()
 				.add(Attributes.MAX_HEALTH, 60.0D)
 				.add(Attributes.ARMOR, 2.0D)
 				.add(Attributes.FOLLOW_RANGE, 64.0D);
@@ -125,7 +125,7 @@ public class GhastlySeekerEntity extends FlyingEntity implements IMob, IModMob
 		{
 			return false;
 		}
-		else if (source.getDirectEntity() != null && source.getDirectEntity() instanceof FireballEntity && source.getEntity() != null && source.getEntity() instanceof PlayerEntity)
+		else if (source.getDirectEntity() != null && source.getDirectEntity() instanceof LargeFireball && source.getEntity() != null && source.getEntity() instanceof Player)
 		{
 			return super.hurt(source, amount * 2.0F);
 		}
@@ -136,9 +136,9 @@ public class GhastlySeekerEntity extends FlyingEntity implements IMob, IModMob
 	}
 
 	@Override
-	public SoundCategory getSoundSource()
+	public SoundSource getSoundSource()
 	{
-		return SoundCategory.HOSTILE;
+		return SoundSource.HOSTILE;
 	}
 
 	@Override
@@ -165,9 +165,9 @@ public class GhastlySeekerEntity extends FlyingEntity implements IMob, IModMob
 		return 5.0F;
 	}
 
-	public static boolean checkGhastlySeekerSpawnRules(EntityType<GhastlySeekerEntity> type, IServerWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn)
+	public static boolean checkGhastlySeekerSpawnRules(EntityType<GhastlySeekerEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, Random randomIn)
 	{
-		return worldIn.getDifficulty() != Difficulty.PEACEFUL && randomIn.nextDouble() < ModConfigs.cachedServer.GHSATLY_SHEEKER_SPAWN_CHANCE && MobEntity.checkMobSpawnRules(type, worldIn, reason, pos, randomIn);
+		return levelAccessor.getDifficulty() != Difficulty.PEACEFUL && randomIn.nextDouble() < ModConfigs.cachedServer.GHSATLY_SHEEKER_SPAWN_CHANCE && checkMobSpawnRules(type, levelAccessor, spawnType, pos, randomIn);
 	}
 
 	@Override
@@ -177,14 +177,14 @@ public class GhastlySeekerEntity extends FlyingEntity implements IMob, IModMob
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundNBT compound)
+	public void addAdditionalSaveData(CompoundTag compound)
 	{
 		super.addAdditionalSaveData(compound);
 		compound.putInt("ExplosionPower", this.explosionPower);
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundNBT compound)
+	public void readAdditionalSaveData(CompoundTag compound)
 	{
 		super.readAdditionalSaveData(compound);
 
@@ -196,7 +196,7 @@ public class GhastlySeekerEntity extends FlyingEntity implements IMob, IModMob
 
 	@Nonnull
 	@Override
-	public IPacket<?> getAddEntityPacket()
+	public Packet<?> getAddEntityPacket()
 	{
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
@@ -235,33 +235,32 @@ public class GhastlySeekerEntity extends FlyingEntity implements IMob, IModMob
 			LivingEntity target = this.parent.getTarget();
 			double d0 = 24.0D;
 
-			if ((target.distanceToSqr(this.parent) < d0 * d0 || this.attackTimer > 10) && this.parent.canSee(target))
+			if ((target.distanceToSqr(this.parent) < d0 * d0 || this.attackTimer > 10) && this.parent.hasLineOfSight(target))
 			{
-				World world = this.parent.level;
+				Level world = this.parent.level;
 				++this.attackTimer;
 
 				if (this.attackTimer == 10 && !this.parent.isSilent())
 				{
-					world.levelEvent((PlayerEntity)null, 1015, this.parent.blockPosition(), 0);
+					world.levelEvent((Player)null, 1015, this.parent.blockPosition(), 0);
 				}
 
 				if (this.attackTimer == 20)
 				{
 					double d1 = 4.0D;
-					Vector3d vector3d = this.parent.getViewVector(1.0F);
-					double d2 = target.getX() - (this.parent.getX() + vector3d.x * d1);
-					double d3 = target.getY() + (double)target.getEyeHeight() * 0.5D - this.parent.getY(0.5D) + 0.25D;
-					double d4 = target.getZ() - (this.parent.getZ() + vector3d.z * d1);
+					Vec3 vec3 = this.parent.getViewVector(1.0F);
+					double d2 = target.getX() - (this.parent.getX() + vec3.x * d1);
+					double d3 = target.getY() + target.getEyeHeight() * 0.5D - this.parent.getY(0.5D) + 0.25D;
+					double d4 = target.getZ() - (this.parent.getZ() + vec3.z * d1);
 
 					if (!this.parent.isSilent())
 					{
-						world.levelEvent((PlayerEntity)null, 1016, this.parent.blockPosition(), 0);
+						world.levelEvent((Player)null, 1016, this.parent.blockPosition(), 0);
 					}
 
-					FireballEntity fireballentity = new FireballEntity(world, this.parent, d2, d3, d4);
-					fireballentity.explosionPower = this.parent.getExplosionPower();
-					fireballentity.setPos(this.parent.getX() + vector3d.x * 0.5D, this.parent.getY(0.5D) + 0.25D, fireballentity.getZ() + vector3d.z * 0.5D);
-					world.addFreshEntity(fireballentity);
+					LargeFireball largefireball = new LargeFireball(world, this.parent, d2, d3, d4, this.parent.getExplosionPower());
+					largefireball.setPos(this.parent.getX() + vec3.x * 0.5D, this.parent.getY(0.5D) + 0.25D, largefireball.getZ() + vec3.z * 0.5D);
+					world.addFreshEntity(largefireball);
 					this.attackTimer = -50;
 				}
 			}
@@ -295,9 +294,9 @@ public class GhastlySeekerEntity extends FlyingEntity implements IMob, IModMob
 		{
 			if (this.parent.getTarget() == null)
 			{
-				Vector3d vector3d = this.parent.getDeltaMovement();
-				this.parent.yRot = -((float)MathHelper.atan2(vector3d.x, vector3d.z)) * (180.0F / (float)Math.PI);
-				this.parent.yBodyRot = this.parent.yRot;
+				Vec3 vec3 = this.parent.getDeltaMovement();
+				this.parent.setYRot(-((float)Mth.atan2(vec3.x, vec3.z)) * (180.0F / (float)Math.PI));
+				this.parent.yBodyRot = this.parent.getYRot();
 			}
 			else
 			{
@@ -307,19 +306,19 @@ public class GhastlySeekerEntity extends FlyingEntity implements IMob, IModMob
 				{
 					double d0 = target.getX() - this.parent.getX();
 					double d1 = target.getZ() - this.parent.getZ();
-					this.parent.yRot = -((float)MathHelper.atan2(d0, d1)) * (180.0F / (float)Math.PI);
-					this.parent.yBodyRot = this.parent.yRot;
+					this.parent.setYRot(-((float)Mth.atan2(d0, d1)) * (180.0F / (float)Math.PI));
+					this.parent.yBodyRot = this.parent.getYRot();
 				}
 			}
 		}
 	}
 
-	protected class MoveHelperController extends MovementController
+	protected class GhastlySeekerMoveControl extends MoveControl
 	{
 		private final GhastlySeekerEntity parent;
-		private int courseChangeCooldown;
+		private int floatDuration;
 
-		public MoveHelperController(GhastlySeekerEntity mob)
+		public GhastlySeekerMoveControl(GhastlySeekerEntity mob)
 		{
 			super(mob);
 			this.parent = mob;
@@ -328,22 +327,22 @@ public class GhastlySeekerEntity extends FlyingEntity implements IMob, IModMob
 		@Override
 		public void tick()
 		{
-			if (this.operation == MovementController.Action.MOVE_TO)
+			if (this.operation == MoveControl.Operation.MOVE_TO)
 			{
-				if (this.courseChangeCooldown-- <= 0)
+				if (this.floatDuration-- <= 0)
 				{
-					this.courseChangeCooldown += this.parent.getRandom().nextInt(5) + 2;
-					Vector3d vector3d = new Vector3d(this.wantedX - this.parent.getX(), this.wantedY - this.parent.getY(), this.wantedZ - this.parent.getZ());
-					double d0 = vector3d.length();
-					vector3d = vector3d.normalize();
+					this.floatDuration += this.parent.getRandom().nextInt(5) + 2;
+					Vec3 vec3 = new Vec3(this.wantedX - this.parent.getX(), this.wantedY - this.parent.getY(), this.wantedZ - this.parent.getZ());
+					double d0 = vec3.length();
+					vec3 = vec3.normalize();
 
-					if (ModUtils.canReach(this.parent, vector3d, MathHelper.ceil(d0)))
+					if (ModUtils.canReach(this.parent, vec3, Mth.ceil(d0)))
 					{
-						this.parent.setDeltaMovement(this.parent.getDeltaMovement().add(vector3d.scale(0.1D)));
+						this.parent.setDeltaMovement(this.parent.getDeltaMovement().add(vec3.scale(0.1D)));
 					}
 					else
 					{
-						this.operation = MovementController.Action.WAIT;
+						this.operation = MoveControl.Operation.WAIT;
 					}
 				}
 			}
@@ -363,17 +362,17 @@ public class GhastlySeekerEntity extends FlyingEntity implements IMob, IModMob
 		@Override
 		public boolean canUse()
 		{
-			MovementController movementcontroller = this.parent.getMoveControl();
+			MoveControl movecontrol = this.parent.getMoveControl();
 
-			if (!movementcontroller.hasWanted())
+			if (!movecontrol.hasWanted())
 			{
 				return true;
 			}
 			else
 			{
-				double d0 = movementcontroller.getWantedX() - this.parent.getX();
-				double d1 = movementcontroller.getWantedY() - this.parent.getY();
-				double d2 = movementcontroller.getWantedZ() - this.parent.getZ();
+				double d0 = movecontrol.getWantedX() - this.parent.getX();
+				double d1 = movecontrol.getWantedY() - this.parent.getY();
+				double d2 = movecontrol.getWantedZ() - this.parent.getZ();
 				double d3 = d0 * d0 + d1 * d1 + d2 * d2;
 				return d3 < 1.0D || d3 > 3600.0D;
 			}
@@ -398,17 +397,17 @@ public class GhastlySeekerEntity extends FlyingEntity implements IMob, IModMob
 
 				if (distance < 4096.0D && distance > 16.0D * 16.0D)
 				{
-					Vector3d vector3d = target.getEyePosition(1.0F);
-					this.parent.getMoveControl().setWantedPosition(vector3d.x + (double)((random.nextFloat() * 2.0F - 1.0F) * 2.0F), vector3d.y - 1.0D, vector3d.z + (double)((random.nextFloat() * 2.0F - 1.0F) * 2.0F), 0.75D);
+					Vec3 vec3 = target.getEyePosition(1.0F);
+					this.parent.getMoveControl().setWantedPosition(vec3.x + (random.nextFloat() * 2.0F - 1.0F) * 2.0F, vec3.y - 1.0D, vec3.z + (random.nextFloat() * 2.0F - 1.0F) * 2.0F, 0.75D);
 					flag = true;
 				}
 			}
 
 			if (!flag)
 			{
-				double d0 = this.parent.getX() + (double)((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
-				double d1 = this.parent.getY() + (double)((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
-				double d2 = this.parent.getZ() + (double)((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
+				double d0 = this.parent.getX() + (random.nextFloat() * 2.0F - 1.0F) * 16.0F;
+				double d1 = this.parent.getY() + (random.nextFloat() * 2.0F - 1.0F) * 16.0F;
+				double d2 = this.parent.getZ() + (random.nextFloat() * 2.0F - 1.0F) * 16.0F;
 				this.parent.getMoveControl().setWantedPosition(d0, d1, d2, 0.75D);
 			}
 		}

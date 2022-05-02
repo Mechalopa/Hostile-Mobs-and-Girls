@@ -6,65 +6,66 @@ import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.entity.goal.LeapAtTargetGoal2;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.EntitySize;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.Pose;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.HurtByTargetGoal;
-import net.minecraft.entity.ai.goal.LookAtGoal;
-import net.minecraft.entity.ai.goal.LookRandomlyGoal;
-import net.minecraft.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
-import net.minecraft.entity.ai.goal.SwimGoal;
-import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
-import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.passive.RabbitEntity;
-import net.minecraft.entity.passive.SheepEntity;
-import net.minecraft.entity.passive.TurtleEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.network.IPacket;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.network.NetworkHooks;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.animal.Rabbit;
+import net.minecraft.world.entity.animal.Sheep;
+import net.minecraft.world.entity.animal.Turtle;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.network.NetworkHooks;
 
-public class SnowCanineEntity extends MonsterEntity implements IModMob
+public class SnowCanineEntity extends Monster implements IModMob
 {
-	public SnowCanineEntity(EntityType<? extends SnowCanineEntity> type, World worldIn)
+	public SnowCanineEntity(EntityType<? extends SnowCanineEntity> type, Level worldIn)
 	{
 		super(type, worldIn);
 		this.xpReward = 12;
 	}
 
+	@Override
 	protected void registerGoals()
 	{
-		this.goalSelector.addGoal(1, new SwimGoal(this));
+		this.goalSelector.addGoal(1, new FloatGoal(this));
 		this.goalSelector.addGoal(3, new LeapAtTargetGoal2(this, 0.375F, 0.5F, 5.0F, 8));
 		this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.0D, false));
-		this.goalSelector.addGoal(5, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
-		this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 8.0F));
-		this.goalSelector.addGoal(6, new LookRandomlyGoal(this));
+		this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+		this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
+		this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
 		this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
-		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
+		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
 		if (ModConfigs.cachedServer.SNOW_CANINE_ATTACK_SHEEP)
-			this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, SheepEntity.class, 10, true, false, (p) -> {
+			this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Sheep.class, 10, true, false, (p) -> {
 				return p.distanceToSqr(this) <= 6.0D * 6.0D;
 			}));
 		if (ModConfigs.cachedServer.SNOW_CANINE_ATTACK_RABBITS)
-			this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, RabbitEntity.class, 10, true, false, (p) -> {
+			this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Rabbit.class, 10, true, false, (p) -> {
 				return p.distanceToSqr(this) <= 6.0D * 6.0D;
 			}));
 		if (ModConfigs.cachedServer.SNOW_CANINE_ATTACK_BABY_TURTLES)
-			this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, TurtleEntity.class, 10, true, false, TurtleEntity.BABY_ON_LAND_SELECTOR));
+			this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Turtle.class, 10, true, false, Turtle.BABY_ON_LAND_SELECTOR));
 	}
 
-	public static AttributeModifierMap.MutableAttribute createAttributes()
+	public static AttributeSupplier.Builder createAttributes()
 	{
-		return MonsterEntity.createMonsterAttributes()
+		return Monster.createMonsterAttributes()
 				.add(Attributes.MAX_HEALTH, 40.0D)
 				.add(Attributes.MOVEMENT_SPEED, 0.325D)
 				.add(Attributes.ATTACK_DAMAGE, 7.0D)
@@ -97,7 +98,7 @@ public class SnowCanineEntity extends MonsterEntity implements IModMob
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn)
+	protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn)
 	{
 		return 1.74F;
 	}
@@ -128,7 +129,7 @@ public class SnowCanineEntity extends MonsterEntity implements IModMob
 
 	@Nonnull
 	@Override
-	public IPacket<?> getAddEntityPacket()
+	public Packet<?> getAddEntityPacket()
 	{
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
