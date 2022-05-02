@@ -23,7 +23,7 @@ import net.minecraftforge.eventbus.api.Event;
 
 public class WitherGhostEntity extends GhostEntity
 {
-	public WitherGhostEntity(EntityType<? extends GhostEntity> type, Level worldIn)
+	public WitherGhostEntity(EntityType<? extends WitherGhostEntity> type, Level worldIn)
 	{
 		super(type, worldIn);
 		this.setPathfindingMalus(BlockPathTypes.LAVA, 8.0F);

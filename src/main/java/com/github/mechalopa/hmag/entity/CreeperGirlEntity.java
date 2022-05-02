@@ -36,7 +36,7 @@ public class CreeperGirlEntity extends Creeper implements IModMob
 {
 	private static final EntityDataAccessor<Integer> DATA_VARIANT_ID = SynchedEntityData.defineId(CreeperGirlEntity.class, EntityDataSerializers.INT);
 
-	public CreeperGirlEntity(EntityType<? extends Creeper> type, Level worldIn)
+	public CreeperGirlEntity(EntityType<? extends CreeperGirlEntity> type, Level worldIn)
 	{
 		super(type, worldIn);
 		this.xpReward = 8;

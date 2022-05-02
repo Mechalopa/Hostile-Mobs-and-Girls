@@ -38,7 +38,7 @@ public class EnderExecutorEntity extends EnderMan implements IModMob, IBeamAttac
 	private LivingEntity targetedEntity;
 	private int clientAttackTime;
 
-	public EnderExecutorEntity(EntityType<? extends EnderMan> type, Level worldIn)
+	public EnderExecutorEntity(EntityType<? extends EnderExecutorEntity> type, Level worldIn)
 	{
 		super(type, worldIn);
 		this.xpReward = 25;

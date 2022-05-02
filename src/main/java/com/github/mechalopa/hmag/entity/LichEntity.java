@@ -90,9 +90,9 @@ public class LichEntity extends Monster implements IModMob, RangedAttackMob
 	}
 
 	@Override
-	public void performRangedAttack(LivingEntity target, float distanceFactor)
+	public void performRangedAttack(LivingEntity target, float distance)
 	{
-		if (ModConfigs.cachedServer.LICH_SUMMON_VEX && distanceFactor < 0.5F && this.getRandom().nextInt(4) > this.level.getNearbyEntities(Vex.class, VEX_COUNT_TARGETING, this, this.getBoundingBox().inflate(16.0D)).size())
+		if (ModConfigs.cachedServer.LICH_SUMMON_VEX && distance < 0.5F && this.getRandom().nextInt(4) > this.level.getNearbyEntities(Vex.class, VEX_COUNT_TARGETING, this, this.getBoundingBox().inflate(16.0D)).size())
 		{
 			ServerLevel serverlevel = (ServerLevel)this.level;
 
@@ -117,12 +117,12 @@ public class LichEntity extends Monster implements IModMob, RangedAttackMob
 			double d2 = target.getY() + target.getEyeHeight() * 0.5D - this.getY(0.5D);
 			double d3 = target.getZ() - this.getZ();
 			double d4 = Math.sqrt(d1 * d1 + d3 * d3) * 0.05D;
-			MagicBulletEntity mugicbulletentity = new MagicBulletEntity(this.level, this, d1 + this.getRandom().nextGaussian() * d4, d2, d3 + this.getRandom().nextGaussian() * d4);
-			mugicbulletentity.setPos(mugicbulletentity.getX(), this.getY(0.5D) + 0.25D, mugicbulletentity.getZ());
-			mugicbulletentity.setDamage(6.0F);
-			mugicbulletentity.setEffectLevel((byte)1);
-			mugicbulletentity.setVariant(0);
-			this.level.addFreshEntity(mugicbulletentity);
+			MagicBulletEntity bullet= new MagicBulletEntity(this.level, this, d1 + this.getRandom().nextGaussian() * d4, d2, d3 + this.getRandom().nextGaussian() * d4);
+			bullet.setPos(bullet.getX(), this.getY(0.5D) + 0.25D, bullet.getZ());
+			bullet.setDamage(6.0F);
+			bullet.setEffectLevel((byte)1);
+			bullet.setVariant(0);
+			this.level.addFreshEntity(bullet);
 			this.playSound(SoundEvents.BLAZE_SHOOT, 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
 			this.swing(InteractionHand.MAIN_HAND);
 		}

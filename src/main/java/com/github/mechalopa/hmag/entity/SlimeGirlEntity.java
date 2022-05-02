@@ -10,22 +10,16 @@ import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.entity.goal.LeapAtTargetGoal2;
 import com.github.mechalopa.hmag.registry.ModEntityTypes;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.Entity;
+import net.minecraft.client.renderer.EffectInstance;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.entity.EntitySize;
-import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ILivingEntityData;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MobEntity;
-import net.minecraft.entity.Pose;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.HurtByTargetGoal;
 import net.minecraft.entity.ai.goal.LookAtGoal;
 import net.minecraft.entity.ai.goal.LookRandomlyGoal;
-import net.minecraft.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
 import net.minecraft.entity.monster.MonsterEntity;
@@ -36,22 +30,26 @@ import net.minecraft.network.IPacket;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.fml.network.NetworkHooks;
+import net.minecraftforge.network.NetworkHooks;
 
 public class SlimeGirlEntity extends MonsterEntity implements IModMob
 {
@@ -152,9 +150,9 @@ public class SlimeGirlEntity extends MonsterEntity implements IModMob
 
 		if (this.isAlive() && ModConfigs.cachedServer.SLIME_GIRL_REGEN)
 		{
-			if (this.isInWaterOrRain() && !this.hasEffect(Effects.REGENERATION))
+			if (this.isInWaterRainOrBubble() && !this.hasEffect(MobEffects.REGENERATION))
 			{
-				this.addEffect(new EffectInstance(Effects.REGENERATION, 10 * 20, 2));
+				this.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 10 * 20, 2));
 			}
 		}
 	}
@@ -202,14 +200,14 @@ public class SlimeGirlEntity extends MonsterEntity implements IModMob
 			ITextComponent itextcomponent = this.getCustomName();
 			boolean flag = this.isNoAi();
 			int i = 2;
-			float f = (float)i / 4.0F;
+			float f = i / 4.0F;
 			int j = i / 2;
 			int k = 2 + this.getRandom().nextInt(3);
 
 			for (int l = 0; l < k; ++l)
 			{
-				float f1 = ((float)(l % 2) - 0.5F) * f;
-				float f2 = ((float)(l / 2) - 0.5F) * f;
+				float f1 = (l % 2 - 0.5F) * f;
+				float f2 = (l / 2 - 0.5F) * f;
 				MagicalSlimeEntity slimeentity = ModEntityTypes.MAGICAL_SLIME.get().create(this.level);
 
 				if (this.isPersistenceRequired())
@@ -390,7 +388,7 @@ public class SlimeGirlEntity extends MonsterEntity implements IModMob
 			int i = (colorIn & 16711680) >> 16;
 			int j = (colorIn & '\uff00') >> 8;
 			int k = (colorIn & 255) >> 0;
-			this.colors = new float[]{(float)i / 255.0F, (float)j / 255.0F, (float)k / 255.0F};
+			this.colors = new float[]{i / 255.0F, j / 255.0F, k / 255.0F};
 		}
 
 		public int getId()
