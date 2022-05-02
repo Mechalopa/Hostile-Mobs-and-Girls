@@ -26,7 +26,7 @@ public class MagicalSlimeEntity extends SlimeEntity implements IModMob
 {
 	private static final DataParameter<Integer> DATA_VARIANT_ID = EntityDataManager.defineId(MagicalSlimeEntity.class, DataSerializers.INT);
 
-	public MagicalSlimeEntity(EntityType<? extends SlimeEntity> type, World worldIn)
+	public MagicalSlimeEntity(EntityType<? extends MagicalSlimeEntity> type, World worldIn)
 	{
 		super(type, worldIn);
 	}

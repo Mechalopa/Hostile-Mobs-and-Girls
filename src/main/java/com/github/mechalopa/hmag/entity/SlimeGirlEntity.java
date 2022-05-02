@@ -152,7 +152,7 @@ public class SlimeGirlEntity extends MonsterEntity implements IModMob
 
 		if (this.isAlive() && ModConfigs.cachedServer.SLIME_GIRL_REGEN)
 		{
-			if (this.isInWaterOrRain() && !this.hasEffect(Effects.REGENERATION))
+			if (this.isInWaterRainOrBubble() && !this.hasEffect(Effects.REGENERATION))
 			{
 				this.addEffect(new EffectInstance(Effects.REGENERATION, 10 * 20, 2));
 			}

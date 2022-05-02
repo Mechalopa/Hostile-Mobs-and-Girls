@@ -84,7 +84,7 @@ public class ArurauneEntity extends MonsterEntity implements IModMob, IRangedAtt
 
 		if (this.isAlive() && ModConfigs.cachedServer.ARURAUNE_REGEN)
 		{
-			if (this.isInWaterOrRain() && !this.hasEffect(Effects.REGENERATION))
+			if (this.isInWaterRainOrBubble() && !this.hasEffect(Effects.REGENERATION))
 			{
 				this.addEffect(new EffectInstance(Effects.REGENERATION, 10 * 20, 2));
 			}
