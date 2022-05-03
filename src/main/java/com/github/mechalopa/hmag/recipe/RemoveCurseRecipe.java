@@ -12,6 +12,8 @@ import com.google.gson.JsonObject;
 
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.Container;
+import net.minecraft.world.inventory.AnvilMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -19,6 +21,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.UpgradeRecipe;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
 public class RemoveCurseRecipe extends UpgradeRecipe
@@ -32,12 +35,12 @@ public class RemoveCurseRecipe extends UpgradeRecipe
 	}
 
 	@Override
-	public boolean matches(IInventory inv, World worldIn)
+	public boolean matches(Container inv, Level level)
 	{
 		ItemStack stack = inv.getItem(0);
 		ItemStack stack1 = inv.getItem(1);
 
-		if (!stack.isEmpty() && !stack1.isEmpty() && stack1.getItem() != null && ModTags.checkTagContains(ModTags.CURSE_REMOVE_ITEMS, stack1.getItem()) && !ModTags.checkTagContains(ModTags.CURSE_REMOVABLE_BLACKLIST, stack.getItem()))
+		if (!stack.isEmpty() && !stack1.isEmpty() && stack1.getItem() != null && stack1.is(ModTags.CURSE_REMOVE_ITEMS) && !stack.is(ModTags.CURSE_REMOVABLE_BLACKLIST))
 		{
 			Map<Enchantment, Integer> map = EnchantmentHelper.getEnchantments(stack);
 
@@ -56,7 +59,7 @@ public class RemoveCurseRecipe extends UpgradeRecipe
 	}
 
 	@Override
-	public ItemStack assemble(IInventory inv)
+	public ItemStack assemble(Container inv)
 	{
 		ItemStack stack = inv.getItem(0);
 		ItemStack stack1 = stack.copy();
@@ -82,7 +85,7 @@ public class RemoveCurseRecipe extends UpgradeRecipe
 
 		for (int i = 0; i < map.size(); ++i)
 		{
-			stack1.setRepairCost(RepairContainer.calculateIncreasedRepairCost(stack.getBaseRepairCost()));
+			stack1.setRepairCost(AnvilMenu.calculateIncreasedRepairCost(stack.getBaseRepairCost()));
 		}
 
 		return stack1;

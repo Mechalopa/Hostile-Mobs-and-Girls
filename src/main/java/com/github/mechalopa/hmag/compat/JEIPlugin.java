@@ -16,20 +16,21 @@ import com.google.common.collect.Lists;
 
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
-import mezz.jei.api.constants.VanillaRecipeCategoryUid;
+import mezz.jei.api.constants.RecipeTypes;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.UpgradeRecipe;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.tags.ITag;
 
 @JeiPlugin
 public class JEIPlugin implements IModPlugin
@@ -64,9 +65,8 @@ public class JEIPlugin implements IModPlugin
 				Items.SHULKER_BOX,
 				Items.DIAMOND);
 
-		@SuppressWarnings("resource")
 		Iterable<Recipe<?>> recipes = Minecraft.getInstance().level.getRecipeManager().getRecipes();
-		List<SmithingRecipe> smithingRecipes = new ArrayList<SmithingRecipe>();
+		List<UpgradeRecipe> smithingRecipes = new ArrayList<UpgradeRecipe>();
 		boolean flag = false;
 		boolean flag1 = false;
 
@@ -104,8 +104,8 @@ public class JEIPlugin implements IModPlugin
 									if (!stacks.isEmpty())
 									{
 										ResourceLocation resourcelocation = new ResourceLocation(HMaG.MODID, "jei." + recipe.getId().getPath() + "." + enchantment.getRegistryName().getNamespace() + "." + enchantment.getRegistryName().getPath());
-										SmithingRecipe smithingRecipe = new SmithingRecipe(resourcelocation, Ingredient.of(stacks.stream()), ingredient, stack1);
-										smithingRecipes.add(smithingRecipe);
+										UpgradeRecipe recipe1 = new UpgradeRecipe(resourcelocation, Ingredient.of(stacks.stream()), ingredient, stack1);
+										smithingRecipes.add(recipe1);
 									}
 								}
 							}
@@ -115,16 +115,17 @@ public class JEIPlugin implements IModPlugin
 				else if (recipe instanceof EnchantmentUpgradeRecipe && !flag1)
 				{
 					flag1 = true;
-					final List<Item> items1 = ModTags.getTagAllElements(ModTags.ENCHANTMENT_UPGRADE_ITEMS);
+					Ingredient ingredient = Ingredient.of(ModTags.ENCHANTMENT_UPGRADE_ITEMS);
 
-					if (!items1.isEmpty())
+					if (!ingredient.isEmpty())
 					{
 						int i = 0;
 
-						for (Item item : items1)
+						for (ItemStack stack : ingredient.getItems())
 						{
-							if (item != null && item instanceof EnchantmentUpgradeItem)
+							if (stack != null && !stack.isEmpty() && stack.getItem() != null && stack.getItem() instanceof EnchantmentUpgradeItem)
 							{
+								Item item = stack.getItem();
 								final List<EnchantmentUpgradeProp> eups = ((EnchantmentUpgradeItem)item).getEnchantmentUpgradeProps();
 
 								if (!eups.isEmpty())
@@ -157,8 +158,8 @@ public class JEIPlugin implements IModPlugin
 														}
 
 														EnchantmentHelper.setEnchantments(ImmutableMap.of(enchantment, k + 1), stack3);
-														SmithingRecipe smithingRecipe = new SmithingRecipe(resourcelocation, Ingredient.of(stack2), Ingredient.of(item), stack3);
-														smithingRecipes.add(smithingRecipe);
+														UpgradeRecipe recipe2 = new UpgradeRecipe(resourcelocation, Ingredient.of(stack2), Ingredient.of(item), stack3);
+														smithingRecipes.add(recipe2);
 													}
 
 													++j;
@@ -174,36 +175,6 @@ public class JEIPlugin implements IModPlugin
 					}
 				}
 
-/*				else if (recipe instanceof EnchantmentUpgradeRecipe)
-				{
-					EnchantmentUpgradeRecipe enchantmentUpgradeRecipe = (EnchantmentUpgradeRecipe)recipe;
-					Enchantment enchantment = enchantmentUpgradeRecipe.getEnchantment();
-
-					if (enchantment != null)
-					{
-						ItemStack stack1 = getEnchantableItemStack(registration, items, enchantment);
-
-						if (!stack1.isEmpty())
-						{
-							for (int i = enchantmentUpgradeRecipe.getMinLevel(); i <= enchantmentUpgradeRecipe.getMaxLevel(); ++i)
-							{
-								ResourceLocation resourcelocation = new ResourceLocation(HMaG.MODID, "jei." + enchantmentUpgradeRecipe.getId().getPath() + "." + i);
-								ItemStack stack2 = stack1.copy();
-								ItemStack stack3 = stack1.copy();
-
-								if (i > 0)
-								{
-									EnchantmentHelper.setEnchantments(ImmutableMap.of(enchantment, i), stack2);
-								}
-
-								EnchantmentHelper.setEnchantments(ImmutableMap.of(enchantment, i + 1), stack3);
-								SmithingRecipe smithingRecipe = new SmithingRecipe(resourcelocation, Ingredient.of(stack2), enchantmentUpgradeRecipe.getAddition(), stack3);
-								smithingRecipes.add(smithingRecipe);
-							}
-						}
-					}
-				}*/
-
 				if (flag && flag1)
 				{
 					break;
@@ -211,26 +182,26 @@ public class JEIPlugin implements IModPlugin
 			}
 		}
 
-		registration.addRecipes(smithingRecipes, VanillaRecipeCategoryUid.SMITHING);
+		registration.addRecipes(RecipeTypes.SMITHING, smithingRecipes);
 	}
 
-	private static ItemStack getEnchantableItemStack(IRecipeRegistration registration, List<Item> list, Enchantment enchantment, ITag<Item> blacklist)
+	private static ItemStack getEnchantableItemStack(IRecipeRegistration registration, List<Item> list, Enchantment enchantment, TagKey<Item> blacklist)
 	{
 		for (Item item : list)
 		{
 			ItemStack stack = new ItemStack(item);
 
-			if (enchantment.canEnchant(stack) && !ModTags.checkTagContains(blacklist, item))
+			if (enchantment.canEnchant(stack) && !stack.is(blacklist))
 			{
 				return stack;
 			}
 		}
 
-		Collection<ItemStack> stacks = registration.getIngredientManager().getAllIngredients(VanillaTypes.ITEM);
+		Collection<ItemStack> stacks = registration.getIngredientManager().getAllIngredients(VanillaTypes.ITEM_STACK);
 
 		for (ItemStack stack2 : stacks)
 		{
-			if (!stack2.isEmpty() && stack2.getItem() != Items.ENCHANTED_BOOK && enchantment.canEnchant(stack2) && !ModTags.checkTagContains(blacklist, stack2.getItem()))
+			if (!stack2.isEmpty() && stack2.getItem() != Items.ENCHANTED_BOOK && enchantment.canEnchant(stack2) && !stack2.is(blacklist))
 			{
 				return stack2;
 			}

@@ -14,7 +14,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class ModLootModifiers
 {
-	private static final DeferredRegister<GlobalLootModifierSerializer<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.LOOT_MODIFIER_SERIALIZERS, HMaG.MODID);
+	private static final DeferredRegister<GlobalLootModifierSerializer<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.Keys.LOOT_MODIFIER_SERIALIZERS, HMaG.MODID);
 
 	public static final RegistryObject<GlobalLootModifierSerializer<?>> ADDITIONAL_ENTITY_LOOT = REGISTRY.register("additional_entity_loot", () -> new AdditionalEntityLootModifier.Serializer());
 	public static final RegistryObject<GlobalLootModifierSerializer<?>> REPLACE_LOOT = REGISTRY.register("replace_loot", () -> new ReplaceLootModifier.Serializer());

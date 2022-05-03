@@ -79,20 +79,20 @@ public class DrownedGirlEntity extends Drowned implements IModMob
 	}
 
 	@SuppressWarnings("deprecation")
-	public static boolean checkDrownedGirlSpawnRules(EntityType<Drowned> type, ServerLevelAccessor worldIn, MobSpawnType spawnType, BlockPos pos, Random randomIn)
+	public static boolean checkDrownedGirlSpawnRules(EntityType<DrownedGirlEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, Random randomIn)
 	{
-		if (!worldIn.getFluidState(pos.below()).is(FluidTags.WATER))
+		if (!levelAccessor.getFluidState(pos.below()).is(FluidTags.WATER))
 		{
 			return false;
 		}
 		else
 		{
-			Holder<Biome> holder = worldIn.getBiome(pos);
-			boolean flag = worldIn.getDifficulty() != Difficulty.PEACEFUL && isDarkEnoughToSpawn(worldIn, pos, randomIn) && (spawnType == MobSpawnType.SPAWNER || worldIn.getFluidState(pos).is(FluidTags.WATER));
+			Holder<Biome> holder = levelAccessor.getBiome(pos);
+			boolean flag = levelAccessor.getDifficulty() != Difficulty.PEACEFUL && isDarkEnoughToSpawn(levelAccessor, pos, randomIn) && (spawnType == MobSpawnType.SPAWNER || levelAccessor.getFluidState(pos).is(FluidTags.WATER));
 
 			if (!holder.is(Biomes.RIVER) && !holder.is(Biomes.FROZEN_RIVER))
 			{
-				return randomIn.nextInt(40) == 0 && (pos.getY() < worldIn.getSeaLevel() - 5) && flag;
+				return randomIn.nextInt(40) == 0 && (pos.getY() < levelAccessor.getSeaLevel() - 5) && flag;
 			}
 			else
 			{

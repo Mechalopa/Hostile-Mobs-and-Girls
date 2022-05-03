@@ -10,12 +10,16 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.GsonHelper;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.Deserializers;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -23,10 +27,10 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class AdditionalEntityLootModifier extends LootModifier
 {
 	private static final Gson GSON = Deserializers.createFunctionSerializer().create();
-	private final ILootFunction[] functions;
+	private final LootItemFunction[] functions;
 	private final Item addition;
 
-	public AdditionalEntityLootModifier(ILootCondition[] conditionsIn, ILootFunction[] functions, Item addition)
+	public AdditionalEntityLootModifier(LootItemCondition[] conditionsIn, LootItemFunction[] functions, Item addition)
 	{
 		super(conditionsIn);
         this.functions = functions;
@@ -37,7 +41,7 @@ public class AdditionalEntityLootModifier extends LootModifier
 	@Override
 	public List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context)
 	{
-		Entity entity = context.getParamOrNull(LootParameters.THIS_ENTITY);
+		Entity entity = context.getParamOrNull(LootContextParams.THIS_ENTITY);
 
 		if (entity != null && entity instanceof LivingEntity && this.addition != null)
 		{
@@ -45,7 +49,7 @@ public class AdditionalEntityLootModifier extends LootModifier
 			{
 				ItemStack stack = this.addition.getDefaultInstance();
 
-				for (ILootFunction function : this.functions)
+				for (LootItemFunction function : this.functions)
 				{
 					stack = function.apply(stack, context);
 				}
@@ -60,10 +64,10 @@ public class AdditionalEntityLootModifier extends LootModifier
 	public static class Serializer extends GlobalLootModifierSerializer<AdditionalEntityLootModifier>
 	{
 		@Override
-		public AdditionalEntityLootModifier read(ResourceLocation name, JsonObject object, ILootCondition[] conditionsIn)
+		public AdditionalEntityLootModifier read(ResourceLocation name, JsonObject object, LootItemCondition[] conditionsIn)
 		{
-	        ILootFunction[] functions = object.has("functions") ? GSON.fromJson(object.get("functions"), ILootFunction[].class) : new ILootFunction[0];
-			Item addition = ForgeRegistries.ITEMS.getValue(new ResourceLocation((JSONUtils.getAsString(object, "addition"))));
+			LootItemFunction[] functions = object.has("functions") ? GSON.fromJson(object.get("functions"), LootItemFunction[].class) : new LootItemFunction[0];
+			Item addition = ForgeRegistries.ITEMS.getValue(new ResourceLocation((GsonHelper.getAsString(object, "addition"))));
 			return new AdditionalEntityLootModifier(conditionsIn, functions, addition);
 		}
 

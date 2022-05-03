@@ -6,6 +6,7 @@ import com.github.mechalopa.hmag.item.ModBowItem;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.event.FOVModifierEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -14,7 +15,7 @@ import net.minecraftforge.fml.common.Mod;
 public class ModClientEvents
 {
 	@SubscribeEvent
-	public void onFOVUpdate(FOVUpdateEvent event)
+	public void onFOVUpdate(FOVModifierEvent event)
 	{
 		if (event.getEntity() != null)
 		{

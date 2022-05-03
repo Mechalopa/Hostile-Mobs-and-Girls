@@ -3,16 +3,23 @@ package com.github.mechalopa.hmag.recipe;
 import javax.annotation.Nonnull;
 
 import com.github.mechalopa.hmag.registry.ModRecipes;
-import com.github.mechalopa.hmag.util.ModTags;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 
+import net.minecraft.core.Registry;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.util.GsonHelper;
+import net.minecraft.world.inventory.CraftingContainer;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.ShapedRecipe;
-import net.minecraftforge.registries.tags.ITag;
+import net.minecraft.world.level.Level;
 
 public class ItemTagShapedRecipe extends ShapedRecipe
 {
@@ -22,7 +29,7 @@ public class ItemTagShapedRecipe extends ShapedRecipe
 	}
 
 	@Override
-	public boolean matches(CraftingInventory inv, World worldIn)
+	public boolean matches(CraftingContainer inv, Level level)
 	{
 		if (this.getResultItem().isEmpty())
 		{
@@ -30,7 +37,7 @@ public class ItemTagShapedRecipe extends ShapedRecipe
 		}
 		else
 		{
-			return super.matches(inv, worldIn);
+			return super.matches(inv, level);
 		}
 	}
 
@@ -46,38 +53,39 @@ public class ItemTagShapedRecipe extends ShapedRecipe
 		return ModRecipes.CRAFTING_ITEM_TAG_SHAPED.get();
 	}
 
-	public static class Serializer extends ShapedRecipe.Serializer
+	public static class Serializer extends net.minecraft.world.item.crafting.ShapedRecipe.Serializer
 	{
 		@Override
 		public ItemTagShapedRecipe fromJson(ResourceLocation recipeId, JsonObject json)
 		{
-			JsonObject json2 = JSONUtils.getAsJsonObject(json, "result");
+			JsonObject json2 = GsonHelper.getAsJsonObject(json, "result");
 			json2.addProperty("item", Items.DIRT.getRegistryName().toString());
-			ResourceLocation resourcelocation = new ResourceLocation(JSONUtils.getAsString(json2, "tag"));
-			ITag<Item> itag = TagCollectionManager.getInstance().getItems().getTag(resourcelocation);
+			ResourceLocation resourcelocation = new ResourceLocation(GsonHelper.getAsString(json2, "tag"));
+			TagKey<Item> tagKey = TagKey.create(Registry.ITEM_REGISTRY, resourcelocation);
 
-			if (itag == null)
+			if (tagKey == null)
 			{
 				throw new JsonSyntaxException("Unknown item tag '" + resourcelocation + "'");
 			}
 
-			final Item item = ModTags.getItem(itag);
+			final Ingredient.Value tagValue = new Ingredient.TagValue(tagKey);
+			ItemStack stack = tagValue.getItems().stream().findFirst().orElse(ItemStack.EMPTY);
 
-			if (item != null)
+			if (!stack.isEmpty())
 			{
-				ItemStack stack = ShapedRecipe.itemFromJson(JSONUtils.getAsJsonObject(json, "result"));
+				ItemStack stack1 = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "result"));
 
-				if (stack != null && !stack.isEmpty())
+				if (stack1 != null && !stack1.isEmpty())
 				{
-					ItemStack stack1 = new ItemStack(item, stack.getCount());
-					CompoundNBT compoundnbt = stack.getTag();
+					ItemStack stack2 = new ItemStack(stack.getItem(), stack1.getCount());
+					CompoundTag compound = stack1.getTag();
 
-					if (compoundnbt != null)
+					if (compound != null)
 					{
-						stack1.setTag(compoundnbt.copy());
+						stack2.setTag(compound.copy());
 					}
 
-					return new ItemTagShapedRecipe(super.fromJson(recipeId, json), stack1);
+					return new ItemTagShapedRecipe(super.fromJson(recipeId, json), stack2);
 				}
 			}
 

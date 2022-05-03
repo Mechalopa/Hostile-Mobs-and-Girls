@@ -38,8 +38,8 @@ import net.minecraft.world.entity.monster.Strider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.SmallFireball;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.BaseFireBlock;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
@@ -151,7 +151,7 @@ public class MeltyMonsterEntity extends Monster implements IModMob, RangedAttack
 		this.playSound(SoundEvents.BLAZE_SHOOT, 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
 	}
 
-	public static boolean checkMeltyMonsterSpawnRules(EntityType<MeltyMonsterEntity> type, LevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, Random randomIn)
+	public static boolean checkMeltyMonsterSpawnRules(EntityType<MeltyMonsterEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, Random randomIn)
 	{
 		BlockPos.MutableBlockPos blockpos$mutable = pos.mutable();
 
