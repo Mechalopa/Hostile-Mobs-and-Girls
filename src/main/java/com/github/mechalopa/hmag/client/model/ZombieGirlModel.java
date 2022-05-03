@@ -36,42 +36,6 @@ public class ZombieGirlModel<T extends Zombie> extends AbstractGirlModel<T>
 		this.tailHair3 = this.tailHair3.getChild("tail_hair_3");
 		this.tailHair4 = this.tailHair4.getChild("tail_hair_4");
 		this.ahoge = this.head.getChild("ahoge");
-
-//		if (!isArmor)
-//		{
-//			this.clothPart = new ModelRenderer(this, 32, 48);
-//			this.clothPart.addBox(-3.0F, 0.0F, -1.5F, 6.0F, 3.0F, 3.0F, modelSize);
-//			this.clothPart.setPos(0.0F, 7.0F, 0.0F);
-//			this.body.addChild(this.clothPart);
-//			this.skirt1 = new ModelRenderer(this, 0, 38);
-//			this.skirt1.addBox(-3.5F, 0.0F, -2.0F, 7.0F, 1.0F, 4.0F, modelSize);
-//			this.skirt1.setPos(0.0F, 11.0F, 0.0F);
-//			this.body.addChild(this.skirt1);
-//			this.skirt2 = new ModelRenderer(this, 0, 44);
-//			this.skirt2.addBox(-4.0F, 0.0F, -2.5F, 8.0F, 6.0F, 5.0F, modelSize);
-//			this.skirt2.setPos(0.0F, 12.0F, 0.0F);
-//			this.body.addChild(this.skirt2);
-//			this.tailHair1 = new ModelRenderer(this, 0, 56);
-//			this.tailHair1.addBox(-1.0F, -1.0F, 0.0F, 2.0F, 4.0F, 2.0F, modelSize);
-//			this.tailHair1.setPos(0.0F, -7.0F, 4.0F);
-//			this.head.addChild(this.tailHair1);
-//			this.tailHair2 = new ModelRenderer(this, 8, 56);
-//			this.tailHair2.addBox(-1.0F, -0.5F, 0.0F, 2.0F, 5.0F, 2.0F, modelSize + 0.001F);
-//			this.tailHair2.setPos(0.0F, 3.0F, 0.0F);
-//			this.tailHair1.addChild(this.tailHair2);
-//			this.tailHair3 = new ModelRenderer(this, 8, 56);
-//			this.tailHair3.addBox(-1.0F, -0.5F, 0.0F, 2.0F, 5.0F, 2.0F, modelSize - 0.25F);
-//			this.tailHair3.setPos(0.0F, 4.25F, 0.0F);
-//			this.tailHair2.addChild(this.tailHair3);
-//			this.tailHair4 = new ModelRenderer(this, 16, 56);
-//			this.tailHair4.addBox(-0.5F, -0.5F, 0.0F, 1.0F, 4.0F, 1.0F, modelSize);
-//			this.tailHair4.setPos(0.0F, 4.5F, 0.5F);
-//			this.tailHair3.addChild(this.tailHair4);
-//			this.ahoge = new ModelRenderer(this, 16, 32);
-//			this.ahoge.addBox(-2.5F, -4.0F, 0.0F, 5.0F, 4.0F, 1.0F, modelSize - 0.25F);
-//			this.ahoge.setPos(0.0F, -7.75F, 0.0F);
-//			this.head.addChild(this.ahoge);
-//		}
 	}
 
 	public static MeshDefinition createMesh(CubeDeformation cd, float yOffset)
@@ -105,29 +69,26 @@ public class ZombieGirlModel<T extends Zombie> extends AbstractGirlModel<T>
 
 		this.clothPart.xRot = 0.0F;
 
-//		if (!this.isArmor)
-//		{
-			if (this.riding)
-			{
-				this.skirt2.xRot = -((float)Math.PI * 2.0F / 5.0F);
-			}
-			else
-			{
-				this.skirt2.xRot = this.body.xRot;
-			}
+		if (this.riding)
+		{
+			this.skirt2.xRot = -((float)Math.PI * 2.0F / 5.0F);
+		}
+		else
+		{
+			this.skirt2.xRot = this.body.xRot;
+		}
 
-			this.tailHair1.xRot = (float)Math.PI / 8.0F;
-			this.tailHair1.xRot += Mth.sin(ageInTicks * 0.03F) * 0.09F;
-			this.tailHair2.xRot = -((float)Math.PI / 18.0F);
-			this.tailHair2.xRot += Mth.sin(ageInTicks * 0.03F + (float)Math.PI / 12.0F) * 0.045F;
-			this.tailHair3.xRot = -((float)Math.PI / 18.0F);
-			this.tailHair3.xRot += Mth.sin(ageInTicks * 0.03F + (float)Math.PI / 6.0F) * 0.03F;
-			this.tailHair4.xRot = -((float)Math.PI / 24.0F);
-			this.tailHair4.xRot += Mth.sin(ageInTicks * 0.03F + (float)Math.PI / 4.0F) * 0.015F;
+		this.tailHair1.xRot = (float)Math.PI / 8.0F;
+		this.tailHair1.xRot += Mth.sin(ageInTicks * 0.03F) * 0.09F;
+		this.tailHair2.xRot = -((float)Math.PI / 18.0F);
+		this.tailHair2.xRot += Mth.sin(ageInTicks * 0.03F + (float)Math.PI / 12.0F) * 0.045F;
+		this.tailHair3.xRot = -((float)Math.PI / 18.0F);
+		this.tailHair3.xRot += Mth.sin(ageInTicks * 0.03F + (float)Math.PI / 6.0F) * 0.03F;
+		this.tailHair4.xRot = -((float)Math.PI / 24.0F);
+		this.tailHair4.xRot += Mth.sin(ageInTicks * 0.03F + (float)Math.PI / 4.0F) * 0.015F;
 
-			this.ahoge.xRot = -((float)Math.PI / 12.0F);
-			this.ahoge.xRot += Mth.cos(ageInTicks * 0.03F + (float)Math.PI) * 0.09F;
-//		}
+		this.ahoge.xRot = -((float)Math.PI / 12.0F);
+		this.ahoge.xRot += Mth.cos(ageInTicks * 0.03F + (float)Math.PI) * 0.09F;
 	}
 
 	public boolean isAggressive(T entityIn)

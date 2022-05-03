@@ -26,25 +26,8 @@ public class DrownedGirlModel<T extends Zombie> extends ZombieGirlModel<T>
 	public DrownedGirlModel(ModelPart modelPart)
 	{
 		super(modelPart);
-
 		this.rightArmPart = this.rightArm.getChild("right_arm_part");
 		this.leftArmPart = this.leftArm.getChild("left_arm_part");
-
-//		this.rightArm = new ModelRenderer(this, 50, 32);
-//		this.rightArm.addBox(-1.0F, -2.0F, -1.5F, 3.0F, 12.0F, 3.0F, modelSize);
-//		this.rightArm.setPos(-5.0F, 2.0F, 0.0F);
-//		this.rightLeg = new ModelRenderer(this, 50, 48);
-//		this.rightLeg.addBox(-1.5F, 0.0F, -1.5F, 3.0F, 12.0F, 3.0F, modelSize);
-//		this.rightLeg.setPos(-1.9F, 12.0F, 0.0F);
-//
-//		this.rightArmPart = new ModelRenderer(this, 24, 56);
-//		this.rightArmPart.addBox(-1.0F, -2.0F, 0.0F, 1.0F, 4.0F, 3.0F, modelSize);
-//		this.rightArmPart.setPos(-1.0F, 2.0F, 1.5F);
-//		this.rightArm.addChild(this.rightArmPart);
-//		this.leftArmPart = new ModelRenderer(this, 40, 54);
-//		this.leftArmPart.addBox(0.0F, -2.0F, 0.0F, 1.0F, 8.0F, 2.0F, modelSize);
-//		this.leftArmPart.setPos(1.0F, 2.0F, 1.5F);
-//		this.leftArm.addChild(this.leftArmPart);
 	}
 
 	public static MeshDefinition createMesh(CubeDeformation cd, float yOffset)
