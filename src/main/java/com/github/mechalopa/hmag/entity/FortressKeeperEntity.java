@@ -48,7 +48,7 @@ import net.minecraftforge.fml.network.NetworkHooks;
 
 public class FortressKeeperEntity extends MonsterEntity implements IModMob, IRangedAttackMob
 {
-	private static final DataParameter<Byte> DATA_FLAGS_ID = EntityDataManager.defineId(SavagefangEntity.class, DataSerializers.BYTE);
+	private static final DataParameter<Byte> DATA_FLAGS_ID = EntityDataManager.defineId(FortressKeeperEntity.class, DataSerializers.BYTE);
 	private float attackAnimation;
 	private float attackAnimationO;
 	private float attackHandChangeAnimation;
