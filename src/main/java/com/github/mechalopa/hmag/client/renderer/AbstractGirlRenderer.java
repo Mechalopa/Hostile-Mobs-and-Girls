@@ -1,35 +1,35 @@
 package com.github.mechalopa.hmag.client.renderer;
 
-import com.github.mechalopa.hmag.client.renderer.layers.HeldItemLayer2;
+import com.github.mechalopa.hmag.client.renderer.layers.ItemInHandLayer2;
 
-import net.minecraft.client.renderer.entity.BipedRenderer;
-import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.client.renderer.entity.layers.HeldItemLayer;
-import net.minecraft.client.renderer.entity.layers.LayerRenderer;
-import net.minecraft.client.renderer.entity.model.BipedModel;
-import net.minecraft.entity.MobEntity;
+import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
+import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
+import net.minecraft.client.renderer.entity.layers.RenderLayer;
+import net.minecraft.world.entity.Mob;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public abstract class AbstractGirlRenderer<T extends MobEntity, M extends BipedModel<T>> extends BipedRenderer<T, M>
+public abstract class AbstractGirlRenderer<T extends Mob, M extends HumanoidModel<T>> extends HumanoidMobRenderer<T, M>
 {
-	public AbstractGirlRenderer(EntityRendererManager renderManagerIn, M modelBipedIn, float shadowSize)
+	public AbstractGirlRenderer(EntityRendererProvider.Context context, M modelIn, float shadowSize)
 	{
-		this(renderManagerIn, modelBipedIn, shadowSize, 0);
+		this(context, modelIn, shadowSize, 0);
 	}
 
-	public AbstractGirlRenderer(EntityRendererManager renderManagerIn, M modelBipedIn, float shadowSize, int heldItemTranslateX)
+	public AbstractGirlRenderer(EntityRendererProvider.Context context, M modelIn, float shadowSize, int heldItemTranslateX)
 	{
-		super(renderManagerIn, modelBipedIn, shadowSize);
-		for (LayerRenderer<T, M> layer : this.layers)
+		super(context, modelIn, shadowSize);
+		for (RenderLayer<T, M> layer : this.layers)
 		{
-			if (layer != null && layer instanceof HeldItemLayer)
+			if (layer != null && layer instanceof ItemInHandLayer)
 			{
 				this.layers.remove(layer);
 				break;
 			}
 		}
-		this.addLayer(new HeldItemLayer2<>(this, heldItemTranslateX));
+		this.addLayer(new ItemInHandLayer2<>(this, heldItemTranslateX));
 	}
 }

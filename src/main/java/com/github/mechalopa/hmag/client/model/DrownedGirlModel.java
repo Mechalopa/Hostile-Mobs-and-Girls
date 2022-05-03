@@ -6,6 +6,7 @@ import com.github.mechalopa.hmag.util.ModUtils;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
@@ -56,6 +57,11 @@ public class DrownedGirlModel<T extends Zombie> extends ZombieGirlModel<T>
 		ModClientUtils.addC(rightarmpd, cd, "right_arm_part", 24, 56, -1.0F, -2.0F, 0.0F, 1.0F, 4.0F, 3.0F, -1.0F, 2.0F, 1.5F);
 		ModClientUtils.addC(leftarmpd, cd, "left_arm_part", 40, 54, 0.0F, -2.0F, 0.0F, 1.0F, 8.0F, 2.0F, 1.0F, 2.0F, 1.5F);
 		return md;
+	}
+
+	public static LayerDefinition createBodyLayer()
+	{
+		return LayerDefinition.create(createMesh(CubeDeformation.NONE, 0.0F), 64, 64);
 	}
 
 	@Override

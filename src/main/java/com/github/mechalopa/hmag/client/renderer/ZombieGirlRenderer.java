@@ -1,35 +1,47 @@
 package com.github.mechalopa.hmag.client.renderer;
 
 import com.github.mechalopa.hmag.HMaG;
+import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.ZombieGirlModel;
 
-import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.client.renderer.entity.layers.BipedArmorLayer;
-import net.minecraft.entity.monster.ZombieEntity;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.monster.Zombie;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class ZombieGirlRenderer extends AbstractGirlRenderer<ZombieEntity, ZombieGirlModel<ZombieEntity>>
+public class ZombieGirlRenderer extends AbstractGirlRenderer<Zombie, ZombieGirlModel<Zombie>>
 {
 	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/zombie_girl.png");
 
-	public ZombieGirlRenderer(EntityRendererManager renderManagerIn)
+	public ZombieGirlRenderer(EntityRendererProvider.Context context)
 	{
-		super(renderManagerIn, new ZombieGirlModel<>(), 0.5F);
-		this.addLayer(new BipedArmorLayer<>(this, new ZombieGirlModel<>(0.5F, true), new ZombieGirlModel<>(1.0F, true)));
+		this(context, ModModelLayers.ZOMBIE_GIRL, ModModelLayers.ZOMBIE_GIRL_INNER_ARMOR, ModModelLayers.ZOMBIE_GIRL_OUTER_ARMOR);
+	}
+
+	public ZombieGirlRenderer(EntityRendererProvider.Context context, ModelLayerLocation location, ModelLayerLocation location1, ModelLayerLocation location2)
+	{
+		this(context, new ZombieGirlModel<>(context.bakeLayer(location)), new ZombieGirlModel<>(context.bakeLayer(location1)), new ZombieGirlModel<>(context.bakeLayer(location2)));
+	}
+
+	public ZombieGirlRenderer(EntityRendererProvider.Context context, ZombieGirlModel<Zombie> model, ZombieGirlModel<Zombie> model1, ZombieGirlModel<Zombie> model2)
+	{
+		super(context, model, 0.5F);
+		this.addLayer(new HumanoidArmorLayer<>(this, model1, model2));
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(ZombieEntity entityIn)
+	public ResourceLocation getTextureLocation(Zombie entityIn)
 	{
 		return TEX;
 	}
 
 	@Override
-	protected boolean isShaking(ZombieEntity entityIn)
+	protected boolean isShaking(Zombie entityIn)
 	{
-		return entityIn.isUnderWaterConverting();
+		return super.isShaking(entityIn) || entityIn.isUnderWaterConverting();
 	}
 }

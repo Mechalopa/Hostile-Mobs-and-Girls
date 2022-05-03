@@ -5,6 +5,7 @@ import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import net.minecraft.client.model.AnimationUtils;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
@@ -88,6 +89,11 @@ public class ZombieGirlModel<T extends Zombie> extends AbstractGirlModel<T>
 		ModClientUtils.addC(th3pd, cd, "tail_hair_4", 16, 56, -0.5F, -0.5F, 0.0F, 1.0F, 4.0F, 1.0F, 0.0F, 4.5F, 0.5F);
 		ModClientUtils.addC(headpd, cd, "ahoge", 16, 32, -2.5F, -4.0F, 0.0F, 5.0F, 4.0F, 1.0F, 0.0F, -7.75F, 0.0F, -0.25F);
 		return md;
+	}
+
+	public static LayerDefinition createBodyLayer()
+	{
+		return LayerDefinition.create(createMesh(CubeDeformation.NONE, 0.0F), 64, 64);
 	}
 
 	@Override

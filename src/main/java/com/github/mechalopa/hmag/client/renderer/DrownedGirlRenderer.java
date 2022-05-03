@@ -1,50 +1,43 @@
 package com.github.mechalopa.hmag.client.renderer;
 
 import com.github.mechalopa.hmag.HMaG;
+import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.DrownedGirlModel;
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Vector3f;
 
-import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.client.renderer.entity.layers.BipedArmorLayer;
-import net.minecraft.entity.monster.DrownedEntity;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.vector.Vector3f;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.monster.Zombie;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class DrownedGirlRenderer extends AbstractGirlRenderer<DrownedEntity, DrownedGirlModel<DrownedEntity>>
+public class DrownedGirlRenderer extends ZombieGirlRenderer
 {
 	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/drowned_girl.png");
 
-	public DrownedGirlRenderer(EntityRendererManager renderManagerIn)
+	public DrownedGirlRenderer(EntityRendererProvider.Context context)
 	{
-		super(renderManagerIn, new DrownedGirlModel<>(), 0.5F);
-		this.addLayer(new BipedArmorLayer<>(this, new DrownedGirlModel<>(0.5F, true), new DrownedGirlModel<>(1.0F, true)));
+		super(context, new DrownedGirlModel<>(context.bakeLayer(ModModelLayers.DROWNED_GIRL)), new DrownedGirlModel<>(context.bakeLayer(ModModelLayers.DROWNED_GIRL_INNER_ARMOR)), new DrownedGirlModel<>(context.bakeLayer(ModModelLayers.DROWNED_GIRL_OUTER_ARMOR)));
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(DrownedEntity entityIn)
+	public ResourceLocation getTextureLocation(Zombie entityIn)
 	{
 		return TEX;
 	}
 
 	@Override
-	protected void setupRotations(DrownedEntity entityLiving, MatrixStack matrixStackIn, float ageInTicks, float rotationYaw, float partialTicks)
+	protected void setupRotations(Zombie entityLiving, PoseStack poseStackIn, float ageInTicks, float rotationYaw, float partialTicks)
 	{
-		super.setupRotations(entityLiving, matrixStackIn, ageInTicks, rotationYaw, partialTicks);
+		super.setupRotations(entityLiving, poseStackIn, ageInTicks, rotationYaw, partialTicks);
 		float f = entityLiving.getSwimAmount(partialTicks);
 
 		if (f > 0.0F)
 		{
-			matrixStackIn.mulPose(Vector3f.XP.rotationDegrees(MathHelper.lerp(f, entityLiving.xRot, -10.0F - entityLiving.xRot)));
+			poseStackIn.mulPose(Vector3f.XP.rotationDegrees(Mth.lerp(f, entityLiving.getXRot(), -10.0F - entityLiving.getXRot())));
 		}
-	}
-
-	@Override
-	protected boolean isShaking(DrownedEntity entityIn)
-	{
-		return entityIn.isUnderWaterConverting();
 	}
 }

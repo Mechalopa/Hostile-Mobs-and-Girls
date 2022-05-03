@@ -772,7 +772,7 @@ public class DyssomniaEntity extends FlyingMob implements Enemy, IModMob
 					boolean flag2 = false;
 					int i = 0;
 
-					while (level.isEmptyBlock(blockpos$mutable) && blockpos$mutable.getY() > 0)
+					while (level.isEmptyBlock(blockpos$mutable) && blockpos$mutable.getY() > level.getMinBuildHeight())
 					{
 						blockpos$mutable.move(Direction.DOWN);
 						++i;

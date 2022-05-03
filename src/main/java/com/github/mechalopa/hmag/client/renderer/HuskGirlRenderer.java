@@ -1,11 +1,12 @@
 package com.github.mechalopa.hmag.client.renderer;
 
 import com.github.mechalopa.hmag.HMaG;
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.github.mechalopa.hmag.client.ModModelLayers;
+import com.mojang.blaze3d.vertex.PoseStack;
 
-import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.entity.monster.ZombieEntity;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.monster.Zombie;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -14,20 +15,20 @@ public class HuskGirlRenderer extends ZombieGirlRenderer
 {
 	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/husk_girl.png");
 
-	public HuskGirlRenderer(EntityRendererManager renderManagerIn)
+	public HuskGirlRenderer(EntityRendererProvider.Context context)
 	{
-		super(renderManagerIn);
+		super(context, ModModelLayers.HUSK_GIRL, ModModelLayers.HUSK_GIRL_INNER_ARMOR, ModModelLayers.HUSK_GIRL_OUTER_ARMOR);
 	}
 
 	@Override
-	protected void scale(ZombieEntity entityIn, MatrixStack matrixStackIn, float partialTickTime)
+	protected void scale(Zombie entityIn, PoseStack poseStackIn, float partialTickTime)
 	{
-		matrixStackIn.scale(1.0625F, 1.0625F, 1.0625F);
-		super.scale(entityIn, matrixStackIn, partialTickTime);
+		poseStackIn.scale(1.0625F, 1.0625F, 1.0625F);
+		super.scale(entityIn, poseStackIn, partialTickTime);
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(ZombieEntity entityIn)
+	public ResourceLocation getTextureLocation(Zombie entityIn)
 	{
 		return TEX;
 	}

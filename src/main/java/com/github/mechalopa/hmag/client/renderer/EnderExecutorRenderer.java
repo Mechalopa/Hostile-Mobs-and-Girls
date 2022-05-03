@@ -6,7 +6,7 @@ import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.model.EnderExecutorModel;
 import com.github.mechalopa.hmag.client.renderer.layers.EnderExecutorEyesLayer;
 import com.github.mechalopa.hmag.client.renderer.layers.EnderExecutorHeldBlockLayer;
-import com.github.mechalopa.hmag.client.renderer.layers.HeldItemLayer2;
+import com.github.mechalopa.hmag.client.renderer.layers.ItemInHandLayer2;
 import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.entity.EnderExecutorEntity;
 import com.mojang.blaze3d.matrix.MatrixStack;
@@ -40,7 +40,7 @@ public class EnderExecutorRenderer extends MobRenderer<EnderExecutorEntity, Ende
 	{
 		super(renderManagerIn, new EnderExecutorModel<>(), 0.5F);
 		this.addLayer(new EnderExecutorEyesLayer<>(this));
-		this.addLayer(new HeldItemLayer2<>(this, -1));
+		this.addLayer(new ItemInHandLayer2<>(this, -1));
 		this.addLayer(new EnderExecutorHeldBlockLayer(this));
 	}
 
