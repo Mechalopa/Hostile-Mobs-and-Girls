@@ -1,13 +1,17 @@
 package com.github.mechalopa.hmag.item;
 
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrownEnderpearl;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.SimpleFoiledItem;
+import net.minecraft.world.level.Level;
 
 public class EndlessPearlItem extends SimpleFoiledItem
 {
@@ -17,28 +21,28 @@ public class EndlessPearlItem extends SimpleFoiledItem
 	}
 
 	@Override
-	public ActionResult<ItemStack> use(World worldIn, Player playerIn, Hand handIn)
+	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand)
 	{
-		ItemStack itemstack = playerIn.getItemInHand(handIn);
-		worldIn.playSound((Player)null, playerIn.getX(), playerIn.getY(), playerIn.getZ(), SoundEvents.ENDER_PEARL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (random.nextFloat() * 0.4F + 0.8F));
-		playerIn.getCooldowns().addCooldown(this, 20);
+		ItemStack itemstack = player.getItemInHand(hand);
+		level.playSound((Player)null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENDER_PEARL_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
+		player.getCooldowns().addCooldown(this, 20);
 
-		if (!worldIn.isClientSide)
+		if (!level.isClientSide)
 		{
-			ThrownEnderpearl enderpearlentity = new ThrownEnderpearl(worldIn, playerIn);
-			enderpearlentity.setItem(new ItemStack(Items.ENDER_PEARL));
-			enderpearlentity.shootFromRotation(playerIn, playerIn.getXRot(), playerIn.getYRot(), 0.0F, 1.5F, 1.0F);
+			ThrownEnderpearl enderpearl = new ThrownEnderpearl(level, player);
+			enderpearl.setItem(new ItemStack(Items.ENDER_PEARL));
+			enderpearl.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
 
-			if (playerIn.isCrouching())
+			if (player.isCrouching())
 			{
-				enderpearlentity.setDeltaMovement(enderpearlentity.getDeltaMovement().scale(2.0F));
+				enderpearl.setDeltaMovement(enderpearl.getDeltaMovement().scale(2.0F));
 			}
 
-			worldIn.addFreshEntity(enderpearlentity);
+			level.addFreshEntity(enderpearl);
 		}
 
-		playerIn.awardStat(Stats.ITEM_USED.get(this));
+		player.awardStat(Stats.ITEM_USED.get(this));
 
-		return ActionResult.sidedSuccess(itemstack, worldIn.isClientSide());
+		return InteractionResultHolder.sidedSuccess(itemstack, level.isClientSide());
 	}
 }

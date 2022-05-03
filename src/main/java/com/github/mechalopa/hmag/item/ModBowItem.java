@@ -1,6 +1,7 @@
 package com.github.mechalopa.hmag.item;
 
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -12,6 +13,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.ForgeEventFactory;
@@ -24,7 +26,7 @@ public abstract class ModBowItem extends BowItem
 	}
 
 	@Override
-	public void releaseUsing(ItemStack stack, World world, LivingEntity livingEntity, int count)
+	public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int count)
 	{
 		if (livingEntity instanceof Player)
 		{
@@ -33,7 +35,7 @@ public abstract class ModBowItem extends BowItem
 			ItemStack stack1 = player.getProjectile(stack);
 
 			int i = this.getUseDuration(stack) - count;
-			i = ForgeEventFactory.onArrowLoose(stack, world, player, i, !stack1.isEmpty() || flag);
+			i = ForgeEventFactory.onArrowLoose(stack, level, player, i, !stack1.isEmpty() || flag);
 
 			if (i < 0)
 			{
@@ -49,22 +51,22 @@ public abstract class ModBowItem extends BowItem
 
 				float f = getPowerForTime(i);
 
-				if (!((double)f < 0.1D))
+				if (!(f < 0.1D))
 				{
 					boolean flag1 = player.getAbilities().instabuild || (stack1.getItem() instanceof ArrowItem && ((ArrowItem)stack1.getItem()).isInfinite(stack1, stack, player));
 
-					if (!world.isClientSide)
+					if (!level.isClientSide)
 					{
-						AbstractArrow abstractarrowentity = this.createArrow(world, stack1, stack, player, f, flag1);
+						AbstractArrow abstractarrowentity = this.createArrow(level, stack1, stack, player, f, flag1);
 
 						stack.hurtAndBreak(1, player, (p) -> {
 							p.broadcastBreakEvent(player.getUsedItemHand());
 						});
 
-						world.addFreshEntity(abstractarrowentity);
+						level.addFreshEntity(abstractarrowentity);
 					}
 
-					world.playSound((Player)null, player.getX(), player.getY(), player.getZ(), SoundEvents.ARROW_SHOOT, SoundCategory.PLAYERS, 1.0F, 1.0F / (random.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+					level.playSound((Player)null, player.getX(), player.getY(), player.getZ(), SoundEvents.ARROW_SHOOT,  SoundSource.PLAYERS, 1.0F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + f * 0.5F);
 
 					if (!flag1 && !player.getAbilities().instabuild)
 					{
@@ -82,43 +84,43 @@ public abstract class ModBowItem extends BowItem
 		}
 	}
 
-	protected AbstractArrow createArrow(World world, ItemStack arrowStack, ItemStack bowStack, Player player, float power, boolean flag)
+	protected AbstractArrow createArrow(Level level, ItemStack arrowStack, ItemStack bowStack, Player player, float power, boolean flag)
 	{
 		ArrowItem arrowitem = (ArrowItem)(arrowStack.getItem() instanceof ArrowItem ? arrowStack.getItem() : Items.ARROW);
-		AbstractArrow abstractarrowentity = this.customArrow(arrowitem.createArrow(world, arrowStack, player));
-		abstractarrowentity.shootFromRotation(player, player.xRot, player.yRot, 0.0F, power * this.getArrowVelocity(bowStack, player), 1.0F);
-		abstractarrowentity.setBaseDamage(abstractarrowentity.getBaseDamage() + (double)this.getBowDamage(bowStack, player));
+		AbstractArrow arrow = this.customArrow(arrowitem.createArrow(level, arrowStack, player));
+		arrow.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, power * this.getArrowVelocity(bowStack, player), 1.0F);
+		arrow.setBaseDamage(arrow.getBaseDamage() + this.getBowDamage(bowStack, player));
 
 		if (power == 1.0F)
 		{
-			abstractarrowentity.setCritArrow(true);
+			arrow.setCritArrow(true);
 		}
 
 		int j = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.POWER_ARROWS, bowStack);
 
 		if (j > 0)
 		{
-			abstractarrowentity.setBaseDamage(abstractarrowentity.getBaseDamage() + (double)j * 0.5D + 0.5D);
+			arrow.setBaseDamage(arrow.getBaseDamage() + j * 0.5D + 0.5D);
 		}
 
 		int k = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.PUNCH_ARROWS, bowStack);
 
 		if (k > 0)
 		{
-			abstractarrowentity.setKnockback(k);
+			arrow.setKnockback(k);
 		}
 
 		if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.FLAMING_ARROWS, bowStack) > 0)
 		{
-			abstractarrowentity.setSecondsOnFire(100);
+			arrow.setSecondsOnFire(100);
 		}
 
 		if (flag || player.getAbilities().instabuild && (arrowStack.getItem() == Items.SPECTRAL_ARROW || arrowStack.getItem() == Items.TIPPED_ARROW))
 		{
-			abstractarrowentity.pickup = AbstractArrow.PickupStatus.CREATIVE_ONLY;
+			arrow.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
 		}
 
-		return abstractarrowentity;
+		return arrow;
 	}
 
 	public float getBowDamage(ItemStack stack, LivingEntity livingEntity)

@@ -6,7 +6,10 @@ import net.minecraft.Util;
 import net.minecraft.core.Position;
 import net.minecraft.core.dispenser.AbstractProjectileDispenseBehavior;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.Item;
@@ -49,27 +52,27 @@ public class ThrowableBottleItem extends ModItem
 	}
 
 	@Override
-	public ActionResult<ItemStack> use(Level worldIn, Player playerIn, Hand handIn)
+	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand)
 	{
-		ItemStack stack = playerIn.getItemInHand(handIn);
-		worldIn.playSound((Player)null, playerIn.getX(), playerIn.getY(), playerIn.getZ(), SoundEvents.EXPERIENCE_BOTTLE_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (random.nextFloat() * 0.4F + 0.8F));
-		playerIn.getCooldowns().addCooldown(this, 20);
+		ItemStack stack = player.getItemInHand(hand);
+		level.playSound((Player)null, player.getX(), player.getY(), player.getZ(), SoundEvents.EXPERIENCE_BOTTLE_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
+		player.getCooldowns().addCooldown(this, 20);
 
-		if (!worldIn.isClientSide)
+		if (!level.isClientSide)
 		{
-			ThrowableBottleEntity bottleentity = new ThrowableBottleEntity(worldIn, playerIn);
+			ThrowableBottleEntity bottleentity = new ThrowableBottleEntity(level, player);
 			bottleentity.setItem(stack);
-			bottleentity.shootFromRotation(playerIn, playerIn.getXRot(), playerIn.getYRot(), -20.0F, 0.7F, 1.0F);
-			worldIn.addFreshEntity(bottleentity);
+			bottleentity.shootFromRotation(player, player.getXRot(), player.getYRot(), -20.0F, 0.7F, 1.0F);
+			level.addFreshEntity(bottleentity);
 		}
 
-		playerIn.awardStat(Stats.ITEM_USED.get(this));
+		player.awardStat(Stats.ITEM_USED.get(this));
 
-		if (!playerIn.getAbilities().instabuild)
+		if (!player.getAbilities().instabuild)
 		{
 			stack.shrink(1);
 		}
 
-		return ActionResult.sidedSuccess(stack, worldIn.isClientSide);
+		return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
 	}
 }

@@ -1,6 +1,9 @@
 package com.github.mechalopa.hmag.item;
 
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -16,19 +19,19 @@ public class EvilThornItem extends EnchantmentUpgradeItem
 	}
 
 	@Override
-	public ActionResultType interactLivingEntity(ItemStack stack, Player player, LivingEntity entity, Hand hand)
+	public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity entity, InteractionHand hand)
 	{
 		if (!player.level.isClientSide)
 		{
 			if (entity.hurt(DamageSource.thorns(player), 1.0F))
 			{
 				player.crit(entity);
-				player.level.playSound((Player)null, player.getX(), player.getY(), player.getZ(), SoundEvents.GENERIC_HURT, SoundCategory.NEUTRAL, 0.5F, (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
+				player.level.playSound((Player)null, player.getX(), player.getY(), player.getZ(), SoundEvents.GENERIC_HURT, SoundSource.NEUTRAL, 0.5F, (player.level.getRandom().nextFloat() - player.level.getRandom().nextFloat()) * 0.2F + 1.0F);
 				stack.shrink(1);
-				return ActionResultType.SUCCESS;
+				return InteractionResult.SUCCESS;
 			}
 		}
 
-		return ActionResultType.PASS;
+		return InteractionResult.PASS;
 	}
 }

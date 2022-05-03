@@ -426,7 +426,7 @@ public class ModEvents
 				{
 					ItemStack stack1 = livingentity.getMainHandItem();
 
-					if (!stack1.isEmpty() && stack1.getItem() == ModItems.INSOMNIA_SWORD.get() && ModUtils.getLevel(stack1) > 0)
+					if (!stack1.isEmpty() && stack1.getItem() == ModItems.INSOMNIA_SWORD.get() && ModUtils.getItemLevel(stack1) > 0)
 					{
 						event.setResult(Result.DENY);
 					}
@@ -476,7 +476,7 @@ public class ModEvents
 				}
 				else if (stack.getItem() == ModItems.INSOMNIA_SWORD.get())
 				{
-					final int level1 = ModUtils.getLevel(stack);
+					final int level1 = ModUtils.getItemLevel(stack);
 
 					if (level1 > 0)
 					{
@@ -485,7 +485,7 @@ public class ModEvents
 				}
 				else if (stack.getItem() == ModItems.NEMESIS_BLADE.get())
 				{
-					final int level2 = ModUtils.getLevel(stack);
+					final int level2 = ModUtils.getItemLevel(stack);
 
 					if (level2 > 0)
 					{

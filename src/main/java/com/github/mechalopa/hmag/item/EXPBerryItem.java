@@ -15,14 +15,14 @@ public class EXPBerryItem extends Item
 	}
 
 	@Override
-	public ItemStack finishUsingItem(ItemStack stack, Level worldIn, LivingEntity livingEntity)
+	public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity)
 	{
-		ItemStack stack1 = super.finishUsingItem(stack, worldIn, livingEntity);
+		ItemStack stack1 = super.finishUsingItem(stack, level, livingEntity);
 
-		if (!worldIn.isClientSide && livingEntity instanceof Player)
+		if (!level.isClientSide && livingEntity instanceof Player)
 		{
 			Player player = (Player)livingEntity;
-            worldIn.addFreshEntity(new ExperienceOrb(worldIn, player.getX(), player.getY() - 1.0D, player.getZ(), random.nextInt(9) + 12));
+            level.addFreshEntity(new ExperienceOrb(level, player.getX(), player.getY() - 1.0D, player.getZ(), level.getRandom().nextInt(9) + 12));
 		}
 
 		return stack1;

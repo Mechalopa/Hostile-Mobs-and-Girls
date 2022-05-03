@@ -263,13 +263,13 @@ public class ModUtils
 		return PotionUtils.setPotion(new ItemStack(containerItem), potion);
 	}
 
-	public static int getLevel(ItemStack stack)
+	public static int getItemLevel(ItemStack stack)
 	{
 		CompoundTag compoundnbt = stack.getTag();
 		return compoundnbt != null && compoundnbt.contains(LEVEL_KEY) ? (int)compoundnbt.getByte(LEVEL_KEY) : 0;
 	}
 
-	public static void removeLevelTag(ItemStack stack)
+	public static void removeItemLevelTag(ItemStack stack)
 	{
 		CompoundTag compoundnbt = stack.getTag();
 

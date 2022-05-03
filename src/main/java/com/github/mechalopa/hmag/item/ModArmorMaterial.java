@@ -2,19 +2,19 @@ package com.github.mechalopa.hmag.item;
 
 import java.util.function.Supplier;
 
-import javax.swing.UIDefaults.LazyValue;
-
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.registry.ModItems;
 
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.LazyLoadedValue;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+@SuppressWarnings("deprecation")
 public enum ModArmorMaterial implements ArmorMaterial
 {
 	ANCIENT(HMaG.MODID + ":ancient", 34, new int[]{3, 6, 8, 3}, 15, SoundEvents.ARMOR_EQUIP_IRON, 2.5F, 0.05F, () -> {
@@ -32,7 +32,7 @@ public enum ModArmorMaterial implements ArmorMaterial
 	private final SoundEvent sound;
 	private final float toughness;
 	private final float knockbackResistance;
-	private final LazyValue<Ingredient> repairIngredient;
+	private final LazyLoadedValue<Ingredient> repairIngredient;
 
 	private ModArmorMaterial(String nameIn, int durabilityMultiplierIn, int[] slotProtectionsIn, int enchantmentIn, SoundEvent sound, float toughnessIn, float knockbackResistanceIn, Supplier<Ingredient> repairItems)
 	{
@@ -43,7 +43,7 @@ public enum ModArmorMaterial implements ArmorMaterial
 		this.sound = sound;
 		this.toughness = toughnessIn;
 		this.knockbackResistance = knockbackResistanceIn;
-		this.repairIngredient = new LazyValue<>(repairItems);
+		this.repairIngredient = new LazyLoadedValue<>(repairItems);
 	}
 
 	@Override
