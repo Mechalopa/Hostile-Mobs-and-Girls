@@ -65,6 +65,7 @@ public class JEIPlugin implements IModPlugin
 				Items.SHULKER_BOX,
 				Items.DIAMOND);
 
+		@SuppressWarnings("resource")
 		Iterable<Recipe<?>> recipes = Minecraft.getInstance().level.getRecipeManager().getRecipes();
 		List<UpgradeRecipe> smithingRecipes = new ArrayList<UpgradeRecipe>();
 		boolean flag = false;

@@ -18,6 +18,9 @@ import com.github.mechalopa.hmag.util.ModUtils;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -28,6 +31,8 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
@@ -35,13 +40,17 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.npc.VillagerProfession;
-import net.minecraft.world.entity.npc.VillagerTrades;
+import net.minecraft.world.entity.npc.VillagerTrades.ItemListing;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.player.Player.BedSleepingProblem;
 import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.level.biome.MobSpawnSettings.SpawnerData;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
+import net.minecraftforge.common.BasicItemListing;
 import net.minecraftforge.event.ItemAttributeModifierEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
@@ -74,7 +83,7 @@ public class ModEvents
 	private static final AttributeModifier NEMESIS_BLADE_MOVEMENT_SPEED_MODIFIER = new AttributeModifier(NEMESIS_BLADE_MOVEMENT_SPEED_UUID, "Nemesis blade move speed penalty", -0.5F, AttributeModifier.Operation.MULTIPLY_TOTAL);
 	private static final UUID ANCIENT_SHIELD_KNOCKBACK_RESISTANCE_UUID = UUID.fromString("0915B1C7-492D-2776-EFF2-436BF1072692");
 	private static final AttributeModifier ANCIENT_SHIELD_KNOCKBACK_RESISTANCE_MODIFIER = new AttributeModifier(ANCIENT_SHIELD_KNOCKBACK_RESISTANCE_UUID, "Ancient shield knockback resistance bonus", 0.05F, AttributeModifier.Operation.ADDITION);
-	private static final ITextComponent INSOMNIA_SWORD_MESSAGE = new TranslationTextComponent("message.hmag.insomnia_sword");
+	private static final Component INSOMNIA_SWORD_MESSAGE = new TranslatableComponent("message.hmag.insomnia_sword");
 
 	@SubscribeEvent
 	public void onLivingHurt(LivingHurtEvent event)
@@ -186,93 +195,93 @@ public class ModEvents
 
 			if (event.getEntityLiving() instanceof Mob)
 			{
-				Mob Mob = (Mob)event.getEntityLiving();
+				Mob mob = (Mob)event.getEntityLiving();
 
-				if (Mob.getPersistentData().getBoolean(ModUtils.WITH_SPAWN_PARTICLE_KEY))
+				if (mob.getPersistentData().getBoolean(ModUtils.WITH_SPAWN_PARTICLE_KEY))
 				{
-					Mob.spawnAnim();
-					Mob.getPersistentData().remove(ModUtils.WITH_SPAWN_PARTICLE_KEY);
+					mob.spawnAnim();
+					mob.getPersistentData().remove(ModUtils.WITH_SPAWN_PARTICLE_KEY);
 				}
 
-				if (Mob.isEffectiveAi() && Mob.getPersistentData().getBoolean(ModUtils.LIVING_UPDATE_CHECKING_KEY) && !Mob.getPersistentData().getBoolean(ModUtils.LIVING_NOT_REPLACED_KEY) && !Mob.isPersistenceRequired() && !Mob.requiresCustomPersistence() && !Mob.isVehicle() && !Mob.isPassenger())
+				if (mob.isEffectiveAi() && mob.getPersistentData().getBoolean(ModUtils.LIVING_UPDATE_CHECKING_KEY) && !mob.getPersistentData().getBoolean(ModUtils.LIVING_NOT_REPLACED_KEY) && !mob.isPersistenceRequired() && !mob.requiresCustomPersistence() && !mob.isVehicle() && !mob.isPassenger())
 				{
-					ServerWorld serverworld = (ServerWorld)event.getEntityLiving().getCommandSenderWorld();
+					ServerLevel serverlevel = (ServerLevel)event.getEntityLiving().getCommandSenderWorld();
 					final double d = event.getEntityLiving().getRandom().nextDouble();
 
-					if (ModConfigs.cachedServer.ZOMBIE_GIRL_REPLACE_CHANCE > d && ModTags.checkTagContains(ModTags.ZOMBIE_GIRL_REPLACEABLES, Mob.getType()))
+					if (ModConfigs.cachedServer.ZOMBIE_GIRL_REPLACE_CHANCE > d && mob.getType().is(ModTags.ZOMBIE_GIRL_REPLACEABLES))
 					{
-						replace(serverworld, Mob, ModEntityTypes.ZOMBIE_GIRL.get());
+						replace(serverlevel, mob, ModEntityTypes.ZOMBIE_GIRL.get());
 					}
-					else if (ModConfigs.cachedServer.HUSK_GIRL_REPLACE_CHANCE > d && ModTags.checkTagContains(ModTags.HUSK_GIRL_REPLACEABLES, Mob.getType()))
+					else if (ModConfigs.cachedServer.HUSK_GIRL_REPLACE_CHANCE > d && mob.getType().is(ModTags.HUSK_GIRL_REPLACEABLES))
 					{
-						replace(serverworld, Mob, ModEntityTypes.HUSK_GIRL.get());
+						replace(serverlevel, mob, ModEntityTypes.HUSK_GIRL.get());
 					}
-					else if (ModConfigs.cachedServer.DROWNED_GIRL_REPLACE_CHANCE > d && ModTags.checkTagContains(ModTags.DROWNED_GIRL_REPLACEABLES, Mob.getType()))
+					else if (ModConfigs.cachedServer.DROWNED_GIRL_REPLACE_CHANCE > d && mob.getType().is(ModTags.DROWNED_GIRL_REPLACEABLES))
 					{
-						replace(serverworld, Mob, ModEntityTypes.DROWNED_GIRL.get());
+						replace(serverlevel, mob, ModEntityTypes.DROWNED_GIRL.get());
 					}
-					else if (ModConfigs.cachedServer.SKELETON_GIRL_REPLACE_CHANCE > d && ModTags.checkTagContains(ModTags.SKELETON_GIRL_REPLACEABLES, Mob.getType()))
+					else if (ModConfigs.cachedServer.SKELETON_GIRL_REPLACE_CHANCE > d && mob.getType().is(ModTags.SKELETON_GIRL_REPLACEABLES))
 					{
-						replace(serverworld, Mob, ModEntityTypes.SKELETON_GIRL.get());
+						replace(serverlevel, mob, ModEntityTypes.SKELETON_GIRL.get());
 					}
-					else if (ModConfigs.cachedServer.WITHER_SKELETON_GIRL_REPLACE_CHANCE > d && ModTags.checkTagContains(ModTags.WITHER_SKELETON_GIRL_REPLACEABLES, Mob.getType()))
+					else if (ModConfigs.cachedServer.WITHER_SKELETON_GIRL_REPLACE_CHANCE > d && mob.getType().is(ModTags.WITHER_SKELETON_GIRL_REPLACEABLES))
 					{
-						replace(serverworld, Mob, ModEntityTypes.WITHER_SKELETON_GIRL.get());
+						replace(serverlevel, mob, ModEntityTypes.WITHER_SKELETON_GIRL.get());
 					}
-					else if (ModConfigs.cachedServer.STRAY_GIRL_REPLACE_CHANCE > d && ModTags.checkTagContains(ModTags.STRAY_GIRL_REPLACEABLES, Mob.getType()))
+					else if (ModConfigs.cachedServer.STRAY_GIRL_REPLACE_CHANCE > d && mob.getType().is(ModTags.STRAY_GIRL_REPLACEABLES))
 					{
-						replace(serverworld, Mob, ModEntityTypes.STRAY_GIRL.get());
+						replace(serverlevel, mob, ModEntityTypes.STRAY_GIRL.get());
 					}
-					else if (ModConfigs.cachedServer.CREEPER_GIRL_REPLACE_CHANCE > d && ModTags.checkTagContains(ModTags.CREEPER_GIRL_REPLACEABLES, Mob.getType()))
+					else if (ModConfigs.cachedServer.CREEPER_GIRL_REPLACE_CHANCE > d && mob.getType().is(ModTags.CREEPER_GIRL_REPLACEABLES))
 					{
-						replace(serverworld, Mob, ModEntityTypes.CREEPER_GIRL.get());
+						replace(serverlevel, mob, ModEntityTypes.CREEPER_GIRL.get());
 					}
-					else if (ModConfigs.cachedServer.ENDER_EXECUTOR_REPLACE_CHANCE > d && ModTags.checkTagContains(ModTags.ENDER_EXECUTOR_REPLACEABLES, Mob.getType()))
+					else if (ModConfigs.cachedServer.ENDER_EXECUTOR_REPLACE_CHANCE > d && mob.getType().is(ModTags.ENDER_EXECUTOR_REPLACEABLES))
 					{
-						replace(serverworld, Mob, ModEntityTypes.ENDER_EXECUTOR.get());
+						replace(serverlevel, mob, ModEntityTypes.ENDER_EXECUTOR.get());
 					}
 				}
 			}
 		}
 	}
 
-	private static boolean replace(ServerWorld worldIn, Mob MobIn, EntityType<?> type)
+	private static boolean replace(ServerLevel level, Mob replacementMob, EntityType<?> type)
 	{
-		if (MobIn.getType().equals(type))
+		if (replacementMob.getType().equals(type))
 		{
 			return false;
 		}
 
-		Mob Mob = createMob(worldIn, type);
+		Mob mob = createMob(level, type);
 
-		if (Mob == null)
+		if (mob == null)
 		{
 			return false;
 		}
 
-		ILivingEntityData ilivingentitydata = null;
-		Mob.copyPosition(MobIn);
-		ilivingentitydata = Mob.finalizeSpawn(worldIn, worldIn.getCurrentDifficultyAt(new BlockPos(MobIn.position())), SpawnReason.NATURAL, ilivingentitydata, (CompoundTag)null);
-		Mob.setNoAi(MobIn.isNoAi());
+		SpawnGroupData spawndata = null;
+		mob.copyPosition(replacementMob);
+		spawndata = mob.finalizeSpawn(level, level.getCurrentDifficultyAt(new BlockPos(replacementMob.position())), MobSpawnType.NATURAL, spawndata, (CompoundTag)null);
+		mob.setNoAi(replacementMob.isNoAi());
 
-		if (MobIn.hasCustomName())
+		if (replacementMob.hasCustomName())
 		{
-			Mob.setCustomName(MobIn.getCustomName());
-			Mob.setCustomNameVisible(MobIn.isCustomNameVisible());
+			mob.setCustomName(replacementMob.getCustomName());
+			mob.setCustomNameVisible(replacementMob.isCustomNameVisible());
 		}
 
-		Mob.getPersistentData().putBoolean(ModUtils.LIVING_NOT_REPLACED_KEY, true);
-		worldIn.addFreshEntityWithPassengers(Mob);
-		MobIn.remove();
+		mob.getPersistentData().putBoolean(ModUtils.LIVING_NOT_REPLACED_KEY, true);
+		level.addFreshEntityWithPassengers(mob);
+		replacementMob.discard();
 		return true;
 	}
 
 	@Nullable
-	private static Mob createMob(ServerWorld worldIn, EntityType<?> type)
+	private static Mob createMob(ServerLevel level, EntityType<?> type)
 	{
 		try
 		{
-			Entity entity = type.create(worldIn);
+			Entity entity = type.create(level);
 
 			if (!(entity instanceof Mob))
 			{
@@ -306,39 +315,39 @@ public class ModEvents
 			}
 		}
 
-		if (event.getSpawnReason() == SpawnReason.NATURAL && !ModUtils.checkDimensionList(event.getEntityLiving().getCommandSenderWorld(), ModConfigs.cachedServer.MOB_REPLACE_DIMENSION_BLACKLIST) && !ModUtils.checkBiomeList(event.getEntityLiving().getCommandSenderWorld(), event.getEntityLiving().blockPosition(), ModConfigs.cachedServer.MOB_REPLACE_BIOME_BLACKLIST))
+		if (event.getSpawnReason() == MobSpawnType.NATURAL && !ModUtils.checkDimensionList(event.getEntityLiving().getCommandSenderWorld(), ModConfigs.cachedServer.MOB_REPLACE_DIMENSION_BLACKLIST) && !ModUtils.checkBiomeList(event.getEntityLiving().getCommandSenderWorld(), event.getEntityLiving().blockPosition(), ModConfigs.cachedServer.MOB_REPLACE_BIOME_BLACKLIST))
 		{
 			LivingEntity livingentity = event.getEntityLiving();
 
-			if (ModConfigs.cachedServer.ZOMBIE_GIRL_REPLACE_CHANCE > 0.0D && ModTags.checkTagContains(ModTags.ZOMBIE_GIRL_REPLACEABLES, livingentity.getType()))
+			if (ModConfigs.cachedServer.ZOMBIE_GIRL_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.ZOMBIE_GIRL_REPLACEABLES))
 			{
 				putCheckingTag(livingentity);
 			}
-			else if (ModConfigs.cachedServer.HUSK_GIRL_REPLACE_CHANCE > 0.0D && ModTags.checkTagContains(ModTags.HUSK_GIRL_REPLACEABLES, livingentity.getType()))
+			else if (ModConfigs.cachedServer.HUSK_GIRL_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.HUSK_GIRL_REPLACEABLES))
 			{
 				putCheckingTag(livingentity);
 			}
-			else if (ModConfigs.cachedServer.DROWNED_GIRL_REPLACE_CHANCE > 0.0D && ModTags.checkTagContains(ModTags.DROWNED_GIRL_REPLACEABLES, livingentity.getType()))
+			else if (ModConfigs.cachedServer.DROWNED_GIRL_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.DROWNED_GIRL_REPLACEABLES))
 			{
 				putCheckingTag(livingentity);
 			}
-			else if (ModConfigs.cachedServer.SKELETON_GIRL_REPLACE_CHANCE > 0.0D && ModTags.checkTagContains(ModTags.SKELETON_GIRL_REPLACEABLES, livingentity.getType()))
+			else if (ModConfigs.cachedServer.SKELETON_GIRL_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.SKELETON_GIRL_REPLACEABLES))
 			{
 				putCheckingTag(livingentity);
 			}
-			else if (ModConfigs.cachedServer.WITHER_SKELETON_GIRL_REPLACE_CHANCE > 0.0D && ModTags.checkTagContains(ModTags.WITHER_SKELETON_GIRL_REPLACEABLES, livingentity.getType()))
+			else if (ModConfigs.cachedServer.WITHER_SKELETON_GIRL_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.WITHER_SKELETON_GIRL_REPLACEABLES))
 			{
 				putCheckingTag(livingentity);
 			}
-			else if (ModConfigs.cachedServer.STRAY_GIRL_REPLACE_CHANCE > 0.0D && ModTags.checkTagContains(ModTags.STRAY_GIRL_REPLACEABLES, livingentity.getType()))
+			else if (ModConfigs.cachedServer.STRAY_GIRL_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.STRAY_GIRL_REPLACEABLES))
 			{
 				putCheckingTag(livingentity);
 			}
-			else if (ModConfigs.cachedServer.CREEPER_GIRL_REPLACE_CHANCE > 0.0D && ModTags.checkTagContains(ModTags.CREEPER_GIRL_REPLACEABLES, livingentity.getType()))
+			else if (ModConfigs.cachedServer.CREEPER_GIRL_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.CREEPER_GIRL_REPLACEABLES))
 			{
 				putCheckingTag(livingentity);
 			}
-			else if (ModConfigs.cachedServer.ENDER_EXECUTOR_REPLACE_CHANCE > 0.0D && ModTags.checkTagContains(ModTags.ENDER_EXECUTOR_REPLACEABLES, livingentity.getType()))
+			else if (ModConfigs.cachedServer.ENDER_EXECUTOR_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.ENDER_EXECUTOR_REPLACEABLES))
 			{
 				putCheckingTag(livingentity);
 			}
@@ -516,7 +525,7 @@ public class ModEvents
 		{
 			if (event.getPlayer().getInventory().contains(new ItemStack(ModItems.INSOMNIA_SWORD.get())))
 			{
-				event.setResult(SleepResult.OTHER_PROBLEM);
+				event.setResult(BedSleepingProblem.OTHER_PROBLEM);
 				event.getPlayer().displayClientMessage(INSOMNIA_SWORD_MESSAGE, true);
 			}
 		}
@@ -534,11 +543,11 @@ public class ModEvents
 		{
 			if (event.getEntityItem().getItem().getItem() == ModItems.INSOMNIA_SWORD.get())
 			{
-				ModUtils.removeLevelTag(event.getEntityItem().getItem());
+				ModUtils.removeItemLevelTag(event.getEntityItem().getItem());
 			}
 			else if (event.getEntityItem().getItem().getItem() == ModItems.NEMESIS_BLADE.get())
 			{
-				ModUtils.removeLevelTag(event.getEntityItem().getItem());
+				ModUtils.removeItemLevelTag(event.getEntityItem().getItem());
 			}
 		}
 	}
@@ -550,11 +559,11 @@ public class ModEvents
 		{
 			if (event.getTo().getItem() == ModItems.INSOMNIA_SWORD.get())
 			{
-				ModUtils.removeLevelTag(event.getTo());
+				ModUtils.removeItemLevelTag(event.getTo());
 			}
 			else if (event.getTo().getItem() == ModItems.NEMESIS_BLADE.get())
 			{
-				ModUtils.removeLevelTag(event.getTo());
+				ModUtils.removeItemLevelTag(event.getTo());
 			}
 		}
 	}
@@ -566,7 +575,7 @@ public class ModEvents
 		{
 			if (event.getStructure() == StructureFeature.END_CITY)
 			{
-				event.addEntitySpawn(MobCategory.MONSTER, new MobSpawnInfo.Spawners(ModEntityTypes.MONOLITH.get(), ModConfigs.cachedServer.MONOLITH_SPAWN_WEIGHT_IN_END_CITY, 1, 2));
+				event.addEntitySpawn(MobCategory.MONSTER, new SpawnerData(ModEntityTypes.MONOLITH.get(), ModConfigs.cachedServer.MONOLITH_SPAWN_WEIGHT_IN_END_CITY, 1, 2));
 			}
 		}
 
@@ -574,7 +583,7 @@ public class ModEvents
 		{
 			if (event.getStructure() == StructureFeature.FORTRESS)
 			{
-				event.addEntitySpawn(MobCategory.MONSTER, new MobSpawnInfo.Spawners(ModEntityTypes.FORTRESS_KEEPER.get(), ModConfigs.cachedServer.FORTRESS_KEEPER_SPAWN_WEIGHT_IN_NETHER_FORTRESS, 1, 1));
+				event.addEntitySpawn(MobCategory.MONSTER, new SpawnerData(ModEntityTypes.FORTRESS_KEEPER.get(), ModConfigs.cachedServer.FORTRESS_KEEPER_SPAWN_WEIGHT_IN_NETHER_FORTRESS, 1, 1));
 			}
 		}
 	}
@@ -584,37 +593,37 @@ public class ModEvents
 	{
 		if (ModConfigs.cachedServer.ADDITIONAL_VILLAGER_TRADES && event.getType() != null)
 		{
-			Int2ObjectMap<List<VillagerTrades.ITrade>> trades = event.getTrades();
+			Int2ObjectMap<List<ItemListing>> trades = event.getTrades();
 
 			if (event.getType() == VillagerProfession.CLERIC)
 			{
-				trades.get(2).add(new BasicTrade(new ItemStack(ModItems.SOUL_POWDER.get(), 24), new ItemStack(Items.EMERALD, 1), 16, 2, 0.05F));
-				trades.get(4).add(new BasicTrade(new ItemStack(ModItems.EXP_BERRY.get(), 3), new ItemStack(Items.EMERALD, 1), 16, 15, 0.05F));
-				trades.get(4).add(new BasicTrade(new ItemStack(ModItems.SPECTRAL_SOUP.get(), 1), new ItemStack(Items.EMERALD, 1), 16, 15, 0.05F));
+				trades.get(2).add(new BasicItemListing(new ItemStack(ModItems.SOUL_POWDER.get(), 24), new ItemStack(Items.EMERALD, 1), 16, 2, 0.05F));
+				trades.get(4).add(new BasicItemListing(new ItemStack(ModItems.EXP_BERRY.get(), 3), new ItemStack(Items.EMERALD, 1), 16, 15, 0.05F));
+				trades.get(4).add(new BasicItemListing(new ItemStack(ModItems.SPECTRAL_SOUP.get(), 1), new ItemStack(Items.EMERALD, 1), 16, 15, 0.05F));
 			}
 
 			if (event.getType() == VillagerProfession.LEATHERWORKER)
 			{
-				trades.get(3).add(new BasicTrade(new ItemStack(ModItems.BAT_WING.get(), 4), new ItemStack(Items.EMERALD, 1), 16, 15, 0.05F));
+				trades.get(3).add(new BasicItemListing(new ItemStack(ModItems.BAT_WING.get(), 4), new ItemStack(Items.EMERALD, 1), 16, 15, 0.05F));
 
 				if (ModConfigs.cachedServer.KOBOLD_SPAWN_WEIGHT > 0)
 				{
-					trades.get(4).add(new BasicTrade(new ItemStack(ModItems.KOBOLD_LEATHER.get(), 4), new ItemStack(Items.EMERALD, 1), 12, 20, 0.05F));
+					trades.get(4).add(new BasicItemListing(new ItemStack(ModItems.KOBOLD_LEATHER.get(), 4), new ItemStack(Items.EMERALD, 1), 12, 20, 0.05F));
 				}
 			}
 
 			if (event.getType() == VillagerProfession.FARMER)
 			{
-				trades.get(2).add(new BasicTrade(new ItemStack(Items.EMERALD, 1), new ItemStack(ModItems.BLUEBERRY.get(), 4), 12, 4, 0.05F));
-				trades.get(2).add(new BasicTrade(new ItemStack(Items.EMERALD, 1), new ItemStack(ModItems.STRAWBERRY.get(), 4), 12, 4, 0.05F));
-				trades.get(2).add(new BasicTrade(new ItemStack(Items.EMERALD, 1), new ItemStack(ModItems.LEMON.get(), 4), 12, 4, 0.05F));
+				trades.get(2).add(new BasicItemListing(new ItemStack(Items.EMERALD, 1), new ItemStack(ModItems.BLUEBERRY.get(), 4), 12, 4, 0.05F));
+				trades.get(2).add(new BasicItemListing(new ItemStack(Items.EMERALD, 1), new ItemStack(ModItems.STRAWBERRY.get(), 4), 12, 4, 0.05F));
+				trades.get(2).add(new BasicItemListing(new ItemStack(Items.EMERALD, 1), new ItemStack(ModItems.LEMON.get(), 4), 12, 4, 0.05F));
 			}
 
 			if (event.getType() == VillagerProfession.FISHERMAN)
 			{
 				if (ModConfigs.cachedServer.SAVAGEFANG_SPAWN_WEIGHT_IN_SWAMP > 0 || ModConfigs.cachedServer.SAVAGEFANG_SPAWN_WEIGHT_IN_JUNGLE > 0)
 				{
-					trades.get(4).add(new BasicTrade(new ItemStack(ModItems.SAVAGEFANG_MEAT.get(), 3), new ItemStack(Items.EMERALD, 1), 12, 20, 0.05F));
+					trades.get(4).add(new BasicItemListing(new ItemStack(ModItems.SAVAGEFANG_MEAT.get(), 3), new ItemStack(Items.EMERALD, 1), 12, 20, 0.05F));
 				}
 			}
 		}
@@ -625,18 +634,18 @@ public class ModEvents
 	{
 		if (ModConfigs.cachedServer.ADDITIONAL_WANDERER_TRADES)
 		{
-			List<VillagerTrades.ITrade> genericTrades = event.getGenericTrades();
-			List<VillagerTrades.ITrade> rareTrades = event.getRareTrades();
+			List<ItemListing> genericTrades = event.getGenericTrades();
+			List<ItemListing> rareTrades = event.getRareTrades();
 
 			if (ModConfigs.cachedServer.ENDER_EXECUTOR_REPLACE_CHANCE > 0.0D)
 			{
-				genericTrades.add(new BasicTrade(new ItemStack(ModItems.ENDER_PLASM.get(), 1), new ItemStack(Items.EMERALD, 2), 32, 1, 0.05F));
+				genericTrades.add(new BasicItemListing(new ItemStack(ModItems.ENDER_PLASM.get(), 1), new ItemStack(Items.EMERALD, 2), 32, 1, 0.05F));
 			}
 
-			genericTrades.add(new BasicTrade(new ItemStack(ModItems.ANCIENT_STONE.get(), 2), new ItemStack(Items.EMERALD, 1), 32, 1, 0.05F));
-			genericTrades.add(new BasicTrade(5, new ItemStack(ModItems.FIRE_BOTTLE.get()), 8, 1, 1.0F));
-			rareTrades.add(new BasicTrade(32, new ItemStack(ModItems.LIGHTNING_PARTICLE.get()), 5, 1, 0.05F));
-			rareTrades.add(new BasicTrade(32, new ItemStack(ModItems.PURIFICATION_CLOTH.get()), 3, 1, 0.05F));
+			genericTrades.add(new BasicItemListing(new ItemStack(ModItems.ANCIENT_STONE.get(), 2), new ItemStack(Items.EMERALD, 1), 32, 1, 0.05F));
+			genericTrades.add(new BasicItemListing(5, new ItemStack(ModItems.FIRE_BOTTLE.get()), 8, 1, 1.0F));
+			rareTrades.add(new BasicItemListing(32, new ItemStack(ModItems.LIGHTNING_PARTICLE.get()), 5, 1, 0.05F));
+			rareTrades.add(new BasicItemListing(32, new ItemStack(ModItems.PURIFICATION_CLOTH.get()), 3, 1, 0.05F));
 		}
 	}
 }
