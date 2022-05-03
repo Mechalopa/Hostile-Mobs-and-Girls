@@ -98,17 +98,22 @@ public abstract class AbstractGirlModel<T extends LivingEntity> extends Humanoid
 
 	public static MeshDefinition createMesh(CubeDeformation cd, float yOffset)
 	{
-		MeshDefinition md = HumanoidModel.createMesh(CubeDeformation.NONE, 0.0F);
+		return createMesh(cd, yOffset, 7);
+	}
+
+	public static MeshDefinition createMesh(CubeDeformation cd, float yOffset, int bodyHeight)
+	{
+		MeshDefinition md = HumanoidModel.createMesh(cd, yOffset);
 		PartDefinition pd = md.getRoot();
-		ModClientUtils.addPD(pd, cd, "head", 0, 0, -3.0F, -6.0F - 1.0F, -3.0F, 6.0F, 6.0F, 6.0F, 0.0F, 0.0F + yOffset, 0.0F, 1.0F);
-		PartDefinition bodypd = ModClientUtils.addPD(pd, cd, "body", 16, 16, -3.0F, 0.0F, -1.5F, 6.0F, 7.0F, 6.0F, 0.0F, 0.0F + yOffset, 0.0F);
-		PartDefinition bodypart1pd = ModClientUtils.addPD(bodypd, cd, "body_part_1", 32, 32, -2.5F, 0.0F, -1.0F, 5.0F, 3.0F, 2.0F, 0.0F, 7.0F, 0.0F);
-		ModClientUtils.addPD(bodypart1pd, cd, "body_part_2", 32, 40, -3.0F, 0.0F, -1.5F, 6.0F, 2.0F, 3.0F, 0.0F, 3.0F, 0.0F);
-		ModClientUtils.addPD(bodypd, cd, "bust", 0, 32, -3.0F, -1.5F, -1.5F, 6.0F, 3.0F, 3.0F, 0.0F, 3.5F, -1.1F, -0.001F);
-		ModClientUtils.addPD(pd, cd, "right_arm", 40, 16, -1.0F, -2.0F, -1.5F, 3.0F, 12.0F, 3.0F, -5.0F, 2.0F + yOffset, 0.0F);
-		ModClientUtils.addPD(pd, cd, "left_arm", 40, 16, -2.0F, -2.0F, -1.5F, 3.0F, 12.0F, 3.0F, 5.0F, 2.0F + yOffset, 0.0F, true);
-		ModClientUtils.addPD(pd, cd, "right_leg", 0, 16, -1.5F, 0.0F, -1.5F, 3.0F, 12.0F, 3.0F, -1.9F, 12.0F + yOffset, 0.0F);
-		ModClientUtils.addPD(pd, cd, "left_leg", 0, 16, -1.5F, 0.0F, -1.5F, 3.0F, 12.0F, 3.0F, 1.9F, 12.0F + yOffset, 0.0F, true);
+		ModClientUtils.addC(pd, cd, "head", 0, 0, -3.0F, -6.0F - 1.0F, -3.0F, 6.0F, 6.0F, 6.0F, 0.0F, 0.0F + yOffset, 0.0F, 1.0F);
+		PartDefinition bodypd = ModClientUtils.addC(pd, cd, "body", 16, 16, -3.0F, 0.0F, -1.5F, 6.0F, (float)bodyHeight, 6.0F, 0.0F, 0.0F + yOffset, 0.0F);
+		PartDefinition bodypart1pd = ModClientUtils.addC(bodypd, cd, "body_part_1", 32, 32, -2.5F, 0.0F, -1.0F, 5.0F, 3.0F, 2.0F, 0.0F, (float)bodyHeight, 0.0F);
+		ModClientUtils.addC(bodypart1pd, cd, "body_part_2", 32, 40, -3.0F, 0.0F, -1.5F, 6.0F, 2.0F, 3.0F, 0.0F, 3.0F, 0.0F);
+		ModClientUtils.addC(bodypd, cd, "bust", 0, 32, -3.0F, -1.5F, -1.5F, 6.0F, 3.0F, 3.0F, 0.0F, 3.5F, -1.1F, -0.001F);
+		ModClientUtils.addC(pd, cd, "right_arm", 40, 16, -1.0F, -2.0F, -1.5F, 3.0F, 12.0F, 3.0F, -5.0F, 2.0F + yOffset, 0.0F);
+		ModClientUtils.addC(pd, cd, "left_arm", 40, 16, -2.0F, -2.0F, -1.5F, 3.0F, 12.0F, 3.0F, 5.0F, 2.0F + yOffset, 0.0F, true);
+		ModClientUtils.addC(pd, cd, "right_leg", 0, 16, -1.5F, 0.0F, -1.5F, 3.0F, 12.0F, 3.0F, -1.9F, 12.0F + yOffset, 0.0F);
+		ModClientUtils.addC(pd, cd, "left_leg", 0, 16, -1.5F, 0.0F, -1.5F, 3.0F, 12.0F, 3.0F, 1.9F, 12.0F + yOffset, 0.0F, true);
 		return md;
 	}
 

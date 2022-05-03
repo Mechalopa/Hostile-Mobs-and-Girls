@@ -1,73 +1,79 @@
 package com.github.mechalopa.hmag.client.model;
 
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.util.ModUtils;
 
-import net.minecraft.client.renderer.entity.model.BipedModel;
-import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.entity.monster.ZombieEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Hand;
-import net.minecraft.util.HandSide;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.builders.CubeDeformation;
+import net.minecraft.client.model.geom.builders.MeshDefinition;
+import net.minecraft.client.model.geom.builders.PartDefinition;
+import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.HumanoidArm;
+import net.minecraft.world.entity.monster.Zombie;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class DrownedGirlModel<T extends ZombieEntity> extends ZombieGirlModel<T>
+public class DrownedGirlModel<T extends Zombie> extends ZombieGirlModel<T>
 {
-	private ModelRenderer rightArmPart;
-	private ModelRenderer leftArmPart;
+	private ModelPart rightArmPart;
+	private ModelPart leftArmPart;
 
-	public DrownedGirlModel()
+	public DrownedGirlModel(ModelPart modelPart)
 	{
-		this(0.0F);
+		super(modelPart);
+
+		this.rightArmPart = this.rightArm.getChild("right_arm_part");
+		this.leftArmPart = this.leftArm.getChild("left_arm_part");
+
+//		this.rightArm = new ModelRenderer(this, 50, 32);
+//		this.rightArm.addBox(-1.0F, -2.0F, -1.5F, 3.0F, 12.0F, 3.0F, modelSize);
+//		this.rightArm.setPos(-5.0F, 2.0F, 0.0F);
+//		this.rightLeg = new ModelRenderer(this, 50, 48);
+//		this.rightLeg.addBox(-1.5F, 0.0F, -1.5F, 3.0F, 12.0F, 3.0F, modelSize);
+//		this.rightLeg.setPos(-1.9F, 12.0F, 0.0F);
+//
+//		this.rightArmPart = new ModelRenderer(this, 24, 56);
+//		this.rightArmPart.addBox(-1.0F, -2.0F, 0.0F, 1.0F, 4.0F, 3.0F, modelSize);
+//		this.rightArmPart.setPos(-1.0F, 2.0F, 1.5F);
+//		this.rightArm.addChild(this.rightArmPart);
+//		this.leftArmPart = new ModelRenderer(this, 40, 54);
+//		this.leftArmPart.addBox(0.0F, -2.0F, 0.0F, 1.0F, 8.0F, 2.0F, modelSize);
+//		this.leftArmPart.setPos(1.0F, 2.0F, 1.5F);
+//		this.leftArm.addChild(this.leftArmPart);
 	}
 
-	public DrownedGirlModel(float modelSize)
+	public static MeshDefinition createMesh(CubeDeformation cd, float yOffset)
 	{
-		this(modelSize, false);
-	}
-
-	public DrownedGirlModel(float modelSize, boolean isArmor)
-	{
-		super(modelSize, isArmor);
-
-		if (!isArmor)
-		{
-			this.rightArm = new ModelRenderer(this, 50, 32);
-			this.rightArm.addBox(-1.0F, -2.0F, -1.5F, 3.0F, 12.0F, 3.0F, modelSize);
-			this.rightArm.setPos(-5.0F, 2.0F, 0.0F);
-			this.rightLeg = new ModelRenderer(this, 50, 48);
-			this.rightLeg.addBox(-1.5F, 0.0F, -1.5F, 3.0F, 12.0F, 3.0F, modelSize);
-			this.rightLeg.setPos(-1.9F, 12.0F, 0.0F);
-
-			this.rightArmPart = new ModelRenderer(this, 24, 56);
-			this.rightArmPart.addBox(-1.0F, -2.0F, 0.0F, 1.0F, 4.0F, 3.0F, modelSize);
-			this.rightArmPart.setPos(-1.0F, 2.0F, 1.5F);
-			this.rightArm.addChild(this.rightArmPart);
-			this.leftArmPart = new ModelRenderer(this, 40, 54);
-			this.leftArmPart.addBox(0.0F, -2.0F, 0.0F, 1.0F, 8.0F, 2.0F, modelSize);
-			this.leftArmPart.setPos(1.0F, 2.0F, 1.5F);
-			this.leftArm.addChild(this.leftArmPart);
-		}
+		MeshDefinition md = ZombieGirlModel.createMesh(cd, yOffset);
+		PartDefinition pd = md.getRoot();
+		PartDefinition rightarmpd = ModClientUtils.addC(pd, cd, "right_arm", 50, 32, -1.0F, -2.0F, -1.5F, 3.0F, 12.0F, 3.0F, -5.0F, 2.0F, 0.0F);
+		ModClientUtils.addC(pd, cd, "right_leg", 50, 48, -1.5F, 0.0F, -1.5F, 3.0F, 12.0F, 3.0F, -1.9F, 12.0F, 0.0F);
+		PartDefinition leftarmpd = pd.getChild("left_arm");
+		ModClientUtils.addC(rightarmpd, cd, "right_arm_part", 24, 56, -1.0F, -2.0F, 0.0F, 1.0F, 4.0F, 3.0F, -1.0F, 2.0F, 1.5F);
+		ModClientUtils.addC(leftarmpd, cd, "left_arm_part", 40, 54, 0.0F, -2.0F, 0.0F, 1.0F, 8.0F, 2.0F, 1.0F, 2.0F, 1.5F);
+		return md;
 	}
 
 	@Override
 	public void prepareMobModel(T entityIn, float limbSwing, float limbSwingAmount, float partialTick)
 	{
-		this.rightArmPose = BipedModel.ArmPose.EMPTY;
-		this.leftArmPose = BipedModel.ArmPose.EMPTY;
-		ItemStack stack = entityIn.getItemInHand(Hand.MAIN_HAND);
+		this.rightArmPose = HumanoidModel.ArmPose.EMPTY;
+		this.leftArmPose = HumanoidModel.ArmPose.EMPTY;
+		ItemStack stack = entityIn.getItemInHand(InteractionHand.MAIN_HAND);
 
 		if (ModUtils.isTrident(stack) && entityIn.isAggressive())
 		{
-			if (entityIn.getMainArm() == HandSide.RIGHT)
+			if (entityIn.getMainArm() == HumanoidArm.RIGHT)
 			{
-				this.rightArmPose = BipedModel.ArmPose.THROW_SPEAR;
+				this.rightArmPose = HumanoidModel.ArmPose.THROW_SPEAR;
 			}
 			else
 			{
-				this.leftArmPose = BipedModel.ArmPose.THROW_SPEAR;
+				this.leftArmPose = HumanoidModel.ArmPose.THROW_SPEAR;
 			}
 		}
 
@@ -79,13 +85,13 @@ public class DrownedGirlModel<T extends ZombieEntity> extends ZombieGirlModel<T>
 	{
 		super.setupAnim(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 
-		if (this.leftArmPose == BipedModel.ArmPose.THROW_SPEAR)
+		if (this.leftArmPose == HumanoidModel.ArmPose.THROW_SPEAR)
 		{
 			this.leftArm.xRot = this.leftArm.xRot * 0.5F - (float)Math.PI;
 			this.leftArm.yRot = 0.0F;
 		}
 
-		if (this.rightArmPose == BipedModel.ArmPose.THROW_SPEAR)
+		if (this.rightArmPose == HumanoidModel.ArmPose.THROW_SPEAR)
 		{
 			this.rightArm.xRot = this.rightArm.xRot * 0.5F - (float)Math.PI;
 			this.rightArm.yRot = 0.0F;
@@ -93,19 +99,19 @@ public class DrownedGirlModel<T extends ZombieEntity> extends ZombieGirlModel<T>
 
 		if (this.swimAmount > 0.0F)
 		{
-			this.rightArm.xRot = this.rotlerpRad(this.swimAmount, this.rightArm.xRot, -2.5132742F) + this.swimAmount * 0.35F * MathHelper.sin(0.1F * ageInTicks);
-			this.leftArm.xRot = this.rotlerpRad(this.swimAmount, this.leftArm.xRot, -2.5132742F) - this.swimAmount * 0.35F * MathHelper.sin(0.1F * ageInTicks);
+			this.rightArm.xRot = this.rotlerpRad(this.swimAmount, this.rightArm.xRot, -2.5132742F) + this.swimAmount * 0.35F * Mth.sin(0.1F * ageInTicks);
+			this.leftArm.xRot = this.rotlerpRad(this.swimAmount, this.leftArm.xRot, -2.5132742F) - this.swimAmount * 0.35F * Mth.sin(0.1F * ageInTicks);
 			this.rightArm.zRot = this.rotlerpRad(this.swimAmount, this.rightArm.zRot, -0.15F);
 			this.leftArm.zRot = this.rotlerpRad(this.swimAmount, this.leftArm.zRot, 0.15F);
-			this.leftLeg.xRot -= this.swimAmount * 0.55F * MathHelper.sin(0.1F * ageInTicks);
-			this.rightLeg.xRot += this.swimAmount * 0.55F * MathHelper.sin(0.1F * ageInTicks);
+			this.leftLeg.xRot -= this.swimAmount * 0.55F * Mth.sin(0.1F * ageInTicks);
+			this.rightLeg.xRot += this.swimAmount * 0.55F * Mth.sin(0.1F * ageInTicks);
 			this.head.xRot = 0.0F;
 		}
 
 		this.rightArmPart.yRot = -((float)Math.PI / 18.0F);
-		this.rightArmPart.yRot += MathHelper.sin(ageInTicks * 0.045F + (float)Math.PI) * 0.06F;
+		this.rightArmPart.yRot += Mth.sin(ageInTicks * 0.045F + (float)Math.PI) * 0.06F;
 		this.leftArmPart.yRot = (float)Math.PI / 18.0F;
-		this.leftArmPart.yRot -= MathHelper.sin(ageInTicks * 0.045F + (float)Math.PI) * 0.06F;
+		this.leftArmPart.yRot -= Mth.sin(ageInTicks * 0.045F + (float)Math.PI) * 0.06F;
 
 		this.hat.copyFrom(this.head);
 	}
