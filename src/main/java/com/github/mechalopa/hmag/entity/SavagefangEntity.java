@@ -33,7 +33,6 @@ import net.minecraft.entity.ai.goal.HurtByTargetGoal;
 import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
 import net.minecraft.entity.ai.goal.RandomSwimmingGoal;
 import net.minecraft.entity.merchant.villager.AbstractVillagerEntity;
-import net.minecraft.entity.monster.CreeperEntity;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -872,7 +871,7 @@ public class SavagefangEntity extends MonsterEntity implements IModMob
 		@Override
 		public boolean test(@Nullable LivingEntity livingEntityIn)
 		{
-			if (this.parent.isLaunched() || ModTags.checkTagContains(ModTags.SAVAGEFANG_TARGET_BLACKLIST, livingEntityIn.getType()) || livingEntityIn instanceof SavagefangEntity || livingEntityIn instanceof CreeperEntity)
+			if (this.parent.isLaunched() || ModTags.checkTagContains(ModTags.SAVAGEFANG_TARGET_BLACKLIST, livingEntityIn.getType()) || livingEntityIn instanceof SavagefangEntity)
 			{
 				return false;
 			}
