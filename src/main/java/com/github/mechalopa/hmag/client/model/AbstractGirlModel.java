@@ -46,7 +46,7 @@ public abstract class AbstractGirlModel<T extends LivingEntity> extends BipedMod
 			{
 				this.body = new ModelRenderer(this, 16, 16);
 				this.body.addBox(-3.0F, 0.0F, -1.5F, 6.0F, (float)this.getBodyHeight(), 3.0F, modelSize);
-				this.body.setPos(0.0F, 0.0F, 0.0F);
+				this.body.setPos(0.0F, 0.0F + yOffsetIn, 0.0F);
 				this.bodyPart1 = new ModelRenderer(this, 32, 32);
 				this.bodyPart1.addBox(-2.5F, 0.0F, -1.0F, 5.0F, 3.0F, 2.0F, modelSize);
 				this.bodyPart1.setPos(0.0F, (float)this.getBodyHeight(), 0.0F);
