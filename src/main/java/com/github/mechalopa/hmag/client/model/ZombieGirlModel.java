@@ -38,9 +38,9 @@ public class ZombieGirlModel<T extends Zombie> extends AbstractGirlModel<T>
 		this.ahoge = this.head.getChild("ahoge");
 	}
 
-	public static MeshDefinition createMesh(CubeDeformation cd, float yOffset)
+	public static MeshDefinition createMesh(CubeDeformation cd)
 	{
-		MeshDefinition md = AbstractGirlModel.createMesh(cd, yOffset);
+		MeshDefinition md = AbstractGirlModel.createMesh(cd, 0.0F);
 		PartDefinition pd = md.getRoot();
 		PartDefinition bodypd = pd.getChild("body");
 		ModClientUtils.addC(bodypd, cd, "cloth_part", 32, 48, -3.0F, 0.0F, -1.5F, 6.0F, 3.0F, 3.0F, 0.0F, 7.0F, 0.0F);
@@ -57,7 +57,7 @@ public class ZombieGirlModel<T extends Zombie> extends AbstractGirlModel<T>
 
 	public static LayerDefinition createBodyLayer()
 	{
-		return LayerDefinition.create(createMesh(CubeDeformation.NONE, 0.0F), 64, 64);
+		return LayerDefinition.create(createMesh(CubeDeformation.NONE), 64, 64);
 	}
 
 	@Override

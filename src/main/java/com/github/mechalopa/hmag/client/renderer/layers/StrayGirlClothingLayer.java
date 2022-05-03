@@ -2,32 +2,35 @@ package com.github.mechalopa.hmag.client.renderer.layers;
 
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.model.SkeletonGirlModel;
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
 
-import net.minecraft.client.renderer.IRenderTypeBuffer;
-import net.minecraft.client.renderer.entity.IEntityRenderer;
-import net.minecraft.client.renderer.entity.layers.LayerRenderer;
-import net.minecraft.client.renderer.entity.model.EntityModel;
-import net.minecraft.entity.IRangedAttackMob;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.model.geom.EntityModelSet;
+import net.minecraft.client.model.geom.ModelLayers;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.entity.RenderLayerParent;
+import net.minecraft.client.renderer.entity.layers.RenderLayer;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class StrayGirlClothingLayer<T extends MobEntity & IRangedAttackMob, M extends EntityModel<T>> extends LayerRenderer<T, M>
+public class StrayGirlClothingLayer<T extends Mob & RangedAttackMob, M extends EntityModel<T>> extends RenderLayer<T, M>
 {
 	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/stray_girl_clothing.png");
-	private final SkeletonGirlModel<T> layerModel = new SkeletonGirlModel<>(0.25F, true, true);
+	private final SkeletonGirlModel<T> layerModel;
 
-	public StrayGirlClothingLayer(IEntityRenderer<T, M> entityRendererIn)
+	public StrayGirlClothingLayer(RenderLayerParent<T, M> renderLayerParent, EntityModelSet modelSet)
 	{
-		super(entityRendererIn);
+		super(renderLayerParent);
+		this.layerModel = new SkeletonGirlModel<>(modelSet.bakeLayer(ModelLayers.STRAY_OUTER_LAYER));
 	}
 
 	@Override
-	public void render(MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn, T livingEntityIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch)
+	public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLightIn, T livingEntityIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch)
 	{
-		coloredCutoutModelCopyLayerRender(this.getParentModel(), this.layerModel, TEX, matrixStackIn, bufferIn, packedLightIn, livingEntityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, partialTicks, 1.0F, 1.0F, 1.0F);
+		coloredCutoutModelCopyLayerRender(this.getParentModel(), this.layerModel, TEX, poseStack, buffer, packedLightIn, livingEntityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, partialTicks, 1.0F, 1.0F, 1.0F);
 	}
 }

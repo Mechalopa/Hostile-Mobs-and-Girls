@@ -21,14 +21,14 @@ public class ItemInHandLayer2<T extends LivingEntity, M extends EntityModel<T> &
 {
 	private final int translateX;
 
-	public ItemInHandLayer2(RenderLayerParent<T, M> entityRendererIn)
+	public ItemInHandLayer2(RenderLayerParent<T, M> renderLayerParent)
 	{
-		this(entityRendererIn, 0);
+		this(renderLayerParent, 0);
 	}
 
-	public ItemInHandLayer2(RenderLayerParent<T, M> entityRendererIn, int heldItemTranslateX)
+	public ItemInHandLayer2(RenderLayerParent<T, M> renderLayerParent, int heldItemTranslateX)
 	{
-		super(entityRendererIn);
+		super(renderLayerParent);
 		this.translateX = heldItemTranslateX;
 	}
 

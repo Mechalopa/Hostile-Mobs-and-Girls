@@ -1,11 +1,12 @@
 package com.github.mechalopa.hmag.client.renderer;
 
 import com.github.mechalopa.hmag.HMaG;
+import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.renderer.layers.StrayGirlClothingLayer;
 
-import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.entity.monster.AbstractSkeletonEntity;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.monster.AbstractSkeleton;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -14,14 +15,14 @@ public class StrayGirlRenderer extends SkeletonGirlRenderer
 {
 	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/stray_girl.png");
 
-	public StrayGirlRenderer(EntityRendererManager renderManagerIn)
+	public StrayGirlRenderer(EntityRendererProvider.Context context)
 	{
-		super(renderManagerIn);
-		this.addLayer(new StrayGirlClothingLayer<>(this));
+		super(context, ModModelLayers.STRAY_GIRL, ModModelLayers.STRAY_GIRL_INNER_ARMOR, ModModelLayers.STRAY_GIRL_OUTER_ARMOR);
+		this.addLayer(new StrayGirlClothingLayer<>(this, context.getModelSet()));
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(AbstractSkeletonEntity entityIn)
+	public ResourceLocation getTextureLocation(AbstractSkeleton entityIn)
 	{
 		return TEX;
 	}

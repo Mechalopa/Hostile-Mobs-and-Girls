@@ -30,9 +30,9 @@ public class DrownedGirlModel<T extends Zombie> extends ZombieGirlModel<T>
 		this.leftArmPart = this.leftArm.getChild("left_arm_part");
 	}
 
-	public static MeshDefinition createMesh(CubeDeformation cd, float yOffset)
+	public static MeshDefinition createMesh(CubeDeformation cd)
 	{
-		MeshDefinition md = ZombieGirlModel.createMesh(cd, yOffset);
+		MeshDefinition md = ZombieGirlModel.createMesh(cd);
 		PartDefinition pd = md.getRoot();
 		PartDefinition rightarmpd = ModClientUtils.addC(pd, cd, "right_arm", 50, 32, -1.0F, -2.0F, -1.5F, 3.0F, 12.0F, 3.0F, -5.0F, 2.0F, 0.0F);
 		ModClientUtils.addC(pd, cd, "right_leg", 50, 48, -1.5F, 0.0F, -1.5F, 3.0F, 12.0F, 3.0F, -1.9F, 12.0F, 0.0F);
@@ -44,7 +44,7 @@ public class DrownedGirlModel<T extends Zombie> extends ZombieGirlModel<T>
 
 	public static LayerDefinition createBodyLayer()
 	{
-		return LayerDefinition.create(createMesh(CubeDeformation.NONE, 0.0F), 64, 64);
+		return LayerDefinition.create(createMesh(CubeDeformation.NONE), 64, 64);
 	}
 
 	@Override

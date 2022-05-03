@@ -1,11 +1,12 @@
 package com.github.mechalopa.hmag.client.renderer;
 
 import com.github.mechalopa.hmag.HMaG;
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.github.mechalopa.hmag.client.ModModelLayers;
+import com.mojang.blaze3d.vertex.PoseStack;
 
-import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.entity.monster.AbstractSkeletonEntity;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.monster.AbstractSkeleton;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -14,20 +15,20 @@ public class WitherSkeletonGirlRenderer extends SkeletonGirlRenderer
 {
 	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/wither_skeleton_girl.png");
 
-	public WitherSkeletonGirlRenderer(EntityRendererManager renderManagerIn)
+	public WitherSkeletonGirlRenderer(EntityRendererProvider.Context context)
 	{
-		super(renderManagerIn);
+		super(context, ModModelLayers.WITHER_SKELETON_GIRL, ModModelLayers.WITHER_SKELETON_GIRL_INNER_ARMOR, ModModelLayers.WITHER_SKELETON_GIRL_OUTER_ARMOR);
 	}
 
 	@Override
-	protected void scale(AbstractSkeletonEntity entitylivingbaseIn, MatrixStack matrixStackIn, float partialTickTime)
+	protected void scale(AbstractSkeleton entityIn, PoseStack poseStackIn, float partialTickTime)
 	{
-		matrixStackIn.scale(1.2F, 1.2F, 1.2F);
-		super.scale(entitylivingbaseIn, matrixStackIn, partialTickTime);
+		poseStackIn.scale(1.2F, 1.2F, 1.2F);
+		super.scale(entityIn, poseStackIn, partialTickTime);
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(AbstractSkeletonEntity entityIn)
+	public ResourceLocation getTextureLocation(AbstractSkeleton entityIn)
 	{
 		return TEX;
 	}

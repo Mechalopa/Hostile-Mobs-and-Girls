@@ -19,6 +19,19 @@ public class ModModelLayers
 	public static final ModelLayerLocation DROWNED_GIRL = create("drowned_girl");
 	public static final ModelLayerLocation DROWNED_GIRL_INNER_ARMOR = createInnerArmor("drowned_girl");
 	public static final ModelLayerLocation DROWNED_GIRL_OUTER_ARMOR = createOuterArmor("drowned_girl");
+	public static final ModelLayerLocation SKELETON_GIRL = create("skeleton_girl");
+	public static final ModelLayerLocation SKELETON_GIRL_INNER_ARMOR = createInnerArmor("skeleton_girl");
+	public static final ModelLayerLocation SKELETON_GIRL_OUTER_ARMOR = createOuterArmor("skeleton_girl");
+	public static final ModelLayerLocation WITHER_SKELETON_GIRL = create("wither_skeleton_girl");
+	public static final ModelLayerLocation WITHER_SKELETON_GIRL_INNER_ARMOR = createInnerArmor("wither_skeleton_girl");
+	public static final ModelLayerLocation WITHER_SKELETON_GIRL_OUTER_ARMOR = createOuterArmor("wither_skeleton_girl");
+	public static final ModelLayerLocation STRAY_GIRL = create("stray_girl");
+	public static final ModelLayerLocation STRAY_GIRL_INNER_ARMOR = createInnerArmor("stray_girl");
+	public static final ModelLayerLocation STRAY_GIRL_OUTER_ARMOR = createOuterArmor("stray_girl");
+	public static final ModelLayerLocation STRAY_GIRL_OUTER_LAYER = create("stray_girl", "outer");
+	public static final ModelLayerLocation CREEPER_GIRL = create("creeper_girl");
+	public static final ModelLayerLocation CREEPER_GIRL_INNER_ARMOR = createInnerArmor("creeper_girl");
+	public static final ModelLayerLocation CREEPER_GIRL_OUTER_ARMOR = createOuterArmor("creeper_girl");
 
 	public static final ModelLayerLocation KOBOLD = create("kobold");
 
