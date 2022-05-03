@@ -13,59 +13,60 @@ import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.entity.goal.MeleeAttackGoal2;
 import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.util.ModUtils;
+import com.mojang.datafixers.DataFixUtils;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.CreatureAttribute;
-import net.minecraft.entity.EntitySize;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.FlyingEntity;
-import net.minecraft.entity.ILivingEntityData;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.MoverType;
-import net.minecraft.entity.Pose;
-import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.controller.LookController;
-import net.minecraft.entity.ai.controller.MovementController;
-import net.minecraft.entity.ai.goal.Goal;
-import net.minecraft.entity.ai.goal.HurtByTargetGoal;
-import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
-import net.minecraft.entity.ai.goal.RandomSwimmingGoal;
-import net.minecraft.entity.merchant.villager.AbstractVillagerEntity;
-import net.minecraft.entity.monster.CreeperEntity;
-import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.passive.AnimalEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.IPacket;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.pathfinding.PathNavigator;
-import net.minecraft.pathfinding.PathNodeType;
-import net.minecraft.pathfinding.SwimmerPathNavigator;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.util.Mth;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.IServerWorld;
-import net.minecraft.world.IWorldReader;
-import net.minecraft.world.World;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.FlyingMob;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.MobType;
+import net.minecraft.world.entity.MoverType;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.control.LookControl;
+import net.minecraft.world.entity.ai.control.MoveControl;
+import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.ai.navigation.PathNavigation;
+import net.minecraft.world.entity.ai.navigation.WaterBoundPathNavigation;
+import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.npc.AbstractVillager;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.fml.network.NetworkHooks;
+import net.minecraftforge.network.NetworkHooks;
 
-public class SavagefangEntity extends MonsterEntity implements IModMob
+public class SavagefangEntity extends Monster implements IModMob
 {
-	private static final DataParameter<Byte> DATA_FLAGS_ID = EntityDataManager.defineId(SavagefangEntity.class, DataSerializers.BYTE);
+	private static final EntityDataAccessor<Byte> DATA_FLAGS_ID = SynchedEntityData.defineId(SavagefangEntity.class, EntityDataSerializers.BYTE);
 	private SavagefangEntity leader;
 	private int schoolSize = 1;
 	private int leapCooldown;
@@ -74,20 +75,20 @@ public class SavagefangEntity extends MonsterEntity implements IModMob
 	private float attackAnimation;
 	private float attackAnimationO;
 
-	public SavagefangEntity(EntityType<? extends SavagefangEntity> type, World worldIn)
+	public SavagefangEntity(EntityType<? extends SavagefangEntity> type, Level worldIn)
 	{
 		super(type, worldIn);
-		this.setPathfindingMalus(PathNodeType.WATER, 0.0F);
-		this.moveControl = new SavagefangEntity.MoveHelperController(this);
-		this.lookControl = new SavagefangEntity.LookHelperController(this);
+		this.setPathfindingMalus(BlockPathTypes.WATER, 0.0F);
+		this.moveControl = new SavagefangEntity.SavagefangMoveControl(this);
+		this.lookControl = new SavagefangEntity.SavagefangLookControl(this);
 		this.xpReward = 3;
 		this.leapCooldown = 0;
 	}
 
 	@Override
-	protected PathNavigator createNavigation(World worldIn)
+	protected PathNavigation createNavigation(Level level)
 	{
-		return new SwimmerPathNavigator(this, worldIn);
+		return new WaterBoundPathNavigation(this, level);
 	}
 
 	@Override
@@ -108,18 +109,18 @@ public class SavagefangEntity extends MonsterEntity implements IModMob
 		this.entityData.define(DATA_FLAGS_ID, (byte)0);
 	}
 
-	public static AttributeModifierMap.MutableAttribute createAttributes()
+	public static AttributeSupplier.Builder createAttributes()
 	{
-		return MonsterEntity.createMonsterAttributes()
+		return Monster.createMonsterAttributes()
 				.add(Attributes.MAX_HEALTH, 12.0D)
 				.add(Attributes.MOVEMENT_SPEED, 3.0D)
 				.add(Attributes.ATTACK_DAMAGE, 4.0D);
 	}
 
 	@Override
-	public CreatureAttribute getMobType()
+	public MobType getMobType()
 	{
-		return CreatureAttribute.WATER;
+		return MobType.WATER;
 	}
 
 	@Override
@@ -166,7 +167,7 @@ public class SavagefangEntity extends MonsterEntity implements IModMob
 
 		if (this.hasFollowers() && this.level.random.nextInt(200) == 1)
 		{
-			List<SavagefangEntity> list = this.level.getEntitiesOfClass(this.getClass(), this.getBoundingBox().inflate(8.0D, 8.0D, 8.0D));
+			List<? extends SavagefangEntity> list = this.level.getEntitiesOfClass(this.getClass(), this.getBoundingBox().inflate(8.0D, 8.0D, 8.0D));
 
 			if (list.size() <= 1)
 			{
@@ -178,7 +179,7 @@ public class SavagefangEntity extends MonsterEntity implements IModMob
 		{
 			if (!this.isLaunched())
 			{
-				this.xRotAnimation = MathHelper.clamp(ModUtils.rotlerp(this.xRotAnimation, this.xRot, 90.0F, false), -180.0F, 180.0F);
+				this.xRotAnimation = Mth.clamp(ModUtils.rotlerp(this.xRotAnimation, this.getXRot(), 90.0F, false), -180.0F, 180.0F);
 			}
 
 			if (this.isAttacking())
@@ -225,7 +226,7 @@ public class SavagefangEntity extends MonsterEntity implements IModMob
 			if (this.isOnGround() && this.verticalCollision)
 			{
 				final float f = this.isLaunched() ? 0.2F : 0.4F;
-				this.setDeltaMovement(this.getDeltaMovement().add((double)((this.getRandom().nextFloat() * 2.0F - 1.0F) * f), (double)(this.isLaunched() ? 0.4F : 0.6F), (double)((this.getRandom().nextFloat() * 2.0F - 1.0F) * f)));
+				this.setDeltaMovement(this.getDeltaMovement().add((this.getRandom().nextFloat() * 2.0F - 1.0F) * f, this.isLaunched() ? 0.4F : 0.6F, (this.getRandom().nextFloat() * 2.0F - 1.0F) * f));
 				this.onGround = false;
 				this.hasImpulse = true;
 				this.playSound(this.getFlopSound(), this.getSoundVolume(), this.getVoicePitch());
@@ -269,19 +270,19 @@ public class SavagefangEntity extends MonsterEntity implements IModMob
 		}
 	}
 
-	@Nullable
 	@Override
-	public ILivingEntityData finalizeSpawn(IServerWorld worldIn, DifficultyInstance difficultyIn, SpawnReason reason, @Nullable ILivingEntityData spawnDataIn, @Nullable CompoundNBT dataTag)
+	@Nullable
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor worldIn, DifficultyInstance difficultyIn, MobSpawnType spawnType, @Nullable SpawnGroupData spawnDataIn, @Nullable CompoundTag dataTag)
 	{
-		super.finalizeSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
+		spawnDataIn = super.finalizeSpawn(worldIn, difficultyIn, spawnType, spawnDataIn, dataTag);
 
 		if (spawnDataIn == null)
 		{
-			spawnDataIn = new SavagefangEntity.GroupData(this);
+			spawnDataIn = new SavagefangEntity.SchoolSpawnGroupData(this);
 		}
 		else
 		{
-			this.startFollowing(((SavagefangEntity.GroupData)spawnDataIn).leader);
+			this.startFollowing(((SavagefangEntity.SchoolSpawnGroupData)spawnDataIn).leader);
 		}
 
 		this.leapCooldown = 0;
@@ -290,11 +291,11 @@ public class SavagefangEntity extends MonsterEntity implements IModMob
 	}
 
 	@Override
-	public void travel(Vector3d vector3dIn)
+	public void travel(Vec3 vec3)
 	{
 		if (this.isEffectiveAi() && this.isInWater())
 		{
-			this.moveRelative(0.01F, vector3dIn);
+			this.moveRelative(0.01F, vec3);
 			this.move(MoverType.SELF, this.getDeltaMovement());
 			this.setDeltaMovement(this.getDeltaMovement().scale(0.9D));
 
@@ -305,21 +306,21 @@ public class SavagefangEntity extends MonsterEntity implements IModMob
 		}
 		else
 		{
-			super.travel(vector3dIn);
+			super.travel(vec3);
 		}
 	}
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public float getWalkTargetValue(BlockPos pos, IWorldReader worldIn)
+	public float getWalkTargetValue(BlockPos pos, LevelReader levelReader)
 	{
-		return worldIn.getFluidState(pos).is(FluidTags.WATER) ? 10.0F + worldIn.getBrightness(pos) - 0.5F : super.getWalkTargetValue(pos, worldIn);
+		return levelReader.getFluidState(pos).is(FluidTags.WATER) ? 10.0F + levelReader.getBrightness(pos) - 0.5F : super.getWalkTargetValue(pos, levelReader);
 	}
 
 	@Override
-	public boolean checkSpawnObstruction(IWorldReader worldIn)
+	public boolean checkSpawnObstruction(LevelReader levelReader)
 	{
-		return worldIn.isUnobstructed(this);
+		return levelReader.isUnobstructed(this);
 	}
 
 	@Override
@@ -329,7 +330,7 @@ public class SavagefangEntity extends MonsterEntity implements IModMob
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn)
+	protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn)
 	{
 		return sizeIn.height * 0.65F;
 	}
@@ -367,14 +368,14 @@ public class SavagefangEntity extends MonsterEntity implements IModMob
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundNBT compound)
+	public void readAdditionalSaveData(CompoundTag compound)
 	{
 		super.readAdditionalSaveData(compound);
 		this.setLaunched(compound.getBoolean("isLaunched"));
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundNBT compound)
+	public void addAdditionalSaveData(CompoundTag compound)
 	{
 		super.addAdditionalSaveData(compound);
 		compound.putBoolean("isLaunched", this.isLaunched());
@@ -387,9 +388,9 @@ public class SavagefangEntity extends MonsterEntity implements IModMob
 	}
 
 	@SuppressWarnings("deprecation")
-	public static boolean checkSavagefangSpawnRules(EntityType<? extends SavagefangEntity> type, IServerWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn)
+	public static boolean checkSavagefangSpawnRules(EntityType<? extends SavagefangEntity> type, ServerLevelAccessor worldIn, MobSpawnType spawnType, BlockPos pos, Random randomIn)
 	{
-		return worldIn.getDifficulty() != Difficulty.PEACEFUL && isDarkEnoughToSpawn(worldIn, pos, randomIn) && worldIn.getFluidState(pos).is(FluidTags.WATER) && (reason == SpawnReason.SPAWNER || (pos.getY() >= worldIn.getSeaLevel() - 10 && worldIn.canSeeSkyFromBelowWater(pos) && randomIn.nextDouble() < ModConfigs.cachedServer.SAVAGEFANG_SPAWN_CHANCE));
+		return worldIn.getDifficulty() != Difficulty.PEACEFUL && isDarkEnoughToSpawn(worldIn, pos, randomIn) && worldIn.getFluidState(pos).is(FluidTags.WATER) && (spawnType == MobSpawnType.SPAWNER || (pos.getY() >= worldIn.getSeaLevel() - 10 && worldIn.canSeeSkyFromBelowWater(pos) && randomIn.nextDouble() < ModConfigs.cachedServer.SAVAGEFANG_SPAWN_CHANCE));
 	}
 
 	public int getMaxSchoolSize()
@@ -453,9 +454,9 @@ public class SavagefangEntity extends MonsterEntity implements IModMob
 		}
 	}
 
-	public void addFollowers(Stream<SavagefangEntity> stream)
+	public void addFollowers(Stream<? extends SavagefangEntity> stream)
 	{
-		stream.limit((long)(this.getMaxSchoolSize() - this.schoolSize)).filter((p) -> {
+		stream.limit(this.getMaxSchoolSize() - this.schoolSize).filter((p) -> {
 			return p != this;
 		}).forEach((p) -> {
 			p.startFollowing(this);
@@ -465,19 +466,13 @@ public class SavagefangEntity extends MonsterEntity implements IModMob
 	@OnlyIn(Dist.CLIENT)
 	public float getXRotAnimationScale(float f)
 	{
-		return MathHelper.lerp(f, this.xRotAnimationO / 180.0F, this.xRotAnimation / 180.0F);
+		return Mth.lerp(f, this.xRotAnimationO / 180.0F, this.xRotAnimation / 180.0F);
 	}
 
 	@OnlyIn(Dist.CLIENT)
 	public float getAttackAnimationScale(float f)
 	{
-		return MathHelper.lerp(f, this.attackAnimationO, this.attackAnimation);
-	}
-
-	@Override
-	protected boolean isMovementNoisy()
-	{
-		return false;
+		return Mth.lerp(f, this.attackAnimationO, this.attackAnimation);
 	}
 
 	@Override
@@ -518,17 +513,23 @@ public class SavagefangEntity extends MonsterEntity implements IModMob
 	@Override
 	protected void playStepSound(BlockPos pos, BlockState blockIn){}
 
+	@Override
+	protected Entity.MovementEmission getMovementEmission()
+	{
+		return Entity.MovementEmission.EVENTS;
+	}
+
 	@OnlyIn(Dist.CLIENT)
 	@Override
 	public void handleEntityEvent(byte id)
 	{
 		if (id == 15)
 		{
-			Vector3d vector3d1 = this.getViewVector(0.0F);
+			Vec3 vec3 = this.getViewVector(0.0F);
 
 			for (int i = 0; i < 12; ++i)
 			{
-				this.level.addParticle(ParticleTypes.BUBBLE, this.getRandomX(0.5D) - vector3d1.x * 1.0D, this.getRandomY() - vector3d1.y * 1.0D, this.getRandomZ(0.5D) - vector3d1.z * 1.0D, 0.0D, 0.0D, 0.0D);
+				this.level.addParticle(ParticleTypes.BUBBLE, this.getRandomX(0.5D) - vec3.x * 1.0D, this.getRandomY() - vec3.y * 1.0D, this.getRandomZ(0.5D) - vec3.z * 1.0D, 0.0D, 0.0D, 0.0D);
 			}
 		}
 		else
@@ -539,26 +540,26 @@ public class SavagefangEntity extends MonsterEntity implements IModMob
 
 	@Nonnull
 	@Override
-	public IPacket<?> getAddEntityPacket()
+	public Packet<?> getAddEntityPacket()
 	{
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 
-	public static class GroupData implements ILivingEntityData
+	public static class SchoolSpawnGroupData implements SpawnGroupData
 	{
 		public final SavagefangEntity leader;
 
-		public GroupData(SavagefangEntity mob)
+		public SchoolSpawnGroupData(SavagefangEntity mob)
 		{
 			this.leader = mob;
 		}
 	}
 
-	protected static class MoveHelperController extends MovementController
+	protected static class SavagefangMoveControl extends MoveControl
 	{
 		private final SavagefangEntity mob;
 
-		public MoveHelperController(SavagefangEntity mob)
+		public SavagefangMoveControl(SavagefangEntity mob)
 		{
 			super(mob);
 			this.mob = mob;
@@ -572,39 +573,39 @@ public class SavagefangEntity extends MonsterEntity implements IModMob
 				this.mob.setDeltaMovement(this.mob.getDeltaMovement().add(0.0D, 0.005D, 0.0D));
 			}
 
-			if (this.operation == MovementController.Action.MOVE_TO && !this.mob.getNavigation().isDone())
+			if (this.operation == MoveControl.Operation.MOVE_TO && !this.mob.getNavigation().isDone())
 			{
 				float f = (float)(this.speedModifier * this.mob.getAttributeValue(Attributes.MOVEMENT_SPEED));
-				this.mob.setSpeed(MathHelper.lerp(0.125F, this.mob.getSpeed(), f));
+				this.mob.setSpeed(Mth.lerp(0.125F, this.mob.getSpeed(), f));
 				double d0 = this.wantedX - this.mob.getX();
 				double d1 = this.wantedY - this.mob.getY();
 				double d2 = this.wantedZ - this.mob.getZ();
-				double d3 = (double)MathHelper.sqrt(d0 * d0 + d1 * d1 + d2 * d2);
+				double d3 = Math.sqrt(d0 * d0 + d1 * d1 + d2 * d2);
 
 				if (d1 != 0.0D)
 				{
-					this.mob.setDeltaMovement(this.mob.getDeltaMovement().add(0.0D, (double)this.mob.getSpeed() * (d1 / d3) * 0.01D, 0.0D));
+					this.mob.setDeltaMovement(this.mob.getDeltaMovement().add(0.0D, this.mob.getSpeed() * (d1 / d3) * 0.01D, 0.0D));
 				}
 
-				if (d3 >= (double)2.5E-7F)
+				if (d3 >= 2.5E-7F)
 				{
-					float f1 = (float)(MathHelper.atan2(d2, d0) * (double)(180.0F / (float)Math.PI)) - 90.0F;
-					this.mob.yRot = this.rotlerp(this.mob.yRot, f1, this.mob.getTarget() != null ? 90.0F : 30.0F);
-					this.mob.yBodyRot = this.mob.yRot;
+					float f1 = (float)(Mth.atan2(d2, d0) * (180.0F / (float)Math.PI)) - 90.0F;
+					this.mob.setYRot(this.rotlerp(this.mob.getYRot(), f1, this.mob.getTarget() != null ? 90.0F : 30.0F));
+					this.mob.setYBodyRot(this.mob.getYRot());
 				}
 			}
 			else
 			{
-				this.mob.setSpeed(MathHelper.lerp(0.125F, this.mob.getSpeed(), 0.0F));
+				this.mob.setSpeed(Mth.lerp(0.125F, this.mob.getSpeed(), 0.0F));
 			}
 		}
 	}
 
-	protected class LookHelperController extends LookController
+	protected class SavagefangLookControl extends LookControl
 	{
 		private final SavagefangEntity mob;
 
-		public LookHelperController(SavagefangEntity mob)
+		public SavagefangLookControl(SavagefangEntity mob)
 		{
 			super(mob);
 			this.mob = mob;
@@ -615,27 +616,27 @@ public class SavagefangEntity extends MonsterEntity implements IModMob
 		{
 			if (!this.mob.isLaunched())
 			{
-				Vector3d vector3d = this.mob.getDeltaMovement();
+				Vec3 vec3 = this.mob.getDeltaMovement();
 
-				if (vector3d.lengthSqr() > 0.001D)
+				if (vec3.lengthSqr() > 0.001D)
 				{
-					vector3d = vector3d.normalize();
-					double d0 = vector3d.x;
-					double d1 = vector3d.z;
+					vec3 = vec3.normalize();
+					double d0 = vec3.x;
+					double d1 = vec3.z;
 					double d2 = Math.sqrt(d0 * d0 + d1 * d1);
-					this.mob.xRot = MathHelper.clamp((float)(MathHelper.atan2(vector3d.y, d2) * (180.0F / (float)Math.PI)), -60.0F, 60.0F);
+					this.mob.setXRot(Mth.clamp((float)(Mth.atan2(vec3.y, d2) * (180.0F / (float)Math.PI)), -60.0F, 60.0F));
 				}
 				else
 				{
-					this.mob.xRot = 0.0F;
+					this.mob.setXRot(0.0F);
 				}
 			}
 			else
 			{
-				this.mob.xRot = 0.0F;
+				this.mob.setXRot(0.0F);
 			}
 
-			this.mob.yHeadRot = this.mob.yRot;
+			this.mob.setYHeadRot(this.mob.getYRot());
 		}
 	}
 
@@ -664,7 +665,7 @@ public class SavagefangEntity extends MonsterEntity implements IModMob
 		@Override
 		protected int getAttackInterval()
 		{
-			return 10;
+			return this.adjustedTickDelay(10);
 		}
 	}
 
@@ -733,21 +734,21 @@ public class SavagefangEntity extends MonsterEntity implements IModMob
 		public void start()
 		{
 			this.mob.setLeapCooldown(15 + this.mob.getRandom().nextInt(15));
-			Vector3d vector3d = this.mob.getDeltaMovement();
-			Vector3d vector3d1 = new Vector3d(this.target.getX() - this.mob.getX(), 0.0D, this.target.getZ() - this.mob.getZ());
+			Vec3 vec3 = this.mob.getDeltaMovement();
+			Vec3 vec31 = new Vec3(this.target.getX() - this.mob.getX(), 0.0D, this.target.getZ() - this.mob.getZ());
 
-			if (vector3d1.lengthSqr() > 1.0E-7D)
+			if (vec31.lengthSqr() > 1.0E-7D)
 			{
-				vector3d1 = vector3d1.normalize().scale(0.25D + (double)(this.mob.getRandom().nextFloat() * 0.05F)).add(vector3d.scale(0.5D));
+				vec31 = vec31.normalize().scale(0.25D + this.mob.getRandom().nextFloat() * 0.05F).add(vec3.scale(0.5D));
 			}
 
 			if (!this.target.isInWaterOrBubble() || ( this.target.getY() + 1.0D > this.mob.getEyeY() && this.mob.level.isEmptyBlock(new BlockPos(this.mob.blockPosition().getX(), this.mob.blockPosition().getY() + 1.0D, this.mob.blockPosition().getZ()))))
 			{
-				this.mob.setDeltaMovement(vector3d1.x, 0.4D + (double)(this.mob.getRandom().nextFloat() * 0.2F), vector3d1.z);
+				this.mob.setDeltaMovement(vec31.x, 0.4D + this.mob.getRandom().nextFloat() * 0.2F, vec31.z);
 			}
 			else
 			{
-				this.mob.setDeltaMovement(vector3d1.x * 1.2D, 0.05D, vector3d1.z * 1.2D);
+				this.mob.setDeltaMovement(vec31.x * 1.2D, 0.05D, vec31.z * 1.2D);
 			}
 
 			this.mob.getNavigation().stop();
@@ -822,8 +823,8 @@ public class SavagefangEntity extends MonsterEntity implements IModMob
 				Predicate<SavagefangEntity> predicate = (p) -> {
 					return p.canBeFollowed() || !p.isFollower();
 				};
-				List<SavagefangEntity> list = this.mob.level.getEntitiesOfClass(this.mob.getClass(), this.mob.getBoundingBox().inflate(8.0D, 8.0D, 8.0D), predicate);
-				SavagefangEntity monsterentity = list.stream().filter(SavagefangEntity::canBeFollowed).findAny().orElse(this.mob);
+				List<? extends SavagefangEntity> list = this.mob.level.getEntitiesOfClass(this.mob.getClass(), this.mob.getBoundingBox().inflate(8.0D, 8.0D, 8.0D), predicate);
+				SavagefangEntity monsterentity = DataFixUtils.orElse(list.stream().filter(SavagefangEntity::canBeFollowed).findAny(), this.mob);
 				monsterentity.addFollowers(list.stream().filter((p) -> {
 					return !p.isFollower();
 				}));
@@ -872,15 +873,15 @@ public class SavagefangEntity extends MonsterEntity implements IModMob
 		@Override
 		public boolean test(@Nullable LivingEntity livingEntityIn)
 		{
-			if (this.parent.isLaunched() || ModTags.checkTagContains(ModTags.SAVAGEFANG_TARGET_BLACKLIST, livingEntityIn.getType()) || livingEntityIn instanceof SavagefangEntity || livingEntityIn instanceof CreeperEntity)
+			if (this.parent.isLaunched() || livingEntityIn.getType().is(ModTags.SAVAGEFANG_TARGET_BLACKLIST) || livingEntityIn instanceof SavagefangEntity)
 			{
 				return false;
 			}
-			else if (livingEntityIn instanceof PlayerEntity || (livingEntityIn.getMobType() != CreatureAttribute.WATER && !livingEntityIn.canBreatheUnderwater() && livingEntityIn instanceof AnimalEntity && ModConfigs.cachedServer.SAVAGEFANG_ATTACK_ANIMALS) || (livingEntityIn instanceof AbstractVillagerEntity && ModConfigs.cachedServer.SAVAGEFANG_ATTACK_VILLAGERS) || (livingEntityIn.getMobType() == CreatureAttribute.ILLAGER && ModConfigs.cachedServer.SAVAGEFANG_ATTACK_ILLAGERS))
+			else if (livingEntityIn instanceof Player || (livingEntityIn.getMobType() != MobType.WATER && !livingEntityIn.canBreatheUnderwater() && livingEntityIn instanceof Animal && ModConfigs.cachedServer.SAVAGEFANG_ATTACK_ANIMALS) || (livingEntityIn instanceof AbstractVillager && ModConfigs.cachedServer.SAVAGEFANG_ATTACK_VILLAGERS) || (livingEntityIn.getMobType() == MobType.ILLAGER && ModConfigs.cachedServer.SAVAGEFANG_ATTACK_ILLAGERS))
 			{
 				return livingEntityIn.distanceToSqr(this.parent) <= 4.0D * 4.0D || (livingEntityIn.isInWaterOrBubble() && livingEntityIn.distanceToSqr(this.parent) <= 9.0D * 9.0D);
 			}
-			else if (!(livingEntityIn instanceof FlyingEntity) && ModConfigs.cachedServer.SAVAGEFANG_ATTACK_DAMAGED_MOBS)
+			else if (!(livingEntityIn instanceof FlyingMob) && ModConfigs.cachedServer.SAVAGEFANG_ATTACK_DAMAGED_MOBS)
 			{
 				return (livingEntityIn.isInWaterOrBubble() && livingEntityIn.distanceToSqr(this.parent) <= 9.0D * 9.0D) && ((livingEntityIn.getHealth() < 10.0F && livingEntityIn.getHealth() < livingEntityIn.getMaxHealth()) || livingEntityIn.getHealth() < livingEntityIn.getMaxHealth() * 0.25F);
 			}

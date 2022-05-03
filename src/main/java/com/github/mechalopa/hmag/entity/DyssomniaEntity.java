@@ -611,9 +611,6 @@ public class DyssomniaEntity extends FlyingMob implements Enemy, IModMob
 				this.parent.setYRot(-((float)Mth.atan2(d0, d1)) * (180.0F / (float)Math.PI));
 				this.parent.yBodyRot = this.parent.getYRot();
 				this.parent.setXRot(Mth.clamp((float)(Mth.atan2(vec3.y, d2) * (180.0F / (float)Math.PI)), -45.0F, 45.0F));
-
-				this.parent.setYRot(-((float)Mth.atan2(d0, d1)) * (180.0F / (float)Math.PI));
-				this.parent.yBodyRot = this.parent.getYRot();
 			}
 			else
 			{

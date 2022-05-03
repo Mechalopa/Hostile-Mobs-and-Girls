@@ -7,6 +7,7 @@ import com.mojang.math.Matrix4f;
 import com.mojang.math.Vector3d;
 
 import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
@@ -67,7 +68,7 @@ public class ModClientUtils
 	{
 		double d0 = 1.0D - worldIn.getRainLevel(1.0F) * 5.0F / 16.0D;
 		double d1 = 1.0D - worldIn.getThunderLevel(1.0F) * 5.0F / 16.0D;
-		double d2 = 0.5D + 2.0D * MathHelper.clamp((double)MathHelper.cos(worldIn.getTimeOfDay(1.0F) * ((float)Math.PI * 2.0F)), -0.25D, 0.25D);
+		double d2 = 0.5D + 2.0D * Mth.clamp((double)Mth.cos(worldIn.getTimeOfDay(1.0F) * ((float)Math.PI * 2.0F)), -0.25D, 0.25D);
 		return (int)((1.0D - d2 * d0 * d1) * 11.0D);
 	}
 }

@@ -8,59 +8,59 @@ import com.github.mechalopa.hmag.entity.projectile.MagmaBulletEntity;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
 import com.github.mechalopa.hmag.util.ModUtils;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntitySize;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.IRangedAttackMob;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.Pose;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.HurtByTargetGoal;
-import net.minecraft.entity.ai.goal.LookAtGoal;
-import net.minecraft.entity.ai.goal.LookRandomlyGoal;
-import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
-import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
-import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.IPacket;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.pathfinding.PathNodeType;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.Mth;
 import net.minecraft.world.Difficulty;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.RangedAttackMob;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.fml.network.NetworkHooks;
+import net.minecraftforge.network.NetworkHooks;
 
-public class FortressKeeperEntity extends MonsterEntity implements IModMob, IRangedAttackMob
+public class FortressKeeperEntity extends Monster implements IModMob, RangedAttackMob
 {
-	private static final DataParameter<Byte> DATA_FLAGS_ID = EntityDataManager.defineId(SavagefangEntity.class, DataSerializers.BYTE);
+	private static final EntityDataAccessor<Byte> DATA_FLAGS_ID = SynchedEntityData.defineId(FortressKeeperEntity.class, EntityDataSerializers.BYTE);
 	private float attackAnimation;
 	private float attackAnimationO;
 	private float attackHandChangeAnimation;
 	private float attackHandChangeAnimationO;
 
-	public FortressKeeperEntity(EntityType<? extends FortressKeeperEntity> type, World worldIn)
+	public FortressKeeperEntity(EntityType<? extends FortressKeeperEntity> type, Level worldIn)
 	{
 		super(type, worldIn);
-		this.setPathfindingMalus(PathNodeType.WATER, -1.0F);
-		this.setPathfindingMalus(PathNodeType.LAVA, 8.0F);
-		this.setPathfindingMalus(PathNodeType.DANGER_FIRE, 0.0F);
-		this.setPathfindingMalus(PathNodeType.DAMAGE_FIRE, 0.0F);
+		this.setPathfindingMalus(BlockPathTypes.WATER, -1.0F);
+		this.setPathfindingMalus(BlockPathTypes.LAVA, 0.0F);
+		this.setPathfindingMalus(BlockPathTypes.DANGER_FIRE, 0.0F);
+		this.setPathfindingMalus(BlockPathTypes.DAMAGE_FIRE, 0.0F);
 		this.xpReward = 15;
 	}
 
@@ -69,11 +69,11 @@ public class FortressKeeperEntity extends MonsterEntity implements IModMob, IRan
 	{
 		this.goalSelector.addGoal(3, new MeleeAttackGoal2(this, 1.2D, false, 2.0F / 3.0F, 4.0F));
 		this.goalSelector.addGoal(4, new FortressKeeperEntity.RangedAttackGoal(this));
-		this.goalSelector.addGoal(5, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
-		this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 8.0F));
-		this.goalSelector.addGoal(6, new LookRandomlyGoal(this));
+		this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+		this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
+		this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
 		this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
-		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
+		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
 	}
 
 	@Override
@@ -83,9 +83,9 @@ public class FortressKeeperEntity extends MonsterEntity implements IModMob, IRan
 		this.entityData.define(DATA_FLAGS_ID, (byte)0);
 	}
 
-	public static AttributeModifierMap.MutableAttribute createAttributes()
+	public static AttributeSupplier.Builder createAttributes()
 	{
-		return MonsterEntity.createMonsterAttributes()
+		return Monster.createMonsterAttributes()
 				.add(Attributes.MAX_HEALTH, 60.0D)
 				.add(Attributes.MOVEMENT_SPEED, 0.22D)
 				.add(Attributes.ATTACK_DAMAGE, 8.0D)
@@ -138,16 +138,16 @@ public class FortressKeeperEntity extends MonsterEntity implements IModMob, IRan
 
 				if (this.attackAnimation <= 0.0F || (this.attackHandChangeAnimation >= 1.0F ^ !this.isLeftHanded()))
 				{
-					float f = MathHelper.cos(this.yBodyRot * ((float)Math.PI / 180.0F)) * (0.75F + (this.getRandom().nextFloat() - 0.5F) * 0.75F);
-					float f1 = MathHelper.sin(this.yBodyRot * ((float)Math.PI / 180.0F)) * (0.75F + (this.getRandom().nextFloat() - 0.5F) * 0.75F);
-					this.level.addParticle(ParticleTypes.LARGE_SMOKE, this.getX() + (double)f, d0 - this.getRandom().nextDouble() * (double)0.1F, this.getZ() + (double)f1, 0.0D, 0.0D, 0.0D);
+					float f = Mth.cos(this.yBodyRot * ((float)Math.PI / 180.0F)) * (0.75F + (this.getRandom().nextFloat() - 0.5F) * 0.75F);
+					float f1 = Mth.sin(this.yBodyRot * ((float)Math.PI / 180.0F)) * (0.75F + (this.getRandom().nextFloat() - 0.5F) * 0.75F);
+					this.level.addParticle(ParticleTypes.LARGE_SMOKE, this.getX() + f, d0 - this.getRandom().nextDouble() * 0.1F, this.getZ() + f1, 0.0D, 0.0D, 0.0D);
 				}
 
 				if (this.attackAnimation <= 0.0F || (this.attackHandChangeAnimation <= 0.0F ^ !this.isLeftHanded()))
 				{
-					float f2 = MathHelper.cos(this.yBodyRot * ((float)Math.PI / 180.0F)) * (0.75F + (this.getRandom().nextFloat() - 0.5F) * 0.75F);
-					float f3 = MathHelper.sin(this.yBodyRot * ((float)Math.PI / 180.0F)) * (0.75F + (this.getRandom().nextFloat() - 0.5F) * 0.75F);
-					this.level.addParticle(ParticleTypes.LARGE_SMOKE, this.getX() - (double)f2, d0 - this.getRandom().nextDouble() * (double)0.1F, this.getZ() - (double)f3, 0.0D, 0.0D, 0.0D);
+					float f2 = Mth.cos(this.yBodyRot * ((float)Math.PI / 180.0F)) * (0.75F + (this.getRandom().nextFloat() - 0.5F) * 0.75F);
+					float f3 = Mth.sin(this.yBodyRot * ((float)Math.PI / 180.0F)) * (0.75F + (this.getRandom().nextFloat() - 0.5F) * 0.75F);
+					this.level.addParticle(ParticleTypes.LARGE_SMOKE, this.getX() - f2, d0 - this.getRandom().nextDouble() * 0.1F, this.getZ() - f3, 0.0D, 0.0D, 0.0D);
 				}
 			}
 		}
@@ -175,7 +175,7 @@ public class FortressKeeperEntity extends MonsterEntity implements IModMob, IRan
 
 				if (i > 0)
 				{
-					((LivingEntity)entityIn).addEffect(new EffectInstance(Effects.MOVEMENT_SLOWDOWN, i * 20, 0));
+					((LivingEntity)entityIn).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, i * 20, 0));
 				}
 
 				this.level.broadcastEntityEvent(this, (byte)4);
@@ -204,8 +204,8 @@ public class FortressKeeperEntity extends MonsterEntity implements IModMob, IRan
 	@Override
 	public void performRangedAttack(LivingEntity target, float distanceFactor)
 	{
-		float f = MathHelper.cos(this.yBodyRot * ((float)Math.PI / 180.0F)) * 0.5625F;
-		float f1 = MathHelper.sin(this.yBodyRot * ((float)Math.PI / 180.0F)) * 0.5625F;
+		float f = Mth.cos(this.yBodyRot * ((float)Math.PI / 180.0F)) * 0.5625F;
+		float f1 = Mth.sin(this.yBodyRot * ((float)Math.PI / 180.0F)) * 0.5625F;
 
 		if (this.isOffHandRangedAttack() ^ !this.isLeftHanded())
 		{
@@ -213,31 +213,31 @@ public class FortressKeeperEntity extends MonsterEntity implements IModMob, IRan
 			f1 *= -1;
 		}
 
-		Vector3d vector3d = this.getViewVector(1.0F);
-		f += vector3d.x * 1.25F;
-		f1 += vector3d.z * 1.25F;
-		double d0 = target.getX() - (this.getX() + (double)f);
-		double d1 = target.getY() + (double)target.getEyeHeight() * 0.5D - (this.getY() + (double)0.75F);
-		double d2 = target.getZ() - (this.getZ() + (double)f1);
-		float f2 = MathHelper.sqrt(d0 * d0 + d2 * d2);
-		MagmaBulletEntity bulletentity = new MagmaBulletEntity(this.level, this, d0 + this.getRandom().nextGaussian() * (double)(f2 * 0.01F), d1 + (double)(f2 * 0.08F), d2 + this.getRandom().nextGaussian() * (double)(f2 * 0.01F));
-		bulletentity.setPos(bulletentity.getX() + (double)f, this.getY() + (double)0.75F, bulletentity.getZ() + (double)f1);
+		Vec3 vec3 = this.getViewVector(1.0F);
+		f += vec3.x * 1.25F;
+		f1 += vec3.z * 1.25F;
+		double d0 = target.getX() - (this.getX() + f);
+		double d1 = target.getY() + target.getEyeHeight() * 0.5D - (this.getY() + 0.75F);
+		double d2 = target.getZ() - (this.getZ() + f1);
+		double d3 = Math.sqrt(d0 * d0 + d2 * d2);
+		MagmaBulletEntity bulletentity = new MagmaBulletEntity(this.level, this, d0 + this.getRandom().nextGaussian() * (d3 * 0.01F), d1 + d3 * 0.08F, d2 + this.getRandom().nextGaussian() * (d3 * 0.01F));
+		bulletentity.setPos(bulletentity.getX() + f, this.getY() + 0.75F, bulletentity.getZ() + f1);
 		bulletentity.setDamage(4.0F);
 		this.level.addFreshEntity(bulletentity);
 
 		for (int i = 0; i < 8; ++i)
 		{
-			((ServerWorld)this.level).sendParticles(ParticleTypes.POOF, bulletentity.getX(), bulletentity.getY(), bulletentity.getZ(), 1, this.getRandom().nextGaussian() * 0.05D, 0.005D, this.getRandom().nextGaussian() * 0.05D, 0.0D);
+			((ServerLevel)this.level).sendParticles(ParticleTypes.POOF, bulletentity.getX(), bulletentity.getY(), bulletentity.getZ(), 1, this.getRandom().nextGaussian() * 0.05D, 0.005D, this.getRandom().nextGaussian() * 0.05D, 0.0D);
 		}
 
 		if (!this.isInWaterOrBubble())
 		{
-			((ServerWorld)this.level).sendParticles(ParticleTypes.LAVA, bulletentity.getX(), bulletentity.getY(), bulletentity.getZ(), 8, 0.0D, 0.0D, 0.0D, 0.0D);
+			((ServerLevel)this.level).sendParticles(ParticleTypes.LAVA, bulletentity.getX(), bulletentity.getY(), bulletentity.getZ(), 8, 0.0D, 0.0D, 0.0D, 0.0D);
 		}
 
 		if (!this.isSilent())
 		{
-			this.level.playSound((PlayerEntity)null, this.getX(), this.getY(), this.getZ(), SoundEvents.SHULKER_SHOOT, this.getSoundSource(), 2.0F, (this.getRandom().nextFloat() - this.getRandom().nextFloat()) * 0.2F + 1.0F);
+			this.level.playSound((Player)null, this.getX(), this.getY(), this.getZ(), SoundEvents.SHULKER_SHOOT, this.getSoundSource(), 2.0F, (this.getRandom().nextFloat() - this.getRandom().nextFloat()) * 0.2F + 1.0F);
 		}
 
 		if (this.getRandom().nextInt(3) == 0)
@@ -271,7 +271,7 @@ public class FortressKeeperEntity extends MonsterEntity implements IModMob, IRan
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn)
+	protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn)
 	{
 		return 1.74F;
 	}
@@ -314,14 +314,14 @@ public class FortressKeeperEntity extends MonsterEntity implements IModMob, IRan
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundNBT compound)
+	public void readAdditionalSaveData(CompoundTag compound)
 	{
 		super.readAdditionalSaveData(compound);
 		this.setOffHandRangedAttack(compound.getBoolean("isOffHandRangedAttack"));
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundNBT compound)
+	public void addAdditionalSaveData(CompoundTag compound)
 	{
 		super.addAdditionalSaveData(compound);
 		compound.putBoolean("isOffHandRangedAttack", this.isOffHandRangedAttack());
@@ -330,13 +330,13 @@ public class FortressKeeperEntity extends MonsterEntity implements IModMob, IRan
 	@OnlyIn(Dist.CLIENT)
 	public float getAttackAnimationScale(float f)
 	{
-		return MathHelper.lerp(f, this.attackAnimationO, this.attackAnimation);
+		return Mth.lerp(f, this.attackAnimationO, this.attackAnimation);
 	}
 
 	@OnlyIn(Dist.CLIENT)
 	public float getAttackHandChangeAnimationScale(float f)
 	{
-		return MathHelper.lerp(f, this.attackHandChangeAnimationO, this.attackHandChangeAnimation);
+		return Mth.lerp(f, this.attackHandChangeAnimationO, this.attackHandChangeAnimation);
 	}
 
 	@Override
@@ -371,14 +371,14 @@ public class FortressKeeperEntity extends MonsterEntity implements IModMob, IRan
 
 	@Nonnull
 	@Override
-	public IPacket<?> getAddEntityPacket()
+	public Packet<?> getAddEntityPacket()
 	{
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 
 	private class RangedAttackGoal extends RangedAttackGoal2
 	{
-		public RangedAttackGoal(IRangedAttackMob mob)
+		public RangedAttackGoal(RangedAttackMob mob)
 		{
 			super(mob, 0.9D, 40, 60, 9.0F, 4.0F, false);
 		}
@@ -410,7 +410,7 @@ public class FortressKeeperEntity extends MonsterEntity implements IModMob, IRan
 					attacker.setRangedAttacking(true);
 				}
 			}
-			else if (attacker.isRangedAttacking() && (attacker.distanceToSqr(this.getTarget().getX(), this.getTarget().getY(), this.getTarget().getZ()) > (double)(16.0F * 16.0F) || !attacker.getSensing().canSee(this.getTarget())))
+			else if (attacker.isRangedAttacking() && (attacker.distanceToSqr(this.getTarget().getX(), this.getTarget().getY(), this.getTarget().getZ()) > 16.0F * 16.0F || !attacker.getSensing().hasLineOfSight(this.getTarget())))
 			{
 				attacker.setRangedAttacking(false);
 			}
