@@ -35,7 +35,7 @@ public class MeltyMonsterLayer extends RenderLayer<MeltyMonsterEntity, MeltyMons
 	{
 		super(renderLayerParent);
 		this.layerModel = new MeltyMonsterModel<>(modelSet.bakeLayer(ModModelLayers.MELTY_MONSTER_OUTER_LAYER));
-		this.layerModel.setLayer();
+		this.layerModel.setLayer(true);
 	}
 
 	@Override

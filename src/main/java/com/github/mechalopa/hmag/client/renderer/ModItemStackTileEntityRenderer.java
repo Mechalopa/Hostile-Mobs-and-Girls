@@ -3,17 +3,12 @@ package com.github.mechalopa.hmag.client.renderer;
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.model.ModShieldModel;
 import com.github.mechalopa.hmag.registry.ModItems;
-import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.vertex.IVertexBuilder;
 
-import net.minecraft.client.renderer.IRenderTypeBuffer;
-import net.minecraft.client.renderer.ItemRenderer;
-import net.minecraft.client.renderer.model.ItemCameraTransforms;
-import net.minecraft.client.renderer.model.Model;
-import net.minecraft.client.renderer.tileentity.ItemStackTileEntityRenderer;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.client.model.Model;
+import net.minecraft.client.renderer.entity.ItemRenderer;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 

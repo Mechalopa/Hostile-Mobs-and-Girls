@@ -240,10 +240,10 @@ public class MeltyMonsterModel<T extends MeltyMonsterEntity> extends AbstractAdv
 		this.skirt3.xRot = 0.0F;
 	}
 
-	public void setLayer()
+	public void setLayer(boolean flag)
 	{
-		this.hat.visible = false;
-		this.skirt3.visible = false;
-		this.ahoge.visible = false;
+		this.hat.visible = !flag;
+		this.skirt3.visible = !flag;
+		this.ahoge.visible = !flag;
 	}
 }

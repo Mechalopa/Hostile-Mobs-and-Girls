@@ -21,10 +21,10 @@ public class WitherSkeletonGirlRenderer extends SkeletonGirlRenderer
 	}
 
 	@Override
-	protected void scale(AbstractSkeleton entityIn, PoseStack poseStackIn, float partialTickTime)
+	protected void scale(AbstractSkeleton entityIn, PoseStack poseStack, float partialTickTime)
 	{
-		poseStackIn.scale(1.2F, 1.2F, 1.2F);
-		super.scale(entityIn, poseStackIn, partialTickTime);
+		poseStack.scale(1.2F, 1.2F, 1.2F);
+		super.scale(entityIn, poseStack, partialTickTime);
 	}
 
 	@Override

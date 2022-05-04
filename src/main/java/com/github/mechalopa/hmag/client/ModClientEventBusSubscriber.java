@@ -234,8 +234,8 @@ public class ModClientEventBusSubscriber
 		event.registerLayerDefinition(ModModelLayers.REDCAP_OUTER_ARMOR, () -> layerdefinition);
 		event.registerLayerDefinition(ModModelLayers.SLIME_GIRL, SlimeGirlModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.SLIME_GIRL_OUTER, SlimeGirlModel::createBodyLayer);
-		event.registerLayerDefinition(ModModelLayers.MAGICAL_SLIME, MagicalSlimeModel::createBodyLayer);
-		event.registerLayerDefinition(ModModelLayers.MAGICAL_SLIME_OUTER, MagicalSlimeModel::createBodyLayer);
+		event.registerLayerDefinition(ModModelLayers.MAGICAL_SLIME, MagicalSlimeModel::createInnerBodyLayer);
+		event.registerLayerDefinition(ModModelLayers.MAGICAL_SLIME_OUTER, MagicalSlimeModel::createOuterBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.MONOLITH, MonolithModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.CRIMSON_SLAUGHTERER, CrimsonSlaughtererModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.DYSSOMNIA, DyssomniaModel::createBodyLayer);

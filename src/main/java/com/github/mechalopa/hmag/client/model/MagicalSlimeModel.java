@@ -1,59 +1,67 @@
 package com.github.mechalopa.hmag.client.model;
 
-import com.google.common.collect.ImmutableList;
-
-import net.minecraft.client.renderer.entity.model.SegmentedModel;
-import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.entity.Entity;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.client.model.HierarchicalModel;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.model.geom.builders.CubeListBuilder;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
+import net.minecraft.client.model.geom.builders.MeshDefinition;
+import net.minecraft.client.model.geom.builders.PartDefinition;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.Entity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class MagicalSlimeModel<T extends Entity> extends SegmentedModel<T>
+public class MagicalSlimeModel<T extends Entity> extends HierarchicalModel<T>
 {
-	private final ModelRenderer cube;
-	private final ModelRenderer eye0;
-	private final ModelRenderer eye1;
-	private final ModelRenderer mouth;
-	private final boolean isLayer;
+	private final ModelPart root;
+	private final ModelPart cube;
+	protected boolean isOuterLayer = false;
 
-	public MagicalSlimeModel(int slimeBodyTexOffY)
+	public MagicalSlimeModel(ModelPart modelPart)
 	{
-		this.cube = new ModelRenderer(this, 0, slimeBodyTexOffY);
-		this.eye0 = new ModelRenderer(this, 32, 0);
-		this.eye1 = new ModelRenderer(this, 32, 4);
-		this.mouth = new ModelRenderer(this, 32, 8);
+		this.root = modelPart;
+		this.cube = this.root.getChild("cube");
+	}
 
-		if (slimeBodyTexOffY > 0)
-		{
-			this.cube.addBox(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F, -0.75F);
-			this.cube.setPos(0.0F, 20.0F, 0.0F);
-			this.eye0.addBox(-3.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F);
-			this.eye1.addBox(1.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F);
-			this.mouth.addBox(0.0F, 21.0F, -3.5F, 1.0F, 1.0F, 1.0F);
-			this.isLayer = false;
-		}
-		else
-		{
-			this.cube.addBox(-4.0F, 16.0F, -4.0F, 8.0F, 8.0F, 8.0F);
-			this.isLayer = true;
-		}
+	public static LayerDefinition createOuterBodyLayer()
+	{
+		MeshDefinition meshdefinition = new MeshDefinition();
+		PartDefinition partdefinition = meshdefinition.getRoot();
+		partdefinition.addOrReplaceChild("cube", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, 16.0F, -4.0F, 8.0F, 8.0F, 8.0F), PartPose.ZERO);
+		return LayerDefinition.create(meshdefinition, 64, 32);
+	}
+
+	public static LayerDefinition createInnerBodyLayer()
+	{
+		MeshDefinition meshdefinition = new MeshDefinition();
+		PartDefinition partdefinition = meshdefinition.getRoot();
+		partdefinition.addOrReplaceChild("cube", CubeListBuilder.create().texOffs(0, 16).addBox(-3.0F, 17.0F, -3.0F, 6.0F, 6.0F, 6.0F), PartPose.ZERO);
+		partdefinition.addOrReplaceChild("right_eye", CubeListBuilder.create().texOffs(32, 0).addBox(-3.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), PartPose.ZERO);
+		partdefinition.addOrReplaceChild("left_eye", CubeListBuilder.create().texOffs(32, 4).addBox(1.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), PartPose.ZERO);
+		partdefinition.addOrReplaceChild("mouth", CubeListBuilder.create().texOffs(32, 8).addBox(0.0F, 21.0F, -3.5F, 1.0F, 1.0F, 1.0F), PartPose.ZERO);
+		return LayerDefinition.create(meshdefinition, 64, 32);
+	}
+
+	@Override
+	public ModelPart root()
+	{
+		return this.root;
 	}
 
 	@Override
 	public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
-		if (!this.isLayer)
+		if (!this.isOuterLayer)
 		{
-			this.cube.xRot = MathHelper.sin(ageInTicks * 0.09F) * 0.075F;
-			this.cube.zRot = MathHelper.cos(ageInTicks * 0.06F) * 0.075F;
+			this.cube.xRot = Mth.sin(ageInTicks * 0.09F) * 0.075F;
+			this.cube.zRot = Mth.cos(ageInTicks * 0.06F) * 0.075F;
 		}
 	}
 
-	@Override
-	public Iterable<ModelRenderer> parts()
+	public void setOuterLayer(boolean flag)
 	{
-		return ImmutableList.of(this.cube, this.eye0, this.eye1, this.mouth);
+		this.isOuterLayer = flag;
 	}
 }
