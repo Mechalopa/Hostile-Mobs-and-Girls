@@ -10,7 +10,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class GhastlySeekerModel<T extends GhastlySeekerEntity> extends AbstractGirlModel<T>
+public class GhastlySeekerModel<T extends GhastlySeekerEntity> extends AbstractAdvancedGirlModel<T>
 {
 	private ModelRenderer rightArmPart1;
 	private ModelRenderer rightArmPart2;

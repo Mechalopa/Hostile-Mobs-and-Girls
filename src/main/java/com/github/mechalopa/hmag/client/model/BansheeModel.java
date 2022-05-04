@@ -9,7 +9,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class BansheeModel<T extends AbstractFlyingMonsterEntity> extends AbstractGirlModel<T>
+public class BansheeModel<T extends AbstractFlyingMonsterEntity> extends AbstractAdvancedGirlModel<T>
 {
 	private ModelRenderer skirt1;
 	private ModelRenderer skirt2;

@@ -1,12 +1,13 @@
 package com.github.mechalopa.hmag.client.renderer;
 
 import com.github.mechalopa.hmag.HMaG;
+import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.renderer.layers.GhostClothingLayer;
 import com.github.mechalopa.hmag.client.renderer.layers.WitherGhostClothingLayer;
 import com.github.mechalopa.hmag.entity.GhostEntity;
 
-import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -19,9 +20,9 @@ public class WitherGhostRenderer extends GhostRenderer
 	private static final ResourceLocation TEX3 = new ResourceLocation(HMaG.MODID, "textures/entity/wither_ghost_3.png");
 	private static final ResourceLocation TEX4 = new ResourceLocation(HMaG.MODID, "textures/entity/wither_ghost_4.png");
 
-	public WitherGhostRenderer(EntityRendererManager renderManagerIn)
+	public WitherGhostRenderer(EntityRendererProvider.Context context)
 	{
-		super(renderManagerIn);
+		super(context, ModModelLayers.WITHER_GHOST, ModModelLayers.WITHER_GHOST_INNER_ARMOR, ModModelLayers.WITHER_GHOST_OUTER_ARMOR);
 	}
 
 	@Override
@@ -43,8 +44,8 @@ public class WitherGhostRenderer extends GhostRenderer
 	}
 
 	@Override
-	public GhostClothingLayer getLayer()
+	public GhostClothingLayer getLayer(EntityRendererProvider.Context context)
 	{
-		return new WitherGhostClothingLayer(this);
+		return new WitherGhostClothingLayer(this, context.getModelSet());
 	}
 }

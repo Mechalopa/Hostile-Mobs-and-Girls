@@ -8,7 +8,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class MeltyMonsterModel<T extends MeltyMonsterEntity> extends AbstractGirlModel<T>
+public class MeltyMonsterModel<T extends MeltyMonsterEntity> extends AbstractAdvancedGirlModel<T>
 {
 	protected boolean isOverlay = false;
 	private ModelRenderer rightArmPart;

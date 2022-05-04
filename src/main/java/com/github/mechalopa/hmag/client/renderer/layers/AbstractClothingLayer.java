@@ -1,29 +1,29 @@
 package com.github.mechalopa.hmag.client.renderer.layers;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.vertex.IVertexBuilder;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 
-import net.minecraft.client.renderer.IRenderTypeBuffer;
+import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.IEntityRenderer;
-import net.minecraft.client.renderer.entity.LivingRenderer;
-import net.minecraft.client.renderer.entity.layers.LayerRenderer;
-import net.minecraft.client.renderer.entity.model.EntityModel;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.client.renderer.entity.LivingEntityRenderer;
+import net.minecraft.client.renderer.entity.RenderLayerParent;
+import net.minecraft.client.renderer.entity.layers.RenderLayer;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public abstract class AbstractClothingLayer<T extends LivingEntity, M extends EntityModel<T>> extends LayerRenderer<T, M>
+public abstract class AbstractClothingLayer<T extends LivingEntity, M extends EntityModel<T>> extends RenderLayer<T, M>
 {
-	public AbstractClothingLayer(IEntityRenderer<T, M> entityRendererIn)
+	public AbstractClothingLayer(RenderLayerParent<T, M> renderLayerParent)
 	{
-		super(entityRendererIn);
+		super(renderLayerParent);
 	}
 
 	@Override
-	public void render(MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn, T livingEntityIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch)
+	public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLightIn, T livingEntityIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch)
 	{
 		if (!livingEntityIn.isInvisible() && this.canRender(livingEntityIn))
 		{
@@ -32,8 +32,8 @@ public abstract class AbstractClothingLayer<T extends LivingEntity, M extends En
 			entitymodel.prepareMobModel(livingEntityIn, limbSwing, limbSwingAmount, partialTicks);
 			entitymodel.setupAnim(livingEntityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 			ResourceLocation resourcelocation = this.getLayerTexture(livingEntityIn);
-			IVertexBuilder ivertexbuilder = bufferIn.getBuffer(RenderType.entityTranslucent(resourcelocation));
-			entitymodel.renderToBuffer(matrixStackIn, ivertexbuilder, packedLightIn, LivingRenderer.getOverlayCoords(livingEntityIn, 0.0F), this.getR(livingEntityIn), this.getG(livingEntityIn), this.getB(livingEntityIn), this.getAlpha(livingEntityIn));
+			VertexConsumer vertexconsumer = buffer.getBuffer(RenderType.entityTranslucent(resourcelocation));
+			entitymodel.renderToBuffer(poseStack, vertexconsumer, packedLightIn, LivingEntityRenderer.getOverlayCoords(livingEntityIn, 0.0F), this.getR(livingEntityIn), this.getG(livingEntityIn), this.getB(livingEntityIn), this.getAlpha(livingEntityIn));
 		}
 	}
 

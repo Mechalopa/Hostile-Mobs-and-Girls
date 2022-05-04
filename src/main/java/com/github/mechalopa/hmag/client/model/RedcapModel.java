@@ -7,7 +7,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class RedcapModel<T extends MobEntity> extends AbstractGirlModel<T>
+public class RedcapModel<T extends MobEntity> extends AbstractAdvancedGirlModel<T>
 {
 	private ModelRenderer cap1;
 	private ModelRenderer cap2;

@@ -7,7 +7,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class JackFrostModel<T extends MobEntity> extends AbstractGirlModel<T>
+public class JackFrostModel<T extends MobEntity> extends AbstractAdvancedGirlModel<T>
 {
 	private ModelRenderer skirt1;
 	private ModelRenderer skirt2;

@@ -12,7 +12,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class CreeperGirlPowerArmorModel<T extends CreeperGirlEntity> extends HumanoidModel<T>
+public class CreeperGirlPowerArmorModel<T extends CreeperGirlEntity> extends AbstractGirlModel<T>
 {
 	public CreeperGirlPowerArmorModel(ModelPart modelPart)
 	{

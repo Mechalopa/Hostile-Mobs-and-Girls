@@ -1,8 +1,8 @@
 package com.github.mechalopa.hmag.client.renderer;
 
+import com.github.mechalopa.hmag.client.model.AbstractGirlModel;
 import com.github.mechalopa.hmag.client.renderer.layers.ItemInHandLayer2;
 
-import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
 import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
@@ -12,7 +12,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public abstract class AbstractGirlRenderer<T extends Mob, M extends HumanoidModel<T>> extends HumanoidMobRenderer<T, M>
+public abstract class AbstractGirlRenderer<T extends Mob, M extends AbstractGirlModel<T>> extends HumanoidMobRenderer<T, M>
 {
 	public AbstractGirlRenderer(EntityRendererProvider.Context context, M modelIn, float shadowSize)
 	{

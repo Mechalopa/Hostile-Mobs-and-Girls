@@ -8,7 +8,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class SlimeGirlModel<T extends SlimeGirlEntity> extends AbstractGirlModel<T>
+public class SlimeGirlModel<T extends SlimeGirlEntity> extends AbstractAdvancedGirlModel<T>
 {
 	protected boolean isOverlay = false;
 	private ModelRenderer skirt1;

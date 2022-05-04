@@ -1,12 +1,14 @@
 package com.github.mechalopa.hmag.client.renderer.layers;
 
 import com.github.mechalopa.hmag.HMaG;
+import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.GhostModel;
 import com.github.mechalopa.hmag.entity.GhostEntity;
 
-import net.minecraft.client.renderer.entity.IEntityRenderer;
-import net.minecraft.client.renderer.entity.model.EntityModel;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.model.geom.EntityModelSet;
+import net.minecraft.client.renderer.entity.RenderLayerParent;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -18,11 +20,12 @@ public class GhostClothingLayer extends AbstractClothingLayer<GhostEntity, Ghost
 	private static final ResourceLocation TEX2 = new ResourceLocation(HMaG.MODID, "textures/entity/ghost_skin_2.png");
 	private static final ResourceLocation TEX3 = new ResourceLocation(HMaG.MODID, "textures/entity/ghost_skin_3.png");
 	private static final ResourceLocation TEX4 = new ResourceLocation(HMaG.MODID, "textures/entity/ghost_skin_4.png");
-	private final GhostModel<GhostEntity> modelOuterLayer = new GhostModel<>(0.0F, false);
+	private final GhostModel<GhostEntity> modelOuterLayer;
 
-	public GhostClothingLayer(IEntityRenderer<GhostEntity, GhostModel<GhostEntity>> entityRendererIn)
+	public GhostClothingLayer(RenderLayerParent<GhostEntity, GhostModel<GhostEntity>> renderLayerParent, EntityModelSet modelSet)
 	{
-		super(entityRendererIn);
+		super(renderLayerParent);
+		modelOuterLayer = new GhostModel<>(modelSet.bakeLayer(ModModelLayers.GHOST));
 	}
 
 	@Override

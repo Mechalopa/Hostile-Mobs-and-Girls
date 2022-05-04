@@ -1,20 +1,18 @@
 package com.github.mechalopa.hmag.client.model;
 
 import com.github.mechalopa.hmag.client.util.ModClientUtils;
-import com.mojang.blaze3d.vertex.PoseStack;
 
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.monster.AbstractSkeleton;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class StrayGirlClothingModel<T extends AbstractSkeleton> extends HumanoidModel<T>
+public class StrayGirlClothingModel<T extends AbstractSkeleton> extends AbstractGirlModel<T>
 {
 	public StrayGirlClothingModel(ModelPart modelPart)
 	{
@@ -50,12 +48,8 @@ public class StrayGirlClothingModel<T extends AbstractSkeleton> extends Humanoid
 	}
 
 	@Override
-	public void translateToHand(HumanoidArm sideIn, PoseStack poseStackIn)
+	protected boolean isSkeletonHandTranslate()
 	{
-		float f = sideIn == HumanoidArm.RIGHT ? 1.0F : -1.0F;
-		ModelPart modelpart = this.getArm(sideIn);
-		modelpart.x += f;
-		modelpart.translateAndRotate(poseStackIn);
-		modelpart.x -= f;
+		return true;
 	}
 }

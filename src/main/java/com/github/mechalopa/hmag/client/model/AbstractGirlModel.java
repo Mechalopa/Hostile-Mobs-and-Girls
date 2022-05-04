@@ -1,12 +1,14 @@
 package com.github.mechalopa.hmag.client.model;
 
 import com.github.mechalopa.hmag.client.util.ModClientUtils;
+import com.mojang.blaze3d.vertex.PoseStack;
 
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
+import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -14,32 +16,17 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public abstract class AbstractGirlModel<T extends LivingEntity> extends HumanoidModel<T>
 {
-	protected ModelPart bodyPart1;
-	protected ModelPart bodyPart2;
-	protected ModelPart bust;
-
 	public AbstractGirlModel(ModelPart modelPart)
 	{
 		super(modelPart);
-		this.bodyPart1 = this.body.getChild("body_part_1");
-		this.bodyPart2 = this.bodyPart1.getChild("body_part_2");
-		this.bust = this.body.getChild("bust");
 	}
 
 	public static MeshDefinition createMesh(CubeDeformation cd, float yOffset)
 	{
-		return createMesh(cd, yOffset, 7);
-	}
-
-	public static MeshDefinition createMesh(CubeDeformation cd, float yOffset, int bodyHeight)
-	{
 		MeshDefinition md = HumanoidModel.createMesh(cd, yOffset);
 		PartDefinition pd = md.getRoot();
 		ModClientUtils.addC(pd, cd, "head", 0, 0, -3.0F, -6.0F - 1.0F, -3.0F, 6.0F, 6.0F, 6.0F, 0.0F, 0.0F + yOffset, 0.0F, 1.0F);
-		PartDefinition bodypd = ModClientUtils.addC(pd, cd, "body", 16, 16, -3.0F, 0.0F, -1.5F, 6.0F, (float)bodyHeight, 6.0F, 0.0F, 0.0F + yOffset, 0.0F);
-		PartDefinition bodypart1pd = ModClientUtils.addC(bodypd, cd, "body_part_1", 32, 32, -2.5F, 0.0F, -1.0F, 5.0F, 3.0F, 2.0F, 0.0F, (float)bodyHeight, 0.0F);
-		ModClientUtils.addC(bodypart1pd, cd, "body_part_2", 32, 40, -3.0F, 0.0F, -1.5F, 6.0F, 2.0F, 3.0F, 0.0F, 3.0F, 0.0F);
-		ModClientUtils.addC(bodypd, cd, "bust", 0, 32, -3.0F, -1.5F, -1.5F, 6.0F, 3.0F, 3.0F, 0.0F, 3.5F, -1.1F, -0.001F);
+		ModClientUtils.addC(pd, cd, "body", 16, 16, -3.0F, 0.0F, -1.5F, 6.0F, 12.0F, 6.0F, 0.0F, 0.0F + yOffset, 0.0F);
 		ModClientUtils.addC(pd, cd, "right_arm", 40, 16, -1.0F, -2.0F, -1.5F, 3.0F, 12.0F, 3.0F, -5.0F, 2.0F + yOffset, 0.0F);
 		ModClientUtils.addC(pd, cd, "left_arm", 40, 16, -2.0F, -2.0F, -1.5F, 3.0F, 12.0F, 3.0F, 5.0F, 2.0F + yOffset, 0.0F, true);
 		ModClientUtils.addC(pd, cd, "right_leg", 0, 16, -1.5F, 0.0F, -1.5F, 3.0F, 12.0F, 3.0F, -1.9F, 12.0F + yOffset, 0.0F);
@@ -57,12 +44,32 @@ public abstract class AbstractGirlModel<T extends LivingEntity> extends Humanoid
 			this.rightLeg.zRot -= this.getLegRotZ();
 			this.leftLeg.zRot += this.getLegRotZ();
 		}
+	}
 
-		this.bust.xRot = ((float)Math.PI / 4.0F) + ((float)Math.PI / 18.0F);
+	@Override
+	public void translateToHand(HumanoidArm sideIn, PoseStack poseStackIn)
+	{
+		if (this.isSkeletonHandTranslate())
+		{
+			float f = sideIn == HumanoidArm.RIGHT ? 1.0F : -1.0F;
+			ModelPart modelpart = this.getArm(sideIn);
+			modelpart.x += f;
+			modelpart.translateAndRotate(poseStackIn);
+			modelpart.x -= f;
+		}
+		else
+		{
+			super.translateToHand(sideIn, poseStackIn);
+		}
 	}
 
 	protected float getLegRotZ()
 	{
 		return (float)Math.PI * 0.008F;
+	}
+
+	protected boolean isSkeletonHandTranslate()
+	{
+		return false;
 	}
 }

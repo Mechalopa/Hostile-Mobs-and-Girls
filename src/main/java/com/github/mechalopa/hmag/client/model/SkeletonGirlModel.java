@@ -2,7 +2,6 @@ package com.github.mechalopa.hmag.client.model;
 
 import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.util.ModUtils;
-import com.mojang.blaze3d.vertex.PoseStack;
 
 import net.minecraft.client.model.AnimationUtils;
 import net.minecraft.client.model.HumanoidModel;
@@ -20,7 +19,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class SkeletonGirlModel<T extends AbstractSkeleton> extends AbstractGirlModel<T>
+public class SkeletonGirlModel<T extends AbstractSkeleton> extends AbstractAdvancedGirlModel<T>
 {
 	private ModelPart skirt1;
 	private ModelPart skirt2;
@@ -37,12 +36,12 @@ public class SkeletonGirlModel<T extends AbstractSkeleton> extends AbstractGirlM
 		this.rightHair1 = this.head.getChild("right_hair_1");
 		this.leftHair1 = this.head.getChild("left_hair_1");
 		this.rightHair2 = this.rightHair1.getChild("right_hair_2");
-		this.leftHair2 = this.leftHair2.getChild("left_hair_2");
+		this.leftHair2 = this.leftHair1.getChild("left_hair_2");
 	}
 
 	public static MeshDefinition createMesh(CubeDeformation cd)
 	{
-		MeshDefinition md = AbstractGirlModel.createMesh(cd, 0.0F);
+		MeshDefinition md = AbstractAdvancedGirlModel.createMesh(cd, 0.0F);
 		PartDefinition pd = md.getRoot();
 		ModClientUtils.addC(pd, cd, "right_arm", 40, 16, 0.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F, -5.0F, 2.0F, 0.0F);
 		ModClientUtils.addC(pd, cd, "left_arm", 40, 16, -2.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F, 5.0F, 2.0F, 0.0F, true);
@@ -143,12 +142,8 @@ public class SkeletonGirlModel<T extends AbstractSkeleton> extends AbstractGirlM
 	}
 
 	@Override
-	public void translateToHand(HumanoidArm sideIn, PoseStack poseStackIn)
+	protected boolean isSkeletonHandTranslate()
 	{
-		float f = sideIn == HumanoidArm.RIGHT ? 1.0F : -1.0F;
-		ModelPart modelpart = this.getArm(sideIn);
-		modelpart.x += f;
-		modelpart.translateAndRotate(poseStackIn);
-		modelpart.x -= f;
+		return true;
 	}
 }

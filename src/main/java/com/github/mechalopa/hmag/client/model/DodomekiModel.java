@@ -7,7 +7,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class DodomekiModel<T extends MobEntity> extends AbstractGirlModel<T>
+public class DodomekiModel<T extends MobEntity> extends AbstractAdvancedGirlModel<T>
 {
 	private ModelRenderer rightArmPart;
 	private ModelRenderer leftArmPart;

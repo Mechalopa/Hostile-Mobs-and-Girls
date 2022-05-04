@@ -8,7 +8,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class HarpyModel<T extends HarpyEntity> extends AbstractGirlModel<T>
+public class HarpyModel<T extends HarpyEntity> extends AbstractAdvancedGirlModel<T>
 {
 	private ModelRenderer bodyPart3;
 	private ModelRenderer bodyPart4;

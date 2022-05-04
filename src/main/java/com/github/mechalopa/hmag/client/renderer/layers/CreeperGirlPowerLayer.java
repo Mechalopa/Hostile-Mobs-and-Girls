@@ -1,11 +1,11 @@
 package com.github.mechalopa.hmag.client.renderer.layers;
 
 import com.github.mechalopa.hmag.client.ModModelLayers;
+import com.github.mechalopa.hmag.client.model.AbstractGirlModel;
 import com.github.mechalopa.hmag.client.model.CreeperGirlPowerArmorModel;
 import com.github.mechalopa.hmag.entity.CreeperGirlEntity;
 
 import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.EnergySwirlLayer;
@@ -14,12 +14,12 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class CreeperGirlPowerLayer extends EnergySwirlLayer<CreeperGirlEntity, HumanoidModel<CreeperGirlEntity>>
+public class CreeperGirlPowerLayer extends EnergySwirlLayer<CreeperGirlEntity, AbstractGirlModel<CreeperGirlEntity>>
 {
 	private static final ResourceLocation TEX = new ResourceLocation("textures/entity/creeper/creeper_armor.png");
 	private final CreeperGirlPowerArmorModel<CreeperGirlEntity> model;
 
-	public CreeperGirlPowerLayer(RenderLayerParent<CreeperGirlEntity, HumanoidModel<CreeperGirlEntity>> renderLayerParent, EntityModelSet modelSet)
+	public CreeperGirlPowerLayer(RenderLayerParent<CreeperGirlEntity, AbstractGirlModel<CreeperGirlEntity>> renderLayerParent, EntityModelSet modelSet)
 	{
 		super(renderLayerParent);
 		this.model = new CreeperGirlPowerArmorModel<>(modelSet.bakeLayer(ModModelLayers.CREEPER_GIRL_POWER_ARMOR));

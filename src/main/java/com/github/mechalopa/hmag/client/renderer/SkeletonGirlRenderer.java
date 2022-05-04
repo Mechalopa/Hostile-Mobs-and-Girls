@@ -2,9 +2,9 @@ package com.github.mechalopa.hmag.client.renderer;
 
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
+import com.github.mechalopa.hmag.client.model.AbstractGirlModel;
 import com.github.mechalopa.hmag.client.model.SkeletonGirlModel;
 
-import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
@@ -14,7 +14,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class SkeletonGirlRenderer extends AbstractGirlRenderer<AbstractSkeleton, HumanoidModel<AbstractSkeleton>>
+public class SkeletonGirlRenderer extends AbstractGirlRenderer<AbstractSkeleton, AbstractGirlModel<AbstractSkeleton>>
 {
 	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/skeleton_girl.png");
 
@@ -28,7 +28,7 @@ public class SkeletonGirlRenderer extends AbstractGirlRenderer<AbstractSkeleton,
 		this(context, new SkeletonGirlModel<>(context.bakeLayer(location)), new SkeletonGirlModel<>(context.bakeLayer(location1)), new SkeletonGirlModel<>(context.bakeLayer(location2)));
 	}
 
-	public SkeletonGirlRenderer(EntityRendererProvider.Context context, HumanoidModel<AbstractSkeleton> model, HumanoidModel<AbstractSkeleton> model1, HumanoidModel<AbstractSkeleton> model2)
+	public SkeletonGirlRenderer(EntityRendererProvider.Context context, AbstractGirlModel<AbstractSkeleton> model, AbstractGirlModel<AbstractSkeleton> model1, AbstractGirlModel<AbstractSkeleton> model2)
 	{
 		super(context, model, 0.5F);
 		this.addLayer(new HumanoidArmorLayer<>(this, model1, model2));

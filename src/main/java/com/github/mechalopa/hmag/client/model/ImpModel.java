@@ -7,7 +7,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class ImpModel<T extends MobEntity> extends AbstractGirlModel<T>
+public class ImpModel<T extends MobEntity> extends AbstractAdvancedGirlModel<T>
 {
 	private ModelRenderer rightFeelerPart1;
 	private ModelRenderer leftFeelerPart1;

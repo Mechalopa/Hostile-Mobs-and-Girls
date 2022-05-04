@@ -14,7 +14,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class ZombieGirlModel<T extends Zombie> extends AbstractGirlModel<T>
+public class ZombieGirlModel<T extends Zombie> extends AbstractAdvancedGirlModel<T>
 {
 	private ModelPart clothPart;
 	private ModelPart skirt1;
@@ -40,7 +40,7 @@ public class ZombieGirlModel<T extends Zombie> extends AbstractGirlModel<T>
 
 	public static MeshDefinition createMesh(CubeDeformation cd)
 	{
-		MeshDefinition md = AbstractGirlModel.createMesh(cd, 0.0F);
+		MeshDefinition md = AbstractAdvancedGirlModel.createMesh(cd, 0.0F);
 		PartDefinition pd = md.getRoot();
 		PartDefinition bodypd = pd.getChild("body");
 		ModClientUtils.addC(bodypd, cd, "cloth_part", 32, 48, -3.0F, 0.0F, -1.5F, 6.0F, 3.0F, 3.0F, 0.0F, 7.0F, 0.0F);

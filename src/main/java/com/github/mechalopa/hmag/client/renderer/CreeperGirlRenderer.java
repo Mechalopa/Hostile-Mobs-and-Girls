@@ -2,12 +2,12 @@ package com.github.mechalopa.hmag.client.renderer;
 
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
+import com.github.mechalopa.hmag.client.model.AbstractGirlModel;
 import com.github.mechalopa.hmag.client.model.CreeperGirlModel;
 import com.github.mechalopa.hmag.client.renderer.layers.CreeperGirlPowerLayer;
 import com.github.mechalopa.hmag.entity.CreeperGirlEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 
-import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
 import net.minecraft.resources.ResourceLocation;
@@ -16,7 +16,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class CreeperGirlRenderer extends AbstractGirlRenderer<CreeperGirlEntity, HumanoidModel<CreeperGirlEntity>>
+public class CreeperGirlRenderer extends AbstractGirlRenderer<CreeperGirlEntity, AbstractGirlModel<CreeperGirlEntity>>
 {
 	private static final ResourceLocation TEX0 = new ResourceLocation(HMaG.MODID, "textures/entity/creeper_girl_0.png");
 	private static final ResourceLocation TEX1 = new ResourceLocation(HMaG.MODID, "textures/entity/creeper_girl_1.png");
@@ -27,7 +27,7 @@ public class CreeperGirlRenderer extends AbstractGirlRenderer<CreeperGirlEntity,
 		this(context, new CreeperGirlModel<>(context.bakeLayer(ModModelLayers.CREEPER_GIRL)), new CreeperGirlModel<>(context.bakeLayer(ModModelLayers.CREEPER_GIRL_INNER_ARMOR)), new CreeperGirlModel<>(context.bakeLayer(ModModelLayers.CREEPER_GIRL_OUTER_ARMOR)));
 	}
 
-	public CreeperGirlRenderer(EntityRendererProvider.Context context, HumanoidModel<CreeperGirlEntity> model, HumanoidModel<CreeperGirlEntity> model1, HumanoidModel<CreeperGirlEntity> model2)
+	public CreeperGirlRenderer(EntityRendererProvider.Context context, AbstractGirlModel<CreeperGirlEntity> model, AbstractGirlModel<CreeperGirlEntity> model1, AbstractGirlModel<CreeperGirlEntity> model2)
 	{
 		super(context, model, 0.5F);
 		this.addLayer(new HumanoidArmorLayer<>(this, model1, model2));
