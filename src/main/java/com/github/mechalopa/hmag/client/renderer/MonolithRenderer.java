@@ -77,8 +77,8 @@ public class MonolithRenderer extends MobRenderer<MonolithEntity, MonolithModel<
 			vector3d2 = vector3d2.normalize();
 			float f5 = (float)Math.acos(vector3d2.y);
 			float f6 = (float)Math.atan2(vector3d2.z, vector3d2.x);
-			matrixStackIn.mulPose(Vector3f.YP.rotationDegrees((((float)Math.PI / 2F) - f6) * (180F / (float)Math.PI)));
-			matrixStackIn.mulPose(Vector3f.XP.rotationDegrees(f5 * (180F / (float)Math.PI)));
+			matrixStackIn.mulPose(Vector3f.YP.rotationDegrees((((float)Math.PI / 2.0F) - f6) * (180.0F / (float)Math.PI)));
+			matrixStackIn.mulPose(Vector3f.XP.rotationDegrees(f5 * (180.0F / (float)Math.PI)));
 			float f7 = f1 * 0.05F * -1.5F;
 			float f8 = f * f;
 			int i = 192 + (int)(f8 * 55.0F);
@@ -86,8 +86,8 @@ public class MonolithRenderer extends MobRenderer<MonolithEntity, MonolithModel<
 			int k = 160 + (int)(f8 * 63.0F);
 			float f11 = MathHelper.cos(f7 + 2.3561945F) * 0.282F;
 			float f12 = MathHelper.sin(f7 + 2.3561945F) * 0.282F;
-			float f13 = MathHelper.cos(f7 + ((float)Math.PI / 4F)) * 0.282F;
-			float f14 = MathHelper.sin(f7 + ((float)Math.PI / 4F)) * 0.282F;
+			float f13 = MathHelper.cos(f7 + ((float)Math.PI / 4.0F)) * 0.282F;
+			float f14 = MathHelper.sin(f7 + ((float)Math.PI / 4.0F)) * 0.282F;
 			float f15 = MathHelper.cos(f7 + 3.926991F) * 0.282F;
 			float f16 = MathHelper.sin(f7 + 3.926991F) * 0.282F;
 			float f17 = MathHelper.cos(f7 + 5.4977875F) * 0.282F;
@@ -96,8 +96,8 @@ public class MonolithRenderer extends MobRenderer<MonolithEntity, MonolithModel<
 			float f20 = MathHelper.sin(f7 + (float)Math.PI) * 0.2F;
 			float f21 = MathHelper.cos(f7 + 0.0F) * 0.2F;
 			float f22 = MathHelper.sin(f7 + 0.0F) * 0.2F;
-			float f23 = MathHelper.cos(f7 + ((float)Math.PI / 2F)) * 0.2F;
-			float f24 = MathHelper.sin(f7 + ((float)Math.PI / 2F)) * 0.2F;
+			float f23 = MathHelper.cos(f7 + ((float)Math.PI / 2.0F)) * 0.2F;
+			float f24 = MathHelper.sin(f7 + ((float)Math.PI / 2.0F)) * 0.2F;
 			float f25 = MathHelper.cos(f7 + ((float)Math.PI * 1.5F)) * 0.2F;
 			float f26 = MathHelper.sin(f7 + ((float)Math.PI * 1.5F)) * 0.2F;
 			float f29 = -1.0F + f2;

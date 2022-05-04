@@ -153,8 +153,8 @@ public class SkeletonGirlModel<T extends MobEntity & IRangedAttackMob> extends A
 			this.leftArm.zRot = 0.0F;
 			this.rightArm.yRot = -(0.1F - f * 0.6F);
 			this.leftArm.yRot = 0.1F - f * 0.6F;
-			this.rightArm.xRot = (-(float)Math.PI / 2F);
-			this.leftArm.xRot = (-(float)Math.PI / 2F);
+			this.rightArm.xRot = (-(float)Math.PI / 2.0F);
+			this.leftArm.xRot = (-(float)Math.PI / 2.0F);
 			this.rightArm.xRot -= f * 1.2F - f1 * 0.4F;
 			this.leftArm.xRot -= f * 1.2F - f1 * 0.4F;
 			ModelHelper.bobArms(this.rightArm, this.leftArm, ageInTicks);
