@@ -32,8 +32,48 @@ public class ModModelLayers
 	public static final ModelLayerLocation CREEPER_GIRL = create("creeper_girl");
 	public static final ModelLayerLocation CREEPER_GIRL_INNER_ARMOR = createInnerArmor("creeper_girl");
 	public static final ModelLayerLocation CREEPER_GIRL_OUTER_ARMOR = createOuterArmor("creeper_girl");
-
+	public static final ModelLayerLocation CREEPER_GIRL_POWER_ARMOR = create("creeper", "armor");
+	public static final ModelLayerLocation GHOST = create("ghost");
+	public static final ModelLayerLocation GHOST_INNER_ARMOR = createInnerArmor("ghost");
+	public static final ModelLayerLocation GHOST_OUTER_ARMOR = createOuterArmor("ghost");
+	public static final ModelLayerLocation WITHER_GHOST = create("wither_ghost");
+	public static final ModelLayerLocation WITHER_GHOST_INNER_ARMOR = createInnerArmor("wither_ghost");
+	public static final ModelLayerLocation WITHER_GHOST_OUTER_ARMOR = createOuterArmor("wither_ghost");
+	public static final ModelLayerLocation ENDER_EXECUTOR = create("ender_executor");
 	public static final ModelLayerLocation KOBOLD = create("kobold");
+	public static final ModelLayerLocation LICH = create("lich");
+	public static final ModelLayerLocation OGRE = create("ogre");
+	public static final ModelLayerLocation SPIDER_NEST = create("spider_nest");
+	public static final ModelLayerLocation MELTY_MONSTER = create("melty_monster");
+	public static final ModelLayerLocation MELTY_MONSTER_OUTER = create("melty_monster", "outer");
+	public static final ModelLayerLocation CURSED_DOLL = create("cursed_doll");
+	public static final ModelLayerLocation JACK_FROST = create("jack_frost");
+	public static final ModelLayerLocation HORNET = create("hornet");
+	public static final ModelLayerLocation DULLAHAN = create("dullahan");
+	public static final ModelLayerLocation BANSHEE = create("banshee");
+	public static final ModelLayerLocation ARURAUNE = create("aruraune");
+	public static final ModelLayerLocation CATOBLEPAS = create("catoblepas");
+	public static final ModelLayerLocation SCORPION = create("scorpion");
+	public static final ModelLayerLocation KASHA = create("kasha");
+	public static final ModelLayerLocation DOGU = create("dogu");
+	public static final ModelLayerLocation GHSATLY_SHEEKER = create("ghastly_seeker");
+	public static final ModelLayerLocation REDCAP = create("redcap");
+	public static final ModelLayerLocation REDCAP_INNER_ARMOR = createInnerArmor("redcap");
+	public static final ModelLayerLocation REDCAP_OUTER_ARMOR = createOuterArmor("redcap");
+	public static final ModelLayerLocation SLIME_GIRL = create("slime_girl");
+	public static final ModelLayerLocation SLIME_GIRL_OUTER = create("slime_girl", "outer");
+	public static final ModelLayerLocation MAGICAL_SLIME = create("magical_slime");
+	public static final ModelLayerLocation MAGICAL_SLIME_OUTER = create("magical_slime", "outer");
+	public static final ModelLayerLocation MONOLITH = create("monolith");
+	public static final ModelLayerLocation CRIMSON_SLAUGHTERER = create("crimson_slaughterer");
+	public static final ModelLayerLocation DYSSOMNIA = create("dyssomnia");
+	public static final ModelLayerLocation SNOW_CANINE = create("snow_canine");
+	public static final ModelLayerLocation HARPY = create("harpy");
+	public static final ModelLayerLocation SAVAGEFANG = create("savagefang");
+	public static final ModelLayerLocation FORTRESS_KEEPER = create("fortress_keeper");
+	public static final ModelLayerLocation NECROTIC_REAPER = create("necrotic_reaper");
+	public static final ModelLayerLocation DODOMEKI = create("dodomeki");
+	public static final ModelLayerLocation IMP = create("imp");
 
 	private static ModelLayerLocation create(String name, String layername)
 	{

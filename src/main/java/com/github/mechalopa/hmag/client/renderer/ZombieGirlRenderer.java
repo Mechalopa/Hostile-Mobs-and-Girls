@@ -4,6 +4,7 @@ import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.ZombieGirlModel;
 
+import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
@@ -13,7 +14,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class ZombieGirlRenderer extends AbstractGirlRenderer<Zombie, ZombieGirlModel<Zombie>>
+public class ZombieGirlRenderer extends AbstractGirlRenderer<Zombie, HumanoidModel<Zombie>>
 {
 	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/zombie_girl.png");
 
@@ -27,7 +28,7 @@ public class ZombieGirlRenderer extends AbstractGirlRenderer<Zombie, ZombieGirlM
 		this(context, new ZombieGirlModel<>(context.bakeLayer(location)), new ZombieGirlModel<>(context.bakeLayer(location1)), new ZombieGirlModel<>(context.bakeLayer(location2)));
 	}
 
-	public ZombieGirlRenderer(EntityRendererProvider.Context context, ZombieGirlModel<Zombie> model, ZombieGirlModel<Zombie> model1, ZombieGirlModel<Zombie> model2)
+	public ZombieGirlRenderer(EntityRendererProvider.Context context, HumanoidModel<Zombie> model, HumanoidModel<Zombie> model1, HumanoidModel<Zombie> model2)
 	{
 		super(context, model, 0.5F);
 		this.addLayer(new HumanoidArmorLayer<>(this, model1, model2));

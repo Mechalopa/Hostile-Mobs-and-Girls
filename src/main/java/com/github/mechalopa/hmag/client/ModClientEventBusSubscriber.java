@@ -1,9 +1,12 @@
 package com.github.mechalopa.hmag.client;
 
 import com.github.mechalopa.hmag.HMaG;
+import com.github.mechalopa.hmag.client.model.CreeperGirlPowerArmorModel;
+import com.github.mechalopa.hmag.client.model.CreeperGirlModel;
 import com.github.mechalopa.hmag.client.model.DrownedGirlModel;
 import com.github.mechalopa.hmag.client.model.KoboldModel;
 import com.github.mechalopa.hmag.client.model.SkeletonGirlModel;
+import com.github.mechalopa.hmag.client.model.StrayGirlClothingModel;
 import com.github.mechalopa.hmag.client.model.ZombieGirlModel;
 import com.github.mechalopa.hmag.client.particle.EnchantmentRuneParticle;
 import com.github.mechalopa.hmag.client.renderer.ArurauneRenderer;
@@ -41,7 +44,6 @@ import com.github.mechalopa.hmag.client.renderer.SkeletonGirlRenderer;
 import com.github.mechalopa.hmag.client.renderer.SlimeGirlRenderer;
 import com.github.mechalopa.hmag.client.renderer.SnowCanineRenderer;
 import com.github.mechalopa.hmag.client.renderer.SpiderNestRenderer;
-import com.github.mechalopa.hmag.client.renderer.StoneularRenderer;
 import com.github.mechalopa.hmag.client.renderer.StrayGirlRenderer;
 import com.github.mechalopa.hmag.client.renderer.WitherGhostRenderer;
 import com.github.mechalopa.hmag.client.renderer.WitherSkeletonGirlRenderer;
@@ -184,7 +186,6 @@ public class ModClientEventBusSubscriber
 		event.registerEntityRenderer(ModEntityTypes.CRIMSON_SLAUGHTERER.get(), CrimsonSlaughtererRenderer::new);
 		event.registerEntityRenderer(ModEntityTypes.DYSSOMNIA.get(), DyssomniaRenderer::new);
 		event.registerEntityRenderer(ModEntityTypes.SNOW_CANINE.get(), SnowCanineRenderer::new);
-		event.registerEntityRenderer(ModEntityTypes.STONEULAR.get(), StoneularRenderer::new);
 		event.registerEntityRenderer(ModEntityTypes.HARPY.get(), HarpyRenderer::new);
 		event.registerEntityRenderer(ModEntityTypes.SAVAGEFANG.get(), SavagefangRenderer::new);
 		event.registerEntityRenderer(ModEntityTypes.FORTRESS_KEEPER.get(), FortressKeeperRenderer::new);
@@ -216,7 +217,11 @@ public class ModClientEventBusSubscriber
 		event.registerLayerDefinition(ModModelLayers.STRAY_GIRL, SkeletonGirlModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.STRAY_GIRL_INNER_ARMOR, () -> layerdefinition1);
 		event.registerLayerDefinition(ModModelLayers.STRAY_GIRL_OUTER_ARMOR, () -> layerdefinition);
-		event.registerLayerDefinition(ModModelLayers.STRAY_GIRL_OUTER_LAYER, () -> LayerDefinition.create(SkeletonGirlModel.createStrayGirlClothMesh(new CubeDeformation(0.25F)), 64, 32));
+		event.registerLayerDefinition(ModModelLayers.STRAY_GIRL_OUTER_LAYER, () -> LayerDefinition.create(StrayGirlClothingModel.createMesh(new CubeDeformation(0.25F)), 64, 32));
+		event.registerLayerDefinition(ModModelLayers.CREEPER_GIRL, CreeperGirlModel::createBodyLayer);
+		event.registerLayerDefinition(ModModelLayers.CREEPER_GIRL_INNER_ARMOR, () -> layerdefinition1);
+		event.registerLayerDefinition(ModModelLayers.CREEPER_GIRL_OUTER_ARMOR, () -> layerdefinition);
+		event.registerLayerDefinition(ModModelLayers.CREEPER_GIRL_POWER_ARMOR, () -> LayerDefinition.create(CreeperGirlPowerArmorModel.createMesh(new CubeDeformation(2.0F)), 64, 32));
 
 		event.registerLayerDefinition(ModModelLayers.KOBOLD, KoboldModel::createBodyLayer);
 	}

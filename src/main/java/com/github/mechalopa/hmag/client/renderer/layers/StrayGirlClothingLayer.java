@@ -1,7 +1,7 @@
 package com.github.mechalopa.hmag.client.renderer.layers;
 
 import com.github.mechalopa.hmag.HMaG;
-import com.github.mechalopa.hmag.client.model.SkeletonGirlModel;
+import com.github.mechalopa.hmag.client.model.StrayGirlClothingModel;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import net.minecraft.client.model.EntityModel;
@@ -20,12 +20,12 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class StrayGirlClothingLayer<T extends Mob & RangedAttackMob, M extends EntityModel<T>> extends RenderLayer<T, M>
 {
 	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/stray_girl_clothing.png");
-	private final SkeletonGirlModel<T> layerModel;
+	private final StrayGirlClothingModel<T> layerModel;
 
 	public StrayGirlClothingLayer(RenderLayerParent<T, M> renderLayerParent, EntityModelSet modelSet)
 	{
 		super(renderLayerParent);
-		this.layerModel = new SkeletonGirlModel<>(modelSet.bakeLayer(ModelLayers.STRAY_OUTER_LAYER));
+		this.layerModel = new StrayGirlClothingModel<>(modelSet.bakeLayer(ModelLayers.STRAY_OUTER_LAYER));
 	}
 
 	@Override
