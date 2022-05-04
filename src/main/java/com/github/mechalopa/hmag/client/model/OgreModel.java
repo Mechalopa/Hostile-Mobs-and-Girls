@@ -1,159 +1,92 @@
 package com.github.mechalopa.hmag.client.model;
 
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.entity.OgreEntity;
 
-import net.minecraft.client.renderer.entity.model.BipedModel;
-import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.builders.CubeDeformation;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
+import net.minecraft.client.model.geom.builders.MeshDefinition;
+import net.minecraft.client.model.geom.builders.PartDefinition;
+import net.minecraft.util.Mth;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class OgreModel<T extends OgreEntity> extends BipedModel<T>
+public class OgreModel<T extends OgreEntity> extends HumanoidModel<T>
 {
-	private ModelRenderer horn1;
-	private ModelRenderer horn2;
-	private ModelRenderer body2;
-	private ModelRenderer hip;
-	private ModelRenderer hip2;
-	private ModelRenderer rightArmTop;
-	private ModelRenderer leftArmTop;
-	private ModelRenderer rightShoulder;
-	private ModelRenderer leftShoulder;
-	private ModelRenderer rightLegTop;
-	private ModelRenderer leftLegTop;
-
-	private ModelRenderer rightShoulderPartA;
-	private ModelRenderer leftShoulderPartA;
-	private ModelRenderer rightShoulderPartB;
-	private ModelRenderer leftShoulderPartB;
-	private ModelRenderer rightArmPart;
-	private ModelRenderer leftArmPart;
+	private ModelPart horn1;
+	private ModelPart horn2;
+	private ModelPart bodyPart1;
+	private ModelPart bodyPart2;
+	private ModelPart bodyPart3;
+	private ModelPart rightArmPart1;
+	private ModelPart leftArmPart1;
+	private ModelPart rightArmPart2;
+	private ModelPart leftArmPart2;
+	private ModelPart rightArmPart3;
+	private ModelPart leftArmPart3;
+	private ModelPart rightArmPart3A;
+	private ModelPart leftArmPart3A;
+	private ModelPart rightArmPart3B;
+	private ModelPart leftArmPart3B;
+	private ModelPart rightLegPart;
+	private ModelPart leftLegPart;
 	private float swingAmount;
 
-	public OgreModel()
+	public OgreModel(ModelPart modelPart)
 	{
-		this(0.0F);
+		super(modelPart);
+		this.horn1 = this.head.getChild("horn_1");
+		this.horn2 = this.horn1.getChild("horn_2");
+		this.bodyPart1 = this.body.getChild("body_part_1");
+		this.bodyPart2 = this.body.getChild("body_part_2");
+		this.bodyPart3 = this.bodyPart2.getChild("body_part_3");
+		this.rightArmPart1 = this.rightArm.getChild("right_arm_part_1");
+		this.leftArmPart1 = this.leftArm.getChild("left_arm_part_1");
+		this.rightArmPart2 = this.rightArmPart1.getChild("right_arm_part_2");
+		this.leftArmPart2 = this.leftArmPart1.getChild("left_arm_part_2");
+		this.rightArmPart3 = this.rightArm.getChild("right_arm_part_3");
+		this.leftArmPart3 = this.leftArm.getChild("left_arm_part_3");
+		this.rightArmPart3A = this.rightArmPart3.getChild("right_arm_part_3a");
+		this.leftArmPart3A = this.leftArmPart3.getChild("left_arm_part_3a");
+		this.rightArmPart3B = this.rightArmPart3.getChild("right_arm_part_3b");
+		this.leftArmPart3B = this.leftArmPart3.getChild("left_arm_part_3b");
+		this.rightLegPart = this.rightLeg.getChild("right_leg_part");
+		this.leftLegPart = this.leftLeg.getChild("left_leg_part");
 	}
 
-	public OgreModel(float modelSize)
+	public static LayerDefinition createBodyLayer()
 	{
-		this(modelSize, -5.0F, 64, 128);
-	}
-
-	public OgreModel(float modelSize, float yOffsetIn, int textureWidthIn, int textureHeightIn)
-	{
-		super(modelSize, yOffsetIn, textureWidthIn, textureHeightIn);
-
-		float f = yOffsetIn;
-
-		this.head = new ModelRenderer(this, 0, 0);
-		this.head.addBox(-5.0F, -8.0F, -4.0F, 10.0F, 8.0F, 8.0F, modelSize);
-		this.head.setPos(0.0F, 0.0F + f, 0.0F);
-		this.hat = new ModelRenderer(this, 0, 0);
-		this.hat.addBox(-0.5F, -0.5F, -0.5F, 1.0F, 1.0F, 1.0F, modelSize);
-		this.hat.setPos(0.0F, 0.0F + f, 0.0F);
-
-		this.horn1 = new ModelRenderer(this, 40, 16);
-		this.horn1.addBox(-1.0F, -3.0F, -1.0F, 2.0F, 3.0F, 2.0F, modelSize);
-		this.horn1.setPos(0.0F, -7.75F, 0.5F);
-		this.head.addChild(this.horn1);
-		this.horn2 = new ModelRenderer(this, 48, 16);
-		this.horn2.addBox(-0.5F, -2.0F, -0.5F, 1.0F, 2.0F, 1.0F, modelSize);
-		this.horn2.setPos(0.0F, -3.0F, 0.0F);
-		this.horn1.addChild(this.horn2);
-
-		this.body = new ModelRenderer(this, 0, 16);
-		this.body.addBox(-6.0F, 0.0F, -3.0F, 12.0F, 6.0F, 6.0F, modelSize);
-		this.body.setPos(0.0F, 0.0F + f, 0.0F);
-
-		this.body2 = new ModelRenderer(this, 0, 56);
-		this.body2.addBox(-6.5F, 0.0F, -3.5F, 13.0F, 6.0F, 7.0F, modelSize);
-		this.body2.setPos(0.0F, 6.0F, 0.0F);
-		this.body.addChild(this.body2);
-		this.hip = new ModelRenderer(this, 0, 72);
-		this.hip.addBox(-7.0F, 0.0F, -4.0F, 14.0F, 5.0F, 8.0F, modelSize);
-		this.hip.setPos(0.0F, 12.0F, 0.0F);
-		this.body.addChild(this.hip);
-		this.hip2 = new ModelRenderer(this, 0, 88);
-		this.hip2.addBox(-7.0F, 0.0F, -4.0F, 14.0F, 3.0F, 8.0F, modelSize);
-		this.hip2.setPos(0.0F, 5.0F, 0.0F);
-		this.hip.addChild(this.hip2);
-
-		this.rightArm = new ModelRenderer(this, 24, 32);
-		this.rightArm.addBox(-6.0F, -2.0F, -2.0F, 5.0F, 8.0F, 4.0F, modelSize);
-		this.rightArm.setPos(-5.0F, 2.0F + f, 0.0F);
-		this.leftArm = new ModelRenderer(this, 24, 32);
-		this.leftArm.mirror = true;
-		this.leftArm.addBox(1.0F, -2.0F, -2.0F, 5.0F, 8.0F, 4.0F, modelSize);
-		this.leftArm.setPos(5.0F, 2.0F + f, 0.0F);
-
-		this.rightArmTop = new ModelRenderer(this, 42, 32);
-		this.rightArmTop.addBox(-6.5F, 0.0F, -2.5F, 6.0F, 6.0F, 5.0F, modelSize);
-		this.rightArmTop.setPos(0.0F, 6.0F, 0.0F);
-		this.rightArm.addChild(this.rightArmTop);
-		this.leftArmTop = new ModelRenderer(this, 42, 32);
-		this.leftArmTop.mirror = true;
-		this.leftArmTop.addBox(0.5F, 0.0F, -2.5F, 6.0F, 6.0F, 5.0F, modelSize);
-		this.leftArmTop.setPos(0.0F, 6.0F, 0.0F);
-		this.leftArm.addChild(this.leftArmTop);
-
-		this.rightArmPart = new ModelRenderer(this, 40, 56);
-		this.rightArmPart.addBox(-2.0F, -1.0F, -1.0F, 2.0F, 2.0F, 2.0F, modelSize);
-		this.rightArmPart.setPos(-6.25F, 2.9F, 0.0F);
-		this.rightArmTop.addChild(this.rightArmPart);
-		this.leftArmPart = new ModelRenderer(this, 40, 56);
-		this.leftArmPart.mirror = true;
-		this.leftArmPart.addBox(0.0F, -1.0F, -1.0F, 2.0F, 2.0F, 2.0F, modelSize);
-		this.leftArmPart.setPos(6.25F, 2.9F, 0.0F);
-		this.leftArmTop.addChild(this.leftArmPart);
-
-		this.rightShoulder = new ModelRenderer(this, 40, 48);
-		this.rightShoulder.addBox(-6.5F, 0.0F, -3.0F, 6.0F, 2.0F, 6.0F, modelSize + 0.5F);
-		this.rightShoulder.setPos(0.5F, -2.5F, 0.0F);
-		this.rightArm.addChild(this.rightShoulder);
-		this.leftShoulder = new ModelRenderer(this, 40, 48);
-		this.leftShoulder.mirror = true;
-		this.leftShoulder.addBox(0.5F, 0.0F, -3.0F, 6.0F, 2.0F, 6.0F, modelSize + 0.5F);
-		this.leftShoulder.setPos(-0.5F, -2.5F, 0.0F);
-		this.leftArm.addChild(this.leftShoulder);
-
-		this.rightShoulderPartA = new ModelRenderer(this, 24, 48);
-		this.rightShoulderPartA.addBox(-1.0F, -3.0F, -1.0F, 2.0F, 3.0F, 2.0F, modelSize);
-		this.rightShoulderPartA.setPos(-3.5F, -0.25F, 0.0F);
-		this.rightShoulder.addChild(this.rightShoulderPartA);
-		this.leftShoulderPartA = new ModelRenderer(this, 24, 48);
-		this.leftShoulderPartA.mirror = true;
-		this.leftShoulderPartA.addBox(-1.0F, -3.0F, -1.0F, 2.0F, 3.0F, 2.0F, modelSize);
-		this.leftShoulderPartA.setPos(3.5F, -0.25F, 0.0F);
-		this.leftShoulder.addChild(this.leftShoulderPartA);
-		this.rightShoulderPartB = new ModelRenderer(this, 24, 48);
-		this.rightShoulderPartB.addBox(-1.0F, -3.0F, -1.0F, 2.0F, 3.0F, 2.0F, modelSize);
-		this.rightShoulderPartB.setPos(-6.25F, 0.75F, 0.0F);
-		this.rightShoulder.addChild(this.rightShoulderPartB);
-		this.leftShoulderPartB = new ModelRenderer(this, 24, 48);
-		this.leftShoulderPartB.mirror = true;
-		this.leftShoulderPartB.addBox(-1.0F, -3.0F, -1.0F, 2.0F, 3.0F, 2.0F, modelSize);
-		this.leftShoulderPartB.setPos(6.25F, 0.75F, 0.0F);
-		this.leftShoulder.addChild(this.leftShoulderPartB);
-
-		this.rightLeg = new ModelRenderer(this, 0, 32);
-		this.rightLeg.addBox(-2.5F, 0.0F, -2.0F, 5.0F, 6.0F, 4.0F, modelSize);
-		this.rightLeg.setPos(-3.5F, 17.0F + f, 0.0F);
-		this.leftLeg = new ModelRenderer(this, 0, 32);
-		this.leftLeg.mirror = true;
-		this.leftLeg.addBox(-2.5F, 0.0F, -2.0F, 5.0F, 6.0F, 4.0F, modelSize);
-		this.leftLeg.setPos(3.5F, 17.0F + f, 0.0F);
-
-		this.rightLegTop = new ModelRenderer(this, 0, 42);
-		this.rightLegTop.addBox(-3.0F, 0.0F, -2.5F, 6.0F, 6.0F, 5.0F, modelSize);
-		this.rightLegTop.setPos(0.0F, 6.0F, 0.0F);
-		this.rightLeg.addChild(this.rightLegTop);
-		this.leftLegTop = new ModelRenderer(this, 0, 42);
-		this.leftLegTop.mirror = true;
-		this.leftLegTop.addBox(-3.0F, 0.0F, -2.5F, 6.0F, 6.0F, 5.0F, modelSize);
-		this.leftLegTop.setPos(0.0F, 6.0F, 0.0F);
-		this.leftLeg.addChild(this.leftLegTop);
+		float f = -5.0F;
+		MeshDefinition md = HumanoidModel.createMesh(CubeDeformation.NONE, f);
+		PartDefinition pd = md.getRoot();
+		PartDefinition headpd = ModClientUtils.addC(pd, "head", 0, 0, -5.0F, -8.0F, -4.0F, 10.0F, 8.0F, 8.0F, 0.0F, 0.0F + f, 0.0F);
+		ModClientUtils.addC(pd, "hat", 0, 0, -0.5F, -0.5F, -0.5F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F + f, 0.0F);
+		PartDefinition horn1pd = ModClientUtils.addC(headpd, "horn_1", 40, 16, -1.0F, -3.0F, -1.0F, 2.0F, 3.0F, 2.0F, 0.0F, -7.75F, 0.5F);
+		ModClientUtils.addC(horn1pd, "horn_2", 48, 16, -0.5F, -2.0F, -0.5F, 1.0F, 2.0F, 1.0F, 0.0F, -3.0F, 0.0F);
+		PartDefinition bodypd = ModClientUtils.addC(pd, "body", 0, 16, -6.0F, 0.0F, -3.0F, 12.0F, 6.0F, 6.0F, 0.0F, 0.0F + f, 0.0F);
+		ModClientUtils.addC(bodypd, "body_part_1", 0, 56, -6.5F, 0.0F, -3.5F, 13.0F, 6.0F, 7.0F, 0.0F, 6.0F, 0.0F);
+		PartDefinition bodypart2pd = ModClientUtils.addC(bodypd, "body_part_2", 0, 72, -7.0F, 0.0F, -4.0F, 14.0F, 5.0F, 8.0F, 0.0F, 12.0F, 0.0F);
+		ModClientUtils.addC(bodypart2pd, "body_part_3", 0, 88, -7.0F, 0.0F, -4.0F, 14.0F, 3.0F, 8.0F, 0.0F, 5.0F, 0.0F);
+		PartDefinition rapd = ModClientUtils.addC(pd, "right_arm", 24, 32, -6.0F, -2.0F, -2.0F, 5.0F, 8.0F, 4.0F, -5.0F, 2.0F + f, 0.0F);
+		PartDefinition lapd = ModClientUtils.addC(pd, "left_arm", 24, 32, 1.0F, -2.0F, -2.0F, 5.0F, 8.0F, 4.0F, 5.0F, 2.0F + f, 0.0F, true);
+		PartDefinition rap1pd = ModClientUtils.addC(rapd, "right_arm_part_1", 42, 32, -6.5F, 0.0F, -2.5F, 6.0F, 6.0F, 5.0F, 0.0F, 6.0F, 0.0F);
+		PartDefinition lap1pd = ModClientUtils.addC(lapd, "left_arm_part_1", 42, 32, 0.5F, 0.0F, -2.5F, 6.0F, 6.0F, 5.0F, 0.0F, 6.0F, 0.0F, true);
+		ModClientUtils.addC(rap1pd, "right_arm_part_2", 40, 56, -2.0F, -1.0F, -1.0F, 2.0F, 2.0F, 2.0F, -6.25F, 2.9F, 0.0F);
+		ModClientUtils.addC(lap1pd, "left_arm_part_2", 40, 56, 0.0F, -1.0F, -1.0F, 2.0F, 2.0F, 2.0F, 6.25F, 2.9F, 0.0F, true);
+		PartDefinition rap3pd = ModClientUtils.addC(rapd, "right_arm_part_3", 40, 48, -6.5F, 0.0F, -3.0F, 6.0F, 2.0F, 6.0F, 0.5F, -2.5F, 0.0F, 0.5F);
+		PartDefinition lap3pd = ModClientUtils.addC(lapd, "left_arm_part_3", 40, 48, 0.5F, 0.0F, -3.0F, 6.0F, 2.0F, 6.0F, -0.5F, -2.5F, 0.0F, true, 0.5F);
+		ModClientUtils.addC(rap3pd, "right_arm_part_3a", 24, 48, -1.0F, -3.0F, -1.0F, 2.0F, 3.0F, 2.0F, -3.5F, -0.25F, 0.0F);
+		ModClientUtils.addC(lap3pd, "left_arm_part_3a", 24, 48, -1.0F, -3.0F, -1.0F, 2.0F, 3.0F, 2.0F, 3.5F, -0.25F, 0.0F, true);
+		ModClientUtils.addC(rap3pd, "right_arm_part_3b", 24, 48, -1.0F, -3.0F, -1.0F, 2.0F, 3.0F, 2.0F, -6.25F, 0.75F, 0.0F);
+		ModClientUtils.addC(lap3pd, "left_arm_part_3b", 24, 48, -1.0F, -3.0F, -1.0F, 2.0F, 3.0F, 2.0F, 6.25F, 0.75F, 0.0F, true);
+		PartDefinition rlpd = ModClientUtils.addC(pd, "right_leg", 0, 32, -2.5F, 0.0F, -2.0F, 5.0F, 6.0F, 4.0F, -3.5F, 17.0F + f, 0.0F);
+		PartDefinition llpd = ModClientUtils.addC(pd, "left_leg", 0, 32, -2.5F, 0.0F, -2.0F, 5.0F, 6.0F, 4.0F, 3.5F, 17.0F + f, 0.0F, true);
+		ModClientUtils.addC(rlpd, "right_leg_part", 0, 42, -3.0F, 0.0F, -2.5F, 6.0F, 6.0F, 5.0F, 0.0F, 6.0F, 0.0F);
+		ModClientUtils.addC(llpd, "left_leg_part", 0, 42, -3.0F, 0.0F, -2.5F, 6.0F, 6.0F, 5.0F, 0.0F, 6.0F, 0.0F, true);
+		return LayerDefinition.create(md, 64, 128);
 	}
 
 	@Override
@@ -179,8 +112,8 @@ public class OgreModel<T extends OgreEntity> extends BipedModel<T>
 
 		this.rightArm.zRot = (float)Math.PI / 30.0F;
 		this.leftArm.zRot = -((float)Math.PI / 30.0F);
-		this.rightArm.zRot += MathHelper.cos(ageInTicks * 0.09F) * 0.03F;
-		this.leftArm.zRot -= MathHelper.cos(ageInTicks * 0.09F) * 0.03F;
+		this.rightArm.zRot += Mth.cos(ageInTicks * 0.09F) * 0.03F;
+		this.leftArm.zRot -= Mth.cos(ageInTicks * 0.09F) * 0.03F;
 		this.rightArm.yRot = 0.0F;
 		this.leftArm.yRot = 0.0F;
 
@@ -192,9 +125,17 @@ public class OgreModel<T extends OgreEntity> extends BipedModel<T>
 			this.leftArm.xRot += -(this.swingAmount * ((float)Math.PI * 4.0F / 7.0F));
 		}
 
-		this.rightShoulderPartA.zRot = -((float)Math.PI / 18.0F);
-		this.leftShoulderPartA.zRot = (float)Math.PI / 18.0F;
-		this.rightShoulderPartB.zRot = -((float)Math.PI / 3.0F);
-		this.leftShoulderPartB.zRot = (float)Math.PI / 3.0F;
+		this.rightArmPart3A.zRot = -((float)Math.PI / 18.0F);
+		this.leftArmPart3A.zRot = (float)Math.PI / 18.0F;
+		this.rightArmPart3B.zRot = -((float)Math.PI / 3.0F);
+		this.leftArmPart3B.zRot = (float)Math.PI / 3.0F;
+
+		this.horn2.xRot = 0.0F;
+		this.bodyPart1.xRot = 0.0F;
+		this.bodyPart3.xRot = 0.0F;
+		this.rightArmPart2.xRot = 0.0F;
+		this.leftArmPart2.xRot = 0.0F;
+		this.rightLegPart.xRot = 0.0F;
+		this.leftLegPart.xRot = 0.0F;
 	}
 }

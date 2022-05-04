@@ -113,53 +113,6 @@ public class ModClientEventBusSubscriber
 	@SubscribeEvent
 	public static void setupClient(final FMLClientSetupEvent event)
 	{
-//		event.registerEntityRenderer(ModEntityTypes.ZOMBIE_GIRL.get(), ZombieGirlRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.HUSK_GIRL.get(), HuskGirlRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.DROWNED_GIRL.get(), DrownedGirlRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.SKELETON_GIRL.get(), SkeletonGirlRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.WITHER_SKELETON_GIRL.get(), WitherSkeletonGirlRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.STRAY_GIRL.get(), StrayGirlRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.CREEPER_GIRL.get(), CreeperGirlRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.GHOST.get(), GhostRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.WITHER_GHOST.get(), WitherGhostRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.ENDER_EXECUTOR.get(), EnderExecutorRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.KOBOLD.get(), KoboldRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.LICH.get(), LichRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.OGRE.get(), OgreRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.SPIDER_NEST.get(), SpiderNestRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.MELTY_MONSTER.get(), MeltyMonsterRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.CURSED_DOLL.get(), CursedDollRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.JACK_FROST.get(), JackFrostRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.HORNET.get(), HornetRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.DULLAHAN.get(), DullahanRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.BANSHEE.get(), BansheeRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.ARURAUNE.get(), ArurauneRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.CATOBLEPAS.get(), CatoblepasRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.SCORPION.get(), ScorpionRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.KASHA.get(), KashaRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.DOGU.get(), DoguRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.GHSATLY_SHEEKER.get(), GhastlySeekerRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.REDCAP.get(), RedcapRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.SLIME_GIRL.get(), SlimeGirlRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.MAGICAL_SLIME.get(), MagicalSlimeRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.MONOLITH.get(), MonolithRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.CRIMSON_SLAUGHTERER.get(), CrimsonSlaughtererRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.DYSSOMNIA.get(), DyssomniaRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.SNOW_CANINE.get(), SnowCanineRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.STONEULAR.get(), StoneularRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.HARPY.get(), HarpyRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.SAVAGEFANG.get(), SavagefangRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.FORTRESS_KEEPER.get(), FortressKeeperRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.NECROTIC_REAPER.get(), NecroticReaperRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.DODOMEKI.get(), DodomekiRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.IMP.get(), ImpRenderer::new);
-//
-//		event.registerEntityRenderer(ModEntityTypes.MAGIC_BULLET.get(), MagicBulletRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.HARD_SNOWBALL.get(), ModSpriteRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.POISON_SEED.get(), ModSpriteRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.THROWABLE_BOTTLE.get(), ModSpriteRenderer::new);
-//		event.registerEntityRenderer(ModEntityTypes.MAGMA_BULLET.get(), MagmaBulletRenderer::new);
-
 		ItemBlockRenderTypes.setRenderLayer(ModBlocks.REINFORCED_GLASS.get(), RenderType.cutout());
 
 		event.enqueueWork(() -> {

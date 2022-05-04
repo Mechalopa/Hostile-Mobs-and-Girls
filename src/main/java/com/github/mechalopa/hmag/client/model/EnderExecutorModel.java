@@ -65,7 +65,7 @@ public class EnderExecutorModel<T extends EnderExecutorEntity> extends AbstractG
 	public static MeshDefinition createMesh(CubeDeformation cd)
 	{
 		float f = -14.0F;
-		MeshDefinition md = AbstractGirlModel.createMesh(cd, -14.0F);
+		MeshDefinition md = AbstractGirlModel.createMesh(cd, f);
 		PartDefinition pd = md.getRoot();
 		PartDefinition rapd = ModClientUtils.addC(pd, cd, "right_arm", 40, 16, 0.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F, -5.0F, 2.0F + f, 0.0F);
 		PartDefinition lapd = ModClientUtils.addC(pd, cd, "left_arm", 40, 16, -2.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F, 5.0F, 2.0F + f, 0.0F, true);

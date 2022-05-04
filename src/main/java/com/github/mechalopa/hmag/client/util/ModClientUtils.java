@@ -78,6 +78,16 @@ public class ModClientUtils
 		return (int)((1.0D - d2 * d0 * d1) * 11.0D);
 	}
 
+	public static PartDefinition addC(PartDefinition partdefinition, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs, float extend)
+	{
+		return addC(partdefinition, new CubeDeformation(extend), name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, false);
+	}
+
+	public static PartDefinition addC(PartDefinition partdefinition, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs, boolean isMirror, float extend)
+	{
+		return addC(partdefinition, new CubeDeformation(extend), name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, isMirror);
+	}
+
 	public static PartDefinition addC(PartDefinition partdefinition, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs)
 	{
 		return addC(partdefinition, CubeDeformation.NONE, name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, false);
