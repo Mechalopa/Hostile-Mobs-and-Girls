@@ -3,7 +3,6 @@ package com.github.mechalopa.hmag.client.model;
 import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.entity.CreeperGirlEntity;
 
-import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
@@ -43,18 +42,6 @@ public class CreeperGirlModel<T extends CreeperGirlEntity> extends AbstractAdvan
 	public static LayerDefinition createBodyLayer()
 	{
 		return LayerDefinition.create(createMesh(CubeDeformation.NONE), 64, 64);
-	}
-
-	public static MeshDefinition createCreeperGirlChargeArmorMesh(CubeDeformation cd)
-	{
-		MeshDefinition md = HumanoidModel.createMesh(cd, 0.0F);
-		PartDefinition pd = md.getRoot();
-		ModClientUtils.addC(pd, cd, "body", 16, 16, -3.0F, 0.0F, -1.5F, 6.0F, 12.0F, 3.0F, 0.0F, 0.0F, 0.0F);
-		ModClientUtils.addC(pd, cd, "right_arm", 40, 16, -1.0F, -2.0F, -1.5F, 3.0F, 12.0F, 3.0F, -5.0F, 2.0F, 0.0F);
-		ModClientUtils.addC(pd, cd, "left_arm", 40, 16, -2.0F, -2.0F, -1.5F, 3.0F, 12.0F, 3.0F, 5.0F, 2.0F, 0.0F, true);
-		ModClientUtils.addC(pd, cd, "right_leg", 0, 16, -1.5F, 0.0F, -1.5F, 3.0F, 12.0F, 3.0F, -1.9F, 12.0F, 0.0F);
-		ModClientUtils.addC(pd, cd, "left_leg", 0, 16, -1.5F, 0.0F, -1.5F, 3.0F, 12.0F, 3.0F, 1.9F, 12.0F, 0.0F, true);
-		return md;
 	}
 
 	@Override

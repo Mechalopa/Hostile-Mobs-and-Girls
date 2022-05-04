@@ -5,20 +5,17 @@ import com.github.mechalopa.hmag.client.model.MeltyMonsterModel;
 import com.github.mechalopa.hmag.entity.MeltyMonsterEntity;
 
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.IEntityRenderer;
-import net.minecraft.client.renderer.entity.layers.AbstractEyesLayer;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraft.client.renderer.entity.RenderLayerParent;
+import net.minecraft.client.renderer.entity.layers.EyesLayer;
+import net.minecraft.resources.ResourceLocation;
 
-@OnlyIn(Dist.CLIENT)
-public class MeltyMonsterEyesLayer<T extends MeltyMonsterEntity, M extends MeltyMonsterModel<T>> extends AbstractEyesLayer<T, M>
+public class MeltyMonsterEyesLayer<T extends MeltyMonsterEntity, M extends MeltyMonsterModel<T>> extends EyesLayer<T, M>
 {
 	private static final RenderType RENDER_TYPE = RenderType.eyes(new ResourceLocation(HMaG.MODID, "textures/entity/melty_monster_eyes.png"));
 
-	public MeltyMonsterEyesLayer(IEntityRenderer<T, M> rendererIn)
+	public MeltyMonsterEyesLayer(RenderLayerParent<T, M> renderLayerParent)
 	{
-		super(rendererIn);
+		super(renderLayerParent);
 	}
 
 	@Override

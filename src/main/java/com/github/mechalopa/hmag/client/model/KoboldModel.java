@@ -116,7 +116,7 @@ public class KoboldModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 
 	public static LayerDefinition createBodyLayer()
 	{
-		return LayerDefinition.create(createMesh(CubeDeformation.NONE, 0.0F), 64, 128);
+		return LayerDefinition.create(createMesh(CubeDeformation.NONE), 64, 128);
 	}
 
 	@Override

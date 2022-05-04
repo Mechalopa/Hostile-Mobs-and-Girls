@@ -1,67 +1,58 @@
 package com.github.mechalopa.hmag.client.model;
 
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.entity.MonolithEntity;
-import com.google.common.collect.ImmutableList;
 
-import net.minecraft.client.renderer.entity.model.SegmentedModel;
-import net.minecraft.client.renderer.model.ModelRenderer;
+import net.minecraft.client.model.HierarchicalModel;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
+import net.minecraft.client.model.geom.builders.MeshDefinition;
+import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class MonolithModel<T extends MonolithEntity> extends SegmentedModel<T>
+public class MonolithModel<T extends MonolithEntity> extends HierarchicalModel<T>
 {
-	private final ModelRenderer head;
-	private final ModelRenderer headPart1;
-	private final ModelRenderer headPart2;
-	private final ModelRenderer topRightPart;
-	private final ModelRenderer topLeftPart;
-	private final ModelRenderer bottomRightPart;
-	private final ModelRenderer bottomLeftPart;
+	private final ModelPart root;
+	private final ModelPart head;
+	private final ModelPart headPart1;
+	private final ModelPart headPart2;
+	private final ModelPart topRightPart;
+	private final ModelPart topLeftPart;
+	private final ModelPart bottomRightPart;
+	private final ModelPart bottomLeftPart;
 
-	public MonolithModel()
+	public MonolithModel(ModelPart modelPart)
 	{
-		this.texHeight = 32;
-		this.texWidth = 64;
+		this.root = modelPart;
+		this.head = modelPart.getChild("head");
+		this.headPart1 = this.head.getChild("head_part_1");
+		this.headPart2 = this.head.getChild("head_part_2");
+		this.topRightPart = this.head.getChild("top_right_part");
+		this.topLeftPart = this.head.getChild("top_left_part");
+		this.bottomRightPart = this.head.getChild("bottom_right_part");
+		this.bottomLeftPart = this.head.getChild("bottom_left_part");
+	}
 
-		this.head = new ModelRenderer(this, 0, 0);
-		this.head.addBox(-5.0F, -4.0F, -2.0F, 10.0F, 18.0F, 4.0F);
-		this.head.setPos(0.0F, 4.0F, 0.0F);
-
-		this.headPart1 = new ModelRenderer(this, 32, 0);
-		this.headPart1.addBox(-2.5F, -2.5F, -2.0F, 5.0F, 5.0F, 4.0F, -0.1F);
-		this.headPart1.setPos(0.0F, -4.0F, 0.0F);
-		this.head.addChild(this.headPart1);
-		this.headPart2 = new ModelRenderer(this, 32, 16);
-		this.headPart2.addBox(-2.5F, -2.5F, -2.0F, 5.0F, 5.0F, 4.0F, -0.1F);
-		this.headPart2.setPos(0.0F, 14.0F, 0.0F);
-		this.head.addChild(this.headPart2);
-
-		this.topRightPart = new ModelRenderer(this, 0, 24);
-		this.topRightPart.addBox(-1.0F, -4.0F, -1.0F, 2.0F, 4.0F, 2.0F);
-		this.topRightPart.setPos(-2.0F, -4.0F, 0.0F);
-		this.head.addChild(this.topRightPart);
-		this.topLeftPart = new ModelRenderer(this, 0, 24);
-		this.topLeftPart.mirror = true;
-		this.topLeftPart.addBox(-1.0F, -4.0F, -1.0F, 2.0F, 4.0F, 2.0F);
-		this.topLeftPart.setPos(2.0F, -4.0F, 0.0F);
-		this.head.addChild(this.topLeftPart);
-
-		this.bottomRightPart = new ModelRenderer(this, 8, 24);
-		this.bottomRightPart.addBox(-1.0F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F);
-		this.bottomRightPart.setPos(-2.0F, 14.0F, 0.0F);
-		this.head.addChild(this.bottomRightPart);
-		this.bottomLeftPart = new ModelRenderer(this, 8, 24);
-		this.bottomLeftPart.mirror = true;
-		this.bottomLeftPart.addBox(-1.0F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F);
-		this.bottomLeftPart.setPos(2.0F, 14.0F, 0.0F);
-		this.head.addChild(this.bottomLeftPart);
+	public static LayerDefinition createBodyLayer()
+	{
+		MeshDefinition md = new MeshDefinition();
+		PartDefinition pd = md.getRoot();
+		PartDefinition headpd = ModClientUtils.addC(pd, "head", 0, 0, -5.0F, -4.0F, -2.0F, 10.0F, 18.0F, 4.0F, 0.0F, 4.0F, 0.0F);
+		ModClientUtils.addC(headpd, "head_part_1", 32, 0, -2.5F, -2.5F, -2.0F, 5.0F, 5.0F, 4.0F, -0.1F, 0.0F, -4.0F, 0.0F);
+		ModClientUtils.addC(headpd, "head_part_2", 32, 16, -2.5F, -2.5F, -2.0F, 5.0F, 5.0F, 4.0F, -0.1F, 0.0F, 14.0F, 0.0F);
+		ModClientUtils.addC(headpd, "top_right_part", 0, 24, -1.0F, -4.0F, -1.0F, 2.0F, 4.0F, 2.0F, -2.0F, -4.0F, 0.0F);
+		ModClientUtils.addC(headpd, "top_left_part", 0, 24, -1.0F, -4.0F, -1.0F, 2.0F, 4.0F, 2.0F, 2.0F, -4.0F, 0.0F, true);
+		ModClientUtils.addC(headpd, "bottom_right_part", 8, 24, -1.0F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F, -2.0F, 14.0F, 0.0F);
+		ModClientUtils.addC(headpd, "bottom_left_part", 8, 24, -1.0F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F, 2.0F, 14.0F, 0.0F, true);
+		return LayerDefinition.create(md, 64, 32);
 	}
 
 	@Override
-	public Iterable<ModelRenderer> parts()
+	public ModelPart root()
 	{
-		return ImmutableList.of(this.head);
+		return this.root;
 	}
 
 	@Override

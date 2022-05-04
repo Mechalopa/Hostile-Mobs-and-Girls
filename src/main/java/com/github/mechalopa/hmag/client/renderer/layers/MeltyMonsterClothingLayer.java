@@ -3,33 +3,32 @@ package com.github.mechalopa.hmag.client.renderer.layers;
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.model.MeltyMonsterModel;
 import com.github.mechalopa.hmag.entity.MeltyMonsterEntity;
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
 
-import net.minecraft.client.renderer.IRenderTypeBuffer;
+import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.IEntityRenderer;
-import net.minecraft.client.renderer.entity.layers.AbstractEyesLayer;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.client.renderer.entity.RenderLayerParent;
+import net.minecraft.client.renderer.entity.layers.EyesLayer;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-
 @OnlyIn(Dist.CLIENT)
-public class MeltyMonsterClothingLayer<T extends MeltyMonsterEntity, M extends MeltyMonsterModel<T>> extends AbstractEyesLayer<T, M>
+public class MeltyMonsterClothingLayer<T extends MeltyMonsterEntity, M extends MeltyMonsterModel<T>> extends EyesLayer<T, M>
 {
 	private static final RenderType RENDER_TYPE = RenderType.eyes(new ResourceLocation(HMaG.MODID, "textures/entity/melty_monster_clothing.png"));
 
-	public MeltyMonsterClothingLayer(IEntityRenderer<T, M> rendererIn)
+	public MeltyMonsterClothingLayer(RenderLayerParent<T, M> renderLayerParent)
 	{
-		super(rendererIn);
+		super(renderLayerParent);
 	}
 
 	@Override
-	public void render(MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn, T livingEntityIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch)
+	public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLightIn, T livingEntityIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch)
 	{
 		if (!livingEntityIn.isInvisible())
 		{
-			super.render(matrixStackIn, bufferIn, packedLightIn, livingEntityIn, limbSwing, limbSwingAmount, partialTicks, ageInTicks, netHeadYaw, headPitch);
+			super.render(poseStack, buffer, packedLightIn, livingEntityIn, limbSwing, limbSwingAmount, partialTicks, ageInTicks, netHeadYaw, headPitch);
 		}
 	}
 

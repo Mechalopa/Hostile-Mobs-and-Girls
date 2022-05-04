@@ -5,20 +5,20 @@ import com.github.mechalopa.hmag.client.model.SnowCanineModel;
 import com.github.mechalopa.hmag.entity.SnowCanineEntity;
 
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.IEntityRenderer;
-import net.minecraft.client.renderer.entity.layers.AbstractEyesLayer;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.client.renderer.entity.RenderLayerParent;
+import net.minecraft.client.renderer.entity.layers.EyesLayer;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class SnowCanineEyesLayer<T extends SnowCanineEntity, M extends SnowCanineModel<T>> extends AbstractEyesLayer<T, M>
+public class SnowCanineEyesLayer<T extends SnowCanineEntity, M extends SnowCanineModel<T>> extends EyesLayer<T, M>
 {
 	private static final RenderType RENDER_TYPE = RenderType.eyes(new ResourceLocation(HMaG.MODID, "textures/entity/snow_canine_eyes.png"));
 
-	public SnowCanineEyesLayer(IEntityRenderer<T, M> rendererIn)
+	public SnowCanineEyesLayer(RenderLayerParent<T, M> renderLayerParent)
 	{
-		super(rendererIn);
+		super(renderLayerParent);
 	}
 
 	@Override

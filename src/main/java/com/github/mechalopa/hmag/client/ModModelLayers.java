@@ -45,7 +45,7 @@ public class ModModelLayers
 	public static final ModelLayerLocation OGRE = create("ogre");
 	public static final ModelLayerLocation SPIDER_NEST = create("spider_nest");
 	public static final ModelLayerLocation MELTY_MONSTER = create("melty_monster");
-	public static final ModelLayerLocation MELTY_MONSTER_OUTER = create("melty_monster", "outer");
+	public static final ModelLayerLocation MELTY_MONSTER_OUTER_LAYER = create("melty_monster", "outer");
 	public static final ModelLayerLocation CURSED_DOLL = create("cursed_doll");
 	public static final ModelLayerLocation JACK_FROST = create("jack_frost");
 	public static final ModelLayerLocation HORNET = create("hornet");

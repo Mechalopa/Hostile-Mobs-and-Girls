@@ -217,7 +217,7 @@ public class ModClientEventBusSubscriber
 		event.registerLayerDefinition(ModModelLayers.OGRE, OgreModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.SPIDER_NEST, SpiderNestModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.MELTY_MONSTER, MeltyMonsterModel::createBodyLayer);
-		event.registerLayerDefinition(ModModelLayers.MELTY_MONSTER_OUTER, MeltyMonsterModel::createBodyLayer);
+		event.registerLayerDefinition(ModModelLayers.MELTY_MONSTER_OUTER_LAYER, MeltyMonsterModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.CURSED_DOLL, CursedDollModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.JACK_FROST, JackFrostModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.HORNET, HornetModel::createBodyLayer);
