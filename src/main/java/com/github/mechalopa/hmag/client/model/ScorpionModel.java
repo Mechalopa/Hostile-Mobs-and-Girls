@@ -198,7 +198,7 @@ public class ScorpionModel<T extends Entity> extends SegmentedModel<T>
 		this.leg1B.setPos(-((float)b1) + 1.0F, 0.0F, 0.0F);
 		this.leg1A.addChild(this.leg1B);
 		this.leg2B = new ModelRenderer(this, 0, 20);
-		this.leg2B.addBox(-0.5F, -1.0F, -1.0F, (float)b2, 2.0F, 2.0F, -0.251F);
+		this.leg2B.addBox(-0.5F, -1.0F, -1.0F, (float)b2, 2.0F, 2.0F, -0.2501F);
 		this.leg2B.setPos((float)b1 - 1.0F, 0.0F, 0.0F);
 		this.leg2A.addChild(this.leg2B);
 		this.leg3B = new ModelRenderer(this, 0, 20);
@@ -206,7 +206,7 @@ public class ScorpionModel<T extends Entity> extends SegmentedModel<T>
 		this.leg3B.setPos(-((float)b1) + 1.0F, 0.0F, 0.0F);
 		this.leg3A.addChild(this.leg3B);
 		this.leg4B = new ModelRenderer(this, 0, 20);
-		this.leg4B.addBox(-0.5F, -1.0F, -1.0F, (float)b2, 2.0F, 2.0F, -0.251F);
+		this.leg4B.addBox(-0.5F, -1.0F, -1.0F, (float)b2, 2.0F, 2.0F, -0.2501F);
 		this.leg4B.setPos((float)b1 - 1.0F, 0.0F, 0.0F);
 		this.leg4A.addChild(this.leg4B);
 		this.leg5B = new ModelRenderer(this, 0, 20);
@@ -214,7 +214,7 @@ public class ScorpionModel<T extends Entity> extends SegmentedModel<T>
 		this.leg5B.setPos(-((float)b1) + 1.0F, 0.0F, 0.0F);
 		this.leg5A.addChild(this.leg5B);
 		this.leg6B = new ModelRenderer(this, 0, 20);
-		this.leg6B.addBox(-0.5F, -1.0F, -1.0F, (float)b2, 2.0F, 2.0F, -0.251F);
+		this.leg6B.addBox(-0.5F, -1.0F, -1.0F, (float)b2, 2.0F, 2.0F, -0.2501F);
 		this.leg6B.setPos((float)b1 - 1.0F, 0.0F, 0.0F);
 		this.leg6A.addChild(this.leg6B);
 		this.leg7B = new ModelRenderer(this, 0, 20);
@@ -222,7 +222,7 @@ public class ScorpionModel<T extends Entity> extends SegmentedModel<T>
 		this.leg7B.setPos(-((float)b1) + 1.0F, 0.0F, 0.0F);
 		this.leg7A.addChild(this.leg7B);
 		this.leg8B = new ModelRenderer(this, 0, 20);
-		this.leg8B.addBox(-0.5F, -1.0F, -1.0F, (float)b2, 2.0F, 2.0F, -0.251F);
+		this.leg8B.addBox(-0.5F, -1.0F, -1.0F, (float)b2, 2.0F, 2.0F, -0.2501F);
 		this.leg8B.setPos((float)b1 - 1.0F, 0.0F, 0.0F);
 		this.leg8A.addChild(this.leg8B);
 
