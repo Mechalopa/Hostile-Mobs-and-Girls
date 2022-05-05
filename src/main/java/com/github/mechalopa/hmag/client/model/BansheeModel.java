@@ -93,6 +93,7 @@ public class BansheeModel<T extends AbstractFlyingMonsterEntity> extends Abstrac
 		this.rightHairPart1.setPos(-3.75F, -7.0F, -1.0F);
 		this.head.addChild(this.rightHairPart1);
 		this.leftHairPart1 = new ModelRenderer(this, 40, 56);
+		this.leftHairPart1.mirror = true;
 		this.leftHairPart1.addBox(-1.0F, -1.0F, -1.0F, 2.0F, 3.0F, 2.0F, modelSize);
 		this.leftHairPart1.setPos(3.75F, -7.0F, -1.0F);
 		this.head.addChild(this.leftHairPart1);
