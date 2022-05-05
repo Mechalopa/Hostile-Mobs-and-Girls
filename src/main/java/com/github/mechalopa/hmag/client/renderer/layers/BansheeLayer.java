@@ -1,11 +1,13 @@
 package com.github.mechalopa.hmag.client.renderer.layers;
 
 import com.github.mechalopa.hmag.HMaG;
+import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.BansheeModel;
 import com.github.mechalopa.hmag.entity.BansheeEntity;
 
 import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.renderer.entity.IEntityRenderer;
+import net.minecraft.client.model.geom.EntityModelSet;
+import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -14,11 +16,12 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class BansheeLayer extends AbstractClothingLayer<BansheeEntity, BansheeModel<BansheeEntity>>
 {
 	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/banshee_overlay.png");
-	private final BansheeModel<BansheeEntity> model = new BansheeModel<>(0.0F);
+	private final BansheeModel<BansheeEntity> model;
 
-	public BansheeLayer(IEntityRenderer<BansheeEntity, BansheeModel<BansheeEntity>> entityRendererIn)
+	public BansheeLayer(RenderLayerParent<BansheeEntity, BansheeModel<BansheeEntity>> renderLayerParent, EntityModelSet modelSet)
 	{
-		super(entityRendererIn);
+		super(renderLayerParent);
+		this.model = new BansheeModel<>(modelSet.bakeLayer(ModModelLayers.BANSHEE));
 	}
 
 	@Override

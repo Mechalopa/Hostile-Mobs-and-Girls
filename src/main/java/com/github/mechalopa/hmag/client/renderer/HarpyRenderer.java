@@ -4,8 +4,7 @@ import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.model.HarpyModel;
 import com.github.mechalopa.hmag.entity.HarpyEntity;
 
-import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -27,7 +26,7 @@ public class HarpyRenderer extends AbstractGirlRenderer<HarpyEntity, HarpyModel<
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(HarpyEntity entityIn)
+	public ResourceLocation getTextureLocation(HarpyEntity entity)
 	{
 		switch (entityIn.getVariant())
 		{

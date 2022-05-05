@@ -247,11 +247,11 @@ public class ModClientEventBusSubscriber
 		event.registerLayerDefinition(ModModelLayers.IMP, ImpModel::createBodyLayer);
 	}
 
-	@SuppressWarnings("resource")
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public static void registerParticleFactories(final ParticleFactoryRegisterEvent event)
 	{
-		Minecraft.getInstance().particleEngine.register(ModParticleTypes.ENCHANTMENT_RUNE.get(), EnchantmentRuneParticle.Provider::new);
-		Minecraft.getInstance().particleEngine.register(ModParticleTypes.NEMESIS_FLAME.get(), FlameParticle.Provider::new);
+		Minecraft minecraft = Minecraft.getInstance();
+		minecraft.particleEngine.register(ModParticleTypes.ENCHANTMENT_RUNE.get(), EnchantmentRuneParticle.Provider::new);
+		minecraft.particleEngine.register(ModParticleTypes.NEMESIS_FLAME.get(), FlameParticle.Provider::new);
 	}
 }

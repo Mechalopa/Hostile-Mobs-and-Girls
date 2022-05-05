@@ -1,16 +1,17 @@
 package com.github.mechalopa.hmag.client.renderer;
 
 import com.github.mechalopa.hmag.HMaG;
+import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.BansheeModel;
 import com.github.mechalopa.hmag.client.renderer.layers.BansheeLayer;
 import com.github.mechalopa.hmag.entity.BansheeEntity;
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Vector3f;
 
-import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.vector.Vector3f;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -19,35 +20,35 @@ public class BansheeRenderer extends AbstractGirlRenderer<BansheeEntity, Banshee
 {
 	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/banshee.png");
 
-	public BansheeRenderer(EntityRendererManager renderManagerIn)
+	public BansheeRenderer(EntityRendererProvider.Context context)
 	{
-		super(renderManagerIn, new BansheeModel<>(), 0.375F);
-		this.addLayer(new BansheeLayer(this));
+		super(context, new BansheeModel<>(context.bakeLayer(ModModelLayers.BANSHEE)), 0.375F);
+		this.addLayer(new BansheeLayer(this, context.getModelSet()));
 	}
 
 	@Override
-	protected void scale(BansheeEntity entityIn, MatrixStack matrixStackIn, float partialTickTime)
+	protected void scale(BansheeEntity entity, PoseStack poseStack, float partialTickTime)
 	{
-		super.scale(entityIn, matrixStackIn, partialTickTime);
-		float f = (float)entityIn.tickCount + partialTickTime;
-		matrixStackIn.translate(0.0F, -0.12F + MathHelper.sin(f * 0.03F) * 0.06F, 0.0F);
+		super.scale(entity, poseStack, partialTickTime);
+		float f = (float)entity.tickCount + partialTickTime;
+		poseStack.translate(0.0F, -0.12F + Mth.sin(f * 0.03F) * 0.06F, 0.0F);
 	}
 
 	@Override
-	protected void setupRotations(BansheeEntity entityLiving, MatrixStack matrixStackIn, float ageInTicks, float rotationYaw, float partialTicks)
+	protected void setupRotations(BansheeEntity entity, PoseStack poseStack, float ageInTicks, float rotationYaw, float partialTicks)
 	{
-		super.setupRotations(entityLiving, matrixStackIn, ageInTicks, rotationYaw, partialTicks);
-		matrixStackIn.mulPose(Vector3f.XP.rotationDegrees(-10.0F));
+		super.setupRotations(entity, poseStack, ageInTicks, rotationYaw, partialTicks);
+		poseStack.mulPose(Vector3f.XP.rotationDegrees(-10.0F));
 	}
 
 	@Override
-	protected int getBlockLightLevel(BansheeEntity entityIn, BlockPos pos)
+	protected int getBlockLightLevel(BansheeEntity entity, BlockPos pos)
 	{
 		return 15;
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(BansheeEntity entityIn)
+	public ResourceLocation getTextureLocation(BansheeEntity entity)
 	{
 		return TEX;
 	}
