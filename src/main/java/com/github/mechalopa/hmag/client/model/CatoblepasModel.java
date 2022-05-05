@@ -1,102 +1,88 @@
 package com.github.mechalopa.hmag.client.model;
 
-import com.google.common.collect.ImmutableList;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 
-import net.minecraft.client.renderer.entity.model.SegmentedModel;
-import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.entity.Entity;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.client.model.HierarchicalModel;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
+import net.minecraft.client.model.geom.builders.MeshDefinition;
+import net.minecraft.client.model.geom.builders.PartDefinition;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.Entity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class CatoblepasModel<T extends Entity> extends SegmentedModel<T>
+public class CatoblepasModel<T extends Entity> extends HierarchicalModel<T>
 {
-	private final ModelRenderer head;
-	private final ModelRenderer neck;
-	private final ModelRenderer body;
-	private final ModelRenderer legBackRight;
-	private final ModelRenderer legBackLeft;
-	private final ModelRenderer legFrontRight;
-	private final ModelRenderer legFrontLeft;
+	private final ModelPart root;
+	private final ModelPart neck;
+	private final ModelPart head;
+	private final ModelPart body;
+	private final ModelPart rightHindLeg;
+	private final ModelPart leftHindLeg;
+	private final ModelPart rightFrontLeg;
+	private final ModelPart leftFrontLeg;
+	private final ModelPart rightHorn1;
+	private final ModelPart leftHorn1;
+	private final ModelPart rightHorn2;
+	private final ModelPart leftHorn2;
 
-	private final ModelRenderer rightHorn1;
-	private final ModelRenderer leftHorn1;
-	private final ModelRenderer rightHorn2;
-	private final ModelRenderer leftHorn2;
-
-	public CatoblepasModel()
+	public CatoblepasModel(ModelPart modelPart)
 	{
-		this.texHeight = 64;
-		this.texWidth = 64;
+		this.root = modelPart;
+		this.neck = modelPart.getChild("neck");
+		this.head = this.neck.getChild("head");
+		this.body = modelPart.getChild("body");
+		this.rightHindLeg = modelPart.getChild("right_hind_leg");
+		this.leftHindLeg = modelPart.getChild("left_hind_leg");
+		this.rightFrontLeg = modelPart.getChild("right_front_leg");
+		this.leftFrontLeg = modelPart.getChild("left_front_leg");
+		this.rightHorn1 = this.head.getChild("right_horn_1");
+		this.leftHorn1 = this.head.getChild("left_horn_1");
+		this.rightHorn2 = this.rightHorn1.getChild("right_horn_2");
+		this.leftHorn2 = this.rightHorn1.getChild("left_horn_2");
+	}
 
-		this.neck = new ModelRenderer(this, 24, 32);
-		this.neck.addBox(-3.0F, -2.5F, -9.0F, 6.0F, 5.0F, 9.0F);
-		this.neck.setPos(0.0F, 6.0F, -7.0F);
-		this.head = new ModelRenderer(this, 0, 0);
-		this.head.addBox(-4.0F, -4.0F, -6.0F, 8.0F, 8.0F, 6.0F);
-		this.head.setPos(0.0F, 1.0F, -8.0F);
-		this.neck.addChild(this.head);
-		this.body = new ModelRenderer(this, 18, 4);
-		this.body.addBox(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F);
-		this.body.setPos(0.0F, 5.0F, 2.0F);
-		this.legBackRight = new ModelRenderer(this, 0, 16);
-		this.legBackRight.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F);
-		this.legBackRight.setPos(-4.0F, 12.0F, 7.0F);
-		this.legBackLeft = new ModelRenderer(this, 0, 16);
-		this.legBackLeft.mirror = true;
-		this.legBackLeft.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F);
-		this.legBackLeft.setPos(4.0F, 12.0F, 7.0F);
-		this.legFrontRight = new ModelRenderer(this, 0, 16);
-		this.legFrontRight.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F);
-		this.legFrontRight.setPos(-4.0F, 12.0F, -6.0F);
-		this.legFrontLeft = new ModelRenderer(this, 0, 16);
-		this.legFrontLeft.mirror = true;
-		this.legFrontLeft.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F);
-		this.legFrontLeft.setPos(4.0F, 12.0F, -6.0F);
-
-		this.rightHorn1 = new ModelRenderer(this, 0, 32);
-		this.rightHorn1.addBox(-1.5F, -6.0F, -1.5F, 3.0F, 6.0F, 3.0F);
-		this.rightHorn1.setPos(-3.25F, -3.5F, -4.25F);
-		this.head.addChild(this.rightHorn1);
-		this.leftHorn1 = new ModelRenderer(this, 0, 32);
-		this.leftHorn1.mirror = true;
-		this.leftHorn1.addBox(-1.5F, -6.0F, -1.5F, 3.0F, 6.0F, 3.0F);
-		this.leftHorn1.setPos(3.25F, -3.5F, -4.25F);
-		this.head.addChild(this.leftHorn1);
-
-		this.rightHorn2 = new ModelRenderer(this, 16, 32);
-		this.rightHorn2.addBox(-1.0F, -4.0F, -1.0F, 2.0F, 4.0F, 2.0F);
-		this.rightHorn2.setPos(0.0F, -5.5F, 0.0F);
-		this.rightHorn1.addChild(this.rightHorn2);
-		this.leftHorn2 = new ModelRenderer(this, 16, 32);
-		this.leftHorn2.mirror = true;
-		this.leftHorn2.addBox(-1.0F, -4.0F, -1.0F, 2.0F, 4.0F, 2.0F);
-		this.leftHorn2.setPos(0.0F, -5.5F, 0.0F);
-		this.leftHorn1.addChild(this.leftHorn2);
+	public static LayerDefinition createBodyLayer()
+	{
+		MeshDefinition md = new MeshDefinition();
+		PartDefinition pd = md.getRoot();
+		PartDefinition neckpd = ModClientUtils.addC(pd, "neck", 24, 32, -3.0F, -2.5F, -9.0F, 6.0F, 5.0F, 9.0F, 0.0F, 6.0F, -7.0F);
+		PartDefinition headpd = ModClientUtils.addC(neckpd, "head", 0, 0, -4.0F, -4.0F, -6.0F, 8.0F, 8.0F, 6.0F, 0.0F, 1.0F, -8.0F);
+		ModClientUtils.addC(pd, "body", 18, 4, -6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F, 0.0F, 5.0F, 2.0F);
+		ModClientUtils.addC(pd, "right_hind_leg", 0, 16, -2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, -4.0F, 12.0F, 7.0F);
+		ModClientUtils.addC(pd, "left_hind_leg", 0, 16, -2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, 4.0F, 12.0F, 7.0F, true);
+		ModClientUtils.addC(pd, "right_front_leg", 0, 16, -2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, -4.0F, 12.0F, -6.0F);
+		ModClientUtils.addC(pd, "left_front_leg", 0, 16, -2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, 4.0F, 12.0F, -6.0F, true);
+		PartDefinition rh1pd = ModClientUtils.addC(headpd, "right_horn_1", 0, 32, -1.5F, -6.0F, -1.5F, 3.0F, 6.0F, 3.0F, -3.25F, -3.5F, -4.25F);
+		PartDefinition lh1pd = ModClientUtils.addC(headpd, "left_horn_1", 0, 32, -1.5F, -6.0F, -1.5F, 3.0F, 6.0F, 3.0F, 3.25F, -3.5F, -4.25F, true);
+		ModClientUtils.addC(rh1pd, "right_horn_2", 16, 32, -1.0F, -4.0F, -1.0F, 2.0F, 4.0F, 2.0F, 0.0F, -5.5F, 0.0F);
+		ModClientUtils.addC(lh1pd, "left_horn_2", 16, 32, -1.0F, -4.0F, -1.0F, 2.0F, 4.0F, 2.0F, 0.0F, -5.5F, 0.0F, true);
+		return LayerDefinition.create(md, 64, 64);
 	}
 
 	@Override
-	public Iterable<ModelRenderer> parts()
+	public ModelPart root()
 	{
-		return ImmutableList.of(this.neck, this.body, this.legBackRight, this.legBackLeft, this.legFrontRight, this.legFrontLeft);
+		return this.root;
 	}
 
 	@Override
 	public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
 		this.neck.xRot = (float)Math.PI / 9.0F;
-		this.neck.xRot += MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI / 2.0F) * 0.25F * limbSwingAmount;
+		this.neck.xRot += Mth.cos(limbSwing * 0.6662F + (float)Math.PI / 2.0F) * 0.25F * limbSwingAmount;
 		this.head.xRot = -((float)Math.PI / 9.0F);
-		this.head.xRot -= MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI / 2.0F) * 0.2F * limbSwingAmount;
+		this.head.xRot -= Mth.cos(limbSwing * 0.6662F + (float)Math.PI / 2.0F) * 0.2F * limbSwingAmount;
 		this.head.xRot += headPitch * ((float)Math.PI / 180.0F);
 		this.head.yRot = netHeadYaw * ((float)Math.PI / 180.0F);
 
 		this.body.xRot = (float)Math.PI / 2.0F;
-		this.legBackRight.xRot = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-		this.legBackLeft.xRot = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
-		this.legFrontRight.xRot = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
-		this.legFrontLeft.xRot = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.rightHindLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.leftHindLeg.xRot = Mth.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+		this.rightFrontLeg.xRot = Mth.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+		this.leftFrontLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
 
 		this.rightHorn1.xRot = -((float)Math.PI / 15.0F);
 		this.leftHorn1.xRot = -((float)Math.PI / 15.0F);

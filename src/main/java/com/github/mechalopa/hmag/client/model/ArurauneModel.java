@@ -1,315 +1,229 @@
 package com.github.mechalopa.hmag.client.model;
 
-import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.util.math.MathHelper;
+import java.util.Arrays;
+
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
+
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.model.geom.builders.CubeDeformation;
+import net.minecraft.client.model.geom.builders.CubeListBuilder;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
+import net.minecraft.client.model.geom.builders.MeshDefinition;
+import net.minecraft.client.model.geom.builders.PartDefinition;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.Mob;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class ArurauneModel<T extends MobEntity> extends AbstractAdvancedGirlModel<T>
+public class ArurauneModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 {
-	private ModelRenderer skirt1;
-	private ModelRenderer skirt2;
-	private ModelRenderer rightHair;
-	private ModelRenderer leftHair;
-	private ModelRenderer rightHair2;
-	private ModelRenderer leftHair2;
-	private ModelRenderer rightHair3;
-	private ModelRenderer leftHair3;
-	private ModelRenderer rightHairFlowerA;
-	private ModelRenderer rightHairFlowerB;
-	private ModelRenderer rightHairFlowerC;
-	private ModelRenderer rightHairFlowerD;
-	private ModelRenderer leftHairFlowerA;
-	private ModelRenderer leftHairFlowerB;
-	private ModelRenderer leftHairFlowerC;
-	private ModelRenderer leftHairFlowerD;
-	private ModelRenderer hairPart;
-	private ModelRenderer headwearPart;
-	private ModelRenderer[] rightSkirtLeafPart1 = new ModelRenderer[3];
-	private ModelRenderer[] leftSkirtLeafPart1 = new ModelRenderer[3];
-	private ModelRenderer[] rightSkirtLeafPart2 = new ModelRenderer[3];
-	private ModelRenderer[] leftSkirtLeafPart2 = new ModelRenderer[3];
-	private ModelRenderer[] rightSkirtLeafPart3 = new ModelRenderer[3];
-	private ModelRenderer[] leftSkirtLeafPart3 = new ModelRenderer[3];
-	private ModelRenderer rightTentaclePartA;
-	private ModelRenderer rightTentaclePartB;
-	private ModelRenderer rightTentaclePartC;
-	private ModelRenderer rightTentaclePartD;
-	private ModelRenderer leftTentaclePartA;
-	private ModelRenderer leftTentaclePartB;
-	private ModelRenderer leftTentaclePartC;
-	private ModelRenderer leftTentaclePartD;
-	private ModelRenderer rightTentacleLeafA;
-	private ModelRenderer rightTentacleLeafB;
-	private ModelRenderer rightTentacleLeafC;
-	private ModelRenderer rightTentacleLeafD;
-	private ModelRenderer leftTentacleLeafA;
-	private ModelRenderer leftTentacleLeafB;
-	private ModelRenderer leftTentacleLeafC;
-	private ModelRenderer leftTentacleLeafD;
-	private ModelRenderer rightTentacleFlowerA;
-	private ModelRenderer rightTentacleFlowerB;
-	private ModelRenderer rightTentacleFlowerC;
-	private ModelRenderer rightTentacleFlowerD;
-	private ModelRenderer leftTentacleFlowerA;
-	private ModelRenderer leftTentacleFlowerB;
-	private ModelRenderer leftTentacleFlowerC;
-	private ModelRenderer leftTentacleFlowerD;
-	private ModelRenderer rightLegPart;
-	private ModelRenderer leftLegPart;
+	private ModelPart rightHair1;
+	private ModelPart leftHair1;
+	private ModelPart rightHair2;
+	private ModelPart leftHair2;
+	private ModelPart rightHair3;
+	private ModelPart leftHair3;
+	private ModelPart rightHairFlowerA;
+	private ModelPart rightHairFlowerB;
+	private ModelPart rightHairFlowerC;
+	private ModelPart rightHairFlowerD;
+	private ModelPart leftHairFlowerA;
+	private ModelPart leftHairFlowerB;
+	private ModelPart leftHairFlowerC;
+	private ModelPart leftHairFlowerD;
+	private ModelPart hairPart;
+//	private ModelPart headwearPart;
+	private ModelPart skirt1;
+	private ModelPart skirt2;
+	private ModelPart[] rightSkirtLeafPart1 = new ModelPart[3];
+	private ModelPart[] leftSkirtLeafPart1 = new ModelPart[3];
+	private ModelPart[] rightSkirtLeafPart2 = new ModelPart[3];
+	private ModelPart[] leftSkirtLeafPart2 = new ModelPart[3];
+	private ModelPart[] rightSkirtLeafPart3 = new ModelPart[3];
+	private ModelPart[] leftSkirtLeafPart3 = new ModelPart[3];
+	private ModelPart rightTentaclePart1;
+	private ModelPart leftTentaclePart1;
+	private ModelPart rightTentaclePart2;
+	private ModelPart leftTentaclePart2;
+	private ModelPart rightTentaclePart3;
+	private ModelPart leftTentaclePart3;
+	private ModelPart rightTentaclePart4;
+	private ModelPart leftTentaclePart4;
+	private ModelPart rightTentacleFlowerA;
+	private ModelPart rightTentacleFlowerB;
+	private ModelPart rightTentacleFlowerC;
+	private ModelPart rightTentacleFlowerD;
+	private ModelPart leftTentacleFlowerA;
+	private ModelPart leftTentacleFlowerB;
+	private ModelPart leftTentacleFlowerC;
+	private ModelPart leftTentacleFlowerD;
+	private ModelPart rightTentacleLeafA;
+	private ModelPart rightTentacleLeafB;
+	private ModelPart rightTentacleLeafC;
+	private ModelPart rightTentacleLeafD;
+	private ModelPart leftTentacleLeafA;
+	private ModelPart leftTentacleLeafB;
+	private ModelPart leftTentacleLeafC;
+	private ModelPart leftTentacleLeafD;
+//	private ModelPart rightLegPart;
+//	private ModelPart leftLegPart;
 
-	public ArurauneModel()
+	public ArurauneModel(ModelPart modelPart)
 	{
-		this(0.0F);
+		super(modelPart);
+		this.rightHair1 = this.head.getChild("right_hair_1");
+		this.leftHair1 = this.head.getChild("left_hair_1");
+		this.rightHair2 = this.rightHair1.getChild("right_hair_2");
+		this.leftHair2 = this.leftHair1.getChild("left_hair_2");
+		this.rightHair3 = this.rightHair2.getChild("right_hair_3");
+		this.leftHair3 = this.leftHair2.getChild("left_hair_3");
+		this.rightHairFlowerA = this.rightHair1.getChild("right_hair_flower_a");
+		this.rightHairFlowerB = this.rightHair1.getChild("right_hair_flower_b");
+		this.rightHairFlowerC = this.rightHair1.getChild("right_hair_flower_c");
+		this.rightHairFlowerD = this.rightHair1.getChild("right_hair_flower_d");
+		this.leftHairFlowerA = this.leftHair1.getChild("left_hair_flower_a");
+		this.leftHairFlowerB = this.leftHair1.getChild("left_hair_flower_b");
+		this.leftHairFlowerC = this.leftHair1.getChild("left_hair_flower_c");
+		this.leftHairFlowerD = this.leftHair1.getChild("left_hair_flower_d");
+		this.hairPart = this.head.getChild("hair_part");
+//		this.headwearPart = this.hat.getChild("hat_part");
+		this.skirt1 = this.body.getChild("skirt_1");
+		this.skirt2 = this.body.getChild("skirt_2");
+		Arrays.setAll(this.rightSkirtLeafPart1, (p) -> {
+			return this.body.getChild("right_skirt_leaf_1_" + p);
+		});
+		Arrays.setAll(this.leftSkirtLeafPart1, (p) -> {
+			return this.body.getChild("left_skirt_leaf_1_" + p);
+		});
+		Arrays.setAll(this.rightSkirtLeafPart2, (p) -> {
+			return this.rightSkirtLeafPart1[p].getChild("right_skirt_leaf_2_" + p);
+		});
+		Arrays.setAll(this.leftSkirtLeafPart2, (p) -> {
+			return this.leftSkirtLeafPart1[p].getChild("left_skirt_leaf_2_" + p);
+		});
+		Arrays.setAll(this.rightSkirtLeafPart3, (p) -> {
+			return this.rightSkirtLeafPart2[p].getChild("right_skirt_leaf_3_" + p);
+		});
+		Arrays.setAll(this.leftSkirtLeafPart3, (p) -> {
+			return this.leftSkirtLeafPart2[p].getChild("left_skirt_leaf_3_" + p);
+		});
+		this.rightTentaclePart1 = this.body.getChild("right_tentacle_part_1");
+		this.leftTentaclePart1 = this.body.getChild("left_tentacle_part_1");
+		this.rightTentaclePart2 = this.rightTentaclePart1.getChild("right_tentacle_part_2");
+		this.leftTentaclePart2 = this.leftTentaclePart1.getChild("left_tentacle_part_2");
+		this.rightTentaclePart3 = this.rightTentaclePart2.getChild("right_tentacle_part_3");
+		this.leftTentaclePart3 = this.leftTentaclePart2.getChild("left_tentacle_part_4");
+		this.rightTentaclePart4 = this.rightTentaclePart3.getChild("right_tentacle_part_4");
+		this.leftTentaclePart4 = this.leftTentaclePart3.getChild("left_tentacle_part_4");
+		this.rightTentacleFlowerA = this.rightTentaclePart4.getChild("right_tentacle_flower_a");
+		this.rightTentacleFlowerB = this.rightTentaclePart4.getChild("right_tentacle_flower_b");
+		this.rightTentacleFlowerC = this.rightTentaclePart4.getChild("right_tentacle_flower_c");
+		this.rightTentacleFlowerD = this.rightTentaclePart4.getChild("right_tentacle_flower_d");
+		this.leftTentacleFlowerA = this.leftTentaclePart4.getChild("left_tentacle_flower_a");
+		this.leftTentacleFlowerB = this.leftTentaclePart4.getChild("left_tentacle_flower_b");
+		this.leftTentacleFlowerC = this.leftTentaclePart4.getChild("left_tentacle_flower_c");
+		this.leftTentacleFlowerD = this.leftTentaclePart4.getChild("left_tentacle_flower_d");
+		this.rightTentacleLeafA = this.rightTentaclePart4.getChild("right_tentacle_leaf_a");
+		this.rightTentacleLeafB = this.rightTentaclePart4.getChild("right_tentacle_leaf_a");
+		this.rightTentacleLeafC = this.rightTentaclePart4.getChild("right_tentacle_leaf_a");
+		this.rightTentacleLeafD = this.rightTentaclePart4.getChild("right_tentacle_leaf_a");
+		this.leftTentacleLeafA = this.leftTentaclePart4.getChild("left_tentacle_leaf_a");
+		this.leftTentacleLeafB = this.leftTentaclePart4.getChild("left_tentacle_leaf_b");
+		this.leftTentacleLeafC = this.leftTentaclePart4.getChild("left_tentacle_leaf_c");
+		this.leftTentacleLeafD = this.leftTentaclePart4.getChild("left_tentacle_leaf_d");
 	}
 
-	public ArurauneModel(float modelSize)
+	public static MeshDefinition createMesh(CubeDeformation cd)
 	{
-		super(modelSize, 0.0F, 64, 128, false);
+		MeshDefinition md = AbstractAdvancedGirlModel.createMesh(cd, 0.0F, 6);
+		PartDefinition pd = md.getRoot();
+		ModClientUtils.addC(pd, cd, "right_arm", 40, 16, 0.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F, -5.0F, 2.0F, 0.0F);
+		ModClientUtils.addC(pd, cd, "left_arm", 40, 16, -2.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F, 5.0F, 2.0F, 0.0F, true);
 
-		this.rightArm = new ModelRenderer(this, 40, 16);
-		this.rightArm.addBox(0.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F, modelSize);
-		this.rightArm.setPos(-5.0F, 2.0F, 0.0F);
-		this.leftArm = new ModelRenderer(this, 40, 16);
-		this.leftArm.mirror = true;
-		this.leftArm.addBox(-2.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F, modelSize);
-		this.leftArm.setPos(5.0F, 2.0F, 0.0F);
+		PartDefinition headpd = pd.getChild("head");
+		PartDefinition rh1pd = ModClientUtils.addC(headpd, cd, "right_hair_1", 48, 64, -0.5F, -1.0F, 0.0F, 1.0F, 10.0F, 1.0F, -4.0F, -8.0F, 1.5F, 0.25F);
+		PartDefinition lh1pd = ModClientUtils.addC(headpd, cd, "left_hair_1", 48, 64, -0.5F, -1.0F, 0.0F, 1.0F, 10.0F, 1.0F, 4.0F, -8.0F, 1.5F, true, 0.25F);
+		PartDefinition rh2pd = ModClientUtils.addC(rh1pd, cd, "right_hair_2", 32, 48, -1.0F, -0.5F, -0.5F, 2.0F, 6.0F, 1.0F, 0.0F, 9.5F, 0.0F);
+		PartDefinition lh2pd = ModClientUtils.addC(lh1pd, cd, "left_hair_2", 32, 48, -1.0F, -0.5F, -0.5F, 2.0F, 6.0F, 1.0F, 0.0F, 9.5F, 0.0F, true);
+		ModClientUtils.addC(rh2pd, cd, "right_hair_3", 32, 56, -1.0F, -0.5F, -0.5F, 2.0F, 5.0F, 1.0F, 0.0F, 5.5F, 0.0F);
+		ModClientUtils.addC(lh2pd, cd, "left_hair_3", 32, 56, -1.0F, -0.5F, -0.5F, 2.0F, 5.0F, 1.0F, 0.0F, 5.5F, 0.0F, true);
 
-		this.skirt1 = new ModelRenderer(this, 0, 38);
-		this.skirt1.addBox(-3.5F, 0.0F, -2.0F, 7.0F, 1.0F, 4.0F, modelSize);
-		this.skirt1.setPos(0.0F, 11.0F, 0.0F);
-		this.body.addChild(this.skirt1);
-		this.skirt2 = new ModelRenderer(this, 0, 44);
-		this.skirt2.addBox(-4.0F, 0.0F, -2.5F, 8.0F, 9.0F, 5.0F, modelSize);
-		this.skirt2.setPos(0.0F, 12.0F, 0.0F);
-		this.body.addChild(this.skirt2);
+		ModClientUtils.addC(rh1pd, cd, "right_hair_flower_a", 40, 80, -5.25F, -5.25F, -0.5F, 5.0F, 5.0F, 1.0F, -0.125F, 0.5F, 0.25F);
+		ModClientUtils.addC(rh1pd, cd, "right_hair_flower_b", 40, 88, -5.25F, 0.25F, -0.5F, 5.0F, 5.0F, 1.0F, -0.125F, 0.5F, 0.25F);
+		ModClientUtils.addC(rh1pd, cd, "right_hair_flower_c", 40, 96, 0.25F, -5.25F, -0.5F, 5.0F, 5.0F, 1.0F, -0.125F, 0.5F, 0.25F);
+		ModClientUtils.addC(rh1pd, cd, "right_hair_flower_d", 40, 104, 0.25F, 0.25F, -0.5F, 5.0F, 5.0F, 1.0F, -0.125F, 0.5F, 0.25F);
+		ModClientUtils.addC(lh1pd, cd, "left_hair_flower_a", 40, 80, -5.25F, -5.25F, -0.5F, 5.0F, 5.0F, 1.0F, 0.125F, 0.5F, 0.25F);
+		ModClientUtils.addC(lh1pd, cd, "left_hair_flower_b", 40, 88, -5.25F, 0.25F, -0.5F, 5.0F, 5.0F, 1.0F, 0.125F, 0.5F, 0.25F);
+		ModClientUtils.addC(lh1pd, cd, "left_hair_flower_c", 40, 96, 0.25F, -5.25F, -0.5F, 5.0F, 5.0F, 1.0F, 0.125F, 0.5F, 0.25F);
+		ModClientUtils.addC(lh1pd, cd, "left_hair_flower_d", 40, 104, 0.25F, 0.25F, -0.5F, 5.0F, 5.0F, 1.0F, 0.125F, 0.5F, 0.25F);
 
-		this.rightHair = new ModelRenderer(this, 48, 64);
-		this.rightHair.addBox(-0.5F, -1.0F, 0.0F, 1.0F, 10.0F, 1.0F, modelSize + 0.25F);
-		this.rightHair.setPos(-4.0F, -8.0F, 1.5F);
-		this.head.addChild(this.rightHair);
-		this.leftHair = new ModelRenderer(this, 48, 64);
-		this.leftHair.mirror = true;
-		this.leftHair.addBox(-0.5F, -1.0F, 0.0F, 1.0F, 10.0F, 1.0F, modelSize + 0.25F);
-		this.leftHair.setPos(4.0F, -8.0F, 1.5F);
-		this.head.addChild(this.leftHair);
+		ModClientUtils.addC(headpd, cd, "hair_part", 0, 112, -4.0F, 0.0F, -1.0F, 8.0F, 2.0F, 1.0F, 0.0F, 0.0F, 4.0F);
+		PartDefinition hatpd = pd.getChild("hat");
+		ModClientUtils.addC(hatpd, cd, "hat_part", 32, 112, -4.0F, -2.0F, -4.0F, 8.0F, 2.0F, 8.0F, 0.0F, 3.0F, 0.0F, 0.5F);
 
-		this.rightHair2 = new ModelRenderer(this, 32, 48);
-		this.rightHair2.addBox(-1.0F, -0.5F, -0.5F, 2.0F, 6.0F, 1.0F, modelSize);
-		this.rightHair2.setPos(0.0F, 9.5F, 0.0F);
-		this.rightHair.addChild(this.rightHair2);
-		this.leftHair2 = new ModelRenderer(this, 32, 48);
-		this.leftHair2.mirror = true;
-		this.leftHair2.addBox(-1.0F, -0.5F, -0.5F, 2.0F, 6.0F, 1.0F, modelSize);
-		this.leftHair2.setPos(0.0F, 9.5F, 0.0F);
-		this.leftHair.addChild(this.leftHair2);
+		PartDefinition bodypd = pd.getChild("body");
+		ModClientUtils.addC(bodypd, cd, "skirt_1", 0, 38, -3.5F, 0.0F, -2.0F, 7.0F, 1.0F, 4.0F, 0.0F, 11.0F, 0.0F);
+		ModClientUtils.addC(bodypd, cd, "skirt_2", 0, 44, -4.0F, 0.0F, -2.5F, 8.0F, 9.0F, 5.0F, 0.0F, 12.0F, 0.0F);
 
-		this.rightHair3 = new ModelRenderer(this, 32, 56);
-		this.rightHair3.addBox(-1.0F, -0.5F, -0.5F, 2.0F, 5.0F, 1.0F, modelSize);
-		this.rightHair3.setPos(0.0F, 5.5F, 0.0F);
-		this.rightHair2.addChild(this.rightHair3);
-		this.leftHair3 = new ModelRenderer(this, 32, 56);
-		this.leftHair3.mirror = true;
-		this.leftHair3.addBox(-1.0F, -0.5F, -0.5F, 2.0F, 5.0F, 1.0F, modelSize);
-		this.leftHair3.setPos(0.0F, 5.5F, 0.0F);
-		this.leftHair2.addChild(this.leftHair3);
+		CubeListBuilder cubelistbuilder = CubeListBuilder.create().texOffs(0, 64).addBox(-2.5F, 0.5F, 0.0F, 5.0F, 6.0F, 1.0F);
+		CubeListBuilder cubelistbuilder1 = CubeListBuilder.create().texOffs(40, 48).addBox(-2.5F, 0.0F, 0.0F, 5.0F, 5.0F, 1.0F);
+		CubeListBuilder cubelistbuilder2 = CubeListBuilder.create().texOffs(40, 56).addBox(-2.5F, 0.0F, 0.0F, 5.0F, 4.0F, 1.0F);
+		CubeListBuilder cubelistbuilder3 = CubeListBuilder.create().texOffs(0, 64).mirror().addBox(-2.5F, 0.5F, 0.0F, 5.0F, 6.0F, 1.0F);
+		CubeListBuilder cubelistbuilder4 = CubeListBuilder.create().texOffs(40, 48).mirror().addBox(-2.5F, 0.0F, 0.0F, 5.0F, 5.0F, 1.0F);
+		CubeListBuilder cubelistbuilder5 = CubeListBuilder.create().texOffs(40, 56).mirror().addBox(-2.5F, 0.0F, 0.0F, 5.0F, 4.0F, 1.0F);
+		PartPose pp = PartPose.offset(0.0F, 6.5F, 0.0F);
+		PartPose pp1 = PartPose.offset(0.0F, 5.0F, 0.0F);
 
-		this.rightHairFlowerA = new ModelRenderer(this, 40, 80);
-		this.rightHairFlowerA.addBox(-5.25F, -5.25F, -0.5F, 5.0F, 5.0F, 1.0F, modelSize);
-		this.rightHairFlowerA.setPos(-0.125F, 0.5F, 0.25F);
-		this.rightHair.addChild(this.rightHairFlowerA);
-		this.rightHairFlowerB = new ModelRenderer(this, 40, 88);
-		this.rightHairFlowerB.addBox(-5.25F, 0.25F, -0.5F, 5.0F, 5.0F, 1.0F, modelSize);
-		this.rightHairFlowerB.setPos(-0.125F, 0.5F, 0.25F);
-		this.rightHair.addChild(this.rightHairFlowerB);
-		this.rightHairFlowerC = new ModelRenderer(this, 40, 96);
-		this.rightHairFlowerC.addBox(0.25F, -5.25F, -0.5F, 5.0F, 5.0F, 1.0F, modelSize);
-		this.rightHairFlowerC.setPos(-0.125F, 0.5F, 0.25F);
-		this.rightHair.addChild(this.rightHairFlowerC);
-		this.rightHairFlowerD = new ModelRenderer(this, 40, 104);
-		this.rightHairFlowerD.addBox(0.25F, 0.25F, -0.5F, 5.0F, 5.0F, 1.0F, modelSize);
-		this.rightHairFlowerD.setPos(-0.125F, 0.5F, 0.25F);
-		this.rightHair.addChild(this.rightHairFlowerD);
-
-		this.leftHairFlowerA = new ModelRenderer(this, 40, 80);
-		this.leftHairFlowerA.addBox(-5.25F, -5.25F, -0.5F, 5.0F, 5.0F, 1.0F, modelSize);
-		this.leftHairFlowerA.setPos(0.125F, 0.5F, 0.25F);
-		this.leftHair.addChild(this.leftHairFlowerA);
-		this.leftHairFlowerB = new ModelRenderer(this, 40, 88);
-		this.leftHairFlowerB.addBox(-5.25F, 0.25F, -0.5F, 5.0F, 5.0F, 1.0F, modelSize);
-		this.leftHairFlowerB.setPos(0.125F, 0.5F, 0.25F);
-		this.leftHair.addChild(this.leftHairFlowerB);
-		this.leftHairFlowerC = new ModelRenderer(this, 40, 96);
-		this.leftHairFlowerC.addBox(0.25F, -5.25F, -0.5F, 5.0F, 5.0F, 1.0F, modelSize);
-		this.leftHairFlowerC.setPos(0.125F, 0.5F, 0.25F);
-		this.leftHair.addChild(this.leftHairFlowerC);
-		this.leftHairFlowerD = new ModelRenderer(this, 40, 104);
-		this.leftHairFlowerD.addBox(0.25F, 0.25F, -0.5F, 5.0F, 5.0F, 1.0F, modelSize);
-		this.leftHairFlowerD.setPos(0.125F, 0.5F, 0.25F);
-		this.leftHair.addChild(this.leftHairFlowerD);
-
-		this.hairPart = new ModelRenderer(this, 0, 112);
-		this.hairPart.addBox(-4.0F, 0.0F, -1.0F, 8.0F, 2.0F, 1.0F, modelSize);
-		this.hairPart.setPos(0.0F, 0.0F, 4.0F);
-		this.head.addChild(this.hairPart);
-
-		this.headwearPart = new ModelRenderer(this, 32, 112);
-		this.headwearPart.addBox(-4.0F, -2.0F, -4.0F, 8.0F, 2.0F, 8.0F, modelSize + 0.5F);
-		this.headwearPart.setPos(0.0F, 3.0F, 0.0F);
-		this.hat.addChild(this.headwearPart);
-
-		for (int i = 0; i < this.rightSkirtLeafPart1.length; ++i)
+		for (int k = 0; k < 3; ++k)
 		{
-			this.rightSkirtLeafPart1[i] = new ModelRenderer(this, 0, 64);
-			this.rightSkirtLeafPart1[i].addBox(-2.5F, 0.5F, 0.0F, 5.0F, 6.0F, 1.0F, modelSize);
-			this.rightSkirtLeafPart1[i].setPos(-4.0F, 12.0F, (float)(i - 1) * 2.0F);
-			this.body.addChild(this.rightSkirtLeafPart1[i]);
-			this.leftSkirtLeafPart1[i] = new ModelRenderer(this, 0, 64);
-			this.leftSkirtLeafPart1[i].mirror = true;
-			this.leftSkirtLeafPart1[i].addBox(-2.5F, 0.5F, 0.0F, 5.0F, 6.0F, 1.0F, modelSize);
-			this.leftSkirtLeafPart1[i].setPos(4.0F, 12.0F, (float)(i - 1) * 2.0F);
-			this.body.addChild(this.leftSkirtLeafPart1[i]);
-
-			this.rightSkirtLeafPart2[i] = new ModelRenderer(this, 40, 48);
-			this.rightSkirtLeafPart2[i].addBox(-2.5F, 0.0F, 0.0F, 5.0F, 5.0F, 1.0F, modelSize);
-			this.rightSkirtLeafPart2[i].setPos(0.0F, 6.5F, 0.0F);
-			this.rightSkirtLeafPart1[i].addChild(this.rightSkirtLeafPart2[i]);
-			this.leftSkirtLeafPart2[i] = new ModelRenderer(this, 40, 48);
-			this.leftSkirtLeafPart2[i].mirror = true;
-			this.leftSkirtLeafPart2[i].addBox(-2.5F, 0.0F, 0.0F, 5.0F, 5.0F, 1.0F, modelSize);
-			this.leftSkirtLeafPart2[i].setPos(0.0F, 6.5F, 0.0F);
-			this.leftSkirtLeafPart1[i].addChild(this.leftSkirtLeafPart2[i]);
-
-			this.rightSkirtLeafPart3[i] = new ModelRenderer(this, 40, 56);
-			this.rightSkirtLeafPart3[i].addBox(-2.5F, 0.0F, 0.0F, 5.0F, 4.0F, 1.0F, modelSize);
-			this.rightSkirtLeafPart3[i].setPos(0.0F, 5.0F, 0.0F);
-			this.rightSkirtLeafPart2[i].addChild(this.rightSkirtLeafPart3[i]);
-			this.leftSkirtLeafPart3[i] = new ModelRenderer(this, 40, 56);
-			this.leftSkirtLeafPart3[i].mirror = true;
-			this.leftSkirtLeafPart3[i].addBox(-2.5F, 0.0F, 0.0F, 5.0F, 4.0F, 1.0F, modelSize);
-			this.leftSkirtLeafPart3[i].setPos(0.0F, 5.0F, 0.0F);
-			this.leftSkirtLeafPart2[i].addChild(this.leftSkirtLeafPart3[i]);
+			PartPose pp2 = PartPose.offset(-4.0F, 12.0F, (float)(k - 1) * 2.0F);
+			PartDefinition rsl1pd = bodypd.addOrReplaceChild("right_skirt_leaf_1_" + k, cubelistbuilder, pp2);
+			PartDefinition rsl2pd = rsl1pd.addOrReplaceChild("right_skirt_leaf_2_" + k, cubelistbuilder1, pp);
+			rsl2pd.addOrReplaceChild("right_skirt_leaf_3_" + k, cubelistbuilder2, pp1);
+			PartPose pp3 = PartPose.offset(4.0F, 12.0F, (float)(k - 1) * 2.0F);
+			PartDefinition lsl1pd = bodypd.addOrReplaceChild("left_skirt_leaf_1_" + k, cubelistbuilder3, pp3);
+			PartDefinition lsl2pd = lsl1pd.addOrReplaceChild("left_skirt_leaf_2_" + k, cubelistbuilder4, pp);
+			lsl2pd.addOrReplaceChild("left_skirt_leaf_3_" + k, cubelistbuilder5, pp1);
 		}
 
-		this.rightTentaclePartA = new ModelRenderer(this, 24, 64);
-		this.rightTentaclePartA.addBox(-0.5F, -5.75F, -0.5F, 1.0F, 6.0F, 1.0F, modelSize + 0.25F);
-		this.rightTentaclePartA.setPos(-2.0F, 10.5F, 1.5F);
-		this.body.addChild(this.rightTentaclePartA);
-		this.leftTentaclePartA = new ModelRenderer(this, 24, 64);
-		this.leftTentaclePartA.mirror = true;
-		this.leftTentaclePartA.addBox(-0.5F, -5.75F, -0.5F, 1.0F, 6.0F, 1.0F, modelSize + 0.25F);
-		this.leftTentaclePartA.setPos(2.0F, 10.5F, 1.5F);
-		this.body.addChild(this.leftTentaclePartA);
+		PartDefinition rtp1pd = ModClientUtils.addC(bodypd, cd, "right_tentacle_part_1", 24, 64, -0.5F, -5.75F, -0.5F, 1.0F, 6.0F, 1.0F, -2.0F, 10.5F, 1.5F, 0.25F);
+		PartDefinition ltp1pd = ModClientUtils.addC(bodypd, cd, "left_tentacle_part_1", 24, 64, -0.5F, -5.75F, -0.5F, 1.0F, 6.0F, 1.0F, 2.0F, 10.5F, 1.5F, true, 0.25F);
+		PartDefinition rtp2pd = ModClientUtils.addC(rtp1pd, cd, "right_tentacle_part_2", 28, 64, -0.5F, -7.75F, -0.5F, 1.0F, 8.0F, 1.0F, 0.0F, -5.75F, 0.0F);
+		PartDefinition ltp2pd = ModClientUtils.addC(ltp1pd, cd, "left_tentacle_part_2", 28, 64, -0.5F, -7.75F, -0.5F, 1.0F, 8.0F, 1.0F, 0.0F, -5.75F, 0.0F, true);
+		PartDefinition rtp3pd = ModClientUtils.addC(rtp2pd, cd, "right_tentacle_part_3", 28, 64, -0.5F, -7.75F, -0.5F, 1.0F, 8.0F, 1.0F, 0.0F, -7.75F, 0.0F);
+		PartDefinition ltp3pd = ModClientUtils.addC(ltp2pd, cd, "left_tentacle_part_3", 28, 64, -0.5F, -7.75F, -0.5F, 1.0F, 8.0F, 1.0F, 0.0F, -7.75F, 0.0F, true);
+		PartDefinition rtp4pd = ModClientUtils.addC(rtp3pd, cd, "right_tentacle_part_4", 28, 64, -0.5F, -7.75F, -0.5F, 1.0F, 8.0F, 1.0F, 0.0F, -7.75F, 0.0F, 0.25F);
+		PartDefinition ltp4pd = ModClientUtils.addC(ltp3pd, cd, "left_tentacle_part_4", 28, 64, -0.5F, -7.75F, -0.5F, 1.0F, 8.0F, 1.0F, 0.0F, -7.75F, 0.0F, true, 0.25F);
 
-		this.rightTentaclePartB = new ModelRenderer(this, 28, 64);
-		this.rightTentaclePartB.addBox(-0.5F, -7.75F, -0.5F, 1.0F, 8.0F, 1.0F, modelSize);
-		this.rightTentaclePartB.setPos(0.0F, -5.75F, 0.0F);
-		this.rightTentaclePartA.addChild(this.rightTentaclePartB);
-		this.leftTentaclePartB = new ModelRenderer(this, 28, 64);
-		this.leftTentaclePartB.mirror = true;
-		this.leftTentaclePartB.addBox(-0.5F, -7.75F, -0.5F, 1.0F, 8.0F, 1.0F, modelSize);
-		this.leftTentaclePartB.setPos(0.0F, -5.75F, 0.0F);
-		this.leftTentaclePartA.addChild(this.leftTentaclePartB);
+		ModClientUtils.addC(rtp4pd, cd, "right_tentacle_flower_a", 24, 80, -7.25F, -7.25F, -0.5F, 7.0F, 7.0F, 1.0F, 0.0F, -7.5F, 0.0F);
+		ModClientUtils.addC(rtp4pd, cd, "right_tentacle_flower_b", 24, 88, -7.25F, 0.25F, -0.5F, 7.0F, 7.0F, 1.0F, 0.0F, -7.5F, 0.0F);
+		ModClientUtils.addC(rtp4pd, cd, "right_tentacle_flower_c", 24, 96, 0.25F, -7.25F, -0.5F, 7.0F, 7.0F, 1.0F, 0.0F, -7.5F, 0.0F);
+		ModClientUtils.addC(rtp4pd, cd, "right_tentacle_flower_d", 24, 104, 0.25F, 0.25F, -0.5F, 7.0F, 7.0F, 1.0F, 0.0F, -7.5F, 0.0F);
+		ModClientUtils.addC(ltp4pd, cd, "left_tentacle_flower_a", 24, 80, -7.25F, -7.25F, -0.5F, 7.0F, 7.0F, 1.0F, 0.0F, -7.5F, 0.0F);
+		ModClientUtils.addC(ltp4pd, cd, "left_tentacle_flower_b", 24, 88, -7.25F, 0.25F, -0.5F, 7.0F, 7.0F, 1.0F, 0.0F, -7.5F, 0.0F);
+		ModClientUtils.addC(ltp4pd, cd, "left_tentacle_flower_c", 24, 96, 0.25F, -7.25F, -0.5F, 7.0F, 7.0F, 1.0F, 0.0F, -7.5F, 0.0F);
+		ModClientUtils.addC(ltp4pd, cd, "left_tentacle_flower_d", 24, 104, 0.25F, 0.25F, -0.5F, 7.0F, 7.0F, 1.0F, 0.0F, -7.5F, 0.0F);
+		ModClientUtils.addC(rtp4pd, cd, "right_tentacle_leaf_a", 0, 72, -8.25F, -8.25F, -0.5F, 8.0F, 8.0F, 1.0F, 0.0F, -7.5F, 0.0F);
+		ModClientUtils.addC(rtp4pd, cd, "right_tentacle_leaf_b", 0, 82, -8.25F, 0.25F, -0.5F, 8.0F, 8.0F, 1.0F, 0.0F, -7.5F, 0.0F);
+		ModClientUtils.addC(rtp4pd, cd, "right_tentacle_leaf_c", 0, 92, 0.25F, -8.25F, -0.5F, 8.0F, 8.0F, 1.0F, 0.0F, -7.5F, 0.0F);
+		ModClientUtils.addC(rtp4pd, cd, "right_tentacle_leaf_d", 0, 102, 0.25F, 0.25F, -0.5F, 8.0F, 8.0F, 1.0F, 0.0F, -7.5F, 0.0F);
+		ModClientUtils.addC(ltp4pd, cd, "left_tentacle_leaf_a", 0, 72, -8.25F, -8.25F, -0.5F, 8.0F, 8.0F, 1.0F, 0.0F, -7.5F, 0.0F);
+		ModClientUtils.addC(ltp4pd, cd, "left_tentacle_leaf_b", 0, 82, -8.25F, 0.25F, -0.5F, 8.0F, 8.0F, 1.0F, 0.0F, -7.5F, 0.0F);
+		ModClientUtils.addC(ltp4pd, cd, "left_tentacle_leaf_c", 0, 92, 0.25F, -8.25F, -0.5F, 8.0F, 8.0F, 1.0F, 0.0F, -7.5F, 0.0F);
+		ModClientUtils.addC(ltp4pd, cd, "left_tentacle_leaf_d", 0, 102, 0.25F, 0.25F, -0.5F, 8.0F, 8.0F, 1.0F, 0.0F, -7.5F, 0.0F);
 
-		this.rightTentaclePartC = new ModelRenderer(this, 28, 64);
-		this.rightTentaclePartC.addBox(-0.5F, -7.75F, -0.5F, 1.0F, 8.0F, 1.0F, modelSize);
-		this.rightTentaclePartC.setPos(0.0F, -7.75F, 0.0F);
-		this.rightTentaclePartB.addChild(this.rightTentaclePartC);
-		this.leftTentaclePartC = new ModelRenderer(this, 28, 64);
-		this.leftTentaclePartC.mirror = true;
-		this.leftTentaclePartC.addBox(-0.5F, -7.75F, -0.5F, 1.0F, 8.0F, 1.0F, modelSize);
-		this.leftTentaclePartC.setPos(0.0F, -7.75F, 0.0F);
-		this.leftTentaclePartB.addChild(this.leftTentaclePartC);
+		PartDefinition rlpd = pd.getChild("right_leg");
+		PartDefinition llpd = pd.getChild("left_leg");
+		ModClientUtils.addC(rlpd, cd, "right_leg_part", 32, 64, -1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F, 0.0F, 6.0F, 0.0F, 0.5F);
+		ModClientUtils.addC(llpd, cd, "left_leg_part", 32, 64, -1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F, 0.0F, 6.0F, 0.0F, true, 0.5F);
+		return md;
+	}
 
-		this.rightTentaclePartD = new ModelRenderer(this, 28, 64);
-		this.rightTentaclePartD.addBox(-0.5F, -7.75F, -0.5F, 1.0F, 8.0F, 1.0F, modelSize + 0.25F);
-		this.rightTentaclePartD.setPos(0.0F, -7.75F, 0.0F);
-		this.rightTentaclePartC.addChild(this.rightTentaclePartD);
-		this.leftTentaclePartD = new ModelRenderer(this, 28, 64);
-		this.leftTentaclePartD.mirror = true;
-		this.leftTentaclePartD.addBox(-0.5F, -7.75F, -0.5F, 1.0F, 8.0F, 1.0F, modelSize + 0.25F);
-		this.leftTentaclePartD.setPos(0.0F, -7.75F, 0.0F);
-		this.leftTentaclePartC.addChild(this.leftTentaclePartD);
-
-		this.rightTentacleFlowerA = new ModelRenderer(this, 24, 80);
-		this.rightTentacleFlowerA.addBox(-7.25F, -7.25F, -0.5F, 7.0F, 7.0F, 1.0F, modelSize);
-		this.rightTentacleFlowerA.setPos(0.0F, -7.5F, 0.0F);
-		this.rightTentaclePartD.addChild(this.rightTentacleFlowerA);
-		this.rightTentacleFlowerB = new ModelRenderer(this, 24, 88);
-		this.rightTentacleFlowerB.addBox(-7.25F, 0.25F, -0.5F, 7.0F, 7.0F, 1.0F, modelSize);
-		this.rightTentacleFlowerB.setPos(0.0F, -7.5F, 0.0F);
-		this.rightTentaclePartD.addChild(this.rightTentacleFlowerB);
-		this.rightTentacleFlowerC = new ModelRenderer(this, 24, 96);
-		this.rightTentacleFlowerC.addBox(0.25F, -7.25F, -0.5F, 7.0F, 7.0F, 1.0F, modelSize);
-		this.rightTentacleFlowerC.setPos(0.0F, -7.5F, 0.0F);
-		this.rightTentaclePartD.addChild(this.rightTentacleFlowerC);
-		this.rightTentacleFlowerD = new ModelRenderer(this, 24, 104);
-		this.rightTentacleFlowerD.addBox(0.25F, 0.25F, -0.5F, 7.0F, 7.0F, 1.0F, modelSize);
-		this.rightTentacleFlowerD.setPos(0.0F, -7.5F, 0.0F);
-		this.rightTentaclePartD.addChild(this.rightTentacleFlowerD);
-
-		this.leftTentacleFlowerA = new ModelRenderer(this, 24, 80);
-		this.leftTentacleFlowerA.addBox(-7.25F, -7.25F, -0.5F, 7.0F, 7.0F, 1.0F, modelSize);
-		this.leftTentacleFlowerA.setPos(0.0F, -7.5F, 0.0F);
-		this.leftTentaclePartD.addChild(this.leftTentacleFlowerA);
-		this.leftTentacleFlowerB = new ModelRenderer(this, 24, 88);
-		this.leftTentacleFlowerB.addBox(-7.25F, 0.25F, -0.5F, 7.0F, 7.0F, 1.0F, modelSize);
-		this.leftTentacleFlowerB.setPos(0.0F, -7.5F, 0.0F);
-		this.leftTentaclePartD.addChild(this.leftTentacleFlowerB);
-		this.leftTentacleFlowerC = new ModelRenderer(this, 24, 96);
-		this.leftTentacleFlowerC.addBox(0.25F, -7.25F, -0.5F, 7.0F, 7.0F, 1.0F, modelSize);
-		this.leftTentacleFlowerC.setPos(0.0F, -7.5F, 0.0F);
-		this.leftTentaclePartD.addChild(this.leftTentacleFlowerC);
-		this.leftTentacleFlowerD = new ModelRenderer(this, 24, 104);
-		this.leftTentacleFlowerD.addBox(0.25F, 0.25F, -0.5F, 7.0F, 7.0F, 1.0F, modelSize);
-		this.leftTentacleFlowerD.setPos(0.0F, -7.5F, 0.0F);
-		this.leftTentaclePartD.addChild(this.leftTentacleFlowerD);
-
-		this.rightTentacleLeafA = new ModelRenderer(this, 0, 72);
-		this.rightTentacleLeafA.addBox(-8.25F, -8.25F, -0.5F, 8.0F, 8.0F, 1.0F, modelSize);
-		this.rightTentacleLeafA.setPos(0.0F, -7.5F, 0.0F);
-		this.rightTentaclePartD.addChild(this.rightTentacleLeafA);
-		this.rightTentacleLeafB = new ModelRenderer(this, 0, 82);
-		this.rightTentacleLeafB.addBox(-8.25F, 0.25F, -0.5F, 8.0F, 8.0F, 1.0F, modelSize);
-		this.rightTentacleLeafB.setPos(0.0F, -7.5F, 0.0F);
-		this.rightTentaclePartD.addChild(this.rightTentacleLeafB);
-		this.rightTentacleLeafC = new ModelRenderer(this, 0, 92);
-		this.rightTentacleLeafC.addBox(0.25F, -8.25F, -0.5F, 8.0F, 8.0F, 1.0F, modelSize);
-		this.rightTentacleLeafC.setPos(0.0F, -7.5F, 0.0F);
-		this.rightTentaclePartD.addChild(this.rightTentacleLeafC);
-		this.rightTentacleLeafD = new ModelRenderer(this, 0, 102);
-		this.rightTentacleLeafD.addBox(0.25F, 0.25F, -0.5F, 8.0F, 8.0F, 1.0F, modelSize);
-		this.rightTentacleLeafD.setPos(0.0F, -7.5F, 0.0F);
-		this.rightTentaclePartD.addChild(this.rightTentacleLeafD);
-
-		this.leftTentacleLeafA = new ModelRenderer(this, 0, 72);
-		this.leftTentacleLeafA.addBox(-8.25F, -8.25F, -0.5F, 8.0F, 8.0F, 1.0F, modelSize);
-		this.leftTentacleLeafA.setPos(0.0F, -7.5F, 0.0F);
-		this.leftTentaclePartD.addChild(this.leftTentacleLeafA);
-		this.leftTentacleLeafB = new ModelRenderer(this, 0, 82);
-		this.leftTentacleLeafB.addBox(-8.25F, 0.25F, -0.5F, 8.0F, 8.0F, 1.0F, modelSize);
-		this.leftTentacleLeafB.setPos(0.0F, -7.5F, 0.0F);
-		this.leftTentaclePartD.addChild(this.leftTentacleLeafB);
-		this.leftTentacleLeafC = new ModelRenderer(this, 0, 92);
-		this.leftTentacleLeafC.addBox(0.25F, -8.25F, -0.5F, 8.0F, 8.0F, 1.0F, modelSize);
-		this.leftTentacleLeafC.setPos(0.0F, -7.5F, 0.0F);
-		this.leftTentaclePartD.addChild(this.leftTentacleLeafC);
-		this.leftTentacleLeafD = new ModelRenderer(this, 0, 102);
-		this.leftTentacleLeafD.addBox(0.25F, 0.25F, -0.5F, 8.0F, 8.0F, 1.0F, modelSize);
-		this.leftTentacleLeafD.setPos(0.0F, -7.5F, 0.0F);
-		this.leftTentaclePartD.addChild(this.leftTentacleLeafD);
-
-		this.rightLegPart = new ModelRenderer(this, 32, 64);
-		this.rightLegPart.addBox(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F, modelSize + 0.5F);
-		this.rightLegPart.setPos(0.0F, 6.0F, 0.0F);
-		this.rightLeg.addChild(this.rightLegPart);
-		this.leftLegPart = new ModelRenderer(this, 32, 64);
-		this.leftLegPart.mirror = true;
-		this.leftLegPart.addBox(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F, modelSize + 0.5F);
-		this.leftLegPart.setPos(0.0F, 6.0F, 0.0F);
-		this.leftLeg.addChild(this.leftLegPart);
+	public static LayerDefinition createBodyLayer()
+	{
+		return LayerDefinition.create(createMesh(CubeDeformation.NONE), 64, 128);
 	}
 
 	@Override
@@ -319,36 +233,36 @@ public class ArurauneModel<T extends MobEntity> extends AbstractAdvancedGirlMode
 
 		this.rightArm.zRot = ((float)Math.PI / 8.0F);
 		this.leftArm.zRot = -((float)Math.PI / 8.0F);
-		this.rightArm.zRot += MathHelper.cos(ageInTicks * 0.12F) * 0.06F;
-		this.leftArm.zRot -= MathHelper.cos(ageInTicks * 0.12F) * 0.06F;
+		this.rightArm.zRot += Mth.cos(ageInTicks * 0.12F) * 0.06F;
+		this.leftArm.zRot -= Mth.cos(ageInTicks * 0.12F) * 0.06F;
 
 		this.hairPart.xRot = (float)Math.PI / 12.0F;
-		this.hairPart.xRot += MathHelper.sin(ageInTicks * 0.06F + (float)Math.PI / 2.0F) * 0.03F;
+		this.hairPart.xRot += Mth.sin(ageInTicks * 0.06F + (float)Math.PI / 2.0F) * 0.03F;
 
-		this.rightHair.xRot = ((float)Math.PI / 18.0F);
-		this.leftHair.xRot = ((float)Math.PI / 18.0F);
-		this.rightHair.xRot += MathHelper.sin(ageInTicks * 0.06F) * 0.045F;
-		this.leftHair.xRot += MathHelper.sin(ageInTicks * 0.06F) * 0.045F;
-		this.rightHair.zRot = ((float)Math.PI / 9.0F);
-		this.leftHair.zRot = -((float)Math.PI / 9.0F);
-		this.rightHair.zRot -= MathHelper.sin(ageInTicks * 0.09F) * 0.045F;
-		this.leftHair.zRot += MathHelper.sin(ageInTicks * 0.09F) * 0.045F;
+		this.rightHair1.xRot = ((float)Math.PI / 18.0F);
+		this.leftHair1.xRot = ((float)Math.PI / 18.0F);
+		this.rightHair1.xRot += Mth.sin(ageInTicks * 0.06F) * 0.045F;
+		this.leftHair1.xRot += Mth.sin(ageInTicks * 0.06F) * 0.045F;
+		this.rightHair1.zRot = ((float)Math.PI / 9.0F);
+		this.leftHair1.zRot = -((float)Math.PI / 9.0F);
+		this.rightHair1.zRot -= Mth.sin(ageInTicks * 0.09F) * 0.045F;
+		this.leftHair1.zRot += Mth.sin(ageInTicks * 0.09F) * 0.045F;
 		this.rightHair2.yRot = ((float)Math.PI / 3.0F);
 		this.leftHair2.yRot = -((float)Math.PI / 3.0F);
 		this.rightHair2.xRot = -((float)Math.PI / 18.0F);
 		this.leftHair2.xRot = -((float)Math.PI / 18.0F);
-		this.rightHair2.xRot -= MathHelper.sin(ageInTicks * 0.06F - (float)Math.PI / 3.0F) * 0.015F;
-		this.leftHair2.xRot += MathHelper.sin(ageInTicks * 0.06F - (float)Math.PI / 3.0F) * 0.015F;
+		this.rightHair2.xRot -= Mth.sin(ageInTicks * 0.06F - (float)Math.PI / 3.0F) * 0.015F;
+		this.leftHair2.xRot += Mth.sin(ageInTicks * 0.06F - (float)Math.PI / 3.0F) * 0.015F;
 		this.rightHair2.zRot = -((float)Math.PI / 12.0F);
 		this.leftHair2.zRot = ((float)Math.PI / 12.0F);
-		this.rightHair2.zRot -= MathHelper.sin(ageInTicks * 0.045F + (float)Math.PI / 3.0F) * 0.06F;
-		this.leftHair2.zRot += MathHelper.sin(ageInTicks * 0.045F - (float)Math.PI / 3.0F) * 0.06F;
+		this.rightHair2.zRot -= Mth.sin(ageInTicks * 0.045F + (float)Math.PI / 3.0F) * 0.06F;
+		this.leftHair2.zRot += Mth.sin(ageInTicks * 0.045F - (float)Math.PI / 3.0F) * 0.06F;
 		this.rightHair3.xRot = ((float)Math.PI / 9.0F);
 		this.leftHair3.xRot = ((float)Math.PI / 9.0F);
-		this.rightHair3.xRot -= MathHelper.sin(ageInTicks * 0.06F - (float)Math.PI / 4.0F) * 0.06F;
-		this.leftHair3.xRot += MathHelper.sin(ageInTicks * 0.06F + (float)Math.PI / 4.0F) * 0.06F;
+		this.rightHair3.xRot -= Mth.sin(ageInTicks * 0.06F - (float)Math.PI / 4.0F) * 0.06F;
+		this.leftHair3.xRot += Mth.sin(ageInTicks * 0.06F + (float)Math.PI / 4.0F) * 0.06F;
 
-		float f = ((float)Math.PI / 15.0F) + MathHelper.sin(ageInTicks * 0.075F) * 0.045F;
+		float f = ((float)Math.PI / 15.0F) + Mth.sin(ageInTicks * 0.075F) * 0.045F;
 		float f1 = ((float)Math.PI * 7.0F / 15.0F);
 
 		this.rightHairFlowerA.xRot = f;
@@ -377,59 +291,61 @@ public class ArurauneModel<T extends MobEntity> extends AbstractAdvancedGirlMode
 			this.skirt2.xRot = this.body.xRot;
 		}
 
+		this.skirt1.xRot = 0.0F;
+
 		f1 = (float)Math.PI / 2.0F;
 
 		for (int i = 0; i < this.rightSkirtLeafPart1.length; ++i)
 		{
 			this.rightSkirtLeafPart1[i].yRot = (float)Math.PI * ((float)(i - 1)) / 3.0F + f1;
 			this.rightSkirtLeafPart1[i].xRot = (float)Math.PI * 2.0F / 5.0F - f1;
-			this.rightSkirtLeafPart1[i].xRot += MathHelper.sin(ageInTicks * 0.045F + (float)Math.PI * (float)i / 3.0F) * 0.075F;
+			this.rightSkirtLeafPart1[i].xRot += Mth.sin(ageInTicks * 0.045F + (float)Math.PI * (float)i / 3.0F) * 0.075F;
 			this.rightSkirtLeafPart2[i].xRot = -((float)Math.PI * 2.0F / 7.0F);
-			this.rightSkirtLeafPart2[i].xRot -= MathHelper.sin(ageInTicks * 0.06F + (float)Math.PI * (float)(i - 1) / 3.0F) * 0.066F;
+			this.rightSkirtLeafPart2[i].xRot -= Mth.sin(ageInTicks * 0.06F + (float)Math.PI * (float)(i - 1) / 3.0F) * 0.066F;
 			this.rightSkirtLeafPart3[i].xRot = -((float)Math.PI * 3.0F / 5.0F);
-			this.rightSkirtLeafPart3[i].xRot += MathHelper.sin(ageInTicks * 0.06F + (float)Math.PI * (float)i / 3.0F) * 0.081F;
+			this.rightSkirtLeafPart3[i].xRot += Mth.sin(ageInTicks * 0.06F + (float)Math.PI * (float)i / 3.0F) * 0.081F;
 
 			this.leftSkirtLeafPart1[i].yRot = -((float)Math.PI * ((float)(i - 1)) / 3.0F + f1);
 			this.leftSkirtLeafPart1[i].xRot = (float)Math.PI * 2.0F / 5.0F - f1;
-			this.leftSkirtLeafPart1[i].xRot += MathHelper.sin(ageInTicks * 0.045F + (float)Math.PI * (float)i / 3.0F) * 0.075F;
+			this.leftSkirtLeafPart1[i].xRot += Mth.sin(ageInTicks * 0.045F + (float)Math.PI * (float)i / 3.0F) * 0.075F;
 			this.leftSkirtLeafPart2[i].xRot = -((float)Math.PI * 2.0F / 7.0F);
-			this.leftSkirtLeafPart2[i].xRot -= MathHelper.sin(ageInTicks * 0.06F + (float)Math.PI * (float)(i - 1) / 3.0F) * 0.066F;
+			this.leftSkirtLeafPart2[i].xRot -= Mth.sin(ageInTicks * 0.06F + (float)Math.PI * (float)(i - 1) / 3.0F) * 0.066F;
 			this.leftSkirtLeafPart3[i].xRot = -((float)Math.PI * 3.0F / 5.0F);
-			this.leftSkirtLeafPart3[i].xRot += MathHelper.sin(ageInTicks * 0.06F + (float)Math.PI * (float)i / 3.0F) * 0.081F;
+			this.leftSkirtLeafPart3[i].xRot += Mth.sin(ageInTicks * 0.06F + (float)Math.PI * (float)i / 3.0F) * 0.081F;
 		}
 
-		this.rightTentaclePartA.zRot = -((float)Math.PI / 6.0F);
-		this.leftTentaclePartA.zRot = ((float)Math.PI / 6.0F);
-		this.rightTentaclePartA.zRot += MathHelper.cos(ageInTicks * 0.096F + (float)Math.PI / 2.0F) * 0.021F;
-		this.leftTentaclePartA.zRot += MathHelper.cos(ageInTicks * 0.096F) * 0.021F;
-		this.rightTentaclePartA.xRot = -((float)Math.PI * 2.0F / 5.0F);
-		this.leftTentaclePartA.xRot = -((float)Math.PI * 2.0F / 5.0F);
-		this.rightTentaclePartA.xRot += MathHelper.sin(ageInTicks * 0.075F) * 0.075F;
-		this.leftTentaclePartA.xRot += MathHelper.sin(ageInTicks * 0.075F + (float)Math.PI / 3.0F) * 0.075F;
-		this.rightTentaclePartB.zRot = -((float)Math.PI / 18.0F);
-		this.leftTentaclePartB.zRot = ((float)Math.PI / 18.0F);
-		this.rightTentaclePartB.zRot += MathHelper.cos(ageInTicks * 0.105F + (float)Math.PI / 3.0F) * 0.018F;
-		this.leftTentaclePartB.zRot += MathHelper.cos(ageInTicks * 0.105F + (float)Math.PI * 2.0F / 3.0F) * 0.018F;
-		this.rightTentaclePartB.xRot = ((float)Math.PI * 2.0F / 7.0F);
-		this.leftTentaclePartB.xRot = ((float)Math.PI * 2.0F / 7.0F);
-		this.rightTentaclePartB.xRot += MathHelper.sin(ageInTicks * 0.09F + (float)Math.PI / 2.0F) * 0.072F;
-		this.leftTentaclePartB.xRot += MathHelper.sin(ageInTicks * 0.09F + (float)Math.PI) * 0.072F;
-		this.rightTentaclePartC.zRot = -((float)Math.PI / 18.0F);
-		this.leftTentaclePartC.zRot = ((float)Math.PI / 18.0F);
-		this.rightTentaclePartC.zRot += MathHelper.cos(ageInTicks * 0.105F + (float)Math.PI / 3.0F) * 0.012F;
-		this.leftTentaclePartC.zRot += MathHelper.cos(ageInTicks * 0.105F + (float)Math.PI * 2.0F / 3.0F) * 0.012F;
-		this.rightTentaclePartC.xRot = ((float)Math.PI / 5.0F);
-		this.leftTentaclePartC.xRot = ((float)Math.PI / 5.0F);
-		this.rightTentaclePartC.xRot += MathHelper.sin(ageInTicks * 0.096F + (float)Math.PI / 4.0F) * 0.09F;
-		this.leftTentaclePartC.xRot += MathHelper.sin(ageInTicks * 0.096F + (float)Math.PI * 3.0F / 4.0F) * 0.09F;
-		this.rightTentaclePartD.xRot = ((float)Math.PI / 6.0F);
-		this.leftTentaclePartD.xRot = ((float)Math.PI / 6.0F);
-		this.rightTentaclePartD.xRot += MathHelper.sin(ageInTicks * 0.042F - (float)Math.PI / 3.0F) * 0.06F;
-		this.leftTentaclePartD.xRot += MathHelper.sin(ageInTicks * 0.042F - (float)Math.PI * 8.0F / 15.0F) * 0.06F;
-		this.rightTentaclePartD.yRot = MathHelper.cos(ageInTicks * 0.072F + (float)Math.PI / 2.0F) * 0.06F;
-		this.leftTentaclePartD.yRot = -(MathHelper.cos(ageInTicks * 0.072F + (float)Math.PI / 2.0F) * 0.06F);
+		this.rightTentaclePart1.zRot = -((float)Math.PI / 6.0F);
+		this.leftTentaclePart1.zRot = ((float)Math.PI / 6.0F);
+		this.rightTentaclePart1.zRot += Mth.cos(ageInTicks * 0.096F + (float)Math.PI / 2.0F) * 0.021F;
+		this.leftTentaclePart1.zRot += Mth.cos(ageInTicks * 0.096F) * 0.021F;
+		this.rightTentaclePart1.xRot = -((float)Math.PI * 2.0F / 5.0F);
+		this.leftTentaclePart1.xRot = -((float)Math.PI * 2.0F / 5.0F);
+		this.rightTentaclePart1.xRot += Mth.sin(ageInTicks * 0.075F) * 0.075F;
+		this.leftTentaclePart1.xRot += Mth.sin(ageInTicks * 0.075F + (float)Math.PI / 3.0F) * 0.075F;
+		this.rightTentaclePart2.zRot = -((float)Math.PI / 18.0F);
+		this.leftTentaclePart2.zRot = ((float)Math.PI / 18.0F);
+		this.rightTentaclePart2.zRot += Mth.cos(ageInTicks * 0.105F + (float)Math.PI / 3.0F) * 0.018F;
+		this.leftTentaclePart2.zRot += Mth.cos(ageInTicks * 0.105F + (float)Math.PI * 2.0F / 3.0F) * 0.018F;
+		this.rightTentaclePart2.xRot = ((float)Math.PI * 2.0F / 7.0F);
+		this.leftTentaclePart2.xRot = ((float)Math.PI * 2.0F / 7.0F);
+		this.rightTentaclePart2.xRot += Mth.sin(ageInTicks * 0.09F + (float)Math.PI / 2.0F) * 0.072F;
+		this.leftTentaclePart2.xRot += Mth.sin(ageInTicks * 0.09F + (float)Math.PI) * 0.072F;
+		this.rightTentaclePart3.zRot = -((float)Math.PI / 18.0F);
+		this.leftTentaclePart3.zRot = ((float)Math.PI / 18.0F);
+		this.rightTentaclePart3.zRot += Mth.cos(ageInTicks * 0.105F + (float)Math.PI / 3.0F) * 0.012F;
+		this.leftTentaclePart3.zRot += Mth.cos(ageInTicks * 0.105F + (float)Math.PI * 2.0F / 3.0F) * 0.012F;
+		this.rightTentaclePart3.xRot = ((float)Math.PI / 5.0F);
+		this.leftTentaclePart3.xRot = ((float)Math.PI / 5.0F);
+		this.rightTentaclePart3.xRot += Mth.sin(ageInTicks * 0.096F + (float)Math.PI / 4.0F) * 0.09F;
+		this.leftTentaclePart3.xRot += Mth.sin(ageInTicks * 0.096F + (float)Math.PI * 3.0F / 4.0F) * 0.09F;
+		this.rightTentaclePart4.xRot = ((float)Math.PI / 6.0F);
+		this.leftTentaclePart4.xRot = ((float)Math.PI / 6.0F);
+		this.rightTentaclePart4.xRot += Mth.sin(ageInTicks * 0.042F - (float)Math.PI / 3.0F) * 0.06F;
+		this.leftTentaclePart4.xRot += Mth.sin(ageInTicks * 0.042F - (float)Math.PI * 8.0F / 15.0F) * 0.06F;
+		this.rightTentaclePart4.yRot = Mth.cos(ageInTicks * 0.072F + (float)Math.PI / 2.0F) * 0.06F;
+		this.leftTentaclePart4.yRot = -(Mth.cos(ageInTicks * 0.072F + (float)Math.PI / 2.0F) * 0.06F);
 
-		f = ((float)Math.PI / 15.0F) + MathHelper.sin(ageInTicks * 0.075F + (float)Math.PI / 4.0F) * 0.075F;
+		f = ((float)Math.PI / 15.0F) + Mth.sin(ageInTicks * 0.075F + (float)Math.PI / 4.0F) * 0.075F;
 		f1 = (float)Math.PI * 8.0F / 15.0F;
 
 		if (this.attackTime > 0.0F)
@@ -438,14 +354,14 @@ public class ArurauneModel<T extends MobEntity> extends AbstractAdvancedGirlMode
 			f2 = f2 * f2;
 			f2 = f2 * f2;
 			f2 = 1.0F - f2;
-			float f3 = MathHelper.sin(f2 * (float)Math.PI);
-			float f4 = MathHelper.sin(this.attackTime * (float)Math.PI) * 0.1F;
-			this.rightTentaclePartB.xRot += f3 * 0.051F + f4;
-			this.leftTentaclePartB.xRot += f3 * 0.051F + f4;
-			this.rightTentaclePartC.xRot += f3 * 0.06F + f4;
-			this.leftTentaclePartC.xRot += f3 * 0.06F + f4;
-			this.rightTentaclePartD.xRot += f3 * 0.06F + f4;
-			this.leftTentaclePartD.xRot += f3 * 0.06F + f4;
+			float f3 = Mth.sin(f2 * (float)Math.PI);
+			float f4 = Mth.sin(this.attackTime * (float)Math.PI) * 0.1F;
+			this.rightTentaclePart2.xRot += f3 * 0.051F + f4;
+			this.leftTentaclePart2.xRot += f3 * 0.051F + f4;
+			this.rightTentaclePart3.xRot += f3 * 0.06F + f4;
+			this.leftTentaclePart3.xRot += f3 * 0.06F + f4;
+			this.rightTentaclePart4.xRot += f3 * 0.06F + f4;
+			this.leftTentaclePart4.xRot += f3 * 0.06F + f4;
 
 			f += f3 * 0.9F + f4 * 0.5F;
 		}
