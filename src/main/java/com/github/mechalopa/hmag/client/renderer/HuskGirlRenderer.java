@@ -21,14 +21,14 @@ public class HuskGirlRenderer extends ZombieGirlRenderer
 	}
 
 	@Override
-	protected void scale(Zombie entityIn, PoseStack poseStack, float partialTickTime)
+	protected void scale(Zombie entity, PoseStack poseStack, float partialTickTime)
 	{
 		poseStack.scale(1.0625F, 1.0625F, 1.0625F);
-		super.scale(entityIn, poseStack, partialTickTime);
+		super.scale(entity, poseStack, partialTickTime);
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(Zombie entityIn)
+	public ResourceLocation getTextureLocation(Zombie entity)
 	{
 		return TEX;
 	}

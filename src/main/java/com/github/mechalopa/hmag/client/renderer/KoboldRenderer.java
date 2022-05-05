@@ -22,14 +22,14 @@ public class KoboldRenderer extends AbstractGirlRenderer<KoboldEntity, KoboldMod
 	}
 
 	@Override
-	protected void scale(KoboldEntity entityIn, PoseStack poseStackIn, float partialTickTime)
+	protected void scale(KoboldEntity entity, PoseStack poseStack, float partialTickTime)
 	{
-		poseStackIn.scale(0.875F, 0.875F, 0.875F);
-		super.scale(entityIn, poseStackIn, partialTickTime);
+		poseStack.scale(0.875F, 0.875F, 0.875F);
+		super.scale(entity, poseStack, partialTickTime);
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(KoboldEntity entityIn)
+	public ResourceLocation getTextureLocation(KoboldEntity entity)
 	{
 		return TEX;
 	}

@@ -35,7 +35,7 @@ public class SkeletonGirlRenderer extends AbstractGirlRenderer<AbstractSkeleton,
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(AbstractSkeleton entityIn)
+	public ResourceLocation getTextureLocation(AbstractSkeleton entity)
 	{
 		return TEX;
 	}

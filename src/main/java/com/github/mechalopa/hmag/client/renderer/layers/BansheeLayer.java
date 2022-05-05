@@ -4,9 +4,9 @@ import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.model.BansheeModel;
 import com.github.mechalopa.hmag.entity.BansheeEntity;
 
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.entity.IEntityRenderer;
-import net.minecraft.client.renderer.entity.model.EntityModel;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -14,7 +14,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class BansheeLayer extends AbstractClothingLayer<BansheeEntity, BansheeModel<BansheeEntity>>
 {
 	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/banshee_overlay.png");
-	private final BansheeModel<BansheeEntity> modelOuterLayer = new BansheeModel<>(0.0F);
+	private final BansheeModel<BansheeEntity> model = new BansheeModel<>(0.0F);
 
 	public BansheeLayer(IEntityRenderer<BansheeEntity, BansheeModel<BansheeEntity>> entityRendererIn)
 	{
@@ -22,19 +22,19 @@ public class BansheeLayer extends AbstractClothingLayer<BansheeEntity, BansheeMo
 	}
 
 	@Override
-	protected float getAlpha(BansheeEntity livingEntityIn)
+	protected float getAlpha(BansheeEntity entity)
 	{
 		return 0.8F;
 	}
 
 	@Override
-	protected EntityModel<BansheeEntity> model()
+	protected EntityModel<BansheeEntity> getLayerModel()
 	{
-		return this.modelOuterLayer;
+		return this.model;
 	}
 
 	@Override
-	public ResourceLocation getLayerTexture(BansheeEntity livingEntityIn)
+	public ResourceLocation getLayerTexture(BansheeEntity entity)
 	{
 		return TEX;
 	}

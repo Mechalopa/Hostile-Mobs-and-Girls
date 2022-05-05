@@ -17,10 +17,10 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class MeltyMonsterModel<T extends MeltyMonsterEntity> extends AbstractAdvancedGirlModel<T>
 {
-	private ModelPart rightArmPart;
-	private ModelPart leftArmPart;
-	private ModelPart rightLegPart;
-	private ModelPart leftLegPart;
+//	private ModelPart rightArmPart;
+//	private ModelPart leftArmPart;
+//	private ModelPart rightLegPart;
+//	private ModelPart leftLegPart;
 	private ModelPart skirt1;
 	private ModelPart skirt2;
 	private ModelPart skirt3;
@@ -49,10 +49,10 @@ public class MeltyMonsterModel<T extends MeltyMonsterEntity> extends AbstractAdv
 	public MeltyMonsterModel(ModelPart modelPart)
 	{
 		super(modelPart);
-		this.rightArmPart = this.rightArm.getChild("right_arm_part");
-		this.leftArmPart = this.leftArm.getChild("left_arm_part");
-		this.rightLegPart = this.rightLeg.getChild("right_leg_part");
-		this.leftLegPart = this.leftLeg.getChild("left_leg_part");
+//		this.rightArmPart = this.rightArm.getChild("right_arm_part");
+//		this.leftArmPart = this.leftArm.getChild("left_arm_part");
+//		this.rightLegPart = this.rightLeg.getChild("right_leg_part");
+//		this.leftLegPart = this.leftLeg.getChild("left_leg_part");
 		this.skirt1 = this.body.getChild("skirt_1");
 		this.skirt2 = this.skirt1.getChild("skirt_2");
 		this.skirt3 = this.skirt2.getChild("skirt_3");
@@ -233,10 +233,10 @@ public class MeltyMonsterModel<T extends MeltyMonsterEntity> extends AbstractAdv
 		this.ahoge.xRot = -((float)Math.PI / 12.0F);
 		this.ahoge.xRot += Mth.cos(ageInTicks * 0.03F + (float)Math.PI) * 0.09F;
 
-		this.rightArmPart.xRot = 0.0F;
-		this.leftArmPart.xRot = 0.0F;
-		this.rightLegPart.xRot = 0.0F;
-		this.leftLegPart.xRot = 0.0F;
+//		this.rightArmPart.xRot = 0.0F;
+//		this.leftArmPart.xRot = 0.0F;
+//		this.rightLegPart.xRot = 0.0F;
+//		this.leftLegPart.xRot = 0.0F;
 		this.skirt3.xRot = 0.0F;
 	}
 

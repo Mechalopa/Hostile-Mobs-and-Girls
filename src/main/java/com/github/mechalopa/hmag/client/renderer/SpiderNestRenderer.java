@@ -30,30 +30,30 @@ public class SpiderNestRenderer extends MobRenderer<SpiderNestEntity, SpiderNest
 	}
 
 	@Override
-	protected void scale(SpiderNestEntity entityIn, PoseStack poseStack, float partialTickTime)
+	protected void scale(SpiderNestEntity entity, PoseStack poseStack, float partialTickTime)
 	{
-		float f = (float)entityIn.tickCount + partialTickTime;
+		float f = (float)entity.tickCount + partialTickTime;
 		float f1 = Mth.sin(f * 0.09F) * 0.015F;
 		poseStack.scale(1.2F, 1.2F, 1.2F);
 		poseStack.scale(1.0F + f1, 1.0F - f1, 1.0F + f1);
-		super.scale(entityIn, poseStack, partialTickTime);
+		super.scale(entity, poseStack, partialTickTime);
 	}
 
 	@Override
-	public Vec3 getRenderOffset(SpiderNestEntity entityIn, float partialTicks)
+	public Vec3 getRenderOffset(SpiderNestEntity entity, float partialTicks)
 	{
-		if (entityIn.isCharging())
+		if (entity.isCharging())
 		{
 			return new Vec3(this.rand.nextGaussian() * 0.02D, 0.0D, this.rand.nextGaussian() * 0.02D);
 		}
 		else
 		{
-			return super.getRenderOffset(entityIn, partialTicks);
+			return super.getRenderOffset(entity, partialTicks);
 		}
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(SpiderNestEntity entityIn)
+	public ResourceLocation getTextureLocation(SpiderNestEntity entity)
 	{
 		return TEX;
 	}

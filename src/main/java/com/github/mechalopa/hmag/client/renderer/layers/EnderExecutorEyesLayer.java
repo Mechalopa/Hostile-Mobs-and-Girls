@@ -27,9 +27,9 @@ public class EnderExecutorEyesLayer<T extends EnderExecutorEntity, M extends End
 	}
 
 	@Override
-	public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLightIn, T livingEntityIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch)
+	public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, T livingEntity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch)
 	{
-		VertexConsumer vertexconsumer = buffer.getBuffer(this.renderType(this.getParentModel().beamAttacking && livingEntityIn.tickCount % 2 == 0));
+		VertexConsumer vertexconsumer = buffer.getBuffer(this.renderType(this.getParentModel().beamAttacking && livingEntity.tickCount % 2 == 0));
 		this.getParentModel().renderToBuffer(poseStack, vertexconsumer, 15728640, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 	}
 

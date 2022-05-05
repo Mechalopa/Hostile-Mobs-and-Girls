@@ -19,7 +19,7 @@ public abstract class AbstractGirlRenderer<T extends Mob, M extends AbstractGirl
 		this(context, modelIn, shadowSize, 0);
 	}
 
-	public AbstractGirlRenderer(EntityRendererProvider.Context context, M modelIn, float shadowSize, int heldItemTranslateX)
+	public AbstractGirlRenderer(EntityRendererProvider.Context context, M modelIn, float shadowSize, int itemTranslateX)
 	{
 		super(context, modelIn, shadowSize);
 		for (RenderLayer<T, M> layer : this.layers)
@@ -30,6 +30,6 @@ public abstract class AbstractGirlRenderer<T extends Mob, M extends AbstractGirl
 				break;
 			}
 		}
-		this.addLayer(new ItemInHandLayer2<>(this, heldItemTranslateX));
+		this.addLayer(new ItemInHandLayer2<>(this, itemTranslateX));
 	}
 }

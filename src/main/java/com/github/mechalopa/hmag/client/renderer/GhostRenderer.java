@@ -42,15 +42,15 @@ public class GhostRenderer extends HumanoidMobRenderer<GhostEntity, GhostModel<G
 	}
 
 	@Override
-	protected int getBlockLightLevel(GhostEntity entityIn, BlockPos pos)
+	protected int getBlockLightLevel(GhostEntity entity, BlockPos pos)
 	{
 		return 15;
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(GhostEntity entityIn)
+	public ResourceLocation getTextureLocation(GhostEntity entity)
 	{
-		switch (entityIn.getVariant())
+		switch (entity.getVariant())
 		{
 		case 1:
 			return TEX1;

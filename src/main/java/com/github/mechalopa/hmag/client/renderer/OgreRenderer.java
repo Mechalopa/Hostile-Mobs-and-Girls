@@ -23,14 +23,14 @@ public class OgreRenderer extends HumanoidMobRenderer<OgreEntity, OgreModel<Ogre
 	}
 
 	@Override
-	protected void scale(OgreEntity entityIn, PoseStack poseStack, float partialTickTime)
+	protected void scale(OgreEntity entity, PoseStack poseStack, float partialTickTime)
 	{
 		poseStack.scale(1.2F, 1.2F, 1.2F);
-		super.scale(entityIn, poseStack, partialTickTime);
+		super.scale(entity, poseStack, partialTickTime);
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(OgreEntity entityIn)
+	public ResourceLocation getTextureLocation(OgreEntity entity)
 	{
 		return TEX;
 	}

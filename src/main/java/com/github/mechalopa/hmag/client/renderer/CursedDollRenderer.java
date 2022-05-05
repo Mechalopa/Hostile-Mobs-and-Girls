@@ -1,14 +1,15 @@
 package com.github.mechalopa.hmag.client.renderer;
 
 import com.github.mechalopa.hmag.HMaG;
+import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.CursedDollModel;
 import com.github.mechalopa.hmag.entity.CursedDollEntity;
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Vector3f;
 
-import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.vector.Vector3f;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -17,29 +18,29 @@ public class CursedDollRenderer extends AbstractGirlRenderer<CursedDollEntity, C
 {
 	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/cursed_doll.png");
 
-	public CursedDollRenderer(EntityRendererManager renderManagerIn)
+	public CursedDollRenderer(EntityRendererProvider.Context context)
 	{
-		super(renderManagerIn, new CursedDollModel<>(), 0.375F);
+		super(context, new CursedDollModel<>(context.bakeLayer(ModModelLayers.CURSED_DOLL)), 0.375F);
 	}
 
 	@Override
-	protected void scale(CursedDollEntity entityIn, MatrixStack matrixStackIn, float partialTickTime)
+	protected void scale(CursedDollEntity entity, PoseStack poseStack, float partialTickTime)
 	{
-		matrixStackIn.scale(0.875F, 0.875F, 0.875F);
-		super.scale(entityIn, matrixStackIn, partialTickTime);
-		float f = (float)entityIn.tickCount + partialTickTime;
-		matrixStackIn.translate(0.0F, -0.12F + MathHelper.sin(f * 0.06F) * 0.08F, 0.0F);
+		poseStack.scale(0.875F, 0.875F, 0.875F);
+		super.scale(entity, poseStack, partialTickTime);
+		float f = (float)entity.tickCount + partialTickTime;
+		poseStack.translate(0.0F, -0.12F + Mth.sin(f * 0.06F) * 0.08F, 0.0F);
 	}
 
 	@Override
-	protected void setupRotations(CursedDollEntity entityLiving, MatrixStack matrixStackIn, float ageInTicks, float rotationYaw, float partialTicks)
+	protected void setupRotations(CursedDollEntity entity, PoseStack poseStack, float ageInTicks, float rotationYaw, float partialTicks)
 	{
-		super.setupRotations(entityLiving, matrixStackIn, ageInTicks, rotationYaw, partialTicks);
-		matrixStackIn.mulPose(Vector3f.XP.rotationDegrees(-10.0F));
+		super.setupRotations(entity, poseStack, ageInTicks, rotationYaw, partialTicks);
+		poseStack.mulPose(Vector3f.XP.rotationDegrees(-10.0F));
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(CursedDollEntity entityIn)
+	public ResourceLocation getTextureLocation(CursedDollEntity entity)
 	{
 		return TEX;
 	}

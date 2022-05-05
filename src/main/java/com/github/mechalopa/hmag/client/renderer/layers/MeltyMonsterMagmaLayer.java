@@ -15,8 +15,6 @@ import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderStateShard;
-import net.minecraft.client.renderer.RenderStateShard.OffsetTexturingStateShard;
-import net.minecraft.client.renderer.RenderStateShard.TransparencyStateShard;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
@@ -26,12 +24,12 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class MeltyMonsterLayer extends RenderLayer<MeltyMonsterEntity, MeltyMonsterModel<MeltyMonsterEntity>>
+public class MeltyMonsterMagmaLayer extends RenderLayer<MeltyMonsterEntity, MeltyMonsterModel<MeltyMonsterEntity>>
 {
 	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/melty_monster_overlay.png");
 	private final MeltyMonsterModel<MeltyMonsterEntity> layerModel;
 
-	public MeltyMonsterLayer(RenderLayerParent<MeltyMonsterEntity, MeltyMonsterModel<MeltyMonsterEntity>> renderLayerParent, EntityModelSet modelSet)
+	public MeltyMonsterMagmaLayer(RenderLayerParent<MeltyMonsterEntity, MeltyMonsterModel<MeltyMonsterEntity>> renderLayerParent, EntityModelSet modelSet)
 	{
 		super(renderLayerParent);
 		this.layerModel = new MeltyMonsterModel<>(modelSet.bakeLayer(ModModelLayers.MELTY_MONSTER_OUTER_LAYER));
@@ -58,16 +56,16 @@ public class MeltyMonsterLayer extends RenderLayer<MeltyMonsterEntity, MeltyMons
 		return TEX;
 	}
 
-	public static RenderType getMeltyMonsterOverlay(ResourceLocation locationIn, float uIn, float vIn)
+	public static RenderType getMeltyMonsterOverlay(ResourceLocation locationIn, float xOffs, float yOffs)
 	{
-		TransparencyStateShard transparencyState = new TransparencyStateShard("translucent_transparency", () -> {
+		RenderStateShard.TransparencyStateShard transparencyState = new RenderStateShard.TransparencyStateShard("translucent_transparency", () -> {
 			RenderSystem.enableBlend();
 			RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
 		}, () -> {
 			RenderSystem.disableBlend();
 			RenderSystem.defaultBlendFunc();
 		});
-		RenderType.CompositeState renderTypeState = RenderType.CompositeState.builder().setShaderState(new RenderStateShard.ShaderStateShard(GameRenderer::getRendertypeEntityCutoutShader)).setTextureState(new RenderStateShard.TextureStateShard(locationIn, false, false)).setTexturingState(new OffsetTexturingStateShard(uIn, vIn)).setTransparencyState(transparencyState).setCullState(new RenderStateShard.CullStateShard(false)).setLightmapState(new RenderStateShard.LightmapStateShard(false)).setOverlayState(new RenderStateShard.OverlayStateShard(true)).createCompositeState(true);
+		RenderType.CompositeState renderTypeState = RenderType.CompositeState.builder().setShaderState(new RenderStateShard.ShaderStateShard(GameRenderer::getRendertypeEntityCutoutShader)).setTextureState(new RenderStateShard.TextureStateShard(locationIn, false, false)).setTexturingState(new RenderStateShard.OffsetTexturingStateShard(xOffs, yOffs)).setTransparencyState(transparencyState).setCullState(new RenderStateShard.CullStateShard(false)).setLightmapState(new RenderStateShard.LightmapStateShard(false)).setOverlayState(new RenderStateShard.OverlayStateShard(true)).createCompositeState(true);
 
 		return RenderType.create("melty_monster_overlay", DefaultVertexFormat.NEW_ENTITY, VertexFormat.Mode.QUADS, 256, false, true, renderTypeState);
 	}

@@ -16,7 +16,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class ZombieGirlModel<T extends Zombie> extends AbstractAdvancedGirlModel<T>
 {
-	private ModelPart clothPart;
+//	private ModelPart clothPart;
 	private ModelPart skirt1;
 	private ModelPart skirt2;
 	private ModelPart tailHair1;
@@ -28,7 +28,7 @@ public class ZombieGirlModel<T extends Zombie> extends AbstractAdvancedGirlModel
 	public ZombieGirlModel(ModelPart modelPart)
 	{
 		super(modelPart);
-		this.clothPart = this.body.getChild("cloth_part");
+//		this.clothPart = this.body.getChild("cloth_part");
 		this.skirt1 = this.body.getChild("skirt_1");
 		this.skirt2 = this.skirt1.getChild("skirt_2");
 		this.tailHair1 = this.head.getChild("tail_hair_1");
@@ -67,7 +67,7 @@ public class ZombieGirlModel<T extends Zombie> extends AbstractAdvancedGirlModel
 
 		AnimationUtils.animateZombieArms(this.leftArm, this.rightArm, this.isAggressive(entityIn), this.attackTime, ageInTicks);
 
-		this.clothPart.xRot = 0.0F;
+//		this.clothPart.xRot = 0.0F;
 
 		if (this.riding)
 		{

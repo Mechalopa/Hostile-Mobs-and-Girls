@@ -30,36 +30,36 @@ public class MagicalSlimeOuterLayer<T extends LivingEntity> extends RenderLayer<
 	}
 
 	@Override
-	public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLightIn, T livingEntityIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch)
+	public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, T livingEntity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch)
 	{
 		Minecraft minecraft = Minecraft.getInstance();
-		boolean flag = minecraft.shouldEntityAppearGlowing(livingEntityIn) && livingEntityIn.isInvisible();
+		boolean flag = minecraft.shouldEntityAppearGlowing(livingEntity) && livingEntity.isInvisible();
 
-		if (!livingEntityIn.isInvisible() || flag)
+		if (!livingEntity.isInvisible() || flag)
 		{
 			VertexConsumer vertexconsumer;
 
 			if (flag)
 			{
-				vertexconsumer = buffer.getBuffer(RenderType.outline(this.getTextureLocation(livingEntityIn)));
+				vertexconsumer = buffer.getBuffer(RenderType.outline(this.getTextureLocation(livingEntity)));
 			}
 			else
 			{
-				vertexconsumer = buffer.getBuffer(RenderType.entityTranslucent(this.getTextureLocation(livingEntityIn)));
+				vertexconsumer = buffer.getBuffer(RenderType.entityTranslucent(this.getTextureLocation(livingEntity)));
 			}
 
 			this.getParentModel().copyPropertiesTo(this.model);
-			this.model.prepareMobModel(livingEntityIn, limbSwing, limbSwingAmount, partialTicks);
-			this.model.setupAnim(livingEntityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+			this.model.prepareMobModel(livingEntity, limbSwing, limbSwingAmount, partialTicks);
+			this.model.setupAnim(livingEntity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 
-			if (livingEntityIn instanceof MagicalSlimeEntity)
+			if (livingEntity instanceof MagicalSlimeEntity)
 			{
-				float[] afloat = ((MagicalSlimeEntity)livingEntityIn).getColor();
-				this.model.renderToBuffer(poseStack, vertexconsumer, packedLightIn, LivingEntityRenderer.getOverlayCoords(livingEntityIn, 0.0F), afloat[0], afloat[1], afloat[2], 1.0F);
+				float[] afloat = ((MagicalSlimeEntity)livingEntity).getColor();
+				this.model.renderToBuffer(poseStack, vertexconsumer, packedLight, LivingEntityRenderer.getOverlayCoords(livingEntity, 0.0F), afloat[0], afloat[1], afloat[2], 1.0F);
 			}
 			else
 			{
-				this.model.renderToBuffer(poseStack, vertexconsumer, packedLightIn, LivingEntityRenderer.getOverlayCoords(livingEntityIn, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
+				this.model.renderToBuffer(poseStack, vertexconsumer, packedLight, LivingEntityRenderer.getOverlayCoords(livingEntity, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
 			}
 		}
 	}

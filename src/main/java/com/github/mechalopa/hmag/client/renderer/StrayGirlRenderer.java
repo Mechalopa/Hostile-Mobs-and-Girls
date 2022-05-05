@@ -22,7 +22,7 @@ public class StrayGirlRenderer extends SkeletonGirlRenderer
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(AbstractSkeleton entityIn)
+	public ResourceLocation getTextureLocation(AbstractSkeleton entity)
 	{
 		return TEX;
 	}

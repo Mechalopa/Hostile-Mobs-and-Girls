@@ -27,25 +27,25 @@ public class MagicalSlimeRenderer extends MobRenderer<MagicalSlimeEntity, Magica
 	}
 
 	@Override
-	public void render(MagicalSlimeEntity entityIn, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLightIn)
+	public void render(MagicalSlimeEntity entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight)
 	{
-		this.shadowRadius = 0.25F * (float)entityIn.getSize();
-		super.render(entityIn, entityYaw, partialTicks, poseStack, buffer, packedLightIn);
+		this.shadowRadius = 0.25F * (float)entity.getSize();
+		super.render(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);
 	}
 
 	@Override
-	protected void scale(MagicalSlimeEntity entityIn, PoseStack poseStack, float partialTickTime)
+	protected void scale(MagicalSlimeEntity entity, PoseStack poseStack, float partialTickTime)
 	{
 		poseStack.scale(0.999F, 0.999F, 0.999F);
 		poseStack.translate(0.0D, (double)0.001F, 0.0D);
-		float f = (float)entityIn.getSize();
-		float f1 = Mth.lerp(partialTickTime, entityIn.oSquish, entityIn.squish) / (f * 0.5F + 1.0F);
+		float f = (float)entity.getSize();
+		float f1 = Mth.lerp(partialTickTime, entity.oSquish, entity.squish) / (f * 0.5F + 1.0F);
 		float f2 = 1.0F / (f1 + 1.0F);
 		poseStack.scale(f2 * f, 1.0F / f2 * f, f2 * f);
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(MagicalSlimeEntity entityIn)
+	public ResourceLocation getTextureLocation(MagicalSlimeEntity entity)
 	{
 		return TEX;
 	}

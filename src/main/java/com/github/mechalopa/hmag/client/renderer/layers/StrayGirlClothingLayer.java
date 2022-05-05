@@ -28,8 +28,8 @@ public class StrayGirlClothingLayer<T extends AbstractSkeleton, M extends Entity
 	}
 
 	@Override
-	public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLightIn, T livingEntityIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch)
+	public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, T livingEntity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch)
 	{
-		coloredCutoutModelCopyLayerRender(this.getParentModel(), this.layerModel, TEX, poseStack, buffer, packedLightIn, livingEntityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, partialTicks, 1.0F, 1.0F, 1.0F);
+		coloredCutoutModelCopyLayerRender(this.getParentModel(), this.layerModel, TEX, poseStack, buffer, packedLight, livingEntity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, partialTicks, 1.0F, 1.0F, 1.0F);
 	}
 }

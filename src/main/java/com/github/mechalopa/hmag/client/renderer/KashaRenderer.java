@@ -24,15 +24,15 @@ public class KashaRenderer extends MobRenderer<KashaEntity, KashaModel<KashaEnti
 	}
 
 	@Override
-	protected int getBlockLightLevel(KashaEntity entityIn, BlockPos pos)
+	protected int getBlockLightLevel(KashaEntity entity, BlockPos pos)
 	{
 		return 15;
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(KashaEntity entityIn)
+	public ResourceLocation getTextureLocation(KashaEntity entity)
 	{
-		switch (entityIn.getVariant())
+		switch (entity.getVariant())
 		{
 		case SOUL:
 			return TEX1;

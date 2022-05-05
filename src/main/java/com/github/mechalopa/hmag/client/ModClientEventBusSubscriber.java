@@ -233,7 +233,6 @@ public class ModClientEventBusSubscriber
 		event.registerLayerDefinition(ModModelLayers.REDCAP_INNER_ARMOR, () -> layerdefinition1);
 		event.registerLayerDefinition(ModModelLayers.REDCAP_OUTER_ARMOR, () -> layerdefinition);
 		event.registerLayerDefinition(ModModelLayers.SLIME_GIRL, SlimeGirlModel::createBodyLayer);
-		event.registerLayerDefinition(ModModelLayers.SLIME_GIRL_OUTER, SlimeGirlModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.MAGICAL_SLIME, MagicalSlimeModel::createInnerBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.MAGICAL_SLIME_OUTER, MagicalSlimeModel::createOuterBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.MONOLITH, MonolithModel::createBodyLayer);

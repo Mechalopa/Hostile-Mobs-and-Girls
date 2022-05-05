@@ -35,29 +35,29 @@ public class CreeperGirlRenderer extends AbstractGirlRenderer<CreeperGirlEntity,
 	}
 
 	@Override
-	protected void scale(CreeperGirlEntity entityIn, PoseStack poseStackIn, float partialTickTime)
+	protected void scale(CreeperGirlEntity entity, PoseStack poseStack, float partialTickTime)
 	{
-		float f = entityIn.getSwelling(partialTickTime);
+		float f = entity.getSwelling(partialTickTime);
 		float f1 = 1.0F + Mth.sin(f * 100.0F) * f * 0.01F;
 		f = Mth.clamp(f, 0.0F, 1.0F);
 		f = f * f;
 		f = f * f;
 		float f2 = (1.0F + f * 0.4F) * f1;
 		float f3 = (1.0F + f * 0.1F) / f1;
-		poseStackIn.scale(f2, f3, f2);
+		poseStack.scale(f2, f3, f2);
 	}
 
 	@Override
-	protected float getWhiteOverlayProgress(CreeperGirlEntity livingEntityIn, float partialTicks)
+	protected float getWhiteOverlayProgress(CreeperGirlEntity entity, float partialTicks)
 	{
-		float f = livingEntityIn.getSwelling(partialTicks);
+		float f = entity.getSwelling(partialTicks);
 		return (int)(f * 10.0F) % 2 == 0 ? 0.0F : Mth.clamp(f, 0.5F, 1.0F);
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(CreeperGirlEntity entityIn)
+	public ResourceLocation getTextureLocation(CreeperGirlEntity entity)
 	{
-		switch (entityIn.getVariant())
+		switch (entity.getVariant())
 		{
 		case 1:
 			return TEX1;

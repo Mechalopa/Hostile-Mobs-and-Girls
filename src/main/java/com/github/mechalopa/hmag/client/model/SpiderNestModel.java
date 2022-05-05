@@ -24,8 +24,8 @@ public class SpiderNestModel<T extends SpiderNestEntity> extends HierarchicalMod
 	private final ModelPart root;
 	private final ModelPart head;
 	private final ModelPart body;
-	private final ModelPart bodyPart1;
-	private final ModelPart bodyPart2;
+//	private final ModelPart bodyPart1;
+//	private final ModelPart bodyPart2;
 	private final ModelPart leg1;
 	private final ModelPart leg2;
 	private final ModelPart leg3;
@@ -34,22 +34,22 @@ public class SpiderNestModel<T extends SpiderNestEntity> extends HierarchicalMod
 	private final ModelPart leg6;
 	private final ModelPart leg7;
 	private final ModelPart leg8;
-	private final ModelPart leg1Part1;
-	private final ModelPart leg2Part1;
-	private final ModelPart leg3Part1;
-	private final ModelPart leg4Part1;
-	private final ModelPart leg5Part1;
-	private final ModelPart leg6Part1;
-	private final ModelPart leg7Part1;
-	private final ModelPart leg8Part1;
-	private final ModelPart leg1Part2;
-	private final ModelPart leg2Part2;
-	private final ModelPart leg3Part2;
-	private final ModelPart leg4Part2;
-	private final ModelPart leg5Part2;
-	private final ModelPart leg6Part2;
-	private final ModelPart leg7Part2;
-	private final ModelPart leg8Part2;
+//	private final ModelPart leg1Part1;
+//	private final ModelPart leg2Part1;
+//	private final ModelPart leg3Part1;
+//	private final ModelPart leg4Part1;
+//	private final ModelPart leg5Part1;
+//	private final ModelPart leg6Part1;
+//	private final ModelPart leg7Part1;
+//	private final ModelPart leg8Part1;
+//	private final ModelPart leg1Part2;
+//	private final ModelPart leg2Part2;
+//	private final ModelPart leg3Part2;
+//	private final ModelPart leg4Part2;
+//	private final ModelPart leg5Part2;
+//	private final ModelPart leg6Part2;
+//	private final ModelPart leg7Part2;
+//	private final ModelPart leg8Part2;
 	private final ModelPart bodyPart3;
 	private final ModelPart bodyPart4;
 	private final ModelPart bodyPart5;
@@ -58,16 +58,16 @@ public class SpiderNestModel<T extends SpiderNestEntity> extends HierarchicalMod
 	private final ModelPart bodyPart8;
 	private final ModelPart bodyPartsRightA[] = new ModelPart[4];
 	private final ModelPart bodyPartsLeftA[] = new ModelPart[4];
-	private final ModelPart bodyPartsRightB[] = new ModelPart[4];
-	private final ModelPart bodyPartsLeftB[] = new ModelPart[4];
+//	private final ModelPart bodyPartsRightB[] = new ModelPart[4];
+//	private final ModelPart bodyPartsLeftB[] = new ModelPart[4];
 
 	public SpiderNestModel(ModelPart modelPart)
 	{
 		this.root = modelPart;
 		this.head = modelPart.getChild("head");
 		this.body = modelPart.getChild("body");
-		this.bodyPart1 = this.body.getChild("body_part_1");
-		this.bodyPart2 = this.body.getChild("body_part_2");
+//		this.bodyPart1 = this.body.getChild("body_part_1");
+//		this.bodyPart2 = this.body.getChild("body_part_2");
 		this.leg1 = modelPart.getChild("leg_1");
 		this.leg2 = modelPart.getChild("leg_2");
 		this.leg3 = modelPart.getChild("leg_3");
@@ -76,22 +76,22 @@ public class SpiderNestModel<T extends SpiderNestEntity> extends HierarchicalMod
 		this.leg6 = modelPart.getChild("leg_6");
 		this.leg7 = modelPart.getChild("leg_7");
 		this.leg8 = modelPart.getChild("leg_8");
-		this.leg1Part1 = this.leg1.getChild("leg_1_part_1");
-		this.leg2Part1 = this.leg2.getChild("leg_2_part_1");
-		this.leg3Part1 = this.leg3.getChild("leg_3_part_1");
-		this.leg4Part1 = this.leg4.getChild("leg_4_part_1");
-		this.leg5Part1 = this.leg5.getChild("leg_5_part_1");
-		this.leg6Part1 = this.leg6.getChild("leg_6_part_1");
-		this.leg7Part1 = this.leg7.getChild("leg_7_part_1");
-		this.leg8Part1 = this.leg8.getChild("leg_8_part_1");
-		this.leg1Part2 = this.leg1.getChild("leg_1_part_2");
-		this.leg2Part2 = this.leg2.getChild("leg_2_part_2");
-		this.leg3Part2 = this.leg3.getChild("leg_3_part_2");
-		this.leg4Part2 = this.leg4.getChild("leg_4_part_2");
-		this.leg5Part2 = this.leg5.getChild("leg_5_part_2");
-		this.leg6Part2 = this.leg6.getChild("leg_6_part_2");
-		this.leg7Part2 = this.leg7.getChild("leg_7_part_2");
-		this.leg8Part2 = this.leg8.getChild("leg_8_part_2");
+//		this.leg1Part1 = this.leg1.getChild("leg_1_part_1");
+//		this.leg2Part1 = this.leg2.getChild("leg_2_part_1");
+//		this.leg3Part1 = this.leg3.getChild("leg_3_part_1");
+//		this.leg4Part1 = this.leg4.getChild("leg_4_part_1");
+//		this.leg5Part1 = this.leg5.getChild("leg_5_part_1");
+//		this.leg6Part1 = this.leg6.getChild("leg_6_part_1");
+//		this.leg7Part1 = this.leg7.getChild("leg_7_part_1");
+//		this.leg8Part1 = this.leg8.getChild("leg_8_part_1");
+//		this.leg1Part2 = this.leg1.getChild("leg_1_part_2");
+//		this.leg2Part2 = this.leg2.getChild("leg_2_part_2");
+//		this.leg3Part2 = this.leg3.getChild("leg_3_part_2");
+//		this.leg4Part2 = this.leg4.getChild("leg_4_part_2");
+//		this.leg5Part2 = this.leg5.getChild("leg_5_part_2");
+//		this.leg6Part2 = this.leg6.getChild("leg_6_part_2");
+//		this.leg7Part2 = this.leg7.getChild("leg_7_part_2");
+//		this.leg8Part2 = this.leg8.getChild("leg_8_part_2");
 		this.bodyPart3 = this.body.getChild("body_part_3");
 		this.bodyPart4 = this.body.getChild("body_part_4");
 		this.bodyPart5 = this.body.getChild("body_part_5");
@@ -104,12 +104,12 @@ public class SpiderNestModel<T extends SpiderNestEntity> extends HierarchicalMod
 		Arrays.setAll(this.bodyPartsLeftA, (p) -> {
 			return this.body.getChild("body_part_left_a" + p);
 		});
-		Arrays.setAll(this.bodyPartsRightB, (p) -> {
-			return this.bodyPartsRightA[p].getChild("body_part_right_b" + p);
-		});
-		Arrays.setAll(this.bodyPartsLeftB, (p) -> {
-			return this.bodyPartsLeftA[p].getChild("body_part_left_b" + p);
-		});
+//		Arrays.setAll(this.bodyPartsRightB, (p) -> {
+//			return this.bodyPartsRightA[p].getChild("body_part_right_b" + p);
+//		});
+//		Arrays.setAll(this.bodyPartsLeftB, (p) -> {
+//			return this.bodyPartsLeftA[p].getChild("body_part_left_b" + p);
+//		});
 	}
 
 	public static LayerDefinition createBodyLayer()
@@ -207,8 +207,8 @@ public class SpiderNestModel<T extends SpiderNestEntity> extends HierarchicalMod
 			this.head.xRot = headPitch / (180.0F / (float)Math.PI);
 		}
 
-		this.bodyPart1.xRot = 0.0F;
-		this.bodyPart2.xRot = 0.0F;
+//		this.bodyPart1.xRot = 0.0F;
+//		this.bodyPart2.xRot = 0.0F;
 
 		float f = (float)Math.PI / 20.0F;
 		float f1 = (float)Math.PI / 48.0F;
@@ -240,22 +240,22 @@ public class SpiderNestModel<T extends SpiderNestEntity> extends HierarchicalMod
 		this.leg7.zRot = f10 + f9;
 		this.leg8.zRot = -f10 - f9;
 
-		this.leg1Part1.xRot = 0.0F;
-		this.leg2Part1.xRot = 0.0F;
-		this.leg3Part1.xRot = 0.0F;
-		this.leg4Part1.xRot = 0.0F;
-		this.leg5Part1.xRot = 0.0F;
-		this.leg6Part1.xRot = 0.0F;
-		this.leg7Part1.xRot = 0.0F;
-		this.leg8Part1.xRot = 0.0F;
-		this.leg1Part2.xRot = 0.0F;
-		this.leg2Part2.xRot = 0.0F;
-		this.leg3Part2.xRot = 0.0F;
-		this.leg4Part2.xRot = 0.0F;
-		this.leg5Part2.xRot = 0.0F;
-		this.leg6Part2.xRot = 0.0F;
-		this.leg7Part2.xRot = 0.0F;
-		this.leg8Part2.xRot = 0.0F;
+//		this.leg1Part1.xRot = 0.0F;
+//		this.leg2Part1.xRot = 0.0F;
+//		this.leg3Part1.xRot = 0.0F;
+//		this.leg4Part1.xRot = 0.0F;
+//		this.leg5Part1.xRot = 0.0F;
+//		this.leg6Part1.xRot = 0.0F;
+//		this.leg7Part1.xRot = 0.0F;
+//		this.leg8Part1.xRot = 0.0F;
+//		this.leg1Part2.xRot = 0.0F;
+//		this.leg2Part2.xRot = 0.0F;
+//		this.leg3Part2.xRot = 0.0F;
+//		this.leg4Part2.xRot = 0.0F;
+//		this.leg5Part2.xRot = 0.0F;
+//		this.leg6Part2.xRot = 0.0F;
+//		this.leg7Part2.xRot = 0.0F;
+//		this.leg8Part2.xRot = 0.0F;
 
 		this.bodyPart3.xRot = -((float)Math.PI / 9.0F);
 		this.bodyPart4.xRot = -((float)Math.PI / 9.0F);

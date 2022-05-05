@@ -15,16 +15,16 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class CreeperGirlModel<T extends CreeperGirlEntity> extends AbstractAdvancedGirlModel<T>
 {
-	private ModelPart skirt1;
-	private ModelPart skirt2;
-	private ModelPart hatPart;
+//	private ModelPart skirt1;
+//	private ModelPart skirt2;
+//	private ModelPart hatPart;
 
 	public CreeperGirlModel(ModelPart modelPart)
 	{
 		super(modelPart);
-		this.skirt1 = this.body.getChild("skirt_1");
-		this.skirt2 = this.body.getChild("skirt_2");
-		this.hatPart = this.hat.getChild("hat_part");
+//		this.skirt1 = this.body.getChild("skirt_1");
+//		this.skirt2 = this.body.getChild("skirt_2");
+//		this.hatPart = this.hat.getChild("hat_part");
 	}
 
 	public static MeshDefinition createMesh(CubeDeformation cd)
@@ -51,9 +51,9 @@ public class CreeperGirlModel<T extends CreeperGirlEntity> extends AbstractAdvan
 
 		doAnim(entityIn, ageInTicks, this.attackTime, this.rightArm, this.leftArm);
 
-		this.skirt1.xRot = 0.0F;
-		this.skirt2.xRot = 0.0F;
-		this.hatPart.xRot = 0.0F;
+//		this.skirt1.xRot = 0.0F;
+//		this.skirt2.xRot = 0.0F;
+//		this.hatPart.xRot = 0.0F;
 	}
 
 	public static void doAnim(CreeperGirlEntity entityIn, float ageInTicks, float attackTime, ModelPart rightArm, ModelPart leftArm)

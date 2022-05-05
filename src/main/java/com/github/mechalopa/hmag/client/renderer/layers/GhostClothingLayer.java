@@ -20,30 +20,30 @@ public class GhostClothingLayer extends AbstractClothingLayer<GhostEntity, Ghost
 	private static final ResourceLocation TEX2 = new ResourceLocation(HMaG.MODID, "textures/entity/ghost_skin_2.png");
 	private static final ResourceLocation TEX3 = new ResourceLocation(HMaG.MODID, "textures/entity/ghost_skin_3.png");
 	private static final ResourceLocation TEX4 = new ResourceLocation(HMaG.MODID, "textures/entity/ghost_skin_4.png");
-	private final GhostModel<GhostEntity> modelOuterLayer;
+	private final GhostModel<GhostEntity> model;
 
 	public GhostClothingLayer(RenderLayerParent<GhostEntity, GhostModel<GhostEntity>> renderLayerParent, EntityModelSet modelSet)
 	{
 		super(renderLayerParent);
-		modelOuterLayer = new GhostModel<>(modelSet.bakeLayer(ModModelLayers.GHOST));
+		this.model = new GhostModel<>(modelSet.bakeLayer(ModModelLayers.GHOST));
 	}
 
 	@Override
-	protected float getAlpha(GhostEntity livingEntityIn)
+	protected float getAlpha(GhostEntity entity)
 	{
 		return 0.625F;
 	}
 
 	@Override
-	protected EntityModel<GhostEntity> model()
+	protected EntityModel<GhostEntity> getLayerModel()
 	{
-		return this.modelOuterLayer;
+		return this.model;
 	}
 
 	@Override
-	public ResourceLocation getLayerTexture(GhostEntity livingEntityIn)
+	public ResourceLocation getLayerTexture(GhostEntity entity)
 	{
-		switch (livingEntityIn.getVariant())
+		switch (entity.getVariant())
 		{
 		case 1:
 			return TEX1;

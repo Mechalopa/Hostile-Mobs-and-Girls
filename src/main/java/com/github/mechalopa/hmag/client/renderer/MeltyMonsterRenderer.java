@@ -5,7 +5,7 @@ import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.MeltyMonsterModel;
 import com.github.mechalopa.hmag.client.renderer.layers.MeltyMonsterClothingLayer;
 import com.github.mechalopa.hmag.client.renderer.layers.MeltyMonsterEyesLayer;
-import com.github.mechalopa.hmag.client.renderer.layers.MeltyMonsterLayer;
+import com.github.mechalopa.hmag.client.renderer.layers.MeltyMonsterMagmaLayer;
 import com.github.mechalopa.hmag.entity.MeltyMonsterEntity;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -22,19 +22,19 @@ public class MeltyMonsterRenderer extends AbstractGirlRenderer<MeltyMonsterEntit
 	public MeltyMonsterRenderer(EntityRendererProvider.Context context)
 	{
 		super(context, new MeltyMonsterModel<>(context.bakeLayer(ModModelLayers.MELTY_MONSTER)), 0.5F, -1);
-		this.addLayer(new MeltyMonsterLayer(this, context.getModelSet()));
+		this.addLayer(new MeltyMonsterMagmaLayer(this, context.getModelSet()));
 		this.addLayer(new MeltyMonsterClothingLayer<>(this));
 		this.addLayer(new MeltyMonsterEyesLayer<>(this));
 	}
 
 	@Override
-	protected int getBlockLightLevel(MeltyMonsterEntity entityIn, BlockPos pos)
+	protected int getBlockLightLevel(MeltyMonsterEntity entity, BlockPos pos)
 	{
 		return 15;
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(MeltyMonsterEntity entityIn)
+	public ResourceLocation getTextureLocation(MeltyMonsterEntity entity)
 	{
 		return TEX;
 	}

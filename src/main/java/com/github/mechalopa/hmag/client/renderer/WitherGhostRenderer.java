@@ -26,9 +26,9 @@ public class WitherGhostRenderer extends GhostRenderer
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(GhostEntity entityIn)
+	public ResourceLocation getTextureLocation(GhostEntity entity)
 	{
-		switch (entityIn.getVariant())
+		switch (entity.getVariant())
 		{
 		case 1:
 			return TEX1;

@@ -35,14 +35,14 @@ public class ZombieGirlRenderer extends AbstractGirlRenderer<Zombie, AbstractGir
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(Zombie entityIn)
+	public ResourceLocation getTextureLocation(Zombie entity)
 	{
 		return TEX;
 	}
 
 	@Override
-	protected boolean isShaking(Zombie entityIn)
+	protected boolean isShaking(Zombie entity)
 	{
-		return super.isShaking(entityIn) || entityIn.isUnderWaterConverting();
+		return super.isShaking(entity) || entity.isUnderWaterConverting();
 	}
 }

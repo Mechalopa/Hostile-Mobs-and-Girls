@@ -17,14 +17,14 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class LichModel<T extends Mob> extends HumanoidModel<T>
 {
-	private ModelPart rightArmPart;
-	private ModelPart leftArmPart;
-	private ModelPart rightLegPart1;
-	private ModelPart leftLegPart1;
-	private ModelPart rightLegPart2;
-	private ModelPart leftLegPart2;
+//	private ModelPart rightArmPart;
+//	private ModelPart leftArmPart;
+//	private ModelPart rightLegPart1;
+//	private ModelPart leftLegPart1;
+//	private ModelPart rightLegPart2;
+//	private ModelPart leftLegPart2;
 	private ModelPart wand;
-	private ModelPart wandTop;
+//	private ModelPart wandTop;
 	private ModelPart cloak;
 	private ModelPart cloakPart1;
 	private ModelPart cloakPart2;
@@ -32,14 +32,14 @@ public class LichModel<T extends Mob> extends HumanoidModel<T>
 	public LichModel(ModelPart modelPart)
 	{
 		super(modelPart);
-		this.rightArmPart = this.rightArm.getChild("right_arm_part");
-		this.leftArmPart = this.leftArm.getChild("left_arm_part");
-		this.rightLegPart1 = this.rightLeg.getChild("right_leg_part_1");
-		this.leftLegPart1 = this.leftLeg.getChild("left_leg_part_1");
-		this.rightLegPart2 = this.rightLeg.getChild("right_leg_part_2");
-		this.leftLegPart2 = this.leftLeg.getChild("left_leg_part_2");
+//		this.rightArmPart = this.rightArm.getChild("right_arm_part");
+//		this.leftArmPart = this.leftArm.getChild("left_arm_part");
+//		this.rightLegPart1 = this.rightLeg.getChild("right_leg_part_1");
+//		this.leftLegPart1 = this.leftLeg.getChild("left_leg_part_1");
+//		this.rightLegPart2 = this.rightLeg.getChild("right_leg_part_2");
+//		this.leftLegPart2 = this.leftLeg.getChild("left_leg_part_2");
 		this.wand = this.rightArm.getChild("wand");
-		this.wandTop = this.wand.getChild("wand_top");
+//		this.wandTop = this.wand.getChild("wand_top");
 		this.cloak = this.body.getChild("cloak");
 		this.cloakPart1 = this.cloak.getChild("cloak_part_1");
 		this.cloakPart2 = this.cloakPart1.getChild("cloak_part_2");
@@ -86,7 +86,7 @@ public class LichModel<T extends Mob> extends HumanoidModel<T>
 		this.leftLeg.y = 12.0F + f;
 
 		this.wand.xRot = -((float)Math.PI * 17.0F / 36.0F);
-		this.wandTop.xRot = 0.0F;
+//		this.wandTop.xRot = 0.0F;
 
 		this.cloak.xRot = (float)Math.PI / 15.0F;
 		this.cloak.xRot -= Mth.cos(limbSwing * 0.45F) * 2.0F * limbSwingAmount * 0.15F;
@@ -96,12 +96,12 @@ public class LichModel<T extends Mob> extends HumanoidModel<T>
 		this.cloakPart2.xRot = (float)Math.PI / 12.0F;
 		this.cloakPart2.xRot += Mth.sin(ageInTicks * 0.067F + (float)Math.PI / 4.0F) * 0.015F;
 
-		this.rightArmPart.xRot = 0.0F;
-		this.leftArmPart.xRot = 0.0F;
-		this.rightLegPart1.xRot = 0.0F;
-		this.leftLegPart1.xRot = 0.0F;
-		this.rightLegPart2.xRot = 0.0F;
-		this.leftLegPart2.xRot = 0.0F;
+//		this.rightArmPart.xRot = 0.0F;
+//		this.leftArmPart.xRot = 0.0F;
+//		this.rightLegPart1.xRot = 0.0F;
+//		this.leftLegPart1.xRot = 0.0F;
+//		this.rightLegPart2.xRot = 0.0F;
+//		this.leftLegPart2.xRot = 0.0F;
 	}
 
 	public boolean isAggressive(T entityIn)

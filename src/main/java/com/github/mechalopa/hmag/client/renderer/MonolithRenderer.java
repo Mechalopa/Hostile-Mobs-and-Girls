@@ -44,33 +44,33 @@ public class MonolithRenderer extends MobRenderer<MonolithEntity, MonolithModel<
 	}
 
 	@Override
-	public boolean shouldRender(MonolithEntity livingEntityIn, Frustum camera, double camX, double camY, double camZ)
+	public boolean shouldRender(MonolithEntity entity, Frustum camera, double camX, double camY, double camZ)
 	{
-		if (super.shouldRender(livingEntityIn, camera, camX, camY, camZ))
+		if (super.shouldRender(entity, camera, camX, camY, camZ))
 		{
 			return true;
 		}
 		else
 		{
-			return ModClientUtils.shouldRenderBeamAttackMob(livingEntityIn, camera, camX, camY, camZ, livingEntityIn);
+			return ModClientUtils.shouldRenderBeamAttackMob(entity, camera, camX, camY, camZ, entity);
 		}
 	}
 
 	@Override
-	public void render(MonolithEntity entityIn, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLightIn)
+	public void render(MonolithEntity entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight)
 	{
-		LivingEntity target = entityIn.getActiveAttackTarget();
+		LivingEntity target = entity.getActiveAttackTarget();
 
 		if (target != null)
 		{
-			float f = entityIn.getAttackAnimationScale(partialTicks);
-			float f1 = (float)(entityIn.level.getGameTime() % 24000L) + partialTicks;
+			float f = entity.getAttackAnimationScale(partialTicks);
+			float f1 = (float)(entity.level.getGameTime() % 24000L) + partialTicks;
 			float f2 = f1 * 0.5F % 1.0F;
-			float f3 = entityIn.getEyeHeight();
+			float f3 = entity.getEyeHeight();
 			poseStack.pushPose();
 			poseStack.translate(0.0D, (double)f3, 0.0D);
 			Vec3 vec3 = ModClientUtils.getPosition(target, (double)target.getBbHeight() * 0.5D, partialTicks);
-			Vec3 vec31 = ModClientUtils.getPosition(entityIn, (double)f3, partialTicks);
+			Vec3 vec31 = ModClientUtils.getPosition(entity, (double)f3, partialTicks);
 			Vec3 vec32 = vec3.subtract(vec31);
 			float f4 = (float)(vec32.length() + 1.0D);
 			vec32 = vec32.normalize();
@@ -113,7 +113,7 @@ public class MonolithRenderer extends MobRenderer<MonolithEntity, MonolithModel<
 			ModClientUtils.drawVertex(vertexconsumer, matrix4f, matrix3f, f23, 0.0F, f24, i, j, k, 0.5F, f29);
 			ModClientUtils.drawVertex(vertexconsumer, matrix4f, matrix3f, f25, 0.0F, f26, i, j, k, 0.0F, f29);
 			ModClientUtils.drawVertex(vertexconsumer, matrix4f, matrix3f, f25, f4, f26, i, j, k, 0.0F, f30);
-			float f31 = entityIn.tickCount % 2 == 0 ? 0.5F : 0.0F;
+			float f31 = entity.tickCount % 2 == 0 ? 0.5F : 0.0F;
 			ModClientUtils.drawVertex(vertexconsumer, matrix4f, matrix3f, f11, f4, f12, i, j, k, 0.5F, f31 + 0.5F);
 			ModClientUtils.drawVertex(vertexconsumer, matrix4f, matrix3f, f13, f4, f14, i, j, k, 1.0F, f31 + 0.5F);
 			ModClientUtils.drawVertex(vertexconsumer, matrix4f, matrix3f, f17, f4, f18, i, j, k, 1.0F, f31);
@@ -123,28 +123,28 @@ public class MonolithRenderer extends MobRenderer<MonolithEntity, MonolithModel<
 	}
 
 	@Override
-	public Vec3 getRenderOffset(MonolithEntity entityIn, float partialTicks)
+	public Vec3 getRenderOffset(MonolithEntity entity, float partialTicks)
 	{
-		if (entityIn.getAttackPhase() == MonolithEntity.AttackPhase.ROAR_ATTACK)
+		if (entity.getAttackPhase() == MonolithEntity.AttackPhase.ROAR_ATTACK)
 		{
 			return new Vec3(this.rand.nextGaussian() * 0.01D, 0.0D, this.rand.nextGaussian() * 0.01D);
 		}
 		else
 		{
-			return super.getRenderOffset(entityIn, partialTicks);
+			return super.getRenderOffset(entity, partialTicks);
 		}
 	}
 
 	@Override
-	protected int getBlockLightLevel(MonolithEntity entityIn, BlockPos pos)
+	protected int getBlockLightLevel(MonolithEntity entity, BlockPos pos)
 	{
-		return Mth.clamp(super.getBlockLightLevel(entityIn, pos) + 12, 0, 15);
+		return Mth.clamp(super.getBlockLightLevel(entity, pos) + 12, 0, 15);
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(MonolithEntity entityIn)
+	public ResourceLocation getTextureLocation(MonolithEntity entity)
 	{
-		switch (entityIn.getAttackPhase())
+		switch (entity.getAttackPhase())
 		{
 		case BEAM_CHARGE2:
 		case BEAM_END:

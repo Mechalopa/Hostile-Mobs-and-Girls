@@ -1,11 +1,12 @@
 package com.github.mechalopa.hmag.client.renderer;
 
 import com.github.mechalopa.hmag.HMaG;
+import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.JackFrostModel;
 import com.github.mechalopa.hmag.entity.JackFrostEntity;
 
-import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -14,13 +15,13 @@ public class JackFrostRenderer extends AbstractGirlRenderer<JackFrostEntity, Jac
 {
 	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/jack_frost.png");
 
-	public  JackFrostRenderer(EntityRendererManager renderManagerIn)
+	public  JackFrostRenderer(EntityRendererProvider.Context context)
 	{
-		super(renderManagerIn, new JackFrostModel<>(), 0.5F, -1);
+		super(context, new JackFrostModel<>(context.bakeLayer(ModModelLayers.JACK_FROST)), 0.5F, -1);
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(JackFrostEntity entityIn)
+	public ResourceLocation getTextureLocation(JackFrostEntity entity)
 	{
 		return TEX;
 	}

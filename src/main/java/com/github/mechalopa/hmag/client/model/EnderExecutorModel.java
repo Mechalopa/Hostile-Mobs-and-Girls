@@ -16,20 +16,20 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class EnderExecutorModel<T extends EnderExecutorEntity> extends AbstractGirlModel<T>
 {
-	private ModelPart rightArmPart1;
-	private ModelPart leftArmPart1;
-	private ModelPart rightArmPart2;
-	private ModelPart leftArmPart2;
-	private ModelPart rightLegPart1;
-	private ModelPart leftLegPart1;
-	private ModelPart rightLegPart2;
-	private ModelPart leftLegPart2;
+//	private ModelPart rightArmPart1;
+//	private ModelPart leftArmPart1;
+//	private ModelPart rightArmPart2;
+//	private ModelPart leftArmPart2;
+//	private ModelPart rightLegPart1;
+//	private ModelPart leftLegPart1;
+//	private ModelPart rightLegPart2;
+//	private ModelPart leftLegPart2;
 	private ModelPart bust;
-	private ModelPart skirt1;
-	private ModelPart skirt2;
-	private ModelPart skirt3;
-	private ModelPart skirt4;
-	private ModelPart skirt5;
+//	private ModelPart skirt1;
+//	private ModelPart skirt2;
+//	private ModelPart skirt3;
+//	private ModelPart skirt4;
+//	private ModelPart skirt5;
 	private ModelPart rightHair1;
 	private ModelPart leftHair1;
 	private ModelPart rightHair2;
@@ -42,20 +42,20 @@ public class EnderExecutorModel<T extends EnderExecutorEntity> extends AbstractG
 	public EnderExecutorModel(ModelPart modelPart)
 	{
 		super(modelPart);
-		this.rightArmPart1 = this.rightArm.getChild("right_arm_part_1");
-		this.leftArmPart1 = this.leftArm.getChild("left_arm_part_1");
-		this.rightArmPart2 = this.rightArm.getChild("right_arm_part_2");
-		this.leftArmPart2 = this.leftArm.getChild("left_arm_part_2");
-		this.rightLegPart1 = this.rightLeg.getChild("right_leg_part_1");
-		this.leftLegPart1 = this.leftLeg.getChild("left_leg_part_1");
-		this.rightLegPart2 = this.rightLeg.getChild("right_leg_part_2");
-		this.leftLegPart2 = this.leftLeg.getChild("left_leg_part_2");
+//		this.rightArmPart1 = this.rightArm.getChild("right_arm_part_1");
+//		this.leftArmPart1 = this.leftArm.getChild("left_arm_part_1");
+//		this.rightArmPart2 = this.rightArm.getChild("right_arm_part_2");
+//		this.leftArmPart2 = this.leftArm.getChild("left_arm_part_2");
+//		this.rightLegPart1 = this.rightLeg.getChild("right_leg_part_1");
+//		this.leftLegPart1 = this.leftLeg.getChild("left_leg_part_1");
+//		this.rightLegPart2 = this.rightLeg.getChild("right_leg_part_2");
+//		this.leftLegPart2 = this.leftLeg.getChild("left_leg_part_2");
 		this.bust = this.body.getChild("bust");
-		this.skirt1 = this.body.getChild("skirt_1");
-		this.skirt2 = this.body.getChild("skirt_2");
-		this.skirt3 = this.skirt2.getChild("skirt_3");
-		this.skirt4 = this.skirt3.getChild("skirt_4");
-		this.skirt5 = this.skirt4.getChild("skirt_5");
+//		this.skirt1 = this.body.getChild("skirt_1");
+//		this.skirt2 = this.body.getChild("skirt_2");
+//		this.skirt3 = this.skirt2.getChild("skirt_3");
+//		this.skirt4 = this.skirt3.getChild("skirt_4");
+//		this.skirt5 = this.skirt4.getChild("skirt_5");
 		this.rightHair1 = this.head.getChild("right_hair_1");
 		this.leftHair1 = this.head.getChild("left_hair_1");
 		this.rightHair2 = this.rightHair1.getChild("right_hair_2");
@@ -118,6 +118,8 @@ public class EnderExecutorModel<T extends EnderExecutorEntity> extends AbstractG
 		this.body.z = 0.0F;
 		this.rightLeg.xRot = (float)((double)this.rightLeg.xRot * 0.5D);
 		this.leftLeg.xRot = (float)((double)this.leftLeg.xRot * 0.5D);
+//		this.skirt1.xRot = 0.0F;
+//		this.skirt5.xRot = 0.0F;
 
 		float f1 = 0.21F;
 
@@ -207,15 +209,13 @@ public class EnderExecutorModel<T extends EnderExecutorEntity> extends AbstractG
 			this.leftHair1.zRot -= Mth.sin(this.animationAmount * this.animationAmount * ((float)Math.PI / 1.2F)) * 0.75F;
 		}
 
-		this.rightArmPart1.xRot = 0.0F;
-		this.leftArmPart1.xRot = 0.0F;
-		this.rightArmPart2.xRot = 0.0F;
-		this.leftArmPart2.xRot = 0.0F;
-		this.rightLegPart1.xRot = 0.0F;
-		this.leftLegPart1.xRot = 0.0F;
-		this.rightLegPart2.xRot = 0.0F;
-		this.leftLegPart2.xRot = 0.0F;
-		this.skirt1.xRot = 0.0F;
-		this.skirt5.xRot = 0.0F;
+//		this.rightArmPart1.xRot = 0.0F;
+//		this.leftArmPart1.xRot = 0.0F;
+//		this.rightArmPart2.xRot = 0.0F;
+//		this.leftArmPart2.xRot = 0.0F;
+//		this.rightLegPart1.xRot = 0.0F;
+//		this.leftLegPart1.xRot = 0.0F;
+//		this.rightLegPart2.xRot = 0.0F;
+//		this.leftLegPart2.xRot = 0.0F;
 	}
 }

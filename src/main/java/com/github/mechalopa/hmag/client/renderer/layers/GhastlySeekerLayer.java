@@ -4,9 +4,9 @@ import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.model.GhastlySeekerModel;
 import com.github.mechalopa.hmag.entity.GhastlySeekerEntity;
 
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.entity.IEntityRenderer;
-import net.minecraft.client.renderer.entity.model.EntityModel;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -14,7 +14,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class GhastlySeekerLayer extends AbstractClothingLayer<GhastlySeekerEntity, GhastlySeekerModel<GhastlySeekerEntity>>
 {
 	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/ghastly_seeker_overlay.png");
-	private final GhastlySeekerModel<GhastlySeekerEntity> modelOuterLayer = new GhastlySeekerModel<>(0.0F);
+	private final GhastlySeekerModel<GhastlySeekerEntity> model = new GhastlySeekerModel<>(0.0F);
 
 	public GhastlySeekerLayer(IEntityRenderer<GhastlySeekerEntity, GhastlySeekerModel<GhastlySeekerEntity>> entityRendererIn)
 	{
@@ -22,25 +22,25 @@ public class GhastlySeekerLayer extends AbstractClothingLayer<GhastlySeekerEntit
 	}
 
 	@Override
-	protected boolean canRender(GhastlySeekerEntity livingEntityIn)
+	protected boolean canRender(GhastlySeekerEntity entity)
 	{
-		return livingEntityIn.getAttackingTime() > 0;
+		return entity.getAttackingTime() > 0;
 	}
 
 	@Override
-	protected float getAlpha(GhastlySeekerEntity livingEntityIn)
+	protected float getAlpha(GhastlySeekerEntity entity)
 	{
-		return (float)(Math.min(livingEntityIn.getAttackingTime(), 20)) / 20.0F;
+		return (float)(Math.min(entity.getAttackingTime(), 20)) / 20.0F;
 	}
 
 	@Override
-	protected EntityModel<GhastlySeekerEntity> model()
+	protected EntityModel<GhastlySeekerEntity> getLayerModel()
 	{
-		return this.modelOuterLayer;
+		return this.model;
 	}
 
 	@Override
-	public ResourceLocation getLayerTexture(GhastlySeekerEntity livingEntityIn)
+	public ResourceLocation getLayerTexture(GhastlySeekerEntity entity)
 	{
 		return TEX;
 	}

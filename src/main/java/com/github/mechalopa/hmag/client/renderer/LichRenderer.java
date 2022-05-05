@@ -22,7 +22,7 @@ public class LichRenderer extends HumanoidMobRenderer<LichEntity, LichModel<Lich
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(LichEntity entityIn)
+	public ResourceLocation getTextureLocation(LichEntity entity)
 	{
 		return TEX;
 	}
