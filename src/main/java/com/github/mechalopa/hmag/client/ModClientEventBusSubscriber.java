@@ -142,11 +142,11 @@ public class ModClientEventBusSubscriber
 		MinecraftForge.EVENT_BUS.register(new ModClientEvents());
 	}
 
-	@SuppressWarnings("resource")
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public static void registerParticleFactories(final ParticleFactoryRegisterEvent event)
 	{
-		Minecraft.getInstance().particleEngine.register(ModParticleTypes.ENCHANTMENT_RUNE.get(), EnchantmentRuneParticle.Factory::new);
-		Minecraft.getInstance().particleEngine.register(ModParticleTypes.NEMESIS_FLAME.get(), FlameParticle.Factory::new);
+		Minecraft minecraft = Minecraft.getInstance();
+		minecraft.particleEngine.register(ModParticleTypes.ENCHANTMENT_RUNE.get(), EnchantmentRuneParticle.Factory::new);
+		minecraft.particleEngine.register(ModParticleTypes.NEMESIS_FLAME.get(), FlameParticle.Factory::new);
 	}
 }
