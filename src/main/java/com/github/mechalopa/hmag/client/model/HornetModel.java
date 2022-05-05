@@ -228,7 +228,7 @@ public class HornetModel<T extends AbstractFlyingMonsterEntity> extends BipedMod
 		this.abdomenPart1.setPos(0.0F, 2.0F, 0.25F);
 		this.thorax.addChild(this.abdomenPart1);
 		this.abdomenPart2 = new ModelRenderer(this, 0, 40);
-		this.abdomenPart2.addBox(-3.0F, 0.0F, -2.0F, 6, 1, 4, modelSize);
+		this.abdomenPart2.addBox(-3.0F, 0.0F, -2.0F, 6.0F, 1.0F, 4.0F, modelSize);
 		this.abdomenPart2.setPos(0.0F, 1.0F, 0.0F);
 		this.abdomenPart1.addChild(this.abdomenPart2);
 		this.abdomenPart3 = new ModelRenderer(this, 0, 48);
