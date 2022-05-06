@@ -136,7 +136,7 @@ public class ModEntityTypes
 	public static final RegistryObject<EntityType<DoguEntity>> DOGU = REGISTRY.register("dogu", () -> EntityType.Builder
 			.of(DoguEntity::new, EntityClassification.MONSTER).sized(0.6F, 1.99F).setTrackingRange(6).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
 			.build(new ResourceLocation(HMaG.MODID, "dogu").toString()));
-	public static final RegistryObject<EntityType<GhastlySeekerEntity>> GHSATLY_SHEEKER = REGISTRY.register("ghastly_seeker", () -> EntityType.Builder
+	public static final RegistryObject<EntityType<GhastlySeekerEntity>> GHASTLY_SEEKER = REGISTRY.register("ghastly_seeker", () -> EntityType.Builder
 			.of(GhastlySeekerEntity::new, EntityClassification.MONSTER).fireImmune().sized(0.9F, 2.9F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
 			.build(new ResourceLocation(HMaG.MODID, "ghastly_seeker").toString()));
 	public static final RegistryObject<EntityType<RedcapEntity>> REDCAP = REGISTRY.register("redcap", () -> EntityType.Builder

@@ -100,7 +100,7 @@ public class ModClientEventBusSubscriber
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.SCORPION.get(), ScorpionRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.KASHA.get(), KashaRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.DOGU.get(), DoguRenderer::new);
-		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.GHSATLY_SHEEKER.get(), GhastlySeekerRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.GHASTLY_SEEKER.get(), GhastlySeekerRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.REDCAP.get(), RedcapRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.SLIME_GIRL.get(), SlimeGirlRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.MAGICAL_SLIME.get(), MagicalSlimeRenderer::new);

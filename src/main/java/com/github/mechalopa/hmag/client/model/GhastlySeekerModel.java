@@ -113,7 +113,7 @@ public class GhastlySeekerModel<T extends GhastlySeekerEntity> extends AbstractG
 			float f = (((float)(i % 3) - (float)(i / 3 % 2) * 0.5F + 0.25F) / 2.0F * 2.0F - 1.0F) * 3.0F;
 			float f1 = ((float)(i / 3) / 2.0F * 2.0F - 1.0F) * 3.0F;
 			int j = random.nextInt(3) + 8;
-			this.tentacles[i].addBox(-1.5F, 0.0F, -1.5F, 3.0F, j, 3.0F, modelSize);
+			this.tentacles[i].addBox(-1.5F, 0.0F, -1.5F, 3.0F, (float)j, 3.0F, modelSize);
 			this.tentacles[i].x = f;
 			this.tentacles[i].z = f1 + 1.0F;
 			this.tentacles[i].y = 1.75F;
@@ -125,6 +125,7 @@ public class GhastlySeekerModel<T extends GhastlySeekerEntity> extends AbstractG
 		this.rightHairPart1.setPos(-3.75F, -7.0F, -0.5F);
 		this.head.addChild(this.rightHairPart1);
 		this.leftHairPart1 = new ModelRenderer(this, 16, 88);
+		this.leftHairPart1.mirror = true;
 		this.leftHairPart1.addBox(-1.0F, -1.0F, -1.0F, 2.0F, 3.0F, 2.0F, modelSize);
 		this.leftHairPart1.setPos(3.75F, -7.0F, -0.5F);
 		this.head.addChild(this.leftHairPart1);
