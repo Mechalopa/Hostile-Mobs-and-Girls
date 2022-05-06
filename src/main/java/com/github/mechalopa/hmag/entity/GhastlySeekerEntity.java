@@ -167,7 +167,7 @@ public class GhastlySeekerEntity extends FlyingMob implements Enemy, IModMob
 
 	public static boolean checkGhastlySeekerSpawnRules(EntityType<GhastlySeekerEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, Random randomIn)
 	{
-		return levelAccessor.getDifficulty() != Difficulty.PEACEFUL && randomIn.nextDouble() < ModConfigs.cachedServer.GHSATLY_SHEEKER_SPAWN_CHANCE && checkMobSpawnRules(type, levelAccessor, spawnType, pos, randomIn);
+		return levelAccessor.getDifficulty() != Difficulty.PEACEFUL && randomIn.nextDouble() < ModConfigs.cachedServer.GHASTLY_SEEKER_SPAWN_CHANCE && checkMobSpawnRules(type, levelAccessor, spawnType, pos, randomIn);
 	}
 
 	@Override
