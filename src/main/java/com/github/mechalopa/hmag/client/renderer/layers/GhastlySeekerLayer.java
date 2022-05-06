@@ -1,11 +1,13 @@
 package com.github.mechalopa.hmag.client.renderer.layers;
 
 import com.github.mechalopa.hmag.HMaG;
+import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.GhastlySeekerModel;
 import com.github.mechalopa.hmag.entity.GhastlySeekerEntity;
 
 import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.renderer.entity.IEntityRenderer;
+import net.minecraft.client.model.geom.EntityModelSet;
+import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -14,11 +16,12 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class GhastlySeekerLayer extends AbstractClothingLayer<GhastlySeekerEntity, GhastlySeekerModel<GhastlySeekerEntity>>
 {
 	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/ghastly_seeker_overlay.png");
-	private final GhastlySeekerModel<GhastlySeekerEntity> model = new GhastlySeekerModel<>(0.0F);
+	private final GhastlySeekerModel<GhastlySeekerEntity> model;
 
-	public GhastlySeekerLayer(IEntityRenderer<GhastlySeekerEntity, GhastlySeekerModel<GhastlySeekerEntity>> entityRendererIn)
+	public GhastlySeekerLayer(RenderLayerParent<GhastlySeekerEntity, GhastlySeekerModel<GhastlySeekerEntity>> renderLayerParent, EntityModelSet modelSet)
 	{
-		super(entityRendererIn);
+		super(renderLayerParent);
+		this.model = new GhastlySeekerModel<>(modelSet.bakeLayer(ModModelLayers.GHASTLY_SEEKER_OUTER_LAYER));
 	}
 
 	@Override

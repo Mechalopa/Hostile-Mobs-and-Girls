@@ -161,7 +161,7 @@ public class ModClientEventBusSubscriber
 		event.registerEntityRenderer(ModEntityTypes.SCORPION.get(), ScorpionRenderer::new);
 		event.registerEntityRenderer(ModEntityTypes.KASHA.get(), KashaRenderer::new);
 		event.registerEntityRenderer(ModEntityTypes.DOGU.get(), DoguRenderer::new);
-		event.registerEntityRenderer(ModEntityTypes.GHSATLY_SHEEKER.get(), GhastlySeekerRenderer::new);
+		event.registerEntityRenderer(ModEntityTypes.GHASTLY_SEEKER.get(), GhastlySeekerRenderer::new);
 		event.registerEntityRenderer(ModEntityTypes.REDCAP.get(), RedcapRenderer::new);
 		event.registerEntityRenderer(ModEntityTypes.SLIME_GIRL.get(), SlimeGirlRenderer::new);
 		event.registerEntityRenderer(ModEntityTypes.MAGICAL_SLIME.get(), MagicalSlimeRenderer::new);
@@ -228,7 +228,8 @@ public class ModClientEventBusSubscriber
 		event.registerLayerDefinition(ModModelLayers.SCORPION, ScorpionModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.KASHA, KashaModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.DOGU, DoguModel::createBodyLayer);
-		event.registerLayerDefinition(ModModelLayers.GHSATLY_SHEEKER, GhastlySeekerModel::createBodyLayer);
+		event.registerLayerDefinition(ModModelLayers.GHASTLY_SEEKER, GhastlySeekerModel::createBodyLayer);
+		event.registerLayerDefinition(ModModelLayers.GHASTLY_SEEKER_OUTER_LAYER, GhastlySeekerModel::createOuterLayer);
 		event.registerLayerDefinition(ModModelLayers.REDCAP, RedcapModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.REDCAP_INNER_ARMOR, () -> layerdefinition1);
 		event.registerLayerDefinition(ModModelLayers.REDCAP_OUTER_ARMOR, () -> layerdefinition);

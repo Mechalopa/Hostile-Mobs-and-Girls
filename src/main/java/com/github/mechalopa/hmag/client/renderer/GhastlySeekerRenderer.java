@@ -1,15 +1,16 @@
 package com.github.mechalopa.hmag.client.renderer;
 
 import com.github.mechalopa.hmag.HMaG;
+import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.GhastlySeekerModel;
 import com.github.mechalopa.hmag.client.renderer.layers.GhastlySeekerLayer;
 import com.github.mechalopa.hmag.entity.GhastlySeekerEntity;
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Vector3f;
 
-import net.minecraft.client.renderer.entity.EntityRendererManager;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.vector.Vector3f;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -19,28 +20,28 @@ public class GhastlySeekerRenderer extends MobRenderer<GhastlySeekerEntity, Ghas
 	private static final ResourceLocation TEX0 = new ResourceLocation(HMaG.MODID, "textures/entity/ghastly_seeker.png");
 	private static final ResourceLocation TEX1 = new ResourceLocation(HMaG.MODID, "textures/entity/ghastly_seeker_shooting.png");
 
-	public GhastlySeekerRenderer(EntityRendererManager renderManagerIn)
+	public GhastlySeekerRenderer(EntityRendererProvider.Context context)
 	{
-		super(renderManagerIn, new GhastlySeekerModel<>(), 0.8F);
-		this.addLayer(new GhastlySeekerLayer(this));
+		super(context, new GhastlySeekerModel<>(context.bakeLayer(ModModelLayers.GHASTLY_SEEKER)), 0.8F);
+		this.addLayer(new GhastlySeekerLayer(this, context.getModelSet()));
 	}
 
 	@Override
-	protected void scale(GhastlySeekerEntity entityIn, MatrixStack matrixStackIn, float partialTickTime)
+	protected void scale(GhastlySeekerEntity entity, PoseStack poseStack, float partialTickTime)
 	{
-		matrixStackIn.scale(1.5F, 1.5F, 1.5F);
+		poseStack.scale(1.5F, 1.5F, 1.5F);
 	}
 
 	@Override
-	protected void setupRotations(GhastlySeekerEntity entityLiving, MatrixStack matrixStackIn, float ageInTicks, float rotationYaw, float partialTicks)
+	protected void setupRotations(GhastlySeekerEntity entity, PoseStack poseStack, float ageInTicks, float rotationYaw, float partialTicks)
 	{
-		super.setupRotations(entityLiving, matrixStackIn, ageInTicks, rotationYaw, partialTicks);
-		matrixStackIn.mulPose(Vector3f.XP.rotationDegrees(-15.0F));
+		super.setupRotations(entity, poseStack, ageInTicks, rotationYaw, partialTicks);
+		poseStack.mulPose(Vector3f.XP.rotationDegrees(-15.0F));
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(GhastlySeekerEntity entityIn)
+	public ResourceLocation getTextureLocation(GhastlySeekerEntity entity)
 	{
-		return entityIn.isAttacking() ? TEX1 : TEX0;
+		return entity.isAttacking() ? TEX1 : TEX0;
 	}
 }

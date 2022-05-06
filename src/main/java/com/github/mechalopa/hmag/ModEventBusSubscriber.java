@@ -176,7 +176,7 @@ public class ModEventBusSubscriber
 		SpawnPlacements.register(ModEntityTypes.SCORPION.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkMonsterSpawnInLightOverY64Rules);
 		SpawnPlacements.register(ModEntityTypes.KASHA.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkAnyLightMonsterSpawnRules);
 		SpawnPlacements.register(ModEntityTypes.DOGU.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkMonsterSpawnOnUndergroundRules);
-		SpawnPlacements.register(ModEntityTypes.GHSATLY_SHEEKER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, GhastlySeekerEntity::checkGhastlySeekerSpawnRules);
+		SpawnPlacements.register(ModEntityTypes.GHASTLY_SEEKER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, GhastlySeekerEntity::checkGhastlySeekerSpawnRules);
 		SpawnPlacements.register(ModEntityTypes.REDCAP.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkMonsterSpawnInLightOverY64Rules);
 		SpawnPlacements.register(ModEntityTypes.SLIME_GIRL.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkMonsterSpawnInLightOverY64Rules);
 		SpawnPlacements.register(ModEntityTypes.MAGICAL_SLIME.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkMobSpawnInLightRules);
@@ -221,7 +221,7 @@ public class ModEventBusSubscriber
 		event.put(ModEntityTypes.SCORPION.get(), ScorpionEntity.createAttributes().build());
 		event.put(ModEntityTypes.KASHA.get(), KashaEntity.createAttributes().build());
 		event.put(ModEntityTypes.DOGU.get(), DoguEntity.createAttributes().build());
-		event.put(ModEntityTypes.GHSATLY_SHEEKER.get(), GhastlySeekerEntity.createAttributes().build());
+		event.put(ModEntityTypes.GHASTLY_SEEKER.get(), GhastlySeekerEntity.createAttributes().build());
 		event.put(ModEntityTypes.REDCAP.get(), RedcapEntity.createAttributes().build());
 		event.put(ModEntityTypes.SLIME_GIRL.get(), SlimeGirlEntity.createAttributes().build());
 		event.put(ModEntityTypes.MAGICAL_SLIME.get(), MagicalSlimeEntity.createAttributes().build());

@@ -1,190 +1,133 @@
 package com.github.mechalopa.hmag.client.model;
 
+import java.util.Arrays;
 import java.util.Random;
 
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.entity.GhastlySeekerEntity;
 
-import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.model.geom.builders.CubeDeformation;
+import net.minecraft.client.model.geom.builders.CubeListBuilder;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
+import net.minecraft.client.model.geom.builders.MeshDefinition;
+import net.minecraft.client.model.geom.builders.PartDefinition;
+import net.minecraft.util.Mth;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class GhastlySeekerModel<T extends GhastlySeekerEntity> extends AbstractAdvancedGirlModel<T>
 {
-	private ModelRenderer rightArmPart1;
-	private ModelRenderer rightArmPart2;
-	private ModelRenderer leftArmPart1;
-	private ModelRenderer leftArmPart2;
-	private ModelRenderer skirt1;
-	private ModelRenderer skirt2;
-	private ModelRenderer skirt3;
-	private ModelRenderer skirt4;
-	private ModelRenderer[] tentacles = new ModelRenderer[7];
+	private ModelPart rightArmPart1;
+	private ModelPart rightArmPart2;
+	private ModelPart leftArmPart1;
+	private ModelPart leftArmPart2;
+	private ModelPart skirt1;
+	private ModelPart skirt2;
+	private ModelPart skirt3;
+	private ModelPart skirt4;
+	private ModelPart[] tentacles = new ModelPart[7];
+	private ModelPart rightHairPart1;
+	private ModelPart rightHairPart2;
+	private ModelPart rightHairPart3;
+	private ModelPart rightHairPart4;
+	private ModelPart rightHairPart5;
+//	private ModelPart rightHairPart6;
+	private ModelPart leftHairPart1;
+	private ModelPart leftHairPart2;
+	private ModelPart leftHairPart3;
+	private ModelPart leftHairPart4;
+	private ModelPart leftHairPart5;
+//	private ModelPart leftHairPart6;
+	private ModelPart hairPart;
+//	private ModelPart headwearPart;
 
-	private ModelRenderer rightHairPart1;
-	private ModelRenderer rightHairPart2;
-	private ModelRenderer rightHairPart3;
-	private ModelRenderer rightHairPart4;
-	private ModelRenderer rightHairPart5;
-	private ModelRenderer rightHairPart6;
-	private ModelRenderer leftHairPart1;
-	private ModelRenderer leftHairPart2;
-	private ModelRenderer leftHairPart3;
-	private ModelRenderer leftHairPart4;
-	private ModelRenderer leftHairPart5;
-	private ModelRenderer leftHairPart6;
-
-	private ModelRenderer hairPart;
-	private ModelRenderer headwearPart;
-
-	public GhastlySeekerModel()
+	public GhastlySeekerModel(ModelPart modelPart)
 	{
-		this(0.0F);
+		super(modelPart);
+		this.rightArmPart1 = this.rightArm.getChild("right_arm_part_1");
+		this.leftArmPart1 = this.leftArm.getChild("left_arm_part_1");
+		this.rightArmPart2 = this.rightArmPart1.getChild("right_arm_part_2");
+		this.leftArmPart2 = this.leftArmPart1.getChild("left_arm_part_2");
+		this.skirt1 = this.body.getChild("skirt_1");
+		this.skirt2 = this.body.getChild("skirt_2");
+		this.skirt3 = this.skirt2.getChild("skirt_3");
+		this.skirt4 = this.skirt3.getChild("skirt_4");
+		Arrays.setAll(this.tentacles, (p) -> {
+			return this.skirt4.getChild("tentacle_" + p);
+		});
+		this.hairPart = this.head.getChild("hair_part");
+		this.rightHairPart1 = this.head.getChild("right_hair_part_1");
+		this.leftHairPart1 = this.head.getChild("left_hair_part_1");
+		this.rightHairPart2 = this.rightHairPart1.getChild("right_hair_part_2");
+		this.leftHairPart2 = this.leftHairPart1.getChild("left_hair_part_2");
+		this.rightHairPart3 = this.rightHairPart1.getChild("right_hair_part_3");
+		this.rightHairPart4 = this.rightHairPart3.getChild("right_hair_part_4");
+		this.rightHairPart5 = this.rightHairPart4.getChild("right_hair_part_5");
+		this.leftHairPart3 = this.leftHairPart1.getChild("left_hair_part_3");
+		this.leftHairPart4 = this.leftHairPart3.getChild("left_hair_part_4");
+		this.leftHairPart5 = this.leftHairPart4.getChild("left_hair_part_5");
 	}
 
-	public GhastlySeekerModel(float modelSize)
+	public static MeshDefinition createMesh(CubeDeformation cd)
 	{
-		super(modelSize, 0.0F, 64, 128, false);
+		MeshDefinition md = AbstractAdvancedGirlModel.createMesh(cd, 0.0F);
+		PartDefinition pd = md.getRoot();
+		PartDefinition rapd = ModClientUtils.addC(pd, cd, "right_arm", 40, 16, -1.0F, -2.0F, -1.5F, 3.0F, 5.0F, 3.0F, -5.0F, 2.0F, 0.0F);
+		PartDefinition lapd = ModClientUtils.addC(pd, cd, "left_arm", 40, 16, -2.0F, -2.0F, -1.5F, 3.0F, 5.0F, 3.0F, 5.0F, 2.0F, 0.0F, true);
+		PartDefinition rap1pd = ModClientUtils.addC(rapd, cd, "right_arm_part_1", 40, 48, -1.5F, 0.0F, -2.0F, 4.0F, 4.0F, 4.0F, 0.0F, 2.5F, 0.0F);
+		ModClientUtils.addC(rap1pd, cd, "right_arm_part_2", 40, 56, -2.5F, 0.0F, -2.5F, 5.0F, 4.0F, 5.0F, 0.0F, 3.5F, 0.0F);
+		PartDefinition lap1pd = ModClientUtils.addC(lapd, cd, "left_arm_part_1", 40, 48, -2.5F, 0.0F, -2.0F, 4.0F, 4.0F, 4.0F, 0.0F, 2.5F, 0.0F, true);
+		ModClientUtils.addC(lap1pd, cd, "left_arm_part_2", 40, 56, -2.5F, 0.0F, -2.5F, 5.0F, 4.0F, 5.0F, 0.0F, 3.5F, 0.0F, true);
+		ModClientUtils.addC(pd, cd, "right_leg", 0, 16, -0.5F, 0.0F, -0.5F, 1.0F, 1.0F, 1.0F, -2.0F, 12.0F, 0.0F);
+		ModClientUtils.addC(pd, cd, "left_leg", 0, 16, -0.5F, 0.0F, -0.5F, 1.0F, 1.0F, 1.0F, 2.0F, 12.0F, 0.0F, true);
+		PartDefinition bodypd = pd.getChild("body");
+		PartDefinition bodypart1pd = pd.getChild("body_part_1");
+		ModClientUtils.addC(bodypart1pd, cd, "body_part_2", 32, 40, -3.0F, 0.0F, -1.5F, 6.0F, 2.0F, 3.0F, 0.0F, 2.5F, 0.0F);
+		ModClientUtils.addC(bodypd, cd, "skirt_1", 0, 38, -4.0F, 0.0F, -2.5F, 8.0F, 2.0F, 5.0F, 0.0F, 10.0F, 0.0F);
+		PartDefinition s2pd = ModClientUtils.addC(bodypd, cd, "skirt_2", 0, 46, -4.5F, 0.0F, -3.0F, 9.0F, 2.0F, 7.0F, 0.0F, 11.0F, 0.0F);
+		PartDefinition s3pd = ModClientUtils.addC(s2pd, cd, "skirt_3", 0, 56, -5.0F, 0.0F, -3.5F, 10.0F, 2.0F, 9.0F, 0.0F, 1.0F, 0.0F);
+		PartDefinition s4pd = ModClientUtils.addC(s3pd, cd, "skirt_4", 0, 72, -5.5F, 0.0F, -4.0F, 11.0F, 3.0F, 11.0F, 0.0F, 1.0F, 0.0F);
 
-		this.rightArm = new ModelRenderer(this, 40, 16);
-		this.rightArm.addBox(-1.0F, -2.0F, -1.5F, 3.0F, 5.0F, 3.0F, modelSize);
-		this.rightArm.setPos(-5.0F, 2.0F, 0.0F);
-		this.leftArm = new ModelRenderer(this, 40, 16);
-		this.leftArm.mirror = true;
-		this.leftArm.addBox(-2.0F, -2.0F, -1.5F, 3.0F, 5.0F, 3.0F, modelSize);
-		this.leftArm.setPos(5.0F, 2.0F, 0.0F);
+		Random r = new Random(1660L);
 
-		this.rightArmPart1 = new ModelRenderer(this, 40, 48);
-		this.rightArmPart1.addBox(-1.5F, 0.0F, -2.0F, 4.0F, 4.0F, 4.0F, modelSize);
-		this.rightArmPart1.setPos(0.0F, 2.5F, 0.0F);
-		this.rightArm.addChild(this.rightArmPart1);
-		this.rightArmPart2 = new ModelRenderer(this, 40, 56);
-		this.rightArmPart2.addBox(-2.5F, 0.0F, -2.5F, 5.0F, 4.0F, 5.0F, modelSize);
-		this.rightArmPart2.setPos(0.0F, 3.5F, 0.0F);
-		this.rightArmPart1.addChild(this.rightArmPart2);
-
-		this.leftArmPart1 = new ModelRenderer(this, 40, 48);
-		this.leftArmPart1.mirror = true;
-		this.leftArmPart1.addBox(-2.5F, 0.0F, -2.0F, 4.0F, 4.0F, 4.0F, modelSize);
-		this.leftArmPart1.setPos(0.0F, 2.5F, 0.0F);
-		this.leftArm.addChild(this.leftArmPart1);
-		this.leftArmPart2 = new ModelRenderer(this, 40, 56);
-		this.leftArmPart2.mirror = true;
-		this.leftArmPart2.addBox(-2.5F, 0.0F, -2.5F, 5.0F, 4.0F, 5.0F, modelSize);
-		this.leftArmPart2.setPos(0.0F, 3.5F, 0.0F);
-		this.leftArmPart1.addChild(this.leftArmPart2);
-
-		this.rightLeg = new ModelRenderer(this, 0, 16);
-		this.rightLeg.addBox(-0.5F, 0.0F, -0.5F, 1.0F, 1.0F, 1.0F, modelSize);
-		this.rightLeg.setPos(-2.0F, 12.0F, 0.0F);
-		this.leftLeg = new ModelRenderer(this, 0, 16);
-		this.leftLeg.mirror = true;
-		this.leftLeg.addBox(-0.5F, 0.0F, -0.5F, 1.0F, 1.0F, 1.0F, modelSize);
-		this.leftLeg.setPos(2.0F, 12.0F, 0.0F);
-
-		this.bodyPart2 = new ModelRenderer(this, 32, 40);
-		this.bodyPart2.addBox(-3.0F, 0.0F, -1.5F, 6.0F, 2.0F, 3.0F, modelSize);
-		this.bodyPart2.setPos(0.0F, 2.5F, 0.0F);
-		this.bodyPart1.addChild(this.bodyPart2);
-
-		this.skirt1 = new ModelRenderer(this, 0, 38);
-		this.skirt1.addBox(-4.0F, 0.0F, -2.5F, 8.0F, 2.0F, 5.0F, modelSize);
-		this.skirt1.setPos(0.0F, 10.0F, 0.0F);
-		this.body.addChild(this.skirt1);
-		this.skirt2 = new ModelRenderer(this, 0, 46);
-		this.skirt2.addBox(-4.5F, 0.0F, -3.0F, 9.0F, 2.0F, 7.0F, modelSize);
-		this.skirt2.setPos(0.0F, 11.0F, 0.0F);
-		this.body.addChild(this.skirt2);
-		this.skirt3 = new ModelRenderer(this, 0, 56);
-		this.skirt3.addBox(-5.0F, 0.0F, -3.5F, 10.0F, 2.0F, 9.0F, modelSize);
-		this.skirt3.setPos(0.0F, 1.0F, 0.0F);
-		this.skirt2.addChild(this.skirt3);
-		this.skirt4 = new ModelRenderer(this, 0, 72);
-		this.skirt4.addBox(-5.5F, 0.0F, -4.0F, 11.0F, 3.0F, 11.0F, modelSize);
-		this.skirt4.setPos(0.0F, 1.0F, 0.0F);
-		this.skirt3.addChild(this.skirt4);
-
-		Random random = new Random(1660L);
-
-		for (int i = 0; i < this.tentacles.length; ++i)
+		for (int i = 0; i < 7; ++i)
 		{
-			this.tentacles[i] = new ModelRenderer(this, 0, 88);
 			float f = (((float)(i % 3) - (float)(i / 3 % 2) * 0.5F + 0.25F) / 2.0F * 2.0F - 1.0F) * 3.0F;
 			float f1 = ((float)(i / 3) / 2.0F * 2.0F - 1.0F) * 3.0F;
-			int j = random.nextInt(3) + 8;
-			this.tentacles[i].addBox(-1.5F, 0.0F, -1.5F, 3.0F, j, 3.0F, modelSize);
-			this.tentacles[i].x = f;
-			this.tentacles[i].z = f1 + 1.0F;
-			this.tentacles[i].y = 1.75F;
-			this.skirt4.addChild(this.tentacles[i]);
+			int j = r.nextInt(3) + 8;
+			s4pd.addOrReplaceChild("tentacle_" + i, CubeListBuilder.create().texOffs(0, 88).addBox(-1.5F, 0.0F, -1.5F, 3.0F, (float)j, 3.0F), PartPose.offset(f, 1.75F, f1 + 1.0F));
 		}
 
-		this.rightHairPart1 = new ModelRenderer(this, 16, 88);
-		this.rightHairPart1.addBox(-1.0F, -1.0F, -1.0F, 2.0F, 3.0F, 2.0F, modelSize);
-		this.rightHairPart1.setPos(-3.75F, -7.0F, -0.5F);
-		this.head.addChild(this.rightHairPart1);
-		this.leftHairPart1 = new ModelRenderer(this, 16, 88);
-		this.leftHairPart1.addBox(-1.0F, -1.0F, -1.0F, 2.0F, 3.0F, 2.0F, modelSize);
-		this.leftHairPart1.setPos(3.75F, -7.0F, -0.5F);
-		this.head.addChild(this.leftHairPart1);
+		PartDefinition headpd = pd.getChild("head");
+		ModClientUtils.addC(headpd, cd, "hair_part", 0, 104, -4.0F, 0.0F, -1.0F, 8.0F, 2.0F, 1.0F, 0.0F, 0.0F, 4.0F);
+		PartDefinition hatpd = pd.getChild("hat");
+		ModClientUtils.addC(hatpd, cd, "hat_part", 32, 104, -4.0F, -2.0F, -4.0F, 8.0F, 2.0F, 8.0F, 0.0F, 3.0F, 0.0F, 0.5F);
+		PartDefinition rhp1pd = ModClientUtils.addC(headpd, cd, "right_hair_part_1", 16, 88, -1.0F, -1.0F, -1.0F, 2.0F, 3.0F, 2.0F, -3.75F, -7.0F, -0.5F);
+		PartDefinition lhp1pd = ModClientUtils.addC(headpd, cd, "left_hair_part_1", 16, 88, -1.0F, -1.0F, -1.0F, 2.0F, 3.0F, 2.0F, 3.75F, -7.0F, -0.5F, true);
+		ModClientUtils.addC(rhp1pd, cd, "right_hair_part_2", 24, 88, -0.5F, -2.0F, -2.0F, 1.0F, 4.0F, 4.0F, -1.5F, 0.0F, -0.25F);
+		ModClientUtils.addC(lhp1pd, cd, "left_hair_part_2", 24, 88, -0.5F, -2.0F, -2.0F, 1.0F, 4.0F, 4.0F, 1.5F, 0.0F, -0.25F);
+		PartDefinition rhp3pd = ModClientUtils.addC(rhp1pd, cd, "right_hair_part_3", 48, 72, -1.0F, -1.5F, -1.0F, 2.0F, 5.0F, 2.0F, -1.5F, 1.0F, 1.5F);
+		PartDefinition rhp4pd = ModClientUtils.addC(rhp3pd, cd, "right_hair_part_4", 40, 88, -1.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, 0.0F, 3.5F, 0.0F, 0.25F);
+		PartDefinition rhp5pd = ModClientUtils.addC(rhp4pd, cd, "right_hair_part_5", 48, 88, -1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F, 0.0F, 8.0F, 0.0F);
+		ModClientUtils.addC(rhp5pd, cd, "right_hair_part_6", 48, 80, -1.0F, 0.0F, -1.0F, 2.0F, 5.0F, 2.0F, 0.0F, 6.0F, 0.0F);
+		PartDefinition lhp3pd = ModClientUtils.addC(lhp1pd, cd, "left_hair_part_3", 48, 72, -1.0F, -1.5F, -1.0F, 2.0F, 5.0F, 2.0F, 1.5F, 1.0F, 1.5F, true);
+		PartDefinition lhp4pd = ModClientUtils.addC(lhp3pd, cd, "left_hair_part_4", 40, 88, -1.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, 0.0F, 3.5F, 0.0F, true, 0.25F);
+		PartDefinition lhp5pd = ModClientUtils.addC(lhp4pd, cd, "left_hair_part_5", 48, 88, -1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F, 0.0F, 8.0F, 0.0F, true);
+		ModClientUtils.addC(lhp5pd, cd, "left_hair_part_6", 48, 80, -1.0F, 0.0F, -1.0F, 2.0F, 5.0F, 2.0F, 0.0F, 6.0F, 0.0F, true);
+		return md;
+	}
 
-		this.rightHairPart2 = new ModelRenderer(this, 24, 88);
-		this.rightHairPart2.addBox(-0.5F, -2.0F, -2.0F, 1.0F, 4.0F, 4.0F, modelSize);
-		this.rightHairPart2.setPos(-1.5F, 0.0F, -0.25F);
-		this.rightHairPart1.addChild(this.rightHairPart2);
-		this.leftHairPart2 = new ModelRenderer(this, 24, 88);
-		this.leftHairPart2.addBox(-0.5F, -2.0F, -2.0F, 1.0F, 4.0F, 4.0F, modelSize);
-		this.leftHairPart2.setPos(1.5F, 0.0F, -0.25F);
-		this.leftHairPart1.addChild(this.leftHairPart2);
+	public static LayerDefinition createBodyLayer()
+	{
+		return LayerDefinition.create(createMesh(CubeDeformation.NONE), 64, 128);
+	}
 
-		this.rightHairPart3 = new ModelRenderer(this, 48, 72);
-		this.rightHairPart3.addBox(-1.0F, -1.5F, -1.0F, 2.0F, 5.0F, 2.0F, modelSize);
-		this.rightHairPart3.setPos(-1.5F, 1.0F, 1.5F);
-		this.rightHairPart1.addChild(this.rightHairPart3);
-		this.rightHairPart4 = new ModelRenderer(this, 40, 88);
-		this.rightHairPart4.addBox(-1.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, modelSize + 0.25F);
-		this.rightHairPart4.setPos(0.0F, 3.5F, 0.0F);
-		this.rightHairPart3.addChild(this.rightHairPart4);
-		this.rightHairPart5 = new ModelRenderer(this, 48, 88);
-		this.rightHairPart5.addBox(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F, modelSize);
-		this.rightHairPart5.setPos(0.0F, 8.0F, 0.0F);
-		this.rightHairPart4.addChild(this.rightHairPart5);
-		this.rightHairPart6 = new ModelRenderer(this, 48, 80);
-		this.rightHairPart6.addBox(-1.0F, 0.0F, -1.0F, 2.0F, 5.0F, 2.0F, modelSize);
-		this.rightHairPart6.setPos(0.0F, 6.0F, 0.0F);
-		this.rightHairPart5.addChild(this.rightHairPart6);
-
-		this.leftHairPart3 = new ModelRenderer(this, 48, 72);
-		this.leftHairPart3.mirror = true;
-		this.leftHairPart3.addBox(-1.0F, -1.5F, -1.0F, 2.0F, 5.0F, 2.0F, modelSize);
-		this.leftHairPart3.setPos(1.5F, 1.0F, 1.5F);
-		this.leftHairPart1.addChild(this.leftHairPart3);
-		this.leftHairPart4 = new ModelRenderer(this, 40, 88);
-		this.leftHairPart4.mirror = true;
-		this.leftHairPart4.addBox(-1.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, modelSize + 0.25F);
-		this.leftHairPart4.setPos(0.0F, 3.5F, 0.0F);
-		this.leftHairPart3.addChild(this.leftHairPart4);
-		this.leftHairPart5 = new ModelRenderer(this, 48, 88);
-		this.leftHairPart5.mirror = true;
-		this.leftHairPart5.addBox(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F, modelSize);
-		this.leftHairPart5.setPos(0.0F, 8.0F, 0.0F);
-		this.leftHairPart4.addChild(this.leftHairPart5);
-		this.leftHairPart6 = new ModelRenderer(this, 48, 80);
-		this.leftHairPart6.mirror = true;
-		this.leftHairPart6.addBox(-1.0F, 0.0F, -1.0F, 2.0F, 5.0F, 2.0F, modelSize);
-		this.leftHairPart6.setPos(0.0F, 6.0F, 0.0F);
-		this.leftHairPart5.addChild(this.leftHairPart6);
-
-		this.hairPart = new ModelRenderer(this, 0, 104);
-		this.hairPart.addBox(-4.0F, 0.0F, -1.0F, 8.0F, 2.0F, 1.0F, modelSize);
-		this.hairPart.setPos(0.0F, 0.0F, 4.0F);
-		this.head.addChild(this.hairPart);
-
-		this.headwearPart = new ModelRenderer(this, 32, 104);
-		this.headwearPart.addBox(-4.0F, -2.0F, -4.0F, 8.0F, 2.0F, 8.0F, modelSize + 0.5F);
-		this.headwearPart.setPos(0.0F, 3.0F, 0.0F);
-		this.hat.addChild(this.headwearPart);
+	public static LayerDefinition createOuterLayer()
+	{
+		return LayerDefinition.create(createMesh(new CubeDeformation(0.001F)), 64, 128);
 	}
 
 	@Override
@@ -192,8 +135,8 @@ public class GhastlySeekerModel<T extends GhastlySeekerEntity> extends AbstractA
 	{
 		super.setupAnim(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 
-		float f = MathHelper.sin(this.attackTime * (float)Math.PI);
-		float f1 = MathHelper.sin((1.0F - (1.0F - this.attackTime) * (1.0F - this.attackTime)) * (float)Math.PI);
+		float f = Mth.sin(this.attackTime * (float)Math.PI);
+		float f1 = Mth.sin((1.0F - (1.0F - this.attackTime) * (1.0F - this.attackTime)) * (float)Math.PI);
 
 		if (entityIn.isAttacking())
 		{
@@ -205,10 +148,10 @@ public class GhastlySeekerModel<T extends GhastlySeekerEntity> extends AbstractA
 			this.leftArm.xRot = -((float)Math.PI / 2F);
 			this.rightArm.xRot -= f * 1.2F - f1 * 0.4F;
 			this.leftArm.xRot -= f * 1.2F - f1 * 0.4F;
-			this.rightArm.zRot += MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
-			this.leftArm.zRot -= MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
-			this.rightArm.xRot += MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
-			this.leftArm.xRot -= MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
+			this.rightArm.zRot += Mth.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
+			this.leftArm.zRot -= Mth.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
+			this.rightArm.xRot += Mth.sin(ageInTicks * 0.067F) * 0.05F;
+			this.leftArm.xRot -= Mth.sin(ageInTicks * 0.067F) * 0.05F;
 		}
 		else
 		{
@@ -220,13 +163,13 @@ public class GhastlySeekerModel<T extends GhastlySeekerEntity> extends AbstractA
 			this.leftArm.xRot = ((float)Math.PI / 15F);
 			this.rightArm.xRot -= f * 1.2F - f1 * 0.4F;
 			this.leftArm.xRot -= f * 1.2F - f1 * 0.4F;
-			this.rightArm.zRot += MathHelper.cos(ageInTicks * 0.09F) * 0.04F;
-			this.leftArm.zRot -= MathHelper.cos(ageInTicks * 0.09F) * 0.04F;
-			this.rightArm.xRot += MathHelper.sin(ageInTicks * 0.067F) * 0.04F;
-			this.leftArm.xRot -= MathHelper.sin(ageInTicks * 0.067F) * 0.04F;
+			this.rightArm.zRot += Mth.cos(ageInTicks * 0.09F) * 0.04F;
+			this.leftArm.zRot -= Mth.cos(ageInTicks * 0.09F) * 0.04F;
+			this.rightArm.xRot += Mth.sin(ageInTicks * 0.067F) * 0.04F;
+			this.leftArm.xRot -= Mth.sin(ageInTicks * 0.067F) * 0.04F;
 		}
 
-		float f2 = MathHelper.sin(ageInTicks * 0.09F + (float)Math.PI / 2.0F);
+		float f2 = Mth.sin(ageInTicks * 0.09F + (float)Math.PI / 2.0F);
 
 		this.rightArmPart1.xRot = ((float)Math.PI / 24.0F);
 		this.leftArmPart1.xRot = ((float)Math.PI / 24.0F);
@@ -238,21 +181,23 @@ public class GhastlySeekerModel<T extends GhastlySeekerEntity> extends AbstractA
 
 		this.skirt2.xRot = ((float)Math.PI / 24.0F);
 		this.skirt2.xRot -= f * 1.2F - f1 * 0.4F;
-		this.skirt2.xRot += MathHelper.sin(ageInTicks * 0.067F + (float)Math.PI / 2.0F) * 0.04F;
+		this.skirt2.xRot += Mth.sin(ageInTicks * 0.067F + (float)Math.PI / 2.0F) * 0.04F;
 		this.skirt3.xRot = ((float)Math.PI / 30.0F);
 		this.skirt3.xRot += f2 * 0.03F;
 		this.skirt4.xRot = ((float)Math.PI / 30.0F);
 		this.skirt4.xRot += f2 * 0.03F;
 
+		this.skirt1.xRot = 0.0F;
+
 		for (int i = 0; i < this.tentacles.length; ++i)
 		{
-			this.tentacles[i].xRot = 0.2F * MathHelper.sin(ageInTicks * 0.15F + (float)i) + 0.4F;
+			this.tentacles[i].xRot = 0.2F * Mth.sin(ageInTicks * 0.15F + (float)i) + 0.4F;
 		}
 
 		this.rightHairPart1.zRot = ((float)Math.PI / 27.0F);
 		this.leftHairPart1.zRot = -((float)Math.PI / 27.0F);
-		this.rightHairPart1.zRot += MathHelper.sin(ageInTicks * 0.067F) * 0.067F;
-		this.leftHairPart1.zRot -= MathHelper.sin(ageInTicks * 0.067F) * 0.067F;
+		this.rightHairPart1.zRot += Mth.sin(ageInTicks * 0.067F) * 0.067F;
+		this.leftHairPart1.zRot -= Mth.sin(ageInTicks * 0.067F) * 0.067F;
 		this.rightHairPart2.yRot = -((float)Math.PI / 5.0F);
 		this.leftHairPart2.yRot = ((float)Math.PI / 5.0F);
 		this.rightHairPart2.zRot = ((float)Math.PI / 24.0F);
@@ -265,12 +210,12 @@ public class GhastlySeekerModel<T extends GhastlySeekerEntity> extends AbstractA
 		this.leftHairPart3.zRot = -((float)Math.PI / 15.0F);
 		this.rightHairPart4.zRot = ((float)Math.PI / 30.0F);
 		this.leftHairPart4.zRot = -((float)Math.PI / 30.0F);
-		this.rightHairPart4.zRot -= MathHelper.sin(ageInTicks * 0.067F + (float)Math.PI / 3.0F) * 0.045F;
-		this.leftHairPart4.zRot += MathHelper.sin(ageInTicks * 0.067F + (float)Math.PI / 3.0F) * 0.045F;
+		this.rightHairPart4.zRot -= Mth.sin(ageInTicks * 0.067F + (float)Math.PI / 3.0F) * 0.045F;
+		this.leftHairPart4.zRot += Mth.sin(ageInTicks * 0.067F + (float)Math.PI / 3.0F) * 0.045F;
 		this.rightHairPart5.zRot = -((float)Math.PI / 27.0F);
 		this.leftHairPart5.zRot = ((float)Math.PI / 27.0F);
 
 		this.hairPart.xRot = ((float)Math.PI / 12.0F);
-		this.hairPart.xRot += MathHelper.sin(ageInTicks * 0.075F) * 0.045F;
+		this.hairPart.xRot += Mth.sin(ageInTicks * 0.075F) * 0.045F;
 	}
 }

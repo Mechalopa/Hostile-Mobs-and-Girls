@@ -164,7 +164,7 @@ public class ModItems
 	public static final RegistryObject<Item> SCORPION_SPAWN_EGG = createSpawnEggRegistryObject("scorpion", ModEntityTypes.SCORPION, 0xDAB68F, 0x625358);
 	public static final RegistryObject<Item> KASHA_SPAWN_EGG = createSpawnEggRegistryObject("kasha", ModEntityTypes.KASHA, 0x200000, 0xFFAE4A);
 	public static final RegistryObject<Item> DOGU_SPAWN_EGG = createSpawnEggRegistryObject("dogu", ModEntityTypes.DOGU, 0xB45927, 0x692707);
-	public static final RegistryObject<Item> GHASTLY_SEEKER_SPAWN_EGG = createSpawnEggRegistryObject("ghastly_seeker", ModEntityTypes.GHSATLY_SHEEKER, 0xF4E6D7, 0xC3B5A6);
+	public static final RegistryObject<Item> GHASTLY_SEEKER_SPAWN_EGG = createSpawnEggRegistryObject("ghastly_seeker", ModEntityTypes.GHASTLY_SEEKER, 0xF4E6D7, 0xC3B5A6);
 	public static final RegistryObject<Item> REDCAP_SPAWN_EGG = createSpawnEggRegistryObject("redcap", ModEntityTypes.REDCAP, 0x73530D, 0x8E2323);
 	public static final RegistryObject<Item> SLIME_GIRL_SPAWN_EGG = createSpawnEggRegistryObject("slime_girl", ModEntityTypes.SLIME_GIRL, 0xFD73AC, 0xFA476B);
 	public static final RegistryObject<Item> MAGICAL_SLIME_SPAWN_EGG = createSpawnEggRegistryObject("magical_slime", ModEntityTypes.MAGICAL_SLIME, 0xFD73AC, 0xFF7D98);

@@ -56,7 +56,8 @@ public class ModModelLayers
 	public static final ModelLayerLocation SCORPION = create("scorpion");
 	public static final ModelLayerLocation KASHA = create("kasha");
 	public static final ModelLayerLocation DOGU = create("dogu");
-	public static final ModelLayerLocation GHSATLY_SHEEKER = create("ghastly_seeker");
+	public static final ModelLayerLocation GHASTLY_SEEKER = create("ghastly_seeker");
+	public static final ModelLayerLocation GHASTLY_SEEKER_OUTER_LAYER = create("ghastly_seeker", "outer");
 	public static final ModelLayerLocation REDCAP = create("redcap");
 	public static final ModelLayerLocation REDCAP_INNER_ARMOR = createInnerArmor("redcap");
 	public static final ModelLayerLocation REDCAP_OUTER_ARMOR = createOuterArmor("redcap");
