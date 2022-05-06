@@ -82,9 +82,9 @@ public class ModConfigs
 	public static ForgeConfigSpec.IntValue KASHA_SPAWN_WEIGHT_IN_SOUL_SAND_VALLEY;
 	public static ForgeConfigSpec.IntValue KASHA_SPAWN_WEIGHT_IN_BASALT_DELTAS;
 	public static ForgeConfigSpec.IntValue DOGU_SPAWN_WEIGHT;
-	public static ForgeConfigSpec.IntValue GHSATLY_SHEEKER_SPAWN_WEIGHT;
-	public static ForgeConfigSpec.IntValue GHSATLY_SHEEKER_SPAWN_WEIGHT_IN_SOUL_SAND_VALLEY;
-	public static ForgeConfigSpec.IntValue GHSATLY_SHEEKER_SPAWN_WEIGHT_IN_BASALT_DELTAS;
+	public static ForgeConfigSpec.IntValue GHASTLY_SEEKER_SPAWN_WEIGHT;
+	public static ForgeConfigSpec.IntValue GHASTLY_SEEKER_SPAWN_WEIGHT_IN_SOUL_SAND_VALLEY;
+	public static ForgeConfigSpec.IntValue GHASTLY_SEEKER_SPAWN_WEIGHT_IN_BASALT_DELTAS;
 	public static ForgeConfigSpec.IntValue REDCAP_SPAWN_WEIGHT;
 	public static ForgeConfigSpec.IntValue SLIME_GIRL_SPAWN_WEIGHT;
 	public static ForgeConfigSpec.IntValue MONOLITH_SPAWN_WEIGHT;
@@ -103,7 +103,7 @@ public class ModConfigs
 	public static ForgeConfigSpec.IntValue IMP_SPAWN_WEIGHT_IN_CRIMSON_FOREST;
 	public static ForgeConfigSpec.IntValue IMP_SPAWN_WEIGHT_IN_BASALT_DELTAS;
 
-	public static ForgeConfigSpec.DoubleValue GHSATLY_SHEEKER_SPAWN_CHANCE;
+	public static ForgeConfigSpec.DoubleValue GHASTLY_SEEKER_SPAWN_CHANCE;
 	public static ForgeConfigSpec.DoubleValue CRIMSON_SLAUGHTERER_SPAWN_CHANCE;
 	public static ForgeConfigSpec.DoubleValue SAVAGEFANG_SPAWN_CHANCE;
 
@@ -221,9 +221,9 @@ public class ModConfigs
 		KASHA_SPAWN_WEIGHT_IN_SOUL_SAND_VALLEY = SERVER_BUILDER.defineInRange("kashaSpawnWeightInSoulSandValley", 3, 0, Integer.MAX_VALUE);
 		KASHA_SPAWN_WEIGHT_IN_BASALT_DELTAS = SERVER_BUILDER.defineInRange("kashaSpawnWeightInBasaltDeltas", 2, 0, Integer.MAX_VALUE);
 		DOGU_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("doguSpawnWeight", 10, 0, Integer.MAX_VALUE);
-		GHSATLY_SHEEKER_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("ghastlySeekerSpawnWeight", 7, 0, Integer.MAX_VALUE);
-		GHSATLY_SHEEKER_SPAWN_WEIGHT_IN_SOUL_SAND_VALLEY = SERVER_BUILDER.defineInRange("ghastlySeekerSpawnWeightInSoulSandValley", 4, 0, Integer.MAX_VALUE);
-		GHSATLY_SHEEKER_SPAWN_WEIGHT_IN_BASALT_DELTAS = SERVER_BUILDER.defineInRange("ghastlySeekerSpawnWeightInBasaltDeltas", 2, 0, Integer.MAX_VALUE);
+		GHASTLY_SEEKER_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("ghastlySeekerSpawnWeight", 7, 0, Integer.MAX_VALUE);
+		GHASTLY_SEEKER_SPAWN_WEIGHT_IN_SOUL_SAND_VALLEY = SERVER_BUILDER.defineInRange("ghastlySeekerSpawnWeightInSoulSandValley", 4, 0, Integer.MAX_VALUE);
+		GHASTLY_SEEKER_SPAWN_WEIGHT_IN_BASALT_DELTAS = SERVER_BUILDER.defineInRange("ghastlySeekerSpawnWeightInBasaltDeltas", 2, 0, Integer.MAX_VALUE);
 		REDCAP_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("redcapSpawnWeight", 15, 0, Integer.MAX_VALUE);
 		SLIME_GIRL_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("slimeGirlSpawnWeight", 10, 0, Integer.MAX_VALUE);
 		MONOLITH_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("monolithSpawnWeight", 3, 0, Integer.MAX_VALUE);
@@ -246,7 +246,7 @@ public class ModConfigs
 
 		SERVER_BUILDER.push("chance");
 
-		GHSATLY_SHEEKER_SPAWN_CHANCE = SERVER_BUILDER.defineInRange("ghastlySeekerSpawnChance", 0.05D, 0.0D, 1.0D);
+		GHASTLY_SEEKER_SPAWN_CHANCE = SERVER_BUILDER.defineInRange("ghastlySeekerSpawnChance", 0.05D, 0.0D, 1.0D);
 		CRIMSON_SLAUGHTERER_SPAWN_CHANCE = SERVER_BUILDER.defineInRange("crimsonSlaughtererSpawnChance", 0.5D, 0.0D, 1.0D);
 		SAVAGEFANG_SPAWN_CHANCE = SERVER_BUILDER.defineInRange("savagefangSpawnChance", 0.8D, 0.0D, 1.0D);
 
@@ -381,9 +381,9 @@ public class ModConfigs
 		public static int KASHA_SPAWN_WEIGHT_IN_SOUL_SAND_VALLEY;
 		public static int KASHA_SPAWN_WEIGHT_IN_BASALT_DELTAS;
 		public static int DOGU_SPAWN_WEIGHT;
-		public static int GHSATLY_SHEEKER_SPAWN_WEIGHT;
-		public static int GHSATLY_SHEEKER_SPAWN_WEIGHT_IN_SOUL_SAND_VALLEY;
-		public static int GHSATLY_SHEEKER_SPAWN_WEIGHT_IN_BASALT_DELTAS;
+		public static int GHASTLY_SEEKER_SPAWN_WEIGHT;
+		public static int GHASTLY_SEEKER_SPAWN_WEIGHT_IN_SOUL_SAND_VALLEY;
+		public static int GHASTLY_SEEKER_SPAWN_WEIGHT_IN_BASALT_DELTAS;
 		public static int REDCAP_SPAWN_WEIGHT;
 		public static int SLIME_GIRL_SPAWN_WEIGHT;
 		public static int MONOLITH_SPAWN_WEIGHT;
@@ -402,7 +402,7 @@ public class ModConfigs
 		public static int IMP_SPAWN_WEIGHT_IN_CRIMSON_FOREST;
 		public static int IMP_SPAWN_WEIGHT_IN_BASALT_DELTAS;
 
-		public static double GHSATLY_SHEEKER_SPAWN_CHANCE;
+		public static double GHASTLY_SEEKER_SPAWN_CHANCE;
 		public static double CRIMSON_SLAUGHTERER_SPAWN_CHANCE;
 		public static double SAVAGEFANG_SPAWN_CHANCE;
 
@@ -510,9 +510,9 @@ public class ModConfigs
 			KASHA_SPAWN_WEIGHT_IN_SOUL_SAND_VALLEY = ModConfigs.KASHA_SPAWN_WEIGHT_IN_SOUL_SAND_VALLEY.get();
 			KASHA_SPAWN_WEIGHT_IN_BASALT_DELTAS = ModConfigs.KASHA_SPAWN_WEIGHT_IN_BASALT_DELTAS.get();;
 			DOGU_SPAWN_WEIGHT = ModConfigs.DOGU_SPAWN_WEIGHT.get();
-			GHSATLY_SHEEKER_SPAWN_WEIGHT = ModConfigs.GHSATLY_SHEEKER_SPAWN_WEIGHT.get();
-			GHSATLY_SHEEKER_SPAWN_WEIGHT_IN_SOUL_SAND_VALLEY = ModConfigs.GHSATLY_SHEEKER_SPAWN_WEIGHT_IN_SOUL_SAND_VALLEY.get();
-			GHSATLY_SHEEKER_SPAWN_WEIGHT_IN_BASALT_DELTAS = ModConfigs.GHSATLY_SHEEKER_SPAWN_WEIGHT_IN_BASALT_DELTAS.get();
+			GHASTLY_SEEKER_SPAWN_WEIGHT = ModConfigs.GHASTLY_SEEKER_SPAWN_WEIGHT.get();
+			GHASTLY_SEEKER_SPAWN_WEIGHT_IN_SOUL_SAND_VALLEY = ModConfigs.GHASTLY_SEEKER_SPAWN_WEIGHT_IN_SOUL_SAND_VALLEY.get();
+			GHASTLY_SEEKER_SPAWN_WEIGHT_IN_BASALT_DELTAS = ModConfigs.GHASTLY_SEEKER_SPAWN_WEIGHT_IN_BASALT_DELTAS.get();
 			REDCAP_SPAWN_WEIGHT = ModConfigs.REDCAP_SPAWN_WEIGHT.get();
 			SLIME_GIRL_SPAWN_WEIGHT = ModConfigs.SLIME_GIRL_SPAWN_WEIGHT.get();
 			MONOLITH_SPAWN_WEIGHT = ModConfigs.MONOLITH_SPAWN_WEIGHT.get();
@@ -531,7 +531,7 @@ public class ModConfigs
 			IMP_SPAWN_WEIGHT_IN_CRIMSON_FOREST = ModConfigs.IMP_SPAWN_WEIGHT_IN_CRIMSON_FOREST.get();
 			IMP_SPAWN_WEIGHT_IN_BASALT_DELTAS = ModConfigs.IMP_SPAWN_WEIGHT_IN_BASALT_DELTAS.get();
 
-			GHSATLY_SHEEKER_SPAWN_CHANCE = ModConfigs.GHSATLY_SHEEKER_SPAWN_CHANCE.get();
+			GHASTLY_SEEKER_SPAWN_CHANCE = ModConfigs.GHASTLY_SEEKER_SPAWN_CHANCE.get();
 			CRIMSON_SLAUGHTERER_SPAWN_CHANCE = ModConfigs.CRIMSON_SLAUGHTERER_SPAWN_CHANCE.get();
 			SAVAGEFANG_SPAWN_CHANCE = ModConfigs.SAVAGEFANG_SPAWN_CHANCE.get();
 

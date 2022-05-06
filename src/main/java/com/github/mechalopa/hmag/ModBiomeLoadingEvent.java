@@ -147,9 +147,9 @@ public class ModBiomeLoadingEvent
 							event.getSpawns().addMobCharge(ModEntityTypes.KASHA.get(), 0.7D, 0.15D);
 						}
 
-						if (ModConfigs.cachedServer.GHSATLY_SHEEKER_SPAWN_WEIGHT_IN_SOUL_SAND_VALLEY > 0)
+						if (ModConfigs.cachedServer.GHASTLY_SEEKER_SPAWN_WEIGHT_IN_SOUL_SAND_VALLEY > 0)
 						{
-							event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.GHASTLY_SEEKER.get(), ModConfigs.cachedServer.GHSATLY_SHEEKER_SPAWN_WEIGHT_IN_SOUL_SAND_VALLEY, 1, 1));
+							event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.GHASTLY_SEEKER.get(), ModConfigs.cachedServer.GHASTLY_SEEKER_SPAWN_WEIGHT_IN_SOUL_SAND_VALLEY, 1, 1));
 							event.getSpawns().addMobCharge(ModEntityTypes.GHASTLY_SEEKER.get(), 0.7D, 0.15D);
 						}
 					}
@@ -159,8 +159,8 @@ public class ModBiomeLoadingEvent
 							event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.WITHER_GHOST.get(), ModConfigs.cachedServer.WITHER_GHOST_SPAWN_WEIGHT_IN_BASALT_DELTAS, 2, 2));
 						if (ModConfigs.cachedServer.KASHA_SPAWN_WEIGHT_IN_BASALT_DELTAS > 0)
 							event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.KASHA.get(), ModConfigs.cachedServer.KASHA_SPAWN_WEIGHT_IN_BASALT_DELTAS, 1, 2));
-						if (ModConfigs.cachedServer.GHSATLY_SHEEKER_SPAWN_WEIGHT_IN_BASALT_DELTAS > 0)
-							event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.GHASTLY_SEEKER.get(), ModConfigs.cachedServer.GHSATLY_SHEEKER_SPAWN_WEIGHT_IN_BASALT_DELTAS, 1, 1));
+						if (ModConfigs.cachedServer.GHASTLY_SEEKER_SPAWN_WEIGHT_IN_BASALT_DELTAS > 0)
+							event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.GHASTLY_SEEKER.get(), ModConfigs.cachedServer.GHASTLY_SEEKER_SPAWN_WEIGHT_IN_BASALT_DELTAS, 1, 1));
 						if (ModConfigs.cachedServer.IMP_SPAWN_WEIGHT_IN_BASALT_DELTAS > 0)
 							event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.IMP.get(), ModConfigs.cachedServer.IMP_SPAWN_WEIGHT_IN_BASALT_DELTAS, 1, 2));
 					}
@@ -175,8 +175,8 @@ public class ModBiomeLoadingEvent
 							event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.WITHER_GHOST.get(), ModConfigs.cachedServer.WITHER_GHOST_SPAWN_WEIGHT, 2, 4));
 						if (ModConfigs.cachedServer.KASHA_SPAWN_WEIGHT > 0)
 							event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.KASHA.get(), ModConfigs.cachedServer.KASHA_SPAWN_WEIGHT, 1, 2));
-						if (ModConfigs.cachedServer.GHSATLY_SHEEKER_SPAWN_WEIGHT > 0)
-							event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.GHASTLY_SEEKER.get(), ModConfigs.cachedServer.GHSATLY_SHEEKER_SPAWN_WEIGHT, 1, 1));
+						if (ModConfigs.cachedServer.GHASTLY_SEEKER_SPAWN_WEIGHT > 0)
+							event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.GHASTLY_SEEKER.get(), ModConfigs.cachedServer.GHASTLY_SEEKER_SPAWN_WEIGHT, 1, 1));
 						if (ModConfigs.cachedServer.IMP_SPAWN_WEIGHT > 0)
 							event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.IMP.get(), ModConfigs.cachedServer.IMP_SPAWN_WEIGHT, 1, 2));
 					}

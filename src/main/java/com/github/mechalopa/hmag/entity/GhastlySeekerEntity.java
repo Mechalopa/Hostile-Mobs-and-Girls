@@ -167,7 +167,7 @@ public class GhastlySeekerEntity extends FlyingEntity implements IMob, IModMob
 
 	public static boolean checkGhastlySeekerSpawnRules(EntityType<GhastlySeekerEntity> type, IServerWorld worldIn, SpawnReason reason, BlockPos pos, Random randomIn)
 	{
-		return worldIn.getDifficulty() != Difficulty.PEACEFUL && randomIn.nextDouble() < ModConfigs.cachedServer.GHSATLY_SHEEKER_SPAWN_CHANCE && MobEntity.checkMobSpawnRules(type, worldIn, reason, pos, randomIn);
+		return worldIn.getDifficulty() != Difficulty.PEACEFUL && randomIn.nextDouble() < ModConfigs.cachedServer.GHASTLY_SEEKER_SPAWN_CHANCE && MobEntity.checkMobSpawnRules(type, worldIn, reason, pos, randomIn);
 	}
 
 	@Override
