@@ -1,39 +1,38 @@
 package com.github.mechalopa.hmag.client.renderer;
 
 import com.github.mechalopa.hmag.HMaG;
+import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.DoguModel;
 import com.github.mechalopa.hmag.entity.DoguEntity;
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
 
-import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.client.renderer.entity.layers.HeldItemLayer;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class DoguRenderer extends MobRenderer<DoguEntity, DoguModel<DoguEntity>>
+public class DoguRenderer extends HumanoidMobRenderer<DoguEntity, DoguModel<DoguEntity>>
 {
 	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/dogu.png");
 
-	public DoguRenderer(EntityRendererManager renderManagerIn)
+	public DoguRenderer(EntityRendererProvider.Context context)
 	{
-		super(renderManagerIn, new DoguModel<>(), 0.5F);
-		this.addLayer(new HeldItemLayer<>(this));
+		super(context, new DoguModel<>(context.bakeLayer(ModModelLayers.DOGU)), 0.5F);
 	}
 
 	@Override
-	protected void scale(DoguEntity entityIn, MatrixStack matrixStackIn, float partialTickTime)
+	protected void scale(DoguEntity entity, PoseStack poseStack, float partialTickTime)
 	{
-		super.scale(entityIn, matrixStackIn, partialTickTime);
-		float f = (float)entityIn.tickCount + partialTickTime;
-		matrixStackIn.translate(0.0F, -0.06F + MathHelper.sin(f * 0.06F) * 0.04F, 0.0F);
+		super.scale(entity, poseStack, partialTickTime);
+		float f = (float)entity.tickCount + partialTickTime;
+		poseStack.translate(0.0F, -0.06F + Mth.sin(f * 0.06F) * 0.04F, 0.0F);
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(DoguEntity entityIn)
+	public ResourceLocation getTextureLocation(DoguEntity entity)
 	{
 		return TEX;
 	}

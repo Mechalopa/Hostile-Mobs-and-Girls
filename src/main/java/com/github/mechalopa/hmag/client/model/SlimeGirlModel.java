@@ -16,8 +16,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class SlimeGirlModel<T extends SlimeGirlEntity> extends AbstractAdvancedGirlModel<T>
 {
 	protected boolean isOuterLayer = false;
-	private ModelPart skirt1;
-	private ModelPart skirt2;
 	private ModelPart rightHair1;
 	private ModelPart leftHair1;
 	private ModelPart rightHair2;
@@ -25,6 +23,8 @@ public class SlimeGirlModel<T extends SlimeGirlEntity> extends AbstractAdvancedG
 	private ModelPart rightHair3;
 	private ModelPart leftHair3;
 	private ModelPart hairPart;
+	private ModelPart skirt1;
+	private ModelPart skirt2;
 	private ModelPart rightHairCore;
 	private ModelPart leftHairCore;
 	private ModelPart bodyCore;
@@ -32,8 +32,6 @@ public class SlimeGirlModel<T extends SlimeGirlEntity> extends AbstractAdvancedG
 	public SlimeGirlModel(ModelPart modelPart)
 	{
 		super(modelPart);
-		this.skirt1 = this.body.getChild("skirt_1");
-		this.skirt2 = this.body.getChild("skirt_2");
 		this.rightHair1 = this.head.getChild("right_hair_1");
 		this.leftHair1 = this.head.getChild("left_hair_1");
 		this.rightHair2 = this.rightHair1.getChild("right_hair_2");
@@ -41,6 +39,8 @@ public class SlimeGirlModel<T extends SlimeGirlEntity> extends AbstractAdvancedG
 		this.rightHair3 = this.rightHair2.getChild("right_hair_3");
 		this.leftHair3 = this.leftHair2.getChild("left_hair_3");
 		this.hairPart = this.head.getChild("hair_part");
+		this.skirt1 = this.body.getChild("skirt_1");
+		this.skirt2 = this.body.getChild("skirt_2");
 		this.rightHairCore = this.rightHair1.getChild("right_hair_core");
 		this.leftHairCore = this.leftHair1.getChild("left_hair_core");
 		this.bodyCore = this.body.getChild("body_core");
@@ -52,9 +52,6 @@ public class SlimeGirlModel<T extends SlimeGirlEntity> extends AbstractAdvancedG
 		PartDefinition pd = md.getRoot();
 		ModClientUtils.addC(pd, cd, "right_arm", 40, 16, 0.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F, -5.0F, 2.0F, 0.0F);
 		ModClientUtils.addC(pd, cd, "left_arm", 40, 16, -2.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F, 5.0F, 2.0F, 0.0F, true);
-		PartDefinition bodypd = pd.getChild("body");
-		ModClientUtils.addC(bodypd, cd, "skirt_1", 0, 38, -3.5F, 0.0F, -2.0F, 7.0F, 1.0F, 4.0F, 0.0F, 11.0F, 0.0F);
-		ModClientUtils.addC(bodypd, cd, "skirt_2", 0, 44, -4.0F, 0.0F, -2.5F, 8.0F, 5.0F, 5.0F, 0.0F, 12.0F, 0.0F);
 		PartDefinition headpd = pd.getChild("head");
 		PartDefinition rh1pd = ModClientUtils.addC(headpd, cd, "right_hair_1", 32, 48, -2.0F, -1.5F, -1.5F, 3.0F, 12.0F, 3.0F, -4.0F, -8.0F, 2.75F);
 		PartDefinition lh1pd = ModClientUtils.addC(headpd, cd, "left_hair_1", 32, 48, -1.0F, -1.5F, -1.5F, 3.0F, 12.0F, 3.0F, 4.0F, -8.0F, 2.75F, true);
@@ -63,6 +60,9 @@ public class SlimeGirlModel<T extends SlimeGirlEntity> extends AbstractAdvancedG
 		ModClientUtils.addC(rh2pd, cd, "right_hair_3", 56, 48, -1.0F, -0.5F, -1.0F, 2.0F, 5.0F, 2.0F, 0.0F, 7.5F, 0.0F);
 		ModClientUtils.addC(lh2pd, cd, "left_hair_3", 56, 48, -1.0F, -0.5F, -1.0F, 2.0F, 5.0F, 2.0F, 0.0F, 7.5F, 0.0F, true);
 		ModClientUtils.addC(headpd, cd, "hair_part", 0, 56, -4.0F, 0.0F, -1.0F, 8.0F, 1.0F, 1.0F, 0.0F, 0.0F, 4.0F);
+		PartDefinition bodypd = pd.getChild("body");
+		ModClientUtils.addC(bodypd, cd, "skirt_1", 0, 38, -3.5F, 0.0F, -2.0F, 7.0F, 1.0F, 4.0F, 0.0F, 11.0F, 0.0F);
+		ModClientUtils.addC(bodypd, cd, "skirt_2", 0, 44, -4.0F, 0.0F, -2.5F, 8.0F, 5.0F, 5.0F, 0.0F, 12.0F, 0.0F);
 		ModClientUtils.addC(rh1pd, cd, "right_hair_core", 32, 64, -2.0F, -2.0F, -2.0F, 4.0F, 4.0F, 4.0F, -0.5F, 1.0F, 0.0F, -1.0F);
 		ModClientUtils.addC(lh1pd, cd, "left_hair_core", 32, 64, -2.0F, -2.0F, -2.0F, 4.0F, 4.0F, 4.0F, 0.5F, 1.0F, 0.0F, true, -1.0F);
 		ModClientUtils.addC(bodypd, cd, "body_core", 0, 64, -3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F, 0.0F, 4.0F, -0.5F, -1.75F);

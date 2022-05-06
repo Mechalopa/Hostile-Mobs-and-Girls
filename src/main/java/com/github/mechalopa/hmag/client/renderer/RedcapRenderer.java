@@ -1,13 +1,14 @@
 package com.github.mechalopa.hmag.client.renderer;
 
 import com.github.mechalopa.hmag.HMaG;
+import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.RedcapModel;
 import com.github.mechalopa.hmag.entity.RedcapEntity;
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
 
-import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.client.renderer.entity.layers.BipedArmorLayer;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -16,17 +17,22 @@ public class RedcapRenderer extends AbstractGirlRenderer<RedcapEntity, RedcapMod
 {
 	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/redcap.png");
 
-	public RedcapRenderer(EntityRendererManager renderManagerIn)
+	public RedcapRenderer(EntityRendererProvider.Context context)
 	{
-		super(renderManagerIn, new RedcapModel<>(), 0.5F);
-		this.addLayer(new BipedArmorLayer<>(this, new RedcapModel<>(0.5F, true), new RedcapModel<>(1.0F, true)));
+		this(context, new RedcapModel<>(context.bakeLayer(ModModelLayers.REDCAP)), new RedcapModel<>(context.bakeLayer(ModModelLayers.REDCAP_INNER_ARMOR)), new RedcapModel<>(context.bakeLayer(ModModelLayers.REDCAP_OUTER_ARMOR)));
+	}
+
+	public RedcapRenderer(EntityRendererProvider.Context context, RedcapModel<RedcapEntity> model, RedcapModel<RedcapEntity> model1, RedcapModel<RedcapEntity> model2)
+	{
+		super(context, model, 0.5F);
+		this.addLayer(new HumanoidArmorLayer<>(this, model1, model2));
 	}
 
 	@Override
-	protected void scale(RedcapEntity entityIn, MatrixStack matrixStackIn, float partialTickTime)
+	protected void scale(RedcapEntity entity, PoseStack poseStack, float partialTickTime)
 	{
-		matrixStackIn.scale(0.875F, 0.875F, 0.875F);
-		super.scale(entityIn, matrixStackIn, partialTickTime);
+		poseStack.scale(0.875F, 0.875F, 0.875F);
+		super.scale(entity, poseStack, partialTickTime);
 	}
 
 	@Override

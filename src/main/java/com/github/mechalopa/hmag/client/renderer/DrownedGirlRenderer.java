@@ -24,20 +24,20 @@ public class DrownedGirlRenderer extends ZombieGirlRenderer
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(Zombie entityIn)
+	public ResourceLocation getTextureLocation(Zombie entity)
 	{
 		return TEX;
 	}
 
 	@Override
-	protected void setupRotations(Zombie entityLiving, PoseStack poseStackIn, float ageInTicks, float rotationYaw, float partialTicks)
+	protected void setupRotations(Zombie entity, PoseStack poseStack, float ageInTicks, float rotationYaw, float partialTicks)
 	{
-		super.setupRotations(entityLiving, poseStackIn, ageInTicks, rotationYaw, partialTicks);
-		float f = entityLiving.getSwimAmount(partialTicks);
+		super.setupRotations(entity, poseStack, ageInTicks, rotationYaw, partialTicks);
+		float f = entity.getSwimAmount(partialTicks);
 
 		if (f > 0.0F)
 		{
-			poseStackIn.mulPose(Vector3f.XP.rotationDegrees(Mth.lerp(f, entityLiving.getXRot(), -10.0F - entityLiving.getXRot())));
+			poseStack.mulPose(Vector3f.XP.rotationDegrees(Mth.lerp(f, entity.getXRot(), -10.0F - entity.getXRot())));
 		}
 	}
 }

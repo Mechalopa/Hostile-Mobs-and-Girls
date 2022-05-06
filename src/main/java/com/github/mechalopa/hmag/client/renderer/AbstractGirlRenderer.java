@@ -14,14 +14,14 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public abstract class AbstractGirlRenderer<T extends Mob, M extends HumanoidModel<T>> extends HumanoidMobRenderer<T, M>
 {
-	public AbstractGirlRenderer(EntityRendererProvider.Context context, M modelIn, float shadowSize)
+	public AbstractGirlRenderer(EntityRendererProvider.Context context, M model, float shadowSize)
 	{
-		this(context, modelIn, shadowSize, 0);
+		this(context, model, shadowSize, 0);
 	}
 
-	public AbstractGirlRenderer(EntityRendererProvider.Context context, M modelIn, float shadowSize, int itemTranslateX)
+	public AbstractGirlRenderer(EntityRendererProvider.Context context, M model, float shadowSize, int itemTranslateX)
 	{
-		super(context, modelIn, shadowSize);
+		super(context, model, shadowSize);
 		for (RenderLayer<T, M> layer : this.layers)
 		{
 			if (layer != null && layer instanceof ItemInHandLayer)

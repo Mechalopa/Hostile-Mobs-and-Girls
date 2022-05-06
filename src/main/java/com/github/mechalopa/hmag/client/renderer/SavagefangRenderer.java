@@ -1,16 +1,17 @@
 package com.github.mechalopa.hmag.client.renderer;
 
 import com.github.mechalopa.hmag.HMaG;
+import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.SavagefangModel;
 import com.github.mechalopa.hmag.client.renderer.layers.SavagefangEyesLayer;
 import com.github.mechalopa.hmag.entity.SavagefangEntity;
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Vector3f;
 
-import net.minecraft.client.renderer.entity.EntityRendererManager;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.vector.Vector3f;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -19,40 +20,40 @@ public class SavagefangRenderer extends MobRenderer<SavagefangEntity, Savagefang
 {
 	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/savagefang.png");
 
-	public SavagefangRenderer(EntityRendererManager renderManagerIn)
+	public SavagefangRenderer(EntityRendererProvider.Context context)
 	{
-		super(renderManagerIn, new SavagefangModel<>(), 0.4F);
+		super(context, new SavagefangModel<>(context.bakeLayer(ModModelLayers.SAVAGEFANG)), 0.4F);
 		this.addLayer(new SavagefangEyesLayer<>(this));
 	}
 
 	@Override
-	protected void scale(SavagefangEntity entityIn, MatrixStack matrixStackIn, float partialTickTime)
+	protected void scale(SavagefangEntity entity, PoseStack poseStack, float partialTickTime)
 	{
-		matrixStackIn.scale(1.25F, 1.25F, 1.25F);
-		super.scale(entityIn, matrixStackIn, partialTickTime);
+		poseStack.scale(1.25F, 1.25F, 1.25F);
+		super.scale(entity, poseStack, partialTickTime);
 	}
 
 	@Override
-	protected void setupRotations(SavagefangEntity entityLiving, MatrixStack matrixStackIn, float ageInTicks, float rotationYaw, float partialTicks)
+	protected void setupRotations(SavagefangEntity entity, PoseStack poseStack, float ageInTicks, float rotationYaw, float partialTicks)
 	{
-		super.setupRotations(entityLiving, matrixStackIn, ageInTicks, rotationYaw, partialTicks);
+		super.setupRotations(entity, poseStack, ageInTicks, rotationYaw, partialTicks);
 
-		float f = 4.3F * MathHelper.sin(0.6F * ageInTicks);
-		matrixStackIn.mulPose(Vector3f.YP.rotationDegrees(f));
+		float f = 4.3F * Mth.sin(0.6F * ageInTicks);
+		poseStack.mulPose(Vector3f.YP.rotationDegrees(f));
 
-		if (entityLiving.isLaunched())
+		if (entity.isLaunched())
 		{
-			matrixStackIn.translate((double)0.1F, (double)0.1F, (double)-0.1F);
-			matrixStackIn.mulPose(Vector3f.ZP.rotationDegrees(90.0F));
+			poseStack.translate((double)0.1F, (double)0.1F, (double)-0.1F);
+			poseStack.mulPose(Vector3f.ZP.rotationDegrees(90.0F));
 		}
 		else
 		{
-			matrixStackIn.mulPose(Vector3f.XP.rotationDegrees(entityLiving.getXRotAnimationScale(partialTicks) * 180.0F));
+			poseStack.mulPose(Vector3f.XP.rotationDegrees(entity.getXRotAnimationScale(partialTicks) * 180.0F));
 		}
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(SavagefangEntity entityIn)
+	public ResourceLocation getTextureLocation(SavagefangEntity entity)
 	{
 		return TEX;
 	}

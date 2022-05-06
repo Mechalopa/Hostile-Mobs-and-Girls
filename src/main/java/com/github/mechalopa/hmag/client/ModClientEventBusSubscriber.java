@@ -134,7 +134,7 @@ public class ModClientEventBusSubscriber
 	}
 
 	@SubscribeEvent
-	public static void registerRenderers(RegisterRenderers event)
+	public static void registerRenderers(final RegisterRenderers event)
 	{
 		event.registerEntityRenderer(ModEntityTypes.ZOMBIE_GIRL.get(), ZombieGirlRenderer::new);
 		event.registerEntityRenderer(ModEntityTypes.HUSK_GIRL.get(), HuskGirlRenderer::new);
@@ -178,7 +178,7 @@ public class ModClientEventBusSubscriber
 	}
 
 	@SubscribeEvent
-	public static void registerRenderers(RegisterLayerDefinitions event)
+	public static void registerRenderers(final RegisterLayerDefinitions event)
 	{
 		LayerDefinition layerdefinition = LayerDefinition.create(HumanoidModel.createMesh(LayerDefinitions.OUTER_ARMOR_DEFORMATION, 0.0F), 64, 32);
 		LayerDefinition layerdefinition1 = LayerDefinition.create(HumanoidModel.createMesh(LayerDefinitions.INNER_ARMOR_DEFORMATION, 0.0F), 64, 32);

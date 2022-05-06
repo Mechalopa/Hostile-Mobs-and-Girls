@@ -1,108 +1,71 @@
 package com.github.mechalopa.hmag.client.model;
 
-import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.util.math.MathHelper;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
+
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.builders.CubeDeformation;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
+import net.minecraft.client.model.geom.builders.MeshDefinition;
+import net.minecraft.client.model.geom.builders.PartDefinition;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.Mob;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class RedcapModel<T extends MobEntity> extends AbstractAdvancedGirlModel<T>
+public class RedcapModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 {
-	private ModelRenderer cap1;
-	private ModelRenderer cap2;
-	private ModelRenderer cap3;
-	private ModelRenderer cap4;
-	private ModelRenderer rightHair;
-	private ModelRenderer rightHair2;
-	private ModelRenderer rightHair3;
-	private ModelRenderer rightHair4;
-	private ModelRenderer leftHair;
-	private ModelRenderer leftHair2;
-	private ModelRenderer leftHair3;
-	private ModelRenderer leftHair4;
-	private ModelRenderer skirt1;
-	private ModelRenderer skirt2;
+	private ModelPart cap1;
+//	private ModelPart cap2;
+//	private ModelPart cap3;
+//	private ModelPart cap4;
+	private ModelPart rightHair1;
+//	private ModelPart rightHair2;
+//	private ModelPart rightHair3;
+//	private ModelPart rightHair4;
+	private ModelPart leftHair1;
+//	private ModelPart leftHair2;
+//	private ModelPart leftHair3;
+//	private ModelPart leftHair4;
+	private ModelPart skirt1;
+	private ModelPart skirt2;
 
-	public RedcapModel()
+	public RedcapModel(ModelPart modelPart)
 	{
-		this(0.0F);
+		super(modelPart);
+		this.cap1 = this.head.getChild("cap_1");
+		this.rightHair1 = this.head.getChild("right_hair_1");
+		this.leftHair1 = this.head.getChild("left_hair_1");
+		this.skirt1 = this.body.getChild("skirt_1");
+		this.skirt2 = this.body.getChild("skirt_2");
 	}
 
-	public RedcapModel(float modelSizeIn)
+	public static MeshDefinition createMesh(CubeDeformation cd)
 	{
-		this(modelSizeIn, false);
+		MeshDefinition md = AbstractAdvancedGirlModel.createMesh(cd, 0.0F, 6);
+		PartDefinition pd = md.getRoot();
+		PartDefinition headpd = pd.getChild("head");
+		PartDefinition cap1pd = ModClientUtils.addC(headpd, cd, "cap_1", 0, 64, -5.0F, -1.0F, -5.0F, 10.0F, 2.0F, 10.0F, 0.0F, -7.0F, 0.0F);
+		PartDefinition cap2pd = ModClientUtils.addC(cap1pd, cd, "cap_2", 0, 48, -4.0F, 0.0F, -4.0F, 8.0F, 1.0F, 8.0F, 0.0F, -2.0F, 0.5F);
+		ModClientUtils.addC(cap2pd, cd, "cap_3", 0, 40, -3.0F, 0.0F, -3.0F, 6.0F, 1.0F, 6.0F, 0.0F, -1.0F, 0.5F);
+		ModClientUtils.addC(cap1pd, cd, "cap_4", 0, 80, -4.0F, 0.0F, -3.0F, 8.0F, 1.0F, 3.0F, 0.0F, 0.0F, -5.0F);
+		PartDefinition rh1pd = ModClientUtils.addC(headpd, cd, "right_hair_1", 32, 80, -1.0F, 0.0F, -1.0F, 2.0F, 2.0F, 2.0F, -3.5F, -1.0F, 3.0F);
+		PartDefinition lh1pd = ModClientUtils.addC(headpd, cd, "left_hair_1", 32, 80, -1.0F, 0.0F, -1.0F, 2.0F, 2.0F, 2.0F, 3.5F, -1.0F, 3.0F, true);
+		PartDefinition rh2pd = ModClientUtils.addC(rh1pd, cd, "right_hair_2", 40, 80, -1.5F, 0.0F, -1.5F, 3.0F, 2.0F, 3.0F, 0.0F, 2.0F, 0.0F);
+		PartDefinition lh2pd = ModClientUtils.addC(lh1pd, cd, "left_hair_2", 40, 80, -1.5F, 0.0F, -1.5F, 3.0F, 2.0F, 3.0F, 0.0F, 2.0F, 0.0F, true);
+		PartDefinition rh3pd = ModClientUtils.addC(rh2pd, cd, "right_hair_3", 32, 88, -2.0F, 0.0F, -2.0F, 4.0F, 1.0F, 4.0F, 0.0F, 2.0F, 0.0F);
+		PartDefinition lh3pd = ModClientUtils.addC(lh2pd, cd, "left_hair_3", 32, 88, -2.0F, 0.0F, -2.0F, 4.0F, 1.0F, 4.0F, 0.0F, 2.0F, 0.0F, true);
+		ModClientUtils.addC(rh3pd, cd, "right_hair_4", 32, 96, -2.0F, 0.0F, -2.0F, 4.0F, 2.0F, 4.0F, 0.0F, 1.0F, 0.0F);
+		ModClientUtils.addC(lh3pd, cd, "left_hair_4", 32, 96, -2.0F, 0.0F, -2.0F, 4.0F, 2.0F, 4.0F, 0.0F, 1.0F, 0.0F, true);
+		PartDefinition bodypd = pd.getChild("body");
+		ModClientUtils.addC(bodypd, cd, "skirt_1", 32, 48, -3.5F, 0.0F, -2.0F, 7.0F, 1.0F, 4.0F, 0.0F, 11.0F, 0.0F);
+		ModClientUtils.addC(bodypd, cd, "skirt_2", 32, 56, -4.0F, 0.0F, -2.5F, 8.0F, 6.0F, 5.0F, 0.0F, 12.0F, 0.0F);
+		return md;
 	}
 
-	public RedcapModel(float modelSizeIn, boolean isArmor)
+	public static LayerDefinition createBodyLayer()
 	{
-		super(modelSizeIn, 0.0F, 64, isArmor ? 32 : 128, isArmor);
-
-		if (!isArmor)
-		{
-			this.cap1 = new ModelRenderer(this, 0, 64);
-			this.cap1.addBox(-5.0F, -1.0F, -5.0F, 10.0F, 2.0F, 10.0F, modelSizeIn);
-			this.cap1.setPos(0.0F, -7.0F, 0.0F);
-			this.head.addChild(this.cap1);
-			this.cap2 = new ModelRenderer(this, 0, 48);
-			this.cap2.addBox(-4.0F, 0.0F, -4.0F, 8.0F, 1.0F, 8.0F, modelSizeIn);
-			this.cap2.setPos(0.0F, -2.0F, 0.5F);
-			this.cap1.addChild(this.cap2);
-			this.cap3 = new ModelRenderer(this, 0, 40);
-			this.cap3.addBox(-3.0F, 0.0F, -3.0F, 6.0F, 1.0F, 6.0F, modelSizeIn);
-			this.cap3.setPos(0.0F, -1.0F, 0.5F);
-			this.cap2.addChild(this.cap3);
-			this.cap4 = new ModelRenderer(this, 0, 80);
-			this.cap4.addBox(-4.0F, 0.0F, -3.0F, 8.0F, 1.0F, 3.0F, modelSizeIn);
-			this.cap4.setPos(0.0F, 0.0F, -5.0F);
-			this.cap1.addChild(this.cap4);
-
-			this.rightHair = new ModelRenderer(this, 32, 80);
-			this.rightHair.addBox(-1.0F, 0.0F, -1.0F, 2.0F, 2.0F, 2.0F, modelSizeIn);
-			this.rightHair.setPos(-3.5F, -1.0F, 3.0F);
-			this.head.addChild(this.rightHair);
-			this.leftHair = new ModelRenderer(this, 32, 80);
-			this.leftHair.mirror = true;
-			this.leftHair.addBox(-1.0F, 0.0F, -1.0F, 2.0F, 2.0F, 2.0F, modelSizeIn);
-			this.leftHair.setPos(3.5F, -1.0F, 3.0F);
-			this.head.addChild(this.leftHair);
-			this.rightHair2 = new ModelRenderer(this, 40, 80);
-			this.rightHair2.addBox(-1.5F, 0.0F, -1.5F, 3.0F, 2.0F, 3.0F, modelSizeIn);
-			this.rightHair2.setPos(0.0F, 2.0F, 0.0F);
-			this.rightHair.addChild(this.rightHair2);
-			this.leftHair2 = new ModelRenderer(this, 40, 80);
-			this.leftHair2.mirror = true;
-			this.leftHair2.addBox(-1.5F, 0.0F, -1.5F, 3.0F, 2.0F, 3.0F, modelSizeIn);
-			this.leftHair2.setPos(0.0F, 2.0F, 0.0F);
-			this.leftHair.addChild(this.leftHair2);
-			this.rightHair3 = new ModelRenderer(this, 32, 88);
-			this.rightHair3.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 1.0F, 4.0F, modelSizeIn);
-			this.rightHair3.setPos(0.0F, 2.0F, 0.0F);
-			this.rightHair2.addChild(this.rightHair3);
-			this.leftHair3 = new ModelRenderer(this, 32, 88);
-			this.leftHair3.mirror = true;
-			this.leftHair3.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 1.0F, 4.0F, modelSizeIn);
-			this.leftHair3.setPos(0.0F, 2.0F, 0.0F);
-			this.leftHair2.addChild(this.leftHair3);
-			this.rightHair4 = new ModelRenderer(this, 32, 96);
-			this.rightHair4.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 2.0F, 4.0F, modelSizeIn);
-			this.rightHair4.setPos(0.0F, 1.0F, 0.0F);
-			this.rightHair3.addChild(this.rightHair4);
-			this.leftHair4 = new ModelRenderer(this, 32, 96);
-			this.leftHair4.mirror = true;
-			this.leftHair4.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 2.0F, 4.0F, modelSizeIn);
-			this.leftHair4.setPos(0.0F, 1.0F, 0.0F);
-			this.leftHair3.addChild(this.leftHair4);
-
-			this.skirt1 = new ModelRenderer(this, 32, 48);
-			this.skirt1.addBox(-3.5F, 0.0F, -2.0F, 7.0F, 1.0F, 4.0F, modelSizeIn);
-			this.skirt1.setPos(0.0F, 11.0F, 0.0F);
-			this.body.addChild(this.skirt1);
-			this.skirt2 = new ModelRenderer(this, 32, 56);
-			this.skirt2.addBox(-4.0F, 0.0F, -2.5F, 8.0F, 6.0F, 5.0F, modelSizeIn);
-			this.skirt2.setPos(0.0F, 12.0F, 0.0F);
-			this.body.addChild(this.skirt2);
-		}
+		return LayerDefinition.create(createMesh(CubeDeformation.NONE), 64, 128);
 	}
 
 	@Override
@@ -110,25 +73,24 @@ public class RedcapModel<T extends MobEntity> extends AbstractAdvancedGirlModel<
 	{
 		super.setupAnim(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 
-		if (!this.isArmor)
+		this.cap1.xRot = -((float)Math.PI * 0.016F);
+
+		this.rightHair1.xRot = (float)Math.PI / 7.0F;
+		this.leftHair1.xRot = (float)Math.PI / 7.0F;
+		this.rightHair1.zRot = (float)Math.PI / 8.0F;
+		this.leftHair1.zRot = -((float)Math.PI / 8.0F);
+		this.rightHair1.zRot -= Mth.sin(ageInTicks * 0.09F) * 0.033F;
+		this.leftHair1.zRot += Mth.sin(ageInTicks * 0.09F) * 0.033F;
+
+		if (this.riding)
 		{
-			this.cap1.xRot = -((float)Math.PI * 0.016F);
-
-			this.rightHair.xRot = (float)Math.PI / 7.0F;
-			this.leftHair.xRot = (float)Math.PI / 7.0F;
-			this.rightHair.zRot = (float)Math.PI / 8.0F;
-			this.leftHair.zRot = -((float)Math.PI / 8.0F);
-			this.rightHair.zRot -= MathHelper.sin(ageInTicks * 0.09F) * 0.033F;
-			this.leftHair.zRot += MathHelper.sin(ageInTicks * 0.09F) * 0.033F;
-
-			if (this.riding)
-			{
-				this.skirt2.xRot = -((float)Math.PI * 2.0F / 5.0F);
-			}
-			else
-			{
-				this.skirt2.xRot = this.body.xRot;
-			}
+			this.skirt2.xRot = -((float)Math.PI * 2.0F / 5.0F);
 		}
+		else
+		{
+			this.skirt2.xRot = this.body.xRot;
+		}
+
+		this.skirt1.xRot = 0.0F;
 	}
 }
