@@ -113,7 +113,7 @@ public class DoguModel<T extends MobEntity> extends BipedModel<T>
 		this.leftArm.addChild(this.leftArmPart4);
 
 		this.rightLeg = new ModelRenderer(this, 0, 16);
-		this.rightLeg.addBox(-2.0F, 0.0F, -2.0F, 4, 3, 4, modelSize);
+		this.rightLeg.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 3.0F, 4.0F, modelSize);
 		this.rightLeg.setPos(-2.75F, 12.0F, 0.0F);
 		this.rightLegPart1 = new ModelRenderer(this, 0, 32);
 		this.rightLegPart1.addBox(-2.5F, 0.0F, -2.5F, 5.0F, 4.0F, 5.0F, modelSize);

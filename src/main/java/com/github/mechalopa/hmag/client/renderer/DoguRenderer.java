@@ -5,23 +5,21 @@ import com.github.mechalopa.hmag.client.model.DoguModel;
 import com.github.mechalopa.hmag.entity.DoguEntity;
 import com.mojang.blaze3d.matrix.MatrixStack;
 
+import net.minecraft.client.renderer.entity.BipedRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.client.renderer.entity.layers.HeldItemLayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class DoguRenderer extends MobRenderer<DoguEntity, DoguModel<DoguEntity>>
+public class DoguRenderer extends BipedRenderer<DoguEntity, DoguModel<DoguEntity>>
 {
 	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/dogu.png");
 
 	public DoguRenderer(EntityRendererManager renderManagerIn)
 	{
 		super(renderManagerIn, new DoguModel<>(), 0.5F);
-		this.addLayer(new HeldItemLayer<>(this));
 	}
 
 	@Override
