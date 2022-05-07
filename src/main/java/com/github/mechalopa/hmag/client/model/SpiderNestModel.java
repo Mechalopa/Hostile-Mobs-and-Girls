@@ -166,7 +166,7 @@ public class SpiderNestModel<T extends SpiderNestEntity> extends HierarchicalMod
 		CubeListBuilder cubelistbuilder7 = CubeListBuilder.create().texOffs(40, 0).addBox(-1.5F, -4.0F, -1.5F, 3.0F, 4.0F, 3.0F, new CubeDeformation(-0.25F));
 		CubeListBuilder cubelistbuilder8 = CubeListBuilder.create().texOffs(32, 0).mirror().addBox(-1.0F, -2.5F, -1.0F, 2.0F, 3.0F, 2.0F);
 		CubeListBuilder cubelistbuilder9 = CubeListBuilder.create().texOffs(40, 0).mirror().addBox(-1.5F, -4.0F, -1.5F, 3.0F, 4.0F, 3.0F, new CubeDeformation(-0.25F));
-		PartPose pp2 = PartPose.offset(0.0F, 0.0F, 0.0F);
+		PartPose pp2 = PartPose.ZERO;
 
 		for (int k = 0; k < 4; ++k)
 		{

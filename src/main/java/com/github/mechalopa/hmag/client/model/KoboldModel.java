@@ -70,7 +70,7 @@ public class KoboldModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 		this.hairPart = this.head.getChild("hair_part");
 		this.tail1 = this.body.getChild("tail_1");
 		this.tail2 = this.tail1.getChild("tail_2");
-		this.tail3 = this.tail3.getChild("tail_3");
+		this.tail3 = this.tail2.getChild("tail_3");
 	}
 
 	public static MeshDefinition createMesh(CubeDeformation cd)
@@ -89,8 +89,8 @@ public class KoboldModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 		ModClientUtils.addC(bodypart3pd, cd, "body_part_4", 32, 56, -4.0F, 0.0F, -2.5F, 8.0F, 1.0F, 5.0F, 0.0F, 1.0F, 0.0F);
 		PartDefinition rap1pd = ModClientUtils.addC(rapd, cd, "right_arm_part_1", 40, 20, -1.0F, -2.0F, -1.5F, 3.0F, 6.0F, 3.0F, 0.0F, 0.0F, 0.0F);
 		PartDefinition lap1pd = ModClientUtils.addC(lapd, cd, "left_arm_part_1", 40, 20, -2.0F, -2.0F, -1.5F, 3.0F, 6.0F, 3.0F, 0.0F, 0.0F, 0.0F, true);
-		PartDefinition rap2pd = ModClientUtils.addC(rap1pd, cd, "right_arm_part_2", 16, 32, -1.0F, -0.5F, -1.5F, 3.0F, 4.0F, 3.0F, 0.0F, 3.5F, 0.0F);
-		PartDefinition lap2pd = ModClientUtils.addC(lap1pd, cd, "left_arm_part_2", 16, 32, -2.0F, -0.5F, -1.5F, 3.0F, 4.0F, 3.0F, 0.0F, 3.5F, 0.0F, true);
+		PartDefinition rap2pd = ModClientUtils.addC(rap1pd, cd, "right_arm_part_2", 16, 32, -1.0F, -0.5F, -1.5F, 3.0F, 4.0F, 3.0F, 0.0F, 3.5F, 0.0F, -0.125F);
+		PartDefinition lap2pd = ModClientUtils.addC(lap1pd, cd, "left_arm_part_2", 16, 32, -2.0F, -0.5F, -1.5F, 3.0F, 4.0F, 3.0F, 0.0F, 3.5F, 0.0F, true, -0.125F);
 		ModClientUtils.addC(rap2pd, cd, "right_arm_part_3", 16, 40, -1.0F, 0.0F, -1.5F, 3.0F, 3.0F, 3.0F, 0.0F, 2.5F, 0.0F);
 		ModClientUtils.addC(lap2pd, cd, "left_arm_part_3", 16, 40, -2.0F, 0.0F, -1.5F, 3.0F, 3.0F, 3.0F, 0.0F, 2.5F, 0.0F, true);
 		PartDefinition rlp1pd = ModClientUtils.addC(rlpd, cd, "right_leg_part_1", 0, 20, -2.25F, 0.0F, -1.75F, 4.0F, 5.0F, 4.0F, 0.0F, -1.5F, 0.0F);
@@ -108,8 +108,8 @@ public class KoboldModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 		ModClientUtils.addC(repd, cd, "right_ear_part", 32, 68, -2.0F, -1.5F, -1.0F, 3.0F, 3.0F, 2.0F, 0.0F, -2.0F, 0.0F);
 		ModClientUtils.addC(lepd, cd, "left_ear_part", 32, 68, -1.0F, -1.5F, -1.0F, 3.0F, 3.0F, 2.0F, 0.0F, -2.0F, -0.0F, true);
 		ModClientUtils.addC(headpd, cd, "hair_part", 0, 64, -4.0F, 0.0F, -1.0F, 8.0F, 2.0F, 1.0F, 0.0F, 0.0F, 4.0F);
-		PartDefinition t1pd = ModClientUtils.addC(bodypd , cd, "tail_1", 48, 32, -1.0F, 0.0F, -2.0F, 2.0F, 3.0F, 2.0F, 0.0F, 9.0F, 2.0F);
-		PartDefinition t2pd = ModClientUtils.addC(t1pd , cd, "tail_2", 56, 32, -1.0F, 0.0F, -1.0F, 2.0F, 2.0F, 2.0F, 0.0F, 2.5F, -1.0F, 0.001F);
+		PartDefinition t1pd = ModClientUtils.addC(bodypd, cd, "tail_1", 48, 32, -1.0F, 0.0F, -2.0F, 2.0F, 3.0F, 2.0F, 0.0F, 9.0F, 2.0F);
+		PartDefinition t2pd = ModClientUtils.addC(t1pd, cd, "tail_2", 56, 32, -1.0F, 0.0F, -1.0F, 2.0F, 2.0F, 2.0F, 0.0F, 2.5F, -1.0F, 0.001F);
 		ModClientUtils.addC(t2pd , cd, "tail_3", 56, 40, -1.0F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F, 0.0F, 1.5F, 0.0F);
 		return md;
 	}

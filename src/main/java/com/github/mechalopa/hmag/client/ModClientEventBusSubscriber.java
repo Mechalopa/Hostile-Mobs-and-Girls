@@ -62,8 +62,11 @@ import com.github.mechalopa.hmag.client.renderer.JackFrostRenderer;
 import com.github.mechalopa.hmag.client.renderer.KashaRenderer;
 import com.github.mechalopa.hmag.client.renderer.KoboldRenderer;
 import com.github.mechalopa.hmag.client.renderer.LichRenderer;
+import com.github.mechalopa.hmag.client.renderer.MagicBulletRenderer;
 import com.github.mechalopa.hmag.client.renderer.MagicalSlimeRenderer;
+import com.github.mechalopa.hmag.client.renderer.MagmaBulletRenderer;
 import com.github.mechalopa.hmag.client.renderer.MeltyMonsterRenderer;
+import com.github.mechalopa.hmag.client.renderer.ModThrownItemRenderer;
 import com.github.mechalopa.hmag.client.renderer.MonolithRenderer;
 import com.github.mechalopa.hmag.client.renderer.NecroticReaperRenderer;
 import com.github.mechalopa.hmag.client.renderer.OgreRenderer;
@@ -175,6 +178,14 @@ public class ModClientEventBusSubscriber
 		event.registerEntityRenderer(ModEntityTypes.NECROTIC_REAPER.get(), NecroticReaperRenderer::new);
 		event.registerEntityRenderer(ModEntityTypes.DODOMEKI.get(), DodomekiRenderer::new);
 		event.registerEntityRenderer(ModEntityTypes.IMP.get(), ImpRenderer::new);
+
+		event.registerEntityRenderer(ModEntityTypes.MAGIC_BULLET.get(), MagicBulletRenderer::new);
+		event.registerEntityRenderer(ModEntityTypes.HARD_SNOWBALL.get(), ModThrownItemRenderer::new);
+		event.registerEntityRenderer(ModEntityTypes.POISON_SEED.get(), ModThrownItemRenderer::new);
+		event.registerEntityRenderer(ModEntityTypes.THROWABLE_BOTTLE.get(), (p) -> {
+			return new ModThrownItemRenderer<>(p, 1.0F, true);
+		});
+		event.registerEntityRenderer(ModEntityTypes.MAGMA_BULLET.get(), MagmaBulletRenderer::new);
 	}
 
 	@SubscribeEvent

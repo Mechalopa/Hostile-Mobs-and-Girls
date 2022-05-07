@@ -160,6 +160,7 @@ public class ArurauneModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 		ModClientUtils.addC(lh1pd, cd, "left_hair_flower_d", 40, 104, 0.25F, 0.25F, -0.5F, 5.0F, 5.0F, 1.0F, 0.125F, 0.5F, 0.25F);
 
 		ModClientUtils.addC(headpd, cd, "hair_part", 0, 112, -4.0F, 0.0F, -1.0F, 8.0F, 2.0F, 1.0F, 0.0F, 0.0F, 4.0F);
+
 		PartDefinition hatpd = pd.getChild("hat");
 		ModClientUtils.addC(hatpd, cd, "hat_part", 32, 112, -4.0F, -2.0F, -4.0F, 8.0F, 2.0F, 8.0F, 0.0F, 3.0F, 0.0F, 0.5F);
 

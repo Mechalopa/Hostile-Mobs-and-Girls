@@ -1,9 +1,11 @@
 package com.github.mechalopa.hmag.client.renderer;
 
 import com.github.mechalopa.hmag.HMaG;
+import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.HarpyModel;
 import com.github.mechalopa.hmag.entity.HarpyEntity;
 
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -20,15 +22,15 @@ public class HarpyRenderer extends AbstractGirlRenderer<HarpyEntity, HarpyModel<
 	private static final ResourceLocation TEX6 = new ResourceLocation(HMaG.MODID, "textures/entity/harpy_6.png");
 	private static final ResourceLocation TEX7 = new ResourceLocation(HMaG.MODID, "textures/entity/harpy_7.png");
 
-	public HarpyRenderer(EntityRendererManager renderManagerIn)
+	public HarpyRenderer(EntityRendererProvider.Context context)
 	{
-		super(renderManagerIn, new HarpyModel<>(), 0.5F);
+		super(context, new HarpyModel<>(context.bakeLayer(ModModelLayers.HARPY)), 0.5F);
 	}
 
 	@Override
 	public ResourceLocation getTextureLocation(HarpyEntity entity)
 	{
-		switch (entityIn.getVariant())
+		switch (entity.getVariant())
 		{
 		case 1:
 			return TEX1;
