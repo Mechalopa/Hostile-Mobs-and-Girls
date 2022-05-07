@@ -34,7 +34,7 @@ public abstract class AbstractAdvancedGirlModel<T extends LivingEntity> extends 
 	{
 		MeshDefinition md = AbstractGirlModel.createMesh(cd, yOffset);
 		PartDefinition pd = md.getRoot();
-		PartDefinition bodypd = ModClientUtils.addC(pd, cd, "body", 16, 16, -3.0F, 0.0F, -1.5F, 6.0F, (float)bodyHeight, 6.0F, 0.0F, 0.0F + yOffset, 0.0F);
+		PartDefinition bodypd = ModClientUtils.addC(pd, cd, "body", 16, 16, -3.0F, 0.0F, -1.5F, 6.0F, (float)bodyHeight, 3.0F, 0.0F, 0.0F + yOffset, 0.0F);
 		PartDefinition bodypart1pd = ModClientUtils.addC(bodypd, cd, "body_part_1", 32, 32, -2.5F, 0.0F, -1.0F, 5.0F, 3.0F, 2.0F, 0.0F, (float)bodyHeight, 0.0F);
 		ModClientUtils.addC(bodypart1pd, cd, "body_part_2", 32, 40, -3.0F, 0.0F, -1.5F, 6.0F, 2.0F, 3.0F, 0.0F, 3.0F, 0.0F);
 		ModClientUtils.addC(bodypd, cd, "bust", 0, 32, -3.0F, -1.5F, -1.5F, 6.0F, 3.0F, 3.0F, 0.0F, 3.5F, -1.1F, -0.001F);

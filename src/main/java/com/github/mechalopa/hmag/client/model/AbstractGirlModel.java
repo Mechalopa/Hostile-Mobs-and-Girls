@@ -26,7 +26,7 @@ public abstract class AbstractGirlModel<T extends LivingEntity> extends Humanoid
 		MeshDefinition md = HumanoidModel.createMesh(cd, yOffset);
 		PartDefinition pd = md.getRoot();
 		ModClientUtils.addC(pd, cd, "head", 0, 0, -3.0F, -6.0F - 1.0F, -3.0F, 6.0F, 6.0F, 6.0F, 0.0F, 0.0F + yOffset, 0.0F, 1.0F);
-		ModClientUtils.addC(pd, cd, "body", 16, 16, -3.0F, 0.0F, -1.5F, 6.0F, 12.0F, 6.0F, 0.0F, 0.0F + yOffset, 0.0F);
+		ModClientUtils.addC(pd, cd, "body", 16, 16, -3.0F, 0.0F, -1.5F, 6.0F, 12.0F, 3.0F, 0.0F, 0.0F + yOffset, 0.0F);
 		ModClientUtils.addC(pd, cd, "right_arm", 40, 16, -1.0F, -2.0F, -1.5F, 3.0F, 12.0F, 3.0F, -5.0F, 2.0F + yOffset, 0.0F);
 		ModClientUtils.addC(pd, cd, "left_arm", 40, 16, -2.0F, -2.0F, -1.5F, 3.0F, 12.0F, 3.0F, 5.0F, 2.0F + yOffset, 0.0F, true);
 		ModClientUtils.addC(pd, cd, "right_leg", 0, 16, -1.5F, 0.0F, -1.5F, 3.0F, 12.0F, 3.0F, -1.9F, 12.0F + yOffset, 0.0F);

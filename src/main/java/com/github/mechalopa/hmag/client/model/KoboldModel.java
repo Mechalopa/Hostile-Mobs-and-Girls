@@ -66,7 +66,7 @@ public class KoboldModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 		this.rightEar = this.head.getChild("right_ear");
 		this.leftEar = this.head.getChild("left_ear");
 		this.rightEarPart = this.rightEar.getChild("right_ear_part");
-		this.leftEarPart = this.leftEarPart.getChild("left_ear_part");
+		this.leftEarPart = this.leftEar.getChild("left_ear_part");
 		this.hairPart = this.head.getChild("hair_part");
 		this.tail1 = this.body.getChild("tail_1");
 		this.tail2 = this.tail1.getChild("tail_2");
@@ -106,7 +106,7 @@ public class KoboldModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 		PartDefinition repd = ModClientUtils.addC(headpd, cd, "right_ear", 32, 64, -2.0F, -1.75F, -1.0F, 3.0F, 2.0F, 2.0F, -1.5F, -8.0F, -0.75F, 0.25F);
 		PartDefinition lepd = ModClientUtils.addC(headpd, cd, "left_ear", 32, 64, -1.0F, -1.75F, -1.0F, 3.0F, 2.0F, 2.0F, 1.5F, -8.0F, -0.75F, true, 0.25F);
 		ModClientUtils.addC(repd, cd, "right_ear_part", 32, 68, -2.0F, -1.5F, -1.0F, 3.0F, 3.0F, 2.0F, 0.0F, -2.0F, 0.0F);
-		ModClientUtils.addC(lepd, cd, "left_ear_part", 32, 68, -1.0F, -1.5F, -1.0F, 3.0F, 3.0F, 2.0F, 0.0F, -2.0F, -0.0F, true);
+		ModClientUtils.addC(lepd, cd, "left_ear_part", 32, 68, -1.0F, -1.5F, -1.0F, 3.0F, 3.0F, 2.0F, 0.0F, -2.0F, 0.0F, true);
 		ModClientUtils.addC(headpd, cd, "hair_part", 0, 64, -4.0F, 0.0F, -1.0F, 8.0F, 2.0F, 1.0F, 0.0F, 0.0F, 4.0F);
 		PartDefinition t1pd = ModClientUtils.addC(bodypd, cd, "tail_1", 48, 32, -1.0F, 0.0F, -2.0F, 2.0F, 3.0F, 2.0F, 0.0F, 9.0F, 2.0F);
 		PartDefinition t2pd = ModClientUtils.addC(t1pd, cd, "tail_2", 56, 32, -1.0F, 0.0F, -1.0F, 2.0F, 2.0F, 2.0F, 0.0F, 2.5F, -1.0F, 0.001F);

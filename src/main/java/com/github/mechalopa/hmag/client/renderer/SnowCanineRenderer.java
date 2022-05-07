@@ -1,12 +1,13 @@
 package com.github.mechalopa.hmag.client.renderer;
 
 import com.github.mechalopa.hmag.HMaG;
+import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.SnowCanineModel;
 import com.github.mechalopa.hmag.client.renderer.layers.SnowCanineEyesLayer;
 import com.github.mechalopa.hmag.entity.SnowCanineEntity;
 
-import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -15,14 +16,14 @@ public class SnowCanineRenderer extends AbstractGirlRenderer<SnowCanineEntity, S
 {
 	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/snow_canine.png");
 
-	public SnowCanineRenderer(EntityRendererManager renderManagerIn)
+	public SnowCanineRenderer(EntityRendererProvider.Context context)
 	{
-		super(renderManagerIn, new SnowCanineModel<>(), 0.5F);
+		super(context, new SnowCanineModel<>(context.bakeLayer(ModModelLayers.SNOW_CANINE)), 0.5F);
 		this.addLayer(new SnowCanineEyesLayer<>(this));
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(SnowCanineEntity entityIn)
+	public ResourceLocation getTextureLocation(SnowCanineEntity entity)
 	{
 		return TEX;
 	}
