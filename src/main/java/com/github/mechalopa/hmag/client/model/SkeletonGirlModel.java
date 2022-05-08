@@ -32,7 +32,7 @@ public class SkeletonGirlModel<T extends AbstractSkeleton> extends AbstractGirlM
 	{
 		super(modelPart);
 		this.skirt1 = this.body.getChild("skirt_1");
-		this.skirt2 = this.skirt1.getChild("skirt_2");
+		this.skirt2 = this.body.getChild("skirt_2");
 		this.rightHair1 = this.head.getChild("right_hair_1");
 		this.leftHair1 = this.head.getChild("left_hair_1");
 		this.rightHair2 = this.rightHair1.getChild("right_hair_2");
@@ -48,8 +48,8 @@ public class SkeletonGirlModel<T extends AbstractSkeleton> extends AbstractGirlM
 		ModClientUtils.addC(pd, cd, "right_leg", 0, 16, -1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F, -1.75F, 12.0F, 0.0F);
 		ModClientUtils.addC(pd, cd, "left_leg", 0, 16, -1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F, 1.75F, 12.0F, 0.0F, true);
 		PartDefinition bodypd = pd.getChild("body");
-		PartDefinition skirt1pd = ModClientUtils.addC(bodypd, cd, "skirt_1", 0, 38, -3.5F, 0.0F, -2.0F, 7.0F, 1.0F, 4.0F, 0.0F, 11.0F, 0.0F);
-		ModClientUtils.addC(skirt1pd, cd, "skirt_2", 0, 44, -4.0F, 0.0F, -2.5F, 8.0F, 6.0F, 5.0F, 0.0F, 12.0F, 0.0F);
+		ModClientUtils.addC(bodypd, cd, "skirt_1", 0, 38, -3.5F, 0.0F, -2.0F, 7.0F, 1.0F, 4.0F, 0.0F, 11.0F, 0.0F);
+		ModClientUtils.addC(bodypd, cd, "skirt_2", 0, 44, -4.0F, 0.0F, -2.5F, 8.0F, 6.0F, 5.0F, 0.0F, 12.0F, 0.0F);
 		PartDefinition headpd = pd.getChild("head");
 		PartDefinition rhpd = ModClientUtils.addC(headpd, cd, "right_hair_1", 32, 32, -0.5F, -1.0F, 0.0F, 1.0F, 12.0F, 1.0F, -4.0F, -8.0F, 2.75F, 0.25F);
 		PartDefinition lhpd = ModClientUtils.addC(headpd, cd, "left_hair_1", 32, 32, -0.5F, -1.0F, 0.0F, 1.0F, 12.0F, 1.0F, 4.0F, -8.0F, 2.75F, true, 0.25F);
@@ -105,6 +105,8 @@ public class SkeletonGirlModel<T extends AbstractSkeleton> extends AbstractGirlM
 		{
 			this.skirt2.xRot = this.body.xRot;
 		}
+
+		this.skirt1.xRot = 0.0F;
 
 		this.rightHair1.xRot = ((float)Math.PI / 18.0F);
 		this.leftHair1.xRot = ((float)Math.PI / 18.0F);

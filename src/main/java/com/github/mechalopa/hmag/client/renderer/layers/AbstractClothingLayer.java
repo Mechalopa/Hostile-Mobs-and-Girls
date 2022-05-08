@@ -3,6 +3,7 @@ package com.github.mechalopa.hmag.client.renderer.layers;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -25,15 +26,31 @@ public abstract class AbstractClothingLayer<T extends LivingEntity, M extends En
 	@Override
 	public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, T livingEntity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch)
 	{
-		if (!livingEntity.isInvisible() && this.canRender(livingEntity))
+		Minecraft minecraft = Minecraft.getInstance();
+		boolean flag = minecraft.shouldEntityAppearGlowing(livingEntity) && livingEntity.isInvisible();
+
+		if (!livingEntity.isInvisible() || flag)
 		{
-			EntityModel<T> entitymodel = this.getLayerModel();
-			this.getParentModel().copyPropertiesTo(entitymodel);
-			entitymodel.prepareMobModel(livingEntity, limbSwing, limbSwingAmount, partialTicks);
-			entitymodel.setupAnim(livingEntity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
-			ResourceLocation resourcelocation = this.getLayerTexture(livingEntity);
-			VertexConsumer vertexconsumer = buffer.getBuffer(RenderType.entityTranslucent(resourcelocation));
-			entitymodel.renderToBuffer(poseStack, vertexconsumer, packedLight, LivingEntityRenderer.getOverlayCoords(livingEntity, 0.0F), this.getR(livingEntity), this.getG(livingEntity), this.getB(livingEntity), this.getAlpha(livingEntity));
+			if (this.canRender(livingEntity))
+			{
+				EntityModel<T> entitymodel = this.getLayerModel();
+				this.getParentModel().copyPropertiesTo(entitymodel);
+				entitymodel.prepareMobModel(livingEntity, limbSwing, limbSwingAmount, partialTicks);
+				entitymodel.setupAnim(livingEntity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+				ResourceLocation resourcelocation = this.getLayerTexture(livingEntity);
+				VertexConsumer vertexconsumer;
+
+				if (flag)
+				{
+					vertexconsumer = buffer.getBuffer(RenderType.outline(resourcelocation));
+				}
+				else
+				{
+					vertexconsumer = buffer.getBuffer(RenderType.entityTranslucent(resourcelocation));
+				}
+
+				entitymodel.renderToBuffer(poseStack, vertexconsumer, packedLight, LivingEntityRenderer.getOverlayCoords(livingEntity, 0.0F), this.getR(livingEntity), this.getG(livingEntity), this.getB(livingEntity), this.getAlpha(livingEntity));
+			}
 		}
 	}
 

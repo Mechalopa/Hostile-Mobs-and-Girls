@@ -30,11 +30,11 @@ public class ZombieGirlModel<T extends Zombie> extends AbstractAdvancedGirlModel
 		super(modelPart);
 //		this.clothPart = this.body.getChild("cloth_part");
 		this.skirt1 = this.body.getChild("skirt_1");
-		this.skirt2 = this.skirt1.getChild("skirt_2");
+		this.skirt2 = this.body.getChild("skirt_2");
 		this.tailHair1 = this.head.getChild("tail_hair_1");
 		this.tailHair2 = this.tailHair1.getChild("tail_hair_2");
 		this.tailHair3 = this.tailHair2.getChild("tail_hair_3");
-		this.tailHair4 = this.tailHair4.getChild("tail_hair_4");
+		this.tailHair4 = this.tailHair3.getChild("tail_hair_4");
 		this.ahoge = this.head.getChild("ahoge");
 	}
 
@@ -44,8 +44,8 @@ public class ZombieGirlModel<T extends Zombie> extends AbstractAdvancedGirlModel
 		PartDefinition pd = md.getRoot();
 		PartDefinition bodypd = pd.getChild("body");
 		ModClientUtils.addC(bodypd, cd, "cloth_part", 32, 48, -3.0F, 0.0F, -1.5F, 6.0F, 3.0F, 3.0F, 0.0F, 7.0F, 0.0F);
-		PartDefinition skirt1pd = ModClientUtils.addC(bodypd, cd, "skirt_1", 0, 38, -3.5F, 0.0F, -2.0F, 7.0F, 1.0F, 4.0F, 0.0F, 11.0F, 0.0F);
-		ModClientUtils.addC(skirt1pd, cd, "skirt_2", 0, 44, -4.0F, 0.0F, -2.5F, 8.0F, 6.0F, 5.0F, 0.0F, 12.0F, 0.0F);
+		ModClientUtils.addC(bodypd, cd, "skirt_1", 0, 38, -3.5F, 0.0F, -2.0F, 7.0F, 1.0F, 4.0F, 0.0F, 11.0F, 0.0F);
+		ModClientUtils.addC(bodypd, cd, "skirt_2", 0, 44, -4.0F, 0.0F, -2.5F, 8.0F, 6.0F, 5.0F, 0.0F, 12.0F, 0.0F);
 		PartDefinition headpd = pd.getChild("head");
 		PartDefinition th1pd = ModClientUtils.addC(headpd, cd, "tail_hair_1", 0, 56, -1.0F, -1.0F, 0.0F, 2.0F, 4.0F, 2.0F, 0.0F, -7.0F, 4.0F);
 		PartDefinition th2pd = ModClientUtils.addC(th1pd, cd, "tail_hair_2", 8, 56, -1.0F, -0.5F, 0.0F, 2.0F, 5.0F, 2.0F, 0.0F, 3.0F, 0.0F, 0.001F);
@@ -77,6 +77,8 @@ public class ZombieGirlModel<T extends Zombie> extends AbstractAdvancedGirlModel
 		{
 			this.skirt2.xRot = this.body.xRot;
 		}
+
+		this.skirt1.xRot = 0.0F;
 
 		this.tailHair1.xRot = (float)Math.PI / 8.0F;
 		this.tailHair1.xRot += Mth.sin(ageInTicks * 0.03F) * 0.09F;

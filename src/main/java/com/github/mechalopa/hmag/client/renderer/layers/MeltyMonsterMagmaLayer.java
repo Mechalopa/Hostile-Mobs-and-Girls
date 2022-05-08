@@ -11,6 +11,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.VertexFormat;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -37,17 +38,31 @@ public class MeltyMonsterMagmaLayer extends RenderLayer<MeltyMonsterEntity, Melt
 	}
 
 	@Override
-	public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLightIn, MeltyMonsterEntity livingEntityIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch)
+	public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, MeltyMonsterEntity livingEntity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch)
 	{
-		if (!livingEntityIn.isInvisible())
+		Minecraft minecraft = Minecraft.getInstance();
+		boolean flag = minecraft.shouldEntityAppearGlowing(livingEntity) && livingEntity.isInvisible();
+
+		if (!livingEntity.isInvisible() || flag)
 		{
-			float f = (float)livingEntityIn.tickCount + partialTicks;
+			float f = (float)livingEntity.tickCount + partialTicks;
 			this.getParentModel().copyPropertiesTo(this.layerModel);
-			this.layerModel.prepareMobModel(livingEntityIn, limbSwing, limbSwingAmount, partialTicks);
-			this.layerModel.setupAnim(livingEntityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
-			ResourceLocation resourcelocation = this.getLayerTexture(livingEntityIn);
-			VertexConsumer vertexconsumer = buffer.getBuffer(getMeltyMonsterOverlay(resourcelocation, 0.0F, f * -0.001F));
-			this.layerModel.renderToBuffer(poseStack, vertexconsumer, packedLightIn, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+			this.layerModel.prepareMobModel(livingEntity, limbSwing, limbSwingAmount, partialTicks);
+			this.layerModel.setupAnim(livingEntity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+			ResourceLocation resourcelocation = this.getLayerTexture(livingEntity);
+
+			VertexConsumer vertexconsumer;
+
+			if (flag)
+			{
+				vertexconsumer = buffer.getBuffer(RenderType.outline(resourcelocation));
+			}
+			else
+			{
+				vertexconsumer = buffer.getBuffer(getMeltyMonsterOverlay(resourcelocation, 0.0F, f * -0.001F));
+			}
+
+			this.layerModel.renderToBuffer(poseStack, vertexconsumer, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 		}
 	}
 
@@ -56,7 +71,7 @@ public class MeltyMonsterMagmaLayer extends RenderLayer<MeltyMonsterEntity, Melt
 		return TEX;
 	}
 
-	public static RenderType getMeltyMonsterOverlay(ResourceLocation locationIn, float xOffs, float yOffs)
+	public static RenderType getMeltyMonsterOverlay(ResourceLocation location, float xOffs, float yOffs)
 	{
 		RenderStateShard.TransparencyStateShard transparencyState = new RenderStateShard.TransparencyStateShard("translucent_transparency", () -> {
 			RenderSystem.enableBlend();
@@ -65,7 +80,7 @@ public class MeltyMonsterMagmaLayer extends RenderLayer<MeltyMonsterEntity, Melt
 			RenderSystem.disableBlend();
 			RenderSystem.defaultBlendFunc();
 		});
-		RenderType.CompositeState renderTypeState = RenderType.CompositeState.builder().setShaderState(new RenderStateShard.ShaderStateShard(GameRenderer::getRendertypeEntityCutoutShader)).setTextureState(new RenderStateShard.TextureStateShard(locationIn, false, false)).setTexturingState(new RenderStateShard.OffsetTexturingStateShard(xOffs, yOffs)).setTransparencyState(transparencyState).setCullState(new RenderStateShard.CullStateShard(false)).setLightmapState(new RenderStateShard.LightmapStateShard(false)).setOverlayState(new RenderStateShard.OverlayStateShard(true)).createCompositeState(true);
+		RenderType.CompositeState renderTypeState = RenderType.CompositeState.builder().setShaderState(new RenderStateShard.ShaderStateShard(GameRenderer::getRendertypeEnergySwirlShader)).setTextureState(new RenderStateShard.TextureStateShard(location, false, false)).setTexturingState(new RenderStateShard.OffsetTexturingStateShard(xOffs, yOffs)).setTransparencyState(transparencyState).setCullState(new RenderStateShard.CullStateShard(false)).setLightmapState(new RenderStateShard.LightmapStateShard(true)).setOverlayState(new RenderStateShard.OverlayStateShard(true)).createCompositeState(false);
 
 		return RenderType.create("melty_monster_overlay", DefaultVertexFormat.NEW_ENTITY, VertexFormat.Mode.QUADS, 256, false, true, renderTypeState);
 	}

@@ -2,6 +2,7 @@ package com.github.mechalopa.hmag.client.renderer;
 
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
+import com.github.mechalopa.hmag.client.model.DrownedGirlArmorModel;
 import com.github.mechalopa.hmag.client.model.DrownedGirlModel;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
@@ -20,7 +21,7 @@ public class DrownedGirlRenderer extends ZombieGirlRenderer
 
 	public DrownedGirlRenderer(EntityRendererProvider.Context context)
 	{
-		super(context, new DrownedGirlModel<>(context.bakeLayer(ModModelLayers.DROWNED_GIRL)), new DrownedGirlModel<>(context.bakeLayer(ModModelLayers.DROWNED_GIRL_INNER_ARMOR)), new DrownedGirlModel<>(context.bakeLayer(ModModelLayers.DROWNED_GIRL_OUTER_ARMOR)));
+		super(context, new DrownedGirlModel<>(context.bakeLayer(ModModelLayers.DROWNED_GIRL)), new DrownedGirlArmorModel<>(context.bakeLayer(ModModelLayers.DROWNED_GIRL_INNER_ARMOR)), new DrownedGirlArmorModel<>(context.bakeLayer(ModModelLayers.DROWNED_GIRL_OUTER_ARMOR)));
 	}
 
 	@Override

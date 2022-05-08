@@ -40,8 +40,8 @@ public class MonolithModel<T extends MonolithEntity> extends HierarchicalModel<T
 		MeshDefinition md = new MeshDefinition();
 		PartDefinition pd = md.getRoot();
 		PartDefinition headpd = ModClientUtils.addC(pd, "head", 0, 0, -5.0F, -4.0F, -2.0F, 10.0F, 18.0F, 4.0F, 0.0F, 4.0F, 0.0F);
-		ModClientUtils.addC(headpd, "head_part_1", 32, 0, -2.5F, -2.5F, -2.0F, 5.0F, 5.0F, 4.0F, -0.1F, 0.0F, -4.0F, 0.0F);
-		ModClientUtils.addC(headpd, "head_part_2", 32, 16, -2.5F, -2.5F, -2.0F, 5.0F, 5.0F, 4.0F, -0.1F, 0.0F, 14.0F, 0.0F);
+		ModClientUtils.addC(headpd, "head_part_1", 32, 0, -2.5F, -2.5F, -2.0F, 5.0F, 5.0F, 4.0F, 0.0F, -4.0F, 0.0F, -0.1F);
+		ModClientUtils.addC(headpd, "head_part_2", 32, 16, -2.5F, -2.5F, -2.0F, 5.0F, 5.0F, 4.0F, 0.0F, 14.0F, 0.0F, -0.1F);
 		ModClientUtils.addC(headpd, "top_right_part", 0, 24, -1.0F, -4.0F, -1.0F, 2.0F, 4.0F, 2.0F, -2.0F, -4.0F, 0.0F);
 		ModClientUtils.addC(headpd, "top_left_part", 0, 24, -1.0F, -4.0F, -1.0F, 2.0F, 4.0F, 2.0F, 2.0F, -4.0F, 0.0F, true);
 		ModClientUtils.addC(headpd, "bottom_right_part", 8, 24, -1.0F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F, -2.0F, 14.0F, 0.0F);

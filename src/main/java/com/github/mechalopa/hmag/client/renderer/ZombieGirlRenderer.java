@@ -29,7 +29,7 @@ public class ZombieGirlRenderer extends AbstractGirlRenderer<Zombie, AbstractGir
 		this(context, new ZombieGirlModel<>(context.bakeLayer(location)), new ZombieGirlArmorModel<>(context.bakeLayer(location1)), new ZombieGirlArmorModel<>(context.bakeLayer(location2)));
 	}
 
-	public ZombieGirlRenderer(EntityRendererProvider.Context context, AbstractGirlModel<Zombie> model, AbstractGirlModel<Zombie> model1,AbstractGirlModel<Zombie> model2)
+	public ZombieGirlRenderer(EntityRendererProvider.Context context, ZombieGirlModel<Zombie> model, AbstractGirlModel<Zombie> model1,AbstractGirlModel<Zombie> model2)
 	{
 		super(context, model, 0.5F);
 		this.addLayer(new HumanoidArmorLayer<>(this, model1, model2));

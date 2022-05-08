@@ -102,6 +102,13 @@ public class KashaModel<T extends Entity> extends HierarchicalModel<T>
 				this.tail2B.xRot = f1 + f2 * Mth.cos(limbSwing + (float)Math.PI) * limbSwingAmount;
 			}
 		}
+
+		this.tail1.xRot += Mth.cos(ageInTicks * 0.067F - ((float)Math.PI / 4.0F)) * 0.036F;
+		this.tail1.zRot = Mth.cos(ageInTicks * 0.06F) * 0.067F;
+		this.tail2A.yRot = ((float)Math.PI / 8.0F);
+		this.tail2B.yRot = -((float)Math.PI / 8.0F);
+		this.tail2A.yRot += Mth.cos(ageInTicks * 0.075F + ((float)Math.PI / 3.0F)) * 0.072F;
+		this.tail2B.yRot -= Mth.cos(ageInTicks * 0.075F) * 0.072F;
 	}
 
 	@Override

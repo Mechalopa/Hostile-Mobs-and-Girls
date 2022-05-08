@@ -2,6 +2,7 @@ package com.github.mechalopa.hmag.client.model;
 
 import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.entity.AbstractFlyingMonsterEntity;
+import com.google.common.collect.ImmutableList;
 
 import net.minecraft.client.model.AnimationUtils;
 import net.minecraft.client.model.HumanoidModel;
@@ -157,6 +158,12 @@ public class HornetModel<T extends AbstractFlyingMonsterEntity> extends Humanoid
 	public static LayerDefinition createBodyLayer()
 	{
 		return LayerDefinition.create(createMesh(CubeDeformation.NONE), 64, 128);
+	}
+
+	@Override
+	protected Iterable<ModelPart> bodyParts()
+	{
+		return ImmutableList.of(this.body, this.rightArm, this.leftArm, this.rightLeg, this.leftLeg, this.hat, this.rightArmB, this.leftArmB);
 	}
 
 	@Override

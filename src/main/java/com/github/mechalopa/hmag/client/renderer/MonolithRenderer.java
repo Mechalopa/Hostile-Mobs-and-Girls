@@ -59,6 +59,7 @@ public class MonolithRenderer extends MobRenderer<MonolithEntity, MonolithModel<
 	@Override
 	public void render(MonolithEntity entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight)
 	{
+		super.render(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);
 		LivingEntity target = entity.getActiveAttackTarget();
 
 		if (target != null)

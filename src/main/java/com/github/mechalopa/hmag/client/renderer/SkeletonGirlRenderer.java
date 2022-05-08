@@ -29,7 +29,7 @@ public class SkeletonGirlRenderer extends AbstractGirlRenderer<AbstractSkeleton,
 		this(context, new SkeletonGirlModel<>(context.bakeLayer(location)), new SkeletonGirlArmorModel<>(context.bakeLayer(location1)), new SkeletonGirlArmorModel<>(context.bakeLayer(location2)));
 	}
 
-	public SkeletonGirlRenderer(EntityRendererProvider.Context context, AbstractGirlModel<AbstractSkeleton> model, AbstractGirlModel<AbstractSkeleton> model1, AbstractGirlModel<AbstractSkeleton> model2)
+	public SkeletonGirlRenderer(EntityRendererProvider.Context context, SkeletonGirlModel<AbstractSkeleton> model, AbstractGirlModel<AbstractSkeleton> model1, AbstractGirlModel<AbstractSkeleton> model2)
 	{
 		super(context, model, 0.5F);
 		this.addLayer(new HumanoidArmorLayer<>(this, model1, model2));

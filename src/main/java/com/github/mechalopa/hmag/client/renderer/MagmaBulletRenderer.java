@@ -51,7 +51,7 @@ public class MagmaBulletRenderer extends EntityRenderer<MagmaBulletEntity>
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(MagmaBulletEntity entityIn)
+	public ResourceLocation getTextureLocation(MagmaBulletEntity entity)
 	{
 		return InventoryMenu.BLOCK_ATLAS;
 	}

@@ -41,7 +41,7 @@ public class CatoblepasModel<T extends Entity> extends HierarchicalModel<T>
 		this.rightHorn1 = this.head.getChild("right_horn_1");
 		this.leftHorn1 = this.head.getChild("left_horn_1");
 		this.rightHorn2 = this.rightHorn1.getChild("right_horn_2");
-		this.leftHorn2 = this.rightHorn1.getChild("left_horn_2");
+		this.leftHorn2 = this.leftHorn1.getChild("left_horn_2");
 	}
 
 	public static LayerDefinition createBodyLayer()

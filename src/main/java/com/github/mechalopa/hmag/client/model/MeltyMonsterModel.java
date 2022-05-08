@@ -54,7 +54,7 @@ public class MeltyMonsterModel<T extends MeltyMonsterEntity> extends AbstractAdv
 //		this.rightLegPart = this.rightLeg.getChild("right_leg_part");
 //		this.leftLegPart = this.leftLeg.getChild("left_leg_part");
 		this.skirt1 = this.body.getChild("skirt_1");
-		this.skirt2 = this.skirt1.getChild("skirt_2");
+		this.skirt2 = this.body.getChild("skirt_2");
 		this.skirt3 = this.skirt2.getChild("skirt_3");
 		this.rightHairA1 = this.head.getChild("right_hair_a_1");
 		this.rightHairA2 = this.rightHairA1.getChild("right_hair_a_2");
@@ -92,8 +92,8 @@ public class MeltyMonsterModel<T extends MeltyMonsterEntity> extends AbstractAdv
 		ModClientUtils.addC(rlpd, cd, "right_leg_part", 0, 56, -1.5F, 0.0F, -1.5F, 3.0F, 5.0F, 3.0F, 0.0F, 7.0F, 0.0F);
 		ModClientUtils.addC(llpd, cd, "left_leg_part", 0, 56, -1.5F, 0.0F, -1.5F, 3.0F, 5.0F, 3.0F, 0.0F, 7.0F, 0.0F, true);
 		PartDefinition bodypd = pd.getChild("body");
-		PartDefinition skirt1pd = ModClientUtils.addC(bodypd, cd, "skirt_1", 0, 38, -3.5F, 0.0F, -2.0F, 7.0F, 1.0F, 4.0F, 0.0F, 11.0F, 0.0F);
-		PartDefinition skirt2pd = ModClientUtils.addC(skirt1pd, cd, "skirt_2", 0, 44, -4.0F, 0.0F, -2.5F, 8.0F, 3.0F, 5.0F, 0.0F, 12.0F, 0.0F);
+		ModClientUtils.addC(bodypd, cd, "skirt_1", 0, 38, -3.5F, 0.0F, -2.0F, 7.0F, 1.0F, 4.0F, 0.0F, 11.0F, 0.0F);
+		PartDefinition skirt2pd = ModClientUtils.addC(bodypd, cd, "skirt_2", 0, 44, -4.0F, 0.0F, -2.5F, 8.0F, 3.0F, 5.0F, 0.0F, 12.0F, 0.0F);
 		ModClientUtils.addC(skirt2pd, cd, "skirt_3", 0, 64, -4.0F, 0.0F, -2.5F, 8.0F, 2.0F, 5.0F, 0.0F, 3.0F, 0.0F);
 		PartDefinition headpd = pd.getChild("head");
 		CubeListBuilder cubelistbuilder = CubeListBuilder.create().texOffs(32, 48).addBox(-1.0F, -1.0F, -1.0F, 2.0F, 3.0F, 2.0F, cd);
@@ -175,6 +175,8 @@ public class MeltyMonsterModel<T extends MeltyMonsterEntity> extends AbstractAdv
 				this.leftLeg.xRot = -f;
 			}
 		}
+
+		this.skirt1.xRot = 0.0F;
 
 		this.rightHairA1.zRot = ((float)Math.PI / 27.0F);
 		this.leftHairA1.zRot = -((float)Math.PI / 27.0F);

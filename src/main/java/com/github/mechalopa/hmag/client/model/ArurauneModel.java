@@ -114,7 +114,7 @@ public class ArurauneModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 		this.rightTentaclePart2 = this.rightTentaclePart1.getChild("right_tentacle_part_2");
 		this.leftTentaclePart2 = this.leftTentaclePart1.getChild("left_tentacle_part_2");
 		this.rightTentaclePart3 = this.rightTentaclePart2.getChild("right_tentacle_part_3");
-		this.leftTentaclePart3 = this.leftTentaclePart2.getChild("left_tentacle_part_4");
+		this.leftTentaclePart3 = this.leftTentaclePart2.getChild("left_tentacle_part_3");
 		this.rightTentaclePart4 = this.rightTentaclePart3.getChild("right_tentacle_part_4");
 		this.leftTentaclePart4 = this.leftTentaclePart3.getChild("left_tentacle_part_4");
 		this.rightTentacleFlowerA = this.rightTentaclePart4.getChild("right_tentacle_flower_a");
@@ -126,9 +126,9 @@ public class ArurauneModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 		this.leftTentacleFlowerC = this.leftTentaclePart4.getChild("left_tentacle_flower_c");
 		this.leftTentacleFlowerD = this.leftTentaclePart4.getChild("left_tentacle_flower_d");
 		this.rightTentacleLeafA = this.rightTentaclePart4.getChild("right_tentacle_leaf_a");
-		this.rightTentacleLeafB = this.rightTentaclePart4.getChild("right_tentacle_leaf_a");
-		this.rightTentacleLeafC = this.rightTentaclePart4.getChild("right_tentacle_leaf_a");
-		this.rightTentacleLeafD = this.rightTentaclePart4.getChild("right_tentacle_leaf_a");
+		this.rightTentacleLeafB = this.rightTentaclePart4.getChild("right_tentacle_leaf_b");
+		this.rightTentacleLeafC = this.rightTentaclePart4.getChild("right_tentacle_leaf_c");
+		this.rightTentacleLeafD = this.rightTentaclePart4.getChild("right_tentacle_leaf_d");
 		this.leftTentacleLeafA = this.leftTentaclePart4.getChild("left_tentacle_leaf_a");
 		this.leftTentacleLeafB = this.leftTentaclePart4.getChild("left_tentacle_leaf_b");
 		this.leftTentacleLeafC = this.leftTentaclePart4.getChild("left_tentacle_leaf_c");

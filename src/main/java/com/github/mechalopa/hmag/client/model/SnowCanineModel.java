@@ -97,12 +97,12 @@ public class SnowCanineModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 		ModClientUtils.addC(lap2pd, cd, "left_arm_part_3", 16, 40, -2.0F, 0.0F, -1.5F, 2.0F, 3.0F, 3.0F, 0.0F, 2.5F, 0.0F, true);
 		PartDefinition rlp1pd = ModClientUtils.addC(rlpd, cd, "right_leg_part_1", 0, 20, -2.25F, 0.0F, -1.75F, 4.0F, 5.0F, 4.0F, 0.0F, -1.5F, 0.0F);
 		PartDefinition llp1pd = ModClientUtils.addC(llpd, cd, "left_leg_part_1", 0, 20, -1.75F, 0.0F, -1.75F, 4.0F, 5.0F, 4.0F, 0.0F, -1.5F, 0.0F, true);
-		PartDefinition rlp2pd = ModClientUtils.addC(rlp1pd, cd, "right_leg_part_2", 0, 40, -1.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, 0.0F, 5.0F, 0.0F);
-		PartDefinition llp2pd = ModClientUtils.addC(llp1pd, cd, "left_leg_part_2", 0, 40, -1.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, 0.0F, 5.0F, 0.0F, true);
-		ModClientUtils.addC(rlp1pd, cd, "right_leg_part_3", 0, 46, -1.5F, 0.0F, -1.5F, 3.0F, 5.0F, 3.0F, 0.0F, 5.25F, 0.0F, -0.001F);
-		ModClientUtils.addC(llp1pd, cd, "left_leg_part_3", 0, 46, -1.5F, 0.0F, -1.5F, 3.0F, 5.0F, 3.0F, 0.0F, 5.25F, 0.0F, true, -0.001F);
-		PartDefinition rlp4pd = ModClientUtils.addC(rlp2pd, cd, "right_leg_part_4", 0, 56, -1.5F, -1.5F, -1.0F, 3.0F, 4.0F, 2.0F, 0.0F, 5.75F, 0.0F, 0.125F);
-		PartDefinition llp4pd = ModClientUtils.addC(llp2pd, cd, "left_leg_part_4", 0, 56, -1.5F, -1.5F, -1.0F, 3.0F, 4.0F, 2.0F, 0.0F, 5.75F, 0.0F, true, 0.125F);
+		ModClientUtils.addC(rlp1pd, cd, "right_leg_part_2", 0, 40, -1.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, 0.0F, 5.0F, 0.0F);
+		ModClientUtils.addC(llp1pd, cd, "left_leg_part_2", 0, 40, -1.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, 0.0F, 5.0F, 0.0F, true);
+		PartDefinition rlp3pd = ModClientUtils.addC(rlp1pd, cd, "right_leg_part_3", 0, 46, -1.5F, 0.0F, -1.5F, 3.0F, 5.0F, 3.0F, 0.0F, 5.25F, 0.0F, -0.001F);
+		PartDefinition llp3pd = ModClientUtils.addC(llp1pd, cd, "left_leg_part_3", 0, 46, -1.5F, 0.0F, -1.5F, 3.0F, 5.0F, 3.0F, 0.0F, 5.25F, 0.0F, true, -0.001F);
+		PartDefinition rlp4pd = ModClientUtils.addC(rlp3pd, cd, "right_leg_part_4", 0, 56, -1.5F, -1.5F, -1.0F, 3.0F, 4.0F, 2.0F, 0.0F, 5.75F, 0.0F, 0.125F);
+		PartDefinition llp4pd = ModClientUtils.addC(llp3pd, cd, "left_leg_part_4", 0, 56, -1.5F, -1.5F, -1.0F, 3.0F, 4.0F, 2.0F, 0.0F, 5.75F, 0.0F, true, 0.125F);
 		ModClientUtils.addC(rlp4pd, cd, "right_leg_part_5", 16, 56, -1.5F, -1.0F, -1.0F, 3.0F, 3.0F, 2.0F, 0.0F, 2.5F, 0.0F);
 		ModClientUtils.addC(llp4pd, cd, "left_leg_part_5", 16, 56, -1.5F, -1.0F, -1.0F, 3.0F, 3.0F, 2.0F, 0.0F, 2.5F, 0.0F, true);
 		PartDefinition repd = ModClientUtils.addC(headpd, cd, "right_ear", 32, 64, -2.0F, -1.75F, -1.0F, 3.0F, 2.0F, 2.0F, -1.5F, -8.0F, -0.75F, 0.25F);
