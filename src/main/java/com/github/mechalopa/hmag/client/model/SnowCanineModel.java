@@ -171,7 +171,7 @@ public class SnowCanineModel<T extends MobEntity> extends AbstractGirlModel<T>
 		this.leftEarPart = new ModelRenderer(this, 32, 68);
 		this.leftEarPart.mirror = true;
 		this.leftEarPart.addBox(-1.0F, -1.75F, -1.0F, 3.0F, 3.0F, 2.0F, modelSize);
-		this.leftEarPart.setPos(0.0F, -2.0F, -0.0F);
+		this.leftEarPart.setPos(0.0F, -2.0F, 0.0F);
 		this.leftEar.addChild(this.leftEarPart);
 
 		this.tail1 = new ModelRenderer(this, 48, 64);

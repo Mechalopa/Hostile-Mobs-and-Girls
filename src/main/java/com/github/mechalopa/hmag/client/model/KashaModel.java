@@ -101,6 +101,13 @@ public class KashaModel<T extends Entity> extends SegmentedModel<T>
 				this.tail2B.xRot = f1 + f2 * MathHelper.cos(limbSwing + (float)Math.PI) * limbSwingAmount;
 			}
 		}
+
+		this.tail.xRot += MathHelper.cos(ageInTicks * 0.067F - ((float)Math.PI / 4.0F)) * 0.036F;
+		this.tail.zRot = MathHelper.cos(ageInTicks * 0.06F) * 0.067F;
+		this.tail2A.yRot = ((float)Math.PI / 8.0F);
+		this.tail2B.yRot = -((float)Math.PI / 8.0F);
+		this.tail2A.yRot += MathHelper.cos(ageInTicks * 0.075F + ((float)Math.PI / 3.0F)) * 0.072F;
+		this.tail2B.yRot -= MathHelper.cos(ageInTicks * 0.075F) * 0.072F;
 	}
 
 	@Override
