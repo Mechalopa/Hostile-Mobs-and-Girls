@@ -172,7 +172,6 @@ public class ModItems
 	public static final RegistryObject<Item> CRIMSON_SLAUGHTERER_SPAWN_EGG = createSpawnEggRegistryObject("crimson_slaughterer", ModEntityTypes.CRIMSON_SLAUGHTERER, 0x942020, 0x562C3E);
 	public static final RegistryObject<Item> DYSSOMNIA_SPAWN_EGG = createSpawnEggRegistryObject("dyssomnia", ModEntityTypes.DYSSOMNIA, 0x374377, 0xC3B9A1);
 	public static final RegistryObject<Item> SNOW_CANINE_SPAWN_EGG = createSpawnEggRegistryObject("snow_canine", ModEntityTypes.SNOW_CANINE, 0xE9E3DF, 0xB19B8A);
-	public static final RegistryObject<Item> STONEULAR_SPAWN_EGG = createSpawnEggRegistryObject("stoneular", ModEntityTypes.STONEULAR, 0x525252, 0xB5B5B5);
 	public static final RegistryObject<Item> HARPY_SPAWN_EGG = createSpawnEggRegistryObject("harpy", ModEntityTypes.HARPY, 0xD29741, 0x6B5244);
 	public static final RegistryObject<Item> SAVAGEFANG_SPAWN_EGG = createSpawnEggRegistryObject("savagefang", ModEntityTypes.SAVAGEFANG, 0x415A4E, 0x690C1B);
 	public static final RegistryObject<Item> FORTRESS_KEEPER_SPAWN_EGG = createSpawnEggRegistryObject("fortress_keeper", ModEntityTypes.FORTRESS_KEEPER, 0x291519, 0xF48522);

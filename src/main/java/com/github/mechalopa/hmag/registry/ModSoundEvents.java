@@ -41,9 +41,6 @@ public class ModSoundEvents
 	public static final RegistryObject<SoundEvent> DYSSOMNIA_HURT = REGISTRY.register("entity.dyssomnia.hurt", () -> new SoundEvent(new ResourceLocation(HMaG.MODID, "entity.dyssomnia.hurt")));
 	public static final RegistryObject<SoundEvent> DYSSOMNIA_DEATH = REGISTRY.register("entity.dyssomnia.death", () -> new SoundEvent(new ResourceLocation(HMaG.MODID, "entity.dyssomnia.death")));
 	public static final RegistryObject<SoundEvent> DYSSOMNIA_SUMMON = REGISTRY.register("entity.dyssomnia.summon", () -> new SoundEvent(new ResourceLocation(HMaG.MODID, "entity.dyssomnia.summon")));
-	public static final RegistryObject<SoundEvent> STONEULAR_IDLE = REGISTRY.register("entity.stoneular.ambient", () -> new SoundEvent(new ResourceLocation(HMaG.MODID, "entity.stoneular.ambient")));
-	public static final RegistryObject<SoundEvent> STONEULAR_HURT = REGISTRY.register("entity.stoneular.hurt", () -> new SoundEvent(new ResourceLocation(HMaG.MODID, "entity.stoneular.hurt")));
-	public static final RegistryObject<SoundEvent> STONEULAR_DEATH = REGISTRY.register("entity.stoneular.death", () -> new SoundEvent(new ResourceLocation(HMaG.MODID, "entity.stoneular.death")));
 
 	@SubscribeEvent
 	public static void register(IEventBus eventBus)

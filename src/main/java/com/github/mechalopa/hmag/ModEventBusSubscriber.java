@@ -35,7 +35,6 @@ import com.github.mechalopa.hmag.entity.SkeletonGirlEntity;
 import com.github.mechalopa.hmag.entity.SlimeGirlEntity;
 import com.github.mechalopa.hmag.entity.SnowCanineEntity;
 import com.github.mechalopa.hmag.entity.SpiderNestEntity;
-import com.github.mechalopa.hmag.entity.StoneularEntity;
 import com.github.mechalopa.hmag.entity.StrayGirlEntity;
 import com.github.mechalopa.hmag.entity.WitherGhostEntity;
 import com.github.mechalopa.hmag.entity.WitherSkeletonGirlEntity;
@@ -184,7 +183,6 @@ public class ModEventBusSubscriber
 		SpawnPlacements.register(ModEntityTypes.CRIMSON_SLAUGHTERER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, CrimsonSlaughtererEntity::checkCrimsonSlaughtererSpawnRules);
 		SpawnPlacements.register(ModEntityTypes.DYSSOMNIA.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, DyssomniaEntity::checkDyssomniaSpawnRules);
 		SpawnPlacements.register(ModEntityTypes.SNOW_CANINE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkMonsterSpawnInLightOverY64Rules);
-		SpawnPlacements.register(ModEntityTypes.STONEULAR.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkMonsterSpawnInLightUnderY32Rules);
 		SpawnPlacements.register(ModEntityTypes.HARPY.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkMonsterSpawnInLightOverY64Rules);
 		SpawnPlacements.register(ModEntityTypes.SAVAGEFANG.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, SavagefangEntity::checkSavagefangSpawnRules);
 		SpawnPlacements.register(ModEntityTypes.FORTRESS_KEEPER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkAnyLightMonsterSpawnRules);
@@ -229,7 +227,6 @@ public class ModEventBusSubscriber
 		event.put(ModEntityTypes.CRIMSON_SLAUGHTERER.get(), CrimsonSlaughtererEntity.createAttributes().build());
 		event.put(ModEntityTypes.DYSSOMNIA.get(), DyssomniaEntity.createAttributes().build());
 		event.put(ModEntityTypes.SNOW_CANINE.get(), SnowCanineEntity.createAttributes().build());
-		event.put(ModEntityTypes.STONEULAR.get(), StoneularEntity.createAttributes().build());
 		event.put(ModEntityTypes.HARPY.get(), HarpyEntity.createAttributes().build());
 		event.put(ModEntityTypes.SAVAGEFANG.get(), SavagefangEntity.createAttributes().build());
 		event.put(ModEntityTypes.FORTRESS_KEEPER.get(), FortressKeeperEntity.createAttributes().build());

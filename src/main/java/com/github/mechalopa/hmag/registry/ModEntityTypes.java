@@ -36,7 +36,6 @@ import com.github.mechalopa.hmag.entity.SkeletonGirlEntity;
 import com.github.mechalopa.hmag.entity.SlimeGirlEntity;
 import com.github.mechalopa.hmag.entity.SnowCanineEntity;
 import com.github.mechalopa.hmag.entity.SpiderNestEntity;
-import com.github.mechalopa.hmag.entity.StoneularEntity;
 import com.github.mechalopa.hmag.entity.StrayGirlEntity;
 import com.github.mechalopa.hmag.entity.WitherGhostEntity;
 import com.github.mechalopa.hmag.entity.WitherSkeletonGirlEntity;
@@ -160,9 +159,6 @@ public class ModEntityTypes
 	public static final RegistryObject<EntityType<SnowCanineEntity>> SNOW_CANINE = REGISTRY.register("snow_canine", () -> EntityType.Builder
 			.of(SnowCanineEntity::new, MobCategory.MONSTER).sized(0.6F, 1.95F).setTrackingRange(6).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
 			.build(new ResourceLocation(HMaG.MODID, "snow_canine").toString()));
-	public static final RegistryObject<EntityType<StoneularEntity>> STONEULAR = REGISTRY.register("stoneular", () -> EntityType.Builder
-			.of(StoneularEntity::new, MobCategory.MONSTER).sized(0.9F, 1.7F).setTrackingRange(6).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(new ResourceLocation(HMaG.MODID, "stoneular").toString()));
 	public static final RegistryObject<EntityType<HarpyEntity>> HARPY = REGISTRY.register("harpy", () -> EntityType.Builder
 			.of(HarpyEntity::new, MobCategory.MONSTER).sized(0.6F, 1.95F).setTrackingRange(6).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
 			.build(new ResourceLocation(HMaG.MODID, "harpy").toString()));

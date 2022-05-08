@@ -105,8 +105,6 @@ public class ModBiomeLoadingEvent
 							&& BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.SNOWY)
 							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.WATER))
 						event.getSpawns().getSpawner(MobCategory.MONSTER).add(new SpawnerData(ModEntityTypes.SNOW_CANINE.get(), ModConfigs.cachedServer.SNOW_CANINE_SPAWN_WEIGHT, 1, 2));
-					if (ModConfigs.cachedServer.STONEULAR_SPAWN_WEIGHT > 0)
-						event.getSpawns().getSpawner(MobCategory.MONSTER).add(new SpawnerData(ModEntityTypes.STONEULAR.get(), ModConfigs.cachedServer.STONEULAR_SPAWN_WEIGHT, 1, 2));
 					if (ModConfigs.cachedServer.HARPY_SPAWN_WEIGHT > 0
 							&& (BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.PLAINS)
 							|| BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.SANDY))
