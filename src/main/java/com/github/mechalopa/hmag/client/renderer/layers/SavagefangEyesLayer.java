@@ -2,7 +2,7 @@ package com.github.mechalopa.hmag.client.renderer.layers;
 
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.model.SavagefangModel;
-import com.github.mechalopa.hmag.entity.SavagefangEntity;
+import com.github.mechalopa.hmag.world.entity.SavagefangEntity;
 
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.RenderLayerParent;

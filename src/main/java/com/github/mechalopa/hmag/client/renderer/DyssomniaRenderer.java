@@ -6,7 +6,7 @@ import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.DyssomniaModel;
 import com.github.mechalopa.hmag.client.renderer.layers.DyssomniaEyesLayer;
-import com.github.mechalopa.hmag.entity.DyssomniaEntity;
+import com.github.mechalopa.hmag.world.entity.DyssomniaEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
 

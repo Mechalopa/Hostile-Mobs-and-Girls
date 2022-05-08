@@ -4,7 +4,7 @@ import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.SnowCanineModel;
 import com.github.mechalopa.hmag.client.renderer.layers.SnowCanineEyesLayer;
-import com.github.mechalopa.hmag.entity.SnowCanineEntity;
+import com.github.mechalopa.hmag.world.entity.SnowCanineEntity;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;

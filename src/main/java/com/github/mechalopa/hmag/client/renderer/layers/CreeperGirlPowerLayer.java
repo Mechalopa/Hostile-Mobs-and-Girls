@@ -3,7 +3,7 @@ package com.github.mechalopa.hmag.client.renderer.layers;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.AbstractGirlModel;
 import com.github.mechalopa.hmag.client.model.CreeperGirlArmorModel;
-import com.github.mechalopa.hmag.entity.CreeperGirlEntity;
+import com.github.mechalopa.hmag.world.entity.CreeperGirlEntity;
 
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.EntityModelSet;

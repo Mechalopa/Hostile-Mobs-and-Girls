@@ -1,6 +1,6 @@
 package com.github.mechalopa.hmag.client.util;
 
-import com.github.mechalopa.hmag.entity.IBeamAttackMob;
+import com.github.mechalopa.hmag.world.entity.IBeamAttackMob;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Matrix3f;
 import com.mojang.math.Matrix4f;

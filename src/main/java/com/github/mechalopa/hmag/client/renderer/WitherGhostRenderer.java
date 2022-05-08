@@ -4,7 +4,7 @@ import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.renderer.layers.GhostClothingLayer;
 import com.github.mechalopa.hmag.client.renderer.layers.WitherGhostClothingLayer;
-import com.github.mechalopa.hmag.entity.GhostEntity;
+import com.github.mechalopa.hmag.world.entity.GhostEntity;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;

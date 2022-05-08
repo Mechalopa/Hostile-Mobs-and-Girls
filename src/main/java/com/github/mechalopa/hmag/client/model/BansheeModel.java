@@ -1,7 +1,7 @@
 package com.github.mechalopa.hmag.client.model;
 
 import com.github.mechalopa.hmag.client.util.ModClientUtils;
-import com.github.mechalopa.hmag.entity.AbstractFlyingMonsterEntity;
+import com.github.mechalopa.hmag.world.entity.AbstractFlyingMonsterEntity;
 
 import net.minecraft.client.model.AnimationUtils;
 import net.minecraft.client.model.geom.ModelPart;

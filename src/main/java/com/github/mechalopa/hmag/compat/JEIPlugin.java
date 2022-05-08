@@ -5,11 +5,11 @@ import java.util.Collection;
 import java.util.List;
 
 import com.github.mechalopa.hmag.HMaG;
-import com.github.mechalopa.hmag.item.EnchantmentUpgradeItem;
-import com.github.mechalopa.hmag.item.EnchantmentUpgradeItem.Properties.EnchantmentUpgradeProp;
-import com.github.mechalopa.hmag.recipe.EnchantmentUpgradeRecipe;
-import com.github.mechalopa.hmag.recipe.RemoveCurseRecipe;
 import com.github.mechalopa.hmag.util.ModTags;
+import com.github.mechalopa.hmag.world.item.EnchantmentUpgradeItem;
+import com.github.mechalopa.hmag.world.item.EnchantmentUpgradeItem.Properties.EnchantmentUpgradeProp;
+import com.github.mechalopa.hmag.world.item.crafting.EnchantmentUpgradeRecipe;
+import com.github.mechalopa.hmag.world.item.crafting.RemoveCurseRecipe;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;

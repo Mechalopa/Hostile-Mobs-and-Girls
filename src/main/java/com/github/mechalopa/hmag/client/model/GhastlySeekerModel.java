@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 import com.github.mechalopa.hmag.client.util.ModClientUtils;
-import com.github.mechalopa.hmag.entity.GhastlySeekerEntity;
+import com.github.mechalopa.hmag.world.entity.GhastlySeekerEntity;
 
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;

@@ -4,7 +4,7 @@ import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.BansheeModel;
 import com.github.mechalopa.hmag.client.renderer.layers.BansheeLayer;
-import com.github.mechalopa.hmag.entity.BansheeEntity;
+import com.github.mechalopa.hmag.world.entity.BansheeEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
 

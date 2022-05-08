@@ -1,9 +1,9 @@
 package com.github.mechalopa.hmag.registry;
 
 import com.github.mechalopa.hmag.HMaG;
-import com.github.mechalopa.hmag.loot.modifiers.AdditionalEntityLootModifier;
-import com.github.mechalopa.hmag.loot.modifiers.NuggetLootModifier;
-import com.github.mechalopa.hmag.loot.modifiers.ReplaceLootModifier;
+import com.github.mechalopa.hmag.world.level.storage.loot.modifiers.AdditionalEntityLootModifier;
+import com.github.mechalopa.hmag.world.level.storage.loot.modifiers.NuggetLootModifier;
+import com.github.mechalopa.hmag.world.level.storage.loot.modifiers.ReplaceLootModifier;
 
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.eventbus.api.IEventBus;

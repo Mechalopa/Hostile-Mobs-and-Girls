@@ -2,7 +2,7 @@ package com.github.mechalopa.hmag.client.renderer.layers;
 
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.model.DodomekiModel;
-import com.github.mechalopa.hmag.entity.DodomekiEntity;
+import com.github.mechalopa.hmag.world.entity.DodomekiEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 

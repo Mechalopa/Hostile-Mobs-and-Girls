@@ -1,8 +1,8 @@
 package com.github.mechalopa.hmag.registry;
 
 import com.github.mechalopa.hmag.HMaG;
-import com.github.mechalopa.hmag.effect.CombustionEffect;
-import com.github.mechalopa.hmag.effect.EnderRageEffect;
+import com.github.mechalopa.hmag.world.effect.CombustionEffect;
+import com.github.mechalopa.hmag.world.effect.EnderRageEffect;
 
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;

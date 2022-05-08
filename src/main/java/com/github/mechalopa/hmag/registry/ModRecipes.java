@@ -1,9 +1,9 @@
 package com.github.mechalopa.hmag.registry;
 
 import com.github.mechalopa.hmag.HMaG;
-import com.github.mechalopa.hmag.recipe.EnchantmentUpgradeRecipe;
-import com.github.mechalopa.hmag.recipe.ItemTagShapedRecipe;
-import com.github.mechalopa.hmag.recipe.RemoveCurseRecipe;
+import com.github.mechalopa.hmag.world.item.crafting.EnchantmentUpgradeRecipe;
+import com.github.mechalopa.hmag.world.item.crafting.ItemTagShapedRecipe;
+import com.github.mechalopa.hmag.world.item.crafting.RemoveCurseRecipe;
 
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.ShapedRecipe;

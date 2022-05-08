@@ -1,7 +1,7 @@
 package com.github.mechalopa.hmag.client.model;
 
 import com.github.mechalopa.hmag.client.util.ModClientUtils;
-import com.github.mechalopa.hmag.entity.SlimeGirlEntity;
+import com.github.mechalopa.hmag.world.entity.SlimeGirlEntity;
 
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.builders.CubeDeformation;

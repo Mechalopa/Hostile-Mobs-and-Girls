@@ -3,7 +3,7 @@ package com.github.mechalopa.hmag.client.renderer;
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.CursedDollModel;
-import com.github.mechalopa.hmag.entity.CursedDollEntity;
+import com.github.mechalopa.hmag.world.entity.CursedDollEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
 

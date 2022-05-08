@@ -2,7 +2,7 @@ package com.github.mechalopa.hmag.client.renderer.layers;
 
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.MagicalSlimeModel;
-import com.github.mechalopa.hmag.entity.MagicalSlimeEntity;
+import com.github.mechalopa.hmag.world.entity.MagicalSlimeEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 

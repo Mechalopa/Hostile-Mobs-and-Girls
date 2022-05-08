@@ -1,7 +1,7 @@
 package com.github.mechalopa.hmag.client;
 
 import com.github.mechalopa.hmag.HMaG;
-import com.github.mechalopa.hmag.item.ModBowItem;
+import com.github.mechalopa.hmag.world.item.ModBowItem;
 
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;

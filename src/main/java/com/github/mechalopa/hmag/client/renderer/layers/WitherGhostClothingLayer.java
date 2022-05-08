@@ -2,7 +2,7 @@ package com.github.mechalopa.hmag.client.renderer.layers;
 
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.model.GhostModel;
-import com.github.mechalopa.hmag.entity.GhostEntity;
+import com.github.mechalopa.hmag.world.entity.GhostEntity;
 
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.entity.RenderLayerParent;

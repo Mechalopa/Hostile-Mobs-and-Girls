@@ -1,6 +1,6 @@
 package com.github.mechalopa.hmag.client.renderer;
 
-import com.github.mechalopa.hmag.entity.projectile.MagmaBulletEntity;
+import com.github.mechalopa.hmag.world.entity.projectile.MagmaBulletEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
 

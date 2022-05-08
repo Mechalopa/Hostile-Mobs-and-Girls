@@ -6,7 +6,7 @@ import com.github.mechalopa.hmag.client.model.MeltyMonsterModel;
 import com.github.mechalopa.hmag.client.renderer.layers.MeltyMonsterClothingLayer;
 import com.github.mechalopa.hmag.client.renderer.layers.MeltyMonsterEyesLayer;
 import com.github.mechalopa.hmag.client.renderer.layers.MeltyMonsterMagmaLayer;
-import com.github.mechalopa.hmag.entity.MeltyMonsterEntity;
+import com.github.mechalopa.hmag.world.entity.MeltyMonsterEntity;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.core.BlockPos;

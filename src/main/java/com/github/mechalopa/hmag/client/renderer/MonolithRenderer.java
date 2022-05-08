@@ -6,7 +6,7 @@ import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.MonolithModel;
 import com.github.mechalopa.hmag.client.util.ModClientUtils;
-import com.github.mechalopa.hmag.entity.MonolithEntity;
+import com.github.mechalopa.hmag.world.entity.MonolithEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Matrix3f;

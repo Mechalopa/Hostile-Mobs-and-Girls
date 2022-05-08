@@ -1,13 +1,13 @@
 package com.github.mechalopa.hmag.registry;
 
 import com.github.mechalopa.hmag.HMaG;
-import com.github.mechalopa.hmag.block.HealingSandBlock;
-import com.github.mechalopa.hmag.block.ModBlock;
-import com.github.mechalopa.hmag.block.PoisonSandBlock;
-import com.github.mechalopa.hmag.block.ReinforcedBlock;
-import com.github.mechalopa.hmag.block.ReinforcedGlassBlock;
-import com.github.mechalopa.hmag.block.ThornSandBlock;
-import com.github.mechalopa.hmag.block.WitherSandBlock;
+import com.github.mechalopa.hmag.world.level.block.HealingSandBlock;
+import com.github.mechalopa.hmag.world.level.block.ModBlock;
+import com.github.mechalopa.hmag.world.level.block.PoisonSandBlock;
+import com.github.mechalopa.hmag.world.level.block.ReinforcedBlock;
+import com.github.mechalopa.hmag.world.level.block.ReinforcedGlassBlock;
+import com.github.mechalopa.hmag.world.level.block.ThornSandBlock;
+import com.github.mechalopa.hmag.world.level.block.WitherSandBlock;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;

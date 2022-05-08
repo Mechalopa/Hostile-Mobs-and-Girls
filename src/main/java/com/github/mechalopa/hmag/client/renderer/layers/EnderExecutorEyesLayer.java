@@ -2,7 +2,7 @@ package com.github.mechalopa.hmag.client.renderer.layers;
 
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.model.EnderExecutorModel;
-import com.github.mechalopa.hmag.entity.EnderExecutorEntity;
+import com.github.mechalopa.hmag.world.entity.EnderExecutorEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 

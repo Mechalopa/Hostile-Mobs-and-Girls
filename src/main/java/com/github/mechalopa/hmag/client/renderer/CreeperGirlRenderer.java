@@ -6,7 +6,7 @@ import com.github.mechalopa.hmag.client.model.AbstractGirlModel;
 import com.github.mechalopa.hmag.client.model.CreeperGirlArmorModel;
 import com.github.mechalopa.hmag.client.model.CreeperGirlModel;
 import com.github.mechalopa.hmag.client.renderer.layers.CreeperGirlPowerLayer;
-import com.github.mechalopa.hmag.entity.CreeperGirlEntity;
+import com.github.mechalopa.hmag.world.entity.CreeperGirlEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;

@@ -4,7 +4,7 @@ import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.MagicalSlimeModel;
 import com.github.mechalopa.hmag.client.renderer.layers.MagicalSlimeOuterLayer;
-import com.github.mechalopa.hmag.entity.MagicalSlimeEntity;
+import com.github.mechalopa.hmag.world.entity.MagicalSlimeEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import net.minecraft.client.renderer.MultiBufferSource;

@@ -9,7 +9,7 @@ import com.github.mechalopa.hmag.client.renderer.layers.EnderExecutorCarriedBloc
 import com.github.mechalopa.hmag.client.renderer.layers.EnderExecutorEyesLayer;
 import com.github.mechalopa.hmag.client.renderer.layers.ItemInHandLayer2;
 import com.github.mechalopa.hmag.client.util.ModClientUtils;
-import com.github.mechalopa.hmag.entity.EnderExecutorEntity;
+import com.github.mechalopa.hmag.world.entity.EnderExecutorEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Matrix3f;

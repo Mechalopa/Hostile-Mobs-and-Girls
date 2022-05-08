@@ -1,7 +1,7 @@
 package com.github.mechalopa.hmag.client.renderer.layers;
 
 import com.github.mechalopa.hmag.client.model.FortressKeeperModel;
-import com.github.mechalopa.hmag.entity.FortressKeeperEntity;
+import com.github.mechalopa.hmag.world.entity.FortressKeeperEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
 

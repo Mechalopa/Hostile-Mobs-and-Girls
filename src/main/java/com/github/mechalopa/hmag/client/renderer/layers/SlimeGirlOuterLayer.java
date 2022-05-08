@@ -3,7 +3,7 @@ package com.github.mechalopa.hmag.client.renderer.layers;
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.SlimeGirlModel;
-import com.github.mechalopa.hmag.entity.SlimeGirlEntity;
+import com.github.mechalopa.hmag.world.entity.SlimeGirlEntity;
 
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.EntityModelSet;

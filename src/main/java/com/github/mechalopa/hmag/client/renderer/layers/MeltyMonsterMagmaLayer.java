@@ -3,7 +3,7 @@ package com.github.mechalopa.hmag.client.renderer.layers;
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.MeltyMonsterModel;
-import com.github.mechalopa.hmag.entity.MeltyMonsterEntity;
+import com.github.mechalopa.hmag.world.entity.MeltyMonsterEntity;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;

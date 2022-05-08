@@ -4,7 +4,7 @@ import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.DodomekiModel;
 import com.github.mechalopa.hmag.client.renderer.layers.DodomekiEyesLayer;
-import com.github.mechalopa.hmag.entity.DodomekiEntity;
+import com.github.mechalopa.hmag.world.entity.DodomekiEntity;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;

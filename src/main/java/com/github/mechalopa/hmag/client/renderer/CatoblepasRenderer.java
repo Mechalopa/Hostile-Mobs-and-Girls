@@ -3,7 +3,7 @@ package com.github.mechalopa.hmag.client.renderer;
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.CatoblepasModel;
-import com.github.mechalopa.hmag.entity.CatoblepasEntity;
+import com.github.mechalopa.hmag.world.entity.CatoblepasEntity;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;

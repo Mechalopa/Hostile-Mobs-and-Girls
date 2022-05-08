@@ -4,7 +4,7 @@ import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.FortressKeeperModel;
 import com.github.mechalopa.hmag.client.renderer.layers.FortressKeeperFireLayer;
-import com.github.mechalopa.hmag.entity.FortressKeeperEntity;
+import com.github.mechalopa.hmag.world.entity.FortressKeeperEntity;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;

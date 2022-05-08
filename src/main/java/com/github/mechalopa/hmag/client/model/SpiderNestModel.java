@@ -3,7 +3,7 @@ package com.github.mechalopa.hmag.client.model;
 import java.util.Arrays;
 
 import com.github.mechalopa.hmag.client.util.ModClientUtils;
-import com.github.mechalopa.hmag.entity.SpiderNestEntity;
+import com.github.mechalopa.hmag.world.entity.SpiderNestEntity;
 
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelPart;

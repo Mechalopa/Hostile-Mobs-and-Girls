@@ -4,7 +4,7 @@ import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.GhastlySeekerModel;
 import com.github.mechalopa.hmag.client.renderer.layers.GhastlySeekerLayer;
-import com.github.mechalopa.hmag.entity.GhastlySeekerEntity;
+import com.github.mechalopa.hmag.world.entity.GhastlySeekerEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
 

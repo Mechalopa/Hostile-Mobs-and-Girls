@@ -1,9 +1,9 @@
 package com.github.mechalopa.hmag.registry;
 
 import com.github.mechalopa.hmag.HMaG;
-import com.github.mechalopa.hmag.enchantment.HealthBoostEnchantment;
-import com.github.mechalopa.hmag.enchantment.WaterAspectEnchantment;
 import com.github.mechalopa.hmag.util.ModUtils;
+import com.github.mechalopa.hmag.world.item.enchantment.HealthBoostEnchantment;
+import com.github.mechalopa.hmag.world.item.enchantment.WaterAspectEnchantment;
 
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.Enchantment;

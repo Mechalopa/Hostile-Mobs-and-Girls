@@ -3,7 +3,7 @@ package com.github.mechalopa.hmag.client.renderer;
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.KoboldModel;
-import com.github.mechalopa.hmag.entity.KoboldEntity;
+import com.github.mechalopa.hmag.world.entity.KoboldEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;

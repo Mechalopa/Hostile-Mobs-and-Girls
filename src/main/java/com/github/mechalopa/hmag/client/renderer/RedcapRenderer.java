@@ -5,7 +5,7 @@ import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.AbstractGirlModel;
 import com.github.mechalopa.hmag.client.model.GirlArmorModel;
 import com.github.mechalopa.hmag.client.model.RedcapModel;
-import com.github.mechalopa.hmag.entity.RedcapEntity;
+import com.github.mechalopa.hmag.world.entity.RedcapEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;

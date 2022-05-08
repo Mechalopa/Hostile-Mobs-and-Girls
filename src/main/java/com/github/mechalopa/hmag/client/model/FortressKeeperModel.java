@@ -1,7 +1,7 @@
 package com.github.mechalopa.hmag.client.model;
 
 import com.github.mechalopa.hmag.client.util.ModClientUtils;
-import com.github.mechalopa.hmag.entity.FortressKeeperEntity;
+import com.github.mechalopa.hmag.world.entity.FortressKeeperEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import net.minecraft.client.model.HierarchicalModel;

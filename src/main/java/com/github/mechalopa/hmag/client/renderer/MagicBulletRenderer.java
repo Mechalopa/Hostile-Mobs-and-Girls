@@ -1,7 +1,7 @@
 package com.github.mechalopa.hmag.client.renderer;
 
 import com.github.mechalopa.hmag.HMaG;
-import com.github.mechalopa.hmag.entity.projectile.MagicBulletEntity;
+import com.github.mechalopa.hmag.world.entity.projectile.MagicBulletEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Matrix3f;

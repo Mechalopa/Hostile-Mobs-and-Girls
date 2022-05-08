@@ -4,7 +4,7 @@ import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.SavagefangModel;
 import com.github.mechalopa.hmag.client.renderer.layers.SavagefangEyesLayer;
-import com.github.mechalopa.hmag.entity.SavagefangEntity;
+import com.github.mechalopa.hmag.world.entity.SavagefangEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
 
