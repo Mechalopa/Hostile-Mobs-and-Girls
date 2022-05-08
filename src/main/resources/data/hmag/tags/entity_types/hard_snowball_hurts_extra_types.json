@@ -1,11 +1,6 @@
 {
   "replace": false,
   "values": [
-    "minecraft:blaze",
-    "minecraft:magma_cube",
-    "minecraft:strider",
-    "hmag:fortress_keeper",
-    "hmag:kasha",
-    "hmag:melty_monster"
+    "#minecraft:freeze_hurts_extra_types"
   ]
 }

@@ -8,8 +8,7 @@
   "type": "tconstruct:entity_melting",
   "entity": {
     "types": [
-      "hmag:monolith",
-      "hmag:stoneular"
+      "hmag:monolith"
     ]
   },
   "result": {
