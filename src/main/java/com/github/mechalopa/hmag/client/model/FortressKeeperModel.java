@@ -90,40 +90,6 @@ public class FortressKeeperModel<T extends FortressKeeperEntity> extends Hierarc
 		this.leg2 = modelPart.getChild("leg_2");
 		this.leg3 = modelPart.getChild("leg_3");
 		this.leg4 = modelPart.getChild("leg_4");
-//
-//		this.leg1 = new ModelRenderer(this, 40, 64);
-//		this.leg1.addBox(-2.5F, -1.0F, -2.5F, 5.0F, 3.0F, 5.0F);
-//		this.leg1.setPos(-3.5F, 16.25F, 3.5F);
-//		this.leg2 = new ModelRenderer(this, 40, 64);
-//		this.leg2.mirror = true;
-//		this.leg2.addBox(-2.5F, -1.0F, -2.5F, 5.0F, 3.0F, 5.0F);
-//		this.leg2.setPos(3.5F, 16.25F, 3.5F);
-//		this.leg3 = new ModelRenderer(this, 40, 64);
-//		this.leg3.addBox(-2.5F, -1.0F, -2.5F, 5.0F, 3.0F, 5.0F);
-//		this.leg3.setPos(-3.5F, 16.25F, -3.5F);
-//		this.leg4 = new ModelRenderer(this, 40, 64);
-//		this.leg4.mirror = true;
-//		this.leg4.addBox(-2.5F, -1.0F, -2.5F, 5.0F, 3.0F, 5.0F);
-//		this.leg4.setPos(3.5F, 16.25F, -3.5F);
-//
-//		this.leg1Part = new ModelRenderer(this, 42, 72);
-//		this.leg1Part.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F);
-//		this.leg1Part.setPos(0.0F, 2.0F, 0.0F);
-//		this.leg1.addChild(this.leg1Part);
-//		this.leg2Part = new ModelRenderer(this, 42, 72);
-//		this.leg2Part.mirror = true;
-//		this.leg2Part.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F);
-//		this.leg2Part.setPos(0.0F, 2.0F, 0.0F);
-//		this.leg2.addChild(this.leg2Part);
-//		this.leg3Part = new ModelRenderer(this, 42, 72);
-//		this.leg3Part.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F);
-//		this.leg3Part.setPos(0.0F, 2.0F, 0.0F);
-//		this.leg3.addChild(this.leg3Part);
-//		this.leg4Part = new ModelRenderer(this, 42, 72);
-//		this.leg4Part.mirror = true;
-//		this.leg4Part.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F);
-//		this.leg4Part.setPos(0.0F, 2.0F, 0.0F);
-//		this.leg4.addChild(this.leg4Part);
 	}
 
 	public static LayerDefinition createBodyLayer()
@@ -142,7 +108,6 @@ public class FortressKeeperModel<T extends FortressKeeperEntity> extends Hierarc
 		ModClientUtils.addC(bodypd, "body_part_5_left", 40, 40, -1.0F, -2.0F, -3.0F, 2.0F, 2.0F, 6.0F, 6.0F, 0.0F, 0.0F, true);
 		ModClientUtils.addC(bodypd, "body_part_6_right", 40, 48, -2.0F, -8.0F, -1.0F, 4.0F, 11.0F, 4.0F, -4.0F, 5.0F, 5.0F);
 		ModClientUtils.addC(bodypd, "body_part_6_left", 40, 48, -2.0F, -8.0F, -1.0F, 4.0F, 11.0F, 4.0F, 4.0F, 5.0F, 5.0F, true);
-
 		PartDefinition rapd = ModClientUtils.addC(pd, "right_arm", 64, 0, -9.0F, -2.0F, -5.0F, 10.0F, 12.0F, 10.0F, -10.5F, -4.0F, 0.0F);
 		PartDefinition lapd = ModClientUtils.addC(pd, "left_arm", 64, 24, -1.0F, -2.0F, -5.0F, 10.0F, 12.0F, 10.0F, 10.5F, -4.0F, 0.0F);
 		PartDefinition rap1pd = ModClientUtils.addC(rapd, "right_arm_part_1", 64, 48, -3.0F, -2.0F, -3.0F, 6.0F, 2.0F, 6.0F, -4.0F, -2.0F, 0.0F);
