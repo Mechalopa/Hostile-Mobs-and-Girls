@@ -1,25 +1,25 @@
 package com.github.mechalopa.hmag.client.model;
 
 import com.github.mechalopa.hmag.client.util.ModClientUtils;
+import com.github.mechalopa.hmag.entity.CreeperGirlEntity;
 
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.world.entity.monster.AbstractSkeleton;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class StrayGirlClothingModel<T extends AbstractSkeleton> extends AbstractGirlModel<T>
+public class CreeperGirlArmorModel<T extends CreeperGirlEntity> extends GirlArmorModel<T>
 {
-	public StrayGirlClothingModel(ModelPart modelPart)
+	public CreeperGirlArmorModel(ModelPart modelPart)
 	{
 		super(modelPart);
 	}
 
-	public static MeshDefinition createMesh(CubeDeformation cd)
+	public static MeshDefinition createPowerArmorMesh(CubeDeformation cd)
 	{
 		MeshDefinition md = HumanoidModel.createMesh(cd, 0.0F);
 		PartDefinition pd = md.getRoot();
@@ -32,24 +32,10 @@ public class StrayGirlClothingModel<T extends AbstractSkeleton> extends Abstract
 	}
 
 	@Override
-	public void prepareMobModel(T entityIn, float limbSwing, float limbSwingAmount, float partialTick)
-	{
-		SkeletonGirlModel.prepareSkeletonModel(entityIn, this);
-
-		super.prepareMobModel(entityIn, limbSwing, limbSwingAmount, partialTick);
-	}
-
-	@Override
 	public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
 		super.setupAnim(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 
-		SkeletonGirlModel.doAnim(entityIn, ageInTicks, this.attackTime, this.rightArm, this.leftArm);
-	}
-
-	@Override
-	protected boolean isSkeletonHandTranslate()
-	{
-		return true;
+		CreeperGirlModel.doAnim(entityIn, ageInTicks, this.attackTime, this);
 	}
 }

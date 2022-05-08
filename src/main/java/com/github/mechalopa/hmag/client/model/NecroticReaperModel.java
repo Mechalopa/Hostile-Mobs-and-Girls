@@ -178,14 +178,14 @@ public class NecroticReaperModel<T extends Mob> extends AbstractGirlModel<T>
 			bodypd.addOrReplaceChild("left_skirt_part_" + k, cubelistbuilder1, pp1);
 		}
 
-		PartDefinition rhp1pd = ModClientUtils.addC(headpd, cd, "right_hair_part_1", 32, 48, -2.0F, -1.5F, -1.5F, 3.0F, 6.0F, 3.0F, -4.0F, -8.0F, 2.75F);
-		PartDefinition rhp2pd = ModClientUtils.addC(rhp1pd, cd, "right_hair_part_2", 48, 48, -1.0F, -0.5F, -1.0F, 2.0F, 5.0F, 2.0F, -0.5F, 5.0F, 0.0F, 0.125F);
-		PartDefinition rhp3pd = ModClientUtils.addC(rhp2pd, cd, "right_hair_part_3", 56, 48, -1.0F, -0.5F, -1.0F, 2.0F, 3.0F, 2.0F, 0.0F, 4.5F, 0.0F);
-		ModClientUtils.addC(rhp3pd, cd, "right_hair_part_4", 48, 56, -0.5F, -0.5F, -0.5F, 1.0F, 2.0F, 1.0F, 0.0F, 2.5F, 0.0F, 0.25F);
-		PartDefinition lhp1pd = ModClientUtils.addC(headpd, cd, "left_hair_part_1", 32, 48, -1.0F, -1.5F, -1.5F, 3.0F, 6.0F, 3.0F, 4.0F, -8.0F, 2.75F, true);
-		PartDefinition lhp2pd = ModClientUtils.addC(lhp1pd, cd, "left_hair_part_2", 48, 48, -1.0F, -0.5F, -1.0F, 2.0F, 5.0F, 2.0F, 0.5F, 5.0F, 0.0F, true, 0.125F);
-		PartDefinition lhp3pd = ModClientUtils.addC(lhp2pd, cd, "left_hair_part_3", 56, 48, -1.0F, -0.5F, -1.0F, 2.0F, 3.0F, 2.0F, 0.0F, 4.5F, 0.0F, true);
-		ModClientUtils.addC(lhp3pd, cd, "left_hair_part_4", 48, 56, -0.5F, -0.5F, -0.5F, 1.0F, 2.0F, 1.0F, 0.0F, 2.5F, 0.0F, true, 0.25F);
+		PartDefinition rhp1pd = ModClientUtils.addC(headpd, cd, "right_hair_1", 32, 48, -2.0F, -1.5F, -1.5F, 3.0F, 6.0F, 3.0F, -4.0F, -8.0F, 2.75F);
+		PartDefinition rhp2pd = ModClientUtils.addC(rhp1pd, cd, "right_hair_2", 48, 48, -1.0F, -0.5F, -1.0F, 2.0F, 5.0F, 2.0F, -0.5F, 5.0F, 0.0F, 0.125F);
+		PartDefinition rhp3pd = ModClientUtils.addC(rhp2pd, cd, "right_hair_3", 56, 48, -1.0F, -0.5F, -1.0F, 2.0F, 3.0F, 2.0F, 0.0F, 4.5F, 0.0F);
+		ModClientUtils.addC(rhp3pd, cd, "right_hair_4", 48, 56, -0.5F, -0.5F, -0.5F, 1.0F, 2.0F, 1.0F, 0.0F, 2.5F, 0.0F, 0.25F);
+		PartDefinition lhp1pd = ModClientUtils.addC(headpd, cd, "left_hair_1", 32, 48, -1.0F, -1.5F, -1.5F, 3.0F, 6.0F, 3.0F, 4.0F, -8.0F, 2.75F, true);
+		PartDefinition lhp2pd = ModClientUtils.addC(lhp1pd, cd, "left_hair_2", 48, 48, -1.0F, -0.5F, -1.0F, 2.0F, 5.0F, 2.0F, 0.5F, 5.0F, 0.0F, true, 0.125F);
+		PartDefinition lhp3pd = ModClientUtils.addC(lhp2pd, cd, "left_hair_3", 56, 48, -1.0F, -0.5F, -1.0F, 2.0F, 3.0F, 2.0F, 0.0F, 4.5F, 0.0F, true);
+		ModClientUtils.addC(lhp3pd, cd, "left_hair_4", 48, 56, -0.5F, -0.5F, -0.5F, 1.0F, 2.0F, 1.0F, 0.0F, 2.5F, 0.0F, true, 0.25F);
 		PartDefinition t1pd = ModClientUtils.addC(headpd, cd, "tail_part_1", 32, 80, -1.0F, 0.0F, -0.5F, 2.0F, 8.0F, 1.0F, 0.0F, -3.0F, 4.0F);
 		PartDefinition t2pd = ModClientUtils.addC(t1pd, cd, "tail_part_2", 38, 80, -0.5F, 0.0F, -0.5F, 1.0F, 10.0F, 1.0F, 0.0F, 7.75F, 0.0F);
 		PartDefinition t3pd = ModClientUtils.addC(t2pd, cd, "tail_part_3", 42, 80, -0.5F, 0.0F, -2.0F, 1.0F, 6.0F, 2.0F, 0.0F, 10.0F, 0.5F);

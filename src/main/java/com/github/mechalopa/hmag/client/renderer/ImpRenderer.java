@@ -1,12 +1,13 @@
 package com.github.mechalopa.hmag.client.renderer;
 
 import com.github.mechalopa.hmag.HMaG;
+import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.ImpModel;
 import com.github.mechalopa.hmag.entity.ImpEntity;
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
 
-import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -15,20 +16,20 @@ public class ImpRenderer extends AbstractGirlRenderer<ImpEntity, ImpModel<ImpEnt
 {
 	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/imp.png");
 
-	public ImpRenderer(EntityRendererManager renderManagerIn)
+	public ImpRenderer(EntityRendererProvider.Context context)
 	{
-		super(renderManagerIn, new ImpModel<>(), 0.5F, -1);
+		super(context, new ImpModel<>(context.bakeLayer(ModModelLayers.IMP)), 0.5F, -1);
 	}
 
 	@Override
-	protected void scale(ImpEntity entityIn, MatrixStack matrixStackIn, float partialTickTime)
+	protected void scale(ImpEntity entity, PoseStack poseStack, float partialTickTime)
 	{
-		matrixStackIn.scale(0.875F, 0.875F, 0.875F);
-		super.scale(entityIn, matrixStackIn, partialTickTime);
+		poseStack.scale(0.875F, 0.875F, 0.875F);
+		super.scale(entity, poseStack, partialTickTime);
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(ImpEntity entityIn)
+	public ResourceLocation getTextureLocation(ImpEntity entity)
 	{
 		return TEX;
 	}

@@ -50,21 +50,7 @@ public class DrownedGirlModel<T extends Zombie> extends ZombieGirlModel<T>
 	@Override
 	public void prepareMobModel(T entityIn, float limbSwing, float limbSwingAmount, float partialTick)
 	{
-		this.rightArmPose = HumanoidModel.ArmPose.EMPTY;
-		this.leftArmPose = HumanoidModel.ArmPose.EMPTY;
-		ItemStack stack = entityIn.getItemInHand(InteractionHand.MAIN_HAND);
-
-		if (ModUtils.isTrident(stack) && entityIn.isAggressive())
-		{
-			if (entityIn.getMainArm() == HumanoidArm.RIGHT)
-			{
-				this.rightArmPose = HumanoidModel.ArmPose.THROW_SPEAR;
-			}
-			else
-			{
-				this.leftArmPose = HumanoidModel.ArmPose.THROW_SPEAR;
-			}
-		}
+		prepareDrownedModel(entityIn, this);
 
 		super.prepareMobModel(entityIn, limbSwing, limbSwingAmount, partialTick);
 	}
@@ -74,34 +60,58 @@ public class DrownedGirlModel<T extends Zombie> extends ZombieGirlModel<T>
 	{
 		super.setupAnim(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 
-		if (this.leftArmPose == HumanoidModel.ArmPose.THROW_SPEAR)
-		{
-			this.leftArm.xRot = this.leftArm.xRot * 0.5F - (float)Math.PI;
-			this.leftArm.yRot = 0.0F;
-		}
-
-		if (this.rightArmPose == HumanoidModel.ArmPose.THROW_SPEAR)
-		{
-			this.rightArm.xRot = this.rightArm.xRot * 0.5F - (float)Math.PI;
-			this.rightArm.yRot = 0.0F;
-		}
-
-		if (this.swimAmount > 0.0F)
-		{
-			this.rightArm.xRot = this.rotlerpRad(this.swimAmount, this.rightArm.xRot, -2.5132742F) + this.swimAmount * 0.35F * Mth.sin(0.1F * ageInTicks);
-			this.leftArm.xRot = this.rotlerpRad(this.swimAmount, this.leftArm.xRot, -2.5132742F) - this.swimAmount * 0.35F * Mth.sin(0.1F * ageInTicks);
-			this.rightArm.zRot = this.rotlerpRad(this.swimAmount, this.rightArm.zRot, -0.15F);
-			this.leftArm.zRot = this.rotlerpRad(this.swimAmount, this.leftArm.zRot, 0.15F);
-			this.leftLeg.xRot -= this.swimAmount * 0.55F * Mth.sin(0.1F * ageInTicks);
-			this.rightLeg.xRot += this.swimAmount * 0.55F * Mth.sin(0.1F * ageInTicks);
-			this.head.xRot = 0.0F;
-		}
+		doAnim(entityIn, ageInTicks, attackTime, this);
 
 		this.rightArmPart.yRot = -((float)Math.PI / 18.0F);
 		this.rightArmPart.yRot += Mth.sin(ageInTicks * 0.045F + (float)Math.PI) * 0.06F;
 		this.leftArmPart.yRot = (float)Math.PI / 18.0F;
 		this.leftArmPart.yRot -= Mth.sin(ageInTicks * 0.045F + (float)Math.PI) * 0.06F;
+	}
 
-		this.hat.copyFrom(this.head);
+	public static void prepareDrownedModel(Zombie entityIn, HumanoidModel<?> model)
+	{
+		model.rightArmPose = HumanoidModel.ArmPose.EMPTY;
+		model.leftArmPose = HumanoidModel.ArmPose.EMPTY;
+		ItemStack stack = entityIn.getItemInHand(InteractionHand.MAIN_HAND);
+
+		if (ModUtils.isTrident(stack) && entityIn.isAggressive())
+		{
+			if (entityIn.getMainArm() == HumanoidArm.RIGHT)
+			{
+				model.rightArmPose = HumanoidModel.ArmPose.THROW_SPEAR;
+			}
+			else
+			{
+				model.leftArmPose = HumanoidModel.ArmPose.THROW_SPEAR;
+			}
+		}
+	}
+
+	public static void doAnim(Zombie entityIn, float ageInTicks, float attackTime, AbstractGirlModel<?> model)
+	{
+		if (model.leftArmPose == HumanoidModel.ArmPose.THROW_SPEAR)
+		{
+			model.leftArm.xRot = model.leftArm.xRot * 0.5F - (float)Math.PI;
+			model.leftArm.yRot = 0.0F;
+		}
+
+		if (model.rightArmPose == HumanoidModel.ArmPose.THROW_SPEAR)
+		{
+			model.rightArm.xRot = model.rightArm.xRot * 0.5F - (float)Math.PI;
+			model.rightArm.yRot = 0.0F;
+		}
+
+		if (model.swimAmount > 0.0F)
+		{
+			model.rightArm.xRot = ModUtils.rotlerpRad(model.swimAmount, model.rightArm.xRot, -2.5132742F) + model.swimAmount * 0.35F * Mth.sin(0.1F * ageInTicks);
+			model.leftArm.xRot = ModUtils.rotlerpRad(model.swimAmount, model.leftArm.xRot, -2.5132742F) - model.swimAmount * 0.35F * Mth.sin(0.1F * ageInTicks);
+			model.rightArm.zRot = ModUtils.rotlerpRad(model.swimAmount, model.rightArm.zRot, -0.15F);
+			model.leftArm.zRot = ModUtils.rotlerpRad(model.swimAmount, model.leftArm.zRot, 0.15F);
+			model.leftLeg.xRot -= model.swimAmount * 0.55F * Mth.sin(0.1F * ageInTicks);
+			model.rightLeg.xRot += model.swimAmount * 0.55F * Mth.sin(0.1F * ageInTicks);
+			model.head.xRot = 0.0F;
+		}
+
+		model.hat.copyFrom(model.head);
 	}
 }

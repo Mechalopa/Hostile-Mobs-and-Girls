@@ -33,7 +33,7 @@ public class ZombieGirlModel<T extends Zombie> extends AbstractAdvancedGirlModel
 		this.skirt2 = this.skirt1.getChild("skirt_2");
 		this.tailHair1 = this.head.getChild("tail_hair_1");
 		this.tailHair2 = this.tailHair1.getChild("tail_hair_2");
-		this.tailHair3 = this.tailHair3.getChild("tail_hair_3");
+		this.tailHair3 = this.tailHair2.getChild("tail_hair_3");
 		this.tailHair4 = this.tailHair4.getChild("tail_hair_4");
 		this.ahoge = this.head.getChild("ahoge");
 	}

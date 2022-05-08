@@ -40,11 +40,11 @@ public class ModClientUtils
 		return livingentity != null && livingentity.isUsingItem() && livingentity.getUseItem() == stack ? 1.0F : 0.0F;
 	};
 
-	public static Vec3 getPosition(LivingEntity entityLivingBaseIn, double d0, float f)
+	public static Vec3 getPosition(LivingEntity entityLiving, double d0, float f)
 	{
-		double d1 = Mth.lerp((double)f, entityLivingBaseIn.xOld, entityLivingBaseIn.getX());
-		double d2 = Mth.lerp((double)f, entityLivingBaseIn.yOld, entityLivingBaseIn.getY()) + d0;
-		double d3 = Mth.lerp((double)f, entityLivingBaseIn.zOld, entityLivingBaseIn.getZ());
+		double d1 = Mth.lerp((double)f, entityLiving.xOld, entityLiving.getX());
+		double d2 = Mth.lerp((double)f, entityLiving.yOld, entityLiving.getY()) + d0;
+		double d3 = Mth.lerp((double)f, entityLiving.zOld, entityLiving.getZ());
 		return new Vec3(d1, d2, d3);
 	}
 

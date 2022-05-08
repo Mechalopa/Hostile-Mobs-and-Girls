@@ -3,6 +3,7 @@ package com.github.mechalopa.hmag.client.renderer;
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.AbstractGirlModel;
+import com.github.mechalopa.hmag.client.model.SkeletonGirlArmorModel;
 import com.github.mechalopa.hmag.client.model.SkeletonGirlModel;
 
 import net.minecraft.client.model.geom.ModelLayerLocation;
@@ -25,7 +26,7 @@ public class SkeletonGirlRenderer extends AbstractGirlRenderer<AbstractSkeleton,
 
 	public SkeletonGirlRenderer(EntityRendererProvider.Context context, ModelLayerLocation location, ModelLayerLocation location1, ModelLayerLocation location2)
 	{
-		this(context, new SkeletonGirlModel<>(context.bakeLayer(location)), new SkeletonGirlModel<>(context.bakeLayer(location1)), new SkeletonGirlModel<>(context.bakeLayer(location2)));
+		this(context, new SkeletonGirlModel<>(context.bakeLayer(location)), new SkeletonGirlArmorModel<>(context.bakeLayer(location1)), new SkeletonGirlArmorModel<>(context.bakeLayer(location2)));
 	}
 
 	public SkeletonGirlRenderer(EntityRendererProvider.Context context, AbstractGirlModel<AbstractSkeleton> model, AbstractGirlModel<AbstractSkeleton> model1, AbstractGirlModel<AbstractSkeleton> model2)

@@ -3,6 +3,7 @@ package com.github.mechalopa.hmag.client.renderer;
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.AbstractGirlModel;
+import com.github.mechalopa.hmag.client.model.CreeperGirlArmorModel;
 import com.github.mechalopa.hmag.client.model.CreeperGirlModel;
 import com.github.mechalopa.hmag.client.renderer.layers.CreeperGirlPowerLayer;
 import com.github.mechalopa.hmag.entity.CreeperGirlEntity;
@@ -24,7 +25,7 @@ public class CreeperGirlRenderer extends AbstractGirlRenderer<CreeperGirlEntity,
 
 	public CreeperGirlRenderer(EntityRendererProvider.Context context)
 	{
-		this(context, new CreeperGirlModel<>(context.bakeLayer(ModModelLayers.CREEPER_GIRL)), new CreeperGirlModel<>(context.bakeLayer(ModModelLayers.CREEPER_GIRL_INNER_ARMOR)), new CreeperGirlModel<>(context.bakeLayer(ModModelLayers.CREEPER_GIRL_OUTER_ARMOR)));
+		this(context, new CreeperGirlModel<>(context.bakeLayer(ModModelLayers.CREEPER_GIRL)), new CreeperGirlArmorModel<>(context.bakeLayer(ModModelLayers.CREEPER_GIRL_INNER_ARMOR)), new CreeperGirlArmorModel<>(context.bakeLayer(ModModelLayers.CREEPER_GIRL_OUTER_ARMOR)));
 	}
 
 	public CreeperGirlRenderer(EntityRendererProvider.Context context, AbstractGirlModel<CreeperGirlEntity> model, AbstractGirlModel<CreeperGirlEntity> model1, AbstractGirlModel<CreeperGirlEntity> model2)

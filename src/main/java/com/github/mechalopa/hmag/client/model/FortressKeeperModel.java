@@ -1,287 +1,200 @@
 package com.github.mechalopa.hmag.client.model;
 
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.entity.FortressKeeperEntity;
-import com.google.common.collect.ImmutableList;
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
 
-import net.minecraft.client.renderer.entity.model.SegmentedModel;
-import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.util.HandSide;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.client.model.HierarchicalModel;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.model.geom.builders.CubeListBuilder;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
+import net.minecraft.client.model.geom.builders.MeshDefinition;
+import net.minecraft.client.model.geom.builders.PartDefinition;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.HumanoidArm;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class FortressKeeperModel<T extends FortressKeeperEntity> extends SegmentedModel<T>
+public class FortressKeeperModel<T extends FortressKeeperEntity> extends HierarchicalModel<T>
 {
-	private final ModelRenderer head;
-	private final ModelRenderer headPartRight;
-	private final ModelRenderer headPartLeft;
-	private final ModelRenderer body;
-	private final ModelRenderer bodyPart1;
-	private final ModelRenderer bodyPart2;
-	private final ModelRenderer bodyPart3;
-	private final ModelRenderer bodyPart4;
-	private final ModelRenderer bodyPart5Right;
-	private final ModelRenderer bodyPart5Left;
-	private final ModelRenderer bodyPart6Right;
-	private final ModelRenderer bodyPart6Left;
-	private final ModelRenderer rightArm;
-	private final ModelRenderer leftArm;
-	private final ModelRenderer rightArmPart1;
-	private final ModelRenderer leftArmPart1;
-	private final ModelRenderer rightArmPart2;
-	private final ModelRenderer leftArmPart2;
-	private final ModelRenderer rightArmPart3A;
-	private final ModelRenderer rightArmPart3B;
-	private final ModelRenderer rightArmPart3C;
-	private final ModelRenderer rightArmPart3D;
-	private final ModelRenderer leftArmPart3A;
-	private final ModelRenderer leftArmPart3B;
-	private final ModelRenderer leftArmPart3C;
-	private final ModelRenderer leftArmPart3D;
-	private final ModelRenderer rightArmPart4;
-	private final ModelRenderer leftArmPart4;
-	private final ModelRenderer rightArmPart5A;
-	private final ModelRenderer rightArmPart5B;
-	private final ModelRenderer rightArmPart5C;
-	private final ModelRenderer rightArmPart5D;
-	private final ModelRenderer leftArmPart5A;
-	private final ModelRenderer leftArmPart5B;
-	private final ModelRenderer leftArmPart5C;
-	private final ModelRenderer leftArmPart5D;
-	private final ModelRenderer leg1;
-	private final ModelRenderer leg2;
-	private final ModelRenderer leg3;
-	private final ModelRenderer leg4;
-	private final ModelRenderer leg1Part;
-	private final ModelRenderer leg2Part;
-	private final ModelRenderer leg3Part;
-	private final ModelRenderer leg4Part;
+	private final ModelPart root;
+	private final ModelPart head;
+//	private final ModelPart rightHeadPart;
+//	private final ModelPart leftHeadPart;
+	private final ModelPart body;
+//	private final ModelPart bodyPart1;
+//	private final ModelPart bodyPart2;
+//	private final ModelPart bodyPart3;
+//	private final ModelPart bodyPart4;
+//	private final ModelPart bodyPart5Right;
+//	private final ModelPart bodyPart5Left;
+	private final ModelPart bodyPart6Right;
+	private final ModelPart bodyPart6Left;
+	private final ModelPart rightArm;
+	private final ModelPart leftArm;
+//	private final ModelPart rightArmPart1;
+//	private final ModelPart leftArmPart1;
+//	private final ModelPart rightArmPart2;
+//	private final ModelPart leftArmPart2;
+//	private final ModelPart rightArmPart3A;
+//	private final ModelPart rightArmPart3B;
+//	private final ModelPart rightArmPart3C;
+//	private final ModelPart rightArmPart3D;
+//	private final ModelPart leftArmPart3A;
+//	private final ModelPart leftArmPart3B;
+//	private final ModelPart leftArmPart3C;
+//	private final ModelPart leftArmPart3D;
+	private final ModelPart rightArmPart4;
+	private final ModelPart leftArmPart4;
+	private final ModelPart rightArmPart5A;
+	private final ModelPart rightArmPart5B;
+	private final ModelPart rightArmPart5C;
+	private final ModelPart rightArmPart5D;
+	private final ModelPart leftArmPart5A;
+	private final ModelPart leftArmPart5B;
+	private final ModelPart leftArmPart5C;
+	private final ModelPart leftArmPart5D;
+	private final ModelPart leg1;
+	private final ModelPart leg2;
+	private final ModelPart leg3;
+	private final ModelPart leg4;
+//	private final ModelPart leg1Part;
+//	private final ModelPart leg2Part;
+//	private final ModelPart leg3Part;
+//	private final ModelPart leg4Part;
 	private float animationAmount;
 	private float animationAmount1;
 
-	public FortressKeeperModel()
+	public FortressKeeperModel(ModelPart modelPart)
 	{
-		this.texHeight = 128;
-		this.texWidth = 128;
+		this.root = modelPart;
+		this.head = modelPart.getChild("head");
+		this.body = modelPart.getChild("body");
+		this.bodyPart6Right = this.body.getChild("body_part_6_right");
+		this.bodyPart6Left = this.body.getChild("body_part_6_left");
+		this.rightArm = modelPart.getChild("right_arm");
+		this.leftArm = modelPart.getChild("left_arm");
+		this.rightArmPart4 = this.rightArm.getChild("right_arm_part_4");
+		this.leftArmPart4 = this.leftArm.getChild("left_arm_part_4");
+		this.rightArmPart5A = this.rightArmPart4.getChild("right_arm_part_5a");
+		this.rightArmPart5B = this.rightArmPart4.getChild("right_arm_part_5b");
+		this.rightArmPart5C = this.rightArmPart4.getChild("right_arm_part_5c");
+		this.rightArmPart5D = this.rightArmPart4.getChild("right_arm_part_5d");
+		this.leftArmPart5A = this.leftArmPart4.getChild("left_arm_part_5a");
+		this.leftArmPart5B = this.leftArmPart4.getChild("left_arm_part_5b");
+		this.leftArmPart5C = this.leftArmPart4.getChild("left_arm_part_5c");
+		this.leftArmPart5D = this.leftArmPart4.getChild("left_arm_part_5d");
+		this.leg1 = modelPart.getChild("leg_1");
+		this.leg2 = modelPart.getChild("leg_2");
+		this.leg3 = modelPart.getChild("leg_3");
+		this.leg4 = modelPart.getChild("leg_4");
+//
+//		this.leg1 = new ModelRenderer(this, 40, 64);
+//		this.leg1.addBox(-2.5F, -1.0F, -2.5F, 5.0F, 3.0F, 5.0F);
+//		this.leg1.setPos(-3.5F, 16.25F, 3.5F);
+//		this.leg2 = new ModelRenderer(this, 40, 64);
+//		this.leg2.mirror = true;
+//		this.leg2.addBox(-2.5F, -1.0F, -2.5F, 5.0F, 3.0F, 5.0F);
+//		this.leg2.setPos(3.5F, 16.25F, 3.5F);
+//		this.leg3 = new ModelRenderer(this, 40, 64);
+//		this.leg3.addBox(-2.5F, -1.0F, -2.5F, 5.0F, 3.0F, 5.0F);
+//		this.leg3.setPos(-3.5F, 16.25F, -3.5F);
+//		this.leg4 = new ModelRenderer(this, 40, 64);
+//		this.leg4.mirror = true;
+//		this.leg4.addBox(-2.5F, -1.0F, -2.5F, 5.0F, 3.0F, 5.0F);
+//		this.leg4.setPos(3.5F, 16.25F, -3.5F);
+//
+//		this.leg1Part = new ModelRenderer(this, 42, 72);
+//		this.leg1Part.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F);
+//		this.leg1Part.setPos(0.0F, 2.0F, 0.0F);
+//		this.leg1.addChild(this.leg1Part);
+//		this.leg2Part = new ModelRenderer(this, 42, 72);
+//		this.leg2Part.mirror = true;
+//		this.leg2Part.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F);
+//		this.leg2Part.setPos(0.0F, 2.0F, 0.0F);
+//		this.leg2.addChild(this.leg2Part);
+//		this.leg3Part = new ModelRenderer(this, 42, 72);
+//		this.leg3Part.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F);
+//		this.leg3Part.setPos(0.0F, 2.0F, 0.0F);
+//		this.leg3.addChild(this.leg3Part);
+//		this.leg4Part = new ModelRenderer(this, 42, 72);
+//		this.leg4Part.mirror = true;
+//		this.leg4Part.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F);
+//		this.leg4Part.setPos(0.0F, 2.0F, 0.0F);
+//		this.leg4.addChild(this.leg4Part);
+	}
 
-		this.head = new ModelRenderer(this, 0, 0);
-		this.head.addBox(-4.0F, -3.0F, -4.0F, 8.0F, 7.0F, 6.0F);
-		this.head.setPos(0.0F, -4.0F, -4.0F);
+	public static LayerDefinition createBodyLayer()
+	{
+		MeshDefinition md = new MeshDefinition();
+		PartDefinition pd = md.getRoot();
+		PartDefinition headpd = ModClientUtils.addC(pd, "head", 0, 0, -4.0F, -3.0F, -4.0F, 8.0F, 7.0F, 6.0F, 0.0F, -4.0F, -4.0F);
+		ModClientUtils.addC(headpd, "right_head_part", 32, 0, -1.0F, -2.0F, -1.0F, 3.0F, 2.0F, 3.0F, -3.5F, 4.5F, -3.5F);
+		ModClientUtils.addC(headpd, "left_head_part", 32, 0, -2.0F, -2.0F, -1.0F, 3.0F, 2.0F, 3.0F, 3.5F, 4.5F, -3.5F, true);
+		PartDefinition bodypd = ModClientUtils.addC(pd, "body", 0, 16, -8.0F, 0.0F, -5.0F, 16.0F, 12.0F, 10.0F, 0.0F, -9.0F, 0.0F);
+		PartDefinition bp1pd = ModClientUtils.addC(bodypd, "body_part_1", 0, 40, -5.0F, 0.0F, -4.0F, 10.0F, 3.0F, 8.0F, 0.0F, 12.0F, 0.0F);
+		PartDefinition bp2pd = ModClientUtils.addC(bp1pd, "body_part_2", 0, 52, -3.5F, 0.0F, -2.5F, 7.0F, 6.0F, 5.0F, 0.0F, 3.0F, 0.0F);
+		PartDefinition bp3pd = ModClientUtils.addC(bp2pd, "body_part_3", 0, 64, -5.0F, 0.0F, -3.5F, 10.0F, 2.0F, 7.0F, 0.0F, 6.0F, 0.0F);
+		ModClientUtils.addC(bp3pd, "body_part_4", 0, 74, -6.0F, 0.0F, -4.5F, 12.0F, 2.0F, 9.0F, 0.0F, 2.0F, 0.0F);
+		ModClientUtils.addC(bodypd, "body_part_5_right", 40, 40, -1.0F, -2.0F, -3.0F, 2.0F, 2.0F, 6.0F, -6.0F, 0.0F, 0.0F);
+		ModClientUtils.addC(bodypd, "body_part_5_left", 40, 40, -1.0F, -2.0F, -3.0F, 2.0F, 2.0F, 6.0F, 6.0F, 0.0F, 0.0F, true);
+		ModClientUtils.addC(bodypd, "body_part_6_right", 40, 48, -2.0F, -8.0F, -1.0F, 4.0F, 11.0F, 4.0F, -4.0F, 5.0F, 5.0F);
+		ModClientUtils.addC(bodypd, "body_part_6_left", 40, 48, -2.0F, -8.0F, -1.0F, 4.0F, 11.0F, 4.0F, 4.0F, 5.0F, 5.0F, true);
 
-		this.headPartRight = new ModelRenderer(this, 32, 0);
-		this.headPartRight.addBox(-1.0F, -2.0F, -1.0F, 3.0F, 2.0F, 3.0F);
-		this.headPartRight.setPos(-3.5F, 4.5F, -3.5F);
-		this.head.addChild(this.headPartRight);
-		this.headPartLeft = new ModelRenderer(this, 32, 0);
-		this.headPartLeft.mirror = true;
-		this.headPartLeft.addBox(-2.0F, -2.0F, -1.0F, 3.0F, 2.0F, 3.0F);
-		this.headPartLeft.setPos(3.5F, 4.5F, -3.5F);
-		this.head.addChild(this.headPartLeft);
-
-		this.body = new ModelRenderer(this, 0, 16);
-		this.body.addBox(-8.0F, 0.0F, -5.0F, 16.0F, 12.0F, 10.0F);
-		this.body.setPos(0.0F, -9.0F, 0.0F);
-
-		this.bodyPart1 = new ModelRenderer(this, 0, 40);
-		this.bodyPart1.addBox(-5.0F, 0.0F, -4.0F, 10.0F, 3.0F, 8.0F);
-		this.bodyPart1.setPos(0.0F, 12.0F, 0.0F);
-		this.body.addChild(this.bodyPart1);
-
-		this.bodyPart2 = new ModelRenderer(this, 0, 52);
-		this.bodyPart2.addBox(-3.5F, 0.0F, -2.5F, 7.0F, 6.0F, 5.0F);
-		this.bodyPart2.setPos(0.0F, 3.0F, 0.0F);
-		this.bodyPart1.addChild(this.bodyPart2);
-
-		this.bodyPart3 = new ModelRenderer(this, 0, 64);
-		this.bodyPart3.addBox(-5.0F, 0.0F, -3.5F, 10.0F, 2.0F, 7.0F);
-		this.bodyPart3.setPos(0.0F, 6.0F, 0.0F);
-		this.bodyPart2.addChild(this.bodyPart3);
-
-		this.bodyPart4 = new ModelRenderer(this, 0, 74);
-		this.bodyPart4.addBox(-6.0F, 0.0F, -4.5F, 12.0F, 2.0F, 9.0F);
-		this.bodyPart4.setPos(0.0F, 2.0F, 0.0F);
-		this.bodyPart3.addChild(this.bodyPart4);
-
-		this.bodyPart5Right = new ModelRenderer(this, 40, 40);
-		this.bodyPart5Right.addBox(-1.0F, -2.0F, -3.0F, 2.0F, 2.0F, 6.0F);
-		this.bodyPart5Right.setPos(-6.0F, 0.0F, 0.0F);
-		this.body.addChild(this.bodyPart5Right);
-		this.bodyPart5Left = new ModelRenderer(this, 40, 40);
-		this.bodyPart5Left.mirror = true;
-		this.bodyPart5Left.addBox(-1.0F, -2.0F, -3.0F, 2.0F, 2.0F, 6.0F);
-		this.bodyPart5Left.setPos(6.0F, 0.0F, 0.0F);
-		this.body.addChild(this.bodyPart5Left);
-
-		this.bodyPart6Right = new ModelRenderer(this, 40, 48);
-		this.bodyPart6Right.addBox(-2.0F, -8.0F, -1.0F, 4.0F, 11.0F, 4.0F);
-		this.bodyPart6Right.setPos(-4.0F, 5.0F, 5.0F);
-		this.body.addChild(this.bodyPart6Right);
-		this.bodyPart6Left = new ModelRenderer(this, 40, 48);
-		this.bodyPart6Left.mirror = true;
-		this.bodyPart6Left.addBox(-2.0F, -8.0F, -1.0F, 4.0F, 11.0F, 4.0F);
-		this.bodyPart6Left.setPos(4.0F, 5.0F, 5.0F);
-		this.body.addChild(this.bodyPart6Left);
-
-		this.rightArm = new ModelRenderer(this, 64, 0);
-		this.rightArm.addBox(-9.0F, -2.0F, -5.0F, 10.0F, 12.0F, 10.0F);
-		this.rightArm.setPos(-10.5F, -4.0F, 0.0F);
-		this.leftArm = new ModelRenderer(this, 64, 24);
-		this.leftArm.addBox(-1.0F, -2.0F, -5.0F, 10.0F, 12.0F, 10.0F);
-		this.leftArm.setPos(10.5F, -4.0F, 0.0F);
-
-		this.rightArmPart1 = new ModelRenderer(this, 64, 48);
-		this.rightArmPart1.addBox(-3.0F, -2.0F, -3.0F, 6.0F, 2.0F, 6.0F);
-		this.rightArmPart1.setPos(-4.0F, -2.0F, 0.0F);
-		this.rightArm.addChild(this.rightArmPart1);
-		this.leftArmPart1 = new ModelRenderer(this, 64, 48);
-		this.leftArmPart1.mirror = true;
-		this.leftArmPart1.addBox(-3.0F, -2.0F, -3.0F, 6.0F, 2.0F, 6.0F);
-		this.leftArmPart1.setPos(4.0F, -2.0F, 0.0F);
-		this.leftArm.addChild(this.leftArmPart1);
-
-		this.rightArmPart2 = new ModelRenderer(this, 64, 56);
-		this.rightArmPart2.addBox(-4.5F, -4.0F, -4.5F, 9.0F, 4.0F, 9.0F);
-		this.rightArmPart2.setPos(0.0F, -2.0F, 0.0F);
-		this.rightArmPart1.addChild(this.rightArmPart2);
-		this.leftArmPart2 = new ModelRenderer(this, 64, 56);
-		this.leftArmPart2.mirror = true;
-		this.leftArmPart2.addBox(-4.5F, -4.0F, -4.5F, 9.0F, 4.0F, 9.0F);
-		this.leftArmPart2.setPos(0.0F, -2.0F, 0.0F);
-		this.leftArmPart1.addChild(this.leftArmPart2);
-
-		this.rightArmPart3A = new ModelRenderer(this, 104, 0);
-		this.rightArmPart3A.addBox(-1.0F, -2.0F, -2.0F, 2.0F, 2.0F, 4.0F);
-		this.rightArmPart3A.setPos(-4.5F, -4.0F, 0.0F);
-		this.rightArmPart2.addChild(this.rightArmPart3A);
-		this.rightArmPart3B = new ModelRenderer(this, 104, 6);
-		this.rightArmPart3B.addBox(-1.0F, -2.0F, -2.0F, 2.0F, 2.0F, 4.0F);
-		this.rightArmPart3B.setPos(4.5F, -4.0F, 0.0F);
-		this.rightArmPart2.addChild(this.rightArmPart3B);
-		this.rightArmPart3C = new ModelRenderer(this, 104, 12);
-		this.rightArmPart3C.addBox(-2.0F, -2.0F, -1.0F, 4.0F, 2.0F, 2.0F);
-		this.rightArmPart3C.setPos(0.0F, -4.0F, -4.5F);
-		this.rightArmPart2.addChild(this.rightArmPart3C);
-		this.rightArmPart3D = new ModelRenderer(this, 104, 16);
-		this.rightArmPart3D.addBox(-2.0F, -2.0F, -1.0F, 4.0F, 2.0F, 2.0F);
-		this.rightArmPart3D.setPos(0.0F, -4.0F, 4.5F);
-		this.rightArmPart2.addChild(this.rightArmPart3D);
-		this.leftArmPart3A = new ModelRenderer(this, 104, 0);
-		this.leftArmPart3A.mirror = true;
-		this.leftArmPart3A.addBox(-1.0F, -2.0F, -2.0F, 2.0F, 2.0F, 4.0F);
-		this.leftArmPart3A.setPos(4.5F, -4.0F, 0.0F);
-		this.leftArmPart2.addChild(this.leftArmPart3A);
-		this.leftArmPart3B = new ModelRenderer(this, 104, 6);
-		this.leftArmPart3B.mirror = true;
-		this.leftArmPart3B.addBox(-1.0F, -2.0F, -2.0F, 2.0F, 2.0F, 4.0F);
-		this.leftArmPart3B.setPos(-4.5F, -4.0F, 0.0F);
-		this.leftArmPart2.addChild(this.leftArmPart3B);
-		this.leftArmPart3C = new ModelRenderer(this, 104, 12);
-		this.leftArmPart3C.mirror = true;
-		this.leftArmPart3C.addBox(-2.0F, -2.0F, -1.0F, 4.0F, 2.0F, 2.0F);
-		this.leftArmPart3C.setPos(0.0F, -4.0F, -4.5F);
-		this.leftArmPart2.addChild(this.leftArmPart3C);
-		this.leftArmPart3D = new ModelRenderer(this, 104, 16);
-		this.leftArmPart3D.mirror = true;
-		this.leftArmPart3D.addBox(-2.0F, -2.0F, -1.0F, 4.0F, 2.0F, 2.0F);
-		this.leftArmPart3D.setPos(0.0F, -4.0F, 4.5F);
-		this.leftArmPart2.addChild(this.leftArmPart3D);
-
-		this.rightArmPart4 = new ModelRenderer(this, 64, 72);
-		this.rightArmPart4.addBox(-6.0F, 0.0F, -6.0F, 12.0F, 6.0F, 12.0F);
-		this.rightArmPart4.setPos(-4.0F, 10.0F, 0.0F);
-		this.rightArm.addChild(this.rightArmPart4);
-		this.leftArmPart4 = new ModelRenderer(this, 64, 72);
-		this.leftArmPart4.mirror = true;
-		this.leftArmPart4.addBox(-6.0F, 0.0F, -6.0F, 12.0F, 6.0F, 12.0F);
-		this.leftArmPart4.setPos(4.0F, 10.0F, 0.0F);
-		this.leftArm.addChild(this.leftArmPart4);
-
-		this.rightArmPart5A = new ModelRenderer(this, 96, 48);
-		this.rightArmPart5A.addBox(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F);
-		this.rightArmPart5A.setPos(-3.0F, 5.0F, -3.0F);
-		this.rightArmPart4.addChild(this.rightArmPart5A);
-		this.rightArmPart5B = new ModelRenderer(this, 104, 48);
-		this.rightArmPart5B.addBox(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F);
-		this.rightArmPart5B.setPos(3.0F, 5.0F, -3.0F);
-		this.rightArmPart4.addChild(this.rightArmPart5B);
-		this.rightArmPart5C = new ModelRenderer(this, 104, 48);
-		this.rightArmPart5C.addBox(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F);
-		this.rightArmPart5C.setPos(-3.0F, 5.0F, 3.0F);
-		this.rightArmPart4.addChild(this.rightArmPart5C);
-		this.rightArmPart5D = new ModelRenderer(this, 96, 48);
-		this.rightArmPart5D.addBox(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F);
-		this.rightArmPart5D.setPos(3.0F, 5.0F, 3.0F);
-		this.rightArmPart4.addChild(this.rightArmPart5D);
-		this.leftArmPart5A = new ModelRenderer(this, 96, 48);
-		this.leftArmPart5A.mirror = true;
-		this.leftArmPart5A.addBox(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F);
-		this.leftArmPart5A.setPos(3.0F, 5.0F, -3.0F);
-		this.leftArmPart4.addChild(this.leftArmPart5A);
-		this.leftArmPart5B = new ModelRenderer(this, 104, 48);
-		this.leftArmPart5B.mirror = true;
-		this.leftArmPart5B.addBox(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F);
-		this.leftArmPart5B.setPos(-3.0F, 5.0F, -3.0F);
-		this.leftArmPart4.addChild(this.leftArmPart5B);
-		this.leftArmPart5C = new ModelRenderer(this, 104, 48);
-		this.leftArmPart5C.mirror = true;
-		this.leftArmPart5C.addBox(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F);
-		this.leftArmPart5C.setPos(3.0F, 5.0F, 3.0F);
-		this.leftArmPart4.addChild(this.leftArmPart5C);
-		this.leftArmPart5D = new ModelRenderer(this, 96, 48);
-		this.leftArmPart5D.mirror = true;
-		this.leftArmPart5D.addBox(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F);
-		this.leftArmPart5D.setPos(-3.0F, 5.0F, 3.0F);
-		this.leftArmPart4.addChild(this.leftArmPart5D);
-
-		this.leg1 = new ModelRenderer(this, 40, 64);
-		this.leg1.addBox(-2.5F, -1.0F, -2.5F, 5.0F, 3.0F, 5.0F);
-		this.leg1.setPos(-3.5F, 16.25F, 3.5F);
-		this.leg2 = new ModelRenderer(this, 40, 64);
-		this.leg2.mirror = true;
-		this.leg2.addBox(-2.5F, -1.0F, -2.5F, 5.0F, 3.0F, 5.0F);
-		this.leg2.setPos(3.5F, 16.25F, 3.5F);
-		this.leg3 = new ModelRenderer(this, 40, 64);
-		this.leg3.addBox(-2.5F, -1.0F, -2.5F, 5.0F, 3.0F, 5.0F);
-		this.leg3.setPos(-3.5F, 16.25F, -3.5F);
-		this.leg4 = new ModelRenderer(this, 40, 64);
-		this.leg4.mirror = true;
-		this.leg4.addBox(-2.5F, -1.0F, -2.5F, 5.0F, 3.0F, 5.0F);
-		this.leg4.setPos(3.5F, 16.25F, -3.5F);
-
-		this.leg1Part = new ModelRenderer(this, 42, 72);
-		this.leg1Part.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F);
-		this.leg1Part.setPos(0.0F, 2.0F, 0.0F);
-		this.leg1.addChild(this.leg1Part);
-		this.leg2Part = new ModelRenderer(this, 42, 72);
-		this.leg2Part.mirror = true;
-		this.leg2Part.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F);
-		this.leg2Part.setPos(0.0F, 2.0F, 0.0F);
-		this.leg2.addChild(this.leg2Part);
-		this.leg3Part = new ModelRenderer(this, 42, 72);
-		this.leg3Part.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F);
-		this.leg3Part.setPos(0.0F, 2.0F, 0.0F);
-		this.leg3.addChild(this.leg3Part);
-		this.leg4Part = new ModelRenderer(this, 42, 72);
-		this.leg4Part.mirror = true;
-		this.leg4Part.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F);
-		this.leg4Part.setPos(0.0F, 2.0F, 0.0F);
-		this.leg4.addChild(this.leg4Part);
+		PartDefinition rapd = ModClientUtils.addC(pd, "right_arm", 64, 0, -9.0F, -2.0F, -5.0F, 10.0F, 12.0F, 10.0F, -10.5F, -4.0F, 0.0F);
+		PartDefinition lapd = ModClientUtils.addC(pd, "left_arm", 64, 24, -1.0F, -2.0F, -5.0F, 10.0F, 12.0F, 10.0F, 10.5F, -4.0F, 0.0F);
+		PartDefinition rap1pd = ModClientUtils.addC(rapd, "right_arm_part_1", 64, 48, -3.0F, -2.0F, -3.0F, 6.0F, 2.0F, 6.0F, -4.0F, -2.0F, 0.0F);
+		PartDefinition lap1pd = ModClientUtils.addC(lapd, "left_arm_part_1", 64, 48, -3.0F, -2.0F, -3.0F, 6.0F, 2.0F, 6.0F, 4.0F, -2.0F, 0.0F, true);
+		PartDefinition rap2pd = ModClientUtils.addC(rap1pd, "right_arm_part_2", 64, 56, -4.5F, -4.0F, -4.5F, 9.0F, 4.0F, 9.0F, 0.0F, -2.0F, 0.0F);
+		PartDefinition lap2pd = ModClientUtils.addC(lap1pd, "left_arm_part_2", 64, 56, -4.5F, -4.0F, -4.5F, 9.0F, 4.0F, 9.0F, 0.0F, -2.0F, 0.0F, true);
+		ModClientUtils.addC(rap2pd, "right_arm_part_3a", 104, 0, -1.0F, -2.0F, -2.0F, 2.0F, 2.0F, 4.0F, -4.5F, -4.0F, 0.0F);
+		ModClientUtils.addC(rap2pd, "right_arm_part_3b", 104, 6, -1.0F, -2.0F, -2.0F, 2.0F, 2.0F, 4.0F, 4.5F, -4.0F, 0.0F);
+		ModClientUtils.addC(rap2pd, "right_arm_part_3c", 104, 12, -2.0F, -2.0F, -1.0F, 4.0F, 2.0F, 2.0F, 0.0F, -4.0F, -4.5F);
+		ModClientUtils.addC(rap2pd, "right_arm_part_3d", 104, 16, -2.0F, -2.0F, -1.0F, 4.0F, 2.0F, 2.0F, 0.0F, -4.0F, 4.5F);
+		ModClientUtils.addC(lap2pd, "left_arm_part_3a", 104, 0, -1.0F, -2.0F, -2.0F, 2.0F, 2.0F, 4.0F, 4.5F, -4.0F, 0.0F, true);
+		ModClientUtils.addC(lap2pd, "left_arm_part_3b", 104, 6, -1.0F, -2.0F, -2.0F, 2.0F, 2.0F, 4.0F, -4.5F, -4.0F, 0.0F, true);
+		ModClientUtils.addC(lap2pd, "left_arm_part_3c", 104, 12, -2.0F, -2.0F, -1.0F, 4.0F, 2.0F, 2.0F, 0.0F, -4.0F, -4.5F, true);
+		ModClientUtils.addC(lap2pd, "left_arm_part_3d", 104, 16, -2.0F, -2.0F, -1.0F, 4.0F, 2.0F, 2.0F, 0.0F, -4.0F, 4.5F, true);
+		PartDefinition rap4pd = ModClientUtils.addC(rapd, "right_arm_part_4", 64, 72, -6.0F, 0.0F, -6.0F, 12.0F, 6.0F, 12.0F, -4.0F, 10.0F, 0.0F);
+		PartDefinition lap4pd = ModClientUtils.addC(lapd, "left_arm_part_4", 64, 72, -6.0F, 0.0F, -6.0F, 12.0F, 6.0F, 12.0F, 4.0F, 10.0F, 0.0F, true);
+		ModClientUtils.addC(rap4pd, "right_arm_part_5a", 96, 48, -1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, -3.0F, 5.0F, -3.0F);
+		ModClientUtils.addC(rap4pd, "right_arm_part_5b", 104, 48, -1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, 3.0F, 5.0F, -3.0F);
+		ModClientUtils.addC(rap4pd, "right_arm_part_5c", 104, 48, -1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, -3.0F, 5.0F, 3.0F);
+		ModClientUtils.addC(rap4pd, "right_arm_part_5d", 96, 48, -1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, 3.0F, 5.0F, 3.0F);
+		ModClientUtils.addC(lap4pd, "left_arm_part_5a", 96, 48, -1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, 3.0F, 5.0F, -3.0F, true);
+		ModClientUtils.addC(lap4pd, "left_arm_part_5b", 104, 48, -1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, -3.0F, 5.0F, -3.0F, true);
+		ModClientUtils.addC(lap4pd, "left_arm_part_5c", 104, 48, -1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, 3.0F, 5.0F, 3.0F, true);
+		ModClientUtils.addC(lap4pd, "left_arm_part_5d", 96, 48, -1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, -3.0F, 5.0F, 3.0F, true);
+		CubeListBuilder cubelistbuilder = CubeListBuilder.create().texOffs(40, 64).addBox(-2.5F, -1.0F, -2.5F, 5.0F, 3.0F, 5.0F);
+		CubeListBuilder cubelistbuilder1 = CubeListBuilder.create().texOffs(40, 64).mirror().addBox(-2.5F, -1.0F, -2.5F, 5.0F, 3.0F, 5.0F);
+		PartDefinition l1pd = pd.addOrReplaceChild("leg_1", cubelistbuilder, PartPose.offset(-3.5F, 16.25F, 3.5F));
+		PartDefinition l2pd = pd.addOrReplaceChild("leg_2", cubelistbuilder1, PartPose.offset(3.5F, 16.25F, 3.5F));
+		PartDefinition l3pd = pd.addOrReplaceChild("leg_3", cubelistbuilder, PartPose.offset(-3.5F, 16.25F, -3.5F));
+		PartDefinition l4pd = pd.addOrReplaceChild("leg_4", cubelistbuilder1, PartPose.offset(3.5F, 16.25F, -3.5F));
+		CubeListBuilder cubelistbuilder2 = CubeListBuilder.create().texOffs(42, 72).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F);
+		CubeListBuilder cubelistbuilder3 = CubeListBuilder.create().texOffs(42, 72).mirror().addBox(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F);
+		PartPose pp = PartPose.offset(0.0F, 2.0F, 0.0F);
+		l1pd.addOrReplaceChild("leg_1_part", cubelistbuilder2, pp);
+		l2pd.addOrReplaceChild("leg_2_part", cubelistbuilder3, pp);
+		l3pd.addOrReplaceChild("leg_3_part", cubelistbuilder2, pp);
+		l4pd.addOrReplaceChild("leg_4_part", cubelistbuilder3, pp);
+		return LayerDefinition.create(md, 128, 128);
 	}
 
 	@Override
-	public Iterable<ModelRenderer> parts()
+	public ModelPart root()
 	{
-		return ImmutableList.of(this.head, this.body, this.rightArm, this.leftArm, this.leg1, this.leg2, this.leg3, this.leg4);
+		return this.root;
 	}
 
 	@Override
 	public void prepareMobModel(T entityIn, float limbSwing, float limbSwingAmount, float partialTick)
 	{
 		super.prepareMobModel(entityIn, limbSwing, limbSwingAmount, partialTick);
-		this.animationAmount = MathHelper.clamp(entityIn.getAttackAnimationScale(partialTick), 0.0F, 1.0F);
-		this.animationAmount1 = MathHelper.clamp(entityIn.getAttackHandChangeAnimationScale(partialTick), 0.0F, 1.0F);
+		this.animationAmount = Mth.clamp(entityIn.getAttackAnimationScale(partialTick), 0.0F, 1.0F);
+		this.animationAmount1 = Mth.clamp(entityIn.getAttackHandChangeAnimationScale(partialTick), 0.0F, 1.0F);
 	}
 
 	@Override
@@ -293,10 +206,10 @@ public class FortressKeeperModel<T extends FortressKeeperEntity> extends Segment
 		this.bodyPart6Right.xRot = -((float)Math.PI / 21.0F);
 		this.bodyPart6Left.xRot = -((float)Math.PI / 21.0F);
 
-		this.leg1.xRot = MathHelper.cos(limbSwing * 0.6662F) * 1.2F * limbSwingAmount;
-		this.leg2.xRot = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.2F * limbSwingAmount;
-		this.leg3.xRot = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.2F * limbSwingAmount;
-		this.leg4.xRot = MathHelper.cos(limbSwing * 0.6662F) * 1.2F * limbSwingAmount;
+		this.leg1.xRot = Mth.cos(limbSwing * 0.6662F) * 1.2F * limbSwingAmount;
+		this.leg2.xRot = Mth.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.2F * limbSwingAmount;
+		this.leg3.xRot = Mth.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.2F * limbSwingAmount;
+		this.leg4.xRot = Mth.cos(limbSwing * 0.6662F) * 1.2F * limbSwingAmount;
 
 		float f = 0.09F;
 
@@ -305,22 +218,22 @@ public class FortressKeeperModel<T extends FortressKeeperEntity> extends Segment
 		this.leg3.zRot = f;
 		this.leg4.zRot = -f;
 
-		float f1 = entityIn.getMainArm() == HandSide.RIGHT ? (1.0F - animationAmount1) : animationAmount1;
-		float f2 = entityIn.getMainArm() != HandSide.RIGHT ? (1.0F - animationAmount1) : animationAmount1;
+		float f1 = entityIn.getMainArm() == HumanoidArm.RIGHT ? (1.0F - animationAmount1) : animationAmount1;
+		float f2 = entityIn.getMainArm() != HumanoidArm.RIGHT ? (1.0F - animationAmount1) : animationAmount1;
 		float f3 = 1.0F - (this.animationAmount * f1);
 		float f4 = 1.0F - (this.animationAmount * f2);
 
-		this.rightArm.xRot = MathHelper.sin(limbSwing * 0.6662F) * 1.0F * limbSwingAmount * f3;
-		this.leftArm.xRot = MathHelper.sin(limbSwing * 0.6662F + (float)Math.PI) * 1.0F * limbSwingAmount * f4;
+		this.rightArm.xRot = Mth.sin(limbSwing * 0.6662F) * 1.0F * limbSwingAmount * f3;
+		this.leftArm.xRot = Mth.sin(limbSwing * 0.6662F + (float)Math.PI) * 1.0F * limbSwingAmount * f4;
 		this.rightArm.yRot = 0.0F;
 		this.leftArm.yRot = 0.0F;
-		this.rightArm.zRot = (MathHelper.cos(ageInTicks * 0.06F) * 0.03F + 0.15F) * f3;
-		this.leftArm.zRot = -(MathHelper.cos(ageInTicks * 0.06F) * 0.03F + 0.15F) * f4;
+		this.rightArm.zRot = (Mth.cos(ageInTicks * 0.06F) * 0.03F + 0.15F) * f3;
+		this.leftArm.zRot = -(Mth.cos(ageInTicks * 0.06F) * 0.03F + 0.15F) * f4;
 
 		this.rightArm.y = -4.0F;
-		this.rightArm.y += MathHelper.sin(ageInTicks * 0.075F + (float)Math.PI / 2.0F) * 1.0F * f3;
+		this.rightArm.y += Mth.sin(ageInTicks * 0.075F + (float)Math.PI / 2.0F) * 1.0F * f3;
 		this.leftArm.y = -4.0F;
-		this.leftArm.y += MathHelper.sin(ageInTicks * 0.075F + (float)Math.PI * 3.0F / 2.0F) * 1.0F * f4;
+		this.leftArm.y += Mth.sin(ageInTicks * 0.075F + (float)Math.PI * 3.0F / 2.0F) * 1.0F * f4;
 		this.rightArm.x = -10.5F;
 		this.leftArm.x = 10.5F;
 		this.rightArm.z = 0.0F;
@@ -335,70 +248,70 @@ public class FortressKeeperModel<T extends FortressKeeperEntity> extends Segment
 			this.leftArm.y += 10.0F * this.animationAmount * f2;
 			this.rightArm.y += 3.0F * this.animationAmount * f2;
 			this.leftArm.y += 3.0F * this.animationAmount * f1;
-			this.rightArm.y -= MathHelper.sin(this.animationAmount * (float)Math.PI) * 4.0F * f1;
-			this.leftArm.y -= MathHelper.sin(this.animationAmount * (float)Math.PI) * 4.0F * f2;
+			this.rightArm.y -= Mth.sin(this.animationAmount * (float)Math.PI) * 4.0F * f1;
+			this.leftArm.y -= Mth.sin(this.animationAmount * (float)Math.PI) * 4.0F * f2;
 			this.rightArm.x += 5.5F * this.animationAmount * f1;
 			this.leftArm.x -= 5.5F * this.animationAmount * f2;
 			this.rightArm.x += 2.0F * this.animationAmount * f2;
 			this.leftArm.x -= 2.0F * this.animationAmount * f1;
-			this.rightArm.z += MathHelper.sin(this.animationAmount * (float)Math.PI) * 1.0F * f1;
-			this.leftArm.z += MathHelper.sin(this.animationAmount * (float)Math.PI) * 1.0F * f2;
+			this.rightArm.z += Mth.sin(this.animationAmount * (float)Math.PI) * 1.0F * f1;
+			this.leftArm.z += Mth.sin(this.animationAmount * (float)Math.PI) * 1.0F * f2;
 			this.rightArm.z += 7.0F * this.animationAmount * f1;
 			this.leftArm.z += 7.0F * this.animationAmount * f2;
 			this.rightArm.z += 1.0F * this.animationAmount * f2;
 			this.leftArm.z += 1.0F * this.animationAmount * f1;
 			this.rightArm.xRot -= ((float)Math.PI / 2.0F) * this.animationAmount * f1;
 			this.leftArm.xRot -= ((float)Math.PI / 2.0F) * this.animationAmount * f2;
-			this.rightArm.xRot += MathHelper.sin(this.animationAmount * (float)Math.PI) * ((float)Math.PI / 5.0F) * f1;
-			this.leftArm.xRot += MathHelper.sin(this.animationAmount * (float)Math.PI) * ((float)Math.PI / 5.0F) * f2;
-			this.rightArm.zRot += (MathHelper.cos(ageInTicks * 0.09F) * 0.025F + 0.025F) * this.animationAmount * f1;
-			this.leftArm.zRot -= (MathHelper.cos(ageInTicks * 0.09F) * 0.025F + 0.025F) * this.animationAmount * f2;
-			this.rightArm.xRot += MathHelper.sin(ageInTicks * 0.067F) * 0.025F * this.animationAmount * f1;
-			this.leftArm.xRot -= MathHelper.sin(ageInTicks * 0.067F) * 0.025F * this.animationAmount * f2;
+			this.rightArm.xRot += Mth.sin(this.animationAmount * (float)Math.PI) * ((float)Math.PI / 5.0F) * f1;
+			this.leftArm.xRot += Mth.sin(this.animationAmount * (float)Math.PI) * ((float)Math.PI / 5.0F) * f2;
+			this.rightArm.zRot += (Mth.cos(ageInTicks * 0.09F) * 0.025F + 0.025F) * this.animationAmount * f1;
+			this.leftArm.zRot -= (Mth.cos(ageInTicks * 0.09F) * 0.025F + 0.025F) * this.animationAmount * f2;
+			this.rightArm.xRot += Mth.sin(ageInTicks * 0.067F) * 0.025F * this.animationAmount * f1;
+			this.leftArm.xRot -= Mth.sin(ageInTicks * 0.067F) * 0.025F * this.animationAmount * f2;
 		}
 		else if (this.attackTime > 0.0F)
 		{
 			float f5 = this.attackTime;
-			float f6 = MathHelper.sin(MathHelper.sqrt(f5) * ((float)Math.PI * 2.0F)) * 0.2F;
-			this.rightArm.x = -(MathHelper.cos(f6) * 4.5F + 6.0F);
-			this.leftArm.x = MathHelper.cos(f6) * 4.5F + 6.0F;
-			this.rightArm.z += MathHelper.sin(f6) * 5.0F;
-			this.leftArm.z += MathHelper.sin(f6) * 5.0F;
+			float f6 = Mth.sin(Mth.sqrt(f5) * ((float)Math.PI * 2.0F)) * 0.2F;
+			this.rightArm.x = -(Mth.cos(f6) * 4.5F + 6.0F);
+			this.leftArm.x = Mth.cos(f6) * 4.5F + 6.0F;
+			this.rightArm.z += Mth.sin(f6) * 5.0F;
+			this.leftArm.z += Mth.sin(f6) * 5.0F;
 			f5 = 1.0F - this.attackTime;
 			f5 = f5 * f5;
 			f5 = f5 * f5;
 			f5 = 1.0F - f5;
-			float f7 = MathHelper.sin(f5 * (float)Math.PI);
-			float f8 = MathHelper.sin(this.attackTime * (float)Math.PI) * -(this.head.xRot - 0.7F) * 0.75F;
+			float f7 = Mth.sin(f5 * (float)Math.PI);
+			float f8 = Mth.sin(this.attackTime * (float)Math.PI) * -(this.head.xRot - 0.7F) * 0.75F;
 			this.rightArm.xRot = (float)((double)this.rightArm.xRot - ((double)f7 * 1.5D + (double)f8));
 			this.leftArm.xRot = (float)((double)this.leftArm.xRot - ((double)f7 * 1.5D + (double)f8));
 			this.rightArm.yRot += f6 * 2.5F;
 			this.leftArm.yRot -= f6 * 2.5F;
-			this.rightArm.zRot += MathHelper.sin(this.attackTime * (float)Math.PI) * -0.3F;
-			this.leftArm.zRot += MathHelper.sin(this.attackTime * (float)Math.PI) * 0.3F;
-			this.rightArm.z -= MathHelper.sin(this.attackTime * (float)Math.PI) * 6.0F;
-			this.leftArm.z -= MathHelper.sin(this.attackTime * (float)Math.PI) * 6.0F;
-			this.rightArm.y += MathHelper.sin(this.attackTime * (float)Math.PI) * 4.0F;
-			this.leftArm.y += MathHelper.sin(this.attackTime * (float)Math.PI) * 4.0F;
+			this.rightArm.zRot += Mth.sin(this.attackTime * (float)Math.PI) * -0.3F;
+			this.leftArm.zRot += Mth.sin(this.attackTime * (float)Math.PI) * 0.3F;
+			this.rightArm.z -= Mth.sin(this.attackTime * (float)Math.PI) * 6.0F;
+			this.leftArm.z -= Mth.sin(this.attackTime * (float)Math.PI) * 6.0F;
+			this.rightArm.y += Mth.sin(this.attackTime * (float)Math.PI) * 4.0F;
+			this.leftArm.y += Mth.sin(this.attackTime * (float)Math.PI) * 4.0F;
 		}
 
-		this.rightArmPart5A.y = MathHelper.sin(ageInTicks * 0.081F) * 0.5F + 5.5F;
-		this.rightArmPart5B.y = MathHelper.sin(ageInTicks * 0.081F + (float)Math.PI / 5.0F) * 0.5F + 5.5F;
-		this.rightArmPart5C.y = MathHelper.sin(ageInTicks * 0.081F + (float)Math.PI * 2.0F / 5.0F) * 0.5F + 5.5F;
-		this.rightArmPart5D.y = MathHelper.sin(ageInTicks * 0.081F + (float)Math.PI * 3.0F / 5.0F) * 0.5F + 5.5F;
-		this.leftArmPart5A.y = MathHelper.sin(ageInTicks * 0.081F) * 0.5F + 5.5F;
-		this.leftArmPart5B.y = MathHelper.sin(ageInTicks * 0.081F + (float)Math.PI / 5.0F) * 0.5F + 5.5F;
-		this.leftArmPart5C.y = MathHelper.sin(ageInTicks * 0.081F + (float)Math.PI * 2.0F / 5.0F) * 0.5F + 5.5F;
-		this.leftArmPart5D.y = MathHelper.sin(ageInTicks * 0.081F + (float)Math.PI * 3.0F / 5.0F) * 0.5F + 5.5F;
+		this.rightArmPart5A.y = Mth.sin(ageInTicks * 0.081F) * 0.5F + 5.5F;
+		this.rightArmPart5B.y = Mth.sin(ageInTicks * 0.081F + (float)Math.PI / 5.0F) * 0.5F + 5.5F;
+		this.rightArmPart5C.y = Mth.sin(ageInTicks * 0.081F + (float)Math.PI * 2.0F / 5.0F) * 0.5F + 5.5F;
+		this.rightArmPart5D.y = Mth.sin(ageInTicks * 0.081F + (float)Math.PI * 3.0F / 5.0F) * 0.5F + 5.5F;
+		this.leftArmPart5A.y = Mth.sin(ageInTicks * 0.081F) * 0.5F + 5.5F;
+		this.leftArmPart5B.y = Mth.sin(ageInTicks * 0.081F + (float)Math.PI / 5.0F) * 0.5F + 5.5F;
+		this.leftArmPart5C.y = Mth.sin(ageInTicks * 0.081F + (float)Math.PI * 2.0F / 5.0F) * 0.5F + 5.5F;
+		this.leftArmPart5D.y = Mth.sin(ageInTicks * 0.081F + (float)Math.PI * 3.0F / 5.0F) * 0.5F + 5.5F;
 	}
 
-	public void translateToHand(HandSide hand, MatrixStack matrixStack)
+	public void translateToHand(HumanoidArm hand, PoseStack poseStack)
 	{
-		this.getArm(hand).translateAndRotate(matrixStack);
+		this.getArm(hand).translateAndRotate(poseStack);
 	}
 
-	protected ModelRenderer getArm(HandSide hand)
+	protected ModelPart getArm(HumanoidArm hand)
 	{
-		return hand == HandSide.LEFT ? this.leftArm : this.rightArm;
+		return hand == HumanoidArm.LEFT ? this.leftArm : this.rightArm;
 	}
 }

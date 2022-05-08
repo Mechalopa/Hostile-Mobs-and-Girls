@@ -1,213 +1,153 @@
 package com.github.mechalopa.hmag.client.model;
 
-import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.util.math.MathHelper;
+import java.util.Arrays;
+
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
+
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.model.geom.builders.CubeDeformation;
+import net.minecraft.client.model.geom.builders.CubeListBuilder;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
+import net.minecraft.client.model.geom.builders.MeshDefinition;
+import net.minecraft.client.model.geom.builders.PartDefinition;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.Mob;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class ImpModel<T extends MobEntity> extends AbstractAdvancedGirlModel<T>
+public class ImpModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 {
-	private ModelRenderer rightFeelerPart1;
-	private ModelRenderer leftFeelerPart1;
-	private ModelRenderer rightFeelerPart2;
-	private ModelRenderer leftFeelerPart2;
-	private ModelRenderer rightFeelerPart3;
-	private ModelRenderer leftFeelerPart3;
-	private ModelRenderer rightFeelerPart4;
-	private ModelRenderer leftFeelerPart4;
-	private ModelRenderer rightEar;
-	private ModelRenderer leftEar;
-	private ModelRenderer rightHair;
-	private ModelRenderer leftHair;
-	private ModelRenderer rightHair2;
-	private ModelRenderer leftHair2;
-	private ModelRenderer rightHair3;
-	private ModelRenderer leftHair3;
-	private ModelRenderer hairPart;
-	private ModelRenderer rightArmPart;
-	private ModelRenderer leftArmPart;
-	private ModelRenderer clothPart;
-	private ModelRenderer skirt1;
-	private ModelRenderer skirt2;
-	private ModelRenderer[] rightSkirtPart = new ModelRenderer[5];
-	private ModelRenderer[] leftSkirtPart = new ModelRenderer[5];
-	private ModelRenderer tailPart1;
-	private ModelRenderer tailPart2;
-	private ModelRenderer tailPart3;
-	private ModelRenderer tailPart4;
-	private ModelRenderer rightWing;
-	private ModelRenderer leftWing;
+	private ModelPart rightFeelerPart1;
+	private ModelPart leftFeelerPart1;
+	private ModelPart rightFeelerPart2;
+	private ModelPart leftFeelerPart2;
+	private ModelPart rightFeelerPart3;
+	private ModelPart leftFeelerPart3;
+	private ModelPart rightFeelerPart4;
+	private ModelPart leftFeelerPart4;
+	private ModelPart rightEar;
+	private ModelPart leftEar;
+	private ModelPart rightHair1;
+	private ModelPart leftHair1;
+	private ModelPart rightHair2;
+	private ModelPart leftHair2;
+	private ModelPart rightHair3;
+	private ModelPart leftHair3;
+	private ModelPart hairPart;
+//	private ModelPart rightArmPart;
+//	private ModelPart leftArmPart;
+//	private ModelPart clothPart;
+	private ModelPart skirt1;
+	private ModelPart skirt2;
+	private ModelPart[] rightSkirtPart = new ModelPart[5];
+	private ModelPart[] leftSkirtPart = new ModelPart[5];
+	private ModelPart tail1;
+	private ModelPart tail2;
+	private ModelPart tail3;
+	private ModelPart tail4;
+	private ModelPart rightWing;
+	private ModelPart leftWing;
 
-	public ImpModel()
+	public ImpModel(ModelPart modelPart)
 	{
-		this(0.0F);
+		super(modelPart);
+		this.rightFeelerPart1 = this.head.getChild("right_feeler_part_1");
+		this.leftFeelerPart1 = this.head.getChild("left_feeler_part_1");
+		this.rightFeelerPart2 = this.rightFeelerPart1.getChild("right_feeler_part_2");
+		this.leftFeelerPart2 = this.leftFeelerPart1.getChild("left_feeler_part_2");
+		this.rightFeelerPart3 = this.rightFeelerPart2.getChild("right_feeler_part_3");
+		this.leftFeelerPart3 = this.leftFeelerPart2.getChild("left_feeler_part_3");
+		this.rightFeelerPart4 = this.rightFeelerPart3.getChild("right_feeler_part_4");
+		this.leftFeelerPart4 = this.leftFeelerPart3.getChild("left_feeler_part_4");
+		this.rightEar = this.head.getChild("right_ear");
+		this.leftEar = this.head.getChild("left_ear");
+		this.rightHair1 = this.head.getChild("right_hair_1");
+		this.leftHair1 = this.head.getChild("left_hair_1");
+		this.rightHair2 = this.rightHair1.getChild("right_hair_2");
+		this.leftHair2 = this.leftHair1.getChild("left_hair_2");
+		this.rightHair3 = this.rightHair2.getChild("right_hair_3");
+		this.leftHair3 = this.leftHair2.getChild("left_hair_3");
+		this.hairPart = this.head.getChild("hair_part");
+//		this.rightArmPart = this.rightArm.getChild("right_arm_part");
+//		this.leftArmPart = this.leftArm.getChild("left_arm_part");
+//		this.clothPart = this.body.getChild("cloth_part");
+		this.skirt1 = this.body.getChild("skirt_1");
+		this.skirt2 = this.body.getChild("skirt_2");
+		Arrays.setAll(this.rightSkirtPart, (p) -> {
+			return this.body.getChild("right_skirt_part_" + p);
+		});
+		Arrays.setAll(this.leftSkirtPart, (p) -> {
+			return this.body.getChild("left_skirt_part_" + p);
+		});
+		this.tail1 = this.body.getChild("tail_1");
+		this.tail2 = this.tail1.getChild("tail_2");
+		this.tail3 = this.tail2.getChild("tail_3");
+		this.tail4 = this.tail3.getChild("tail_4");
+		this.rightWing = this.body.getChild("right_wing");
+		this.leftWing = this.body.getChild("left_wing");
 	}
 
-	public ImpModel(float modelSize)
+	public static MeshDefinition createMesh(CubeDeformation cd)
 	{
-		super(modelSize, 0.0F, 64, 128, false);
+		MeshDefinition md = AbstractAdvancedGirlModel.createMesh(cd, 0.0F);
+		PartDefinition pd = md.getRoot();
+		PartDefinition headpd = pd.getChild("head");
+		PartDefinition rfp1pd = ModClientUtils.addC(headpd, cd, "right_feeler_part_1", 22, 36, -0.5F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F, -2.5F, -7.75F, -1.75F);
+		PartDefinition lfp1pd = ModClientUtils.addC(headpd, cd, "left_feeler_part_1", 22, 36, -0.5F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F, 2.5F, -7.75F, -1.75F, true);
+		PartDefinition rfp2pd = ModClientUtils.addC(rfp1pd, cd, "right_feeler_part_2", 22, 38, -0.5F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F, 0.0F, -1.0F, 0.0F);
+		PartDefinition lfp2pd = ModClientUtils.addC(lfp1pd, cd, "left_feeler_part_2", 22, 38, -0.5F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F, 0.0F, -1.0F, 0.0F, true);
+		PartDefinition rfp3pd = ModClientUtils.addC(rfp2pd, cd, "right_feeler_part_3", 22, 40, -0.5F, -2.0F, -1.0F, 1.0F, 2.0F, 1.0F, 0.0F, -1.0F, 0.0F);
+		PartDefinition lfp3pd = ModClientUtils.addC(lfp2pd, cd, "left_feeler_part_3", 22, 40, -0.5F, -2.0F, -1.0F, 1.0F, 2.0F, 1.0F, 0.0F, -1.0F, 0.0F, true);
+		ModClientUtils.addC(rfp3pd, cd, "right_feeler_part_4", 20, 32, -4.5F, -1.5F, -1.0F, 5.0F, 3.0F, 1.0F, 0.0F, -0.75F, -0.001F);
+		ModClientUtils.addC(lfp3pd, cd, "left_feeler_part_4", 20, 32, -0.5F, -1.5F, -1.0F, 5.0F, 3.0F, 1.0F, 0.0F, -0.75F, -0.001F, true);
+		ModClientUtils.addC(headpd, cd, "right_ear", 26, 36, -1.25F, -0.5F, -0.5F, 2.0F, 1.0F, 1.0F, -4.0F, -3.5F, -1.0F, 0.125F);
+		ModClientUtils.addC(headpd, cd, "left_ear", 26, 36, -0.75F, -0.5F, -0.5F, 2.0F, 1.0F, 1.0F, 4.0F, -3.5F, -1.0F, true, 0.125F);
+		PartDefinition rh1pd = ModClientUtils.addC(headpd, cd, "right_hair_1", 32, 64, -2.0F, -1.5F, -1.5F, 3.0F, 7.0F, 3.0F, -4.5F, -7.5F, 1.25F);
+		PartDefinition lh1pd = ModClientUtils.addC(headpd, cd, "left_hair_1", 32, 64, -1.0F, -1.5F, -1.5F, 3.0F, 7.0F, 3.0F, 4.5F, -7.5F, 1.25F, true);
+		PartDefinition rh2pd = ModClientUtils.addC(rh1pd, cd, "right_hair_2", 48, 64, -1.0F, -0.5F, -1.0F, 2.0F, 4.0F, 2.0F, -0.5F, 6.0F, 0.0F, 0.25F);
+		PartDefinition lh2pd = ModClientUtils.addC(lh1pd, cd, "left_hair_2", 48, 64, -1.0F, -0.5F, -1.0F, 2.0F, 4.0F, 2.0F, 0.5F, 6.0F, 0.0F, true, 0.25F);
+		ModClientUtils.addC(rh2pd, cd, "right_hair_3", 56, 64, -1.0F, -0.5F, -1.0F, 2.0F, 3.0F, 2.0F, 0.0F, 3.5F, 0.0F);
+		ModClientUtils.addC(lh2pd, cd, "left_hair_3", 56, 64, -1.0F, -0.5F, -1.0F, 2.0F, 3.0F, 2.0F, 0.0F, 3.5F, 0.0F, true);
+		ModClientUtils.addC(headpd, cd, "hair_part", 32, 56, -4.0F, 0.0F, -1.0F, 8.0F, 4.0F, 1.0F, 0.0F, 0.0F, 4.0F);
+		PartDefinition rapd = ModClientUtils.addC(pd, cd, "right_arm", 40, 16, 0.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F, -5.0F, 2.0F, 0.0F);
+		PartDefinition lapd = ModClientUtils.addC(pd, cd, "left_arm", 40, 16, -2.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F, 5.0F, 2.0F, 0.0F, true);
+		ModClientUtils.addC(rapd, cd, "right_arm_part", 48, 32, -0.5F, 0.0F, -1.5F, 3.0F, 2.0F, 3.0F, 0.0F, 2.0F, 0.0F);
+		ModClientUtils.addC(lapd, cd, "left_arm_part", 48, 32, -2.5F, 0.0F, -1.5F, 3.0F, 2.0F, 3.0F, 0.0F, 2.0F, 0.0F, true);
+		PartDefinition bodypd = pd.getChild("body");
+		ModClientUtils.addC(bodypd, cd, "cloth_part", 32, 48, -3.0F, 0.0F, -1.5F, 6.0F, 3.0F, 3.0F, 0.0F, 7.0F, 0.0F);
+		ModClientUtils.addC(bodypd, cd, "skirt_1", 0, 38, -3.5F, 0.0F, -2.0F, 7.0F, 1.0F, 4.0F, 0.0F, 11.0F, 0.0F);
+		ModClientUtils.addC(bodypd, cd, "skirt_2", 0, 44, -4.0F, 0.0F, -2.5F, 8.0F, 2.0F, 5.0F, 0.0F, 11.5F, 0.0F);
+		CubeListBuilder cubelistbuilder = CubeListBuilder.create().texOffs(0, 52).addBox(-2.5F, 0.5F, -1.0F, 5.0F, 5.0F, 1.0F);
+		CubeListBuilder cubelistbuilder1 = CubeListBuilder.create().texOffs(0, 52).mirror().addBox(-2.5F, 0.5F, -1.0F, 5.0F, 5.0F, 1.0F);
 
-		this.rightFeelerPart1 = new ModelRenderer(this, 22, 36);
-		this.rightFeelerPart1.addBox(-0.5F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F, modelSize);
-		this.rightFeelerPart1.setPos(-2.5F, -7.75F, -1.75F);
-		this.head.addChild(this.rightFeelerPart1);
-		this.leftFeelerPart1 = new ModelRenderer(this, 22, 36);
-		this.leftFeelerPart1.mirror = true;
-		this.leftFeelerPart1.addBox(-0.5F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F, modelSize);
-		this.leftFeelerPart1.setPos(2.5F, -7.75F, -1.75F);
-		this.head.addChild(this.leftFeelerPart1);
-		this.rightFeelerPart2 = new ModelRenderer(this, 22, 38);
-		this.rightFeelerPart2.addBox(-0.5F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F, modelSize);
-		this.rightFeelerPart2.setPos(0.0F, -1.0F, 0.0F);
-		this.rightFeelerPart1.addChild(this.rightFeelerPart2);
-		this.leftFeelerPart2 = new ModelRenderer(this, 22, 38);
-		this.leftFeelerPart2.mirror = true;
-		this.leftFeelerPart2.addBox(-0.5F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F, modelSize);
-		this.leftFeelerPart2.setPos(0.0F, -1.0F, 0.0F);
-		this.leftFeelerPart1.addChild(this.leftFeelerPart2);
-		this.rightFeelerPart3 = new ModelRenderer(this, 22, 40);
-		this.rightFeelerPart3.addBox(-0.5F, -2.0F, -1.0F, 1.0F, 2.0F, 1.0F, modelSize);
-		this.rightFeelerPart3.setPos(0.0F, -1.0F, 0.0F);
-		this.rightFeelerPart2.addChild(this.rightFeelerPart3);
-		this.leftFeelerPart3 = new ModelRenderer(this, 22, 40);
-		this.leftFeelerPart3.mirror = true;
-		this.leftFeelerPart3.addBox(-0.5F, -2.0F, -1.0F, 1.0F, 2.0F, 1.0F, modelSize);
-		this.leftFeelerPart3.setPos(0.0F, -1.0F, 0.0F);
-		this.leftFeelerPart2.addChild(this.leftFeelerPart3);
-		this.rightFeelerPart4 = new ModelRenderer(this, 20, 32);
-		this.rightFeelerPart4.addBox(-4.5F, -1.5F, -1.0F, 5.0F, 3.0F, 1.0F, modelSize);
-		this.rightFeelerPart4.setPos(0.0F, -0.75F, -0.001F);
-		this.rightFeelerPart3.addChild(this.rightFeelerPart4);
-		this.leftFeelerPart4 = new ModelRenderer(this, 20, 32);
-		this.leftFeelerPart4.mirror = true;
-		this.leftFeelerPart4.addBox(-0.5F, -1.5F, -1.0F, 5.0F, 3.0F, 1.0F, modelSize);
-		this.leftFeelerPart4.setPos(0.0F, -0.75F, -0.001F);
-		this.leftFeelerPart3.addChild(this.leftFeelerPart4);
-
-		this.rightEar = new ModelRenderer(this, 26, 36);
-		this.rightEar.addBox(-1.25F, -0.5F, -0.5F, 2.0F, 1.0F, 1.0F, modelSize + 0.125F);
-		this.rightEar.setPos(-4.0F, -3.5F, -1.0F);
-		this.head.addChild(this.rightEar);
-		this.leftEar = new ModelRenderer(this, 26, 36);
-		this.leftEar.mirror = true;
-		this.leftEar.addBox(-0.75F, -0.5F, -0.5F, 2.0F, 1.0F, 1.0F, modelSize + 0.125F);
-		this.leftEar.setPos(4.0F, -3.5F, -1.0F);
-		this.head.addChild(this.leftEar);
-
-		this.rightHair = new ModelRenderer(this, 32, 64);
-		this.rightHair.addBox(-2.0F, -1.5F, -1.5F, 3.0F, 7.0F, 3.0F, modelSize);
-		this.rightHair.setPos(-4.5F, -7.5F, 1.25F);
-		this.head.addChild(this.rightHair);
-		this.leftHair = new ModelRenderer(this, 32, 64);
-		this.leftHair.mirror = true;
-		this.leftHair.addBox(-1.0F, -1.5F, -1.5F, 3.0F, 7.0F, 3.0F, modelSize);
-		this.leftHair.setPos(4.5F, -7.5F, 1.25F);
-		this.head.addChild(this.leftHair);
-
-		this.rightHair2 = new ModelRenderer(this, 48, 64);
-		this.rightHair2.addBox(-1.0F, -0.5F, -1.0F, 2.0F, 4.0F, 2.0F, modelSize + 0.25F);
-		this.rightHair2.setPos(-0.5F, 6.0F, 0.0F);
-		this.rightHair.addChild(this.rightHair2);
-		this.leftHair2 = new ModelRenderer(this, 48, 64);
-		this.leftHair2.mirror = true;
-		this.leftHair2.addBox(-1.0F, -0.5F, -1.0F, 2.0F, 4.0F, 2.0F, modelSize + 0.25F);
-		this.leftHair2.setPos(0.5F, 6.0F, 0.0F);
-		this.leftHair.addChild(this.leftHair2);
-
-		this.rightHair3 = new ModelRenderer(this, 56, 64);
-		this.rightHair3.addBox(-1.0F, -0.5F, -1.0F, 2.0F, 3.0F, 2.0F, modelSize);
-		this.rightHair3.setPos(0.0F, 3.5F, 0.0F);
-		this.rightHair2.addChild(this.rightHair3);
-		this.leftHair3 = new ModelRenderer(this, 56, 64);
-		this.leftHair3.mirror = true;
-		this.leftHair3.addBox(-1.0F, -0.5F, -1.0F, 2.0F, 3.0F, 2.0F, modelSize);
-		this.leftHair3.setPos(0.0F, 3.5F, 0.0F);
-		this.leftHair2.addChild(this.leftHair3);
-
-		this.hairPart = new ModelRenderer(this, 32, 56);
-		this.hairPart.addBox(-4.0F, 0.0F, -1.0F, 8.0F, 4.0F, 1.0F, modelSize);
-		this.hairPart.setPos(0.0F, 0.0F, 4.0F);
-		this.head.addChild(this.hairPart);
-
-		this.rightArm = new ModelRenderer(this, 40, 16);
-		this.rightArm.addBox(0.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F, modelSize);
-		this.rightArm.setPos(-5.0F, 2.0F, 0.0F);
-		this.leftArm = new ModelRenderer(this, 40, 16);
-		this.leftArm.mirror = true;
-		this.leftArm.addBox(-2.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F, modelSize);
-		this.leftArm.setPos(5.0F, 2.0F, 0.0F);
-
-		this.rightArmPart = new ModelRenderer(this, 48, 32);
-		this.rightArmPart.addBox(-0.5F, 0.0F, -1.5F, 3.0F, 2.0F, 3.0F, modelSize);
-		this.rightArmPart.setPos(0.0F, 2.0F, 0.0F);
-		this.rightArm.addChild(this.rightArmPart);
-		this.leftArmPart = new ModelRenderer(this, 48, 32);
-		this.leftArmPart.mirror = true;
-		this.leftArmPart.addBox(-2.5F, 0.0F, -1.5F, 3.0F, 2.0F, 3.0F, modelSize);
-		this.leftArmPart.setPos(0.0F, 2.0F, 0.0F);
-		this.leftArm.addChild(this.leftArmPart);
-
-		this.clothPart = new ModelRenderer(this, 32, 48);
-		this.clothPart.addBox(-3.0F, 0.0F, -1.5F, 6.0F, 3.0F, 3.0F, modelSize);
-		this.clothPart.setPos(0.0F, 7.0F, 0.0F);
-		this.body.addChild(this.clothPart);
-
-		this.skirt1 = new ModelRenderer(this, 0, 38);
-		this.skirt1.addBox(-3.5F, 0.0F, -2.0F, 7.0F, 1.0F, 4.0F, modelSize);
-		this.skirt1.setPos(0.0F, 11.0F, 0.0F);
-		this.body.addChild(this.skirt1);
-		this.skirt2 = new ModelRenderer(this, 0, 44);
-		this.skirt2.addBox(-4.0F, 0.0F, -2.5F, 8.0F, 2.0F, 5.0F, modelSize);
-		this.skirt2.setPos(0.0F, 11.5F, 0.0F);
-		this.body.addChild(this.skirt2);
-
-		for (int i = 0; i < this.rightSkirtPart.length; ++i)
+		for (int k = 0; k < 5; ++k)
 		{
-			float f = (float)(i - 2) * ((float)Math.PI / 5.0F);
-			float f1 = MathHelper.sin(f - ((float)Math.PI / 2.0F)) * 3.5F;
-			float f2 = MathHelper.cos(f - ((float)Math.PI / 2.0F)) * 2.0F;
-			this.rightSkirtPart[i] = new ModelRenderer(this, 0, 52);
-			this.rightSkirtPart[i].addBox(-2.5F, 0.5F, -1.0F, 5.0F, 5.0F, 1.0F, modelSize);
-			this.rightSkirtPart[i].setPos(f1, 11.0F, f2);
-			this.body.addChild(this.rightSkirtPart[i]);
-			f = (float)(2 - i) * ((float)Math.PI / 5.0F);
-			f1 = MathHelper.sin(f + ((float)Math.PI / 2.0F)) * 3.5F;
-			f2 = MathHelper.cos(f + ((float)Math.PI / 2.0F)) * 2.0F;
-			this.leftSkirtPart[i] = new ModelRenderer(this, 0, 52);
-			this.leftSkirtPart[i].mirror = true;
-			this.leftSkirtPart[i].addBox(-2.5F, 0.5F, -1.0F, 5.0F, 5.0F, 1.0F, modelSize);
-			this.leftSkirtPart[i].setPos(f1, 11.0F, f2);
-			this.body.addChild(this.leftSkirtPart[i]);
+			float f = (float)(k - 2) * ((float)Math.PI / 5.0F);
+			float f1 = Mth.sin(f - ((float)Math.PI / 2.0F)) * 3.5F;
+			float f2 = Mth.cos(f - ((float)Math.PI / 2.0F)) * 2.0F;
+			PartPose pp = PartPose.offset(f1, 11.0F, f2);
+			bodypd.addOrReplaceChild("right_skirt_part_" + k, cubelistbuilder, pp);
+			f = (float)(2 - k) * ((float)Math.PI / 5.0F);
+			f1 = Mth.sin(f + ((float)Math.PI / 2.0F)) * 3.5F;
+			f2 = Mth.cos(f + ((float)Math.PI / 2.0F)) * 2.0F;
+			PartPose pp1 = PartPose.offset(f1, 11.0F, f2);
+			bodypd.addOrReplaceChild("left_skirt_part_" + k, cubelistbuilder1, pp1);
 		}
 
-		this.tailPart1 = new ModelRenderer(this, 12, 52);
-		this.tailPart1.addBox(-0.5F, 0.0F, -1.0F, 1.0F, 3.0F, 1.0F, modelSize);
-		this.tailPart1.setPos(0.0F, 9.5F, 1.5F);
-		this.body.addChild(this.tailPart1);
-		this.tailPart2 = new ModelRenderer(this, 16, 52);
-		this.tailPart2.addBox(-0.5F, 0.0F, -1.0F, 1.0F, 4.0F, 1.0F, modelSize);
-		this.tailPart2.setPos(0.0F, 3.0F, 0.0F);
-		this.tailPart1.addChild(this.tailPart2);
-		this.tailPart3 = new ModelRenderer(this, 20, 52);
-		this.tailPart3.addBox(-0.5F, 0.0F, -1.0F, 1.0F, 4.0F, 1.0F, modelSize);
-		this.tailPart3.setPos(0.0F, 4.0F, 0.0F);
-		this.tailPart2.addChild(this.tailPart3);
-		this.tailPart4 = new ModelRenderer(this, 24, 52);
-		this.tailPart4.addBox(-1.5F, -1.5F, -1.0F, 3.0F, 3.0F, 1.0F, modelSize);
-		this.tailPart4.setPos(0.0F, 2.75F, -0.001F);
-		this.tailPart3.addChild(this.tailPart4);
+		PartDefinition t1pd = ModClientUtils.addC(bodypd, cd, "tail_1", 12, 52, -0.5F, 0.0F, -1.0F, 1.0F, 3.0F, 1.0F, 0.0F, 9.5F, 1.5F);
+		PartDefinition t2pd = ModClientUtils.addC(t1pd, cd, "tail_2", 16, 52, -0.5F, 0.0F, -1.0F, 1.0F, 4.0F, 1.0F, 0.0F, 3.0F, 0.0F);
+		PartDefinition t3pd = ModClientUtils.addC(t2pd , cd, "tail_3", 20, 52, -0.5F, 0.0F, -1.0F, 1.0F, 4.0F, 1.0F, 0.0F, 4.0F, 0.0F);
+		ModClientUtils.addC(t3pd , cd, "tail_4", 24, 52, -1.5F, -1.5F, -1.0F, 3.0F, 3.0F, 1.0F, 0.0F, 2.75F, -0.001F);
+		ModClientUtils.addC(bodypd, cd, "right_wing", 0, 60, -6.0F, -3.0F, 0.0F, 6.0F, 9.0F, 1.0F, -1.5F, 3.5F, 1.5F);
+		ModClientUtils.addC(bodypd, cd, "left_wing", 0, 60, 0.0F, -3.0F, 0.0F, 6.0F, 9.0F, 1.0F, 1.5F, 3.5F, 1.5F, true);
+		return md;
+	}
 
-		this.rightWing = new ModelRenderer(this, 0, 60);
-		this.rightWing.addBox(-6.0F, -3.0F, 0.0F, 6.0F, 9.0F, 1.0F, modelSize);
-		this.rightWing.setPos(-1.5F, 3.5F, 1.5F);
-		this.body.addChild(this.rightWing);
-		this.leftWing = new ModelRenderer(this, 0, 60);
-		this.leftWing.mirror = true;
-		this.leftWing.addBox(0.0F, -3.0F, 0.0F, 6.0F, 9.0F, 1.0F, modelSize);
-		this.leftWing.setPos(1.5F, 3.5F, 1.5F);
-		this.body.addChild(this.leftWing);
+	public static LayerDefinition createBodyLayer()
+	{
+		return LayerDefinition.create(createMesh(CubeDeformation.NONE), 64, 128);
 	}
 
 	@Override
@@ -217,8 +157,8 @@ public class ImpModel<T extends MobEntity> extends AbstractAdvancedGirlModel<T>
 
 		this.rightArm.zRot = (float)Math.PI / 12.0F;
 		this.leftArm.zRot = -((float)Math.PI / 12.0F);
-		this.rightArm.zRot += MathHelper.cos(ageInTicks * 0.075F) * 0.03F;
-		this.leftArm.zRot -= MathHelper.cos(ageInTicks * 0.075F) * 0.03F;
+		this.rightArm.zRot += Mth.cos(ageInTicks * 0.075F) * 0.03F;
+		this.leftArm.zRot -= Mth.cos(ageInTicks * 0.075F) * 0.03F;
 
 		if (this.riding)
 		{
@@ -229,53 +169,55 @@ public class ImpModel<T extends MobEntity> extends AbstractAdvancedGirlModel<T>
 			this.skirt2.xRot = this.body.xRot;
 		}
 
+		this.skirt1.xRot = 0.0F;
+
 		this.rightFeelerPart1.yRot = (float)Math.PI / 9.0F;
 		this.leftFeelerPart1.yRot = -((float)Math.PI / 9.0F);
 		this.rightFeelerPart1.zRot = -((float)Math.PI / 20.0F);
 		this.leftFeelerPart1.zRot = (float)Math.PI / 20.0F;
 		this.rightFeelerPart1.xRot = (float)Math.PI / 8.0F;
 		this.leftFeelerPart1.xRot = (float)Math.PI / 8.0F;
-		this.rightFeelerPart1.xRot += MathHelper.sin(ageInTicks * 0.09F) * 0.072F;
-		this.leftFeelerPart1.xRot += MathHelper.sin(ageInTicks * 0.09F) * 0.072F;
+		this.rightFeelerPart1.xRot += Mth.sin(ageInTicks * 0.09F) * 0.072F;
+		this.leftFeelerPart1.xRot += Mth.sin(ageInTicks * 0.09F) * 0.072F;
 		this.rightFeelerPart2.xRot = -((float)Math.PI * 8.0F / 15.0F);
 		this.leftFeelerPart2.xRot = -((float)Math.PI * 8.0F / 15.0F);
-		this.rightFeelerPart3.xRot -= MathHelper.sin(ageInTicks * 0.09F + (float)Math.PI / 6.0F) * 0.105F;
-		this.leftFeelerPart3.xRot -= MathHelper.sin(ageInTicks * 0.09F + (float)Math.PI / 6.0F) * 0.105F;
+		this.rightFeelerPart3.xRot -= Mth.sin(ageInTicks * 0.09F + (float)Math.PI / 6.0F) * 0.105F;
+		this.leftFeelerPart3.xRot -= Mth.sin(ageInTicks * 0.09F + (float)Math.PI / 6.0F) * 0.105F;
 		this.rightFeelerPart3.xRot = (float)Math.PI * 7.0F / 15.0F;
 		this.leftFeelerPart3.xRot = (float)Math.PI * 7.0F / 15.0F;
-		this.rightFeelerPart3.xRot += MathHelper.sin(ageInTicks * 0.09F + (float)Math.PI / 3.0F) * 0.105F;
-		this.leftFeelerPart3.xRot += MathHelper.sin(ageInTicks * 0.09F + (float)Math.PI / 3.0F) * 0.105F;
+		this.rightFeelerPart3.xRot += Mth.sin(ageInTicks * 0.09F + (float)Math.PI / 3.0F) * 0.105F;
+		this.leftFeelerPart3.xRot += Mth.sin(ageInTicks * 0.09F + (float)Math.PI / 3.0F) * 0.105F;
 		this.rightFeelerPart4.zRot = (float)Math.PI / 5.0F;
 		this.leftFeelerPart4.zRot = -((float)Math.PI / 5.0F);
-		this.rightFeelerPart4.zRot += MathHelper.cos(ageInTicks * 0.12F + (float)Math.PI / 3.0F) * 0.045F;
-		this.leftFeelerPart4.zRot -= MathHelper.cos(ageInTicks * 0.12F + (float)Math.PI / 3.0F) * 0.045F;
+		this.rightFeelerPart4.zRot += Mth.cos(ageInTicks * 0.12F + (float)Math.PI / 3.0F) * 0.045F;
+		this.leftFeelerPart4.zRot -= Mth.cos(ageInTicks * 0.12F + (float)Math.PI / 3.0F) * 0.045F;
 
 		this.rightEar.zRot = (float)Math.PI / 12.0F;
 		this.leftEar.zRot = -((float)Math.PI / 12.0F);
 
-		this.rightHair.xRot = (float)Math.PI / 18.0F;
-		this.leftHair.xRot = (float)Math.PI / 18.0F;
-		this.rightHair.xRot += MathHelper.sin(ageInTicks * 0.06F) * 0.036F;
-		this.leftHair.xRot += MathHelper.sin(ageInTicks * 0.06F) * 0.036F;
-		this.rightHair.zRot = (float)Math.PI / 8.0F;
-		this.leftHair.zRot = -((float)Math.PI / 8.0F);
-		this.rightHair.zRot -= MathHelper.sin(ageInTicks * 0.075F) * 0.03F;
-		this.leftHair.zRot += MathHelper.sin(ageInTicks * 0.075F) * 0.03F;
+		this.rightHair1.xRot = (float)Math.PI / 18.0F;
+		this.leftHair1.xRot = (float)Math.PI / 18.0F;
+		this.rightHair1.xRot += Mth.sin(ageInTicks * 0.06F) * 0.036F;
+		this.leftHair1.xRot += Mth.sin(ageInTicks * 0.06F) * 0.036F;
+		this.rightHair1.zRot = (float)Math.PI / 8.0F;
+		this.leftHair1.zRot = -((float)Math.PI / 8.0F);
+		this.rightHair1.zRot -= Mth.sin(ageInTicks * 0.075F) * 0.03F;
+		this.leftHair1.zRot += Mth.sin(ageInTicks * 0.075F) * 0.03F;
 		this.rightHair2.zRot = -((float)Math.PI / 15.0F);
 		this.leftHair2.zRot = (float)Math.PI / 15.0F;
 		this.rightHair2.yRot = (float)Math.PI / 21.0F;
 		this.leftHair2.yRot = -((float)Math.PI / 21.0F);
-		this.rightHair2.zRot -= MathHelper.sin(ageInTicks * 0.06F + (float)Math.PI / 3.0F) * 0.03F;
-		this.leftHair2.zRot += MathHelper.sin(ageInTicks * 0.06F + (float)Math.PI / 3.0F) * 0.03F;
+		this.rightHair2.zRot -= Mth.sin(ageInTicks * 0.06F + (float)Math.PI / 3.0F) * 0.03F;
+		this.leftHair2.zRot += Mth.sin(ageInTicks * 0.06F + (float)Math.PI / 3.0F) * 0.03F;
 		this.rightHair3.zRot = -((float)Math.PI / 12.0F);
 		this.leftHair3.zRot = (float)Math.PI / 12.0F;
-		this.rightHair3.zRot -= MathHelper.sin(ageInTicks * 0.06F + (float)Math.PI / 6.0F) * 0.015F;
-		this.leftHair3.zRot += MathHelper.sin(ageInTicks * 0.06F + (float)Math.PI / 6.0F) * 0.015F;
+		this.rightHair3.zRot -= Mth.sin(ageInTicks * 0.06F + (float)Math.PI / 6.0F) * 0.015F;
+		this.leftHair3.zRot += Mth.sin(ageInTicks * 0.06F + (float)Math.PI / 6.0F) * 0.015F;
 		this.rightHair3.yRot = (float)Math.PI / 21.0F;
 		this.leftHair3.yRot = -((float)Math.PI / 21.0F);
 
 		this.hairPart.xRot = (float)Math.PI / 12.0F;
-		this.hairPart.xRot += MathHelper.sin(ageInTicks * 0.06F + (float)Math.PI / 2.0F) * 0.06F;
+		this.hairPart.xRot += Mth.sin(ageInTicks * 0.06F + (float)Math.PI / 2.0F) * 0.06F;
 
 		float f = (float)Math.PI / 2.0F;
 
@@ -283,28 +225,28 @@ public class ImpModel<T extends MobEntity> extends AbstractAdvancedGirlModel<T>
 		{
 			this.rightSkirtPart[i].yRot = (float)Math.PI * ((float)(i - 2)) / 5.0F + f;
 			this.rightSkirtPart[i].xRot = (float)Math.PI / 3.0F - f;
-			this.rightSkirtPart[i].xRot += MathHelper.sin(ageInTicks * 0.09F + (float)Math.PI / 2.0F) * 0.045F;
+			this.rightSkirtPart[i].xRot += Mth.sin(ageInTicks * 0.09F + (float)Math.PI / 2.0F) * 0.045F;
 			this.leftSkirtPart[i].yRot = -((float)Math.PI * ((float)(i - 2)) / 5.0F + f);
 			this.leftSkirtPart[i].xRot = (float)Math.PI / 3.0F - f;
-			this.leftSkirtPart[i].xRot += MathHelper.sin(ageInTicks * 0.09F + (float)Math.PI / 2.0F) * 0.045F;
+			this.leftSkirtPart[i].xRot += Mth.sin(ageInTicks * 0.09F + (float)Math.PI / 2.0F) * 0.045F;
 		}
 
-		this.tailPart1.xRot = (float)Math.PI * 2.0F / 5.0F;
-		this.tailPart1.xRot += MathHelper.sin(ageInTicks * 0.09F) * 0.15F;
-		this.tailPart1.zRot = MathHelper.cos(ageInTicks * 0.075F) * 0.21F;
-		this.tailPart2.xRot = (float)Math.PI * 4.0F / 7.0F;
-		this.tailPart2.xRot -= MathHelper.sin(ageInTicks * 0.09F + (float)Math.PI / 3.0F) * 0.12F;
-		this.tailPart3.xRot = -((float)Math.PI / 5.0F);
-		this.tailPart3.xRot += MathHelper.sin(ageInTicks * 0.09F + (float)Math.PI * 2.0F / 3.0F) * 0.12F;
-		this.tailPart4.zRot = (float)Math.PI / 4.0F;
+		this.tail1.xRot = (float)Math.PI * 2.0F / 5.0F;
+		this.tail1.xRot += Mth.sin(ageInTicks * 0.09F) * 0.15F;
+		this.tail1.zRot = Mth.cos(ageInTicks * 0.075F) * 0.21F;
+		this.tail2.xRot = (float)Math.PI * 4.0F / 7.0F;
+		this.tail2.xRot -= Mth.sin(ageInTicks * 0.09F + (float)Math.PI / 3.0F) * 0.12F;
+		this.tail3.xRot = -((float)Math.PI / 5.0F);
+		this.tail3.xRot += Mth.sin(ageInTicks * 0.09F + (float)Math.PI * 2.0F / 3.0F) * 0.12F;
+		this.tail4.zRot = (float)Math.PI / 4.0F;
 
 		this.rightWing.yRot = (float)Math.PI / 5.0F;
 		this.leftWing.yRot = -((float)Math.PI / 5.0F);
-		this.rightWing.yRot += MathHelper.cos(ageInTicks * 0.12F) * 0.096F;
-		this.leftWing.yRot -= MathHelper.cos(ageInTicks * 0.12F) * 0.096F;
+		this.rightWing.yRot += Mth.cos(ageInTicks * 0.12F) * 0.096F;
+		this.leftWing.yRot -= Mth.cos(ageInTicks * 0.12F) * 0.096F;
 		this.rightWing.zRot = (float)Math.PI / 16.0F;
 		this.leftWing.zRot = -((float)Math.PI / 16.0F);
-		this.rightWing.zRot += MathHelper.cos(ageInTicks * 0.12F + (float)Math.PI / 3.0F) * 0.045F;
-		this.leftWing.zRot -= MathHelper.cos(ageInTicks * 0.12F + (float)Math.PI / 3.0F) * 0.045F;
+		this.rightWing.zRot += Mth.cos(ageInTicks * 0.12F + (float)Math.PI / 3.0F) * 0.045F;
+		this.leftWing.zRot -= Mth.cos(ageInTicks * 0.12F + (float)Math.PI / 3.0F) * 0.045F;
 	}
 }

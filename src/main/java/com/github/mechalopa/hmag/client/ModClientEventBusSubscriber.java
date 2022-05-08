@@ -5,7 +5,7 @@ import com.github.mechalopa.hmag.client.model.ArurauneModel;
 import com.github.mechalopa.hmag.client.model.BansheeModel;
 import com.github.mechalopa.hmag.client.model.CatoblepasModel;
 import com.github.mechalopa.hmag.client.model.CreeperGirlModel;
-import com.github.mechalopa.hmag.client.model.CreeperGirlPowerArmorModel;
+import com.github.mechalopa.hmag.client.model.CreeperGirlArmorModel;
 import com.github.mechalopa.hmag.client.model.CrimsonSlaughtererModel;
 import com.github.mechalopa.hmag.client.model.CursedDollModel;
 import com.github.mechalopa.hmag.client.model.DodomekiModel;
@@ -26,6 +26,7 @@ import com.github.mechalopa.hmag.client.model.KoboldModel;
 import com.github.mechalopa.hmag.client.model.LichModel;
 import com.github.mechalopa.hmag.client.model.MagicalSlimeModel;
 import com.github.mechalopa.hmag.client.model.MeltyMonsterModel;
+import com.github.mechalopa.hmag.client.model.ModShieldModel;
 import com.github.mechalopa.hmag.client.model.MonolithModel;
 import com.github.mechalopa.hmag.client.model.NecroticReaperModel;
 import com.github.mechalopa.hmag.client.model.OgreModel;
@@ -36,7 +37,7 @@ import com.github.mechalopa.hmag.client.model.SkeletonGirlModel;
 import com.github.mechalopa.hmag.client.model.SlimeGirlModel;
 import com.github.mechalopa.hmag.client.model.SnowCanineModel;
 import com.github.mechalopa.hmag.client.model.SpiderNestModel;
-import com.github.mechalopa.hmag.client.model.StrayGirlClothingModel;
+import com.github.mechalopa.hmag.client.model.SkeletonGirlArmorModel;
 import com.github.mechalopa.hmag.client.model.ZombieGirlModel;
 import com.github.mechalopa.hmag.client.particle.EnchantmentRuneParticle;
 import com.github.mechalopa.hmag.client.renderer.ArurauneRenderer;
@@ -189,7 +190,7 @@ public class ModClientEventBusSubscriber
 	}
 
 	@SubscribeEvent
-	public static void registerRenderers(final RegisterLayerDefinitions event)
+	public static void registerLayerDefinitions(final RegisterLayerDefinitions event)
 	{
 		LayerDefinition layerdefinition = LayerDefinition.create(HumanoidModel.createMesh(LayerDefinitions.OUTER_ARMOR_DEFORMATION, 0.0F), 64, 32);
 		LayerDefinition layerdefinition1 = LayerDefinition.create(HumanoidModel.createMesh(LayerDefinitions.INNER_ARMOR_DEFORMATION, 0.0F), 64, 32);
@@ -211,11 +212,11 @@ public class ModClientEventBusSubscriber
 		event.registerLayerDefinition(ModModelLayers.STRAY_GIRL, SkeletonGirlModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.STRAY_GIRL_INNER_ARMOR, () -> layerdefinition1);
 		event.registerLayerDefinition(ModModelLayers.STRAY_GIRL_OUTER_ARMOR, () -> layerdefinition);
-		event.registerLayerDefinition(ModModelLayers.STRAY_GIRL_OUTER_LAYER, () -> LayerDefinition.create(StrayGirlClothingModel.createMesh(new CubeDeformation(0.25F)), 64, 32));
+		event.registerLayerDefinition(ModModelLayers.STRAY_GIRL_OUTER_LAYER, () -> LayerDefinition.create(SkeletonGirlArmorModel.createStrayGirlClothingMesh(new CubeDeformation(0.25F)), 64, 32));
 		event.registerLayerDefinition(ModModelLayers.CREEPER_GIRL, CreeperGirlModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.CREEPER_GIRL_INNER_ARMOR, () -> layerdefinition1);
 		event.registerLayerDefinition(ModModelLayers.CREEPER_GIRL_OUTER_ARMOR, () -> layerdefinition);
-		event.registerLayerDefinition(ModModelLayers.CREEPER_GIRL_POWER_ARMOR, () -> LayerDefinition.create(CreeperGirlPowerArmorModel.createMesh(new CubeDeformation(2.0F)), 64, 32));
+		event.registerLayerDefinition(ModModelLayers.CREEPER_GIRL_POWER_ARMOR, () -> LayerDefinition.create(CreeperGirlArmorModel.createPowerArmorMesh(new CubeDeformation(2.0F)), 64, 32));
 		event.registerLayerDefinition(ModModelLayers.GHOST, GhostModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.GHOST_INNER_ARMOR, () -> layerdefinition1);
 		event.registerLayerDefinition(ModModelLayers.GHOST_OUTER_ARMOR, () -> layerdefinition);
@@ -257,7 +258,16 @@ public class ModClientEventBusSubscriber
 		event.registerLayerDefinition(ModModelLayers.NECROTIC_REAPER, NecroticReaperModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.DODOMEKI, DodomekiModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.IMP, ImpModel::createBodyLayer);
+
+		event.registerLayerDefinition(ModModelLayers.ANCIENT_SHIELD, ModShieldModel::createLayer);
+		event.registerLayerDefinition(ModModelLayers.FORTRESS_SHIELD, ModShieldModel::createLayer);
 	}
+
+//	@SubscribeEvent
+//	public static void registerModels(final ModelRegistryEvent event)
+//	{
+//
+//	}
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public static void registerParticleFactories(final ParticleFactoryRegisterEvent event)

@@ -2,6 +2,8 @@ package com.github.mechalopa.hmag.client.renderer;
 
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
+import com.github.mechalopa.hmag.client.model.AbstractGirlModel;
+import com.github.mechalopa.hmag.client.model.GirlArmorModel;
 import com.github.mechalopa.hmag.client.model.RedcapModel;
 import com.github.mechalopa.hmag.entity.RedcapEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -19,10 +21,10 @@ public class RedcapRenderer extends AbstractGirlRenderer<RedcapEntity, RedcapMod
 
 	public RedcapRenderer(EntityRendererProvider.Context context)
 	{
-		this(context, new RedcapModel<>(context.bakeLayer(ModModelLayers.REDCAP)), new RedcapModel<>(context.bakeLayer(ModModelLayers.REDCAP_INNER_ARMOR)), new RedcapModel<>(context.bakeLayer(ModModelLayers.REDCAP_OUTER_ARMOR)));
+		this(context, new RedcapModel<>(context.bakeLayer(ModModelLayers.REDCAP)), new GirlArmorModel<>(context.bakeLayer(ModModelLayers.REDCAP_INNER_ARMOR)), new GirlArmorModel<>(context.bakeLayer(ModModelLayers.REDCAP_OUTER_ARMOR)));
 	}
 
-	public RedcapRenderer(EntityRendererProvider.Context context, RedcapModel<RedcapEntity> model, RedcapModel<RedcapEntity> model1, RedcapModel<RedcapEntity> model2)
+	public RedcapRenderer(EntityRendererProvider.Context context, RedcapModel<RedcapEntity> model, AbstractGirlModel<RedcapEntity> model1, AbstractGirlModel<RedcapEntity> model2)
 	{
 		super(context, model, 0.5F);
 		this.addLayer(new HumanoidArmorLayer<>(this, model1, model2));

@@ -49,28 +49,28 @@ public class CreeperGirlModel<T extends CreeperGirlEntity> extends AbstractAdvan
 	{
 		super.setupAnim(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 
-		doAnim(entityIn, ageInTicks, this.attackTime, this.rightArm, this.leftArm);
+		doAnim(entityIn, ageInTicks, this.attackTime, this);
 
 //		this.skirt1.xRot = 0.0F;
 //		this.skirt2.xRot = 0.0F;
 //		this.hatPart.xRot = 0.0F;
 	}
 
-	public static void doAnim(CreeperGirlEntity entityIn, float ageInTicks, float attackTime, ModelPart rightArm, ModelPart leftArm)
+	public static void doAnim(CreeperGirlEntity entityIn, float ageInTicks, float attackTime, AbstractGirlModel<?> model)
 	{
 		float f = Mth.sin(attackTime * (float)Math.PI);
 		float f1 = Mth.sin((1.0F - (1.0F - attackTime) * (1.0F - attackTime)) * (float)Math.PI);
-		rightArm.zRot = 0.0F;
-		leftArm.zRot = 0.0F;
-		rightArm.yRot = -(0.1F - f * 0.6F);
-		leftArm.yRot = 0.1F - f * 0.6F;
-		rightArm.xRot = 0.0F;
-		leftArm.xRot = 0.0F;
-		rightArm.xRot -= f * 1.2F - f1 * 0.4F;
-		leftArm.xRot -= f * 1.2F - f1 * 0.4F;
-		rightArm.zRot += Mth.cos(ageInTicks * 0.12F) * 0.096F + 0.12F;
-		leftArm.zRot -= Mth.cos(ageInTicks * 0.12F) * 0.096F + 0.12F;
-		rightArm.xRot += Mth.sin(ageInTicks * 0.105F + (float)Math.PI * 0.5F) * 0.072F;
-		leftArm.xRot -= Mth.sin(ageInTicks * 0.105F) * 0.072F;
+		model.rightArm.zRot = 0.0F;
+		model.leftArm.zRot = 0.0F;
+		model.rightArm.yRot = -(0.1F - f * 0.6F);
+		model.leftArm.yRot = 0.1F - f * 0.6F;
+		model.rightArm.xRot = 0.0F;
+		model.leftArm.xRot = 0.0F;
+		model.rightArm.xRot -= f * 1.2F - f1 * 0.4F;
+		model.leftArm.xRot -= f * 1.2F - f1 * 0.4F;
+		model.rightArm.zRot += Mth.cos(ageInTicks * 0.12F) * 0.096F + 0.12F;
+		model.leftArm.zRot -= Mth.cos(ageInTicks * 0.12F) * 0.096F + 0.12F;
+		model.rightArm.xRot += Mth.sin(ageInTicks * 0.105F + (float)Math.PI * 0.5F) * 0.072F;
+		model.leftArm.xRot -= Mth.sin(ageInTicks * 0.105F) * 0.072F;
 	}
 }

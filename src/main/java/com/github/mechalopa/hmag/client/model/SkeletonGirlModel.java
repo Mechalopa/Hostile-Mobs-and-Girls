@@ -19,7 +19,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class SkeletonGirlModel<T extends AbstractSkeleton> extends AbstractAdvancedGirlModel<T>
+public class SkeletonGirlModel<T extends AbstractSkeleton> extends AbstractGirlModel<T>
 {
 	private ModelPart skirt1;
 	private ModelPart skirt2;
@@ -41,7 +41,7 @@ public class SkeletonGirlModel<T extends AbstractSkeleton> extends AbstractAdvan
 
 	public static MeshDefinition createMesh(CubeDeformation cd)
 	{
-		MeshDefinition md = AbstractAdvancedGirlModel.createMesh(cd, 0.0F);
+		MeshDefinition md = AbstractGirlModel.createMesh(cd, 0.0F);
 		PartDefinition pd = md.getRoot();
 		ModClientUtils.addC(pd, cd, "right_arm", 40, 16, 0.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F, -5.0F, 2.0F, 0.0F);
 		ModClientUtils.addC(pd, cd, "left_arm", 40, 16, -2.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F, 5.0F, 2.0F, 0.0F, true);
@@ -75,7 +75,6 @@ public class SkeletonGirlModel<T extends AbstractSkeleton> extends AbstractAdvan
 	{
 		model.rightArmPose = HumanoidModel.ArmPose.EMPTY;
 		model.leftArmPose = HumanoidModel.ArmPose.EMPTY;
-
 		ItemStack stack = entityIn.getItemInHand(InteractionHand.MAIN_HAND);
 
 		if (ModUtils.isBow(stack) && entityIn.isAggressive())
@@ -96,7 +95,7 @@ public class SkeletonGirlModel<T extends AbstractSkeleton> extends AbstractAdvan
 	{
 		super.setupAnim(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 
-		doAnim(entityIn, ageInTicks, this.attackTime, this.rightArm, this.leftArm);
+		doAnim(entityIn, ageInTicks, this.attackTime, this);
 
 		if (this.riding)
 		{
@@ -121,7 +120,7 @@ public class SkeletonGirlModel<T extends AbstractSkeleton> extends AbstractAdvan
 		this.leftHair2.zRot += Mth.sin(ageInTicks * 0.06F + (float)Math.PI / 3.0F) * 0.03F;
 	}
 
-	public static void doAnim(AbstractSkeleton entityIn, float ageInTicks, float attackTime, ModelPart rightArm, ModelPart leftArm)
+	public static void doAnim(AbstractSkeleton entityIn, float ageInTicks, float attackTime, AbstractGirlModel<?> model)
 	{
 		ItemStack stack = entityIn.getMainHandItem();
 
@@ -129,15 +128,15 @@ public class SkeletonGirlModel<T extends AbstractSkeleton> extends AbstractAdvan
 		{
 			float f = Mth.sin(attackTime * (float)Math.PI);
 			float f1 = Mth.sin((1.0F - (1.0F - attackTime) * (1.0F - attackTime)) * (float)Math.PI);
-			rightArm.zRot = 0.0F;
-			leftArm.zRot = 0.0F;
-			rightArm.yRot = -(0.1F - f * 0.6F);
-			leftArm.yRot = 0.1F - f * 0.6F;
-			rightArm.xRot = (-(float)Math.PI / 2.0F);
-			leftArm.xRot = (-(float)Math.PI / 2.0F);
-			rightArm.xRot -= f * 1.2F - f1 * 0.4F;
-			leftArm.xRot -= f * 1.2F - f1 * 0.4F;
-			AnimationUtils.bobArms(rightArm, leftArm, ageInTicks);
+			model.rightArm.zRot = 0.0F;
+			model.leftArm.zRot = 0.0F;
+			model.rightArm.yRot = -(0.1F - f * 0.6F);
+			model.leftArm.yRot = 0.1F - f * 0.6F;
+			model.rightArm.xRot = (-(float)Math.PI / 2.0F);
+			model.leftArm.xRot = (-(float)Math.PI / 2.0F);
+			model.rightArm.xRot -= f * 1.2F - f1 * 0.4F;
+			model.leftArm.xRot -= f * 1.2F - f1 * 0.4F;
+			AnimationUtils.bobArms(model.rightArm, model.leftArm, ageInTicks);
 		}
 	}
 

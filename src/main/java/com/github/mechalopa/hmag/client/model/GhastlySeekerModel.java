@@ -84,7 +84,7 @@ public class GhastlySeekerModel<T extends GhastlySeekerEntity> extends AbstractA
 		ModClientUtils.addC(pd, cd, "right_leg", 0, 16, -0.5F, 0.0F, -0.5F, 1.0F, 1.0F, 1.0F, -2.0F, 12.0F, 0.0F);
 		ModClientUtils.addC(pd, cd, "left_leg", 0, 16, -0.5F, 0.0F, -0.5F, 1.0F, 1.0F, 1.0F, 2.0F, 12.0F, 0.0F, true);
 		PartDefinition bodypd = pd.getChild("body");
-		PartDefinition bodypart1pd = pd.getChild("body_part_1");
+		PartDefinition bodypart1pd = bodypd.getChild("body_part_1");
 		ModClientUtils.addC(bodypart1pd, cd, "body_part_2", 32, 40, -3.0F, 0.0F, -1.5F, 6.0F, 2.0F, 3.0F, 0.0F, 2.5F, 0.0F);
 		ModClientUtils.addC(bodypd, cd, "skirt_1", 0, 38, -4.0F, 0.0F, -2.5F, 8.0F, 2.0F, 5.0F, 0.0F, 10.0F, 0.0F);
 		PartDefinition s2pd = ModClientUtils.addC(bodypd, cd, "skirt_2", 0, 46, -4.5F, 0.0F, -3.0F, 9.0F, 2.0F, 7.0F, 0.0F, 11.0F, 0.0F);
