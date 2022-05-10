@@ -2,6 +2,7 @@ package com.github.mechalopa.hmag.client.renderer;
 
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.model.SlimeGirlModel;
+import com.github.mechalopa.hmag.client.renderer.layers.SlimeGirlEyesLayer;
 import com.github.mechalopa.hmag.client.renderer.layers.SlimeGirlLayer;
 import com.github.mechalopa.hmag.entity.SlimeGirlEntity;
 import com.mojang.blaze3d.matrix.MatrixStack;
@@ -20,6 +21,7 @@ public class SlimeGirlRenderer extends AbstractGirlRenderer<SlimeGirlEntity, Sli
 	public SlimeGirlRenderer(EntityRendererManager renderManagerIn)
 	{
 		super(renderManagerIn, new SlimeGirlModel<>(), 0.5F, -1);
+		this.addLayer(new SlimeGirlEyesLayer(this));
 		this.addLayer(new SlimeGirlLayer(this));
 	}
 
