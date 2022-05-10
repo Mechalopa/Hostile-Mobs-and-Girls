@@ -575,7 +575,7 @@ public class ModEvents
 		{
 			if (event.getStructure() == StructureFeature.END_CITY)
 			{
-				event.addEntitySpawn(MobCategory.MONSTER, new SpawnerData(ModEntityTypes.MONOLITH.get(), ModConfigs.cachedServer.MONOLITH_SPAWN_WEIGHT_IN_END_CITY, 1, 2));
+				event.addEntitySpawn(MobCategory.MONSTER, new SpawnerData(ModEntityTypes.MONOLITH.get(), ModConfigs.cachedServer.MONOLITH_SPAWN_WEIGHT_IN_END_CITY, 1, 1));
 			}
 		}
 

@@ -11,7 +11,6 @@ import net.minecraft.world.level.block.Block;
 
 public class ModTags
 {
-	public static final TagKey<Block> MONOLITH_SPAWNABLE_IN_LIGHT = createBlockTag("monolith_spawnable_in_light");
 	public static final TagKey<Block> OGRE_IMMUNE = createBlockTag("ogre_immune");
 
 	public static final TagKey<Item> CURSE_REMOVABLE_BLACKLIST = createItemTag("curse_removable_blacklist");

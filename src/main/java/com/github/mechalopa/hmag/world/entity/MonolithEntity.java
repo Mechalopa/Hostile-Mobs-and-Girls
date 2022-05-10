@@ -16,13 +16,14 @@ import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.util.ModUtils;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
+import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -58,7 +59,9 @@ import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.chunk.ChunkGenerator;
+import net.minecraft.world.level.levelgen.feature.ConfiguredStructureFeature;
+import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -328,8 +331,20 @@ public class MonolithEntity extends FlyingMob implements Enemy, IModMob, IBeamAt
 			}
 			else
 			{
-				BlockState state = levelAccessor.getBlockState(pos.mutable().move(Direction.DOWN));
-				return state != null && state.is(ModTags.MONOLITH_SPAWNABLE_IN_LIGHT);
+				Level level = levelAccessor.getLevel();
+
+				if (level instanceof ServerLevel)
+				{
+					ServerLevel serverlevel = (ServerLevel)level;
+					Registry<ConfiguredStructureFeature<?, ?>> registry = serverlevel.registryAccess().registryOrThrow(Registry.CONFIGURED_STRUCTURE_FEATURE_REGISTRY);
+
+					if (ChunkGenerator.allConfigurations(registry, StructureFeature.END_CITY).anyMatch((p) -> {
+						return serverlevel.structureFeatureManager().getStructureWithPieceAt(pos, p).isValid();
+					}))
+					{
+						return true;
+					}
+				}
 			}
 		}
 
