@@ -2,6 +2,8 @@ package com.github.mechalopa.hmag.world.item;
 
 import java.util.function.Consumer;
 
+import javax.annotation.Nonnull;
+
 import com.github.mechalopa.hmag.client.renderer.ModBlockEntityWithoutLevelRenderer;
 
 import net.minecraft.client.Minecraft;
@@ -38,7 +40,7 @@ public abstract class ModShieldItem extends ShieldItem
 	}
 
 	@Override
-	public void initializeClient(Consumer<IItemRenderProperties> consumer)
+	public void initializeClient(@Nonnull Consumer<IItemRenderProperties> consumer)
 	{
 		consumer.accept(new IItemRenderProperties()
 		{

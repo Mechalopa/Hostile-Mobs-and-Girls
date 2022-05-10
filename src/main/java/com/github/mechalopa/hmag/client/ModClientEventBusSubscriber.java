@@ -263,12 +263,6 @@ public class ModClientEventBusSubscriber
 		event.registerLayerDefinition(ModModelLayers.FORTRESS_SHIELD, ModShieldModel::createLayer);
 	}
 
-//	@SubscribeEvent
-//	public static void registerModels(final ModelRegistryEvent event)
-//	{
-//
-//	}
-
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public static void registerParticleFactories(final ParticleFactoryRegisterEvent event)
 	{

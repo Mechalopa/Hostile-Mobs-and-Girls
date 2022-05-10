@@ -7,7 +7,6 @@ import com.github.mechalopa.hmag.registry.ModItems;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 
-import net.minecraft.client.model.Model;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -36,21 +35,21 @@ public class ModBlockEntityWithoutLevelRenderer extends BlockEntityWithoutLevelR
 	}
 
 	@Override
-	public void renderByItem(ItemStack stackIn, ItemTransforms.TransformType type, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay)
+	public void renderByItem(ItemStack stack, ItemTransforms.TransformType type, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay)
 	{
-		Item item = stackIn.getItem();
+		Item item = stack.getItem();
 
 		if (item == ModItems.ANCIENT_SHIELD.get())
 		{
-			drawShieldModel(stackIn, type, poseStack, buffer, packedLight, packedLight, ANCIENT_SHIELD_TEX, ancientShieldModel);
+			drawShieldModel(stack, type, poseStack, buffer, packedLight, packedOverlay, ANCIENT_SHIELD_TEX, ancientShieldModel);
 		}
 		else if (item == ModItems.FORTRESS_SHIELD.get())
 		{
-			drawShieldModel(stackIn, type, poseStack, buffer, packedLight, packedLight, FORTRESS_SHIELD_TEX, fortressShieldModel);
+			drawShieldModel(stack, type, poseStack, buffer, packedLight, packedOverlay, FORTRESS_SHIELD_TEX, fortressShieldModel);
 		}
 	}
 
-	private static void drawShieldModel(ItemStack stack, ItemTransforms.TransformType type, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay, ResourceLocation resource, Model model)
+	private static void drawShieldModel(ItemStack stack, ItemTransforms.TransformType type, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay, ResourceLocation resource, ModShieldModel model)
 	{
 		poseStack.pushPose();
 		poseStack.scale(1.0F, -1.0F, -1.0F);
