@@ -15,7 +15,6 @@ import com.github.mechalopa.hmag.registry.ModSoundEvents;
 import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.util.ModUtils;
 
-import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.Entity;
@@ -47,7 +46,6 @@ import net.minecraft.particles.ParticleTypes;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.Direction;
 import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
@@ -60,6 +58,8 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.structure.Structure;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
@@ -328,8 +328,12 @@ public class MonolithEntity extends FlyingEntity implements IMob, IModMob, IBeam
 			}
 			else
 			{
-				BlockState state = worldIn.getBlockState(pos.mutable().move(Direction.DOWN));
-				return state != null && state.getBlock() != null && ModTags.checkTagContains(ModTags.MONOLITH_SPAWNABLE_IN_LIGHT, state.getBlock());
+				World world = worldIn.getLevel();
+
+				if (world instanceof ServerWorld && ((ServerWorld)world).structureFeatureManager().getStructureAt(pos, true, Structure.END_CITY).isValid())
+				{
+					return true;
+				}
 			}
 		}
 

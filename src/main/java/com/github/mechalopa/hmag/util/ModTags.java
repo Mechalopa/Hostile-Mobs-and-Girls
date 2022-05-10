@@ -18,7 +18,6 @@ import net.minecraft.util.ResourceLocation;
 
 public class ModTags
 {
-	public static final ITag.INamedTag<Block> MONOLITH_SPAWNABLE_IN_LIGHT = makeBlockTag("monolith_spawnable_in_light");
 	public static final ITag.INamedTag<Block> OGRE_IMMUNE = makeBlockTag("ogre_immune");
 
 	public static final ITag.INamedTag<Item> CURSE_REMOVABLE_BLACKLIST = makeItemTag("curse_removable_blacklist");
