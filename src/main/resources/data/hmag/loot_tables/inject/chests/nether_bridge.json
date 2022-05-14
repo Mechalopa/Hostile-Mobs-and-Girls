@@ -60,11 +60,7 @@
           "functions": [
             {
               "function": "minecraft:set_count",
-              "count": {
-                "min": 1.0,
-                "max": 2.0,
-                "type": "minecraft:uniform"
-              }
+              "count": 1
             }
           ],
           "name": "hmag:crimson_cuticula"
