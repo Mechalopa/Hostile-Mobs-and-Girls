@@ -7,9 +7,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-public class EXPBerryItem extends Item
+public class ExperienceBerryItem extends Item
 {
-	public EXPBerryItem(Item.Properties builder)
+	public ExperienceBerryItem(Item.Properties builder)
 	{
 		super(builder);
 	}

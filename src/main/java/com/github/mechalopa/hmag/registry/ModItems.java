@@ -3,7 +3,7 @@ package com.github.mechalopa.hmag.registry;
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.world.item.AncientShieldItem;
 import com.github.mechalopa.hmag.world.item.CrimsonBowItem;
-import com.github.mechalopa.hmag.world.item.EXPBerryItem;
+import com.github.mechalopa.hmag.world.item.ExperienceBerryItem;
 import com.github.mechalopa.hmag.world.item.EnchantmentUpgradeItem;
 import com.github.mechalopa.hmag.world.item.EndlessPearlItem;
 import com.github.mechalopa.hmag.world.item.EvilFlameItem;
@@ -84,7 +84,7 @@ public class ModItems
 	public static final RegistryObject<Item> LEMON = REGISTRY.register("lemon", () -> new Item(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(2).saturationMod(0.1F).build())));
 	public static final RegistryObject<Item> STRAWBERRY = REGISTRY.register("strawberry", () -> new Item(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(2).saturationMod(0.1F).build())));
 	public static final RegistryObject<Item> BLUEBERRY = REGISTRY.register("blueberry", () -> new Item(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(2).saturationMod(0.1F).build())));
-	public static final RegistryObject<Item> EXP_BERRY = REGISTRY.register("exp_berry", () -> new EXPBerryItem(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(3).saturationMod(0.2F).alwaysEat().build()).rarity(Rarity.UNCOMMON)));
+	public static final RegistryObject<Item> EXP_BERRY = REGISTRY.register("exp_berry", () -> new ExperienceBerryItem(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(3).saturationMod(0.2F).alwaysEat().build()).rarity(Rarity.UNCOMMON)));
 	public static final RegistryObject<Item> SOUL_APPLE = REGISTRY.register("soul_apple", () -> new ModFoodItem(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(3).saturationMod(0.3F).effect(() -> new MobEffectInstance(MobEffects.INVISIBILITY, 3 * 20, 0), 1.0F).alwaysEat().build()), new ModFoodItem.Properties().eatDuration(16).healAmount(1.0F)));
 	public static final RegistryObject<Item> PHANTOM_APPLE = REGISTRY.register("phantom_apple", () -> new ModFoodItem(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(4).saturationMod(0.9F).effect(() -> new MobEffectInstance(MobEffects.SLOW_FALLING, 30 * 20, 0), 1.0F).alwaysEat().build()), new ModFoodItem.Properties().healAmount(1.0F)));
 	public static final RegistryObject<Item> HONEYED_APPLE = REGISTRY.register("honeyed_apple", () -> new ModFoodItem(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(6).saturationMod(0.4F).alwaysEat().build()), new ModFoodItem.Properties().eatDuration(24).removePoison()));

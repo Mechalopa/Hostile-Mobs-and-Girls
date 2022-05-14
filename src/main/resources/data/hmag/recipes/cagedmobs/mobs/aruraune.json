@@ -14,7 +14,7 @@
     {
       "chance": 0.4,
       "output": {
-        "item": "minecraft:poppy"
+        "item": "minecraft:hanging_roots"
       },
       "minAmount": 1,
       "maxAmount": 2

@@ -38,7 +38,7 @@
     {
       "chance": 0.025,
       "output": {
-        "item": "minecraft:iron_ore"
+        "item": "minecraft:raw_iron"
       },
       "minAmount": 1,
       "maxAmount": 1
