@@ -14,7 +14,7 @@
     {
       "chance": 0.5,
       "output": {
-        "item": "hmag:canine_tooth"
+        "item": "hmag:sharp_fang"
       },
       "minAmount": 1,
       "maxAmount": 1

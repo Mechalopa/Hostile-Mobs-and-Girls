@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "hmag:canine_tooth"
+      "item": "hmag:sharp_fang"
     }
   ],
   "result": {
