@@ -252,7 +252,6 @@ public class ModConfigs
 
 		SPAWN_BIOME_BLACKLIST = SERVER_BUILDER.defineList("spawnBiomeBlacklist", Lists.newArrayList(
 				"minecraft:mushroom_fields",
-				"minecraft:mushroom_field_shore",
 				"biomesoplenty:rainbow_hills",
 				"biomesoplenty:crystalline_chasm",
 				"cinderscapes:luminous_grove",

@@ -18,7 +18,6 @@ public abstract class ModShieldItem extends ShieldItem
 	public ModShieldItem(Item.Properties builder)
 	{
 		super(builder);
-//		super(builder.setISTER(() -> ModItemStackTileEntityRenderer::new));
 	}
 
 	@Override

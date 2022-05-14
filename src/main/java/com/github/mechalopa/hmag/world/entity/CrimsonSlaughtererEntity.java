@@ -159,9 +159,9 @@ public class CrimsonSlaughtererEntity extends Monster implements IModMob
 		return super.canBeAffected(potioneffectIn);
 	}
 
-	public static boolean checkCrimsonSlaughtererSpawnRules(EntityType<CrimsonSlaughtererEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, Random randomIn)
+	public static boolean checkCrimsonSlaughtererSpawnRules(EntityType<CrimsonSlaughtererEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, Random random)
 	{
-		return checkMonsterSpawnRules(type, levelAccessor, spawnType, pos, randomIn) && (spawnType == MobSpawnType.SPAWNER || randomIn.nextDouble() < ModConfigs.cachedServer.CRIMSON_SLAUGHTERER_SPAWN_CHANCE);
+		return checkMonsterSpawnRules(type, levelAccessor, spawnType, pos, random) && (spawnType == MobSpawnType.SPAWNER || random.nextDouble() < ModConfigs.cachedServer.CRIMSON_SLAUGHTERER_SPAWN_CHANCE);
 	}
 
 	@Override

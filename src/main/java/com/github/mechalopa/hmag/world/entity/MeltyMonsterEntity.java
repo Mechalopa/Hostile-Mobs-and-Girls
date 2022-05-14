@@ -161,7 +161,7 @@ public class MeltyMonsterEntity extends Monster implements IModMob, RangedAttack
 		}
 		while(levelAccessor.getFluidState(blockpos$mutable).is(FluidTags.LAVA));
 
-		return levelAccessor.getBlockState(blockpos$mutable).isAir() && (spawnType == MobSpawnType.SPAWNER || pos.getY() < 32 || randomIn.nextBoolean());
+		return levelAccessor.getBlockState(blockpos$mutable).isAir() && (spawnType == MobSpawnType.SPAWNER || pos.getY() < (levelAccessor.getMinBuildHeight() < 0  ? 0 : 32) || randomIn.nextBoolean());
 	}
 
 	@Override
