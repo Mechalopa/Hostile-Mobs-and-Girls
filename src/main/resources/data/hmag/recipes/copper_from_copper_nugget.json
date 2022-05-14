@@ -1,14 +1,5 @@
 {
-  "type": "hmag:crafting_item_tag_shaped",
-  "conditions": [
-    {
-      "type": "forge:not",
-      "value": {
-        "type": "forge:tag_empty",
-        "tag": "forge:ingots/copper"
-      }
-    }
-  ],
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     "###",
     "###",
@@ -20,6 +11,6 @@
     }
   },
   "result": {
-    "tag": "forge:ingots/copper"
+    "item": "minecraft:copper_ingot"
   }
 }
