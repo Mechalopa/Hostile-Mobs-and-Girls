@@ -118,6 +118,7 @@ public class ModClientEventBusSubscriber
 	public static void setupClient(final FMLClientSetupEvent event)
 	{
 		ItemBlockRenderTypes.setRenderLayer(ModBlocks.REINFORCED_GLASS.get(), RenderType.cutout());
+		ItemBlockRenderTypes.setRenderLayer(ModBlocks.TINTED_REINFORCED_GLASS.get(), RenderType.translucent());
 
 		event.enqueueWork(() -> {
 			ItemProperties.register(ModItems.INSOMNIA_SWORD.get(), new ResourceLocation("level"), (stack, world, livingentity, seed) -> {

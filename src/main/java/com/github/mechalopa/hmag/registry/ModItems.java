@@ -56,6 +56,7 @@ public class ModItems
 	public static final RegistryObject<Item> HEALING_SAND = REGISTRY.register("healing_sand", () -> new BlockItem(ModBlocks.HEALING_SAND.get(), new Item.Properties().tab(HMaG.MODTAB)));
 	public static final RegistryObject<Item> REINFORCED_BLOCK = REGISTRY.register("reinforced_block", () -> new InvincibleBlockItem(ModBlocks.REINFORCED_BLOCK.get(), new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON).fireResistant()));
 	public static final RegistryObject<Item> REINFORCED_GLASS = REGISTRY.register("reinforced_glass", () -> new InvincibleBlockItem(ModBlocks.REINFORCED_GLASS.get(), new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON).fireResistant()));
+	public static final RegistryObject<Item> TINTED_REINFORCED_GLASS = REGISTRY.register("tinted_reinforced_glass", () -> new InvincibleBlockItem(ModBlocks.TINTED_REINFORCED_GLASS.get(), new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON).fireResistant()));
 
 	public static final RegistryObject<Item> EVIL_CRYSTAL_FRAGMENT = REGISTRY.register("evil_crystal_fragment", () -> new Item(new Item.Properties().tab(HMaG.MODTAB)));
 	public static final RegistryObject<Item> EVIL_CRYSTAL = REGISTRY.register("evil_crystal", () -> new Item(new Item.Properties().tab(HMaG.MODTAB)));

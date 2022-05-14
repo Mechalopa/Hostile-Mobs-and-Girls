@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "hmag:reinforced_block",
-    "hmag:reinforced_glass"
+    "hmag:reinforced_glass",
+    "hmag:tinted_reinforced_glass"
   ]
 }

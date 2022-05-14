@@ -7,6 +7,7 @@ import com.github.mechalopa.hmag.world.level.block.PoisonSandBlock;
 import com.github.mechalopa.hmag.world.level.block.ReinforcedBlock;
 import com.github.mechalopa.hmag.world.level.block.ReinforcedGlassBlock;
 import com.github.mechalopa.hmag.world.level.block.ThornSandBlock;
+import com.github.mechalopa.hmag.world.level.block.TintedReinforcedGlassBlock;
 import com.github.mechalopa.hmag.world.level.block.WitherSandBlock;
 
 import net.minecraft.core.BlockPos;
@@ -38,7 +39,8 @@ public class ModBlocks
 	public static final RegistryObject<Block> WITHER_SAND = REGISTRY.register("wither_sand", () -> new WitherSandBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.COLOR_GRAY).strength(0.5F).speedFactor(0.4F).sound(SoundType.SOUL_SAND).isValidSpawn(ModBlocks::always).isRedstoneConductor(ModBlocks::always).isViewBlocking(ModBlocks::always).isSuffocating(ModBlocks::always)));
 	public static final RegistryObject<Block> HEALING_SAND = REGISTRY.register("healing_sand", () -> new HealingSandBlock(BlockBehaviour.Properties.of(Material.SAND, MaterialColor.COLOR_PINK).strength(0.5F).speedFactor(0.4F).sound(SoundType.SOUL_SAND).isValidSpawn(ModBlocks::always).isRedstoneConductor(ModBlocks::always).isViewBlocking(ModBlocks::always).isSuffocating(ModBlocks::always)));
 	public static final RegistryObject<Block> REINFORCED_BLOCK = REGISTRY.register("reinforced_block", () -> new ReinforcedBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).strength(5.0F, 3600000.0F).sound(SoundType.STONE)));
-	public static final RegistryObject<Block> REINFORCED_GLASS = REGISTRY.register("reinforced_glass", () -> new ReinforcedGlassBlock(BlockBehaviour.Properties.of(Material.GLASS, MaterialColor.COLOR_BLACK).strength(5.0F, 3600000.0F).sound(SoundType.GLASS).noOcclusion().isValidSpawn(ModBlocks::never).isRedstoneConductor(ModBlocks::never).isSuffocating(ModBlocks::never).isViewBlocking(ModBlocks::never)));
+	public static final RegistryObject<Block> REINFORCED_GLASS = REGISTRY.register("reinforced_glass", () -> new ReinforcedGlassBlock(BlockBehaviour.Properties.of(Material.GLASS).strength(5.0F, 3600000.0F).sound(SoundType.GLASS).noOcclusion().isValidSpawn(ModBlocks::never).isRedstoneConductor(ModBlocks::never).isSuffocating(ModBlocks::never).isViewBlocking(ModBlocks::never)));
+	public static final RegistryObject<Block> TINTED_REINFORCED_GLASS = REGISTRY.register("tinted_reinforced_glass", () -> new TintedReinforcedGlassBlock(BlockBehaviour.Properties.of(Material.GLASS, MaterialColor.COLOR_GRAY).strength(5.0F, 3600000.0F).sound(SoundType.GLASS).noOcclusion().isValidSpawn(ModBlocks::never).isRedstoneConductor(ModBlocks::never).isSuffocating(ModBlocks::never).isViewBlocking(ModBlocks::never)));
 
 	@SubscribeEvent
 	public static void register(IEventBus eventBus)
