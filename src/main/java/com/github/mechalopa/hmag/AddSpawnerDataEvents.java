@@ -326,15 +326,21 @@ public class AddSpawnerDataEvents
 
 		for (MobSpawnSettings.SpawnerData additionalSpawnData : additionalSpawnerDataList)
 		{
+			boolean flag = false;
+
 			for (MobSpawnSettings.SpawnerData data : list)
 			{
 				if (data.type.equals(additionalSpawnData.type))
 				{
+					flag = true;
 					break;
 				}
 			}
 
-			list.add(additionalSpawnData);
+			if (!flag)
+			{
+				list.add(additionalSpawnData);
+			}
 		}
 
 		WeightedRandomList<MobSpawnSettings.SpawnerData> fortressEnemies = WeightedRandomList.create(list);
