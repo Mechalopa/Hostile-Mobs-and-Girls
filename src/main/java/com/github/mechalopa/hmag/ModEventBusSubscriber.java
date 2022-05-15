@@ -6,7 +6,7 @@ import com.github.mechalopa.hmag.registry.ModPotions;
 import com.github.mechalopa.hmag.util.ModBrewingRecipe;
 import com.github.mechalopa.hmag.util.ModSpawnRules;
 import com.github.mechalopa.hmag.util.ModUtils;
-import com.github.mechalopa.hmag.world.entity.ArurauneEntity;
+import com.github.mechalopa.hmag.world.entity.AlrauneEntity;
 import com.github.mechalopa.hmag.world.entity.BansheeEntity;
 import com.github.mechalopa.hmag.world.entity.CatoblepasEntity;
 import com.github.mechalopa.hmag.world.entity.CreeperGirlEntity;
@@ -172,7 +172,7 @@ public class ModEventBusSubscriber
 		SpawnPlacements.register(ModEntityTypes.HORNET.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkMonsterSpawnInLightOverY64Rules);
 		SpawnPlacements.register(ModEntityTypes.DULLAHAN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkMonsterSpawnInLightOverY64Rules);
 		SpawnPlacements.register(ModEntityTypes.BANSHEE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkMonsterSpawnInLightOverY64Rules);
-		SpawnPlacements.register(ModEntityTypes.ARURAUNE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkMonsterSpawnInLightOverY64Rules);
+		SpawnPlacements.register(ModEntityTypes.ALRAUNE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkMonsterSpawnInLightOverY64Rules);
 		SpawnPlacements.register(ModEntityTypes.CATOBLEPAS.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkMonsterSpawnInLightOverY64Rules);
 		SpawnPlacements.register(ModEntityTypes.SCORPION.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkMonsterSpawnInLightOverY64Rules);
 		SpawnPlacements.register(ModEntityTypes.KASHA.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkAnyLightMonsterSpawnRules);
@@ -216,7 +216,7 @@ public class ModEventBusSubscriber
 		event.put(ModEntityTypes.HORNET.get(), HornetEntity.createAttributes().build());
 		event.put(ModEntityTypes.DULLAHAN.get(), DullahanEntity.createAttributes().build());
 		event.put(ModEntityTypes.BANSHEE.get(), BansheeEntity.createAttributes().build());
-		event.put(ModEntityTypes.ARURAUNE.get(), ArurauneEntity.createAttributes().build());
+		event.put(ModEntityTypes.ALRAUNE.get(), AlrauneEntity.createAttributes().build());
 		event.put(ModEntityTypes.CATOBLEPAS.get(), CatoblepasEntity.createAttributes().build());
 		event.put(ModEntityTypes.SCORPION.get(), ScorpionEntity.createAttributes().build());
 		event.put(ModEntityTypes.KASHA.get(), KashaEntity.createAttributes().build());

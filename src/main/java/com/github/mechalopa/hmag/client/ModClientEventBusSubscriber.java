@@ -1,7 +1,7 @@
 package com.github.mechalopa.hmag.client;
 
 import com.github.mechalopa.hmag.HMaG;
-import com.github.mechalopa.hmag.client.model.ArurauneModel;
+import com.github.mechalopa.hmag.client.model.AlrauneModel;
 import com.github.mechalopa.hmag.client.model.BansheeModel;
 import com.github.mechalopa.hmag.client.model.CatoblepasModel;
 import com.github.mechalopa.hmag.client.model.CreeperGirlArmorModel;
@@ -40,7 +40,7 @@ import com.github.mechalopa.hmag.client.model.SnowCanineModel;
 import com.github.mechalopa.hmag.client.model.SpiderNestModel;
 import com.github.mechalopa.hmag.client.model.ZombieGirlModel;
 import com.github.mechalopa.hmag.client.particle.EnchantmentRuneParticle;
-import com.github.mechalopa.hmag.client.renderer.ArurauneRenderer;
+import com.github.mechalopa.hmag.client.renderer.AlrauneRenderer;
 import com.github.mechalopa.hmag.client.renderer.BansheeRenderer;
 import com.github.mechalopa.hmag.client.renderer.CatoblepasRenderer;
 import com.github.mechalopa.hmag.client.renderer.CreeperGirlRenderer;
@@ -161,7 +161,7 @@ public class ModClientEventBusSubscriber
 		event.registerEntityRenderer(ModEntityTypes.HORNET.get(), HornetRenderer::new);
 		event.registerEntityRenderer(ModEntityTypes.DULLAHAN.get(), DullahanRenderer::new);
 		event.registerEntityRenderer(ModEntityTypes.BANSHEE.get(), BansheeRenderer::new);
-		event.registerEntityRenderer(ModEntityTypes.ARURAUNE.get(), ArurauneRenderer::new);
+		event.registerEntityRenderer(ModEntityTypes.ALRAUNE.get(), AlrauneRenderer::new);
 		event.registerEntityRenderer(ModEntityTypes.CATOBLEPAS.get(), CatoblepasRenderer::new);
 		event.registerEntityRenderer(ModEntityTypes.SCORPION.get(), ScorpionRenderer::new);
 		event.registerEntityRenderer(ModEntityTypes.KASHA.get(), KashaRenderer::new);
@@ -236,7 +236,7 @@ public class ModClientEventBusSubscriber
 		event.registerLayerDefinition(ModModelLayers.HORNET, HornetModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.DULLAHAN, DullahanModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.BANSHEE, BansheeModel::createBodyLayer);
-		event.registerLayerDefinition(ModModelLayers.ARURAUNE, ArurauneModel::createBodyLayer);
+		event.registerLayerDefinition(ModModelLayers.ARURAUNE, AlrauneModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.CATOBLEPAS, CatoblepasModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.SCORPION, ScorpionModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.KASHA, KashaModel::createBodyLayer);

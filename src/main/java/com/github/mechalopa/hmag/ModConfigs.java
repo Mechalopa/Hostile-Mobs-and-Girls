@@ -29,8 +29,8 @@ public class ModConfigs
 	public static ForgeConfigSpec.BooleanValue KASHA_ATTACK_BABY_TURTLES;
 	public static ForgeConfigSpec.BooleanValue JACK_FROST_FREEZES_WATER;
 	public static ForgeConfigSpec.BooleanValue JACK_FROST_REGEN;
-	public static ForgeConfigSpec.BooleanValue ARURAUNE_ATTACK_VILLAGERS;
-	public static ForgeConfigSpec.BooleanValue ARURAUNE_REGEN;
+	public static ForgeConfigSpec.BooleanValue ALRAUNE_ATTACK_VILLAGERS;
+	public static ForgeConfigSpec.BooleanValue ALRAUNE_REGEN;
 	public static ForgeConfigSpec.BooleanValue REDCAP_ATTACK_VILLAGERS;
 	public static ForgeConfigSpec.BooleanValue REDCAP_ATTACK_BABY_TURTLES;
 	public static ForgeConfigSpec.BooleanValue SLIME_GIRL_REGEN;
@@ -76,7 +76,7 @@ public class ModConfigs
 	public static ForgeConfigSpec.IntValue HORNET_SPAWN_WEIGHT;
 	public static ForgeConfigSpec.IntValue DULLAHAN_SPAWN_WEIGHT;
 	public static ForgeConfigSpec.IntValue BANSHEE_SPAWN_WEIGHT;
-	public static ForgeConfigSpec.IntValue ARURAUNE_SPAWN_WEIGHT;
+	public static ForgeConfigSpec.IntValue ALRAUNE_SPAWN_WEIGHT;
 	public static ForgeConfigSpec.IntValue CATOBLEPAS_SPAWN_WEIGHT;
 	public static ForgeConfigSpec.IntValue SCORPION_SPAWN_WEIGHT;
 	public static ForgeConfigSpec.IntValue KASHA_SPAWN_WEIGHT;
@@ -164,8 +164,8 @@ public class ModConfigs
 		KASHA_ATTACK_BABY_TURTLES = SERVER_BUILDER.define("kashaAttackBabyTurtles", true);
 		JACK_FROST_FREEZES_WATER = SERVER_BUILDER.define("enableJackFrostFreezesWater", true);
 		JACK_FROST_REGEN = SERVER_BUILDER.define("enableJackFrostRegen", true);
-		ARURAUNE_ATTACK_VILLAGERS = SERVER_BUILDER.define("arurauneAttackVillagers", true);
-		ARURAUNE_REGEN = SERVER_BUILDER.define("enableArurauneRegen", true);
+		ALRAUNE_ATTACK_VILLAGERS = SERVER_BUILDER.define("alrauneAttackVillagers", true);
+		ALRAUNE_REGEN = SERVER_BUILDER.define("enableAlrauneRegen", true);
 		REDCAP_ATTACK_VILLAGERS = SERVER_BUILDER.define("redcapAttackVillagers", true);
 		REDCAP_ATTACK_BABY_TURTLES = SERVER_BUILDER.define("redcapAttackBabyTurtles", true);
 		SLIME_GIRL_REGEN = SERVER_BUILDER.define("enableSlimeGirlRegen", true);
@@ -219,7 +219,7 @@ public class ModConfigs
 		HORNET_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("hornetSpawnWeight", 10, 0, Integer.MAX_VALUE);
 		DULLAHAN_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("dullahanSpawnWeight", 10, 0, Integer.MAX_VALUE);
 		BANSHEE_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("bansheeSpawnWeight", 15, 0, Integer.MAX_VALUE);
-		ARURAUNE_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("arurauneSpawnWeight", 10, 0, Integer.MAX_VALUE);
+		ALRAUNE_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("alrauneSpawnWeight", 10, 0, Integer.MAX_VALUE);
 		CATOBLEPAS_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("catoblepasSpawnWeight", 15, 0, Integer.MAX_VALUE);
 		SCORPION_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("scorpionSpawnWeight", 15, 0, Integer.MAX_VALUE);
 		KASHA_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("kashaSpawnWeight", 5, 0, Integer.MAX_VALUE);
@@ -335,8 +335,8 @@ public class ModConfigs
 		public static boolean KASHA_ATTACK_BABY_TURTLES;
 		public static boolean JACK_FROST_FREEZES_WATER;
 		public static boolean JACK_FROST_REGEN;
-		public static boolean ARURAUNE_ATTACK_VILLAGERS;
-		public static boolean ARURAUNE_REGEN;
+		public static boolean ALRAUNE_ATTACK_VILLAGERS;
+		public static boolean ALRAUNE_REGEN;
 		public static boolean REDCAP_ATTACK_VILLAGERS;
 		public static boolean REDCAP_ATTACK_BABY_TURTLES;
 		public static boolean SLIME_GIRL_REGEN;
@@ -468,8 +468,8 @@ public class ModConfigs
 			KASHA_ATTACK_BABY_TURTLES = ModConfigs.KASHA_ATTACK_BABY_TURTLES.get();
 			JACK_FROST_FREEZES_WATER = ModConfigs.JACK_FROST_FREEZES_WATER.get();
 			JACK_FROST_REGEN = ModConfigs.JACK_FROST_REGEN.get();
-			ARURAUNE_ATTACK_VILLAGERS = ModConfigs.ARURAUNE_ATTACK_VILLAGERS.get();
-			ARURAUNE_REGEN = ModConfigs.ARURAUNE_REGEN.get();
+			ALRAUNE_ATTACK_VILLAGERS = ModConfigs.ALRAUNE_ATTACK_VILLAGERS.get();
+			ALRAUNE_REGEN = ModConfigs.ALRAUNE_REGEN.get();
 			REDCAP_ATTACK_VILLAGERS = ModConfigs.REDCAP_ATTACK_VILLAGERS.get();
 			REDCAP_ATTACK_BABY_TURTLES = ModConfigs.REDCAP_ATTACK_BABY_TURTLES.get();
 			SLIME_GIRL_REGEN = ModConfigs.SLIME_GIRL_REGEN.get();
@@ -515,7 +515,7 @@ public class ModConfigs
 			HORNET_SPAWN_WEIGHT = ModConfigs.HORNET_SPAWN_WEIGHT.get();
 			DULLAHAN_SPAWN_WEIGHT = ModConfigs.DULLAHAN_SPAWN_WEIGHT.get();
 			BANSHEE_SPAWN_WEIGHT = ModConfigs.BANSHEE_SPAWN_WEIGHT.get();
-			ARURAUNE_SPAWN_WEIGHT = ModConfigs.ARURAUNE_SPAWN_WEIGHT.get();
+			ARURAUNE_SPAWN_WEIGHT = ModConfigs.ALRAUNE_SPAWN_WEIGHT.get();
 			CATOBLEPAS_SPAWN_WEIGHT = ModConfigs.CATOBLEPAS_SPAWN_WEIGHT.get();
 			SCORPION_SPAWN_WEIGHT = ModConfigs.SCORPION_SPAWN_WEIGHT.get();
 			KASHA_SPAWN_WEIGHT = ModConfigs.KASHA_SPAWN_WEIGHT.get();

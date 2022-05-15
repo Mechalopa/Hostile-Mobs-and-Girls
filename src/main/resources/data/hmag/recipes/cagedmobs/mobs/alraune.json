@@ -6,7 +6,7 @@
     }
   ],
   "type": "cagedmobs:mob_data",
-  "entity": "hmag:aruraune",
+  "entity": "hmag:alraune",
   "samplerTier": 2,
   "environments": ["cave"],
   "growTicks": 1800,

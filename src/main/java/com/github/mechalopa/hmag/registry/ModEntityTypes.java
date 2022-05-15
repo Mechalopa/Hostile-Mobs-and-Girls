@@ -1,7 +1,7 @@
 package com.github.mechalopa.hmag.registry;
 
 import com.github.mechalopa.hmag.HMaG;
-import com.github.mechalopa.hmag.world.entity.ArurauneEntity;
+import com.github.mechalopa.hmag.world.entity.AlrauneEntity;
 import com.github.mechalopa.hmag.world.entity.BansheeEntity;
 import com.github.mechalopa.hmag.world.entity.CatoblepasEntity;
 import com.github.mechalopa.hmag.world.entity.CreeperGirlEntity;
@@ -120,9 +120,9 @@ public class ModEntityTypes
 	public static final RegistryObject<EntityType<BansheeEntity>> BANSHEE = REGISTRY.register("banshee", () -> EntityType.Builder
 			.of(BansheeEntity::new, MobCategory.MONSTER).sized(0.6F, 1.95F).setTrackingRange(6).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
 			.build(new ResourceLocation(HMaG.MODID, "banshee").toString()));
-	public static final RegistryObject<EntityType<ArurauneEntity>> ARURAUNE = REGISTRY.register("aruraune", () -> EntityType.Builder
-			.of(ArurauneEntity::new, MobCategory.MONSTER).sized(0.6F, 1.95F).setTrackingRange(6).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(new ResourceLocation(HMaG.MODID, "aruraune").toString()));
+	public static final RegistryObject<EntityType<AlrauneEntity>> ALRAUNE = REGISTRY.register("alraune", () -> EntityType.Builder
+			.of(AlrauneEntity::new, MobCategory.MONSTER).sized(0.6F, 1.95F).setTrackingRange(6).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
+			.build(new ResourceLocation(HMaG.MODID, "alraune").toString()));
 	public static final RegistryObject<EntityType<CatoblepasEntity>> CATOBLEPAS = REGISTRY.register("catoblepas", () -> EntityType.Builder
 			.of(CatoblepasEntity::new, MobCategory.MONSTER).sized(0.9F, 1.4F).setTrackingRange(6).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
 			.build(new ResourceLocation(HMaG.MODID, "catoblepas").toString()));

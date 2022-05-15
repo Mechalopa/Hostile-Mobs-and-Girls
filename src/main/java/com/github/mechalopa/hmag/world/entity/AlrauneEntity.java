@@ -42,9 +42,9 @@ import net.minecraftforge.event.entity.living.PotionEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.network.NetworkHooks;
 
-public class ArurauneEntity extends Monster implements IModMob, RangedAttackMob
+public class AlrauneEntity extends Monster implements IModMob, RangedAttackMob
 {
-	public ArurauneEntity(EntityType<? extends ArurauneEntity> type, Level worldIn)
+	public AlrauneEntity(EntityType<? extends AlrauneEntity> type, Level worldIn)
 	{
 		super(type, worldIn);
 		this.xpReward = 15;
@@ -61,7 +61,7 @@ public class ArurauneEntity extends Monster implements IModMob, RangedAttackMob
 		this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
 		this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
 		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
-		if (ModConfigs.cachedServer.ARURAUNE_ATTACK_VILLAGERS)
+		if (ModConfigs.cachedServer.ALRAUNE_ATTACK_VILLAGERS)
 			this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, false));
 		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
 	}
@@ -81,7 +81,7 @@ public class ArurauneEntity extends Monster implements IModMob, RangedAttackMob
 	{
 		super.customServerAiStep();
 
-		if (this.isAlive() && ModConfigs.cachedServer.ARURAUNE_REGEN)
+		if (this.isAlive() && ModConfigs.cachedServer.ALRAUNE_REGEN)
 		{
 			if (this.isInWaterRainOrBubble() && !this.hasEffect(MobEffects.REGENERATION))
 			{

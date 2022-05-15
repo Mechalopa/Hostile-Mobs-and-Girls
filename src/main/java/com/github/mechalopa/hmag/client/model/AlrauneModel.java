@@ -17,7 +17,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class ArurauneModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
+public class AlrauneModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 {
 	private ModelPart rightHair1;
 	private ModelPart leftHair1;
@@ -70,7 +70,7 @@ public class ArurauneModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 //	private ModelPart rightLegPart;
 //	private ModelPart leftLegPart;
 
-	public ArurauneModel(ModelPart modelPart)
+	public AlrauneModel(ModelPart modelPart)
 	{
 		super(modelPart);
 		this.rightHair1 = this.head.getChild("right_hair_1");

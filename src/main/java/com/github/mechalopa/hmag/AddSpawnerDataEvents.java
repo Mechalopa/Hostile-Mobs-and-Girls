@@ -88,7 +88,7 @@ public class AddSpawnerDataEvents
 					if (ModConfigs.cachedServer.ARURAUNE_SPAWN_WEIGHT > 0
 							&& BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.JUNGLE)
 							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.COLD))
-						event.getSpawns().getSpawner(MobCategory.MONSTER).add(new SpawnerData(ModEntityTypes.ARURAUNE.get(), ModConfigs.cachedServer.ARURAUNE_SPAWN_WEIGHT, 1, 2));
+						event.getSpawns().getSpawner(MobCategory.MONSTER).add(new SpawnerData(ModEntityTypes.ALRAUNE.get(), ModConfigs.cachedServer.ARURAUNE_SPAWN_WEIGHT, 1, 2));
 					if (ModConfigs.cachedServer.CATOBLEPAS_SPAWN_WEIGHT > 0
 							&& BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.PLAINS))
 						event.getSpawns().getSpawner(MobCategory.MONSTER).add(new SpawnerData(ModEntityTypes.CATOBLEPAS.get(), ModConfigs.cachedServer.CATOBLEPAS_SPAWN_WEIGHT, 1, 2));
