@@ -9,7 +9,7 @@
   "entity": "hmag:kobold",
   "samplerTier": 2,
   "environments": ["cave"],
-  "growTicks": 1200,
+  "growTicks": 1800,
   "results": [
     {
       "chance": 0.6,
@@ -42,6 +42,14 @@
       },
       "minAmount": 1,
       "maxAmount": 1
+    },
+    {
+      "chance": 0.4,
+      "output": {
+        "item": "minecraft:iron_nugget"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
     }
   ]
 }

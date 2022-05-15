@@ -140,6 +140,8 @@ public class ModEventBusSubscriber
 		ComposterBlock.COMPOSTABLES.put(ModItems.LEMON.get(), 0.65F);
 		ComposterBlock.COMPOSTABLES.put(ModItems.STRAWBERRY.get(), 0.3F);
 		ComposterBlock.COMPOSTABLES.put(ModItems.BLUEBERRY.get(), 0.3F);
+		ComposterBlock.COMPOSTABLES.put(ModItems.EXP_BERRY.get(), 0.3F);
+		ComposterBlock.COMPOSTABLES.put(ModItems.CURE_BERRY.get(), 0.3F);
 		ComposterBlock.COMPOSTABLES.put(ModItems.HONEYED_APPLE.get(), 0.5F);
 		ComposterBlock.COMPOSTABLES.put(ModItems.HONEYED_LEMON.get(), 0.5F);
 		ComposterBlock.COMPOSTABLES.put(ModItems.LEMON_PIE.get(), 1.0F);

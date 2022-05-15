@@ -3,17 +3,17 @@
   "ingredients": [
     [
       {
-        "item": "hmag:reinforced_block"
+        "item": "hmag:reinforced_glass"
       },
       {
         "item": "hmag:tinted_reinforced_glass"
       }
     ],
     {
-      "tag": "forge:glass/colorless"
+      "tag": "forge:stone"
     }
   ],
   "result": {
-    "item": "hmag:reinforced_glass"
+    "item": "hmag:reinforced_block"
   }
 }

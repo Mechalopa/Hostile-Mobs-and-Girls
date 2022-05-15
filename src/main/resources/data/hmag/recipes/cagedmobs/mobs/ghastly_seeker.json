@@ -42,6 +42,14 @@
       },
       "minAmount": 1,
       "maxAmount": 1
+    },
+    {
+      "chance": 0.4,
+      "output": {
+        "item": "minecraft:gold_nugget"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
     }
   ]
 }

@@ -28,6 +28,7 @@ public class ModConfigs
 	public static ForgeConfigSpec.BooleanValue KASHA_ATTACK_VILLAGERS;
 	public static ForgeConfigSpec.BooleanValue KASHA_ATTACK_BABY_TURTLES;
 	public static ForgeConfigSpec.BooleanValue JACK_FROST_FREEZES_WATER;
+	public static ForgeConfigSpec.BooleanValue JACK_FROST_REGEN;
 	public static ForgeConfigSpec.BooleanValue ARURAUNE_ATTACK_VILLAGERS;
 	public static ForgeConfigSpec.BooleanValue ARURAUNE_REGEN;
 	public static ForgeConfigSpec.BooleanValue REDCAP_ATTACK_VILLAGERS;
@@ -122,6 +123,10 @@ public class ModConfigs
 	public static ForgeConfigSpec.BooleanValue WATER_ASPECT_IS_TREASURE;
 	public static ForgeConfigSpec.BooleanValue WATER_ASPECT_IS_TRADEABLE;
 	public static ForgeConfigSpec.BooleanValue WATER_ASPECT_IS_DISCOVERABLE;
+	public static ForgeConfigSpec.IntValue ANTI_AIR_MAX_LEVEL;
+	public static ForgeConfigSpec.BooleanValue ANTI_AIR_IS_TREASURE;
+	public static ForgeConfigSpec.BooleanValue ANTI_AIR_IS_TRADEABLE;
+	public static ForgeConfigSpec.BooleanValue ANTI_AIR_IS_DISCOVERABLE;
 
 	public static ForgeConfigSpec.BooleanValue KOBOLD_POTION_BREWING_RECIPES;
 	public static ForgeConfigSpec.BooleanValue HEALING_III_POTION_BREWING_RECIPES;
@@ -158,6 +163,7 @@ public class ModConfigs
 		KASHA_ATTACK_VILLAGERS = SERVER_BUILDER.define("kashaAttackVillagers", true);
 		KASHA_ATTACK_BABY_TURTLES = SERVER_BUILDER.define("kashaAttackBabyTurtles", true);
 		JACK_FROST_FREEZES_WATER = SERVER_BUILDER.define("enableJackFrostFreezesWater", true);
+		JACK_FROST_REGEN = SERVER_BUILDER.define("enableJackFrostRegen", true);
 		ARURAUNE_ATTACK_VILLAGERS = SERVER_BUILDER.define("arurauneAttackVillagers", true);
 		ARURAUNE_REGEN = SERVER_BUILDER.define("enableArurauneRegen", true);
 		REDCAP_ATTACK_VILLAGERS = SERVER_BUILDER.define("redcapAttackVillagers", true);
@@ -277,6 +283,10 @@ public class ModConfigs
 		WATER_ASPECT_IS_TREASURE = SERVER_BUILDER.define("waterAspectIsTreasure", false);
 		WATER_ASPECT_IS_TRADEABLE = SERVER_BUILDER.define("waterAspectIsTradeable", true);
 		WATER_ASPECT_IS_DISCOVERABLE = SERVER_BUILDER.define("waterAspectIsDiscoverable", true);
+		ANTI_AIR_MAX_LEVEL = SERVER_BUILDER.defineInRange("antiAirMaxLevel", 5, 1, 10);
+		ANTI_AIR_IS_TREASURE = SERVER_BUILDER.define("antiAirIsTreasure", false);
+		ANTI_AIR_IS_TRADEABLE = SERVER_BUILDER.define("antiAirIsTradeable", true);
+		ANTI_AIR_IS_DISCOVERABLE = SERVER_BUILDER.define("antiAirIsDiscoverable", true);
 
 		SERVER_BUILDER.pop();
 
@@ -324,6 +334,7 @@ public class ModConfigs
 		public static boolean KASHA_ATTACK_VILLAGERS;
 		public static boolean KASHA_ATTACK_BABY_TURTLES;
 		public static boolean JACK_FROST_FREEZES_WATER;
+		public static boolean JACK_FROST_REGEN;
 		public static boolean ARURAUNE_ATTACK_VILLAGERS;
 		public static boolean ARURAUNE_REGEN;
 		public static boolean REDCAP_ATTACK_VILLAGERS;
@@ -418,6 +429,10 @@ public class ModConfigs
 		public static boolean WATER_ASPECT_IS_TREASURE;
 		public static boolean WATER_ASPECT_IS_TRADEABLE;
 		public static boolean WATER_ASPECT_IS_DISCOVERABLE;
+		public static int ANTI_AIR_MAX_LEVEL;
+		public static boolean ANTI_AIR_IS_TREASURE;
+		public static boolean ANTI_AIR_IS_TRADEABLE;
+		public static boolean ANTI_AIR_IS_DISCOVERABLE;
 
 		public static boolean KOBOLD_POTION_BREWING_RECIPES;
 		public static boolean HEALING_III_POTION_BREWING_RECIPES;
@@ -452,6 +467,7 @@ public class ModConfigs
 			KASHA_ATTACK_VILLAGERS = ModConfigs.KASHA_ATTACK_VILLAGERS.get();
 			KASHA_ATTACK_BABY_TURTLES = ModConfigs.KASHA_ATTACK_BABY_TURTLES.get();
 			JACK_FROST_FREEZES_WATER = ModConfigs.JACK_FROST_FREEZES_WATER.get();
+			JACK_FROST_REGEN = ModConfigs.JACK_FROST_REGEN.get();
 			ARURAUNE_ATTACK_VILLAGERS = ModConfigs.ARURAUNE_ATTACK_VILLAGERS.get();
 			ARURAUNE_REGEN = ModConfigs.ARURAUNE_REGEN.get();
 			REDCAP_ATTACK_VILLAGERS = ModConfigs.REDCAP_ATTACK_VILLAGERS.get();
@@ -546,6 +562,10 @@ public class ModConfigs
 			WATER_ASPECT_IS_TREASURE = ModConfigs.WATER_ASPECT_IS_TREASURE.get();
 			WATER_ASPECT_IS_TRADEABLE = ModConfigs.WATER_ASPECT_IS_TRADEABLE.get();
 			WATER_ASPECT_IS_DISCOVERABLE = ModConfigs.WATER_ASPECT_IS_DISCOVERABLE.get();
+			ANTI_AIR_MAX_LEVEL = ModConfigs.ANTI_AIR_MAX_LEVEL.get();
+			ANTI_AIR_IS_TREASURE = ModConfigs.ANTI_AIR_IS_TREASURE.get();
+			ANTI_AIR_IS_TRADEABLE = ModConfigs.ANTI_AIR_IS_TRADEABLE.get();
+			ANTI_AIR_IS_DISCOVERABLE = ModConfigs.ANTI_AIR_IS_DISCOVERABLE.get();
 
 			KOBOLD_POTION_BREWING_RECIPES = ModConfigs.KOBOLD_POTION_BREWING_RECIPES.get();
 			HEALING_III_POTION_BREWING_RECIPES = ModConfigs.HEALING_III_POTION_BREWING_RECIPES.get();

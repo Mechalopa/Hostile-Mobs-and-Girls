@@ -14,6 +14,8 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -114,6 +116,20 @@ public class JackFrostEntity extends Monster implements IModMob, RangedAttackMob
 						}
 					}
 				}
+			}
+		}
+	}
+
+	@Override
+	protected void customServerAiStep()
+	{
+		super.customServerAiStep();
+
+		if (this.isAlive() && ModConfigs.cachedServer.JACK_FROST_REGEN)
+		{
+			if ((this.isInPowderSnow || this.wasInPowderSnow) && !this.hasEffect(MobEffects.REGENERATION))
+			{
+				this.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 10 * 20, 2));
 			}
 		}
 	}

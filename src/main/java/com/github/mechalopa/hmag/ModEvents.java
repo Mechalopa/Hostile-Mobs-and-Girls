@@ -21,6 +21,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -42,6 +43,7 @@ import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades.ItemListing;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Player.BedSleepingProblem;
+import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -89,19 +91,19 @@ public class ModEvents
 			return;
 		}
 
-		if (event.getEntityLiving() != null && event.getSource() != null && !event.getSource().isProjectile())
+		if (event.getEntityLiving() != null && event.getSource() != null)
 		{
 			LivingEntity livingentity = event.getEntityLiving();
 			DamageSource source = event.getSource();
 
-			if (source.getEntity() != null && source.getEntity() instanceof LivingEntity)
+			if (!event.getSource().isProjectile())
 			{
-				LivingEntity attacker = (LivingEntity)source.getEntity();
-				ItemStack stack = attacker.getMainHandItem();
-
-				if (!stack.isEmpty())
+				if (source.getEntity() != null && source.getEntity() instanceof LivingEntity)
 				{
-					if (stack.hasTag())
+					LivingEntity attacker = (LivingEntity)source.getEntity();
+					ItemStack stack = attacker.getMainHandItem();
+
+					if (!stack.isEmpty() && stack.hasTag())
 					{
 						final int level = EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.WATER_ASPECT.get(), stack);
 
@@ -115,6 +117,35 @@ public class ModEvents
 							if (livingentity.isSensitiveToWater())
 							{
 								event.setAmount(event.getAmount() + (level * 2.5F));
+							}
+						}
+					}
+				}
+			}
+			else
+			{
+				if (source.getDirectEntity() != null && source.getDirectEntity() instanceof AbstractArrow && source.getEntity() != null && source.getEntity() instanceof LivingEntity)
+				{
+					if (((AbstractArrow)source.getDirectEntity()).shotFromCrossbow())
+					{
+						LivingEntity attacker = (LivingEntity)source.getEntity();
+						int level = 0;
+
+						for (InteractionHand hand : InteractionHand.values())
+						{
+							ItemStack stack = attacker.getItemInHand(hand);
+
+							if (!stack.isEmpty() && stack.hasTag())
+							{
+								level = Math.max(level, EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.ANTI_AIR.get(), stack));
+							}
+						}
+
+						if (level > 0)
+						{
+							if (!livingentity.isOnGround() && !livingentity.isInWaterOrBubble() && !livingentity.isInLava())
+							{
+								event.setAmount(event.getAmount() * (1.0F + level * 0.3F));
 							}
 						}
 					}
@@ -613,6 +644,7 @@ public class ModEvents
 				trades.get(2).add(new BasicItemListing(new ItemStack(Items.EMERALD, 1), new ItemStack(ModItems.BLUEBERRY.get(), 4), 12, 4, 0.05F));
 				trades.get(2).add(new BasicItemListing(new ItemStack(Items.EMERALD, 1), new ItemStack(ModItems.STRAWBERRY.get(), 4), 12, 4, 0.05F));
 				trades.get(2).add(new BasicItemListing(new ItemStack(Items.EMERALD, 1), new ItemStack(ModItems.LEMON.get(), 4), 12, 4, 0.05F));
+				trades.get(4).add(new BasicItemListing(new ItemStack(ModItems.CURE_BERRY.get(), 3), new ItemStack(Items.EMERALD, 1), 16, 15, 0.05F));
 			}
 
 			if (event.getType() == VillagerProfession.FISHERMAN)

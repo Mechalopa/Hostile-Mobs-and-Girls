@@ -50,6 +50,14 @@
       },
       "minAmount": 1,
       "maxAmount": 1
+    },
+    {
+      "chance": 0.4,
+      "output": {
+        "item": "hmag:diamond_fragment"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
     }
   ]
 }

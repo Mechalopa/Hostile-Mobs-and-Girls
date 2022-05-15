@@ -9,7 +9,7 @@
   "entity": "hmag:cursed_doll",
   "samplerTier": 2,
   "environments": ["cave"],
-  "growTicks": 1200,
+  "growTicks": 1800,
   "results": [
     {
       "chance": 0.5,
@@ -66,6 +66,22 @@
       },
       "minAmount": 1,
       "maxAmount": 1
+    },
+    {
+      "chance": 0.2,
+      "output": {
+        "item": "minecraft:iron_nugget"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.2,
+      "output": {
+        "item": "hmag:copper_nugget"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
     }
   ]
 }

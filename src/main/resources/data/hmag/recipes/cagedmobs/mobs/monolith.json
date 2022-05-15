@@ -9,7 +9,7 @@
   "entity": "hmag:monolith",
   "samplerTier": 2,
   "environments": ["end"],
-  "growTicks": 1200,
+  "growTicks": 1800,
   "results": [
     {
       "chance": 0.375,
@@ -26,6 +26,14 @@
       },
       "minAmount": 1,
       "maxAmount": 1
+    },
+    {
+      "chance": 0.4,
+      "output": {
+        "item": "minecraft:iron_nugget"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
     }
   ]
 }

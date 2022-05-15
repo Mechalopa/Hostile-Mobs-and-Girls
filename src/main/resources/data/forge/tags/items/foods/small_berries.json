@@ -3,6 +3,7 @@
   "values": [
     "#forge:foods/strawberries",
     "#forge:foods/blueberries",
+    "hmag:cure_berry",
     "hmag:exp_berry"
   ]
 }

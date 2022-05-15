@@ -9,7 +9,7 @@
   "entity": "hmag:dullahan",
   "samplerTier": 2,
   "environments": ["cave"],
-  "growTicks": 1200,
+  "growTicks": 1800,
   "results": [
     {
       "chance": 0.5,
@@ -58,6 +58,22 @@
       },
       "minAmount": 1,
       "maxAmount": 1
+    },
+    {
+      "chance": 0.1,
+      "output": {
+        "item": "minecraft:gold_nugget"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.3,
+      "output": {
+        "item": "hmag:emerald_fragment"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
     }
   ]
 }

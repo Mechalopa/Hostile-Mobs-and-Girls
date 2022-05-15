@@ -9,7 +9,7 @@
   "entity": "hmag:banshee",
   "samplerTier": 2,
   "environments": ["cave"],
-  "growTicks": 1200,
+  "growTicks": 1800,
   "results": [
     {
       "chance": 0.7,
@@ -50,6 +50,22 @@
       },
       "minAmount": 1,
       "maxAmount": 1
+    },
+    {
+      "chance": 0.3,
+      "output": {
+        "item": "minecraft:iron_nugget"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.1,
+      "output": {
+        "item": "hmag:copper_nugget"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
     }
   ]
 }

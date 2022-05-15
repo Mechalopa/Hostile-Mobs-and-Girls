@@ -9,7 +9,7 @@
   "entity": "hmag:jack_frost",
   "samplerTier": 2,
   "environments": ["snow"],
-  "growTicks": 1200,
+  "growTicks": 1800,
   "results": [
     {
       "chance": 0.75,
@@ -58,6 +58,22 @@
       },
       "minAmount": 1,
       "maxAmount": 1
+    },
+    {
+      "chance": 0.32,
+      "output": {
+        "item": "minecraft:gold_nugget"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.08,
+      "output": {
+        "item": "hmag:emerald_fragment"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
     }
   ]
 }

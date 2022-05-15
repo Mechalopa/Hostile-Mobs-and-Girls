@@ -50,6 +50,22 @@
       },
       "minAmount": 1,
       "maxAmount": 1
+    },
+    {
+      "chance": 0.3,
+      "output": {
+        "item": "hmag:diamond_fragment"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.1,
+      "output": {
+        "item": "hmag:copper_nugget"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
     }
   ]
 }

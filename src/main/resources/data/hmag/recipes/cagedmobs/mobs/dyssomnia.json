@@ -17,20 +17,12 @@
         "item": "minecraft:phantom_membrane"
       },
       "minAmount": 1,
-      "maxAmount": 2
+      "maxAmount": 1
     },
     {
       "chance": 0.375,
       "output": {
         "item": "hmag:dyssomnia_skin"
-      },
-      "minAmount": 1,
-      "maxAmount": 2
-    },
-    {
-      "chance": 0.4,
-      "output": {
-        "item": "minecraft:lapis_lazuli"
       },
       "minAmount": 1,
       "maxAmount": 2
@@ -50,6 +42,30 @@
       },
       "minAmount": 1,
       "maxAmount": 1
+    },
+    {
+      "chance": 0.2,
+      "output": {
+        "item": "hmag:diamond_fragment"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.1,
+      "output": {
+        "item": "hmag:emerald_fragment"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.1,
+      "output": {
+        "item": "minecraft:amethyst_shard"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
     }
   ]
 }
