@@ -17,7 +17,7 @@ public class AlrauneRenderer extends AbstractGirlRenderer<AlrauneEntity, Alraune
 
 	public AlrauneRenderer(EntityRendererProvider.Context context)
 	{
-		super(context, new AlrauneModel<>(context.bakeLayer(ModModelLayers.ARURAUNE)), 0.5F, -1);
+		super(context, new AlrauneModel<>(context.bakeLayer(ModModelLayers.ALRAUNE)), 0.5F, -1);
 	}
 
 	@Override

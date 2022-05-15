@@ -51,7 +51,7 @@ public class ModModelLayers
 	public static final ModelLayerLocation HORNET = create("hornet");
 	public static final ModelLayerLocation DULLAHAN = create("dullahan");
 	public static final ModelLayerLocation BANSHEE = create("banshee");
-	public static final ModelLayerLocation ARURAUNE = create("aruraune");
+	public static final ModelLayerLocation ALRAUNE = create("alraune");
 	public static final ModelLayerLocation CATOBLEPAS = create("catoblepas");
 	public static final ModelLayerLocation SCORPION = create("scorpion");
 	public static final ModelLayerLocation KASHA = create("kasha");

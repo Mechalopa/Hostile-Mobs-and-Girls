@@ -236,7 +236,7 @@ public class ModClientEventBusSubscriber
 		event.registerLayerDefinition(ModModelLayers.HORNET, HornetModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.DULLAHAN, DullahanModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.BANSHEE, BansheeModel::createBodyLayer);
-		event.registerLayerDefinition(ModModelLayers.ARURAUNE, AlrauneModel::createBodyLayer);
+		event.registerLayerDefinition(ModModelLayers.ALRAUNE, AlrauneModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.CATOBLEPAS, CatoblepasModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.SCORPION, ScorpionModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.KASHA, KashaModel::createBodyLayer);

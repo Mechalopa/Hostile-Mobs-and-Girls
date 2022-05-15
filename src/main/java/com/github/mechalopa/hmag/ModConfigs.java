@@ -382,7 +382,7 @@ public class ModConfigs
 		public static int HORNET_SPAWN_WEIGHT;
 		public static int DULLAHAN_SPAWN_WEIGHT;
 		public static int BANSHEE_SPAWN_WEIGHT;
-		public static int ARURAUNE_SPAWN_WEIGHT;
+		public static int ALRAUNE_SPAWN_WEIGHT;
 		public static int CATOBLEPAS_SPAWN_WEIGHT;
 		public static int SCORPION_SPAWN_WEIGHT;
 		public static int KASHA_SPAWN_WEIGHT;
@@ -515,7 +515,7 @@ public class ModConfigs
 			HORNET_SPAWN_WEIGHT = ModConfigs.HORNET_SPAWN_WEIGHT.get();
 			DULLAHAN_SPAWN_WEIGHT = ModConfigs.DULLAHAN_SPAWN_WEIGHT.get();
 			BANSHEE_SPAWN_WEIGHT = ModConfigs.BANSHEE_SPAWN_WEIGHT.get();
-			ARURAUNE_SPAWN_WEIGHT = ModConfigs.ALRAUNE_SPAWN_WEIGHT.get();
+			ALRAUNE_SPAWN_WEIGHT = ModConfigs.ALRAUNE_SPAWN_WEIGHT.get();
 			CATOBLEPAS_SPAWN_WEIGHT = ModConfigs.CATOBLEPAS_SPAWN_WEIGHT.get();
 			SCORPION_SPAWN_WEIGHT = ModConfigs.SCORPION_SPAWN_WEIGHT.get();
 			KASHA_SPAWN_WEIGHT = ModConfigs.KASHA_SPAWN_WEIGHT.get();
