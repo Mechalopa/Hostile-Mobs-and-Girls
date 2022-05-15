@@ -159,8 +159,8 @@ public class ModConfigs
 		KASHA_ATTACK_VILLAGERS = SERVER_BUILDER.define("kashaAttackVillagers", true);
 		KASHA_ATTACK_BABY_TURTLES = SERVER_BUILDER.define("kashaAttackBabyTurtles", true);
 		JACK_FROST_FREEZES_WATER = SERVER_BUILDER.define("enableJackFrostFreezesWater", true);
-		ARURAUNE_ATTACK_VILLAGERS = SERVER_BUILDER.define("arurauneAttackVillagers", true);
-		ARURAUNE_REGEN = SERVER_BUILDER.define("enableArurauneRegen", true);
+		ARURAUNE_ATTACK_VILLAGERS = SERVER_BUILDER.define("alrauneAttackVillagers", true);
+		ARURAUNE_REGEN = SERVER_BUILDER.define("enableAlrauneRegen", true);
 		REDCAP_ATTACK_VILLAGERS = SERVER_BUILDER.define("redcapAttackVillagers", true);
 		REDCAP_ATTACK_BABY_TURTLES = SERVER_BUILDER.define("redcapAttackBabyTurtles", true);
 		SLIME_GIRL_REGEN = SERVER_BUILDER.define("enableSlimeGirlRegen", true);
@@ -214,7 +214,7 @@ public class ModConfigs
 		HORNET_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("hornetSpawnWeight", 10, 0, Integer.MAX_VALUE);
 		DULLAHAN_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("dullahanSpawnWeight", 10, 0, Integer.MAX_VALUE);
 		BANSHEE_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("bansheeSpawnWeight", 15, 0, Integer.MAX_VALUE);
-		ARURAUNE_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("arurauneSpawnWeight", 10, 0, Integer.MAX_VALUE);
+		ARURAUNE_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("alrauneSpawnWeight", 10, 0, Integer.MAX_VALUE);
 		CATOBLEPAS_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("catoblepasSpawnWeight", 15, 0, Integer.MAX_VALUE);
 		SCORPION_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("scorpionSpawnWeight", 15, 0, Integer.MAX_VALUE);
 		KASHA_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("kashaSpawnWeight", 5, 0, Integer.MAX_VALUE);
