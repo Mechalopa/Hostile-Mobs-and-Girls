@@ -1,25 +1,9 @@
 {
   "replace": false,
   "values": [
-    "hmag:reinforcing_plate",
-    "hmag:shard_of_immortality_tier_1",
-    "hmag:shard_of_immortality_tier_2",
+    "hmag:reinforcing_chain",
     "hmag:repulsion_gadget",
     "hmag:evil_flame",
-    "hmag:evil_thorn",
-    "hmag:shatter_effector_tier_1",
-    "hmag:shatter_effector_tier_2",
-    "hmag:wicked_whetstone_tier_1",
-    "hmag:wicked_whetstone_tier_2",
-    "hmag:powerful_bowstring_tier_1",
-    "hmag:powerful_bowstring_tier_2",
-    "hmag:reinforced_protector_tier_1",
-    "hmag:reinforced_protector_tier_2",
-    "hmag:shard_of_greed_tier_1",
-    "hmag:shard_of_greed_tier_2",
-    "hmag:shard_of_greed_tier_3",
-    "hmag:shard_of_fortune_tier_1",
-	"hmag:shard_of_fortune_tier_2",
-	"hmag:shard_of_fortune_tier_3"
+    "hmag:evil_thorn"
   ]
 }

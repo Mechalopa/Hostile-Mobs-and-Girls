@@ -644,7 +644,8 @@ public class ModEvents
 				trades.get(2).add(new BasicItemListing(new ItemStack(Items.EMERALD, 1), new ItemStack(ModItems.BLUEBERRY.get(), 4), 12, 4, 0.05F));
 				trades.get(2).add(new BasicItemListing(new ItemStack(Items.EMERALD, 1), new ItemStack(ModItems.STRAWBERRY.get(), 4), 12, 4, 0.05F));
 				trades.get(2).add(new BasicItemListing(new ItemStack(Items.EMERALD, 1), new ItemStack(ModItems.LEMON.get(), 4), 12, 4, 0.05F));
-				trades.get(4).add(new BasicItemListing(new ItemStack(ModItems.CURE_BERRY.get(), 3), new ItemStack(Items.EMERALD, 1), 16, 15, 0.05F));
+				trades.get(4).add(new BasicItemListing(new ItemStack(ModItems.CUREBERRY.get(), 3), new ItemStack(Items.EMERALD, 1), 16, 15, 0.05F));
+				trades.get(4).add(new BasicItemListing(new ItemStack(ModItems.SWIFTBERRY.get(), 3), new ItemStack(Items.EMERALD, 1), 16, 15, 0.05F));
 			}
 
 			if (event.getType() == VillagerProfession.FISHERMAN)

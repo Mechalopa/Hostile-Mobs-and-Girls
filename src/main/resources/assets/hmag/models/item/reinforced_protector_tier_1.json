@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "hmag:item/reinforced_protector_tier_1"
-  }
-}
