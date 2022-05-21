@@ -32,11 +32,11 @@ public class ModFoodItem extends ModItem
 	}
 
 	@Override
-	public ItemStack finishUsingItem(ItemStack stack, Level worldIn, LivingEntity entityLiving)
+	public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entityLiving)
 	{
-		ItemStack stack1 = super.finishUsingItem(stack, worldIn, entityLiving);
+		ItemStack stack1 = super.finishUsingItem(stack, level, entityLiving);
 
-		if (!worldIn.isClientSide)
+		if (!level.isClientSide)
 		{
 			if (this.healAmount > 0.0F)
 			{

@@ -9,7 +9,6 @@ import com.github.mechalopa.hmag.HMaG;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
@@ -41,7 +40,6 @@ public class ModUtils
 	public static final String LIVING_UPDATE_CHECKED_KEY = HMaG.MODID + ".checked";
 	public static final String LIVING_NOT_REPLACED_KEY = HMaG.MODID + ".notReplaced";
 	public static final String WITH_SPAWN_PARTICLE_KEY = HMaG.MODID + ".withSpawnParticle";
-	public static final String LEVEL_KEY = HMaG.MODID + ".level";
 
 	public static void burnInDay(@Nonnull LivingEntity livingEntityIn, Random rand, Boolean isSunBurnTick, int seconds)
 	{
@@ -261,22 +259,6 @@ public class ModUtils
 	public static ItemStack getPotionStack(Potion potion, Item containerItem)
 	{
 		return PotionUtils.setPotion(new ItemStack(containerItem), potion);
-	}
-
-	public static int getItemLevel(ItemStack stack)
-	{
-		CompoundTag compoundnbt = stack.getTag();
-		return compoundnbt != null && compoundnbt.contains(LEVEL_KEY) ? (int)compoundnbt.getByte(LEVEL_KEY) : 0;
-	}
-
-	public static void removeItemLevelTag(ItemStack stack)
-	{
-		CompoundTag compoundnbt = stack.getTag();
-
-		if (compoundnbt != null && compoundnbt.contains(LEVEL_KEY))
-		{
-			compoundnbt.remove(LEVEL_KEY);
-		}
 	}
 
 	public static boolean checkBiomeList(Level worldIn, BlockPos pos, List<? extends String> list)

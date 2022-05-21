@@ -13,6 +13,7 @@ import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.util.ModUtils;
 import com.github.mechalopa.hmag.world.entity.IModMob;
 import com.github.mechalopa.hmag.world.entity.KashaEntity;
+import com.github.mechalopa.hmag.world.item.ILevelItem;
 import com.github.mechalopa.hmag.world.item.ModArmorMaterial;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
@@ -462,7 +463,7 @@ public class ModEvents
 				{
 					ItemStack stack1 = livingentity.getMainHandItem();
 
-					if (!stack1.isEmpty() && stack1.getItem() == ModItems.INSOMNIA_SWORD.get() && ModUtils.getItemLevel(stack1) > 0)
+					if (!stack1.isEmpty() && stack1.getItem() == ModItems.INSOMNIA_SWORD.get() && ILevelItem.getItemLevel(stack1) > 0)
 					{
 						event.setResult(Result.DENY);
 					}
@@ -512,7 +513,7 @@ public class ModEvents
 				}
 				else if (stack.getItem() == ModItems.INSOMNIA_SWORD.get())
 				{
-					final int level1 = ModUtils.getItemLevel(stack);
+					final int level1 = ILevelItem.getItemLevel(stack);
 
 					if (level1 > 0)
 					{
@@ -521,7 +522,7 @@ public class ModEvents
 				}
 				else if (stack.getItem() == ModItems.NEMESIS_BLADE.get())
 				{
-					final int level2 = ModUtils.getItemLevel(stack);
+					final int level2 = ILevelItem.getItemLevel(stack);
 
 					if (level2 > 0)
 					{
@@ -566,32 +567,18 @@ public class ModEvents
 			return;
 		}
 
-		if (event.getEntityItem() != null && event.getEntityItem().getItem() != null && !event.getEntityItem().getItem().isEmpty())
+		if (event.getEntityItem() != null && event.getEntityItem().getItem() != null && !event.getEntityItem().getItem().isEmpty() && event.getEntityItem().getItem().getItem() != null && event.getEntityItem().getItem().getItem() instanceof ILevelItem)
 		{
-			if (event.getEntityItem().getItem().getItem() == ModItems.INSOMNIA_SWORD.get())
-			{
-				ModUtils.removeItemLevelTag(event.getEntityItem().getItem());
-			}
-			else if (event.getEntityItem().getItem().getItem() == ModItems.NEMESIS_BLADE.get())
-			{
-				ModUtils.removeItemLevelTag(event.getEntityItem().getItem());
-			}
+			ILevelItem.removeItemLevelTag(event.getEntityItem().getItem());
 		}
 	}
 
 	@SubscribeEvent
 	public void onLivingEquipmentChange(LivingEquipmentChangeEvent event)
 	{
-		if (event.getEntityLiving() != null && !(event.getEntityLiving() instanceof Player) && event.getTo() != null && !event.getTo().isEmpty())
+		if (event.getEntityLiving() != null && !(event.getEntityLiving() instanceof Player) && event.getTo() != null && !event.getTo().isEmpty() && event.getTo().getItem() != null && event.getTo().getItem() instanceof ILevelItem)
 		{
-			if (event.getTo().getItem() == ModItems.INSOMNIA_SWORD.get())
-			{
-				ModUtils.removeItemLevelTag(event.getTo());
-			}
-			else if (event.getTo().getItem() == ModItems.NEMESIS_BLADE.get())
-			{
-				ModUtils.removeItemLevelTag(event.getTo());
-			}
+			ILevelItem.removeItemLevelTag(event.getTo());
 		}
 	}
 

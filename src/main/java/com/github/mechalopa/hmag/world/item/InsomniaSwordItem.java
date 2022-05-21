@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import com.github.mechalopa.hmag.util.ModUtils;
-
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
@@ -33,7 +31,7 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class InsomniaSwordItem extends ModSwordItem
+public class InsomniaSwordItem extends ModSwordItem implements ILevelItem
 {
 	public InsomniaSwordItem(Tier tier, Properties builderIn)
 	{
@@ -45,10 +43,10 @@ public class InsomniaSwordItem extends ModSwordItem
 	{
 		if (!level.isClientSide)
 		{
-			if (entity.tickCount % 5 == 0 && entity instanceof ServerPlayer)
+			if (entity instanceof ServerPlayer)
 			{
 				CompoundTag compoundnbt = stack.getOrCreateTag();
-				int itemLevel = !compoundnbt.contains(ModUtils.LEVEL_KEY) ? 0 : (int)compoundnbt.getByte(ModUtils.LEVEL_KEY);
+				int itemLevel = !compoundnbt.contains(ILevelItem.LEVEL_KEY) ? 0 : (int)compoundnbt.getByte(ILevelItem.LEVEL_KEY);
 				ServerStatsCounter serverstatisticsmanager = ((ServerPlayer)entity).getStats();
 				final int i = 24000;
 				final int j = Math.max(serverstatisticsmanager.getValue(Stats.CUSTOM.get(Stats.TIME_SINCE_REST)), 1);
@@ -57,7 +55,7 @@ public class InsomniaSwordItem extends ModSwordItem
 
 				if (itemLevel != k)
 				{
-					compoundnbt.putByte(ModUtils.LEVEL_KEY, (byte)k);
+					compoundnbt.putByte(ILevelItem.LEVEL_KEY, (byte)k);
 				}
 			}
 		}
@@ -95,7 +93,7 @@ public class InsomniaSwordItem extends ModSwordItem
 	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand)
 	{
 		ItemStack stack = player.getItemInHand(hand);
-		boolean flag = ModUtils.getItemLevel(stack) > 0 || player.isCreative();
+		boolean flag = ILevelItem.getItemLevel(stack) > 0 || player.isCreative();
 
 		if (flag && player.isCrouching())
 		{
@@ -118,7 +116,7 @@ public class InsomniaSwordItem extends ModSwordItem
 	@OnlyIn(Dist.CLIENT)
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag tooltipFlag)
 	{
-		final int i = (stack != null && !stack.isEmpty()) ? ModUtils.getItemLevel(stack) : 0;
+		final int i = ILevelItem.getItemLevel(stack);
 		TranslatableComponent component = new TranslatableComponent("text.hmag.level", i + 1);
 		component.withStyle(i >= 5 ? ChatFormatting.LIGHT_PURPLE : (i >= 4 ? ChatFormatting.AQUA : (i >= 2 ? ChatFormatting.YELLOW : (i <= 0 ? ChatFormatting.RED : ChatFormatting.GRAY))));
 		list.add(component);
@@ -131,8 +129,14 @@ public class InsomniaSwordItem extends ModSwordItem
 		{
 			ItemStack stack = new ItemStack(this);
 			CompoundTag compoundnbt = stack.getOrCreateTag();
-			compoundnbt.putByte(ModUtils.LEVEL_KEY, (byte)5);
+			compoundnbt.putByte(ILevelItem.LEVEL_KEY, (byte)this.getMaxLevel());
 			list.add(stack);
 		}
+	}
+
+	@Override
+	public int getMaxLevel()
+	{
+		return 5;
 	}
 }

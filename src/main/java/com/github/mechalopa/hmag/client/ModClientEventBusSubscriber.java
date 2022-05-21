@@ -87,7 +87,7 @@ import com.github.mechalopa.hmag.registry.ModBlocks;
 import com.github.mechalopa.hmag.registry.ModEntityTypes;
 import com.github.mechalopa.hmag.registry.ModItems;
 import com.github.mechalopa.hmag.registry.ModParticleTypes;
-import com.github.mechalopa.hmag.util.ModUtils;
+import com.github.mechalopa.hmag.world.item.ILevelItem;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
@@ -122,11 +122,11 @@ public class ModClientEventBusSubscriber
 
 		event.enqueueWork(() -> {
 			ItemProperties.register(ModItems.INSOMNIA_SWORD.get(), new ResourceLocation("level"), (stack, world, livingentity, seed) -> {
-				final int i = ModUtils.getItemLevel(stack);
+				final int i = ILevelItem.getItemLevel(stack);
 				return i >= 5 ? 2.0F : (i > 0 ? 1.0F : 0.0F);
 			});
 			ItemProperties.register(ModItems.NEMESIS_BLADE.get(), new ResourceLocation("level"), (stack, world, livingentity, seed) -> {
-				final int i = ModUtils.getItemLevel(stack);
+				final int i = ILevelItem.getItemLevel(stack);
 				return i >= 6 ? 4.0F : (i >= 5 ? 3.0F : (i >= 3 ? 2.0F : (i > 0 ? 1.0F : 0.0F)));
 			});
 			ItemProperties.register(ModItems.CRIMSON_BOW.get(), new ResourceLocation("pull"), ModClientUtils.PROPERTY_BOW_PULL);

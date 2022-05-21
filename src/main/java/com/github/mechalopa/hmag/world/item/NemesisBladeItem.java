@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import com.github.mechalopa.hmag.util.ModUtils;
 import com.github.mechalopa.hmag.world.entity.projectile.MagicBulletEntity;
 
 import net.minecraft.ChatFormatting;
@@ -33,7 +32,7 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class NemesisBladeItem extends ModSwordItem
+public class NemesisBladeItem extends ModSwordItem implements ILevelItem
 {
 	public NemesisBladeItem(Tier tier, Properties builderIn)
 	{
@@ -45,10 +44,10 @@ public class NemesisBladeItem extends ModSwordItem
 	{
 		if (!level.isClientSide)
 		{
-			if (entity.tickCount % 5 == 0 && entity instanceof Player)
+			if (entity instanceof Player)
 			{
 				CompoundTag compoundnbt = stack.getOrCreateTag();
-				int itemLevel = !compoundnbt.contains("hmag.level") ? 0 : (int)compoundnbt.getByte(ModUtils.LEVEL_KEY);
+				int itemLevel = !compoundnbt.contains("hmag.level") ? 0 : (int)compoundnbt.getByte(ILevelItem.LEVEL_KEY);
 				final int i = Math.max(((Player)entity).experienceLevel, 0);
 				int j = 0;
 
@@ -59,7 +58,7 @@ public class NemesisBladeItem extends ModSwordItem
 
 				if (itemLevel != j)
 				{
-					compoundnbt.putByte(ModUtils.LEVEL_KEY, (byte)j);
+					compoundnbt.putByte(ILevelItem.LEVEL_KEY, (byte)j);
 				}
 			}
 		}
@@ -70,7 +69,7 @@ public class NemesisBladeItem extends ModSwordItem
 	{
 		if (super.hurtEnemy(stack, target, attaker))
 		{
-			final int i = ModUtils.getItemLevel(stack);
+			final int i = ILevelItem.getItemLevel(stack);
 
 			if (i > 0)
 			{
@@ -91,7 +90,7 @@ public class NemesisBladeItem extends ModSwordItem
 	{
 		if (livingEntity instanceof Player)
 		{
-			final int i = ModUtils.getItemLevel(stack);
+			final int i = ILevelItem.getItemLevel(stack);
 			Player player = (Player)livingEntity;
 
 			if (this.getUseDuration(stack) - count < 12 || !((player.experienceLevel > 0 && i > 0) || player.isCreative()))
@@ -134,7 +133,7 @@ public class NemesisBladeItem extends ModSwordItem
 		{
 			Player player = (Player)livingEntity;
 
-			if (this.getUseDuration(stack) - count != 12 || !((player.experienceLevel > 0 && ModUtils.getItemLevel(stack) > 0) || player.isCreative()))
+			if (this.getUseDuration(stack) - count != 12 || !((player.experienceLevel > 0 && ILevelItem.getItemLevel(stack) > 0) || player.isCreative()))
 			{
 				return;
 			}
@@ -153,7 +152,7 @@ public class NemesisBladeItem extends ModSwordItem
 	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand)
 	{
 		ItemStack stack = player.getItemInHand(hand);
-		boolean flag = (player.experienceLevel > 0 && ModUtils.getItemLevel(stack) > 0) || player.isCreative();
+		boolean flag = (player.experienceLevel > 0 && ILevelItem.getItemLevel(stack) > 0) || player.isCreative();
 
 		if (flag && player.isCrouching())
 		{
@@ -176,7 +175,7 @@ public class NemesisBladeItem extends ModSwordItem
 	@OnlyIn(Dist.CLIENT)
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag tooltipFlag)
 	{
-		final int i = (stack != null && !stack.isEmpty()) ? ModUtils.getItemLevel(stack) : 0;
+		final int i = ILevelItem.getItemLevel(stack);
 		TranslatableComponent component = new TranslatableComponent("text.hmag.level", i + 1);
 		component.withStyle(i >= 6 ? ChatFormatting.LIGHT_PURPLE : (i >= 5 ? ChatFormatting.AQUA : (i >= 3 ? ChatFormatting.YELLOW : (i <= 0 ? ChatFormatting.RED : ChatFormatting.GRAY))));
 		list.add(component);
@@ -189,7 +188,7 @@ public class NemesisBladeItem extends ModSwordItem
 		{
 			ItemStack stack = new ItemStack(this);
 			CompoundTag compoundnbt = stack.getOrCreateTag();
-			compoundnbt.putByte(ModUtils.LEVEL_KEY, (byte)6);
+			compoundnbt.putByte(ILevelItem.LEVEL_KEY, (byte)this.getMaxLevel());
 			list.add(stack);
 		}
 	}
@@ -198,5 +197,11 @@ public class NemesisBladeItem extends ModSwordItem
 	public boolean canBeHurtBy(DamageSource damageSource)
 	{
 		return damageSource != DamageSource.OUT_OF_WORLD ? false : super.canBeHurtBy(damageSource);
+	}
+
+	@Override
+	public int getMaxLevel()
+	{
+		return 6;
 	}
 }
