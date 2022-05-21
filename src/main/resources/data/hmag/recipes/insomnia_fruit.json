@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "YEY",
+    "ASA",
+    "YXY"
+  ],
+  "key": {
+    "S": {
+      "item": "hmag:soul_apple"
+    },
+    "A": {
+      "tag": "forge:gems/amethyst"
+    },
+    "E": {
+      "item": "minecraft:glow_berries"
+    },
+    "X": {
+      "item": "hmag:evil_crystal"
+    },
+    "Y": {
+      "item": "hmag:dyssomnia_skin"
+    }
+  },
+  "result": {
+    "item": "hmag:insomnia_fruit"
+  }
+}

@@ -26,12 +26,6 @@ public abstract class ModShieldItem extends ShieldItem
 		return this.getDescriptionId();
 	}
 
-//	@Override
-//	public boolean isShield(ItemStack stack, @Nullable LivingEntity entity)
-//	{
-//		return true;
-//	}
-
 	@Override
 	public int getEnchantmentValue()
 	{

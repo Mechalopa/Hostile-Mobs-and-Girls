@@ -5,7 +5,8 @@
     "#forge:crops/lemon",
     "#forge:crops/strawberry",
     "#forge:crops/blueberry",
-    "#forge:crops/cure_berry",
+    "#forge:crops/cureberry",
+    "#forge:crops/randomberry",
     "#forge:crops/exp_berry"
   ]
 }

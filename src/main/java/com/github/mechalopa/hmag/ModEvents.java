@@ -625,6 +625,7 @@ public class ModEvents
 			if (event.getType() == VillagerProfession.CLERIC)
 			{
 				trades.get(2).add(new BasicItemListing(new ItemStack(ModItems.SOUL_POWDER.get(), 24), new ItemStack(Items.EMERALD, 1), 16, 2, 0.05F));
+				trades.get(4).add(new BasicItemListing(new ItemStack(ModItems.RANDOMBERRY.get(), 3), new ItemStack(Items.EMERALD, 1), 16, 15, 0.05F));
 				trades.get(4).add(new BasicItemListing(new ItemStack(ModItems.EXP_BERRY.get(), 3), new ItemStack(Items.EMERALD, 1), 16, 15, 0.05F));
 				trades.get(4).add(new BasicItemListing(new ItemStack(ModItems.SPECTRAL_SOUP.get(), 1), new ItemStack(Items.EMERALD, 1), 16, 15, 0.05F));
 			}
@@ -645,7 +646,6 @@ public class ModEvents
 				trades.get(2).add(new BasicItemListing(new ItemStack(Items.EMERALD, 1), new ItemStack(ModItems.STRAWBERRY.get(), 4), 12, 4, 0.05F));
 				trades.get(2).add(new BasicItemListing(new ItemStack(Items.EMERALD, 1), new ItemStack(ModItems.LEMON.get(), 4), 12, 4, 0.05F));
 				trades.get(4).add(new BasicItemListing(new ItemStack(ModItems.CUREBERRY.get(), 3), new ItemStack(Items.EMERALD, 1), 16, 15, 0.05F));
-				trades.get(4).add(new BasicItemListing(new ItemStack(ModItems.SWIFTBERRY.get(), 3), new ItemStack(Items.EMERALD, 1), 16, 15, 0.05F));
 			}
 
 			if (event.getType() == VillagerProfession.FISHERMAN)
