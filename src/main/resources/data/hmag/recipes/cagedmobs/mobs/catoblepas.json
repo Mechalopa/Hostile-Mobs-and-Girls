@@ -31,6 +31,14 @@
       "maxAmount": 3
     },
     {
+      "chance": 0.05,
+      "output": {
+        "item": "hmag:randomberry"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
       "chance": 0.025,
       "output": {
         "item": "minecraft:iron_ingot"

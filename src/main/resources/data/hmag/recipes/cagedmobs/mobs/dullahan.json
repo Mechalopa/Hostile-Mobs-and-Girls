@@ -30,7 +30,7 @@
     {
       "chance": 0.4,
       "output": {
-        "item": "hmag:blueberry"
+        "item": "hmag:randomberry"
       },
       "minAmount": 1,
       "maxAmount": 2

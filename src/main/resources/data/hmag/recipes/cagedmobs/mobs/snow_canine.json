@@ -22,10 +22,10 @@
     {
       "chance": 0.05,
       "output": {
-        "item": "hmag:blueberry"
+        "item": "hmag:cureberry"
       },
       "minAmount": 1,
-      "maxAmount": 3
+      "maxAmount": 2
     },
     {
       "chance": 0.025,

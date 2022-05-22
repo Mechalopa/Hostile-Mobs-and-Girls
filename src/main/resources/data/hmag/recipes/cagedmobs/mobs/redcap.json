@@ -12,20 +12,20 @@
   "growTicks": 1800,
   "results": [
     {
-      "chance": 0.375,
-      "output": {
-        "item": "hmag:strawberry"
-      },
-      "minAmount": 1,
-      "maxAmount": 1
-    },
-    {
-      "chance": 0.375,
+      "chance": 0.6,
       "output": {
         "item": "minecraft:red_dye"
       },
       "minAmount": 1,
-      "maxAmount": 1
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "hmag:cureberry"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
     },
     {
       "chance": 0.025,

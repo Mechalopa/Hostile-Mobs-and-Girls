@@ -12,15 +12,7 @@
   "growTicks": 1800,
   "results": [
     {
-      "chance": 0.4,
-      "output": {
-        "item": "minecraft:hanging_roots"
-      },
-      "minAmount": 1,
-      "maxAmount": 2
-    },
-    {
-      "chance": 0.4,
+      "chance": 0.6,
       "output": {
         "item": "minecraft:vine"
       },
@@ -28,9 +20,17 @@
       "maxAmount": 2
     },
     {
-      "chance": 0.4,
+      "chance": 0.375,
       "output": {
-        "item": "hmag:exp_berry"
+        "item": "hmag:mysterious_petal"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.3,
+      "output": {
+        "item": "hmag:cure_berry"
       },
       "minAmount": 1,
       "maxAmount": 2

@@ -30,7 +30,7 @@
     {
       "chance": 0.05,
       "output": {
-        "item": "minecraft:sweet_berries"
+        "item": "minecraft:glow_berries"
       },
       "minAmount": 1,
       "maxAmount": 3

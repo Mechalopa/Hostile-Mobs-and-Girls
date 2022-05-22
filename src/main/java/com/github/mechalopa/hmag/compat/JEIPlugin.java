@@ -10,6 +10,7 @@ import com.github.mechalopa.hmag.world.item.EnchantmentUpgradeItem;
 import com.github.mechalopa.hmag.world.item.EnchantmentUpgradeItem.Properties.EnchantmentUpgradeProp;
 import com.github.mechalopa.hmag.world.item.crafting.EnchantmentUpgradeRecipe;
 import com.github.mechalopa.hmag.world.item.crafting.RemoveCurseRecipe;
+import com.github.mechalopa.hmag.world.item.crafting.SuspiciousStewUpgradeRecipe;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
@@ -20,13 +21,17 @@ import mezz.jei.api.constants.RecipeTypes;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.NonNullList;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.ShapelessRecipe;
 import net.minecraft.world.item.crafting.UpgradeRecipe;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -68,8 +73,10 @@ public class JEIPlugin implements IModPlugin
 		Minecraft minecraft = Minecraft.getInstance();
 		Iterable<Recipe<?>> recipes = minecraft.level.getRecipeManager().getRecipes();
 		List<UpgradeRecipe> smithingRecipes = new ArrayList<UpgradeRecipe>();
+		List<CraftingRecipe> shapelessRecipes = new ArrayList<CraftingRecipe>();
 		boolean flag = false;
 		boolean flag1 = false;
+		boolean flag2 = false;
 
 		for (Recipe<?> recipe : recipes)
 		{
@@ -104,8 +111,8 @@ public class JEIPlugin implements IModPlugin
 
 									if (!stacks.isEmpty())
 									{
-										ResourceLocation resourcelocation = new ResourceLocation(HMaG.MODID, "jei." + recipe.getId().getPath() + "." + enchantment.getRegistryName().getNamespace() + "." + enchantment.getRegistryName().getPath());
-										UpgradeRecipe recipe1 = new UpgradeRecipe(resourcelocation, Ingredient.of(stacks.stream()), ingredient, stack1);
+										ResourceLocation id = new ResourceLocation(HMaG.MODID, "jei." + recipe.getId().getPath() + "." + enchantment.getRegistryName().getNamespace() + "." + enchantment.getRegistryName().getPath());
+										UpgradeRecipe recipe1 = new UpgradeRecipe(id, Ingredient.of(stacks.stream()), ingredient, stack1);
 										smithingRecipes.add(recipe1);
 									}
 								}
@@ -149,7 +156,7 @@ public class JEIPlugin implements IModPlugin
 												{
 													for (int k = minLevel; k <= maxLevel; ++k)
 													{
-														ResourceLocation resourcelocation = new ResourceLocation(HMaG.MODID, "jei." + recipe.getId().getPath() + "." + i + "." + j + "." + k);
+														ResourceLocation id = new ResourceLocation(HMaG.MODID, "jei." + recipe.getId().getPath() + "." + i + "." + j + "." + k);
 														ItemStack stack2 = stack1.copy();
 														ItemStack stack3 = stack1.copy();
 
@@ -159,7 +166,7 @@ public class JEIPlugin implements IModPlugin
 														}
 
 														EnchantmentHelper.setEnchantments(ImmutableMap.of(enchantment, k + 1), stack3);
-														UpgradeRecipe recipe2 = new UpgradeRecipe(resourcelocation, Ingredient.of(stack2), Ingredient.of(item), stack3);
+														UpgradeRecipe recipe2 = new UpgradeRecipe(id, Ingredient.of(stack2), Ingredient.of(item), stack3);
 														smithingRecipes.add(recipe2);
 													}
 
@@ -175,8 +182,25 @@ public class JEIPlugin implements IModPlugin
 						}
 					}
 				}
+				else if (recipe instanceof SuspiciousStewUpgradeRecipe && !flag2)
+				{
+					flag2 = true;
+					Ingredient ingredient = Ingredient.of(ModTags.SUSPICIOUS_STEW_UPGRADE_ITEMS);
 
-				if (flag && flag1)
+					if (!ingredient.isEmpty())
+					{
+						String group = "jei." + HMaG.MODID + ".suspicious.stew.upgrade";
+						NonNullList<Ingredient> inputs = NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.SUSPICIOUS_STEW), ingredient);
+						ItemStack output = new ItemStack(Items.SUSPICIOUS_STEW, 1);
+						CompoundTag compoundtag = output.getOrCreateTag();
+						compoundtag.putBoolean(SuspiciousStewUpgradeRecipe.UPGRADED_KEY, true);
+						ResourceLocation id = new ResourceLocation(HMaG.MODID, "jei." + recipe.getId().getPath());
+						ShapelessRecipe recipe3 = new ShapelessRecipe(id, group, output, inputs);
+						shapelessRecipes.add(recipe3);
+					}
+				}
+
+				if (flag && flag1 && flag2)
 				{
 					break;
 				}
@@ -184,6 +208,7 @@ public class JEIPlugin implements IModPlugin
 		}
 
 		registration.addRecipes(RecipeTypes.SMITHING, smithingRecipes);
+		registration.addRecipes(RecipeTypes.CRAFTING, shapelessRecipes);
 	}
 
 	private static ItemStack getEnchantableItemStack(IRecipeRegistration registration, List<Item> list, Enchantment enchantment, TagKey<Item> blacklist)

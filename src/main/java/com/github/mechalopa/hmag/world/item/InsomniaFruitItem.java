@@ -110,8 +110,6 @@ public class InsomniaFruitItem extends Item implements ILevelItem
 					{
 						livingEntity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 5 * 20, 0));
 					}
-
-					level.playSound((Player)null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.PLAYERS, 1.0F, level.getRandom().nextFloat() * 0.2F + 0.9F);
 				}
 
 				((Player)livingEntity).getCooldowns().addCooldown(this, 1800);

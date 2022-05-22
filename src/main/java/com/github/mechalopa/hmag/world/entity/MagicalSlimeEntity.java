@@ -9,7 +9,6 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -17,7 +16,6 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.network.NetworkHooks;
@@ -60,12 +58,6 @@ public class MagicalSlimeEntity extends Slime implements IModMob
 		super.setSize(size, resetHealth);
 		this.setVariant(this.getRandom().nextInt(SlimeGirlEntity.ColorVariant.values().length));
 		this.getAttribute(Attributes.ARMOR).setBaseValue(size * 2);
-	}
-
-	@Override
-	protected ResourceLocation getDefaultLootTable()
-	{
-		return this.isTiny() ? BuiltInLootTables.EMPTY : this.getType().getDefaultLootTable();
 	}
 
 	@Override

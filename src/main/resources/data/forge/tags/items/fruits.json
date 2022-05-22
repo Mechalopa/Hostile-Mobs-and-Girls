@@ -3,10 +3,6 @@
   "values": [
     "#forge:fruits/apple",
     "#forge:fruits/lemon",
-    "#forge:fruits/strawberry",
-    "#forge:fruits/strawberries",
-    "#forge:fruits/blueberry",
-    "#forge:fruits/blueberries",
     "hmag:cureberry",
     "hmag:randomberry",
     "hmag:exp_berry"

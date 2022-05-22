@@ -1,8 +1,6 @@
 {
   "replace": false,
   "values": [
-    "#forge:foods/strawberries",
-    "#forge:foods/blueberries",
     "hmag:cureberry",
     "hmag:randomberry",
     "hmag:exp_berry"

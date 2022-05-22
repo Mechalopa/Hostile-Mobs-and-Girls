@@ -2,11 +2,16 @@ package com.github.mechalopa.hmag.client;
 
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.world.item.ModBowItem;
+import com.github.mechalopa.hmag.world.item.crafting.SuspiciousStewUpgradeRecipe;
 
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.FOVModifierEvent;
+import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -15,7 +20,7 @@ import net.minecraftforge.fml.common.Mod;
 public class ModClientEvents
 {
 	@SubscribeEvent
-	public void onFOVUpdate(FOVModifierEvent event)
+	public void onFOVModifier(FOVModifierEvent event)
 	{
 		if (event.getEntity() != null)
 		{
@@ -41,6 +46,17 @@ public class ModClientEvents
 
 				event.setNewfov(f);
 			}
+		}
+	}
+
+	@SubscribeEvent
+	public void addItemTooltip(final ItemTooltipEvent event)
+	{
+		if (!event.getToolTip().isEmpty() && event.getItemStack() != null && event.getItemStack().is(Items.SUSPICIOUS_STEW) && event.getItemStack().hasTag() && event.getItemStack().getTag().getBoolean(SuspiciousStewUpgradeRecipe.UPGRADED_KEY))
+		{
+			TranslatableComponent component = new TranslatableComponent("text.hmag.upgraded_suspicious_stew");
+			component.withStyle(ChatFormatting.LIGHT_PURPLE);
+			event.getToolTip().add(component);
 		}
 	}
 }

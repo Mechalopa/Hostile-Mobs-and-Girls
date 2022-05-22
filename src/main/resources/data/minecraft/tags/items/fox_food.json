@@ -1,8 +1,6 @@
 {
   "replace": false,
   "values": [
-    "hmag:blueberry",
-    "hmag:strawberry",
     "hmag:cureberry",
     "hmag:randomberry",
     "hmag:exp_berry"
