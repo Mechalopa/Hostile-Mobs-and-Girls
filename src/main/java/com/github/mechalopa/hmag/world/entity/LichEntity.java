@@ -53,7 +53,7 @@ public class LichEntity extends Monster implements IModMob, RangedAttackMob
 	@Override
 	protected void registerGoals()
 	{
-		this.goalSelector.addGoal(4, new RangedAttackGoal2(this, 1.3D, 20, 40, 15.0F, true));
+		this.goalSelector.addGoal(4, new RangedAttackGoal2(this, 1.1D, 20, 40, 15.0F, true));
 		this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
 		this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
 		this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));

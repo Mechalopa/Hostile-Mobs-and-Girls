@@ -10,13 +10,13 @@
       "item": "hmag:soul_apple"
     },
     "A": {
-      "tag": "forge:gems/amethyst"
+      "tag": "forge:storage_blocks/amethyst"
     },
     "E": {
       "item": "minecraft:ender_eye"
     },
     "X": {
-      "item": "hmag:evil_crystal"
+      "item": "hmag:evil_crystal_block"
     },
     "Y": {
       "item": "hmag:dyssomnia_skin"

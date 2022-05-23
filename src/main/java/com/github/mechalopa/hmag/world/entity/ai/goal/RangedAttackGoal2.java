@@ -13,7 +13,7 @@ public class RangedAttackGoal2 extends Goal
 	private final Mob mob;
 	private final RangedAttackMob rangedAttackMob;
 	private LivingEntity target;
-	private int rangedAttackTime = -1;
+	private int attackTime = -1;
 	private final double speedModifier;
 	private int seeTime;
 	private final int attackIntervalMin;
@@ -89,7 +89,7 @@ public class RangedAttackGoal2 extends Goal
 	{
 		this.target = null;
 		this.seeTime = 0;
-		this.rangedAttackTime = -1;
+		this.attackTime = -1;
 	}
 
 	@Override
@@ -113,7 +113,7 @@ public class RangedAttackGoal2 extends Goal
 			this.seeTime = 0;
 		}
 
-		if (!(d0 > this.maxAttackDistanceSqr || (d0 > this.minAttackDistanceSqr && this.rangedAttackTime > 10)) && this.seeTime >= (this.canStrafe ? 20 : 5))
+		if (!(d0 > this.maxAttackDistanceSqr || (d0 > this.minAttackDistanceSqr && this.attackTime > 10)) && this.seeTime >= (this.canStrafe ? 20 : 5))
 		{
 			this.mob.getNavigation().stop();
 
@@ -166,7 +166,7 @@ public class RangedAttackGoal2 extends Goal
 			this.mob.getLookControl().setLookAt(this.target, 30.0F, 30.0F);
 		}
 
-		if (--this.rangedAttackTime == 0)
+		if (--this.attackTime == 0)
 		{
 			if (!flag)
 			{
@@ -176,17 +176,17 @@ public class RangedAttackGoal2 extends Goal
 			float f = (float)Math.sqrt(d0) / this.attackRadius;
 			float f1 = Mth.clamp(f, 0.1F, 1.0F);
 			this.rangedAttackMob.performRangedAttack(this.target, f1);
-			this.rangedAttackTime = Mth.floor(f * (this.attackIntervalMax - this.attackIntervalMin) + this.attackIntervalMin);
+			this.attackTime = Mth.floor(f * (this.attackIntervalMax - this.attackIntervalMin) + this.attackIntervalMin);
 		}
-		else if (this.rangedAttackTime < 0)
+		else if (this.attackTime < 0)
 		{
-			this.rangedAttackTime = Mth.floor(Mth.lerp(Math.sqrt(d0) / this.attackRadius, this.attackIntervalMin, this.attackIntervalMax));
+			this.attackTime = Mth.floor(Mth.lerp(Math.sqrt(d0) / this.attackRadius, this.attackIntervalMin, this.attackIntervalMax));
 		}
 	}
 
 	public int getAttackTime()
 	{
-		return this.rangedAttackTime;
+		return this.attackTime;
 	}
 
 	public LivingEntity getTarget()

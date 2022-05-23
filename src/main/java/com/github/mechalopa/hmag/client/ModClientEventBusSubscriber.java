@@ -121,6 +121,10 @@ public class ModClientEventBusSubscriber
 		ItemBlockRenderTypes.setRenderLayer(ModBlocks.TINTED_REINFORCED_GLASS.get(), RenderType.translucent());
 
 		event.enqueueWork(() -> {
+			ItemProperties.register(ModItems.INSOMNIA_FRUIT.get(), new ResourceLocation("level"), (stack, world, livingentity, seed) -> {
+				final int i = ILevelItem.getItemLevel(stack);
+				return i >= 5 ? 2.0F : (i > 0 ? 1.0F : 0.0F);
+			});
 			ItemProperties.register(ModItems.INSOMNIA_SWORD.get(), new ResourceLocation("level"), (stack, world, livingentity, seed) -> {
 				final int i = ILevelItem.getItemLevel(stack);
 				return i >= 5 ? 2.0F : (i > 0 ? 1.0F : 0.0F);

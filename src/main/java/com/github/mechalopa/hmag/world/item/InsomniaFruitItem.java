@@ -40,7 +40,7 @@ public class InsomniaFruitItem extends Item implements ILevelItem
 	@Override
 	public boolean isFoil(ItemStack stack)
 	{
-		return ILevelItem.getItemLevel(stack) > 0 || super.isFoil(stack);
+		return ILevelItem.getItemLevel(stack) >= 5 || super.isFoil(stack);
 	}
 
 	@Override
@@ -77,6 +77,8 @@ public class InsomniaFruitItem extends Item implements ILevelItem
 		{
 			if (livingEntity instanceof ServerPlayer)
 			{
+				int j = 1800;
+
 				if (i <= 0)
 				{
 					livingEntity.addEffect(new MobEffectInstance(MobEffects.HUNGER, 180 * 20, 1));
@@ -93,18 +95,21 @@ public class InsomniaFruitItem extends Item implements ILevelItem
 						livingEntity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 300 * 20, 0));
 						livingEntity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 300 * 20, 0));
 						livingEntity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 120 * 20, 3));
+						j = 1200;
 					}
 					else if (i >= 4)
 					{
 						livingEntity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 15 * 20, 0));
 						livingEntity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 150 * 20, 0));
 						livingEntity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 120 * 20, 1));
+						j = 1400;
 					}
 					else if (i >= 3)
 					{
 						livingEntity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 10 * 20, 0));
 						livingEntity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 30 * 20, 0));
 						livingEntity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 120 * 20, 0));
+						j = 1600;
 					}
 					else if (i >= 2)
 					{
@@ -112,7 +117,7 @@ public class InsomniaFruitItem extends Item implements ILevelItem
 					}
 				}
 
-				((Player)livingEntity).getCooldowns().addCooldown(this, 1800);
+				((Player)livingEntity).getCooldowns().addCooldown(this, j);
 			}
 		}
 

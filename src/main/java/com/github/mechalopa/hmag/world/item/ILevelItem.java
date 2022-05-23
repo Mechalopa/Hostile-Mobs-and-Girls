@@ -22,9 +22,11 @@ public interface ILevelItem
 		{
 			return 0;
 		}
-
-		CompoundTag compoundnbt = stack.getTag();
-		return compoundnbt != null && compoundnbt.contains(LEVEL_KEY) ? (int)compoundnbt.getByte(LEVEL_KEY) : 0;
+		else
+		{
+			CompoundTag compoundnbt = stack.getTag();
+			return compoundnbt != null && compoundnbt.contains(LEVEL_KEY) ? (int)compoundnbt.getByte(LEVEL_KEY) : 0;
+		}
 	}
 
 	public static void removeItemLevelTag(ItemStack stack)

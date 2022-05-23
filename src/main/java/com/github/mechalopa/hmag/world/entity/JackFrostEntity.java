@@ -54,7 +54,7 @@ public class JackFrostEntity extends Monster implements IModMob, RangedAttackMob
 	protected void registerGoals()
 	{
 		this.goalSelector.addGoal(1, new FloatGoal(this));
-		this.goalSelector.addGoal(4, new RangedAttackGoal2(this, 1.25D, 20, 30, 15.0F, true));
+		this.goalSelector.addGoal(4, new RangedAttackGoal2(this, 1.1D, 20, 40, 15.0F, true));
 		this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
 		this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 3.0F, 1.0F));
 		this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Mob.class, 8.0F));
