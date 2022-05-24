@@ -251,7 +251,7 @@ public class ModConfigs
 		SERVER_BUILDER.push("chance");
 
 		GHASTLY_SEEKER_SPAWN_CHANCE = SERVER_BUILDER.defineInRange("ghastlySeekerSpawnChance", 0.05D, 0.0D, 1.0D);
-		CRIMSON_SLAUGHTERER_SPAWN_CHANCE = SERVER_BUILDER.defineInRange("crimsonSlaughtererSpawnChance", 0.5D, 0.0D, 1.0D);
+		CRIMSON_SLAUGHTERER_SPAWN_CHANCE = SERVER_BUILDER.defineInRange("crimsonSlaughtererSpawnChance", 0.375D, 0.0D, 1.0D);
 		SAVAGEFANG_SPAWN_CHANCE = SERVER_BUILDER.defineInRange("savagefangSpawnChance", 0.8D, 0.0D, 1.0D);
 
 		SERVER_BUILDER.pop();

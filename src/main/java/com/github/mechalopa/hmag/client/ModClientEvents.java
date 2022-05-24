@@ -5,6 +5,7 @@ import com.github.mechalopa.hmag.world.item.ModBowItem;
 import com.github.mechalopa.hmag.world.item.crafting.SuspiciousStewUpgradeRecipe;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
@@ -19,6 +20,8 @@ import net.minecraftforge.fml.common.Mod;
 @OnlyIn(Dist.CLIENT)
 public class ModClientEvents
 {
+	private static final Component UPGRADED_SUSPICIOUS_STEW_TOOLTIP = new TranslatableComponent("text.hmag.upgraded_suspicious_stew").withStyle(ChatFormatting.LIGHT_PURPLE);
+
 	@SubscribeEvent
 	public void onFOVModifier(FOVModifierEvent event)
 	{
@@ -54,9 +57,7 @@ public class ModClientEvents
 	{
 		if (!event.getToolTip().isEmpty() && event.getItemStack() != null && event.getItemStack().is(Items.SUSPICIOUS_STEW) && event.getItemStack().hasTag() && event.getItemStack().getTag().getBoolean(SuspiciousStewUpgradeRecipe.UPGRADED_KEY))
 		{
-			TranslatableComponent component = new TranslatableComponent("text.hmag.upgraded_suspicious_stew");
-			component.withStyle(ChatFormatting.LIGHT_PURPLE);
-			event.getToolTip().add(component);
+			event.getToolTip().add(UPGRADED_SUSPICIOUS_STEW_TOOLTIP);
 		}
 	}
 }

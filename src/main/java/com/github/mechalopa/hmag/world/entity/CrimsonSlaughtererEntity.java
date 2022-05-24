@@ -161,7 +161,7 @@ public class CrimsonSlaughtererEntity extends Monster implements IModMob
 
 	public static boolean checkCrimsonSlaughtererSpawnRules(EntityType<CrimsonSlaughtererEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, Random random)
 	{
-		return checkMonsterSpawnRules(type, levelAccessor, spawnType, pos, random) && (spawnType == MobSpawnType.SPAWNER || random.nextDouble() < ModConfigs.cachedServer.CRIMSON_SLAUGHTERER_SPAWN_CHANCE);
+		return checkAnyLightMonsterSpawnRules(type, levelAccessor, spawnType, pos, random) && (spawnType == MobSpawnType.SPAWNER || random.nextDouble() < ModConfigs.cachedServer.CRIMSON_SLAUGHTERER_SPAWN_CHANCE);
 	}
 
 	@Override
