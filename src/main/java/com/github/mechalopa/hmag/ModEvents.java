@@ -82,7 +82,7 @@ public class ModEvents
 	private static final AttributeModifier NEMESIS_BLADE_MOVEMENT_SPEED_MODIFIER = new AttributeModifier(NEMESIS_BLADE_MOVEMENT_SPEED_UUID, "Nemesis blade move speed penalty", -0.5F, AttributeModifier.Operation.MULTIPLY_TOTAL);
 	private static final UUID ANCIENT_SHIELD_KNOCKBACK_RESISTANCE_UUID = UUID.fromString("0915B1C7-492D-2776-EFF2-436BF1072692");
 	private static final AttributeModifier ANCIENT_SHIELD_KNOCKBACK_RESISTANCE_MODIFIER = new AttributeModifier(ANCIENT_SHIELD_KNOCKBACK_RESISTANCE_UUID, "Ancient shield knockback resistance bonus", 0.05F, AttributeModifier.Operation.ADDITION);
-	private static final Component INSOMNIA_SWORD_MESSAGE = new TranslatableComponent("message.hmag.insomnia_sword");
+	private static final Component INSOMNIA_ITEM_MESSAGE = new TranslatableComponent("message.hmag.insomnia_item");
 
 	@SubscribeEvent
 	public void onLivingHurt(LivingHurtEvent event)
@@ -551,10 +551,10 @@ public class ModEvents
 	{
 		if (event.getResultStatus() == null)
 		{
-			if (event.getPlayer().getInventory().contains(new ItemStack(ModItems.INSOMNIA_SWORD.get())))
+			if (event.getPlayer().getInventory().contains(ModTags.INSOMNIA_ITEMS))
 			{
 				event.setResult(BedSleepingProblem.OTHER_PROBLEM);
-				event.getPlayer().displayClientMessage(INSOMNIA_SWORD_MESSAGE, true);
+				event.getPlayer().displayClientMessage(INSOMNIA_ITEM_MESSAGE, true);
 			}
 		}
 	}

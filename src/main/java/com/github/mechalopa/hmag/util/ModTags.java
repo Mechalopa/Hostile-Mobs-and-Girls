@@ -17,6 +17,7 @@ public class ModTags
 	public static final TagKey<Item> CURSE_REMOVE_ITEMS = createItemTag("curse_remove_items");
 	public static final TagKey<Item> ENCHANTMENT_UPGRADE_ITEMS = createItemTag("enchantment_upgrade_items");
 	public static final TagKey<Item> ENCHANTMENT_UPGRADEABLE_BLACKLIST = createItemTag("enchantment_upgradeable_blacklist");
+	public static final TagKey<Item> INSOMNIA_ITEMS = createItemTag("insomnia_items");
 	public static final TagKey<Item> SUSPICIOUS_STEW_UPGRADE_ITEMS = createItemTag("suspicious_stew_upgrade_items");
 
 	public static final TagKey<EntityType<?>> CREEPER_GIRL_REPLACEABLES = createEntityTypeTag("creeper_girl_replaceables");

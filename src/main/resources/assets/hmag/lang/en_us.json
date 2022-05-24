@@ -208,7 +208,7 @@
   "itemGroup.hmag.tab": "Hostile Mobs and Girls",
   "text.hmag.level": "Level %s",
   "text.hmag.upgraded_suspicious_stew": "Stronger Potency",
-  "message.hmag.insomnia_sword": "You may not rest now; you have a Sword of Insomnia",
+  "message.hmag.insomnia_item": "You may not rest now; you have a insomnia item",
   "enchantment.hmag.health_boost.desc": "Increases the wearer's max health.",
   "enchantment.hmag.water_aspect.desc": "Increases damage against mobs that are hurt by water, such as Blazes and Endermans. Also extinguish mobs that are on fire.",
   "enchantment.hmag.anti_air.desc": "Increases damage against mobs in the air.",
