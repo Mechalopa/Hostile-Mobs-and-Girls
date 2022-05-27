@@ -22,9 +22,17 @@
     {
       "tag": "forge:nuggets/netherite_scrap"
     },
-    {
-      "tag": "forge:nuggets/nether_star"
-    },
+    [
+      {
+        "item": "hmag:lich_cloth"
+      },
+      {
+        "item": "hmag:dyssomnia_skin"
+      },
+      {
+        "item": "hmag:mysterious_petal"
+      }
+    ],
     {
       "item": "hmag:lightning_particle"
     }
