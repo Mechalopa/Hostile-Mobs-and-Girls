@@ -306,15 +306,14 @@ public class AddSpawnerDataEvents
 				}
 			}
 
-			WeightedRandomList<MobSpawnSettings.SpawnerData> spawns = WeightedRandomList.create(list);
-			StructureSpawnOverride override2 = new StructureSpawnOverride(override1.boundingBox(), spawns);
-			HashMap<MobCategory, StructureSpawnOverride> newMap = new HashMap<>(feature.spawnOverrides);
-
 			if (!flag)
 			{
 				list.add(spawnerData);
 			}
 
+			WeightedRandomList<MobSpawnSettings.SpawnerData> spawns = WeightedRandomList.create(list);
+			StructureSpawnOverride override2 = new StructureSpawnOverride(override1.boundingBox(), spawns);
+			HashMap<MobCategory, StructureSpawnOverride> newMap = new HashMap<>(feature.spawnOverrides);
 			newMap.put(category, override2);
 			feature.spawnOverrides = ImmutableMap.copyOf(newMap);
 		}

@@ -4,7 +4,7 @@
     "minecraft:wither_rose",
     "#forge:wither_bones",
     {
-      "id": "xreliquary:withered_rib",
+      "id": "reliquary:withered_rib",
       "required": false
     },
     {
