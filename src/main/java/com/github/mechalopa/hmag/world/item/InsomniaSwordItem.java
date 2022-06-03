@@ -1,6 +1,7 @@
 package com.github.mechalopa.hmag.world.item;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.annotation.Nullable;
 
@@ -33,6 +34,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class InsomniaSwordItem extends ModSwordItem implements ILevelItem
 {
+	public static final UUID INSOMNIA_SWORD_ATTACK_DAMAGE_UUID = UUID.fromString("04C38766-C1A5-31D4-410B-C6B4BE3B7DD2");
+
 	public InsomniaSwordItem(Tier tier, Properties builderIn)
 	{
 		super(tier, 1.0F, -2.4F, 1750, 15, builderIn);

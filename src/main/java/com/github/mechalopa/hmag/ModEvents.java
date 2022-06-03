@@ -13,8 +13,12 @@ import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.util.ModUtils;
 import com.github.mechalopa.hmag.world.entity.IModMob;
 import com.github.mechalopa.hmag.world.entity.KashaEntity;
+import com.github.mechalopa.hmag.world.item.AncientShieldItem;
 import com.github.mechalopa.hmag.world.item.ILevelItem;
+import com.github.mechalopa.hmag.world.item.InsomniaSwordItem;
 import com.github.mechalopa.hmag.world.item.ModArmorMaterial;
+import com.github.mechalopa.hmag.world.item.NemesisBladeItem;
+import com.github.mechalopa.hmag.world.item.enchantment.HealthBoostEnchantment;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.core.BlockPos;
@@ -73,15 +77,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 @Mod.EventBusSubscriber(modid = HMaG.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ModEvents
 {
-	private static final UUID[] HEALTH_BOOST_ENCHANTMENT_MAX_HEALTH_UUIDS = new UUID[]{UUID.fromString("EB931A99-0CF2-6E81-DC0C-9DC22573CCDA"), UUID.fromString("16515E9A-B529-151F-EF1E-FA0B55CB3044"), UUID.fromString("F31C89C1-E8F7-EFED-89E4-8C14E796C09A"), UUID.fromString("036BEDC4-2459-9224-5E89-909F95F799EB")};
 	private static final UUID[] NECROTIC_CHAINMAIL_ARMOR_ATTACK_SPEED_UUIDS = new UUID[]{UUID.fromString("81D1E394-8B33-AC3D-325A-C8A03E757B51"), UUID.fromString("B4EFB0CA-2180-0043-0FF9-BE033CC510D5"), UUID.fromString("7FD9FBE7-0438-BF0F-F901-F961384F9591"), UUID.fromString("28E5C0B5-109B-339B-BE83-610B5B399256")};
-	private static final UUID INSOMNIA_SWORD_ATTACK_DAMAGE_UUID = UUID.fromString("04C38766-C1A5-31D4-410B-C6B4BE3B7DD2");
-	private static final UUID NEMESIS_BLADE_ATTACK_DAMAGE_UUID = UUID.fromString("FD835C41-1211-AC72-0CD4-66F3061FB156");
-	private static final UUID NEMESIS_BLADE_ATTACK_SPEED_UUID = UUID.fromString("1911699B-779B-820E-064A-112D1EB232F7");
-	private static final UUID NEMESIS_BLADE_MOVEMENT_SPEED_UUID = UUID.fromString("C80A68DD-F985-4245-4EC4-64884C8EBA4C");
-	private static final AttributeModifier NEMESIS_BLADE_MOVEMENT_SPEED_MODIFIER = new AttributeModifier(NEMESIS_BLADE_MOVEMENT_SPEED_UUID, "Nemesis blade move speed penalty", -0.5F, AttributeModifier.Operation.MULTIPLY_TOTAL);
-	private static final UUID ANCIENT_SHIELD_KNOCKBACK_RESISTANCE_UUID = UUID.fromString("0915B1C7-492D-2776-EFF2-436BF1072692");
-	private static final AttributeModifier ANCIENT_SHIELD_KNOCKBACK_RESISTANCE_MODIFIER = new AttributeModifier(ANCIENT_SHIELD_KNOCKBACK_RESISTANCE_UUID, "Ancient shield knockback resistance bonus", 0.05F, AttributeModifier.Operation.ADDITION);
 	private static final Component INSOMNIA_ITEM_MESSAGE = new TranslatableComponent("message.hmag.insomnia_item");
 
 	@SubscribeEvent
@@ -497,13 +493,13 @@ public class ModEvents
 			{
 				final int i = event.getSlotType().getIndex();
 
-				if (event.getSlotType().getType() == EquipmentSlot.Type.ARMOR && i >= 0 && i < HEALTH_BOOST_ENCHANTMENT_MAX_HEALTH_UUIDS.length)
+				if (event.getSlotType().getType() == EquipmentSlot.Type.ARMOR && i >= 0 && i < HealthBoostEnchantment.HEALTH_BOOST_ENCHANTMENT_MAX_HEALTH_UUIDS.length)
 				{
 					int level = EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.HEALTH_BOOST.get(), stack);
 
 					if (level > 0)
 					{
-						event.addModifier(Attributes.MAX_HEALTH, new AttributeModifier(HEALTH_BOOST_ENCHANTMENT_MAX_HEALTH_UUIDS[i], "Health boost enchantment " + event.getSlotType().getName() + " max health bonus", level * 1.0F, AttributeModifier.Operation.ADDITION));
+						event.addModifier(Attributes.MAX_HEALTH, new AttributeModifier(HealthBoostEnchantment.HEALTH_BOOST_ENCHANTMENT_MAX_HEALTH_UUIDS[i], "Health boost enchantment " + event.getSlotType().getName() + " max health bonus", level * 1.0F, AttributeModifier.Operation.ADDITION));
 					}
 				}
 
@@ -517,7 +513,7 @@ public class ModEvents
 
 					if (level1 > 0)
 					{
-						event.addModifier(Attributes.ATTACK_DAMAGE, new AttributeModifier(INSOMNIA_SWORD_ATTACK_DAMAGE_UUID, "Insomnia sword attack damage bonus", level1 * 1.0F + 1.0F, AttributeModifier.Operation.ADDITION));
+						event.addModifier(Attributes.ATTACK_DAMAGE, new AttributeModifier(InsomniaSwordItem.INSOMNIA_SWORD_ATTACK_DAMAGE_UUID, "Insomnia sword attack damage bonus", level1 * 1.0F + 1.0F, AttributeModifier.Operation.ADDITION));
 					}
 				}
 				else if (stack.getItem() == ModItems.NEMESIS_BLADE.get())
@@ -526,12 +522,12 @@ public class ModEvents
 
 					if (level2 > 0)
 					{
-						event.addModifier(Attributes.ATTACK_DAMAGE, new AttributeModifier(NEMESIS_BLADE_ATTACK_DAMAGE_UUID, "Nemesis blade attack damage bonus", level2 * 1.0F, AttributeModifier.Operation.ADDITION));
-						event.addModifier(Attributes.ATTACK_SPEED, new AttributeModifier(NEMESIS_BLADE_ATTACK_SPEED_UUID, "Nemesis blade attack speed bonus", level2 * 0.25F, AttributeModifier.Operation.ADDITION));
+						event.addModifier(Attributes.ATTACK_DAMAGE, new AttributeModifier(NemesisBladeItem.NEMESIS_BLADE_ATTACK_DAMAGE_UUID, "Nemesis blade attack damage bonus", level2 * 1.0F, AttributeModifier.Operation.ADDITION));
+						event.addModifier(Attributes.ATTACK_SPEED, new AttributeModifier(NemesisBladeItem.NEMESIS_BLADE_ATTACK_SPEED_UUID, "Nemesis blade attack speed bonus", level2 * 0.25F, AttributeModifier.Operation.ADDITION));
 					}
 					else
 					{
-						event.addModifier(Attributes.MOVEMENT_SPEED, NEMESIS_BLADE_MOVEMENT_SPEED_MODIFIER);
+						event.addModifier(Attributes.MOVEMENT_SPEED, NemesisBladeItem.NEMESIS_BLADE_MOVEMENT_SPEED_MODIFIER);
 					}
 				}
 			}
@@ -540,7 +536,7 @@ public class ModEvents
 			{
 				if (stack.getItem() == ModItems.ANCIENT_SHIELD.get())
 				{
-					event.addModifier(Attributes.KNOCKBACK_RESISTANCE, ANCIENT_SHIELD_KNOCKBACK_RESISTANCE_MODIFIER);
+					event.addModifier(Attributes.KNOCKBACK_RESISTANCE, AncientShieldItem.ANCIENT_SHIELD_KNOCKBACK_RESISTANCE_MODIFIER);
 				}
 			}
 		}

@@ -1,6 +1,7 @@
 package com.github.mechalopa.hmag.world.item;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.annotation.Nullable;
 
@@ -22,6 +23,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -34,6 +36,11 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class NemesisBladeItem extends ModSwordItem implements ILevelItem
 {
+	public static final UUID NEMESIS_BLADE_ATTACK_DAMAGE_UUID = UUID.fromString("FD835C41-1211-AC72-0CD4-66F3061FB156");
+	public static final UUID NEMESIS_BLADE_ATTACK_SPEED_UUID = UUID.fromString("1911699B-779B-820E-064A-112D1EB232F7");
+	public static final UUID NEMESIS_BLADE_MOVEMENT_SPEED_UUID = UUID.fromString("C80A68DD-F985-4245-4EC4-64884C8EBA4C");
+	public static final AttributeModifier NEMESIS_BLADE_MOVEMENT_SPEED_MODIFIER = new AttributeModifier(NEMESIS_BLADE_MOVEMENT_SPEED_UUID, "Nemesis blade move speed penalty", -0.5F, AttributeModifier.Operation.MULTIPLY_TOTAL);
+
 	public NemesisBladeItem(Tier tier, Properties builderIn)
 	{
 		super(tier, 4.0F, -3.5F, 2537, 17, builderIn);
