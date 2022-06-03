@@ -179,7 +179,7 @@ public class AddSpawnerDataEvents
 					else if (biomeKey.location().toString().equals("biomesoplenty:withered_abyss"))
 					{
 						if (ModConfigs.cachedServer.WITHER_GHOST_SPAWN_WEIGHT > 0)
-							event.getSpawns().getSpawner(MobCategory.MONSTER).add(new SpawnerData(ModEntityTypes.WITHER_GHOST.get(), 1, 1, 2));
+							event.getSpawns().getSpawner(MobCategory.MONSTER).add(new SpawnerData(ModEntityTypes.WITHER_GHOST.get(), ModConfigs.cachedServer.WITHER_GHOST_SPAWN_WEIGHT, 1, 2));
 					}
 					else if (biomeKey != Biomes.CRIMSON_FOREST && biomeKey != Biomes.WARPED_FOREST)
 					{
