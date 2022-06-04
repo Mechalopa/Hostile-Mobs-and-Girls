@@ -8,6 +8,10 @@
     {
       "id": "iceandfire:witherbone",
       "required": false
+    },
+    {
+      "id": "mna:witherbone",
+      "required": false
     }
   ]
 }
