@@ -267,7 +267,7 @@ public class ModConfigs
 
 		SURFACE_MOB_SPAWN_MIN_HEIGHT = SERVER_BUILDER.defineInRange("surfaceMobSpawnMinHeight", 64, -64, 320);
 		KOBOLD_SPAWN_MAX_HEIGHT = SERVER_BUILDER.defineInRange("koboldSpawnMaxHeight", 31, -64, 320);
-		LICH_SPAWN_MAX_HEIGHT = SERVER_BUILDER.defineInRange("lichdSpawnMaxHeight", -1, -64, 320);
+		LICH_SPAWN_MAX_HEIGHT = SERVER_BUILDER.defineInRange("lichSpawnMaxHeight", -1, -64, 320);
 		OGRE_SPAWN_MAX_HEIGHT = SERVER_BUILDER.defineInRange("ogreSpawnMaxHeight", -1, -64, 320);
 		SPIDER_NEST_SPAWN_MAX_HEIGHT = SERVER_BUILDER.defineInRange("spiderNestSpawnMaxHeight", -1, -64, 320);
 		NECROTIC_REAPER_SPAWN_MAX_HEIGHT = SERVER_BUILDER.defineInRange("necroticReaperSpawnMaxHeight", -1, -64, 320);
