@@ -1,8 +1,11 @@
 package com.github.mechalopa.hmag.world.entity;
 
+import java.util.Random;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
 
 import net.minecraft.core.BlockPos;
@@ -110,6 +113,11 @@ public class KoboldEntity extends Monster implements IModMob
 	protected void populateDefaultEquipmentSlots(DifficultyInstance difficulty)
 	{
 		this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.STONE_PICKAXE));
+	}
+
+	public static boolean checkKoboldSpawnRules(EntityType<? extends KoboldEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, Random random)
+	{
+		return Monster.checkMonsterSpawnRules(type, levelAccessor, spawnType, pos, random) && (spawnType == MobSpawnType.SPAWNER || pos.getY() <= ModConfigs.cachedServer.KOBOLD_SPAWN_MAX_HEIGHT);
 	}
 
 	@Override

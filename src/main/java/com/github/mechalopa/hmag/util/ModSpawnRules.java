@@ -2,6 +2,8 @@ package com.github.mechalopa.hmag.util;
 
 import java.util.Random;
 
+import com.github.mechalopa.hmag.ModConfigs;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.EntityType;
@@ -12,29 +14,19 @@ import net.minecraft.world.level.ServerLevelAccessor;
 
 public class ModSpawnRules
 {
-	public static boolean checkMonsterSpawnOnGroundRules(EntityType<? extends Monster> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, Random random)
+	public static boolean checkMonsterSpawnCanSeeSkyRules(EntityType<? extends Monster> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, Random random)
 	{
 		return Monster.checkMonsterSpawnRules(type, levelAccessor, spawnType, pos, random) && (spawnType == MobSpawnType.SPAWNER || levelAccessor.canSeeSky(pos));
 	}
 
-	public static boolean checkMonsterSpawnOnUndergroundRules(EntityType<? extends Monster> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, Random random)
+	public static boolean checkMonsterSpawnCanNotSeeSkyRules(EntityType<? extends Monster> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, Random random)
 	{
 		return Monster.checkMonsterSpawnRules(type, levelAccessor, spawnType, pos, random) && (spawnType == MobSpawnType.SPAWNER || !levelAccessor.canSeeSky(pos));
 	}
 
-	public static boolean checkMonsterSpawnInLightOverY64Rules(EntityType<? extends Monster> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, Random random)
+	public static boolean checkSurfaceMonsterSpawnRules(EntityType<? extends Monster> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, Random random)
 	{
-		return Monster.checkMonsterSpawnRules(type, levelAccessor, spawnType, pos, random) && (spawnType == MobSpawnType.SPAWNER || pos.getY() >= 64);
-	}
-
-	public static boolean checkMonsterSpawnInLightUnderY32Rules(EntityType<? extends Monster> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, Random random)
-	{
-		return Monster.checkMonsterSpawnRules(type, levelAccessor, spawnType, pos, random) && (spawnType == MobSpawnType.SPAWNER || pos.getY() < 32);
-	}
-
-	public static boolean checkMonsterSpawnInLightUnderY0Rules(EntityType<? extends Monster> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, Random random)
-	{
-		return Monster.checkMonsterSpawnRules(type, levelAccessor, spawnType, pos, random) && (spawnType == MobSpawnType.SPAWNER || pos.getY() < 0);
+		return Monster.checkMonsterSpawnRules(type, levelAccessor, spawnType, pos, random) && (spawnType == MobSpawnType.SPAWNER || pos.getY() >= ModConfigs.cachedServer.SURFACE_MOB_SPAWN_MIN_HEIGHT);
 	}
 
 	public static boolean checkMobSpawnInLightRules(EntityType<? extends Mob> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, Random random)

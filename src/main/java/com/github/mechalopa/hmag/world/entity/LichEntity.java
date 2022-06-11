@@ -1,5 +1,7 @@
 package com.github.mechalopa.hmag.world.entity;
 
+import java.util.Random;
+
 import javax.annotation.Nonnull;
 
 import com.github.mechalopa.hmag.ModConfigs;
@@ -37,6 +39,7 @@ import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.monster.Vex;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.network.NetworkHooks;
 
@@ -129,28 +132,33 @@ public class LichEntity extends Monster implements IModMob, RangedAttackMob
 	}
 
 	@Override
-	public boolean isAlliedTo(Entity entityIn)
+	public boolean isAlliedTo(Entity entity)
 	{
-		if (entityIn == null)
+		if (entity == null)
 		{
 			return false;
 		}
-		else if (entityIn == this)
+		else if (entity == this)
 		{
 			return true;
 		}
-		else if (super.isAlliedTo(entityIn))
+		else if (super.isAlliedTo(entity))
 		{
 			return true;
 		}
-		else if (entityIn instanceof Vex)
+		else if (entity instanceof Vex)
 		{
-			return this.isAlliedTo(((Vex)entityIn).getOwner());
+			return this.isAlliedTo(((Vex)entity).getOwner());
 		}
 		else
 		{
 			return false;
 		}
+	}
+
+	public static boolean checkLichSpawnRules(EntityType<? extends LichEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, Random random)
+	{
+		return Monster.checkMonsterSpawnRules(type, levelAccessor, spawnType, pos, random) && (spawnType == MobSpawnType.SPAWNER || pos.getY() <= ModConfigs.cachedServer.LICH_SPAWN_MAX_HEIGHT);
 	}
 
 	@Override

@@ -1,5 +1,7 @@
 package com.github.mechalopa.hmag.world.entity;
 
+import java.util.Random;
+
 import javax.annotation.Nonnull;
 
 import com.github.mechalopa.hmag.ModConfigs;
@@ -18,6 +20,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -35,6 +38,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.network.NetworkHooks;
 
@@ -130,6 +134,11 @@ public class NecroticReaperEntity extends Monster implements IModMob
 		{
 			return false;
 		}
+	}
+
+	public static boolean checkNecroticReaperSpawnRules(EntityType<? extends NecroticReaperEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, Random random)
+	{
+		return Monster.checkMonsterSpawnRules(type, levelAccessor, spawnType, pos, random) && (spawnType == MobSpawnType.SPAWNER || pos.getY() <= ModConfigs.cachedServer.NECROTIC_REAPER_SPAWN_MAX_HEIGHT);
 	}
 
 	@Override

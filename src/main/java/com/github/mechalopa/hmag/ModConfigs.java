@@ -107,6 +107,13 @@ public class ModConfigs
 	public static ForgeConfigSpec.DoubleValue CRIMSON_SLAUGHTERER_SPAWN_CHANCE;
 	public static ForgeConfigSpec.DoubleValue SAVAGEFANG_SPAWN_CHANCE;
 
+	public static ForgeConfigSpec.IntValue SURFACE_MOB_SPAWN_MIN_HEIGHT;
+	public static ForgeConfigSpec.IntValue KOBOLD_SPAWN_MAX_HEIGHT;
+	public static ForgeConfigSpec.IntValue LICH_SPAWN_MAX_HEIGHT;
+	public static ForgeConfigSpec.IntValue OGRE_SPAWN_MAX_HEIGHT;
+	public static ForgeConfigSpec.IntValue SPIDER_NEST_SPAWN_MAX_HEIGHT;
+	public static ForgeConfigSpec.IntValue NECROTIC_REAPER_SPAWN_MAX_HEIGHT;
+
 	public static ForgeConfigSpec.ConfigValue<List<? extends String>> SPAWN_BIOME_BLACKLIST;
 	public static ForgeConfigSpec.ConfigValue<List<? extends String>> SPAWN_DIMENSION_BLACKLIST;
 	public static ForgeConfigSpec.ConfigValue<List<? extends String>> MOB_REPLACE_BIOME_BLACKLIST;
@@ -253,6 +260,17 @@ public class ModConfigs
 		GHASTLY_SEEKER_SPAWN_CHANCE = SERVER_BUILDER.defineInRange("ghastlySeekerSpawnChance", 0.05D, 0.0D, 1.0D);
 		CRIMSON_SLAUGHTERER_SPAWN_CHANCE = SERVER_BUILDER.defineInRange("crimsonSlaughtererSpawnChance", 0.375D, 0.0D, 1.0D);
 		SAVAGEFANG_SPAWN_CHANCE = SERVER_BUILDER.defineInRange("savagefangSpawnChance", 0.8D, 0.0D, 1.0D);
+
+		SERVER_BUILDER.pop();
+
+		SERVER_BUILDER.push("height");
+
+		SURFACE_MOB_SPAWN_MIN_HEIGHT = SERVER_BUILDER.defineInRange("surfaceMobSpawnMinHeight", 64, -64, 320);
+		KOBOLD_SPAWN_MAX_HEIGHT = SERVER_BUILDER.defineInRange("koboldSpawnMaxHeight", 31, -64, 320);
+		LICH_SPAWN_MAX_HEIGHT = SERVER_BUILDER.defineInRange("lichdSpawnMaxHeight", -1, -64, 320);
+		OGRE_SPAWN_MAX_HEIGHT = SERVER_BUILDER.defineInRange("ogreSpawnMaxHeight", -1, -64, 320);
+		SPIDER_NEST_SPAWN_MAX_HEIGHT = SERVER_BUILDER.defineInRange("spiderNestSpawnMaxHeight", -1, -64, 320);
+		NECROTIC_REAPER_SPAWN_MAX_HEIGHT = SERVER_BUILDER.defineInRange("necroticReaperSpawnMaxHeight", -1, -64, 320);
 
 		SERVER_BUILDER.pop();
 
@@ -413,6 +431,13 @@ public class ModConfigs
 		public static double CRIMSON_SLAUGHTERER_SPAWN_CHANCE;
 		public static double SAVAGEFANG_SPAWN_CHANCE;
 
+		public static int SURFACE_MOB_SPAWN_MIN_HEIGHT;
+		public static int KOBOLD_SPAWN_MAX_HEIGHT;
+		public static int LICH_SPAWN_MAX_HEIGHT;
+		public static int OGRE_SPAWN_MAX_HEIGHT;
+		public static int SPIDER_NEST_SPAWN_MAX_HEIGHT;
+		public static int NECROTIC_REAPER_SPAWN_MAX_HEIGHT;
+
 		public static List<? extends String> SPAWN_BIOME_BLACKLIST;
 		public static List<? extends String> SPAWN_DIMENSION_BLACKLIST;
 		public static List<? extends String> MOB_REPLACE_BIOME_BLACKLIST;
@@ -545,6 +570,13 @@ public class ModConfigs
 			GHASTLY_SEEKER_SPAWN_CHANCE = ModConfigs.GHASTLY_SEEKER_SPAWN_CHANCE.get();
 			CRIMSON_SLAUGHTERER_SPAWN_CHANCE = ModConfigs.CRIMSON_SLAUGHTERER_SPAWN_CHANCE.get();
 			SAVAGEFANG_SPAWN_CHANCE = ModConfigs.SAVAGEFANG_SPAWN_CHANCE.get();
+
+			SURFACE_MOB_SPAWN_MIN_HEIGHT = ModConfigs.SURFACE_MOB_SPAWN_MIN_HEIGHT.get();
+			KOBOLD_SPAWN_MAX_HEIGHT = ModConfigs.KOBOLD_SPAWN_MAX_HEIGHT.get();
+			LICH_SPAWN_MAX_HEIGHT = ModConfigs.LICH_SPAWN_MAX_HEIGHT.get();
+			OGRE_SPAWN_MAX_HEIGHT = ModConfigs.OGRE_SPAWN_MAX_HEIGHT.get();
+			SPIDER_NEST_SPAWN_MAX_HEIGHT = ModConfigs.SPIDER_NEST_SPAWN_MAX_HEIGHT.get();
+			NECROTIC_REAPER_SPAWN_MAX_HEIGHT = ModConfigs.NECROTIC_REAPER_SPAWN_MAX_HEIGHT.get();
 
 			SPAWN_BIOME_BLACKLIST = ModConfigs.SPAWN_BIOME_BLACKLIST.get();
 			SPAWN_DIMENSION_BLACKLIST = ModConfigs.SPAWN_DIMENSION_BLACKLIST.get();

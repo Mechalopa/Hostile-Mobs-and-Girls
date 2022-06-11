@@ -45,6 +45,7 @@ import net.minecraft.world.entity.monster.CaveSpider;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
@@ -214,6 +215,11 @@ public class SpiderNestEntity extends Monster implements IModMob
 
 		attacker.level.levelEvent(2004, attacker.blockPosition(), 0);
 		attacker.playSound(ModSoundEvents.SPIDER_NEST_SUMMON.get(), 1.0F, 1.0F);
+	}
+
+	public static boolean checkSpiderNestSpawnRules(EntityType<? extends SpiderNestEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, Random random)
+	{
+		return Monster.checkMonsterSpawnRules(type, levelAccessor, spawnType, pos, random) && (spawnType == MobSpawnType.SPAWNER || pos.getY() <= ModConfigs.cachedServer.SPIDER_NEST_SPAWN_MAX_HEIGHT);
 	}
 
 	@Override
