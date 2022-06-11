@@ -5,6 +5,7 @@ import java.util.Random;
 import javax.annotation.Nonnull;
 
 import com.github.mechalopa.hmag.ModConfigs;
+import com.github.mechalopa.hmag.util.ModTags;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -16,6 +17,7 @@ import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobSpawnType;
@@ -34,7 +36,6 @@ import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.RangedAttackMob;
-import net.minecraft.world.entity.monster.Strider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.SmallFireball;
 import net.minecraft.world.level.Level;
@@ -68,7 +69,9 @@ public class MeltyMonsterEntity extends Monster implements IModMob, RangedAttack
 	@Override
 	protected void registerGoals()
 	{
-		this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, Strider.class, 10.0F, 1.0D, 1.5D));
+		this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, LivingEntity.class, (p) -> {
+			return p.getType().is(ModTags.MELTY_MONSTER_AVOID_MOBS);
+		}, 10.0F, 1.0D, 1.5D, EntitySelector.NO_SPECTATORS::test));
 		this.goalSelector.addGoal(3, new MeltyMonsterEntity.GoToLavaGoal(this, 1.5D));
 		this.goalSelector.addGoal(5, new RangedAttackGoal(this, 1.0D, 30, 40, 8.0F));
 		this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0D));
@@ -76,7 +79,7 @@ public class MeltyMonsterEntity extends Monster implements IModMob, RangedAttack
 		this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
 		this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
 		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, (p) -> {
-			return !(p.getVehicle() instanceof Strider);
+			return !(p.getVehicle() != null && p.getType().is(ModTags.MELTY_MONSTER_AVOID_MOBS));
 		}));
 	}
 
