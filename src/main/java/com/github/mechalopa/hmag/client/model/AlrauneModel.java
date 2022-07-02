@@ -217,8 +217,8 @@ public class AlrauneModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 
 		PartDefinition rlpd = pd.getChild("right_leg");
 		PartDefinition llpd = pd.getChild("left_leg");
-		ModClientUtils.addC(rlpd, cd, "right_leg_part", 32, 64, -1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F, 0.0F, 6.0F, 0.0F, 0.5F);
-		ModClientUtils.addC(llpd, cd, "left_leg_part", 32, 64, -1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F, 0.0F, 6.0F, 0.0F, true, 0.5F);
+		ModClientUtils.addC(rlpd, cd, "right_leg_part", 32, 64, -1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F, 0.0F, 6.0F, 0.0F, 0.25F);
+		ModClientUtils.addC(llpd, cd, "left_leg_part", 32, 64, -1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F, 0.0F, 6.0F, 0.0F, true, 0.25F);
 		return md;
 	}
 
