@@ -275,14 +275,14 @@ public class MonolithEntity extends FlyingMob implements Enemy, IModMob, IBeamAt
 	}
 
 	@Override
-	public void setTarget(@Nullable LivingEntity entitylivingbaseIn)
+	public void setTarget(@Nullable LivingEntity livingEntity)
 	{
-		if (entitylivingbaseIn == null)
+		if (livingEntity == null)
 		{
 			this.setActiveAttackTarget(0);
 		}
 
-		super.setTarget(entitylivingbaseIn);
+		super.setTarget(livingEntity);
 	}
 
 	@Override
