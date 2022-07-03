@@ -39,8 +39,8 @@ import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.TemptGoal;
+import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.ResetUniversalAngerTargetGoal;
@@ -52,7 +52,6 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -72,7 +71,6 @@ public class GlaryadEntity extends Monster implements NeutralMob, IModMob
 	public GlaryadEntity(EntityType<? extends GlaryadEntity> type, Level worldIn)
 	{
 		super(type, worldIn);
-		this.setPathfindingMalus(BlockPathTypes.WATER, 0.0F);
 		this.xpReward = 12;
 	}
 
@@ -82,7 +80,7 @@ public class GlaryadEntity extends Monster implements NeutralMob, IModMob
 		this.goalSelector.addGoal(1, new FloatGoal(this));
 		this.goalSelector.addGoal(3, new MeleeAttackGoal(this, 1.2D, false));
 		this.goalSelector.addGoal(4, new GlaryadEntity.GlaryadTemptGoal(this, 1.0D, Ingredient.of(ModTags.GLARYAD_TEMPT_ITEMS)));
-		this.goalSelector.addGoal(5, new RandomStrollGoal(this, 1.0D));
+		this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
 		this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 3.0F, 1.0F));
 		this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Mob.class, 8.0F));
 		this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));

@@ -255,7 +255,7 @@ public class ModConfigs
 		IMP_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("impSpawnWeight", 5, 0, Integer.MAX_VALUE);
 		IMP_SPAWN_WEIGHT_IN_CRIMSON_FOREST = SERVER_BUILDER.defineInRange("impSpawnWeightInCrimsonForest", 2, 0, Integer.MAX_VALUE);
 		IMP_SPAWN_WEIGHT_IN_BASALT_DELTAS = SERVER_BUILDER.defineInRange("impSpawnWeightInBasaltDeltas", 2, 0, Integer.MAX_VALUE);
-		GLARYAD_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("glaryadSpawnWeight", 30, 0, Integer.MAX_VALUE);
+		GLARYAD_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("glaryadSpawnWeight", 50, 0, Integer.MAX_VALUE);
 
 		SERVER_BUILDER.pop();
 
