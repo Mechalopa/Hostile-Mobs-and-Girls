@@ -50,6 +50,7 @@ public class ModConfigs
 	public static ForgeConfigSpec.BooleanValue SAVAGEFANG_ATTACK_DAMAGED_MOBS;
 	public static ForgeConfigSpec.BooleanValue NECROTIC_REAPER_ATTACK_VILLAGERS;
 	public static ForgeConfigSpec.BooleanValue NECROTIC_REAPER_ATTACK_BABY_TURTLES;
+	public static ForgeConfigSpec.BooleanValue GLARYAD_REGEN;
 
 	public static ForgeConfigSpec.DoubleValue ZOMBIE_GIRL_REPLACE_CHANCE;
 	public static ForgeConfigSpec.DoubleValue HUSK_GIRL_REPLACE_CHANCE;
@@ -102,6 +103,7 @@ public class ModConfigs
 	public static ForgeConfigSpec.IntValue IMP_SPAWN_WEIGHT;
 	public static ForgeConfigSpec.IntValue IMP_SPAWN_WEIGHT_IN_CRIMSON_FOREST;
 	public static ForgeConfigSpec.IntValue IMP_SPAWN_WEIGHT_IN_BASALT_DELTAS;
+	public static ForgeConfigSpec.IntValue GLARYAD_SPAWN_WEIGHT;
 
 	public static ForgeConfigSpec.DoubleValue GHASTLY_SEEKER_SPAWN_CHANCE;
 	public static ForgeConfigSpec.DoubleValue CRIMSON_SLAUGHTERER_SPAWN_CHANCE;
@@ -192,6 +194,7 @@ public class ModConfigs
 		SAVAGEFANG_ATTACK_DAMAGED_MOBS = SERVER_BUILDER.define("savagefangAttackDamagedMobs", true);
 		NECROTIC_REAPER_ATTACK_VILLAGERS = SERVER_BUILDER.define("necroticReaperAttackVillagers", true);
 		NECROTIC_REAPER_ATTACK_BABY_TURTLES = SERVER_BUILDER.define("necroticReaperAttackBabyTurtles", true);
+		GLARYAD_REGEN = SERVER_BUILDER.define("enableGlaryadRegen", true);
 
 		SERVER_BUILDER.push("spawn");
 
@@ -252,6 +255,7 @@ public class ModConfigs
 		IMP_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("impSpawnWeight", 5, 0, Integer.MAX_VALUE);
 		IMP_SPAWN_WEIGHT_IN_CRIMSON_FOREST = SERVER_BUILDER.defineInRange("impSpawnWeightInCrimsonForest", 2, 0, Integer.MAX_VALUE);
 		IMP_SPAWN_WEIGHT_IN_BASALT_DELTAS = SERVER_BUILDER.defineInRange("impSpawnWeightInBasaltDeltas", 2, 0, Integer.MAX_VALUE);
+		GLARYAD_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("glaryadSpawnWeight", 30, 0, Integer.MAX_VALUE);
 
 		SERVER_BUILDER.pop();
 
@@ -374,6 +378,7 @@ public class ModConfigs
 		public static boolean SAVAGEFANG_ATTACK_DAMAGED_MOBS;
 		public static boolean NECROTIC_REAPER_ATTACK_VILLAGERS;
 		public static boolean NECROTIC_REAPER_ATTACK_BABY_TURTLES;
+		public static boolean GLARYAD_REGEN;
 
 		public static double ZOMBIE_GIRL_REPLACE_CHANCE;
 		public static double HUSK_GIRL_REPLACE_CHANCE;
@@ -426,6 +431,7 @@ public class ModConfigs
 		public static int IMP_SPAWN_WEIGHT;
 		public static int IMP_SPAWN_WEIGHT_IN_CRIMSON_FOREST;
 		public static int IMP_SPAWN_WEIGHT_IN_BASALT_DELTAS;
+		public static int GLARYAD_SPAWN_WEIGHT;
 
 		public static double GHASTLY_SEEKER_SPAWN_CHANCE;
 		public static double CRIMSON_SLAUGHTERER_SPAWN_CHANCE;
@@ -514,6 +520,7 @@ public class ModConfigs
 			SAVAGEFANG_ATTACK_DAMAGED_MOBS = ModConfigs.SAVAGEFANG_ATTACK_DAMAGED_MOBS.get();
 			NECROTIC_REAPER_ATTACK_VILLAGERS = ModConfigs.NECROTIC_REAPER_ATTACK_VILLAGERS.get();
 			NECROTIC_REAPER_ATTACK_BABY_TURTLES = ModConfigs.NECROTIC_REAPER_ATTACK_BABY_TURTLES.get();
+			GLARYAD_REGEN = ModConfigs.GLARYAD_REGEN.get();
 
 			ZOMBIE_GIRL_REPLACE_CHANCE = ModConfigs.ZOMBIE_GIRL_REPLACE_CHANCE.get();
 			HUSK_GIRL_REPLACE_CHANCE = ModConfigs.HUSK_GIRL_REPLACE_CHANCE.get();
@@ -566,6 +573,7 @@ public class ModConfigs
 			IMP_SPAWN_WEIGHT = ModConfigs.IMP_SPAWN_WEIGHT.get();
 			IMP_SPAWN_WEIGHT_IN_CRIMSON_FOREST = ModConfigs.IMP_SPAWN_WEIGHT_IN_CRIMSON_FOREST.get();
 			IMP_SPAWN_WEIGHT_IN_BASALT_DELTAS = ModConfigs.IMP_SPAWN_WEIGHT_IN_BASALT_DELTAS.get();
+			GLARYAD_SPAWN_WEIGHT = ModConfigs.GLARYAD_SPAWN_WEIGHT.get();
 
 			GHASTLY_SEEKER_SPAWN_CHANCE = ModConfigs.GHASTLY_SEEKER_SPAWN_CHANCE.get();
 			CRIMSON_SLAUGHTERER_SPAWN_CHANCE = ModConfigs.CRIMSON_SLAUGHTERER_SPAWN_CHANCE.get();

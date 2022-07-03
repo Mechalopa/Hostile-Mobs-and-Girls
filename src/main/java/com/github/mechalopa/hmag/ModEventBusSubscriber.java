@@ -21,6 +21,7 @@ import com.github.mechalopa.hmag.world.entity.EnderExecutorEntity;
 import com.github.mechalopa.hmag.world.entity.FortressKeeperEntity;
 import com.github.mechalopa.hmag.world.entity.GhastlySeekerEntity;
 import com.github.mechalopa.hmag.world.entity.GhostEntity;
+import com.github.mechalopa.hmag.world.entity.GlaryadEntity;
 import com.github.mechalopa.hmag.world.entity.HarpyEntity;
 import com.github.mechalopa.hmag.world.entity.HornetEntity;
 import com.github.mechalopa.hmag.world.entity.HuskGirlEntity;
@@ -189,6 +190,7 @@ public class ModEventBusSubscriber
 		SpawnPlacements.register(ModEntityTypes.NECROTIC_REAPER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, NecroticReaperEntity::checkNecroticReaperSpawnRules);
 		SpawnPlacements.register(ModEntityTypes.DODOMEKI.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules);
 		SpawnPlacements.register(ModEntityTypes.IMP.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkAnyLightMonsterSpawnRules);
+		SpawnPlacements.register(ModEntityTypes.GLARYAD.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, GlaryadEntity::checkGlaryadSpawnRules);
 	}
 
 	@SubscribeEvent
@@ -233,6 +235,7 @@ public class ModEventBusSubscriber
 		event.put(ModEntityTypes.NECROTIC_REAPER.get(), NecroticReaperEntity.createAttributes().build());
 		event.put(ModEntityTypes.DODOMEKI.get(), DodomekiEntity.createAttributes().build());
 		event.put(ModEntityTypes.IMP.get(), ImpEntity.createAttributes().build());
+		event.put(ModEntityTypes.GLARYAD.get(), GlaryadEntity.createAttributes().build());
 	}
 
 	private static void registerBrewingRecipe(Potion inputPotion, Item item, Potion outputPotion)

@@ -162,6 +162,7 @@ public class ModItems
 	public static final RegistryObject<Item> NECROTIC_REAPER_SPAWN_EGG = createSpawnEggRegistryObject("necrotic_reaper", ModEntityTypes.NECROTIC_REAPER, 0x6A4B54, 0xADB5A7);
 	public static final RegistryObject<Item> DODOMEKI_SPAWN_EGG = createSpawnEggRegistryObject("dodomeki", ModEntityTypes.DODOMEKI, 0x242121, 0xB3ACAB);
 	public static final RegistryObject<Item> IMP_SPAWN_EGG = createSpawnEggRegistryObject("imp", ModEntityTypes.IMP, 0x5E2E78, 0x4E181B);
+	public static final RegistryObject<Item> GLARYAD_SPAWN_EGG = createSpawnEggRegistryObject("glaryad", ModEntityTypes.GLARYAD, 0x70922D, 0xBA62CE);
 
 	@SubscribeEvent
 	public static void register(IEventBus eventBus)

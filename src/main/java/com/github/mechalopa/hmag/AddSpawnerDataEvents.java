@@ -137,6 +137,9 @@ public class AddSpawnerDataEvents
 					if (ModConfigs.cachedServer.DODOMEKI_SPAWN_WEIGHT > 0
 							&& BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.CONIFEROUS))
 						event.getSpawns().getSpawner(MobCategory.MONSTER).add(new SpawnerData(ModEntityTypes.DODOMEKI.get(), ModConfigs.cachedServer.DODOMEKI_SPAWN_WEIGHT, 1, 2));
+					if (ModConfigs.cachedServer.GLARYAD_SPAWN_WEIGHT > 0
+							&& biomeKey == Biomes.LUSH_CAVES)
+						event.getSpawns().getSpawner(MobCategory.MONSTER).add(new SpawnerData(ModEntityTypes.GLARYAD.get(), ModConfigs.cachedServer.GLARYAD_SPAWN_WEIGHT, 1, 2));
 
 					if (ModConfigs.cachedServer.MELTY_MONSTER_SPAWN_WEIGHT > 0)
 					{

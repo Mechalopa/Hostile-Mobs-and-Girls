@@ -11,12 +11,14 @@ import net.minecraft.world.level.block.Block;
 
 public class ModTags
 {
+	public static final TagKey<Block> GLARYADS_SPAWNABLE_ON = createBlockTag("glaryads_spawnable_on");
 	public static final TagKey<Block> OGRE_IMMUNE = createBlockTag("ogre_immune");
 
 	public static final TagKey<Item> CURSE_REMOVABLE_BLACKLIST = createItemTag("curse_removable_blacklist");
 	public static final TagKey<Item> CURSE_REMOVE_ITEMS = createItemTag("curse_remove_items");
 	public static final TagKey<Item> ENCHANTMENT_UPGRADE_ITEMS = createItemTag("enchantment_upgrade_items");
 	public static final TagKey<Item> ENCHANTMENT_UPGRADEABLE_BLACKLIST = createItemTag("enchantment_upgradeable_blacklist");
+	public static final TagKey<Item> GLARYAD_TEMPT_ITEMS = createItemTag("glaryad_tempt_items");
 	public static final TagKey<Item> INSOMNIA_ITEMS = createItemTag("insomnia_items");
 	public static final TagKey<Item> SUSPICIOUS_STEW_UPGRADE_ITEMS = createItemTag("suspicious_stew_upgrade_items");
 
