@@ -5,6 +5,7 @@ import java.util.Random;
 import javax.annotation.Nonnull;
 
 import com.github.mechalopa.hmag.ModConfigs;
+import com.github.mechalopa.hmag.util.ModTags;
 
 import net.minecraft.block.AbstractFireBlock;
 import net.minecraft.block.BlockState;
@@ -27,7 +28,6 @@ import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
 import net.minecraft.entity.ai.goal.RangedAttackGoal;
 import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
 import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.passive.StriderEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.SmallFireballEntity;
 import net.minecraft.fluid.Fluid;
@@ -68,7 +68,9 @@ public class MeltyMonsterEntity extends MonsterEntity implements IModMob, IRange
 	@Override
 	protected void registerGoals()
 	{
-		this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, StriderEntity.class, 10.0F, 1.0D, 1.5D));
+		this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, LivingEntity.class, 10.0F, 1.0D, 1.5D, (p) -> {
+			return ModTags.checkTagContains(ModTags.MELTY_MONSTER_AVOID_MOBS, p.getType());
+		}));
 		this.goalSelector.addGoal(3, new MeltyMonsterEntity.MoveToLavaGoal(this, 1.5D));
 		this.goalSelector.addGoal(5, new RangedAttackGoal(this, 1.0D, 30, 40, 8.0F));
 		this.goalSelector.addGoal(6, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
@@ -76,7 +78,7 @@ public class MeltyMonsterEntity extends MonsterEntity implements IModMob, IRange
 		this.goalSelector.addGoal(7, new LookRandomlyGoal(this));
 		this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
 		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, 10, true, false, (p) -> {
-			return !(p.getVehicle() instanceof StriderEntity);
+			return !ModTags.checkTagContains(ModTags.MELTY_MONSTER_AVOID_MOBS, p.getType());
 		}));
 	}
 

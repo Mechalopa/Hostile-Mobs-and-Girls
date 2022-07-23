@@ -38,6 +38,7 @@ public class ModTags
 	public static final ITag.INamedTag<EntityType<?>> ENDER_EXECUTOR_REPLACEABLES = makeEntityTag("ender_executor_replaceables");
 	public static final ITag.INamedTag<EntityType<?>> HARD_SNOWBALL_HURTS_EXTRA_TYPES = makeEntityTag("hard_snowball_hurts_extra_types");
 	public static final ITag.INamedTag<EntityType<?>> HUSK_GIRL_REPLACEABLES = makeEntityTag("husk_girl_replaceables");
+	public static final ITag.INamedTag<EntityType<?>> MELTY_MONSTER_AVOID_MOBS = makeEntityTag("melty_monster_avoid_mobs");
 	public static final ITag.INamedTag<EntityType<?>> MONOLITH_TARGET_BLACKLIST = makeEntityTag("monolith_target_blacklist");
 	public static final ITag.INamedTag<EntityType<?>> SAVAGEFANG_TARGET_BLACKLIST = makeEntityTag("savagefang_target_blacklist");
 	public static final ITag.INamedTag<EntityType<?>> SKELETON_GIRL_REPLACEABLES = makeEntityTag("skeleton_girl_replaceables");
