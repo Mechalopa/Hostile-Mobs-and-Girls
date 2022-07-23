@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "hmag:reinforcing_chain"
+    },
+    {
+      "item": "hmag:reinforcing_chain"
+    },
+    {
+      "item": "hmag:reinforcing_chain"
+    },
+    {
+      "item": "hmag:reinforcing_chain"
+    },
+    {
+      "tag": "hmag:reinforcing_chain_crafting_materials"
+    },
+    {
+      "item": "hmag:evil_crystal"
+    },
+    {
+      "tag": "forge:nuggets/diamond"
+    },
+    {
+      "tag": "forge:gems/amethyst"
+    },
+    {
+      "item": "minecraft:crying_obsidian"
+    }
+  ],
+  "result": {
+    "item": "hmag:multiplex_reinforcing_chain"
+  }
+}
