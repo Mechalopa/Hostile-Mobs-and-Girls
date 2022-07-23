@@ -137,7 +137,7 @@ public class AlrauneModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 
 	public static MeshDefinition createMesh(CubeDeformation cd)
 	{
-		MeshDefinition md = AbstractAdvancedGirlModel.createMesh(cd, 0.0F, 6);
+		MeshDefinition md = AbstractAdvancedGirlModel.createMesh(cd, 0.0F);
 		PartDefinition pd = md.getRoot();
 		ModClientUtils.addC(pd, cd, "right_arm", 40, 16, 0.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F, -5.0F, 2.0F, 0.0F);
 		ModClientUtils.addC(pd, cd, "left_arm", 40, 16, -2.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F, 5.0F, 2.0F, 0.0F, true);
