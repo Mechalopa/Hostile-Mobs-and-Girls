@@ -302,12 +302,12 @@ public class ArurauneModel<T extends MobEntity> extends AbstractGirlModel<T>
 		this.leftTentaclePartD.addChild(this.leftTentacleLeafD);
 
 		this.rightLegPart = new ModelRenderer(this, 32, 64);
-		this.rightLegPart.addBox(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F, modelSize + 0.5F);
+		this.rightLegPart.addBox(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F, modelSize + 0.25F);
 		this.rightLegPart.setPos(0.0F, 6.0F, 0.0F);
 		this.rightLeg.addChild(this.rightLegPart);
 		this.leftLegPart = new ModelRenderer(this, 32, 64);
 		this.leftLegPart.mirror = true;
-		this.leftLegPart.addBox(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F, modelSize + 0.5F);
+		this.leftLegPart.addBox(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F, modelSize + 0.25F);
 		this.leftLegPart.setPos(0.0F, 6.0F, 0.0F);
 		this.leftLeg.addChild(this.leftLegPart);
 	}

@@ -45,7 +45,7 @@ public class InsomniaSwordItem extends ModSwordItem
 	{
 		if (!world.isClientSide)
 		{
-			if (entity.tickCount % 5 == 0 && entity instanceof ServerPlayerEntity)
+			if (entity instanceof ServerPlayerEntity)
 			{
 				CompoundNBT compoundnbt = stack.getOrCreateTag();
 				int level = !compoundnbt.contains(ModUtils.LEVEL_KEY) ? 0 : (int)compoundnbt.getByte(ModUtils.LEVEL_KEY);

@@ -45,7 +45,7 @@ public class NemesisBladeItem extends ModSwordItem
 	{
 		if (!world.isClientSide)
 		{
-			if (entity.tickCount % 5 == 0 && entity instanceof PlayerEntity)
+			if (entity instanceof PlayerEntity)
 			{
 				CompoundNBT compoundnbt = stack.getOrCreateTag();
 				int level = !compoundnbt.contains("hmag.level") ? 0 : (int)compoundnbt.getByte(ModUtils.LEVEL_KEY);

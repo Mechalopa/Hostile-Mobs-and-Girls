@@ -85,7 +85,9 @@ public class ModBiomeLoadingEvent
 					if (ModConfigs.cachedServer.DOGU_SPAWN_WEIGHT > 0
 							&& (BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.MESA)
 							|| BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.JUNGLE)
-							|| BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.MAGICAL)))
+							|| BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.MAGICAL)
+							|| biomeKey.location().toString().equals("magicalforest:magical_forest")
+							|| biomeKey.location().toString().equals("magicalforest:magical_forest_hills")))
 						event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.DOGU.get(), ModConfigs.cachedServer.DOGU_SPAWN_WEIGHT, 1, 1));
 					if (ModConfigs.cachedServer.REDCAP_SPAWN_WEIGHT > 0
 							&& BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.FOREST)
@@ -95,7 +97,9 @@ public class ModBiomeLoadingEvent
 							&& (BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.SWAMP)
 							|| (BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.MAGICAL)
 							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.DRY)
-							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.COLD))))
+							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.COLD))
+							|| biomeKey.location().toString().equals("magicalforest:magical_forest")
+							|| biomeKey.location().toString().equals("magicalforest:magical_forest_hills")))
 						event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.SLIME_GIRL.get(), ModConfigs.cachedServer.SLIME_GIRL_SPAWN_WEIGHT, 1, 2));
 					if (ModConfigs.cachedServer.DYSSOMNIA_SPAWN_WEIGHT > 0
 							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.FOREST)
