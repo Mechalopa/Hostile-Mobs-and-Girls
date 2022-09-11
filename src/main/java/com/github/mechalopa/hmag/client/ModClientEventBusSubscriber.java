@@ -85,27 +85,23 @@ import com.github.mechalopa.hmag.client.renderer.WitherGhostRenderer;
 import com.github.mechalopa.hmag.client.renderer.WitherSkeletonGirlRenderer;
 import com.github.mechalopa.hmag.client.renderer.ZombieGirlRenderer;
 import com.github.mechalopa.hmag.client.util.ModClientUtils;
-import com.github.mechalopa.hmag.registry.ModBlocks;
 import com.github.mechalopa.hmag.registry.ModEntityTypes;
 import com.github.mechalopa.hmag.registry.ModItems;
 import com.github.mechalopa.hmag.registry.ModParticleTypes;
 import com.github.mechalopa.hmag.world.item.ILevelItem;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.LayerDefinitions;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.particle.FlameParticle;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent.RegisterLayerDefinitions;
 import net.minecraftforge.client.event.EntityRenderersEvent.RegisterRenderers;
-import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
+import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -119,9 +115,6 @@ public class ModClientEventBusSubscriber
 	@SubscribeEvent
 	public static void setupClient(final FMLClientSetupEvent event)
 	{
-		ItemBlockRenderTypes.setRenderLayer(ModBlocks.REINFORCED_GLASS.get(), RenderType.cutout());
-		ItemBlockRenderTypes.setRenderLayer(ModBlocks.TINTED_REINFORCED_GLASS.get(), RenderType.translucent());
-
 		event.enqueueWork(() -> {
 			ItemProperties.register(ModItems.INSOMNIA_FRUIT.get(), new ResourceLocation("level"), (stack, world, livingentity, seed) -> {
 				final int i = ILevelItem.getItemLevel(stack);
@@ -273,10 +266,9 @@ public class ModClientEventBusSubscriber
 	}
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
-	public static void registerParticleFactories(final ParticleFactoryRegisterEvent event)
+	public static void registerParticleProviders(final RegisterParticleProvidersEvent event)
 	{
-		Minecraft minecraft = Minecraft.getInstance();
-		minecraft.particleEngine.register(ModParticleTypes.ENCHANTMENT_RUNE.get(), EnchantmentRuneParticle.Provider::new);
-		minecraft.particleEngine.register(ModParticleTypes.NEMESIS_FLAME.get(), FlameParticle.Provider::new);
+		event.register(ModParticleTypes.ENCHANTMENT_RUNE.get(), EnchantmentRuneParticle.Provider::new);
+		event.register(ModParticleTypes.NEMESIS_FLAME.get(), FlameParticle.Provider::new);
 	}
 }

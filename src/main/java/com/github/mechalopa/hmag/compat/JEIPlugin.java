@@ -111,7 +111,8 @@ public class JEIPlugin implements IModPlugin
 
 									if (!stacks.isEmpty())
 									{
-										ResourceLocation id = new ResourceLocation(HMaG.MODID, "jei." + recipe.getId().getPath() + "." + enchantment.getRegistryName().getNamespace() + "." + enchantment.getRegistryName().getPath());
+										ResourceLocation enchid = ForgeRegistries.ENCHANTMENTS.getKey(enchantment);
+										ResourceLocation id = new ResourceLocation(HMaG.MODID, "jei." + recipe.getId().getPath() + "." + enchid.getNamespace() + "." + enchid.getPath());
 										UpgradeRecipe recipe1 = new UpgradeRecipe(id, Ingredient.of(stacks.stream()), ingredient, stack1);
 										smithingRecipes.add(recipe1);
 									}

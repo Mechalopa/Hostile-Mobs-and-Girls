@@ -3,7 +3,6 @@ package com.github.mechalopa.hmag.world.entity;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.EnumSet;
-import java.util.Random;
 
 import javax.annotation.Nonnull;
 
@@ -271,7 +270,7 @@ public class DyssomniaEntity extends FlyingMob implements Enemy, IModMob
 		attacker.playSound(ModSoundEvents.DYSSOMNIA_SUMMON.get(), 5.0F, 1.0F);
 	}
 
-	public static boolean checkDyssomniaSpawnRules(EntityType<DyssomniaEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, Random randomIn)
+	public static boolean checkDyssomniaSpawnRules(EntityType<DyssomniaEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, RandomSource randomIn)
 	{
 		return ModSpawnRules.checkMobSpawnInLightRules(type, levelAccessor, spawnType, pos, randomIn) && (spawnType == MobSpawnType.SPAWNER || (levelAccessor.canSeeSky(pos) && randomIn.nextFloat() < levelAccessor.getMoonBrightness()));
 	}

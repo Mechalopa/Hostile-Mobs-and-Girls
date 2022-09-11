@@ -13,14 +13,6 @@
     {
       "id": "foodexpansion:bat_wing",
       "required": false
-    },
-    {
-      "id": "biomemakeover:bat_wing",
-      "required": false
-    },
-    {
-      "id": "biomemakeover:blightbat_wing",
-      "required": false
     }
   ]
 }

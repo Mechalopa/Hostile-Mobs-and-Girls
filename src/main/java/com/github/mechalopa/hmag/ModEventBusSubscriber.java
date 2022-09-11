@@ -62,12 +62,12 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.registries.RegisterEvent;
 
 @Mod.EventBusSubscriber(modid = HMaG.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEventBusSubscriber
@@ -136,7 +136,7 @@ public class ModEventBusSubscriber
 //	public void onServerStarting(FMLServerStartingEvent event){}
 
 	@SubscribeEvent
-	public static void registerItems(final RegistryEvent.Register<Item> event)
+	public static void registerItems(final RegisterEvent.RegisterHelper<Item> event)
 	{
 		ComposterBlock.COMPOSTABLES.put(ModItems.LEMON.get(), 0.65F);
 		ComposterBlock.COMPOSTABLES.put(ModItems.CUREBERRY.get(), 0.3F);
@@ -149,7 +149,7 @@ public class ModEventBusSubscriber
 	}
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
-	public static void registerEntities(final RegistryEvent.Register<EntityType<?>> event)
+	public static void registerEntities(final RegisterEvent.RegisterHelper<EntityType<?>> event)
 	{
 		SpawnPlacements.register(ModEntityTypes.ZOMBIE_GIRL.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
 		SpawnPlacements.register(ModEntityTypes.HUSK_GIRL.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkMonsterSpawnCanSeeSkyRules);

@@ -1,7 +1,5 @@
 package com.github.mechalopa.hmag.world.entity;
 
-import java.util.Random;
-
 import javax.annotation.Nonnull;
 
 import com.github.mechalopa.hmag.ModConfigs;
@@ -15,6 +13,7 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntitySelector;
@@ -154,7 +153,7 @@ public class MeltyMonsterEntity extends Monster implements IModMob, RangedAttack
 		this.playSound(SoundEvents.BLAZE_SHOOT, 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
 	}
 
-	public static boolean checkMeltyMonsterSpawnRules(EntityType<MeltyMonsterEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, Random randomIn)
+	public static boolean checkMeltyMonsterSpawnRules(EntityType<MeltyMonsterEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, RandomSource randomIn)
 	{
 		BlockPos.MutableBlockPos blockpos$mutable = pos.mutable();
 
