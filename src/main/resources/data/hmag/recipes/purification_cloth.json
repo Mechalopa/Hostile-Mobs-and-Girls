@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "hmag:lich_cloth"
+    },
+    {
+      "item": "hmag:soul_powder"
+    },
+    {
+      "item": "minecraft:phantom_membrane"
+    },
+    {
+      "tag": "forge:gems/amethyst"
+    },
+    {
+      "tag": "hmag:milk"
+    }
+  ],
+  "result": {
+    "item": "hmag:purification_cloth",
+    "count": 3
+  }
+}

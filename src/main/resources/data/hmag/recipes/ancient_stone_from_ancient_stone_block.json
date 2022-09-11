@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "hmag:ancient_stone_block"
+    }
+  ],
+  "result": {
+    "item": "hmag:ancient_stone",
+    "count": 4
+  }
+}

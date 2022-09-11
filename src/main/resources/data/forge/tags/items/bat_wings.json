@@ -1,0 +1,26 @@
+{
+  "replace": false,
+  "values": [
+    "hmag:bat_wing",
+    {
+      "id": "forbidden_arcanus:bat_wing",
+      "required": false
+    },
+    {
+      "id": "reliquary:bat_wing",
+      "required": false
+    },
+    {
+      "id": "foodexpansion:bat_wing",
+      "required": false
+    },
+    {
+      "id": "biomemakeover:bat_wing",
+      "required": false
+    },
+    {
+      "id": "biomemakeover:blightbat_wing",
+      "required": false
+    }
+  ]
+}

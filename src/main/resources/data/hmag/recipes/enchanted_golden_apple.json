@@ -1,0 +1,43 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:golden_apple"
+    },
+    {
+      "tag": "forge:storage_blocks/gold"
+    },
+    {
+      "tag": "forge:storage_blocks/gold"
+    },
+    {
+      "tag": "forge:storage_blocks/gold"
+    },
+    {
+      "tag": "forge:storage_blocks/gold"
+    },
+    {
+      "tag": "hmag:dragon_materials"
+    },
+    {
+      "tag": "forge:nuggets/netherite_scrap"
+    },
+    [
+      {
+        "item": "hmag:lich_cloth"
+      },
+      {
+        "item": "hmag:dyssomnia_skin"
+      },
+      {
+        "item": "hmag:mysterious_petal"
+      }
+    ],
+    {
+      "item": "hmag:lightning_particle"
+    }
+  ],
+  "result": {
+    "item": "minecraft:enchanted_golden_apple"
+  }
+}

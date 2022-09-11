@@ -1,0 +1,71 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cagedmobs"
+    }
+  ],
+  "type": "cagedmobs:mob_data",
+  "entity": "hmag:banshee",
+  "samplerTier": 2,
+  "environments": ["cave"],
+  "growTicks": 1800,
+  "results": [
+    {
+      "chance": 0.7,
+      "output": {
+        "item": "hmag:soul_powder"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.4,
+      "output": {
+        "item": "minecraft:allium"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.4,
+      "output": {
+        "item": "hmag:lemon"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:pumpkin_pie"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.025,
+      "output": {
+        "item": "minecraft:gold_ingot"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.3,
+      "output": {
+        "item": "minecraft:iron_nugget"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.1,
+      "output": {
+        "item": "hmag:copper_nugget"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    }
+  ]
+}

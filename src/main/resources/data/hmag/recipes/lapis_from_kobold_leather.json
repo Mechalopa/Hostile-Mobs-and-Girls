@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:gems/quartz"
+    },
+    {
+      "item": "hmag:kobold_leather"
+    }
+  ],
+  "result": {
+    "item": "minecraft:lapis_lazuli"
+  }
+}

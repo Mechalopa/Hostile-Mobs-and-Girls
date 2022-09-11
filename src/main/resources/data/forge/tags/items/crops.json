@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:crops/apple",
+    "#forge:crops/lemon",
+    "#forge:crops/cureberry",
+    "#forge:crops/randomberry",
+    "#forge:crops/exp_berry"
+  ]
+}

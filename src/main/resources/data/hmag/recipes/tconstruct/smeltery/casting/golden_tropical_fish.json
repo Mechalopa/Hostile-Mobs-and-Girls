@@ -1,0 +1,19 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "type": "tconstruct:casting_table",
+  "cast": {
+    "item": "minecraft:tropical_fish"
+  },
+  "cast_consumed": true,
+  "fluid": {
+    "tag": "forge:molten_gold",
+    "amount": 1152
+  },
+  "result": "hmag:golden_tropical_fish",
+  "cooling_time": 161
+}

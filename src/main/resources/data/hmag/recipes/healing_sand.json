@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X#Y",
+    "#Z#",
+    "Y#X"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:soul_sand"
+    },
+    "X": {
+      "item": "minecraft:sugar"
+    },
+    "Y": {
+      "item": "minecraft:glistering_melon_slice"
+    },
+    "Z": {
+      "item": "hmag:cubic_nucleus"
+    }
+  },
+  "result": {
+    "item": "hmag:healing_sand",
+    "count": 4
+  }
+}

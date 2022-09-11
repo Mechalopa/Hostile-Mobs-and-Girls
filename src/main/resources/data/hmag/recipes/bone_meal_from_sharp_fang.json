@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "hmag:sharp_fang"
+    }
+  ],
+  "result": {
+    "item": "minecraft:bone_meal",
+    "count": 2
+  }
+}

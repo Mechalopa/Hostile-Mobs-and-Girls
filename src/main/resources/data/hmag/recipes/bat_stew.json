@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:bat_wings"
+    },
+    {
+      "tag": "hmag:bat_stew_crafting_vegetables"
+    },
+    {
+      "tag": "forge:crops/wheat"
+    },
+    {
+      "item": "minecraft:bowl"
+    }
+  ],
+  "result": {
+    "item": "hmag:bat_stew"
+  }
+}

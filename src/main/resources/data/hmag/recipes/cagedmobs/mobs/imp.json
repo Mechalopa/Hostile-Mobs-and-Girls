@@ -1,0 +1,87 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cagedmobs"
+    }
+  ],
+  "type": "cagedmobs:mob_data",
+  "entity": "hmag:imp",
+  "samplerTier": 2,
+  "environments": ["nether"],
+  "growTicks": 1800,
+  "results": [
+    {
+      "chance": 0.5,
+      "output": {
+        "item": "minecraft:brown_mushroom"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.5,
+      "output": {
+        "item": "minecraft:red_mushroom"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "hmag:golden_fork"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.025,
+      "output": {
+        "item": "minecraft:apple"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.025,
+      "output": {
+        "item": "minecraft:gilded_blackstone"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.025,
+      "output": {
+        "item": "minecraft:experience_bottle"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.1,
+      "output": {
+        "item": "minecraft:quartz"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.2,
+      "output": {
+        "item": "hmag:copper_nugget"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.1,
+      "output": {
+        "item": "minecraft:gold_nugget"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    }
+  ]
+}

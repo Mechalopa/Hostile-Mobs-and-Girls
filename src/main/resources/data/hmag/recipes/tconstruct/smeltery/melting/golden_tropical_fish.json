@@ -1,0 +1,18 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "hmag:golden_tropical_fish"
+  },
+  "result": {
+    "fluid": "tconstruct:molten_gold",
+    "amount": 1152
+  },
+  "temperature": 700,
+  "time": 161
+}

@@ -1,0 +1,33 @@
+{
+  "type": "hmag:additional_entity_loot",
+  "conditions": [
+    {
+      "condition": "minecraft:entity_properties",
+      "entity": "this",
+      "predicate": {
+        "type": "minecraft:elder_guardian"
+      }
+    },
+    {
+      "condition": "minecraft:killed_by_player"
+    }
+  ],
+  "functions": [
+    {
+      "function": "minecraft:set_count",
+      "count": {
+        "min": 0.0,
+        "max": 1.0,
+        "type": "minecraft:uniform"
+      }
+    },
+    {
+      "function": "minecraft:looting_enchant",
+      "count": {
+        "min": 0.0,
+        "max": 1.0
+      }
+    }
+  ],
+  "addition": "hmag:ancient_stone"
+}

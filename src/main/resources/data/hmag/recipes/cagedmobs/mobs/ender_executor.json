@@ -1,0 +1,63 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cagedmobs"
+    }
+  ],
+  "type": "cagedmobs:mob_data",
+  "entity": "hmag:ender_executor",
+  "samplerTier": 2,
+  "environments": ["end"],
+  "growTicks": 1800,
+  "results": [
+    {
+      "chance": 0.7,
+      "output": {
+        "item": "minecraft:ender_pearl"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.25,
+      "output": {
+        "item": "hmag:ender_plasm"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "hmag:evil_crystal_fragment"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:end_stone"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:stone_sword"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.4,
+      "output": {
+        "item": "hmag:diamond_fragment"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    }
+  ]
+}

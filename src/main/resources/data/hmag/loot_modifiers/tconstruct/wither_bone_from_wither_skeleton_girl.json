@@ -1,0 +1,15 @@
+{
+  "type": "hmag:replace_loot",
+  "conditions": [
+    {
+      "condition": "hmag:mod_loaded",
+      "modid": "tconstruct"
+    },
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "hmag:entities/wither_skeleton_girl"
+    }
+  ],
+  "original": "minecraft:bone",
+  "replacement": "tconstruct:necrotic_bone"
+}

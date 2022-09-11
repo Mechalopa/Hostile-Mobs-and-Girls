@@ -1,0 +1,6 @@
+{
+  "parent": "hmag:item/crimson_bow",
+  "textures": {
+    "layer0": "hmag:item/crimson_bow_pulling_1"
+  }
+}

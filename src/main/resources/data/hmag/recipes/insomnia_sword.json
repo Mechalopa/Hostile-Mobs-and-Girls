@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "EDD",
+    "YXD",
+    "BYE"
+  ],
+  "key": {
+    "D": {
+      "tag": "forge:gems/diamond"
+    },
+    "B": {
+      "tag": "forge:bones"
+    },
+    "E": {
+      "item": "hmag:evil_crystal"
+    },
+    "X": {
+      "tag": "forge:gems/emerald"
+    },
+    "Y": {
+      "item": "hmag:dyssomnia_skin"
+    }
+  },
+  "result": {
+    "item": "hmag:insomnia_sword"
+  }
+}

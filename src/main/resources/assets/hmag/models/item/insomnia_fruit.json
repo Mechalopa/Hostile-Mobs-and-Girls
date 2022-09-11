@@ -1,0 +1,20 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "hmag:item/insomnia_fruit"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "level": 1.0
+      },
+      "model": "hmag:item/insomnia_fruit_1"
+    },
+    {
+      "predicate": {
+        "level": 2.0
+      },
+      "model": "hmag:item/insomnia_fruit_2"
+    }
+  ]
+}

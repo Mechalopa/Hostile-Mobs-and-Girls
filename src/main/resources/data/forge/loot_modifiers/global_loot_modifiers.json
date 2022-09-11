@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "entries": [
+    "hmag:ancient_stone_from_elder_guardian",
+    "hmag:bat_wing_from_bat",
+    "hmag:lightning_particle_from_powered_creeper",
+    "hmag:tconstruct/wither_bone_from_wither_skeleton_girl"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "#X#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:soul_sand"
+    },
+    "X": {
+      "tag": "hmag:wither_materials"
+    }
+  },
+  "result": {
+    "item": "hmag:wither_sand",
+    "count": 4
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    [
+      {
+        "item": "hmag:reinforced_block"
+      },
+      {
+        "item": "hmag:tinted_reinforced_glass"
+      }
+    ],
+    {
+      "tag": "forge:glass/colorless"
+    }
+  ],
+  "result": {
+    "item": "hmag:reinforced_glass"
+  }
+}

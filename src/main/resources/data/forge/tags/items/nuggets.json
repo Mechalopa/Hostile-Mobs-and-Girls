@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:nuggets/copper",
+    "#forge:nuggets/diamond",
+    "#forge:nuggets/emerald",
+    "#forge:nuggets/netherite_scrap",
+    "#forge:nuggets/netherite",
+    "#forge:nuggets/nether_star"
+  ]
+}

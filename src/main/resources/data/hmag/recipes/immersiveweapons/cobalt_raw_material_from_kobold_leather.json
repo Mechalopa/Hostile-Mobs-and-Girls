@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "immersiveweapons:raw_cobalt"
+    }
+  ],
+  "pattern": [
+    " # ",
+    "#I#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "hmag:kobold_leather"
+    },
+    "I": {
+      "tag": "forge:raw_materials/iron"
+    }
+  },
+  "result": {
+    "item": "immersiveweapons:raw_cobalt"
+  }
+}

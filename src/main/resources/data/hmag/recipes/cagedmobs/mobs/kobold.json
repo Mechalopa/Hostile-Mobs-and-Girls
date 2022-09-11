@@ -1,0 +1,55 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cagedmobs"
+    }
+  ],
+  "type": "cagedmobs:mob_data",
+  "entity": "hmag:kobold",
+  "samplerTier": 2,
+  "environments": ["cave"],
+  "growTicks": 1800,
+  "results": [
+    {
+      "chance": 0.6,
+      "output": {
+        "item": "hmag:kobold_leather"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.4,
+      "output": {
+        "item": "minecraft:coal"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:stone_pickaxe"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.025,
+      "output": {
+        "item": "minecraft:raw_iron"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.4,
+      "output": {
+        "item": "minecraft:iron_nugget"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    }
+  ]
+}

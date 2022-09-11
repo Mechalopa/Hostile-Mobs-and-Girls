@@ -1,0 +1,28 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "farmersdelight"
+    }
+  ],
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    {
+      "tag": "forge:bat_wings"
+    },
+    {
+      "tag": "hmag:bat_stew_crafting_vegetables"
+    },
+    {
+      "tag": "forge:crops/wheat"
+    }
+  ],
+  "result": {
+    "item": "hmag:bat_stew"
+  },
+  "container": {
+    "item": "minecraft:bowl"
+  },
+  "experience": 0.35,
+  "cookingtime": 200
+}

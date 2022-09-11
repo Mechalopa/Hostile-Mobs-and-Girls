@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "hmag:banshee",
+    "hmag:drowned_girl",
+    "hmag:dyssomnia",
+    "hmag:ghost",
+    "hmag:husk_girl",
+    "hmag:lich",
+    "hmag:necrotic_reaper",
+    "hmag:skeleton_girl",
+    "hmag:stray_girl",
+    "hmag:wither_ghost",
+    "hmag:wither_skeleton_girl",
+    "hmag:zombie_girl"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:soul_torch"
+    },
+    {
+      "tag": "forge:dusts/blaze"
+    },
+    {
+      "item": "hmag:evil_crystal_fragment"
+    }
+  ],
+  "result": {
+    "item": "hmag:evil_flame"
+  }
+}

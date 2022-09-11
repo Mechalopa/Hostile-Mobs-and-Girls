@@ -1,0 +1,24 @@
+{
+  "replace": false,
+  "values": [
+    "hmag:kobold_leather",
+    "hmag:ogre_horn",
+    "hmag:ancient_stone",
+    "hmag:sharp_fang",
+    "hmag:burning_core",
+    "hmag:necrofiber",
+    "hmag:cubic_nucleus",
+    {
+      "id": "thermal:basalz_rod",
+      "required": false
+    },
+    {
+      "id": "thermal:blitz_rod",
+      "required": false
+    },
+    {
+      "id": "omnis:ravaged_scrap",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "parent": "hmag:item/shield",
+  "textures": {
+    "particle": "hmag:block/ancient_stone_block"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "blocking": 1
+      },
+      "model": "hmag:item/ancient_shield_blocking"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "type": "tconstruct:severing",
+  "entity": {
+    "type": "hmag:wither_skeleton_girl"
+  },
+  "result": {
+    "item": "tconstruct:necrotic_bone",
+    "count": 2
+  }
+}

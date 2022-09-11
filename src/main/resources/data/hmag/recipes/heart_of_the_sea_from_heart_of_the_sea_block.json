@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:storage_blocks/heart_of_the_sea"
+    }
+  ],
+  "result": {
+    "item": "minecraft:heart_of_the_sea",
+    "count": 9
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:axolotls_spawnable_on",
+    "#minecraft:dirt"
+  ]
+}

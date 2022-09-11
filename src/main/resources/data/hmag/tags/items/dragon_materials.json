@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:dragon_breath",
+    "#hmag:dragon_scales"
+  ]
+}

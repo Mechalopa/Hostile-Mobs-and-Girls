@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "hmag:drowned_girl",
+    "hmag:husk_girl",
+    "hmag:lich",
+    "hmag:kasha",
+    "hmag:necrotic_reaper",
+    "hmag:ogre",
+    "hmag:redcap",
+    "hmag:skeleton_girl",
+    "hmag:snow_canine",
+    "hmag:stray_girl",
+    "hmag:wither_skeleton_girl",
+    "hmag:zombie_girl"
+  ]
+}

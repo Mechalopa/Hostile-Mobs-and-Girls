@@ -1,0 +1,16 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "type": "tconstruct:severing",
+  "entity": {
+    "types": [
+      "hmag:slime_girl",
+      "hmag:magical_slime"
+    ]
+  },
+  "result": "minecraft:slime_ball"
+}

@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "hmag:reinforcing_chain",
+    "hmag:multiplex_reinforcing_chain",
+    "hmag:repulsion_gadget",
+    "hmag:evil_flame",
+    "hmag:evil_thorn"
+  ]
+}

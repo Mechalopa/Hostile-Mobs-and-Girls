@@ -1,0 +1,19 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "type": "tconstruct:entity_melting",
+  "entity": {
+    "types": [
+      "hmag:monolith"
+    ]
+  },
+  "result": {
+    "fluid": "tconstruct:seared_stone",
+    "amount": 16
+  },
+  "damage": 4
+}

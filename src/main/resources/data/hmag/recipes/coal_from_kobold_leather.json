@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:charcoal"
+    },
+    {
+      "item": "hmag:kobold_leather"
+    }
+  ],
+  "result": {
+    "item": "minecraft:coal"
+  }
+}

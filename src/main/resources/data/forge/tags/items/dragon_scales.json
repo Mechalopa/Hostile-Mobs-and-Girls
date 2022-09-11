@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "quark:dragon_scale",
+      "required": false
+    },
+    {
+      "id": "bountifulbaubles:ender_dragon_scale",
+      "required": false
+    },
+    {
+      "id": "cagedmobs:dragon_scale",
+      "required": false
+    },
+    {
+      "id": "tconstruct:dragon_scale",
+      "required": false
+    }
+  ]
+}

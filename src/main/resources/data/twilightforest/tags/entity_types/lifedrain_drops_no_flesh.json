@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "hmag:ghost",
+    "hmag:wither_ghost",
+    "hmag:lich",
+    "hmag:cursed_doll",
+    "hmag:jack_frost",
+    "hmag:dogu",
+    "hmag:slime_girl",
+    "hmag:magical_slime",
+    "hmag:monolith",
+    "hmag:fortress_keeper",
+    "hmag:necrotic_reaper"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cagedmobs"
+    }
+  ],
+  "type": "cagedmobs:mob_data",
+  "entity": "hmag:fortress_keeper",
+  "samplerTier": 2,
+  "environments": ["nether"],
+  "growTicks": 1800,
+  "results": [
+    {
+      "chance": 0.7,
+      "output": {
+        "item": "minecraft:nether_brick"
+      },
+      "minAmount": 1,
+      "maxAmount": 5
+    },
+    {
+      "chance": 0.375,
+      "output": {
+        "item": "hmag:burning_core"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "minecraft:magma_block"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.08,
+      "output": {
+        "item": "minecraft:iron_nugget"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.32,
+      "output": {
+        "item": "minecraft:gold_nugget"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "hmag:evil_crystal_block",
+    "hmag:ancient_stone_block",
+    "hmag:nether_star_block",
+    "hmag:heart_of_the_sea_block",
+    "hmag:reinforced_block",
+    "hmag:reinforced_glass",
+    "hmag:tinted_reinforced_glass"
+  ]
+}

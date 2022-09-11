@@ -1,0 +1,66 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cagedmobs"
+    }
+  ],
+  "type": "cagedmobs:mob_data",
+  "entity": "hmag:catoblepas",
+  "samplerTier": 2,
+  "environments": ["cave"],
+  "growTicks": 1200,
+  "results": [
+    {
+      "chance": 0.6,
+      "output": {
+        "item": "minecraft:leather"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.5,
+      "output": {
+        "item": "minecraft:beef"
+      },
+      "output_cooked": {
+        "item": "minecraft:cooked_beef"
+      },
+      "minAmount": 1,
+      "maxAmount": 3
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "hmag:randomberry"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.025,
+      "output": {
+        "item": "minecraft:iron_ingot"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.3,
+      "output": {
+        "item": "minecraft:iron_nugget"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.1,
+      "output": {
+        "item": "hmag:copper_nugget"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    }
+  ]
+}
