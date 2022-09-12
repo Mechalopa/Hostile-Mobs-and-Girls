@@ -1,15 +1,10 @@
 package com.github.mechalopa.hmag.util;
 
-import java.util.List;
-
 import javax.annotation.Nonnull;
 
 import com.github.mechalopa.hmag.HMaG;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
@@ -26,10 +21,9 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TridentItem;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionUtils;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 
@@ -108,14 +102,20 @@ public class ModUtils
 		{
 			return false;
 		}
-		else if (levelAccessor.getBrightness(LightLayer.BLOCK, pos) > 0)
-		{
-			return false;
-		}
 		else
 		{
-			int i = levelAccessor.getLevel().isThundering() ? levelAccessor.getMaxLocalRawBrightness(pos, 10) : levelAccessor.getMaxLocalRawBrightness(pos);
-			return i <= randomIn.nextInt(8);
+			DimensionType dimensiontype = levelAccessor.dimensionType();
+			int i = dimensiontype.monsterSpawnBlockLightLimit();
+			
+			if (i < 15 && levelAccessor.getBrightness(LightLayer.BLOCK, pos) > i)
+			{
+				return false;
+			}
+			else
+			{
+				int j = levelAccessor.getLevel().isThundering() ? levelAccessor.getMaxLocalRawBrightness(pos, 10) : levelAccessor.getMaxLocalRawBrightness(pos);
+				return j <= dimensiontype.monsterSpawnLightTest().sample(randomIn);
+			}
 		}
 	}
 
@@ -261,39 +261,39 @@ public class ModUtils
 		return PotionUtils.setPotion(new ItemStack(containerItem), potion);
 	}
 
-	public static boolean checkBiomeList(Level worldIn, BlockPos pos, List<? extends String> list)
-	{
-		if (worldIn != null)
-		{
-			Holder<Biome> biome = worldIn.getBiome(pos);
-
-			if (biome != null)
-			{
-				return checkList(biome.value().getRegistryName(), list);
-			}
-		}
-
-		return false;
-	}
-
-	public static boolean checkDimensionList(Level worldIn, List<? extends String> list)
-	{
-		if (worldIn != null)
-			return checkDimensionList(worldIn.dimension(), list);
-		return false;
-	}
-
-	public static boolean checkDimensionList(ResourceKey<Level> key, List<? extends String> list)
-	{
-		if (key != null)
-			return checkList(key.location(), list);
-		return false;
-	}
-
-	public static boolean checkList(ResourceLocation r, List<? extends String> list)
-	{
-		if (r != null && list != null && !list.isEmpty() && list.contains(r.toString()))
-			return true;
-		return false;
-	}
+//	public static boolean checkBiomeList(Level worldIn, BlockPos pos, List<? extends String> list)
+//	{
+//		if (worldIn != null)
+//		{
+//			Holder<Biome> biome = worldIn.getBiome(pos);
+//
+//			if (biome != null)
+//			{
+//				return checkList(biome.value().getRegistryName(), list);
+//			}
+//		}
+//
+//		return false;
+//	}
+//
+//	public static boolean checkDimensionList(Level worldIn, List<? extends String> list)
+//	{
+//		if (worldIn != null)
+//			return checkDimensionList(worldIn.dimension(), list);
+//		return false;
+//	}
+//
+//	public static boolean checkDimensionList(ResourceKey<Level> key, List<? extends String> list)
+//	{
+//		if (key != null)
+//			return checkList(key.location(), list);
+//		return false;
+//	}
+//
+//	public static boolean checkList(ResourceLocation r, List<? extends String> list)
+//	{
+//		if (r != null && list != null && !list.isEmpty() && list.contains(r.toString()))
+//			return true;
+//		return false;
+//	}
 }

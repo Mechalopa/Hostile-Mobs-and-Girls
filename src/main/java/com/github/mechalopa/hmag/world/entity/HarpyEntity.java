@@ -9,6 +9,7 @@ import com.github.mechalopa.hmag.registry.ModSoundEvents;
 import com.github.mechalopa.hmag.world.entity.ai.goal.LeapAtTargetGoal2;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -16,6 +17,7 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
@@ -39,11 +41,13 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ForgeMod;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.network.NetworkHooks;
 
 public class HarpyEntity extends Monster implements IModMob
@@ -148,39 +152,39 @@ public class HarpyEntity extends Monster implements IModMob
 		}
 		else
 		{
-//			ResourceKey<Biome> biomeKey = ResourceKey.create(ForgeRegistries.Keys.BIOMES, worldIn.getBiome(this.blockPosition()).value().getRegistryName());
-//
-//			if (biomeKey != null)
-//			{
-//				if (BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.COLD))
-//				{
-//					this.setVariant(this.getRandom().nextInt(4) == 0 ? (this.getRandom().nextInt(3) + 2) : 5);
-//				}
-//				else if (BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.MESA))
-//				{
-//					this.setVariant(this.getRandom().nextInt(5) == 0 ? 3 : (this.getRandom().nextInt(3) == 0 ? 0 : (this.getRandom().nextInt(2) + 1)));
-//				}
-//				else if (BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.SANDY))
-//				{
-//					this.setVariant(this.getRandom().nextInt(5) == 0 ? 5 : (this.getRandom().nextInt(3) == 0 ? 1 : (this.getRandom().nextBoolean() ? 0 : 2)));
-//				}
-//				else if (BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.SAVANNA))
-//				{
-//					this.setVariant(this.getRandom().nextInt(6) == 0 ? 4 : this.getRandom().nextInt(3));
-//				}
-//				else if (BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.PLAINS))
-//				{
-//					this.setVariant(this.getRandom().nextInt(3) == 0 ? (this.getRandom().nextBoolean() ? 1 : 4) : 3);
-//				}
-//				else
-//				{
-//					this.setVariant(this.getRandom().nextBoolean() ? 0 : 3);
-//				}
-//			}
-//			else
-//			{
-//				this.setVariant(randomsource.nextBoolean() ? 0 : 3);
-//			}
+			Holder<Biome> holder = worldIn.getBiome(this.blockPosition());
+
+			if (holder != null)
+			{
+				if (holder.is(Tags.Biomes.IS_COLD))
+				{
+					this.setVariant(randomsource.nextInt(4) == 0 ? (randomsource.nextInt(3) + 2) : 5);
+				}
+				else if (holder.is(BiomeTags.IS_BADLANDS))
+				{
+					this.setVariant(randomsource.nextInt(5) == 0 ? 3 : (randomsource.nextInt(3) == 0 ? 0 : (randomsource.nextInt(2) + 1)));
+				}
+				else if (holder.is(Tags.Biomes.IS_SANDY))
+				{
+					this.setVariant(randomsource.nextInt(5) == 0 ? 5 : (randomsource.nextInt(3) == 0 ? 1 : (randomsource.nextBoolean() ? 0 : 2)));
+				}
+				else if (holder.is(BiomeTags.IS_SAVANNA))
+				{
+					this.setVariant(randomsource.nextInt(6) == 0 ? 4 : randomsource.nextInt(3));
+				}
+				else if (holder.is(Tags.Biomes.IS_PLAINS))
+				{
+					this.setVariant(randomsource.nextInt(3) == 0 ? (randomsource.nextBoolean() ? 1 : 4) : 3);
+				}
+				else
+				{
+					this.setVariant(randomsource.nextBoolean() ? 0 : 3);
+				}
+			}
+			else
+			{
+				this.setVariant(randomsource.nextBoolean() ? 0 : 3);
+			}
 		}
 
 		return spawnDataIn;

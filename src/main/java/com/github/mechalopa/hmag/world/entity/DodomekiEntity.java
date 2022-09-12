@@ -91,7 +91,7 @@ public class DodomekiEntity extends Monster implements IModMob
 			{
 				BlockPos pos = new BlockPos(this.getEyePosition(1.0F));
 
-				if (Math.max(this.level.getBrightness(LightLayer.SKY, pos) - ModClientUtils.getSkyDarken(this.level), this.level.getBrightness(LightLayer.BLOCK, pos)) < 7)
+				if (Math.max(this.level.getBrightness(LightLayer.SKY, pos) - ModClientUtils.getSkyDarken(this.level, 1.0F), this.level.getBrightness(LightLayer.BLOCK, pos)) < 7)
 				{
 					this.eyesGlowingAnimation = Math.min(1.0F, this.eyesGlowingAnimation + 0.025F);
 				}

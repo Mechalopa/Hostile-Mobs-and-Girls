@@ -7,7 +7,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.levelgen.structure.Structure;
 
 public class ModTags
 {
@@ -36,6 +38,10 @@ public class ModTags
 	public static final TagKey<EntityType<?>> WITHER_SKELETON_GIRL_REPLACEABLES = createEntityTypeTag("wither_skeleton_girl_replaceables");
 	public static final TagKey<EntityType<?>> ZOMBIE_GIRL_REPLACEABLES = createEntityTypeTag("zombie_girl_replaceables");
 
+	public static final TagKey<Biome> MOB_REPLACE_BIOME_BLACKLIST = createBiomeTag("mob_replace_biome_blacklist");
+
+	public static final TagKey<Structure> MONOLITHS_SPAWN_IN = createStructureTag("monoliths_spawn_in");
+
 	private static TagKey<Block> createBlockTag(String name)
 	{
 		return TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(HMaG.MODID, name));
@@ -49,5 +55,15 @@ public class ModTags
 	private static TagKey<EntityType<?>> createEntityTypeTag(String name)
 	{
 		return TagKey.create(Registry.ENTITY_TYPE_REGISTRY, new ResourceLocation(HMaG.MODID, name));
+	}
+
+	private static TagKey<Biome> createBiomeTag(String name)
+	{
+		return TagKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(HMaG.MODID, name));
+	}
+
+	private static TagKey<Structure> createStructureTag(String name)
+	{
+		return TagKey.create(Registry.STRUCTURE_REGISTRY, new ResourceLocation(HMaG.MODID, name));
 	}
 }

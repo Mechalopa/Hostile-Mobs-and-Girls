@@ -11,7 +11,7 @@ import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShieldItem;
-import net.minecraftforge.client.IItemRenderProperties;
+import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 
 public abstract class ModShieldItem extends ShieldItem
 {
@@ -33,14 +33,14 @@ public abstract class ModShieldItem extends ShieldItem
 	}
 
 	@Override
-	public void initializeClient(@Nonnull Consumer<IItemRenderProperties> consumer)
+	public void initializeClient(@Nonnull Consumer<IClientItemExtensions> consumer)
 	{
-		consumer.accept(new IItemRenderProperties()
+		consumer.accept(new IClientItemExtensions()
 		{
 			private BlockEntityWithoutLevelRenderer renderer;
 
 			@Override
-			public BlockEntityWithoutLevelRenderer getItemStackRenderer()
+			public BlockEntityWithoutLevelRenderer getCustomRenderer()
 			{
 				if (Minecraft.getInstance().getBlockEntityRenderDispatcher() != null && this.renderer == null)
 				{

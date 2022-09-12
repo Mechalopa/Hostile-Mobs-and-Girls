@@ -15,7 +15,6 @@ import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.util.ModUtils;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
@@ -59,7 +58,6 @@ import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -335,11 +333,8 @@ public class MonolithEntity extends FlyingMob implements Enemy, IModMob, IBeamAt
 				if (level instanceof ServerLevel)
 				{
 					ServerLevel serverlevel = (ServerLevel)level;
-					Registry<ConfiguredStructureFeature<?, ?>> registry = serverlevel.registryAccess().registryOrThrow(Registry.CONFIGURED_STRUCTURE_FEATURE_REGISTRY);
 
-					if (ChunkGenerator.allConfigurations(registry, StructureFeature.END_CITY).anyMatch((p) -> {
-						return serverlevel.structureFeatureManager().getStructureWithPieceAt(pos, p).isValid();
-					}))
+					if (serverlevel.structureManager().getStructureWithPieceAt(pos, ModTags.MONOLITHS_SPAWN_IN).isValid())
 					{
 						return true;
 					}

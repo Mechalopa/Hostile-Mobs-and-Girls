@@ -22,6 +22,7 @@ import com.github.mechalopa.hmag.world.item.enchantment.HealthBoostEnchantment;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -53,6 +54,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraftforge.common.BasicItemListing;
 import net.minecraftforge.event.ItemAttributeModifierEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
@@ -332,47 +335,54 @@ public class ModEvents
 
 		if (event.getEntity() instanceof IModMob)
 		{
-			if (ModUtils.checkDimensionList(event.getEntity().getCommandSenderWorld(), ModConfigs.cachedServer.SPAWN_DIMENSION_BLACKLIST))
-			{
-				event.setResult(Result.DENY);
-			}
+			//event.setResult(Result.DENY);
 		}
 
-		if (event.getSpawnReason() == MobSpawnType.NATURAL && !ModUtils.checkDimensionList(event.getEntity().getCommandSenderWorld(), ModConfigs.cachedServer.MOB_REPLACE_DIMENSION_BLACKLIST) && !ModUtils.checkBiomeList(event.getEntity().getCommandSenderWorld(), event.getEntity().blockPosition(), ModConfigs.cachedServer.MOB_REPLACE_BIOME_BLACKLIST))
+		if (event.getSpawnReason() == MobSpawnType.NATURAL)
 		{
-			LivingEntity livingentity = event.getEntity();
+			Level level = event.getEntity().getCommandSenderWorld();
 
-			if (ModConfigs.cachedServer.ZOMBIE_GIRL_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.ZOMBIE_GIRL_REPLACEABLES))
+			if (level != null)
 			{
-				putCheckingTag(livingentity);
-			}
-			else if (ModConfigs.cachedServer.HUSK_GIRL_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.HUSK_GIRL_REPLACEABLES))
-			{
-				putCheckingTag(livingentity);
-			}
-			else if (ModConfigs.cachedServer.DROWNED_GIRL_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.DROWNED_GIRL_REPLACEABLES))
-			{
-				putCheckingTag(livingentity);
-			}
-			else if (ModConfigs.cachedServer.SKELETON_GIRL_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.SKELETON_GIRL_REPLACEABLES))
-			{
-				putCheckingTag(livingentity);
-			}
-			else if (ModConfigs.cachedServer.WITHER_SKELETON_GIRL_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.WITHER_SKELETON_GIRL_REPLACEABLES))
-			{
-				putCheckingTag(livingentity);
-			}
-			else if (ModConfigs.cachedServer.STRAY_GIRL_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.STRAY_GIRL_REPLACEABLES))
-			{
-				putCheckingTag(livingentity);
-			}
-			else if (ModConfigs.cachedServer.CREEPER_GIRL_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.CREEPER_GIRL_REPLACEABLES))
-			{
-				putCheckingTag(livingentity);
-			}
-			else if (ModConfigs.cachedServer.ENDER_EXECUTOR_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.ENDER_EXECUTOR_REPLACEABLES))
-			{
-				putCheckingTag(livingentity);
+				Holder<Biome> holder = level.getBiome(event.getEntity().blockPosition());
+
+				if (!holder.containsTag(ModTags.MOB_REPLACE_BIOME_BLACKLIST))
+				{
+					LivingEntity livingentity = event.getEntity();
+		
+					if (ModConfigs.cachedServer.ZOMBIE_GIRL_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.ZOMBIE_GIRL_REPLACEABLES))
+					{
+						putCheckingTag(livingentity);
+					}
+					else if (ModConfigs.cachedServer.HUSK_GIRL_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.HUSK_GIRL_REPLACEABLES))
+					{
+						putCheckingTag(livingentity);
+					}
+					else if (ModConfigs.cachedServer.DROWNED_GIRL_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.DROWNED_GIRL_REPLACEABLES))
+					{
+						putCheckingTag(livingentity);
+					}
+					else if (ModConfigs.cachedServer.SKELETON_GIRL_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.SKELETON_GIRL_REPLACEABLES))
+					{
+						putCheckingTag(livingentity);
+					}
+					else if (ModConfigs.cachedServer.WITHER_SKELETON_GIRL_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.WITHER_SKELETON_GIRL_REPLACEABLES))
+					{
+						putCheckingTag(livingentity);
+					}
+					else if (ModConfigs.cachedServer.STRAY_GIRL_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.STRAY_GIRL_REPLACEABLES))
+					{
+						putCheckingTag(livingentity);
+					}
+					else if (ModConfigs.cachedServer.CREEPER_GIRL_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.CREEPER_GIRL_REPLACEABLES))
+					{
+						putCheckingTag(livingentity);
+					}
+					else if (ModConfigs.cachedServer.ENDER_EXECUTOR_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.ENDER_EXECUTOR_REPLACEABLES))
+					{
+						putCheckingTag(livingentity);
+					}
+				}
 			}
 		}
 	}

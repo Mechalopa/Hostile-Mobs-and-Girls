@@ -8,6 +8,7 @@ import javax.annotation.Nonnull;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
@@ -24,7 +25,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Biomes;
 import net.minecraftforge.network.NetworkHooks;
 
 public class DrownedGirlEntity extends Drowned implements IModMob
@@ -90,7 +90,7 @@ public class DrownedGirlEntity extends Drowned implements IModMob
 			Holder<Biome> holder = levelAccessor.getBiome(pos);
 			boolean flag = levelAccessor.getDifficulty() != Difficulty.PEACEFUL && isDarkEnoughToSpawn(levelAccessor, pos, randomIn) && (spawnType == MobSpawnType.SPAWNER || levelAccessor.getFluidState(pos).is(FluidTags.WATER));
 
-			if (!holder.is(Biomes.RIVER) && !holder.is(Biomes.FROZEN_RIVER))
+			if (holder.is(BiomeTags.MORE_FREQUENT_DROWNED_SPAWNS))
 			{
 				return randomIn.nextInt(40) == 0 && (pos.getY() < levelAccessor.getSeaLevel() - 5) && flag;
 			}
