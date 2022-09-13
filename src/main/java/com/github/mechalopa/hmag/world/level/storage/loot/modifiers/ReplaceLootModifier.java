@@ -1,24 +1,26 @@
 package com.github.mechalopa.hmag.world.level.storage.loot.modifiers;
 
-import java.util.List;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 import javax.annotation.Nonnull;
 
-import com.google.gson.JsonObject;
+import com.google.common.base.Suppliers;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.GsonHelper;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
+import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class ReplaceLootModifier extends LootModifier
 {
+	public static final Supplier<Codec<ReplaceLootModifier>> CODEC = Suppliers.memoize(() -> RecordCodecBuilder.create(inst -> codecStart(inst).and(inst.group(ForgeRegistries.ITEMS.getCodec().fieldOf("original").forGetter(m -> m.original), ForgeRegistries.ITEMS.getCodec().fieldOf("replacement").forGetter(m -> m.replacement))).apply(inst, ReplaceLootModifier::new)));
 	private final Item original;
 	private final Item replacement;
 
@@ -31,7 +33,7 @@ public class ReplaceLootModifier extends LootModifier
 
 	@Nonnull
 	@Override
-	public List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context)
+	public ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context)
 	{
 		if (this.original == null || this.replacement == null)
 		{
@@ -48,27 +50,13 @@ public class ReplaceLootModifier extends LootModifier
 				{
 					return stack;
 				}
-			}).collect(Collectors.toList());
+			}).collect(Collectors.toCollection(ObjectArrayList::new));
 		}
 	}
 
-	public static class Serializer extends GlobalLootModifierSerializer<ReplaceLootModifier>
+	@Override
+	public Codec<? extends IGlobalLootModifier> codec()
 	{
-		@Override
-		public ReplaceLootModifier read(ResourceLocation name, JsonObject object, LootItemCondition[] conditionsIn)
-		{
-			Item original = ForgeRegistries.ITEMS.getValue(new ResourceLocation((GsonHelper.getAsString(object, "original"))));
-			Item replacement = ForgeRegistries.ITEMS.getValue(new ResourceLocation((GsonHelper.getAsString(object, "replacement"))));
-			return new ReplaceLootModifier(conditionsIn, original, replacement);
-		}
-
-		@Override
-		public JsonObject write(ReplaceLootModifier instance)
-		{
-			JsonObject json = makeConditions(instance.conditions);
-			json.addProperty("original", ForgeRegistries.ITEMS.getKey(instance.original).toString());
-			json.addProperty("replacement", ForgeRegistries.ITEMS.getKey(instance.replacement).toString());
-			return json;
-		}
+		return CODEC.get();
 	}
 }

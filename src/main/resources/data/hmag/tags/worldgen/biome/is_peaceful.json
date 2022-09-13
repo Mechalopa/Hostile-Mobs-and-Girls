@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:the_void",
+    "#hmag:is_peaceful/overworld",
+    "#hmag:is_peaceful/nether"
+  ]
+}

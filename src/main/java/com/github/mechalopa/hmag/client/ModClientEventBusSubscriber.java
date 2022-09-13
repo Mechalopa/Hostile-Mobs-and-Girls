@@ -99,8 +99,7 @@ import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.event.EntityRenderersEvent.RegisterLayerDefinitions;
-import net.minecraftforge.client.event.EntityRenderersEvent.RegisterRenderers;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -138,7 +137,7 @@ public class ModClientEventBusSubscriber
 	}
 
 	@SubscribeEvent
-	public static void registerRenderers(final RegisterRenderers event)
+	public static void registerRenderers(final EntityRenderersEvent.RegisterRenderers event)
 	{
 		event.registerEntityRenderer(ModEntityTypes.ZOMBIE_GIRL.get(), ZombieGirlRenderer::new);
 		event.registerEntityRenderer(ModEntityTypes.HUSK_GIRL.get(), HuskGirlRenderer::new);
@@ -191,7 +190,7 @@ public class ModClientEventBusSubscriber
 	}
 
 	@SubscribeEvent
-	public static void registerLayerDefinitions(final RegisterLayerDefinitions event)
+	public static void registerLayerDefinitions(final EntityRenderersEvent.RegisterLayerDefinitions event)
 	{
 		LayerDefinition layerdefinition = LayerDefinition.create(HumanoidModel.createMesh(LayerDefinitions.OUTER_ARMOR_DEFORMATION, 0.0F), 64, 32);
 		LayerDefinition layerdefinition1 = LayerDefinition.create(HumanoidModel.createMesh(LayerDefinitions.INNER_ARMOR_DEFORMATION, 0.0F), 64, 32);

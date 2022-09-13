@@ -1,29 +1,57 @@
 package com.github.mechalopa.hmag.world.level.storage.loot.modifiers;
 
-import java.util.List;
+import java.util.function.Supplier;
 
 import javax.annotation.Nonnull;
 
-import org.apache.commons.lang3.ArrayUtils;
+import com.google.common.base.Suppliers;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonSyntaxException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.GsonHelper;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.Deserializers;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
+import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.common.loot.LootModifier;
+import net.minecraftforge.common.loot.LootModifierManager;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class AdditionalEntityLootModifier extends LootModifier
 {
-	private static final Gson GSON = Deserializers.createFunctionSerializer().create();
+	private static final Codec<LootItemFunction[]> LOOT_FUNCTIONS_CODEC = Codec.PASSTHROUGH.flatXmap(d -> {
+				try
+				{
+					LootItemFunction[] functions = LootModifierManager.GSON_INSTANCE.fromJson(IGlobalLootModifier.getJson(d), LootItemFunction[].class);
+					return DataResult.success(functions);
+				}
+				catch (JsonSyntaxException e)
+				{
+					LootModifierManager.LOGGER.warn("Unable to decode loot functions", e);
+					return DataResult.error(e.getMessage());
+				}
+			},
+			functions -> {
+				try
+				{
+					JsonElement element = LootModifierManager.GSON_INSTANCE.toJsonTree(functions);
+					return DataResult.success(new Dynamic<>(JsonOps.INSTANCE, element));
+				}
+				catch (JsonSyntaxException e)
+				{
+					LootModifierManager.LOGGER.warn("Unable to encode loot functions", e);
+					return DataResult.error(e.getMessage());
+				}
+			});
+
+	public static final Supplier<Codec<AdditionalEntityLootModifier>> CODEC = Suppliers.memoize(() -> RecordCodecBuilder.create(inst -> codecStart(inst).and(inst.group(LOOT_FUNCTIONS_CODEC.optionalFieldOf("functions", new LootItemFunction[0]).forGetter(m -> m.functions),ForgeRegistries.ITEMS.getCodec().fieldOf("addition").forGetter(m -> m.addition))).apply(inst, AdditionalEntityLootModifier::new)));
 	private final LootItemFunction[] functions;
 	private final Item addition;
 
@@ -36,7 +64,7 @@ public class AdditionalEntityLootModifier extends LootModifier
 
 	@Nonnull
 	@Override
-	public List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context)
+	public ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context)
 	{
 		if (this.addition != null)
 		{
@@ -53,28 +81,9 @@ public class AdditionalEntityLootModifier extends LootModifier
 		return generatedLoot;
 	}
 
-	public static class Serializer extends GlobalLootModifierSerializer<AdditionalEntityLootModifier>
+	@Override
+	public Codec<? extends IGlobalLootModifier> codec()
 	{
-		@Override
-		public AdditionalEntityLootModifier read(ResourceLocation name, JsonObject object, LootItemCondition[] conditionsIn)
-		{
-			LootItemFunction[] functions = object.has("functions") ? GSON.fromJson(object.get("functions"), LootItemFunction[].class) : new LootItemFunction[0];
-			Item addition = ForgeRegistries.ITEMS.getValue(new ResourceLocation((GsonHelper.getAsString(object, "addition"))));
-			return new AdditionalEntityLootModifier(conditionsIn, functions, addition);
-		}
-
-		@Override
-		public JsonObject write(AdditionalEntityLootModifier instance)
-		{
-			JsonObject json = makeConditions(instance.conditions);
-
-			if (!ArrayUtils.isEmpty(instance.functions))
-			{
-				json.add("functions", GSON.toJsonTree(instance.functions));
-			}
-
-			json.addProperty("addition", ForgeRegistries.ITEMS.getKey(instance.addition).toString());
-			return json;
-		}
+		return CODEC.get();
 	}
 }

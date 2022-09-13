@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#forge:is_magical",
+      "required": false
+    },
+    {
+      "id": "magicalforest:magical_forest",
+      "required": false
+    }
+  ]
+}

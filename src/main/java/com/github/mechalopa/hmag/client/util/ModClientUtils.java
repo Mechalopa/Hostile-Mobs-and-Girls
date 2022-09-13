@@ -70,13 +70,12 @@ public class ModClientUtils
 		vertexConsumer.vertex(matrix, f, f1, f2).color(i, j, k, 255).uv(f3, f4).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(15728880).normal(normals, 0.0F, 1.0F, 0.0F).endVertex();
 	}
 
-	public static int getSkyDarken(Level level, float f)
+	public static int getSkyDarken(Level level)
 	{
-		double d0 = 1.0D - (Mth.cos(level.getTimeOfDay(f) * ((float)Math.PI * 2.0F)) * 2.0D + 0.2D);
-		d0 = Mth.clamp(d0, 0.0D, 1.0D);
-		d0 = 1.0D - d0;
-		d0 = d0 * (1.0D - level.getRainLevel(f) * 5.0F / 16.0D) * (1.0D - level.getThunderLevel(f) * 5.0F / 16.0D);
-		return (int)((d0 * 0.8D + 0.2D) * 11.0D);
+		double d0 = 1.0D - level.getRainLevel(1.0F) * 5.0F / 16.0D;
+		double d1 = 1.0D - level.getThunderLevel(1.0F) * 5.0F / 16.0D;
+		double d2 = 0.5D + 2.0D * Mth.clamp((double)Mth.cos(level.getTimeOfDay(1.0F) * ((float)Math.PI * 2.0F)), -0.25D, 0.25D);
+		return (int)((1.0D - d2 * d0 * d1) * 11.0D);
 	}
 
 	public static PartDefinition addC(PartDefinition partdefinition, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs, float extend)

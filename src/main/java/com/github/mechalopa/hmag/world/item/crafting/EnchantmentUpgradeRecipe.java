@@ -26,7 +26,6 @@ import net.minecraft.world.item.crafting.UpgradeRecipe;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.registries.ForgeRegistryEntry;
 
 public class EnchantmentUpgradeRecipe extends UpgradeRecipe
 {
@@ -44,7 +43,7 @@ public class EnchantmentUpgradeRecipe extends UpgradeRecipe
 		ItemStack stack = inv.getItem(0);
 		ItemStack stack1 = inv.getItem(1);
 
-		if (!stack.isEmpty() && !(stack.getItem() == null || stack.getItem() == Items.ENCHANTED_BOOK) && !stack1.isEmpty() && stack1.getItem() != null && stack1.getItem() instanceof EnchantmentUpgradeItem && stack1.is(ModTags.ENCHANTMENT_UPGRADE_ITEMS) && !stack.is(ModTags.ENCHANTMENT_UPGRADEABLE_BLACKLIST))
+		if (!stack.isEmpty() && !(stack.getItem() == null || stack.getItem() == Items.ENCHANTED_BOOK) && !stack1.isEmpty() && stack1.getItem() != null && stack1.getItem() instanceof EnchantmentUpgradeItem && stack1.is(ModTags.ENCHANTMENT_UPGRADE_ITEMS) && !stack.is(ModTags.ENCHANTMENT_NOT_UPGRADEABLES))
 		{
 			final List<EnchantmentUpgradeProp> eups = ((EnchantmentUpgradeItem)stack1.getItem()).getEnchantmentUpgradeProps();
 
@@ -168,19 +167,19 @@ public class EnchantmentUpgradeRecipe extends UpgradeRecipe
 		return ModRecipes.ENCHANTMENT_UPGRADE.get();
 	}
 
-	public static class Serializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<EnchantmentUpgradeRecipe>
+	public static class Serializer implements RecipeSerializer<EnchantmentUpgradeRecipe>
 	{
 		@Override
 		public EnchantmentUpgradeRecipe fromJson(ResourceLocation recipeId, JsonObject json)
 		{
-			return new EnchantmentUpgradeRecipe(this.getRegistryName());
+			return new EnchantmentUpgradeRecipe(recipeId);
 		}
 
 		@Override
 		@Nonnull
 		public EnchantmentUpgradeRecipe fromNetwork(@Nonnull ResourceLocation recipeId, FriendlyByteBuf buffer)
 		{
-			return new EnchantmentUpgradeRecipe(this.getRegistryName());
+			return new EnchantmentUpgradeRecipe(recipeId);
 		}
 
 		@Override

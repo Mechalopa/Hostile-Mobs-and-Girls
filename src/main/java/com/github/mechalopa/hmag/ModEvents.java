@@ -11,7 +11,6 @@ import com.github.mechalopa.hmag.registry.ModEntityTypes;
 import com.github.mechalopa.hmag.registry.ModItems;
 import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.util.ModUtils;
-import com.github.mechalopa.hmag.world.entity.IModMob;
 import com.github.mechalopa.hmag.world.entity.KashaEntity;
 import com.github.mechalopa.hmag.world.item.AncientShieldItem;
 import com.github.mechalopa.hmag.world.item.ILevelItem;
@@ -333,10 +332,10 @@ public class ModEvents
 			return;
 		}
 
-		if (event.getEntity() instanceof IModMob)
-		{
+		//if (event.getEntity() instanceof IModMob)
+		//{
 			//event.setResult(Result.DENY);
-		}
+		//}
 
 		if (event.getSpawnReason() == MobSpawnType.NATURAL)
 		{
@@ -346,7 +345,7 @@ public class ModEvents
 			{
 				Holder<Biome> holder = level.getBiome(event.getEntity().blockPosition());
 
-				if (!holder.containsTag(ModTags.MOB_REPLACE_BIOME_BLACKLIST))
+				if (!holder.containsTag(ModTags.NO_MOB_REPLACEMENTS))
 				{
 					LivingEntity livingentity = event.getEntity();
 		

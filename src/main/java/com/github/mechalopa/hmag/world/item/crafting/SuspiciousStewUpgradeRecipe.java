@@ -1,17 +1,13 @@
 package com.github.mechalopa.hmag.world.item.crafting;
 
-import javax.annotation.Nonnull;
-
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.registry.ModRecipes;
 import com.github.mechalopa.hmag.util.ModTags;
 import com.google.common.base.Strings;
-import com.google.gson.JsonObject;
 
 import net.minecraft.ResourceLocationException;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.inventory.CraftingContainer;
@@ -21,7 +17,6 @@ import net.minecraft.world.item.crafting.CustomRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.ForgeRegistryEntry;
 
 public class SuspiciousStewUpgradeRecipe extends CustomRecipe
 {
@@ -119,7 +114,14 @@ public class SuspiciousStewUpgradeRecipe extends CustomRecipe
 					{
 						CompoundTag compoundtag3 = new CompoundTag();
 						compoundtag3.putByte("EffectId", b0);
-						compoundtag3.putString("forge:effect_id", mobeffect.getRegistryName().toString());
+						ResourceLocation mobeffectid = ForgeRegistries.MOB_EFFECTS.getKey(mobeffect);
+
+						if (mobeffectid != null)
+						{
+							name = mobeffectid.toString();
+						}
+
+						compoundtag3.putString("forge:effect_id", name);
 						compoundtag3.putInt("EffectDuration", mobeffect.isInstantenous() ? j + 5 : j * 5);
 						listtag1.add(compoundtag3);
 					}
@@ -146,24 +148,5 @@ public class SuspiciousStewUpgradeRecipe extends CustomRecipe
 	public RecipeSerializer<?> getSerializer()
 	{
 		return ModRecipes.SUSPICIOUS_STEW_UPGRADE.get();
-	}
-
-	public static class Serializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<SuspiciousStewUpgradeRecipe>
-	{
-		@Override
-		public SuspiciousStewUpgradeRecipe fromJson(ResourceLocation recipeId, JsonObject json)
-		{
-			return new SuspiciousStewUpgradeRecipe(this.getRegistryName());
-		}
-
-		@Override
-		@Nonnull
-		public SuspiciousStewUpgradeRecipe fromNetwork(@Nonnull ResourceLocation recipeId, FriendlyByteBuf buffer)
-		{
-			return new SuspiciousStewUpgradeRecipe(this.getRegistryName());
-		}
-
-		@Override
-		public void toNetwork(FriendlyByteBuf buffer, SuspiciousStewUpgradeRecipe recipe){}
 	}
 }
