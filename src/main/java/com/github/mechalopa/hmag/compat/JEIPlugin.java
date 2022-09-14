@@ -91,7 +91,7 @@ public class JEIPlugin implements IModPlugin
 					{
 						for (Enchantment enchantment : ForgeRegistries.ENCHANTMENTS)
 						{
-							if (enchantment != null && enchantment.isCurse())
+							if (enchantment != null && RemoveCurseRecipe.isRemovableCurse(enchantment))
 							{
 								ItemStack stack1 = getEnchantableItemStack(registration, items, enchantment, ModTags.CURSE_UNREMOVABLES);
 

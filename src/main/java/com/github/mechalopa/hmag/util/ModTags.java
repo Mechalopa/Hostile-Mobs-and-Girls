@@ -41,6 +41,11 @@ public class ModTags
 
 	public static final TagKey<Enchantment> UNREMOVABLE_CURSES = createEnchantmentTag("unremovable_curses");
 
+	public static final TagKey<Biome> IS_BADLANDS = createBiomeTag("is_badlands");
+	public static final TagKey<Biome> IS_COLD = createBiomeTag("is_cold");
+	public static final TagKey<Biome> IS_PLAINS = createBiomeTag("is_plains");
+	public static final TagKey<Biome> IS_SANDY = createBiomeTag("is_sandy");
+	public static final TagKey<Biome> IS_SAVANNA = createBiomeTag("is_savanna");
 	public static final TagKey<Biome> NO_MOB_REPLACEMENTS = createBiomeTag("no_mob_replacements");
 
 	public static final TagKey<Structure> MONOLITHS_SPAWN_IN = createStructureTag("monoliths_spawn_in");

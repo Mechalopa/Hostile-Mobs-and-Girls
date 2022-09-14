@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import com.github.mechalopa.hmag.registry.ModRecipes;
 import com.github.mechalopa.hmag.util.ModTags;
 
+import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.inventory.AnvilMenu;
@@ -18,6 +19,7 @@ import net.minecraft.world.item.crafting.UpgradeRecipe;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class RemoveCurseRecipe extends UpgradeRecipe
 {
@@ -43,10 +45,25 @@ public class RemoveCurseRecipe extends UpgradeRecipe
 			{
 				Enchantment enchantment = entry.getKey();
 
-				if (enchantment.isCurse())
+				if (isRemovableCurse(enchantment))
 				{
 					return true;
 				}
+			}
+		}
+
+		return false;
+	}
+
+	public static boolean isRemovableCurse(Enchantment enchantment)
+	{
+		if (enchantment.isCurse())
+		{
+			Holder<Enchantment> holder = ForgeRegistries.ENCHANTMENTS.getHolder(enchantment).orElseThrow();
+			
+			if (holder != null && !holder.is(ModTags.UNREMOVABLE_CURSES))
+			{
+				return true;
 			}
 		}
 
@@ -62,7 +79,7 @@ public class RemoveCurseRecipe extends UpgradeRecipe
 		stack1.removeTagKey("StoredEnchantments");
 
 		Map<Enchantment, Integer> map = EnchantmentHelper.getEnchantments(stack).entrySet().stream().filter((p) -> {
-			return !(p.getKey().isCurse());
+			return !isRemovableCurse(p.getKey());
 		}).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
 
 		EnchantmentHelper.setEnchantments(map, stack1);

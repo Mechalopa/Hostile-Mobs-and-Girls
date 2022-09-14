@@ -6,6 +6,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
+import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.world.entity.ai.goal.LeapAtTargetGoal2;
 
 import net.minecraft.core.BlockPos;
@@ -17,7 +18,6 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.BiomeTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
@@ -47,7 +47,6 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ForgeMod;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.network.NetworkHooks;
 
 public class HarpyEntity extends Monster implements IModMob
@@ -156,23 +155,23 @@ public class HarpyEntity extends Monster implements IModMob
 
 			if (holder != null)
 			{
-				if (holder.is(Tags.Biomes.IS_COLD))
+				if (holder.is(ModTags.IS_COLD))
 				{
 					this.setVariant(randomsource.nextInt(4) == 0 ? (randomsource.nextInt(3) + 2) : 5);
 				}
-				else if (holder.is(BiomeTags.IS_BADLANDS))
+				else if (holder.is(ModTags.IS_BADLANDS))
 				{
 					this.setVariant(randomsource.nextInt(5) == 0 ? 3 : (randomsource.nextInt(3) == 0 ? 0 : (randomsource.nextInt(2) + 1)));
 				}
-				else if (holder.is(Tags.Biomes.IS_SANDY))
+				else if (holder.is(ModTags.IS_SANDY))
 				{
 					this.setVariant(randomsource.nextInt(5) == 0 ? 5 : (randomsource.nextInt(3) == 0 ? 1 : (randomsource.nextBoolean() ? 0 : 2)));
 				}
-				else if (holder.is(BiomeTags.IS_SAVANNA))
+				else if (holder.is(ModTags.IS_SAVANNA))
 				{
 					this.setVariant(randomsource.nextInt(6) == 0 ? 4 : randomsource.nextInt(3));
 				}
-				else if (holder.is(Tags.Biomes.IS_PLAINS))
+				else if (holder.is(ModTags.IS_PLAINS))
 				{
 					this.setVariant(randomsource.nextInt(3) == 0 ? (randomsource.nextBoolean() ? 1 : 4) : 3);
 				}
