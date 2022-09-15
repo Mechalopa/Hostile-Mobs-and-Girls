@@ -54,6 +54,7 @@ import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -253,6 +254,7 @@ public class DyssomniaEntity extends FlyingMob implements Enemy, IModMob
 			phantom.finalizeSpawn(serverlevel, attacker.level.getCurrentDifficultyAt(attacker.blockPosition()), MobSpawnType.MOB_SUMMONED, (SpawnGroupData)null, (CompoundTag)null);
 			serverlevel.addFreshEntityWithPassengers(phantom);
 			phantom.getPersistentData().putBoolean(ModUtils.WITH_SPAWN_PARTICLE_KEY, true);
+			serverlevel.gameEvent(phantom, GameEvent.ENTITY_PLACE, phantom.blockPosition());
 
 			if (this.isOnFire())
 			{

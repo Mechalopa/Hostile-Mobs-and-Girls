@@ -47,6 +47,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.MobEffectEvent;
@@ -210,6 +211,7 @@ public class SpiderNestEntity extends Monster implements IModMob
 			}
 
 			cavespider.getPersistentData().putBoolean(ModUtils.WITH_SPAWN_PARTICLE_KEY, true);
+			attacker.level.gameEvent(cavespider, GameEvent.ENTITY_PLACE, cavespider.blockPosition());
 		}
 
 		attacker.level.levelEvent(2004, attacker.blockPosition(), 0);

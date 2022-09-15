@@ -325,7 +325,6 @@ public class OgreEntity extends Monster implements IModMob
 		else
 		{
 			float f = state.getDestroySpeed(level, pos);
-
 			return f >= 0.0F && f <= maxHardness && f / maxHardness <= this.getRandom().nextFloat() + 0.05F && this.getRandom().nextBoolean();
 		}
 	}

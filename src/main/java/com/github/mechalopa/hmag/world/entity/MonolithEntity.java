@@ -58,6 +58,7 @@ import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -643,6 +644,7 @@ public class MonolithEntity extends FlyingMob implements Enemy, IModMob, IBeamAt
 
 					this.parent.playSound(SoundEvents.SHULKER_SHOOT, 1.0F, (this.parent.getRandom().nextFloat() - this.parent.getRandom().nextFloat()) * 0.2F + 1.0F);
 					this.parent.level.broadcastEntityEvent(this.parent, (byte)15);
+					this.parent.gameEvent(GameEvent.ENTITY_ROAR);
 					Vec3 vec3 = this.parent.getDeltaMovement();
 					Vec3 vec31 = (new Vec3(target.getX() - this.parent.getX(), 0.0D, target.getZ() - this.parent.getZ())).normalize().scale(0.25D);
 					this.parent.setDeltaMovement(vec3.x / 2.0D - vec31.x, vec3.y, vec3.z / 2.0D - vec31.z);

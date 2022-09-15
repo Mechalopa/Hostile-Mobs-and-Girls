@@ -126,8 +126,8 @@
               }
             },
             {
-              "function": "minecraft:set_nbt",
-              "tag": "{Potion:\"hmag:hmag.ender_rage_long\"}"
+              "function": "minecraft:set_potion",
+              "id": "hmag:hmag.ender_rage_long"
             }
           ],
           "name": "minecraft:tipped_arrow"
