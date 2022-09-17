@@ -21,6 +21,10 @@
     {
       "id": "dungeons_mobs:icy_creeper",
       "required": false
+    },
+    {
+      "id": "#creeperoverhaul:creepers",
+      "required": false
     }
   ]
 }
