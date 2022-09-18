@@ -6,6 +6,10 @@
         "name": "#minecraft:is_nether"
       },
       {
+        "name": "minecraft:soul_sand_valley",
+        "negate": true
+      },
+      {
         "name": "minecraft:basalt_deltas",
         "negate": true
       },
@@ -37,8 +41,8 @@
   ],
   "spawners": {
     "type": "hmag:imp",
-    "weight": 2,
+    "weight": 5,
     "minCount": 1,
-    "maxCount": 1
+    "maxCount": 2
   }
 }
