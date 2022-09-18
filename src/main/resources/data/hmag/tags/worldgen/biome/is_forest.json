@@ -5,6 +5,10 @@
     {
       "id": "#forge:is_forest",
       "required": false
+    },
+    {
+      "id": "byg:crimson_gardens",
+      "required": false
     }
   ]
 }

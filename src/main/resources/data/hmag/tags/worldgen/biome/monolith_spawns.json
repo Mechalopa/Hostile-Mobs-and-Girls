@@ -2,6 +2,10 @@
   "replace": false,
   "values": [
     "minecraft:end_barrens",
-    "minecraft:small_end_islands"
+    "minecraft:small_end_islands",
+    {
+      "id": "byg:viscal_isles",
+      "required": false
+    }
   ]
 }

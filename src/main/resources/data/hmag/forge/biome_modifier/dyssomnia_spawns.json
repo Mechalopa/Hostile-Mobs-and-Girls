@@ -18,8 +18,21 @@
         "negate": true
       },
       {
+        "name": "#hmag:is_jungle",
+        "negate": true
+      },
+      {
+        "name": "minecraft:mangrove_swamp",
+        "negate": true
+      },
+      {
         "name": "#hmag:is_peaceful",
         "negate": true
+      }
+    ],
+    [
+      {
+        "name": "minecraft:sparse_jungle"
       }
     ]
   ],
