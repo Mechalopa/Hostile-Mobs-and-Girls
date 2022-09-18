@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.google.common.base.Suppliers;
 import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
@@ -52,8 +51,6 @@ public record ModAddSpawnsBiomeModifier(List<List<ModAddSpawnsBiomeModifier.Biom
 					{
 						spawns.addMobCharge(type, this.charge, this.energyBudget);
 					}
-
-					HMaG.LOGGER.debug(biome.unwrapKey().get().location().toString() + "," + type.toString() + "," + spawner.getWeight().asInt() + "," + spawner.minCount + "," + spawner.maxCount + "," + this.charge + "," + this.energyBudget);
 				}
 			}
 		}
