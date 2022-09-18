@@ -123,8 +123,8 @@
               }
             },
             {
-              "function": "minecraft:set_nbt",
-              "tag": "{Potion:\"hmag:hmag.combustion_long\"}"
+              "function": "minecraft:set_potion",
+              "id": "hmag:hmag.combustion_long"
             }
           ],
           "name": "minecraft:tipped_arrow"

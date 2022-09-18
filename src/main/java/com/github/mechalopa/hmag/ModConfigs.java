@@ -248,7 +248,7 @@ public class ModConfigs
 		SNOW_CANINE_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("snowCanineSpawnWeight", 15, 0, Integer.MAX_VALUE);
 		HARPY_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("harpySpawnWeight", 15, 0, Integer.MAX_VALUE);
 		SAVAGEFANG_SPAWN_WEIGHT_IN_SWAMP = SERVER_BUILDER.defineInRange("savagefangSpawnWeightInSwamp", 10, 0, Integer.MAX_VALUE);
-		SAVAGEFANG_SPAWN_WEIGHT_IN_JUNGLE = SERVER_BUILDER.defineInRange("savagefangSpawnWeightInJungle", 20, 0, Integer.MAX_VALUE);
+		SAVAGEFANG_SPAWN_WEIGHT_IN_JUNGLE = SERVER_BUILDER.defineInRange("savagefangSpawnWeightInJungle", 15, 0, Integer.MAX_VALUE);
 		FORTRESS_KEEPER_SPAWN_WEIGHT_IN_NETHER_FORTRESS = SERVER_BUILDER.defineInRange("fortressKeeperSpawnWeightInNetherFortress", 5, 0, Integer.MAX_VALUE);
 		NECROTIC_REAPER_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("necroticReaperSpawnWeight", 8, 0, Integer.MAX_VALUE);
 		DODOMEKI_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("dodomekiSpawnWeight", 15, 0, Integer.MAX_VALUE);

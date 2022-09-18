@@ -114,8 +114,10 @@ public class AddSpawnerDataEvents
 							|| biomeKey.location().toString().equals("magicalforest:magical_forest")))
 						event.getSpawns().getSpawner(MobCategory.MONSTER).add(new SpawnerData(ModEntityTypes.SLIME_GIRL.get(), ModConfigs.cachedServer.SLIME_GIRL_SPAWN_WEIGHT, 1, 2));
 					if (ModConfigs.cachedServer.DYSSOMNIA_SPAWN_WEIGHT > 0
-							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.FOREST)
-							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.DENSE))
+							&& ((!BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.FOREST)
+							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.DENSE)
+							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.JUNGLE))
+							|| biomeKey == Biomes.SPARSE_JUNGLE))
 						event.getSpawns().getSpawner(MobCategory.MONSTER).add(new SpawnerData(ModEntityTypes.DYSSOMNIA.get(), ModConfigs.cachedServer.DYSSOMNIA_SPAWN_WEIGHT, 1, 1));
 					if (ModConfigs.cachedServer.SNOW_CANINE_SPAWN_WEIGHT > 0
 							&& BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.SNOWY)
@@ -184,9 +186,9 @@ public class AddSpawnerDataEvents
 					else if (biomeKey.location().toString().equals("biomesoplenty:withered_abyss"))
 					{
 						if (ModConfigs.cachedServer.WITHER_GHOST_SPAWN_WEIGHT > 0)
-							event.getSpawns().getSpawner(MobCategory.MONSTER).add(new SpawnerData(ModEntityTypes.WITHER_GHOST.get(), ModConfigs.cachedServer.WITHER_GHOST_SPAWN_WEIGHT, 1, 2));
+							event.getSpawns().getSpawner(MobCategory.MONSTER).add(new SpawnerData(ModEntityTypes.WITHER_GHOST.get(), 1, 1, 2));
 					}
-					else if (biomeKey != Biomes.CRIMSON_FOREST && biomeKey != Biomes.WARPED_FOREST)
+					else if (biomeKey != Biomes.CRIMSON_FOREST && biomeKey != Biomes.WARPED_FOREST && !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.FOREST))
 					{
 						if (ModConfigs.cachedServer.WITHER_GHOST_SPAWN_WEIGHT > 0)
 							event.getSpawns().getSpawner(MobCategory.MONSTER).add(new SpawnerData(ModEntityTypes.WITHER_GHOST.get(), ModConfigs.cachedServer.WITHER_GHOST_SPAWN_WEIGHT, 2, 4));

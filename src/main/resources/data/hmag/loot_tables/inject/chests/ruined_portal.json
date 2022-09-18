@@ -82,8 +82,8 @@
               }
             },
             {
-              "function": "minecraft:set_nbt",
-              "tag": "{Potion:\"hmag:hmag.combustion\"}"
+              "function": "minecraft:set_potion",
+              "id": "hmag:hmag.combustion"
             }
           ],
           "name": "minecraft:tipped_arrow"
