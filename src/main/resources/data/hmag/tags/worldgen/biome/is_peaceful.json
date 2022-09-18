@@ -1,8 +1,20 @@
 {
   "replace": false,
   "values": [
+    "minecraft:mushroom_fields",
+    "minecraft:deep_dark",
     "minecraft:the_void",
-    "#hmag:is_peaceful/overworld",
-    "#hmag:is_peaceful/nether"
+    {
+      "id": "biomesoplenty:rainbow_hills",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:crystalline_chasm",
+      "required": false
+    },
+    {
+      "id": "cinderscapes:luminous_grove",
+      "required": false
+    }
   ]
 }

@@ -1,10 +1,5 @@
 package com.github.mechalopa.hmag;
 
-import java.util.Collections;
-import java.util.List;
-
-import com.google.common.collect.Lists;
-
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.event.config.ModConfigEvent;
@@ -71,14 +66,6 @@ public class ModConfigs
 	public static ForgeConfigSpec.IntValue OGRE_SPAWN_MAX_HEIGHT;
 	public static ForgeConfigSpec.IntValue SPIDER_NEST_SPAWN_MAX_HEIGHT;
 	public static ForgeConfigSpec.IntValue NECROTIC_REAPER_SPAWN_MAX_HEIGHT;
-
-	public static ForgeConfigSpec.ConfigValue<List<? extends String>> SPAWN_BIOME_BLACKLIST;
-	public static ForgeConfigSpec.ConfigValue<List<? extends String>> SPAWN_DIMENSION_BLACKLIST;
-	public static ForgeConfigSpec.ConfigValue<List<? extends String>> MOB_REPLACE_BIOME_BLACKLIST;
-	public static ForgeConfigSpec.ConfigValue<List<? extends String>> MOB_REPLACE_DIMENSION_BLACKLIST;
-	public static ForgeConfigSpec.ConfigValue<List<? extends String>> SPAWN_OVERWORLD_BIOME_WHITELIST;
-	public static ForgeConfigSpec.ConfigValue<List<? extends String>> SPAWN_NETHER_BIOME_WHITELIST;
-	public static ForgeConfigSpec.ConfigValue<List<? extends String>> SPAWN_END_BIOME_WHITELIST;
 
 	public static ForgeConfigSpec.IntValue HEALTH_BOOST_MAX_LEVEL;
 	public static ForgeConfigSpec.BooleanValue HEALTH_BOOST_IS_TREASURE;
@@ -185,19 +172,6 @@ public class ModConfigs
 		NECROTIC_REAPER_SPAWN_MAX_HEIGHT = SERVER_BUILDER.defineInRange("necroticReaperSpawnMaxHeight", -1, -64, 320);
 
 		SERVER_BUILDER.pop();
-
-		SPAWN_BIOME_BLACKLIST = SERVER_BUILDER.defineList("spawnBiomeBlacklist", Lists.newArrayList(
-				"minecraft:mushroom_fields",
-				"biomesoplenty:rainbow_hills",
-				"biomesoplenty:crystalline_chasm",
-				"cinderscapes:luminous_grove",
-				"infernalexp:glowstone_canyon"), (s) -> true);
-		SPAWN_DIMENSION_BLACKLIST = SERVER_BUILDER.defineList("spawnDimentionBlacklist", Collections.singletonList(""), (s) -> true);
-		MOB_REPLACE_BIOME_BLACKLIST = SERVER_BUILDER.defineList("mobReplaceBiomeBlacklist", Collections.singletonList(""), (s) -> true);
-		MOB_REPLACE_DIMENSION_BLACKLIST = SERVER_BUILDER.defineList("mobReplaceDimentionBlacklist", Collections.singletonList(""), (s) -> true);
-		SPAWN_OVERWORLD_BIOME_WHITELIST = SERVER_BUILDER.defineList("spawnOverworldBiomeWhitelist", Collections.singletonList(""), (s) -> true);
-		SPAWN_NETHER_BIOME_WHITELIST = SERVER_BUILDER.defineList("spawnNetherBiomeWhitelist", Collections.singletonList(""), (s) -> true);
-		SPAWN_END_BIOME_WHITELIST = SERVER_BUILDER.defineList("spawnEndBiomeWhitelist", Collections.singletonList(""), (s) -> true);
 
 		SERVER_BUILDER.pop();
 
@@ -308,14 +282,6 @@ public class ModConfigs
 		public static int SPIDER_NEST_SPAWN_MAX_HEIGHT;
 		public static int NECROTIC_REAPER_SPAWN_MAX_HEIGHT;
 
-		public static List<? extends String> SPAWN_BIOME_BLACKLIST;
-		public static List<? extends String> SPAWN_DIMENSION_BLACKLIST;
-		public static List<? extends String> MOB_REPLACE_BIOME_BLACKLIST;
-		public static List<? extends String> MOB_REPLACE_DIMENSION_BLACKLIST;
-		public static List<? extends String> SPAWN_OVERWORLD_BIOME_WHITELIST;
-		public static List<? extends String> SPAWN_NETHER_BIOME_WHITELIST;
-		public static List<? extends String> SPAWN_END_BIOME_WHITELIST;
-
 		public static int HEALTH_BOOST_MAX_LEVEL;
 		public static boolean HEALTH_BOOST_IS_TREASURE;
 		public static boolean HEALTH_BOOST_IS_TRADEABLE;
@@ -405,14 +371,6 @@ public class ModConfigs
 			OGRE_SPAWN_MAX_HEIGHT = ModConfigs.OGRE_SPAWN_MAX_HEIGHT.get();
 			SPIDER_NEST_SPAWN_MAX_HEIGHT = ModConfigs.SPIDER_NEST_SPAWN_MAX_HEIGHT.get();
 			NECROTIC_REAPER_SPAWN_MAX_HEIGHT = ModConfigs.NECROTIC_REAPER_SPAWN_MAX_HEIGHT.get();
-
-			SPAWN_BIOME_BLACKLIST = ModConfigs.SPAWN_BIOME_BLACKLIST.get();
-			SPAWN_DIMENSION_BLACKLIST = ModConfigs.SPAWN_DIMENSION_BLACKLIST.get();
-			MOB_REPLACE_BIOME_BLACKLIST = ModConfigs.MOB_REPLACE_BIOME_BLACKLIST.get();
-			MOB_REPLACE_DIMENSION_BLACKLIST = ModConfigs.MOB_REPLACE_DIMENSION_BLACKLIST.get();
-			SPAWN_OVERWORLD_BIOME_WHITELIST = ModConfigs.SPAWN_OVERWORLD_BIOME_WHITELIST.get();
-			SPAWN_NETHER_BIOME_WHITELIST = ModConfigs.SPAWN_NETHER_BIOME_WHITELIST.get();
-			SPAWN_END_BIOME_WHITELIST = ModConfigs.SPAWN_END_BIOME_WHITELIST.get();
 
 			HEALTH_BOOST_MAX_LEVEL = ModConfigs.HEALTH_BOOST_MAX_LEVEL.get();
 			HEALTH_BOOST_IS_TREASURE = ModConfigs.HEALTH_BOOST_IS_TREASURE.get();
