@@ -1,0 +1,32 @@
+{
+  "type": "hmag:add_spawns",
+  "biomes": [
+    [
+      {
+        "name": "minecraft:crimson_forest"
+      }
+    ],
+    [
+      {
+        "name": "#minecraft:is_nether"
+      },
+      {
+        "name": "minecraft:warped_forest",
+        "negate": true
+      },
+      {
+        "name": "#hmag:is_peaceful",
+        "negate": true
+      },
+      {
+        "name": "#hmag:is_forest"
+      }
+    ]
+  ],
+  "spawners": {
+    "type": "hmag:crimson_slaughterer",
+    "weight": 2,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

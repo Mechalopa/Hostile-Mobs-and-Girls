@@ -42,7 +42,7 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.network.NetworkHooks;
 
-public class LichEntity extends Monster implements IModMob, RangedAttackMob
+public class LichEntity extends Monster implements RangedAttackMob
 {
 	private static final TargetingConditions VEX_COUNT_TARGETING = TargetingConditions.forNonCombat().range(16.0D).ignoreLineOfSight().ignoreInvisibilityTesting();
 

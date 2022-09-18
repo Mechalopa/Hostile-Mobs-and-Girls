@@ -32,7 +32,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.network.NetworkHooks;
 
-public class SnowCanineEntity extends Monster implements IModMob
+public class SnowCanineEntity extends Monster
 {
 	public SnowCanineEntity(EntityType<? extends SnowCanineEntity> type, Level worldIn)
 	{

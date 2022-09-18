@@ -46,7 +46,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.network.NetworkHooks;
 
-public class FortressKeeperEntity extends Monster implements IModMob, RangedAttackMob
+public class FortressKeeperEntity extends Monster implements RangedAttackMob
 {
 	private static final EntityDataAccessor<Byte> DATA_FLAGS_ID = SynchedEntityData.defineId(FortressKeeperEntity.class, EntityDataSerializers.BYTE);
 	private float attackAnimation;

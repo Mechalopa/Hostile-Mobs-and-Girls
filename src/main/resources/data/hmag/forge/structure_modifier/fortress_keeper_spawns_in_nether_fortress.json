@@ -1,0 +1,10 @@
+{
+  "type": "hmag:add_spawns",
+  "structures": "minecraft:fortress",
+  "spawner": {
+    "type": "hmag:fortress_keeper",
+    "weight": 5,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

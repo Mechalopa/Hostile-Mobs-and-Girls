@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "#minecraft:is_taiga",
     {
       "id": "#forge:is_coniferous",
       "required": false

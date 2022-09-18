@@ -1,0 +1,32 @@
+{
+  "type": "hmag:add_spawns",
+  "biomes": [
+    [
+      {
+        "name": "#minecraft:is_overworld"
+      },
+      {
+        "name": "#hmag:is_forest",
+        "negate": true
+      },
+      {
+        "name": "#hmag:is_coniferous",
+        "negate": true
+      },
+      {
+        "name": "#hmag:is_dense",
+        "negate": true
+      },
+      {
+        "name": "#hmag:is_peaceful",
+        "negate": true
+      }
+    ]
+  ],
+  "spawners": {
+    "type": "hmag:dyssomnia",
+    "weight": 5,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

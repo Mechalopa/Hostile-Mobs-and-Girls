@@ -1,0 +1,16 @@
+{
+  "type": "hmag:add_spawns",
+  "biomes": [
+    [
+      {
+        "name": "minecraft:basalt_deltas"
+      }
+    ]
+  ],
+  "spawners": {
+    "type": "hmag:wither_ghost",
+    "weight": 5,
+    "minCount": 2,
+    "maxCount": 2
+  }
+}

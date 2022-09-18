@@ -42,7 +42,7 @@ import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.network.NetworkHooks;
 
-public class AlrauneEntity extends Monster implements IModMob, RangedAttackMob
+public class AlrauneEntity extends Monster implements RangedAttackMob
 {
 	public AlrauneEntity(EntityType<? extends AlrauneEntity> type, Level worldIn)
 	{

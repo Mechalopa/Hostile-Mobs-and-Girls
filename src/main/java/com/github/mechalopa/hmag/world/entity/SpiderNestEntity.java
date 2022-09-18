@@ -54,7 +54,7 @@ import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.network.NetworkHooks;
 
-public class SpiderNestEntity extends Monster implements IModMob
+public class SpiderNestEntity extends Monster
 {
 	private static final EntityDataAccessor<Integer> SUMMON_DELAY = SynchedEntityData.defineId(SpiderNestEntity.class, EntityDataSerializers.INT);
 

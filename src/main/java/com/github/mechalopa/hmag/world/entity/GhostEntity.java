@@ -40,7 +40,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 
-public class GhostEntity extends AbstractFlyingMonsterEntity implements IModMob
+public class GhostEntity extends AbstractFlyingMonsterEntity
 {
 	private static final EntityDataAccessor<Integer> DATA_VARIANT_ID = SynchedEntityData.defineId(GhostEntity.class, EntityDataSerializers.INT);
 

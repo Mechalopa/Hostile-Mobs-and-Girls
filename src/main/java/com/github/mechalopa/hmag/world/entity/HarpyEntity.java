@@ -49,7 +49,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.network.NetworkHooks;
 
-public class HarpyEntity extends Monster implements IModMob
+public class HarpyEntity extends Monster
 {
 	private static final EntityDataAccessor<Integer> DATA_VARIANT_ID = SynchedEntityData.defineId(HarpyEntity.class, EntityDataSerializers.INT);
 	private int animationTick;

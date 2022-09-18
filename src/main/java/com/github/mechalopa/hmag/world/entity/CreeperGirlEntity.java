@@ -33,7 +33,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.network.NetworkHooks;
 
-public class CreeperGirlEntity extends Creeper implements IModMob
+public class CreeperGirlEntity extends Creeper
 {
 	private static final EntityDataAccessor<Integer> DATA_VARIANT_ID = SynchedEntityData.defineId(CreeperGirlEntity.class, EntityDataSerializers.INT);
 

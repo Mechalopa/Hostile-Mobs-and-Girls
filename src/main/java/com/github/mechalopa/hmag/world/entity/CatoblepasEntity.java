@@ -34,7 +34,7 @@ import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.network.NetworkHooks;
 
-public class CatoblepasEntity extends Monster implements IModMob
+public class CatoblepasEntity extends Monster
 {
 	public CatoblepasEntity(EntityType<? extends CatoblepasEntity> type, Level worldIn)
 	{

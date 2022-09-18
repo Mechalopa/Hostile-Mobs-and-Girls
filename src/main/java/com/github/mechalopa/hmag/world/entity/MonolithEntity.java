@@ -67,7 +67,7 @@ import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.network.NetworkHooks;
 
-public class MonolithEntity extends FlyingMob implements Enemy, IModMob, IBeamAttackMob
+public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 {
 	private static final EntityDataAccessor<Byte> ATTACK_PHASE = SynchedEntityData.defineId(MonolithEntity.class, EntityDataSerializers.BYTE);
 	private static final EntityDataAccessor<Integer> ATTACK_TARGET = SynchedEntityData.defineId(MonolithEntity.class, EntityDataSerializers.INT);

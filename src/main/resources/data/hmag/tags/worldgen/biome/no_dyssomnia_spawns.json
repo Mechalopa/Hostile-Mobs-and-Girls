@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "#hmag:is_peaceful",
-    "#hmag:is_dense",
-    "#hmag:is_forest",
-    "#hmag:is_coniferous"
-  ]
-}

@@ -1,9 +1,8 @@
 {
   "replace": false,
   "values": [
-    "minecraft:desert",
     {
-      "id": "#forge:is_desert",
+      "id": "infernalexp:glowstone_canyon",
       "required": false
     }
   ]

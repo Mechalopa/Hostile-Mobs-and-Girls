@@ -20,7 +20,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.network.NetworkHooks;
 
-public class MagicalSlimeEntity extends Slime implements IModMob
+public class MagicalSlimeEntity extends Slime
 {
 	private static final EntityDataAccessor<Integer> DATA_VARIANT_ID = SynchedEntityData.defineId(MagicalSlimeEntity.class, EntityDataSerializers.INT);
 

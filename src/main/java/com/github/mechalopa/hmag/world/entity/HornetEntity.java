@@ -37,7 +37,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 
-public class HornetEntity extends AbstractFlyingMonsterEntity implements IModMob
+public class HornetEntity extends AbstractFlyingMonsterEntity
 {
 	public HornetEntity(EntityType<? extends HornetEntity> type, Level worldIn)
 	{

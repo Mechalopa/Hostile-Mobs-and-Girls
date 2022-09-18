@@ -1,0 +1,18 @@
+{
+  "type": "hmag:add_spawns",
+  "biomes": [
+    [
+      {
+        "name": "minecraft:soul_sand_valley"
+      }
+    ]
+  ],
+  "spawners": {
+    "type": "hmag:wither_ghost",
+    "weight": 3,
+    "minCount": 2,
+    "maxCount": 2
+  },
+  "charge": 0.7,
+  "energy_budget": 0.15
+}

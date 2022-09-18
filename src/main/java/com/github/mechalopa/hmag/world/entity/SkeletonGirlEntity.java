@@ -19,7 +19,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.network.NetworkHooks;
 
-public class SkeletonGirlEntity extends Skeleton implements IModMob
+public class SkeletonGirlEntity extends Skeleton
 {
 	public SkeletonGirlEntity(EntityType<? extends SkeletonGirlEntity> type, Level worldIn)
 	{

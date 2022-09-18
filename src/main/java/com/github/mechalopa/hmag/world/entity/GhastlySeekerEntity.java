@@ -41,7 +41,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.network.NetworkHooks;
 
-public class GhastlySeekerEntity extends FlyingMob implements Enemy, IModMob
+public class GhastlySeekerEntity extends FlyingMob implements Enemy
 {
 	private static final EntityDataAccessor<Integer> ATTACKING_TIME = SynchedEntityData.defineId(GhastlySeekerEntity.class, EntityDataSerializers.INT);
 	private int explosionPower = 1;

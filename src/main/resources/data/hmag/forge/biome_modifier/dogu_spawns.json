@@ -1,0 +1,47 @@
+{
+  "type": "hmag:add_spawns",
+  "biomes": [
+    [
+      {
+        "name": "#minecraft:is_overworld"
+      },
+      {
+        "name": "#hmag:is_badlands"
+      },
+      {
+        "name": "#hmag:is_peaceful",
+        "negate": true
+      }
+    ],
+    [
+      {
+        "name": "#minecraft:is_overworld"
+      },
+      {
+        "name": "#hmag:is_jungle"
+      },
+      {
+        "name": "#hmag:is_peaceful",
+        "negate": true
+      }
+    ],
+    [
+      {
+        "name": "#minecraft:is_overworld"
+      },
+      {
+        "name": "#hmag:is_magical"
+      },
+      {
+        "name": "#hmag:is_peaceful",
+        "negate": true
+      }
+    ]
+  ],
+  "spawners": {
+    "type": "hmag:dogu",
+    "weight": 10,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

@@ -40,7 +40,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.network.NetworkHooks;
 
-public class DodomekiEntity extends Monster implements IModMob
+public class DodomekiEntity extends Monster
 {
 	private float eyesGlowingAnimation;
 	private float eyesGlowingAnimationO;

@@ -47,7 +47,7 @@ import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.network.NetworkHooks;
 
-public class CrimsonSlaughtererEntity extends Monster implements IModMob
+public class CrimsonSlaughtererEntity extends Monster
 {
 	public CrimsonSlaughtererEntity(EntityType<? extends CrimsonSlaughtererEntity> type, Level worldIn)
 	{

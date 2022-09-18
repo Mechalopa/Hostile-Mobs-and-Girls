@@ -42,7 +42,7 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.network.NetworkHooks;
 
-public class DoguEntity extends Monster implements IModMob
+public class DoguEntity extends Monster
 {
 	public DoguEntity(EntityType<? extends DoguEntity> type, Level worldIn)
 	{

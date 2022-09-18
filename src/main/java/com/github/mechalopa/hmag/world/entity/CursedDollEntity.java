@@ -43,7 +43,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.network.NetworkHooks;
 
-public class CursedDollEntity extends Monster implements IModMob
+public class CursedDollEntity extends Monster
 {
 	public CursedDollEntity(EntityType<? extends CursedDollEntity> type, Level worldIn)
 	{

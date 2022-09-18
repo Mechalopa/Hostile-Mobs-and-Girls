@@ -45,7 +45,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraftforge.network.NetworkHooks;
 
-public class ImpEntity extends Monster implements IModMob
+public class ImpEntity extends Monster
 {
 	public ImpEntity(EntityType<? extends ImpEntity> type, Level worldIn)
 	{

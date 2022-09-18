@@ -32,7 +32,7 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.network.NetworkHooks;
 
-public class EnderExecutorEntity extends EnderMan implements IModMob, IBeamAttackMob
+public class EnderExecutorEntity extends EnderMan implements IBeamAttackMob
 {
 	private static final EntityDataAccessor<Integer> ATTACKING_TIME = SynchedEntityData.defineId(EnderExecutorEntity.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Integer> ATTACK_TARGET = SynchedEntityData.defineId(EnderExecutorEntity.class, EntityDataSerializers.INT);

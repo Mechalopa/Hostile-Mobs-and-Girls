@@ -50,7 +50,7 @@ import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.network.NetworkHooks;
 
-public class KashaEntity extends Monster implements IModMob
+public class KashaEntity extends Monster
 {
 	private static final UUID ATTACK_DAMAGE_MODIFIER_UUID = UUID.fromString("7DDA541D-ABAA-BBF4-D099-AAC57D64ADA9");
 	private static final AttributeModifier ATTACK_DAMAGE_MODIFIER = new AttributeModifier(ATTACK_DAMAGE_MODIFIER_UUID, "Soul variant attack damage bonus", 1.0D, AttributeModifier.Operation.ADDITION);

@@ -1,0 +1,27 @@
+{
+  "type": "hmag:add_spawns",
+  "biomes": [
+    [
+      {
+        "name": "#minecraft:is_overworld"
+      },
+      {
+        "name": "#hmag:is_snowy"
+      },
+      {
+        "name": "#hmag:is_water",
+        "negate": true
+      },
+      {
+        "name": "#hmag:is_peaceful",
+        "negate": true
+      }
+    ]
+  ],
+  "spawners": {
+    "type": "hmag:jack_frost",
+    "weight": 10,
+    "minCount": 1,
+    "maxCount": 2
+  }
+}

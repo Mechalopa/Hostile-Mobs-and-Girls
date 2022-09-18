@@ -21,7 +21,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraftforge.network.NetworkHooks;
 
-public class WitherSkeletonGirlEntity extends WitherSkeleton implements IModMob
+public class WitherSkeletonGirlEntity extends WitherSkeleton
 {
 	public WitherSkeletonGirlEntity(EntityType<? extends WitherSkeletonGirlEntity> type, Level worldIn)
 	{

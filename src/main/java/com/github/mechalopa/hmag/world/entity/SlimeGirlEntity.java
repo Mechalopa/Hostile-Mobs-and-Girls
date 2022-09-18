@@ -53,7 +53,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.network.NetworkHooks;
 
-public class SlimeGirlEntity extends Monster implements IModMob
+public class SlimeGirlEntity extends Monster
 {
 	private static final EntityDataAccessor<Integer> DATA_VARIANT_ID = SynchedEntityData.defineId(SlimeGirlEntity.class, EntityDataSerializers.INT);
 	public float targetSquish;

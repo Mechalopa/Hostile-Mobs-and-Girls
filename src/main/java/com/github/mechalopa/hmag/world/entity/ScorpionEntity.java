@@ -35,7 +35,7 @@ import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.network.NetworkHooks;
 
-public class ScorpionEntity extends Monster implements IModMob
+public class ScorpionEntity extends Monster
 {
 	public ScorpionEntity(EntityType<? extends ScorpionEntity> type, Level worldIn)
 	{

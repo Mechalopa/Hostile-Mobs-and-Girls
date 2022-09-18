@@ -63,7 +63,7 @@ import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.network.NetworkHooks;
 
-public class DyssomniaEntity extends FlyingMob implements Enemy, IModMob
+public class DyssomniaEntity extends FlyingMob implements Enemy
 {
 	private static final EntityDataAccessor<Byte> ATTACK_PHASE = SynchedEntityData.defineId(DyssomniaEntity.class, EntityDataSerializers.BYTE);
 	private static final EntityDataAccessor<Integer> ATTACKING_TIME = SynchedEntityData.defineId(DyssomniaEntity.class, EntityDataSerializers.INT);

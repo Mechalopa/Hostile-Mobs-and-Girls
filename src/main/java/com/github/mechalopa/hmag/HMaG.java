@@ -3,6 +3,7 @@ package com.github.mechalopa.hmag;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.github.mechalopa.hmag.registry.ModBiomeModifiers;
 import com.github.mechalopa.hmag.registry.ModBlocks;
 import com.github.mechalopa.hmag.registry.ModEffects;
 import com.github.mechalopa.hmag.registry.ModEnchantments;
@@ -13,6 +14,7 @@ import com.github.mechalopa.hmag.registry.ModParticleTypes;
 import com.github.mechalopa.hmag.registry.ModPotions;
 import com.github.mechalopa.hmag.registry.ModRecipes;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
+import com.github.mechalopa.hmag.registry.ModStructureModifiers;
 
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -61,6 +63,8 @@ public class HMaG
 		ModPotions.register(modEventBus);
 		ModRecipes.register(modEventBus);
 		ModSoundEvents.register(modEventBus);
+		ModBiomeModifiers.register(modEventBus);
+		ModStructureModifiers.register(modEventBus);
 
 		MinecraftForge.EVENT_BUS.register(new ModEvents());
 	}

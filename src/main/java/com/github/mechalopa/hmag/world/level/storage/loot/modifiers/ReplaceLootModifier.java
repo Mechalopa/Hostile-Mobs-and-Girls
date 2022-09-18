@@ -21,7 +21,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class ReplaceLootModifier extends LootModifier
 {
-	public static final Supplier<Codec<ReplaceLootModifier>> CODEC = Suppliers.memoize(() -> RecordCodecBuilder.create(inst -> codecStart(inst).and(inst.group(ForgeRegistries.ITEMS.getCodec().fieldOf("original").forGetter(m -> m.original), ForgeRegistries.ITEMS.getCodec().optionalFieldOf("replacement", Items.DIRT).forGetter(m -> m.replacement))).apply(inst, ReplaceLootModifier::new)));
+	public static final Supplier<Codec<ReplaceLootModifier>> CODEC = Suppliers.memoize(() -> RecordCodecBuilder.create(inst -> codecStart(inst).and(inst.group(ForgeRegistries.ITEMS.getCodec().optionalFieldOf("original", Items.BARRIER).forGetter(m -> m.original), ForgeRegistries.ITEMS.getCodec().optionalFieldOf("replacement", Items.DIRT).forGetter(m -> m.replacement))).apply(inst, ReplaceLootModifier::new)));
 	private final Item original;
 	private final Item replacement;
 

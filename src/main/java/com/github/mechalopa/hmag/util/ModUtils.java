@@ -3,8 +3,12 @@ package com.github.mechalopa.hmag.util;
 import javax.annotation.Nonnull;
 
 import com.github.mechalopa.hmag.HMaG;
+import com.mojang.serialization.Codec;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderSet;
+import net.minecraft.core.Registry;
+import net.minecraft.core.RegistryCodecs;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
@@ -24,6 +28,7 @@ import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.dimension.DimensionType;
+import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 
@@ -34,6 +39,7 @@ public class ModUtils
 	public static final String LIVING_UPDATE_CHECKED_KEY = HMaG.MODID + ".checked";
 	public static final String LIVING_NOT_REPLACED_KEY = HMaG.MODID + ".notReplaced";
 	public static final String WITH_SPAWN_PARTICLE_KEY = HMaG.MODID + ".withSpawnParticle";
+	public static final Codec<HolderSet<Structure>> STRUCTURE_LIST_CODEC = RegistryCodecs.homogeneousList(Registry.STRUCTURE_REGISTRY, Structure.DIRECT_CODEC);
 
 	public static void burnInDay(@Nonnull LivingEntity livingEntityIn, RandomSource rand, Boolean isSunBurnTick, int seconds)
 	{
@@ -106,7 +112,7 @@ public class ModUtils
 		{
 			DimensionType dimensiontype = levelAccessor.dimensionType();
 			int i = dimensiontype.monsterSpawnBlockLightLimit();
-			
+
 			if (i < 15 && levelAccessor.getBrightness(LightLayer.BLOCK, pos) > i)
 			{
 				return false;
@@ -260,40 +266,4 @@ public class ModUtils
 	{
 		return PotionUtils.setPotion(new ItemStack(containerItem), potion);
 	}
-
-//	public static boolean checkBiomeList(Level worldIn, BlockPos pos, List<? extends String> list)
-//	{
-//		if (worldIn != null)
-//		{
-//			Holder<Biome> biome = worldIn.getBiome(pos);
-//
-//			if (biome != null)
-//			{
-//				return checkList(biome.value().getRegistryName(), list);
-//			}
-//		}
-//
-//		return false;
-//	}
-//
-//	public static boolean checkDimensionList(Level worldIn, List<? extends String> list)
-//	{
-//		if (worldIn != null)
-//			return checkDimensionList(worldIn.dimension(), list);
-//		return false;
-//	}
-//
-//	public static boolean checkDimensionList(ResourceKey<Level> key, List<? extends String> list)
-//	{
-//		if (key != null)
-//			return checkList(key.location(), list);
-//		return false;
-//	}
-//
-//	public static boolean checkList(ResourceLocation r, List<? extends String> list)
-//	{
-//		if (r != null && list != null && !list.isEmpty() && list.contains(r.toString()))
-//			return true;
-//		return false;
-//	}
 }

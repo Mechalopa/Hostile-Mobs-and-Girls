@@ -42,7 +42,7 @@ import net.minecraftforge.common.util.BlockSnapshot;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.network.NetworkHooks;
 
-public class JackFrostEntity extends Monster implements IModMob, RangedAttackMob
+public class JackFrostEntity extends Monster implements RangedAttackMob
 {
 	public JackFrostEntity(EntityType<? extends JackFrostEntity> type, Level worldIn)
 	{

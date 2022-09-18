@@ -332,11 +332,6 @@ public class ModEvents
 			return;
 		}
 
-		//if (event.getEntity() instanceof IModMob)
-		//{
-			//event.setResult(Result.DENY);
-		//}
-
 		if (event.getSpawnReason() == MobSpawnType.NATURAL)
 		{
 			Level level = event.getEntity().getCommandSenderWorld();
@@ -348,7 +343,7 @@ public class ModEvents
 				if (!holder.containsTag(ModTags.NO_MOB_REPLACEMENTS))
 				{
 					LivingEntity livingentity = event.getEntity();
-		
+
 					if (ModConfigs.cachedServer.ZOMBIE_GIRL_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.ZOMBIE_GIRL_REPLACEABLES))
 					{
 						putCheckingTag(livingentity);
@@ -586,26 +581,6 @@ public class ModEvents
 		}
 	}
 
-//	@SubscribeEvent
-//	public void onStructureSpawn(StructureSpawnListGatherEvent event)
-//	{
-//		if (ModConfigs.cachedServer.MONOLITH_SPAWN_WEIGHT_IN_END_CITY > 0)
-//		{
-//			if (event.getStructure() == StructureFeature.END_CITY)
-//			{
-//				event.addEntitySpawn(MobCategory.MONSTER, new SpawnerData(ModEntityTypes.MONOLITH.get(), ModConfigs.cachedServer.MONOLITH_SPAWN_WEIGHT_IN_END_CITY, 1, 1));
-//			}
-//		}
-//
-//		if (ModConfigs.cachedServer.FORTRESS_KEEPER_SPAWN_WEIGHT_IN_NETHER_FORTRESS > 0)
-//		{
-//			if (event.getStructure() == StructureFeature.FORTRESS)
-//			{
-//				event.addEntitySpawn(MobCategory.MONSTER, new SpawnerData(ModEntityTypes.FORTRESS_KEEPER.get(), ModConfigs.cachedServer.FORTRESS_KEEPER_SPAWN_WEIGHT_IN_NETHER_FORTRESS, 1, 1));
-//			}
-//		}
-//	}
-
 	@SubscribeEvent
 	public void onVillagerTrades(VillagerTradesEvent event)
 	{
@@ -625,11 +600,7 @@ public class ModEvents
 			if (event.getType() == VillagerProfession.LEATHERWORKER)
 			{
 				trades.get(3).add(new BasicItemListing(new ItemStack(ModItems.BAT_WING.get(), 4), new ItemStack(Items.EMERALD, 1), 16, 15, 0.05F));
-
-				if (ModConfigs.cachedServer.KOBOLD_SPAWN_WEIGHT > 0)
-				{
-					trades.get(4).add(new BasicItemListing(new ItemStack(ModItems.KOBOLD_LEATHER.get(), 4), new ItemStack(Items.EMERALD, 1), 12, 20, 0.05F));
-				}
+				trades.get(4).add(new BasicItemListing(new ItemStack(ModItems.KOBOLD_LEATHER.get(), 4), new ItemStack(Items.EMERALD, 1), 12, 20, 0.05F));
 			}
 
 			if (event.getType() == VillagerProfession.FARMER)
@@ -639,10 +610,7 @@ public class ModEvents
 
 			if (event.getType() == VillagerProfession.FISHERMAN)
 			{
-				if (ModConfigs.cachedServer.SAVAGEFANG_SPAWN_WEIGHT_IN_SWAMP > 0 || ModConfigs.cachedServer.SAVAGEFANG_SPAWN_WEIGHT_IN_JUNGLE > 0)
-				{
-					trades.get(4).add(new BasicItemListing(new ItemStack(ModItems.SAVAGEFANG_MEAT.get(), 3), new ItemStack(Items.EMERALD, 1), 12, 20, 0.05F));
-				}
+				trades.get(4).add(new BasicItemListing(new ItemStack(ModItems.SAVAGEFANG_MEAT.get(), 3), new ItemStack(Items.EMERALD, 1), 12, 20, 0.05F));
 			}
 		}
 	}

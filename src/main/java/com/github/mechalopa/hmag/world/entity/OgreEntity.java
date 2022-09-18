@@ -49,7 +49,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.network.NetworkHooks;
 
-public class OgreEntity extends Monster implements IModMob
+public class OgreEntity extends Monster
 {
 	private static final EntityDataAccessor<Boolean> IS_ARM_SWING = SynchedEntityData.defineId(OgreEntity.class, EntityDataSerializers.BOOLEAN);
 	private int armSwingTimer;

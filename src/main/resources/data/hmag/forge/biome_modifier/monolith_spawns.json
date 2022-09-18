@@ -1,0 +1,16 @@
+{
+  "type": "hmag:add_spawns",
+  "biomes": [
+    [
+      {
+        "name": "#hmag:monolith_spawns"
+      }
+    ]
+  ],
+  "spawners": {
+    "type": "hmag:monolith",
+    "weight": 3,
+    "minCount": 1,
+    "maxCount": 3
+  }
+}

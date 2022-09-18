@@ -25,7 +25,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
-public class BansheeEntity extends AbstractFlyingMonsterEntity implements IModMob
+public class BansheeEntity extends AbstractFlyingMonsterEntity
 {
 	public BansheeEntity(EntityType<? extends BansheeEntity> type, Level worldIn)
 	{

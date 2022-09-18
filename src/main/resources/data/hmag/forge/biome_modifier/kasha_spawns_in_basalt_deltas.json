@@ -1,0 +1,16 @@
+{
+  "type": "hmag:add_spawns",
+  "biomes": [
+    [
+      {
+        "name": "minecraft:basalt_deltas"
+      }
+    ]
+  ],
+  "spawners": {
+    "type": "hmag:kasha",
+    "weight": 2,
+    "minCount": 1,
+    "maxCount": 2
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "type": "hmag:add_spawns",
+  "structures": "#hmag:monoliths_spawn_in",
+  "spawner": {
+    "type": "hmag:monolith",
+    "weight": 40,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

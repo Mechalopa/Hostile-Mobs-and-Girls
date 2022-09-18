@@ -1,0 +1,43 @@
+{
+  "type": "hmag:add_spawns",
+  "biomes": [
+    [
+      {
+        "name": "#minecraft:is_overworld"
+      },
+      {
+        "name": "#hmag:is_swamp"
+      },
+      {
+        "name": "#hmag:is_peaceful",
+        "negate": true
+      }
+    ],
+    [
+      {
+        "name": "#minecraft:is_overworld"
+      },
+      {
+        "name": "#hmag:is_magical"
+      },
+      {
+        "name": "#hmag:is_hot",
+        "negate": true
+      },
+      {
+        "name": "#hmag:is_cold",
+        "negate": true
+      },
+      {
+        "name": "#hmag:is_peaceful",
+        "negate": true
+      }
+    ]
+  ],
+  "spawners": {
+    "type": "hmag:slime_girl",
+    "weight": 10,
+    "minCount": 1,
+    "maxCount": 2
+  }
+}

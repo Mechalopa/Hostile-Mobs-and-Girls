@@ -57,7 +57,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.network.NetworkHooks;
 
-public class GlaryadEntity extends Monster implements NeutralMob, IModMob
+public class GlaryadEntity extends Monster implements NeutralMob
 {
 	private static final UniformInt FIRST_ANGER_SOUND_DELAY = TimeUtil.rangeOfSeconds(0, 1);
 	private int playFirstAngerSoundIn;

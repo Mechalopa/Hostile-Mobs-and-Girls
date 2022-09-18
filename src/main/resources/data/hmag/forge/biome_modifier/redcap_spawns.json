@@ -1,0 +1,26 @@
+{
+  "type": "hmag:add_spawns",
+  "biomes": [
+    [
+      {
+        "name": "#minecraft:is_overworld"
+      },
+      {
+        "name": "#hmag:is_forest"
+      },
+      {
+        "name": "#hmag:is_spooky"
+      },
+      {
+        "name": "#hmag:is_peaceful",
+        "negate": true
+      }
+    ]
+  ],
+  "spawners": {
+    "type": "hmag:redcap",
+    "weight": 15,
+    "minCount": 1,
+    "maxCount": 2
+  }
+}

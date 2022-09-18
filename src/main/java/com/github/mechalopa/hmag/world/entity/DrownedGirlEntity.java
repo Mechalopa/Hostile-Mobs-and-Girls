@@ -27,7 +27,7 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraftforge.network.NetworkHooks;
 
-public class DrownedGirlEntity extends Drowned implements IModMob
+public class DrownedGirlEntity extends Drowned
 {
 	public DrownedGirlEntity(EntityType<? extends DrownedGirlEntity> type, Level worldIn)
 	{

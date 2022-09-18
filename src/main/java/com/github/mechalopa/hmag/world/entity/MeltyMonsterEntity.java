@@ -53,7 +53,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.network.NetworkHooks;
 
-public class MeltyMonsterEntity extends Monster implements IModMob, RangedAttackMob
+public class MeltyMonsterEntity extends Monster implements RangedAttackMob
 {
 	public MeltyMonsterEntity(EntityType<? extends MeltyMonsterEntity> type, Level worldIn)
 	{

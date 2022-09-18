@@ -41,7 +41,7 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.network.NetworkHooks;
 
-public class NecroticReaperEntity extends Monster implements IModMob
+public class NecroticReaperEntity extends Monster
 {
 	public NecroticReaperEntity(EntityType<? extends NecroticReaperEntity> type, Level worldIn)
 	{

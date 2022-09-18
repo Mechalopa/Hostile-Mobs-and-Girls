@@ -1,0 +1,27 @@
+{
+  "type": "hmag:add_spawns",
+  "biomes": [
+    [
+      {
+        "name": "#minecraft:is_overworld"
+      },
+      {
+        "name": "#hmag:is_jungle"
+      },
+      {
+        "name": "#hmag:is_swamp",
+        "negate": true
+      },
+      {
+        "name": "#hmag:is_peaceful",
+        "negate": true
+      }
+    ]
+  ],
+  "spawners": {
+    "type": "hmag:savagefang",
+    "weight": 15,
+    "minCount": 6,
+    "maxCount": 8
+  }
+}

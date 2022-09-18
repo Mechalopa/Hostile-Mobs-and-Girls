@@ -21,7 +21,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.network.NetworkHooks;
 
-public class ZombieGirlEntity extends Zombie implements IModMob
+public class ZombieGirlEntity extends Zombie
 {
 	public ZombieGirlEntity(EntityType<? extends ZombieGirlEntity> type, Level worldIn)
 	{

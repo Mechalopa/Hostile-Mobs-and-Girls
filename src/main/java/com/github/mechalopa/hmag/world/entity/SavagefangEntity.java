@@ -65,7 +65,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.network.NetworkHooks;
 
-public class SavagefangEntity extends Monster implements IModMob
+public class SavagefangEntity extends Monster
 {
 	private static final EntityDataAccessor<Byte> DATA_FLAGS_ID = SynchedEntityData.defineId(SavagefangEntity.class, EntityDataSerializers.BYTE);
 	private SavagefangEntity leader;

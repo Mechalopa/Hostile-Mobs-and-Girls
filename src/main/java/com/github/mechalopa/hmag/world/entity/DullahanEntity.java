@@ -43,7 +43,7 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.network.NetworkHooks;
 
-public class DullahanEntity extends Monster implements IModMob
+public class DullahanEntity extends Monster
 {
 	public DullahanEntity(EntityType<? extends DullahanEntity> type, Level worldIn)
 	{

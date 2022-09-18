@@ -1,0 +1,44 @@
+{
+  "type": "hmag:add_spawns",
+  "biomes": [
+    [
+      {
+        "name": "#minecraft:is_nether"
+      },
+      {
+        "name": "minecraft:soul_sand_valley",
+        "negate": true
+      },
+      {
+        "name": "minecraft:basalt_deltas",
+        "negate": true
+      },
+      {
+        "name": "minecraft:crimson_forest",
+        "negate": true
+      },
+      {
+        "name": "minecraft:warped_forest",
+        "negate": true
+      },
+      {
+        "name": "#hmag:is_peaceful",
+        "negate": true
+      },
+      {
+        "name": "#hmag:biomesoplenty/withered_abyss",
+        "negate": true
+      },
+      {
+        "name": "#hmag:infernalexp/glowstone_canyon",
+        "negate": true
+      }
+    ]
+  ],
+  "spawners": {
+    "type": "hmag:ghastly_seeker",
+    "weight": 7,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

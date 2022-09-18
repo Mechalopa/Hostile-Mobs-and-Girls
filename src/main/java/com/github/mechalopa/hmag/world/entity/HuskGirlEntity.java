@@ -22,7 +22,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.network.NetworkHooks;
 
-public class HuskGirlEntity extends Husk implements IModMob
+public class HuskGirlEntity extends Husk
 {
 	public HuskGirlEntity(EntityType<? extends HuskGirlEntity> type, Level worldIn)
 	{
