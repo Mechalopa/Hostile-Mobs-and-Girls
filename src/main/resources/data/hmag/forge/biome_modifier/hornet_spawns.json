@@ -24,6 +24,11 @@
         "name": "#hmag:is_peaceful",
         "negate": true
       }
+    ],
+    [
+      {
+        "name": "#hmag:biomesoplenty/lavender_biomes"
+      }
     ]
   ],
   "spawners": {

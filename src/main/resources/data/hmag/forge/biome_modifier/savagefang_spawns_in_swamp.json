@@ -12,6 +12,11 @@
         "name": "#hmag:is_peaceful",
         "negate": true
       }
+    ],
+    [
+      {
+        "name": "#hmag:graveyard_biomes/haunted_lakes"
+      }
     ]
   ],
   "spawners": {

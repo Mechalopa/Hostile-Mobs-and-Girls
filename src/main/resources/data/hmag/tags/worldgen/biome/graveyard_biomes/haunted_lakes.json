@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "graveyard_biomes:haunted_lakes",
+      "required": false
+    }
+  ]
+}
