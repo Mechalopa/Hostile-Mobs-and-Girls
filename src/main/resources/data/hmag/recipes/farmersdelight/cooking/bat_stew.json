@@ -6,6 +6,7 @@
     }
   ],
   "type": "farmersdelight:cooking",
+  "recipe_book_tab": "meals",
   "ingredients": [
     {
       "tag": "forge:bat_wings"
@@ -23,6 +24,6 @@
   "container": {
     "item": "minecraft:bowl"
   },
-  "experience": 0.35,
+  "experience": 1.0,
   "cookingtime": 200
 }
