@@ -8,11 +8,6 @@
     ],
     [
       {
-        "name": "minecraft:basalt_deltas"
-      }
-    ],
-    [
-      {
         "name": "#minecraft:is_nether"
       },
       {
@@ -28,10 +23,18 @@
       }
     ]
   ],
-  "spawners": {
-    "type": "hmag:imp",
-    "weight": 2,
-    "minCount": 1,
-    "maxCount": 2
-  }
+  "spawners": [
+    {
+      "type": "hmag:crimson_slaughterer",
+      "weight": 2,
+      "minCount": 1,
+      "maxCount": 1
+    },
+    {
+      "type": "hmag:imp",
+      "weight": 2,
+      "minCount": 1,
+      "maxCount": 2
+    }
+  ]
 }

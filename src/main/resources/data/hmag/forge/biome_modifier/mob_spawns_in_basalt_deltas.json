@@ -1,0 +1,36 @@
+{
+  "type": "hmag:add_spawns",
+  "biomes": [
+    [
+      {
+        "name": "minecraft:basalt_deltas"
+      }
+    ]
+  ],
+  "spawners": [
+    {
+      "type": "hmag:wither_ghost",
+      "weight": 5,
+      "minCount": 2,
+      "maxCount": 2
+    },
+    {
+      "type": "hmag:kasha",
+      "weight": 2,
+      "minCount": 1,
+      "maxCount": 2
+    },
+    {
+      "type": "hmag:ghastly_seeker",
+      "weight": 2,
+      "minCount": 1,
+      "maxCount": 1
+    },
+    {
+      "type": "hmag:imp",
+      "weight": 5,
+      "minCount": 1,
+      "maxCount": 2
+    }
+  ]
+}

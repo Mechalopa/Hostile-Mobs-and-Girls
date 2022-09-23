@@ -1,0 +1,54 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:nether_wastes",
+    {
+      "id": "biomesoplenty:erupting_inferno",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:undergrowth",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:visceral_heap",
+      "required": false
+    },
+    {
+      "id": "byg:glowstone_gardens",
+      "required": false
+    },
+    {
+      "id": "byg:magma_wastes",
+      "required": false
+    },
+    {
+      "id": "byg:subzero_hypogeal",
+      "required": false
+    },
+    {
+      "id": "byg:sythian_torrids",
+      "required": false
+    },
+    {
+      "id": "byg:warped_desert",
+      "required": false
+    },
+    {
+      "id": "byg:wailing_garth",
+      "required": false
+    },
+    {
+      "id": "byg:arisian_undergrowth",
+      "required": false
+    },
+    {
+      "id": "byg:weeping_mire",
+      "required": false
+    },
+    {
+      "id": "byg:quartz_desert",
+      "required": false
+    }
+  ]
+}
