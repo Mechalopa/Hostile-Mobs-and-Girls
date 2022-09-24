@@ -28,7 +28,7 @@
     },
     {
       "type": "hmag:imp",
-      "weight": 5,
+      "weight": 2,
       "minCount": 1,
       "maxCount": 2
     }
