@@ -66,11 +66,13 @@ public class AddSpawnerDataEvents
 							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.WATER))
 						event.getSpawns().getSpawner(MobCategory.MONSTER).add(new SpawnerData(ModEntityTypes.JACK_FROST.get(), ModConfigs.cachedServer.JACK_FROST_SPAWN_WEIGHT, 1, 2));
 					if (ModConfigs.cachedServer.HORNET_SPAWN_WEIGHT > 0
-							&& BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.FOREST)
+							&& ((BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.FOREST)
 							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.COLD)
 							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.HOT)
 							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.CONIFEROUS)
 							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.SPOOKY))
+							|| biomeKey.location().toString().equals("biomesoplenty:lavender_field")
+							|| biomeKey.location().toString().equals("biomesoplenty:lavender_forest")))
 						event.getSpawns().getSpawner(MobCategory.MONSTER).add(new SpawnerData(ModEntityTypes.HORNET.get(), ModConfigs.cachedServer.HORNET_SPAWN_WEIGHT, 1, 2));
 					if (ModConfigs.cachedServer.DULLAHAN_SPAWN_WEIGHT > 0
 							&& ((BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.MOUNTAIN)
@@ -129,7 +131,8 @@ public class AddSpawnerDataEvents
 							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.MESA))
 						event.getSpawns().getSpawner(MobCategory.MONSTER).add(new SpawnerData(ModEntityTypes.HARPY.get(), ModConfigs.cachedServer.HARPY_SPAWN_WEIGHT, 1, 2));
 					if (ModConfigs.cachedServer.SAVAGEFANG_SPAWN_WEIGHT_IN_SWAMP > 0
-							&& BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.SWAMP))
+							&& (BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.SWAMP)
+							|| biomeKey.location().toString().equals("graveyard_biomes:haunted_lakes")))
 						event.getSpawns().getSpawner(MobCategory.MONSTER).add(new SpawnerData(ModEntityTypes.SAVAGEFANG.get(), ModConfigs.cachedServer.SAVAGEFANG_SPAWN_WEIGHT_IN_SWAMP, 6, 8));
 					else if (ModConfigs.cachedServer.SAVAGEFANG_SPAWN_WEIGHT_IN_JUNGLE > 0
 							&& BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.JUNGLE))

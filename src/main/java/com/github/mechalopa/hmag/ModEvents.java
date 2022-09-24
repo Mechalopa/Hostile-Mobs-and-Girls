@@ -578,26 +578,6 @@ public class ModEvents
 		}
 	}
 
-//	@SubscribeEvent
-//	public void onStructureSpawn(StructureSpawnListGatherEvent event)
-//	{
-//		if (ModConfigs.cachedServer.MONOLITH_SPAWN_WEIGHT_IN_END_CITY > 0)
-//		{
-//			if (event.getStructure() == StructureFeature.END_CITY)
-//			{
-//				event.addEntitySpawn(MobCategory.MONSTER, new SpawnerData(ModEntityTypes.MONOLITH.get(), ModConfigs.cachedServer.MONOLITH_SPAWN_WEIGHT_IN_END_CITY, 1, 1));
-//			}
-//		}
-//
-//		if (ModConfigs.cachedServer.FORTRESS_KEEPER_SPAWN_WEIGHT_IN_NETHER_FORTRESS > 0)
-//		{
-//			if (event.getStructure() == StructureFeature.FORTRESS)
-//			{
-//				event.addEntitySpawn(MobCategory.MONSTER, new SpawnerData(ModEntityTypes.FORTRESS_KEEPER.get(), ModConfigs.cachedServer.FORTRESS_KEEPER_SPAWN_WEIGHT_IN_NETHER_FORTRESS, 1, 1));
-//			}
-//		}
-//	}
-
 	@SubscribeEvent
 	public void onVillagerTrades(VillagerTradesEvent event)
 	{
