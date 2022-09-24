@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:crimson_forest",
+    {
+      "id": "byg:crimson_gardens",
+      "required": false
+    }
+  ]
+}

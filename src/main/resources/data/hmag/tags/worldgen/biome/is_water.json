@@ -4,6 +4,10 @@
     {
       "id": "#forge:is_water",
       "required": false
+    },
+    {
+      "id": "terralith:warm_river",
+      "required": false
     }
   ]
 }

@@ -3,7 +3,7 @@
   "biomes": [
     [
       {
-        "name": "#minecraft:is_overworld"
+        "name": "#hmag:is_overworld"
       },
       {
         "name": "#hmag:is_sandy"
@@ -23,7 +23,7 @@
     ],
     [
       {
-        "name": "#minecraft:is_overworld"
+        "name": "#hmag:is_overworld"
       },
       {
         "name": "#hmag:is_plains"
@@ -39,7 +39,7 @@
     ],
     [
       {
-        "name": "#minecraft:is_overworld"
+        "name": "#hmag:is_overworld"
       },
       {
         "name": "#hmag:is_savanna"

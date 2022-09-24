@@ -5,6 +5,14 @@
     {
       "id": "#forge:is_jungle",
       "required": false
+    },
+    {
+      "id": "terralith:skylands_summer",
+      "required": false
+    },
+    {
+      "id": "terralith:cave/underground_jungle",
+      "required": false
     }
   ]
 }

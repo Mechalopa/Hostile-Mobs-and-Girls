@@ -49,6 +49,30 @@
     {
       "id": "byg:quartz_desert",
       "required": false
+    },
+    {
+      "id": "cinderscapes:blackstone_shales",
+      "required": false
+    },
+    {
+      "id": "cinderscapes:ashy_shoals",
+      "required": false
+    },
+    {
+      "id": "incendium:ash_barrens",
+      "required": false
+    },
+    {
+      "id": "incendium:quartz_flats",
+      "required": false
+    },
+    {
+      "id": "incendium:volcanic_deltas",
+      "required": false
+    },
+    {
+      "id": "incendium:weeping_valley",
+      "required": false
     }
   ]
 }

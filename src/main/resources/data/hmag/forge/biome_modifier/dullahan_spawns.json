@@ -3,7 +3,7 @@
   "biomes": [
     [
       {
-        "name": "#minecraft:is_overworld"
+        "name": "#hmag:is_overworld"
       },
       {
         "name": "#hmag:is_mountain"
@@ -31,7 +31,7 @@
     ],
     [
       {
-        "name": "#minecraft:is_overworld"
+        "name": "#hmag:is_overworld"
       },
       {
         "name": "#hmag:is_forest"

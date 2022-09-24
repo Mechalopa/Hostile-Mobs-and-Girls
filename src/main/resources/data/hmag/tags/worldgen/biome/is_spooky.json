@@ -4,6 +4,10 @@
     {
       "id": "#forge:is_spooky",
       "required": false
+    },
+    {
+      "id": "terralith:cave/infested_caves",
+      "required": false
     }
   ]
 }

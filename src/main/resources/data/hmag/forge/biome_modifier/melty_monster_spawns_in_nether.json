@@ -3,7 +3,7 @@
   "biomes": [
     [
       {
-        "name": "#minecraft:is_nether"
+        "name": "#hmag:is_nether"
       },
       {
         "name": "#hmag:is_peaceful",

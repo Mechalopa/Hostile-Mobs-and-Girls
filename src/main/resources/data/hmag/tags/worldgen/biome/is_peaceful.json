@@ -15,6 +15,10 @@
     {
       "id": "cinderscapes:luminous_grove",
       "required": false
+    },
+    {
+      "id": "terralith:mirage_isles",
+      "required": false
     }
   ]
 }

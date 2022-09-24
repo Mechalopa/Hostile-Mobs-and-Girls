@@ -6,6 +6,10 @@
     {
       "id": "byg:viscal_isles",
       "required": false
+    },
+    {
+      "id": "nullscape:crystal_peaks",
+      "required": false
     }
   ]
 }

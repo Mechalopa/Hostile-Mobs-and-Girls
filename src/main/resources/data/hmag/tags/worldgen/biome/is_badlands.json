@@ -5,6 +5,18 @@
     {
       "id": "#forge:is_badlands",
       "required": false
+    },
+    {
+      "id": "terralith:snowy_badlands",
+      "required": false
+    },
+    {
+      "id": "terralith:warped_mesa",
+      "required": false
+    },
+    {
+      "id": "terralith:white_mesa",
+      "required": false
     }
   ]
 }
