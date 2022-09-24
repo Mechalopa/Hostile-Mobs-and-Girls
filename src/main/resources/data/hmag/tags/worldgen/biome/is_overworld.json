@@ -9,6 +9,10 @@
     {
       "id": "#terralith:all_terralith_biomes",
       "required": false
+    },
+    {
+      "id": "terralith:cave/underground_jungle",
+      "required": false
     }
   ]
 }

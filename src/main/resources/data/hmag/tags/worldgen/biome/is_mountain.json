@@ -8,59 +8,7 @@
       "required": false
     },
     {
-      "id": "terralith:blooming_plateau",
-      "required": false
-    },
-    {
-      "id": "terralith:blooming_valley",
-      "required": false
-    },
-    {
-      "id": "terralith:glacial_chasm",
-      "required": false
-    },
-    {
-      "id": "terralith:highlands",
-      "required": false
-    },
-    {
-      "id": "terralith:lavender_valley",
-      "required": false
-    },
-    {
-      "id": "terralith:moonlight_valley",
-      "required": false
-    },
-    {
-      "id": "terralith:sakura_valley",
-      "required": false
-    },
-    {
-      "id": "terralith:sandstone_valley",
-      "required": false
-    },
-    {
-      "id": "terralith:stony_spires",
-      "required": false
-    },
-    {
-      "id": "terralith:temperate_highlands",
-      "required": false
-    },
-    {
-      "id": "terralith:volcanic_crater",
-      "required": false
-    },
-    {
-      "id": "terralith:windswept_spires",
-      "required": false
-    },
-    {
       "id": "terralith:basalt_cliffs",
-      "required": false
-    },
-    {
-      "id": "terralith:frozen_cliffs",
       "required": false
     },
     {

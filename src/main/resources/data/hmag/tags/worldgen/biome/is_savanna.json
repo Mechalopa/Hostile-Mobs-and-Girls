@@ -33,10 +33,6 @@
     {
       "id": "terralith:shrubland",
       "required": false
-    },
-    {
-      "id": "terralith:ancient_sands",
-      "required": false
     }
   ]
 }
