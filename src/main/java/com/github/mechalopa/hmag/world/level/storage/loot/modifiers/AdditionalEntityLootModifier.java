@@ -16,6 +16,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
@@ -51,7 +52,7 @@ public class AdditionalEntityLootModifier extends LootModifier
 				}
 			});
 
-	public static final Supplier<Codec<AdditionalEntityLootModifier>> CODEC = Suppliers.memoize(() -> RecordCodecBuilder.create(inst -> codecStart(inst).and(inst.group(LOOT_FUNCTIONS_CODEC.optionalFieldOf("functions", new LootItemFunction[0]).forGetter(m -> m.functions),ForgeRegistries.ITEMS.getCodec().fieldOf("addition").forGetter(m -> m.addition))).apply(inst, AdditionalEntityLootModifier::new)));
+	public static final Supplier<Codec<AdditionalEntityLootModifier>> CODEC = Suppliers.memoize(() -> RecordCodecBuilder.create(inst -> codecStart(inst).and(inst.group(LOOT_FUNCTIONS_CODEC.optionalFieldOf("functions", new LootItemFunction[0]).forGetter(m -> m.functions),ForgeRegistries.ITEMS.getCodec().optionalFieldOf("addition", Items.BARRIER).forGetter(m -> m.addition))).apply(inst, AdditionalEntityLootModifier::new)));
 	private final LootItemFunction[] functions;
 	private final Item addition;
 
@@ -66,7 +67,7 @@ public class AdditionalEntityLootModifier extends LootModifier
 	@Override
 	public ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context)
 	{
-		if (this.addition != null)
+		if (this.addition != null && !this.addition.equals(Items.BARRIER))
 		{
 			ItemStack stack = this.addition.getDefaultInstance();
 

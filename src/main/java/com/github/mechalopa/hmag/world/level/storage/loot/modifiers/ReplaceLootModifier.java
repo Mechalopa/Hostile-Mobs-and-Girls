@@ -21,7 +21,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class ReplaceLootModifier extends LootModifier
 {
-	public static final Supplier<Codec<ReplaceLootModifier>> CODEC = Suppliers.memoize(() -> RecordCodecBuilder.create(inst -> codecStart(inst).and(inst.group(ForgeRegistries.ITEMS.getCodec().optionalFieldOf("original", Items.BARRIER).forGetter(m -> m.original), ForgeRegistries.ITEMS.getCodec().optionalFieldOf("replacement", Items.DIRT).forGetter(m -> m.replacement))).apply(inst, ReplaceLootModifier::new)));
+	public static final Supplier<Codec<ReplaceLootModifier>> CODEC = Suppliers.memoize(() -> RecordCodecBuilder.create(inst -> codecStart(inst).and(inst.group(ForgeRegistries.ITEMS.getCodec().optionalFieldOf("original", Items.BARRIER).forGetter(m -> m.original), ForgeRegistries.ITEMS.getCodec().optionalFieldOf("replacement", Items.BARRIER).forGetter(m -> m.replacement))).apply(inst, ReplaceLootModifier::new)));
 	private final Item original;
 	private final Item replacement;
 
@@ -36,7 +36,7 @@ public class ReplaceLootModifier extends LootModifier
 	@Override
 	public ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context)
 	{
-		if (this.original == null || this.replacement == null)
+		if (this.original == null || this.original.equals(Items.BARRIER) || this.replacement == null || this.replacement.equals(Items.BARRIER))
 		{
 			return generatedLoot;
 		}
