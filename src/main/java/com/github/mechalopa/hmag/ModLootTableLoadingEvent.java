@@ -17,6 +17,8 @@ public class ModLootTableLoadingEvent
 {
 	private static final List<String> CHEST_TABLES = ImmutableList.of(
 			"abandoned_mineshaft",
+			"ancient_city",
+			"ancient_city_ice_box",
 			"bastion_hoglin_stable",
 			"bastion_other",
 			"bastion_treasure",
