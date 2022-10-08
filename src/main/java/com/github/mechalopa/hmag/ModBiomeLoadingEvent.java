@@ -52,11 +52,13 @@ public class ModBiomeLoadingEvent
 							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.WATER))
 						event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.JACK_FROST.get(), ModConfigs.cachedServer.JACK_FROST_SPAWN_WEIGHT, 1, 2));
 					if (ModConfigs.cachedServer.HORNET_SPAWN_WEIGHT > 0
-							&& BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.FOREST)
+							&& ((BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.FOREST)
 							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.COLD)
 							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.HOT)
 							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.CONIFEROUS)
 							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.SPOOKY))
+							|| biomeKey.location().toString().equals("biomesoplenty:lavender_field")
+							|| biomeKey.location().toString().equals("biomesoplenty:lavender_forest")))
 						event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.HORNET.get(), ModConfigs.cachedServer.HORNET_SPAWN_WEIGHT, 1, 2));
 					if (ModConfigs.cachedServer.DULLAHAN_SPAWN_WEIGHT > 0
 							&& ((BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.MOUNTAIN)
@@ -102,8 +104,10 @@ public class ModBiomeLoadingEvent
 							|| biomeKey.location().toString().equals("magicalforest:magical_forest_hills")))
 						event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.SLIME_GIRL.get(), ModConfigs.cachedServer.SLIME_GIRL_SPAWN_WEIGHT, 1, 2));
 					if (ModConfigs.cachedServer.DYSSOMNIA_SPAWN_WEIGHT > 0
-							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.FOREST)
-							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.DENSE))
+							&& ((!BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.FOREST)
+							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.DENSE)
+							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.JUNGLE))
+							|| biomeKey == Biomes.JUNGLE_EDGE))
 						event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.DYSSOMNIA.get(), ModConfigs.cachedServer.DYSSOMNIA_SPAWN_WEIGHT, 1, 1));
 					if (ModConfigs.cachedServer.SNOW_CANINE_SPAWN_WEIGHT > 0
 							&& BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.SNOWY)
@@ -117,7 +121,8 @@ public class ModBiomeLoadingEvent
 							&& !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.MESA))
 						event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.HARPY.get(), ModConfigs.cachedServer.HARPY_SPAWN_WEIGHT, 1, 2));
 					if (ModConfigs.cachedServer.SAVAGEFANG_SPAWN_WEIGHT_IN_SWAMP > 0
-							&& BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.SWAMP))
+							&& (BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.SWAMP)
+							|| biomeKey.location().toString().equals("graveyard:haunted_lakes")))
 						event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.SAVAGEFANG.get(), ModConfigs.cachedServer.SAVAGEFANG_SPAWN_WEIGHT_IN_SWAMP, 6, 8));
 					else if (ModConfigs.cachedServer.SAVAGEFANG_SPAWN_WEIGHT_IN_JUNGLE > 0
 							&& BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.JUNGLE))
@@ -173,7 +178,7 @@ public class ModBiomeLoadingEvent
 						if (ModConfigs.cachedServer.WITHER_GHOST_SPAWN_WEIGHT > 0)
 							event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.WITHER_GHOST.get(), 1, 1, 2));
 					}
-					else if (biomeKey != Biomes.CRIMSON_FOREST && biomeKey != Biomes.WARPED_FOREST)
+					else if (biomeKey != Biomes.CRIMSON_FOREST && biomeKey != Biomes.WARPED_FOREST && !BiomeDictionary.hasType(biomeKey, BiomeDictionary.Type.FOREST))
 					{
 						if (ModConfigs.cachedServer.WITHER_GHOST_SPAWN_WEIGHT > 0)
 							event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(ModEntityTypes.WITHER_GHOST.get(), ModConfigs.cachedServer.WITHER_GHOST_SPAWN_WEIGHT, 2, 4));

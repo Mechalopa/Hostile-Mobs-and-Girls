@@ -1,6 +1,10 @@
 {
   "replace": false,
   "values": [
-    "minecraft:drowned"
+    "minecraft:drowned",
+    {
+      "id": "specialmobs:drowned",
+      "required": false
+    }
   ]
 }

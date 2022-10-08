@@ -5,6 +5,10 @@
     {
       "id": "camocreepers:camo_creeper",
       "required": false
+    },
+    {
+      "id": "specialmobs:creeper",
+      "required": false
     }
   ]
 }

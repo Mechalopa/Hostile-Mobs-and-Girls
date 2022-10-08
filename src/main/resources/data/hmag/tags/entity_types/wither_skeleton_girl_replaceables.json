@@ -1,6 +1,10 @@
 {
   "replace": false,
   "values": [
-    "minecraft:wither_skeleton"
+    "minecraft:wither_skeleton",
+    {
+      "id": "specialmobs:witherskeleton",
+      "required": false
+    }
   ]
 }
