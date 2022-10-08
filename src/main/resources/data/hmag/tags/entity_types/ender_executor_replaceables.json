@@ -1,10 +1,10 @@
 {
   "replace": false,
   "values": [
-    "minecraft:enderman,
+    "minecraft:enderman",
     {
       "id": "specialmobs:enderman",
       "required": false
-    }"
+    }
   ]
 }
