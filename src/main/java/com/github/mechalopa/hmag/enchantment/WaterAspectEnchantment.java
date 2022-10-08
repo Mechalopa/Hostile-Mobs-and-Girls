@@ -17,7 +17,7 @@ public class WaterAspectEnchantment extends Enchantment
 	@Override
 	public int getMinCost(int level)
 	{
-		return 5 + ((level + 1) * 8);
+		return 5 + ((level - 1) * 5);
 	}
 
 	@Override
