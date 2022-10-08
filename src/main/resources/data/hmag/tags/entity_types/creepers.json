@@ -25,6 +25,70 @@
     {
       "id": "#creeperoverhaul:creepers",
       "required": false
+    },
+    {
+      "id": "specialmobs:creeper",
+      "required": false
+    },
+    {
+      "id": "specialmobs:darkcreeper",
+      "required": false
+    },
+    {
+      "id": "specialmobs:deathcreeper",
+      "required": false
+    },
+    {
+      "id": "specialmobs:dirtcreeper",
+      "required": false
+    },
+    {
+      "id": "specialmobs:doomcreeper",
+      "required": false
+    },
+    {
+      "id": "specialmobs:drowningcreeper",
+      "required": false
+    },
+    {
+      "id": "specialmobs:endercreeper",
+      "required": false
+    },
+    {
+      "id": "specialmobs:firecreeper",
+      "required": false
+    },
+    {
+      "id": "specialmobs:gravelcreeper",
+      "required": false
+    },
+    {
+      "id": "specialmobs:jumpingcreeper",
+      "required": false
+    },
+    {
+      "id": "specialmobs:lightningcreeper",
+      "required": false
+    },
+    {
+      "id": "specialmobs:minicreeper",
+      "required": false
+    },
+    {
+      "id": "specialmobs:sandcreeper",
+      "required": false
+    },
+    {
+      "id": "specialmobs:skeletoncreeper",
+      "required": false
+    },
+    {
+      "id": "specialmobs:snowcreeper",
+      "required": false
+    },
+    {
+      "id": "specialmobs:splittingcreeper",
+      "required": false
     }
   ]
 }

@@ -10,6 +10,10 @@
     {
       "id": "wstweaks:fragment",
       "required": false
+    },
+    {
+      "id": "witherproofed:withered_powder",
+      "required": false
     }
   ]
 }

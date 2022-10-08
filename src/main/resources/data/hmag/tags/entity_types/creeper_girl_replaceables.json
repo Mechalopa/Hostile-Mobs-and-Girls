@@ -57,6 +57,10 @@
     {
       "id": "creeperoverhaul:snowy_creeper",
       "required": false
+    },
+    {
+      "id": "specialmobs:creeper",
+      "required": false
     }
   ]
 }

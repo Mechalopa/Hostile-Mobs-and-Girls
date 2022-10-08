@@ -1,6 +1,10 @@
 {
   "replace": false,
   "values": [
-    "minecraft:husk"
+    "minecraft:husk",
+    {
+      "id": "specialmobs:huskzombie",
+      "required": false
+    }
   ]
 }
