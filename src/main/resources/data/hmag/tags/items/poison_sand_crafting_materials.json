@@ -6,6 +6,10 @@
     {
       "id": "jafohana:red_spider_lily",
       "required": false
+    },
+    {
+      "id": "urushi:lycoris_radiata",
+      "required": false
     }
   ]
 }

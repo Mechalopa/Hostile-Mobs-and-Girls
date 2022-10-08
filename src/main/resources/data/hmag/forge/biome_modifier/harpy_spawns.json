@@ -6,6 +6,18 @@
         "name": "#hmag:is_overworld"
       },
       {
+        "name": "#hmag:is_desert"
+      },
+      {
+        "name": "#hmag:is_peaceful",
+        "negate": true
+      }
+    ],
+    [
+      {
+        "name": "#hmag:is_overworld"
+      },
+      {
         "name": "#hmag:is_sandy"
       },
       {
