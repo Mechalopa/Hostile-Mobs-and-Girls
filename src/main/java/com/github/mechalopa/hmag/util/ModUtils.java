@@ -41,12 +41,12 @@ public class ModUtils
 	public static final String WITH_SPAWN_PARTICLE_KEY = HMaG.MODID + ".withSpawnParticle";
 	public static final Codec<HolderSet<Structure>> STRUCTURE_LIST_CODEC = RegistryCodecs.homogeneousList(Registry.STRUCTURE_REGISTRY, Structure.DIRECT_CODEC);
 
-	public static boolean burnInDay(@Nonnull LivingEntity livingEntity, RandomSource rand, Boolean isSunBurnTick, int seconds)
+	public static void burnInDay(@Nonnull LivingEntity livingEntity, RandomSource rand, Boolean isSunBurnTick, int seconds)
 	{
-		return burnInDay(livingEntity, rand, isSunBurnTick, true, seconds);
+		burnInDay(livingEntity, rand, isSunBurnTick, true, seconds);
 	}
 
-	public static boolean burnInDay(@Nonnull LivingEntity livingEntity, RandomSource rand, Boolean isSunBurnTick, Boolean shouldBurn, int seconds)
+	public static void burnInDay(@Nonnull LivingEntity livingEntity, RandomSource rand, Boolean isSunBurnTick, Boolean shouldBurn, int seconds)
 	{
 		if (livingEntity != null && livingEntity.level != null && !livingEntity.level.isClientSide && livingEntity.isAlive())
 		{
@@ -75,12 +75,9 @@ public class ModUtils
 				if (flag)
 				{
 					livingEntity.setSecondsOnFire(seconds);
-					return true;
 				}
 			}
 		}
-
-		return false;
 	}
 
 	public static boolean canReach(@Nonnull LivingEntity livingEntity, Vec3 vec3, int count)

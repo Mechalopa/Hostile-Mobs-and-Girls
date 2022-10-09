@@ -147,19 +147,16 @@ public class JiangshiEntity extends Monster
 		}
 		else
 		{
-			if (!(this.getTarget() != null && this.getTarget().isAlive() && this.hasLineOfSight(this.getTarget()) && this.distanceToSqr(this.getTarget()) <= 8.0D * 8.0D))
+			if (this.isOnFire() || !(this.getTarget() != null && this.getTarget().isAlive() && this.hasLineOfSight(this.getTarget()) && this.distanceToSqr(this.getTarget()) <= 8.0D * 8.0D))
 			{
-				if (this.getSpeedBonus() > 0 && this.tickCount % 30 == 0 && this.getRandom().nextInt(4) == 0)
+				if (this.getSpeedBonus() > 0 && this.tickCount % 20 == 0 && this.getRandom().nextInt(4) == 0)
 				{
 					this.setSpeedBonus(this.getSpeedBonus() - 1);
 				}
 			}
 		}
 
-		if (ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick(), 8))
-		{
-			this.setSpeedBonus(0);
-		}
+		ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick(), 8);
 
 		super.aiStep();
 	}
@@ -230,7 +227,7 @@ public class JiangshiEntity extends Monster
 	public void thunderHit(ServerLevel serverLevel, LightningBolt lightningBolt)
 	{
 		super.thunderHit(serverLevel, lightningBolt);
-		this.setSpeedBonus(SPEED_BONUS_MAX);
+		this.setSpeedBonus(0);
 	}
 
 	public int getSpeedBonus()
@@ -333,7 +330,7 @@ public class JiangshiEntity extends Monster
 
 		public LeapGoal(JiangshiEntity mob)
 		{
-			super(mob, 0.4F, 0.25F, 8.0F, 12);
+			super(mob, 0.4F, 0.2F, 8.0F, 12);
 			this.mob = mob;
 		}
 
@@ -347,7 +344,7 @@ public class JiangshiEntity extends Monster
 		public void start()
 		{
 			super.start();
-			this.mob.playSound(ModSoundEvents.JIANGSHI_JUMP.get(), 0.5F, 1.0F);
+			this.mob.playSound(ModSoundEvents.JIANGSHI_JUMP.get(), 0.8F, 1.0F);
 		}
 
 		@Override
@@ -359,7 +356,7 @@ public class JiangshiEntity extends Monster
 		@Override
 		public double getXZD()
 		{
-			return super.getXZD() + 0.25D * ((double)mob.getSpeedBonus() / (double)JiangshiEntity.SPEED_BONUS_MAX);
+			return super.getXZD() + 0.3D * ((double)mob.getSpeedBonus() / (double)JiangshiEntity.SPEED_BONUS_MAX);
 		}
 	}
 }

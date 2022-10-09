@@ -9,8 +9,6 @@ import com.mojang.math.Vector3f;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.HumanoidArm;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -29,11 +27,12 @@ public class JiangshiRenderer extends AbstractGirlRenderer<JiangshiEntity, Jiang
 	{
 		super.setupRotations(entity, poseStack, ageInTicks, rotationYaw, partialTicks);
 
-		if (this.getModel() != null && !this.getModel().riding)
+		if (this.getModel() != null && !this.getModel().riding && !(entity.animationSpeed < 0.01D))
 		{
-			float f = entity.tickCount + partialTicks;
-			poseStack.mulPose(Vector3f.XP.rotationDegrees(Mth.sin(f * 0.03F) * 1.0F));
-			poseStack.mulPose(Vector3f.ZP.rotationDegrees(Mth.cos(f * 0.05F) * 1.5F * (entity.getMainArm() == HumanoidArm.LEFT ? -1.0F : 1.0F)));
+			float f = 15.0F;
+			float f1 = entity.animationPosition - entity.animationSpeed * (1.0F - partialTicks) + 7.0F;
+			float f2 = (Math.abs(f1 % f - 7.5F) - 3.75F) / 3.75F;
+			poseStack.mulPose(Vector3f.ZP.rotationDegrees(2.5F * f2));
 		}
 	}
 
