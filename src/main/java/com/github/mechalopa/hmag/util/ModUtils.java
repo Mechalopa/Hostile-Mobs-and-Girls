@@ -41,31 +41,31 @@ public class ModUtils
 	public static final String WITH_SPAWN_PARTICLE_KEY = HMaG.MODID + ".withSpawnParticle";
 	public static final Codec<HolderSet<Structure>> STRUCTURE_LIST_CODEC = RegistryCodecs.homogeneousList(Registry.STRUCTURE_REGISTRY, Structure.DIRECT_CODEC);
 
-	public static void burnInDay(@Nonnull LivingEntity livingEntityIn, RandomSource rand, Boolean isSunBurnTick, int seconds)
+	public static boolean burnInDay(@Nonnull LivingEntity livingEntity, RandomSource rand, Boolean isSunBurnTick, int seconds)
 	{
-		burnInDay(livingEntityIn, rand, isSunBurnTick, true, seconds);
+		return burnInDay(livingEntity, rand, isSunBurnTick, true, seconds);
 	}
 
-	public static void burnInDay(@Nonnull LivingEntity livingEntityIn, RandomSource rand, Boolean isSunBurnTick, Boolean shouldBurn, int seconds)
+	public static boolean burnInDay(@Nonnull LivingEntity livingEntity, RandomSource rand, Boolean isSunBurnTick, Boolean shouldBurn, int seconds)
 	{
-		if (livingEntityIn != null && livingEntityIn.level != null && !livingEntityIn.level.isClientSide && livingEntityIn.isAlive())
+		if (livingEntity != null && livingEntity.level != null && !livingEntity.level.isClientSide && livingEntity.isAlive())
 		{
-			boolean flag = isSunBurnTick && shouldBurn && !livingEntityIn.isInWaterOrRain();
+			boolean flag = isSunBurnTick && shouldBurn && !livingEntity.isInWaterOrRain();
 
 			if (flag)
 			{
-				ItemStack itemstack = livingEntityIn.getItemBySlot(EquipmentSlot.HEAD);
+				ItemStack stack = livingEntity.getItemBySlot(EquipmentSlot.HEAD);
 
-				if (!itemstack.isEmpty())
+				if (!stack.isEmpty())
 				{
-					if (itemstack.isDamageableItem())
+					if (stack.isDamageableItem())
 					{
-						itemstack.setDamageValue(itemstack.getDamageValue() + rand.nextInt(2));
+						stack.setDamageValue(stack.getDamageValue() + rand.nextInt(2));
 
-						if (itemstack.getDamageValue() >= itemstack.getMaxDamage())
+						if (stack.getDamageValue() >= stack.getMaxDamage())
 						{
-							livingEntityIn.broadcastBreakEvent(EquipmentSlot.HEAD);
-							livingEntityIn.setItemSlot(EquipmentSlot.HEAD, ItemStack.EMPTY);
+							livingEntity.broadcastBreakEvent(EquipmentSlot.HEAD);
+							livingEntity.setItemSlot(EquipmentSlot.HEAD, ItemStack.EMPTY);
 						}
 					}
 
@@ -74,21 +74,24 @@ public class ModUtils
 
 				if (flag)
 				{
-					livingEntityIn.setSecondsOnFire(seconds);
+					livingEntity.setSecondsOnFire(seconds);
+					return true;
 				}
 			}
 		}
+
+		return false;
 	}
 
-	public static boolean canReach(@Nonnull LivingEntity livingEntityIn, Vec3 vec3In, int countIn)
+	public static boolean canReach(@Nonnull LivingEntity livingEntity, Vec3 vec3, int count)
 	{
-		AABB axisalignedbb = livingEntityIn.getBoundingBox();
+		AABB axisalignedbb = livingEntity.getBoundingBox();
 
-		for (int i = 1; i < countIn; ++i)
+		for (int i = 1; i < count; ++i)
 		{
-			axisalignedbb = axisalignedbb.move(vec3In);
+			axisalignedbb = axisalignedbb.move(vec3);
 
-			if (!livingEntityIn.level.noCollision(livingEntityIn, axisalignedbb))
+			if (!livingEntity.level.noCollision(livingEntity, axisalignedbb))
 			{
 				return false;
 			}
@@ -102,9 +105,9 @@ public class ModUtils
 		return pos.closerThan(entity.blockPosition(), distance);
 	}
 
-	public static boolean isDarkEnoughToSpawn(ServerLevelAccessor levelAccessor, BlockPos pos, RandomSource randomIn)
+	public static boolean isDarkEnoughToSpawn(ServerLevelAccessor levelAccessor, BlockPos pos, RandomSource random)
 	{
-		if (levelAccessor.getBrightness(LightLayer.SKY, pos) > randomIn.nextInt(32))
+		if (levelAccessor.getBrightness(LightLayer.SKY, pos) > random.nextInt(32))
 		{
 			return false;
 		}
@@ -120,7 +123,7 @@ public class ModUtils
 			else
 			{
 				int j = levelAccessor.getLevel().isThundering() ? levelAccessor.getMaxLocalRawBrightness(pos, 10) : levelAccessor.getMaxLocalRawBrightness(pos);
-				return j <= dimensiontype.monsterSpawnLightTest().sample(randomIn);
+				return j <= dimensiontype.monsterSpawnLightTest().sample(random);
 			}
 		}
 	}

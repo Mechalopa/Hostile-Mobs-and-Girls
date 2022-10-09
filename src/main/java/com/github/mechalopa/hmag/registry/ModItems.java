@@ -164,6 +164,7 @@ public class ModItems
 	public static final RegistryObject<Item> DODOMEKI_SPAWN_EGG = createSpawnEggRegistryObject("dodomeki", ModEntityTypes.DODOMEKI, 0x242121, 0xB3ACAB);
 	public static final RegistryObject<Item> IMP_SPAWN_EGG = createSpawnEggRegistryObject("imp", ModEntityTypes.IMP, 0x5E2E78, 0x4E181B);
 	public static final RegistryObject<Item> GLARYAD_SPAWN_EGG = createSpawnEggRegistryObject("glaryad", ModEntityTypes.GLARYAD, 0x70922D, 0xBA62CE);
+	public static final RegistryObject<Item> JIANGSHI_SPAWN_EGG = createSpawnEggRegistryObject("jiangshi", ModEntityTypes.JIANGSHI, 0x000000, 0xFFFFFF);
 
 	@SubscribeEvent
 	public static void register(IEventBus eventBus)

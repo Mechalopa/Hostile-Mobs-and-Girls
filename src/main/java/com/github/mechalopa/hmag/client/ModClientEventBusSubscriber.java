@@ -22,6 +22,7 @@ import com.github.mechalopa.hmag.client.model.HarpyModel;
 import com.github.mechalopa.hmag.client.model.HornetModel;
 import com.github.mechalopa.hmag.client.model.ImpModel;
 import com.github.mechalopa.hmag.client.model.JackFrostModel;
+import com.github.mechalopa.hmag.client.model.JiangshiModel;
 import com.github.mechalopa.hmag.client.model.KashaModel;
 import com.github.mechalopa.hmag.client.model.KoboldModel;
 import com.github.mechalopa.hmag.client.model.LichModel;
@@ -62,6 +63,7 @@ import com.github.mechalopa.hmag.client.renderer.HornetRenderer;
 import com.github.mechalopa.hmag.client.renderer.HuskGirlRenderer;
 import com.github.mechalopa.hmag.client.renderer.ImpRenderer;
 import com.github.mechalopa.hmag.client.renderer.JackFrostRenderer;
+import com.github.mechalopa.hmag.client.renderer.JiangshiRenderer;
 import com.github.mechalopa.hmag.client.renderer.KashaRenderer;
 import com.github.mechalopa.hmag.client.renderer.KoboldRenderer;
 import com.github.mechalopa.hmag.client.renderer.LichRenderer;
@@ -179,6 +181,7 @@ public class ModClientEventBusSubscriber
 		event.registerEntityRenderer(ModEntityTypes.DODOMEKI.get(), DodomekiRenderer::new);
 		event.registerEntityRenderer(ModEntityTypes.IMP.get(), ImpRenderer::new);
 		event.registerEntityRenderer(ModEntityTypes.GLARYAD.get(), GlaryadRenderer::new);
+		event.registerEntityRenderer(ModEntityTypes.JIANGSHI.get(), JiangshiRenderer::new);
 
 		event.registerEntityRenderer(ModEntityTypes.MAGIC_BULLET.get(), MagicBulletRenderer::new);
 		event.registerEntityRenderer(ModEntityTypes.HARD_SNOWBALL.get(), ModThrownItemRenderer::new);
@@ -259,6 +262,7 @@ public class ModClientEventBusSubscriber
 		event.registerLayerDefinition(ModModelLayers.DODOMEKI, DodomekiModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.IMP, ImpModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.GLARYAD, GlaryadModel::createBodyLayer);
+		event.registerLayerDefinition(ModModelLayers.JIANGSHI, JiangshiModel::createBodyLayer);
 
 		event.registerLayerDefinition(ModModelLayers.ANCIENT_SHIELD, ModShieldModel::createLayer);
 		event.registerLayerDefinition(ModModelLayers.FORTRESS_SHIELD, ModShieldModel::createLayer);

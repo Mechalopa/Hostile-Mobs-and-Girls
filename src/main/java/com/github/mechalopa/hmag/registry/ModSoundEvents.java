@@ -41,6 +41,10 @@ public class ModSoundEvents
 	public static final RegistryObject<SoundEvent> DYSSOMNIA_HURT = REGISTRY.register("entity.dyssomnia.hurt", () -> new SoundEvent(new ResourceLocation(HMaG.MODID, "entity.dyssomnia.hurt")));
 	public static final RegistryObject<SoundEvent> DYSSOMNIA_DEATH = REGISTRY.register("entity.dyssomnia.death", () -> new SoundEvent(new ResourceLocation(HMaG.MODID, "entity.dyssomnia.death")));
 	public static final RegistryObject<SoundEvent> DYSSOMNIA_SUMMON = REGISTRY.register("entity.dyssomnia.summon", () -> new SoundEvent(new ResourceLocation(HMaG.MODID, "entity.dyssomnia.summon")));
+	public static final RegistryObject<SoundEvent> JIANGSHI_AMBIENT = REGISTRY.register("entity.jiangshi.ambient", () -> new SoundEvent(new ResourceLocation(HMaG.MODID, "entity.jiangshi.ambient")));
+	public static final RegistryObject<SoundEvent> JIANGSHI_HURT = REGISTRY.register("entity.jiangshi.hurt", () -> new SoundEvent(new ResourceLocation(HMaG.MODID, "entity.jiangshi.hurt")));
+	public static final RegistryObject<SoundEvent> JIANGSHI_DEATH = REGISTRY.register("entity.jiangshi.death", () -> new SoundEvent(new ResourceLocation(HMaG.MODID, "entity.jiangshi.death")));
+	public static final RegistryObject<SoundEvent> JIANGSHI_JUMP = REGISTRY.register("entity.jiangshi.jump", () -> new SoundEvent(new ResourceLocation(HMaG.MODID, "entity.jiangshi.jump")));
 
 	@SubscribeEvent
 	public static void register(IEventBus eventBus)

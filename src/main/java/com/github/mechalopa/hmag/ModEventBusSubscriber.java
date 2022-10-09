@@ -27,6 +27,7 @@ import com.github.mechalopa.hmag.world.entity.HornetEntity;
 import com.github.mechalopa.hmag.world.entity.HuskGirlEntity;
 import com.github.mechalopa.hmag.world.entity.ImpEntity;
 import com.github.mechalopa.hmag.world.entity.JackFrostEntity;
+import com.github.mechalopa.hmag.world.entity.JiangshiEntity;
 import com.github.mechalopa.hmag.world.entity.KashaEntity;
 import com.github.mechalopa.hmag.world.entity.KoboldEntity;
 import com.github.mechalopa.hmag.world.entity.LichEntity;
@@ -158,7 +159,7 @@ public class ModEventBusSubscriber
 		SpawnPlacements.register(ModEntityTypes.DROWNED_GIRL.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, DrownedGirlEntity::checkDrownedGirlSpawnRules);
 		SpawnPlacements.register(ModEntityTypes.SKELETON_GIRL.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
 		SpawnPlacements.register(ModEntityTypes.WITHER_SKELETON_GIRL.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.STRAY_GIRL.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkMonsterSpawnCanSeeSkyRules);
+		SpawnPlacements.register(ModEntityTypes.STRAY_GIRL.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, StrayGirlEntity::checkStrayGirlSpawnRules);
 		SpawnPlacements.register(ModEntityTypes.CREEPER_GIRL.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
 		SpawnPlacements.register(ModEntityTypes.GHOST.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
 		SpawnPlacements.register(ModEntityTypes.WITHER_GHOST.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
@@ -193,6 +194,7 @@ public class ModEventBusSubscriber
 		SpawnPlacements.register(ModEntityTypes.DODOMEKI.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules);
 		SpawnPlacements.register(ModEntityTypes.IMP.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkAnyLightMonsterSpawnRules);
 		SpawnPlacements.register(ModEntityTypes.GLARYAD.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, GlaryadEntity::checkGlaryadSpawnRules);
+		SpawnPlacements.register(ModEntityTypes.JIANGSHI.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules);
 	}
 
 	@SubscribeEvent
@@ -238,6 +240,7 @@ public class ModEventBusSubscriber
 		event.put(ModEntityTypes.DODOMEKI.get(), DodomekiEntity.createAttributes().build());
 		event.put(ModEntityTypes.IMP.get(), ImpEntity.createAttributes().build());
 		event.put(ModEntityTypes.GLARYAD.get(), GlaryadEntity.createAttributes().build());
+		event.put(ModEntityTypes.JIANGSHI.get(), JiangshiEntity.createAttributes().build());
 	}
 
 	private static void registerBrewingRecipe(Potion inputPotion, Item item, Potion outputPotion)

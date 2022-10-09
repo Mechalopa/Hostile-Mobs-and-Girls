@@ -22,6 +22,7 @@ import com.github.mechalopa.hmag.world.entity.HornetEntity;
 import com.github.mechalopa.hmag.world.entity.HuskGirlEntity;
 import com.github.mechalopa.hmag.world.entity.ImpEntity;
 import com.github.mechalopa.hmag.world.entity.JackFrostEntity;
+import com.github.mechalopa.hmag.world.entity.JiangshiEntity;
 import com.github.mechalopa.hmag.world.entity.KashaEntity;
 import com.github.mechalopa.hmag.world.entity.KoboldEntity;
 import com.github.mechalopa.hmag.world.entity.LichEntity;
@@ -181,6 +182,9 @@ public class ModEntityTypes
 	public static final RegistryObject<EntityType<GlaryadEntity>> GLARYAD = REGISTRY.register("glaryad", () -> EntityType.Builder
 			.of(GlaryadEntity::new, MobCategory.MONSTER).sized(0.6F, 1.95F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
 			.build(new ResourceLocation(HMaG.MODID, "glaryad").toString()));
+	public static final RegistryObject<EntityType<JiangshiEntity>> JIANGSHI = REGISTRY.register("jiangshi", () -> EntityType.Builder
+			.of(JiangshiEntity::new, MobCategory.MONSTER).sized(0.6F, 1.95F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
+			.build(new ResourceLocation(HMaG.MODID, "jiangshi").toString()));
 
 	public static final RegistryObject<EntityType<MagicBulletEntity>> MAGIC_BULLET = REGISTRY.register("magic_bullet", () -> EntityType.Builder
 			.<MagicBulletEntity>of(MagicBulletEntity::new, MobCategory.MISC).sized(0.3215F, 0.3215F).setTrackingRange(4).setUpdateInterval(1).setShouldReceiveVelocityUpdates(true)

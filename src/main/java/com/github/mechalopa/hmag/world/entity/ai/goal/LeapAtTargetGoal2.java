@@ -31,7 +31,7 @@ public class LeapAtTargetGoal2 extends Goal
 		this.mob = mob;
 		this.yd = yd;
 		this.xzd = xzd;
-		this.maxAttackDistance = maxAttackDistance * maxAttackDistance;
+		this.maxAttackDistance = maxAttackDistance;
 		this.chance = chance;
 		this.setFlags(EnumSet.of(Goal.Flag.JUMP, Goal.Flag.MOVE));
 	}
@@ -55,7 +55,7 @@ public class LeapAtTargetGoal2 extends Goal
 			{
 				double d0 = this.mob.distanceToSqr(this.target);
 
-				if (!(d0 < 4.0D) && !(d0 > this.maxAttackDistance))
+				if (!(d0 < 4.0D) && !(d0 > this.getMaxAttackDistanceSqr()))
 				{
 					if (!this.mob.isOnGround())
 					{
@@ -83,15 +83,22 @@ public class LeapAtTargetGoal2 extends Goal
 	@Override
 	public void start()
 	{
+		this.mob.setAggressive(true);
 		Vec3 vec3 = this.mob.getDeltaMovement();
 		Vec3 vec31 = new Vec3(this.target.getX() - this.mob.getX(), 0.0D, this.target.getZ() - this.mob.getZ());
 
 		if (vec31.lengthSqr() > 1.0E-7D)
 		{
-			vec31 = vec31.normalize().scale(this.xzd).add(vec3.scale(0.2D));
+			vec31 = vec31.normalize().scale(this.getXZD()).add(vec3.scale(0.2D));
 		}
 
-		this.mob.setDeltaMovement(vec31.x, this.yd, vec31.z);
+		this.mob.setDeltaMovement(vec31.x, this.getYD(), vec31.z);
+	}
+
+	@Override
+	public void stop()
+	{
+		this.mob.setAggressive(false);
 	}
 
 	@Override
@@ -103,5 +110,25 @@ public class LeapAtTargetGoal2 extends Goal
 		}
 
 		super.tick();
+	}
+
+	private double getMaxAttackDistanceSqr()
+	{
+		return (double)this.getMaxAttackDistance() * (double)this.getMaxAttackDistance();
+	}
+
+	public float getMaxAttackDistance()
+	{
+		return this.maxAttackDistance;
+	}
+
+	public double getYD()
+	{
+		return this.yd;
+	}
+
+	public double getXZD()
+	{
+		return this.xzd;
 	}
 }

@@ -195,22 +195,22 @@
   "entity.hornet.ambient": {
     "sounds": [
       {
-        "name": "block/beehive/work1",
+        "name": "minecraft:block/beehive/work1",
         "volume": 1.2,
         "pitch": 1.25
       },
       {
-        "name": "block/beehive/work2",
+        "name": "minecraft:block/beehive/work2",
         "volume": 1.2,
         "pitch": 1.25
       },
       {
-        "name": "block/beehive/work3",
+        "name": "minecraft:block/beehive/work3",
         "volume": 1.2,
         "pitch": 1.25
       },
       {
-        "name": "block/beehive/work4",
+        "name": "minecraft:block/beehive/work4",
         "volume": 1.2,
         "pitch": 1.25
       }
@@ -409,5 +409,73 @@
       "hmag:entity/summon"
     ],
     "subtitle": "subtitles.hmag.entity.dyssomnia.summon"
+  },
+  "entity.jiangshi.ambient": {
+    "sounds": [
+      {
+        "name": "minecraft:mob/husk/idle1",
+        "pitch": 1.25
+      },
+      {
+        "name": "minecraft:mob/husk/idle2",
+        "pitch": 1.25
+      },
+      {
+        "name": "minecraft:mob/husk/idle3",
+        "pitch": 1.25
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.jiangshi.ambient"
+  },
+  "entity.jiangshi.death": {
+    "sounds": [
+      {
+        "name": "minecraft:mob/husk/death1",
+        "pitch": 1.25
+      },
+      {
+        "name": "minecraft:mob/husk/death2",
+        "pitch": 1.25
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.jiangshi.death"
+  },
+  "entity.jiangshi.hurt": {
+    "sounds": [
+      {
+        "name": "minecraft:mob/husk/hurt1",
+        "pitch": 1.25
+      },
+      {
+        "name": "minecraft:mob/husk/hurt2",
+        "pitch": 1.25
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.jiangshi.hurt"
+  },
+  "entity.jiangshi.jump": {
+    "sounds": [
+      {
+        "name": "minecraft:mob/goat/jump1",
+        "pitch": 1.2,
+        "volume": 0.8
+      },
+      {
+        "name": "minecraft:mob/goat/jump1",
+        "pitch": 0.96,
+        "volume": 0.8
+      },
+      {
+        "name": "minecraft:mob/goat/jump2",
+        "pitch": 1.2,
+        "volume": 0.8
+      },
+      {
+        "name": "minecraft:mob/goat/jump2",
+        "pitch": 0.96,
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.jiangshi.jump"
   }
 }

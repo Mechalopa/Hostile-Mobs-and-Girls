@@ -46,6 +46,8 @@ public class ModConfigs
 	public static ForgeConfigSpec.BooleanValue NECROTIC_REAPER_ATTACK_VILLAGERS;
 	public static ForgeConfigSpec.BooleanValue NECROTIC_REAPER_ATTACK_BABY_TURTLES;
 	public static ForgeConfigSpec.BooleanValue GLARYAD_REGEN;
+	public static ForgeConfigSpec.BooleanValue JIANGSHI_ATTACK_VILLAGERS;
+	public static ForgeConfigSpec.BooleanValue JIANGSHI_ATTACK_BABY_TURTLES;
 
 	public static ForgeConfigSpec.DoubleValue ZOMBIE_GIRL_REPLACE_CHANCE;
 	public static ForgeConfigSpec.DoubleValue HUSK_GIRL_REPLACE_CHANCE;
@@ -138,6 +140,8 @@ public class ModConfigs
 		NECROTIC_REAPER_ATTACK_VILLAGERS = SERVER_BUILDER.define("necroticReaperAttackVillagers", true);
 		NECROTIC_REAPER_ATTACK_BABY_TURTLES = SERVER_BUILDER.define("necroticReaperAttackBabyTurtles", true);
 		GLARYAD_REGEN = SERVER_BUILDER.define("enableGlaryadRegen", true);
+		JIANGSHI_ATTACK_VILLAGERS = SERVER_BUILDER.define("jiangshiAttackVillagers", true);
+		JIANGSHI_ATTACK_BABY_TURTLES = SERVER_BUILDER.define("jiangshiAttackBabyTurtles", true);
 
 		SERVER_BUILDER.push("spawn");
 
@@ -261,6 +265,8 @@ public class ModConfigs
 		public static boolean NECROTIC_REAPER_ATTACK_VILLAGERS;
 		public static boolean NECROTIC_REAPER_ATTACK_BABY_TURTLES;
 		public static boolean GLARYAD_REGEN;
+		public static boolean JIANGSHI_ATTACK_VILLAGERS;
+		public static boolean JIANGSHI_ATTACK_BABY_TURTLES;
 
 		public static double ZOMBIE_GIRL_REPLACE_CHANCE;
 		public static double HUSK_GIRL_REPLACE_CHANCE;
@@ -351,6 +357,8 @@ public class ModConfigs
 			NECROTIC_REAPER_ATTACK_VILLAGERS = ModConfigs.NECROTIC_REAPER_ATTACK_VILLAGERS.get();
 			NECROTIC_REAPER_ATTACK_BABY_TURTLES = ModConfigs.NECROTIC_REAPER_ATTACK_BABY_TURTLES.get();
 			GLARYAD_REGEN = ModConfigs.GLARYAD_REGEN.get();
+			JIANGSHI_ATTACK_VILLAGERS = ModConfigs.JIANGSHI_ATTACK_VILLAGERS.get();
+			JIANGSHI_ATTACK_BABY_TURTLES = ModConfigs.JIANGSHI_ATTACK_BABY_TURTLES.get();
 
 			ZOMBIE_GIRL_REPLACE_CHANCE = ModConfigs.ZOMBIE_GIRL_REPLACE_CHANCE.get();
 			HUSK_GIRL_REPLACE_CHANCE = ModConfigs.HUSK_GIRL_REPLACE_CHANCE.get();

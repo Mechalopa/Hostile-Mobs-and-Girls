@@ -5,6 +5,7 @@ import javax.annotation.Nullable;
 
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
 import com.github.mechalopa.hmag.util.ModUtils;
+import com.github.mechalopa.hmag.world.entity.ai.goal.MeleeAttackGoal2;
 
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -28,7 +29,6 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
@@ -55,7 +55,7 @@ public class CursedDollEntity extends Monster
 	protected void registerGoals()
 	{
 		this.goalSelector.addGoal(1, new FloatGoal(this));
-		this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.0D, false));
+		this.goalSelector.addGoal(4, new MeleeAttackGoal2(this, 1.0D, false).useRaiseArm());
 		this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
 		this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
 		this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
