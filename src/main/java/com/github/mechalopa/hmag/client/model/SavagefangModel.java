@@ -56,12 +56,12 @@ public class SavagefangModel<T extends SavagefangEntity> extends HierarchicalMod
 		MeshDefinition md = new MeshDefinition();
 		PartDefinition pd = md.getRoot();
 		ModClientUtils.addC(pd, "body", 0, 10, -2.5F, -4.0F, 0.0F, 5.0F, 8.0F, 4.0F, 0.0F, f, -1.0F);
-		PartDefinition headpd = ModClientUtils.addC(pd, "head", 0, 0, -2.0F, -3.5F, -2.0F, 4.0F, 7.0F, 2.0F, 0.0F, f, -1.0F, 0.001F);
+		PartDefinition headpd = ModClientUtils.addC(pd, "head", 0, 0, -2.0F, -3.5F, -2.0F, 4.0F, 7.0F, 2.0F, 0.0F, f, -1.0F, 0.005F);
 		PartDefinition upjawpd = ModClientUtils.addC(headpd, "upper_jaw", 12, 0, -2.0F, -3.0F, -3.0F, 4.0F, 3.0F, 3.0F, 0.0F, 0.0F, -1.5F);
 		ModClientUtils.addC(upjawpd, "upper_jaw_part", 12, 6, -2.0F, -2.0F, -1.0F, 4.0F, 2.0F, 1.0F, 0.0F, 0.0F, -3.0F);
-		ModClientUtils.addC(upjawpd, "upper_fang", 26, 0, -2.0F, 0.0F, -4.0F, 4.0F, 1.0F, 4.0F, 0.0F, -0.5F, 0.0F, -0.001F);
+		ModClientUtils.addC(upjawpd, "upper_fang", 26, 0, -2.0F, 0.0F, -4.0F, 4.0F, 1.0F, 4.0F, 0.0F, -0.5F, 0.0F, -0.005F);
 		PartDefinition lowjawpd = ModClientUtils.addC(headpd, "lower_jaw", 24, 8, -2.5F, 0.0F, -4.75F, 5.0F, 2.0F, 5.0F, 0.0F, 0.0F, -1.75F);
-		ModClientUtils.addC(lowjawpd, "lower_fang", 24, 16, -2.5F, -2.0F, -4.75F, 5.0F, 2.0F, 5.0F, 0.0F, 0.5F, 0.0F, -0.001F);
+		ModClientUtils.addC(lowjawpd, "lower_fang", 24, 16, -2.5F, -2.0F, -4.75F, 5.0F, 2.0F, 5.0F, 0.0F, 0.5F, 0.0F, -0.005F);
 		ModClientUtils.addC(lowjawpd, "barbel_0", 48, 0, 0.0F, 0.0F, -1.0F, 0.0F, 1.0F, 1.0F, -1.0F, 2.0F, -2.75F);
 		ModClientUtils.addC(lowjawpd, "barbel_1", 48, 2, 0.0F, 0.0F, -1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2.0F, -2.75F);
 		PartDefinition nose1pd = ModClientUtils.addC(pd, "nose_1", 0, 22, -2.0F, -3.0F, 0.0F, 4.0F, 6.0F, 1.0F, 0.0F, f, 3.0F);

@@ -147,7 +147,7 @@ public class NecroticReaperModel<T extends Mob> extends AbstractGirlModel<T>
 		PartDefinition headpd = pd.getChild("head");
 		PartDefinition bodypd = ModClientUtils.addC(pd, cd, "body", 16, 16, -3.0F, 0.0F, -1.5F, 6.0F, 4.0F, 3.0F, 0.0F, 0.0F, 0.0F);
 		PartDefinition bp1pd = ModClientUtils.addC(bodypd, cd, "body_part_1", 32, 32, -1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, 0.0F, 3.75F, 0.5F);
-		PartDefinition bp2pd = ModClientUtils.addC(bp1pd, cd, "body_part_2", 40, 32, -1.0F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F, 0.0F, 2.5F, 0.0F, 0.001F);
+		PartDefinition bp2pd = ModClientUtils.addC(bp1pd, cd, "body_part_2", 40, 32, -1.0F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F, 0.0F, 2.5F, 0.0F, 0.005F);
 		PartDefinition bp3pd = ModClientUtils.addC(bodypd, cd, "body_part_3", 48, 32, -2.5F, 0.0F, -1.0F, 5.0F, 2.0F, 2.0F, 0.0F, 9.0F, 0.0F);
 		ModClientUtils.addC(bp3pd, cd, "body_part_4", 48, 36, -2.5F, -1.0F, -1.0F, 5.0F, 1.0F, 2.0F, 0.0F, 0.0F, 0.0F);
 		ModClientUtils.addC(bp3pd, cd, "body_part_5", 32, 40, -3.0F, 0.0F, -1.5F, 6.0F, 2.0F, 3.0F, 0.0F, 1.0F, 0.0F);
@@ -166,12 +166,12 @@ public class NecroticReaperModel<T extends Mob> extends AbstractGirlModel<T>
 
 		for (int k = 0; k < 7; ++k)
 		{
-			float f = (float)(k - 3) * ((float)Math.PI / 7.0F);
+			float f = (k - 3) * ((float)Math.PI / 7.0F);
 			float f1 = Mth.sin(f - ((float)Math.PI / 2.0F)) * 5.5F;
 			float f2 = Mth.cos(f - ((float)Math.PI / 2.0F)) * 3.5F;
 			PartPose pp = PartPose.offset(f1, 11.0F, f2);
 			bodypd.addOrReplaceChild("right_skirt_part_" + k, cubelistbuilder, pp);
-			f = (float)(3 - k) * ((float)Math.PI / 7.0F);
+			f = (3 - k) * ((float)Math.PI / 7.0F);
 			f1 = Mth.sin(f + ((float)Math.PI / 2.0F)) * 5.5F;
 			f2 = Mth.cos(f + ((float)Math.PI / 2.0F)) * 3.5F;
 			PartPose pp1 = PartPose.offset(f1, 11.0F, f2);
@@ -397,12 +397,12 @@ public class NecroticReaperModel<T extends Mob> extends AbstractGirlModel<T>
 
 		for (int i = 0; i < this.rightSkirtPart.length; ++i)
 		{
-			this.rightSkirtPart[i].yRot = (float)Math.PI * ((float)(i - 3)) / 7.0F + f2;
+			this.rightSkirtPart[i].yRot = (float)Math.PI * (i - 3) / 7.0F + f2;
 			this.rightSkirtPart[i].xRot = (float)Math.PI * 2.0F / 5.0F - f2;
-			this.rightSkirtPart[i].xRot += Mth.sin(ageInTicks * 0.09F + (float)Math.PI * (float)i / 7.0F) * 0.15F - 0.03F;
-			this.leftSkirtPart[i].yRot = -((float)Math.PI * ((float)(i - 3)) / 7.0F + f2);
+			this.rightSkirtPart[i].xRot += Mth.sin(ageInTicks * 0.09F + (float)Math.PI * i / 7.0F) * 0.15F - 0.03F;
+			this.leftSkirtPart[i].yRot = -((float)Math.PI * (i - 3) / 7.0F + f2);
 			this.leftSkirtPart[i].xRot = (float)Math.PI * 2.0F / 5.0F - f2;
-			this.leftSkirtPart[i].xRot += Mth.sin(ageInTicks * 0.09F + (float)Math.PI * (float)i / 7.0F) * 0.15F - 0.03F;
+			this.leftSkirtPart[i].xRot += Mth.sin(ageInTicks * 0.09F + (float)Math.PI * i / 7.0F) * 0.15F - 0.03F;
 		}
 	}
 

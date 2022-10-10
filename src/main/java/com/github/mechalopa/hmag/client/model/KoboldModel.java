@@ -97,8 +97,8 @@ public class KoboldModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 		PartDefinition llp1pd = ModClientUtils.addC(llpd, cd, "left_leg_part_1", 0, 20, -1.75F, 0.0F, -1.75F, 4.0F, 5.0F, 4.0F, 0.0F, -1.5F, 0.0F, true);
 		ModClientUtils.addC(rlp1pd, cd, "right_leg_part_2", 0, 40, -1.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, 0.0F, 5.0F, 0.0F);
 		ModClientUtils.addC(llp1pd, cd, "left_leg_part_2", 0, 40, -1.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, 0.0F, 5.0F, 0.0F, true);
-		PartDefinition rlp3pd = ModClientUtils.addC(rlp1pd, cd, "right_leg_part_3", 0, 46, -1.5F, 0.0F, -1.5F, 3.0F, 5.0F, 3.0F, 0.0F, 5.25F, 0.0F, -0.001F);
-		PartDefinition llp3pd = ModClientUtils.addC(llp1pd, cd, "left_leg_part_3", 0, 46, -1.5F, 0.0F, -1.5F, 3.0F, 5.0F, 3.0F, 0.0F, 5.25F, 0.0F, true, -0.001F);
+		PartDefinition rlp3pd = ModClientUtils.addC(rlp1pd, cd, "right_leg_part_3", 0, 46, -1.5F, 0.0F, -1.5F, 3.0F, 5.0F, 3.0F, 0.0F, 5.25F, 0.0F, -0.005F);
+		PartDefinition llp3pd = ModClientUtils.addC(llp1pd, cd, "left_leg_part_3", 0, 46, -1.5F, 0.0F, -1.5F, 3.0F, 5.0F, 3.0F, 0.0F, 5.25F, 0.0F, true, -0.005F);
 		PartDefinition rlp4pd = ModClientUtils.addC(rlp3pd, cd, "right_leg_part_4", 0, 56, -1.5F, -1.5F, -1.0F, 3.0F, 4.0F, 2.0F, 0.0F, 5.75F, 0.0F, 0.125F);
 		PartDefinition llp4pd = ModClientUtils.addC(llp3pd, cd, "left_leg_part_4", 0, 56, -1.5F, -1.5F, -1.0F, 3.0F, 4.0F, 2.0F, 0.0F, 5.75F, 0.0F, true, 0.125F);
 		ModClientUtils.addC(rlp4pd, cd, "right_leg_part_5", 16, 56, -1.5F, -1.0F, -1.0F, 3.0F, 3.0F, 2.0F, 0.0F, 2.5F, 0.0F);
@@ -109,7 +109,7 @@ public class KoboldModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 		ModClientUtils.addC(lepd, cd, "left_ear_part", 32, 68, -1.0F, -1.5F, -1.0F, 3.0F, 3.0F, 2.0F, 0.0F, -2.0F, 0.0F, true);
 		ModClientUtils.addC(headpd, cd, "hair_part", 0, 64, -4.0F, 0.0F, -1.0F, 8.0F, 2.0F, 1.0F, 0.0F, 0.0F, 4.0F);
 		PartDefinition t1pd = ModClientUtils.addC(bodypd, cd, "tail_1", 48, 32, -1.0F, 0.0F, -2.0F, 2.0F, 3.0F, 2.0F, 0.0F, 9.0F, 2.0F);
-		PartDefinition t2pd = ModClientUtils.addC(t1pd, cd, "tail_2", 56, 32, -1.0F, 0.0F, -1.0F, 2.0F, 2.0F, 2.0F, 0.0F, 2.5F, -1.0F, 0.001F);
+		PartDefinition t2pd = ModClientUtils.addC(t1pd, cd, "tail_2", 56, 32, -1.0F, 0.0F, -1.0F, 2.0F, 2.0F, 2.0F, 0.0F, 2.5F, -1.0F, 0.005F);
 		ModClientUtils.addC(t2pd , cd, "tail_3", 56, 40, -1.0F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F, 0.0F, 1.5F, 0.0F);
 		return md;
 	}

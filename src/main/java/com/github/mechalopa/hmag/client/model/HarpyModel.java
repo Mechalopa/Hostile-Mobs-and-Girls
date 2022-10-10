@@ -126,8 +126,8 @@ public class HarpyModel<T extends HarpyEntity> extends AbstractAdvancedGirlModel
 		PartDefinition lap3pd = ModClientUtils.addC(lap2pd, cd, "left_arm_part_3", 26, 32, -1.0F, -0.5F, -1.5F, 1.0F, 7.0F, 2.0F, -0.5F, 5.0F, 0.0F, true);
 		ModClientUtils.addC(rap2pd, cd, "right_arm_part_2_wing", 16, 44, 0.0F, 0.0F, 0.0F, 1.0F, 7.0F, 5.0F, 0.5F, -2.5F, 1.0F);
 		ModClientUtils.addC(lap2pd, cd, "left_arm_part_2_wing", 16, 44, -1.0F, 0.0F, 0.0F, 1.0F, 7.0F, 5.0F, -0.5F, -2.5F, 1.0F, true);
-		ModClientUtils.addC(rap3pd, cd, "right_arm_part_3_wing", 16, 56, 0.0F, 0.0F, 0.0F, 1.0F, 8.0F, 7.0F, 0.0F, 0.0F, -1.0F, -0.001F);
-		ModClientUtils.addC(lap3pd, cd, "left_arm_part_3_wing", 16, 56, -1.0F, 0.0F, 0.0F, 1.0F, 8.0F, 7.0F, 0.0F, 0.0F, -1.0F, true, -0.001F);
+		ModClientUtils.addC(rap3pd, cd, "right_arm_part_3_wing", 16, 56, 0.0F, 0.0F, 0.0F, 1.0F, 8.0F, 7.0F, 0.0F, 0.0F, -1.0F, -0.005F);
+		ModClientUtils.addC(lap3pd, cd, "left_arm_part_3_wing", 16, 56, -1.0F, 0.0F, 0.0F, 1.0F, 8.0F, 7.0F, 0.0F, 0.0F, -1.0F, true, -0.005F);
 
 		PartDefinition rlp1pd = ModClientUtils.addC(rlpd, cd, "right_leg_part_1", 0, 20, -2.25F, 0.0F, -1.75F, 4.0F, 5.0F, 4.0F, 0.0F, -1.5F, 0.0F);
 		PartDefinition llp1pd = ModClientUtils.addC(llpd, cd, "left_leg_part_1", 0, 20, -1.75F, 0.0F, -1.75F, 4.0F, 5.0F, 4.0F, 0.0F, -1.5F, 0.0F, true);
@@ -142,9 +142,9 @@ public class HarpyModel<T extends HarpyEntity> extends AbstractAdvancedGirlModel
 
 		for (int k = 0; k < 2; ++k)
 		{
-			PartPose pp = PartPose.offset(-1.0F * ((float)k - 0.5F), 0.25F, -0.75F);
+			PartPose pp = PartPose.offset(-1.0F * (k - 0.5F), 0.25F, -0.75F);
 			rlp4pd.addOrReplaceChild("right_leg_part_5_" + k, cubelistbuilder, pp);
-			PartPose pp1 = PartPose.offset(-1.0F * (0.5F - (float)k), 0.25F, -0.75F);
+			PartPose pp1 = PartPose.offset(-1.0F * (0.5F - k), 0.25F, -0.75F);
 			llp4pd.addOrReplaceChild("left_leg_part_5_" + k, cubelistbuilder1, pp1);
 		}
 
@@ -160,7 +160,7 @@ public class HarpyModel<T extends HarpyEntity> extends AbstractAdvancedGirlModel
 
 		for (int k = 0; k < 4; ++k)
 		{
-			PartDefinition t2pd = t1pd.addOrReplaceChild("tail_2_" + k, cubelistbuilder6, PartPose.offset(-1.0F * ((float)k - 1.5F), 0.0F, 0.0F));
+			PartDefinition t2pd = t1pd.addOrReplaceChild("tail_2_" + k, cubelistbuilder6, PartPose.offset(-1.0F * (k - 1.5F), 0.0F, 0.0F));
 			t2pd.addOrReplaceChild("tail_3_" + k, cubelistbuilder7, pp2);
 		}
 
@@ -273,16 +273,16 @@ public class HarpyModel<T extends HarpyEntity> extends AbstractAdvancedGirlModel
 		{
 			this.rightLegPart5[i].xRot = -((float)Math.PI / 3.0F);
 			this.rightLegPart5[i].xRot += f1;
-			this.rightLegPart5[i].yRot = (float)Math.PI * 0.15F * ((float)i - 0.5F);
-			this.rightLegPart5[i].zRot = (float)Math.PI * 0.07F * ((float)i - 0.5F);
+			this.rightLegPart5[i].yRot = (float)Math.PI * 0.15F * (i - 0.5F);
+			this.rightLegPart5[i].zRot = (float)Math.PI * 0.07F * (i - 0.5F);
 		}
 
 		for (int i = 0; i < this.leftLegPart5.length; ++i)
 		{
 			this.leftLegPart5[i].xRot = -((float)Math.PI / 3.0F);
 			this.leftLegPart5[i].xRot += f1;
-			this.leftLegPart5[i].yRot = (float)Math.PI * 0.15F * (0.5F - (float)i);
-			this.leftLegPart5[i].zRot = (float)Math.PI * 0.07F * (0.5F - (float)i);
+			this.leftLegPart5[i].yRot = (float)Math.PI * 0.15F * (0.5F - i);
+			this.leftLegPart5[i].zRot = (float)Math.PI * 0.07F * (0.5F - i);
 		}
 
 		this.rightLegPart6.xRot = (float)Math.PI * 1.0F / 5.0F;
@@ -301,8 +301,8 @@ public class HarpyModel<T extends HarpyEntity> extends AbstractAdvancedGirlModel
 
 		for (int i = 0; i < this.tail2.length; ++i)
 		{
-			this.tail2[i].yRot = (float)Math.PI / 12.0F * ((float)i - 1.5F);
-			this.tail2[i].zRot = (float)Math.PI / 6.0F * ((float)i - 1.5F);
+			this.tail2[i].yRot = (float)Math.PI / 12.0F * (i - 1.5F);
+			this.tail2[i].zRot = (float)Math.PI / 6.0F * (i - 1.5F);
 			this.tail2[i].xRot = (float)Math.PI / 15.0F;
 			this.tail2[i].xRot += Mth.sin(ageInTicks * 0.06F + (float)Math.PI / 2.0F) * 0.06F;
 			this.tail2[i].xRot += 0.25F * Mth.sin(limbSwing * 1.25F * 0.5F) * limbSwingAmount;

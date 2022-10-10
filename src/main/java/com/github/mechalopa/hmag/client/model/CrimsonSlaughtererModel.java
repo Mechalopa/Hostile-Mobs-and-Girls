@@ -194,7 +194,7 @@ public class CrimsonSlaughtererModel<T extends Mob> extends HierarchicalModel<T>
 		ModClientUtils.addC(headpd, "hair_band", 88, 24, -3.5F, 0.0F, 0.0F, 7.0F, 2.0F, 1.0F, 0.0F, 8.0F, -0.5F);
 
 		PartDefinition bodypd = ModClientUtils.addC(pd, "body", 0, 16, -3.0F, -6.0F, -1.5F, 6.0F, 6.0F, 3.0F, 0.0F, f, 0.0F);
-		ModClientUtils.addC(bodypd, "bust", 0, 26, -3.0F, -1.5F, -1.5F, 6.0F, 3.0F, 3.0F, 0.0F, -3.5F, -1.1F, -0.001F);
+		ModClientUtils.addC(bodypd, "bust", 0, 26, -3.0F, -1.5F, -1.5F, 6.0F, 3.0F, 3.0F, 0.0F, -3.5F, -1.1F, -0.005F);
 		PartDefinition bp1pd = ModClientUtils.addC(bodypd, "body_part_1", 24, 16, -2.5F, -1.0F, -1.0F, 5.0F, 1.0F, 2.0F, 0.0F, -6.0F, 0.0F, 0.125F);
 		ModClientUtils.addC(bp1pd, "body_part_2", 24, 24, -2.5F, -4.0F, -1.0F, 5.0F, 4.0F, 2.0F, 0.0F, -1.0F, 0.0F);
 
@@ -215,16 +215,16 @@ public class CrimsonSlaughtererModel<T extends Mob> extends HierarchicalModel<T>
 		ModClientUtils.addC(rapd, "right_arm_part", 48, 16, -2.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F, 0.0F, 6.5F, 0.0F, 0.25F);
 		ModClientUtils.addC(lapd, "left_arm_part", 48, 16, 0.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F, 0.0F, 6.5F, 0.0F, true, 0.25F);
 
-		CubeListBuilder cubelistbuilder = CubeListBuilder.create().texOffs(48, 80).addBox(-1.0F, -(float)b0 + 1.0F, -1.0F, 2.0F, (float)b0, 2.0F);
-		CubeListBuilder cubelistbuilder1 = CubeListBuilder.create().texOffs(48, 80).mirror().addBox(-1.0F, -(float)b0 + 1.0F, -1.0F, 2.0F, (float)b0, 2.0F);
+		CubeListBuilder cubelistbuilder = CubeListBuilder.create().texOffs(48, 80).addBox(-1.0F, -(float)b0 + 1.0F, -1.0F, 2.0F, b0, 2.0F);
+		CubeListBuilder cubelistbuilder1 = CubeListBuilder.create().texOffs(48, 80).mirror().addBox(-1.0F, -(float)b0 + 1.0F, -1.0F, 2.0F, b0, 2.0F);
 		PartDefinition l1apd = pd.addOrReplaceChild("leg_1a", cubelistbuilder, PartPose.offset(-3.0F, f - 21.0F, -0.5F));
 		PartDefinition l2apd = pd.addOrReplaceChild("leg_2a", cubelistbuilder1, PartPose.offset(3.0F, f - 21.0F, -0.5F));
 		PartDefinition l3apd = pd.addOrReplaceChild("leg_3a", cubelistbuilder, PartPose.offset(-3.5F, f - 21.0F, 1.5F));
 		PartDefinition l4apd = pd.addOrReplaceChild("leg_4a", cubelistbuilder1, PartPose.offset(3.5F, f - 21.0F, 1.5F));
 		PartDefinition l5apd = pd.addOrReplaceChild("leg_5a", cubelistbuilder, PartPose.offset(-3.0F, f - 21.0F, 3.5F));
 		PartDefinition l6apd = pd.addOrReplaceChild("leg_6a", cubelistbuilder1, PartPose.offset(3.0F, f - 21.0F, 3.5F));
-		CubeListBuilder cubelistbuilder2 = CubeListBuilder.create().texOffs(48, 88).addBox(-1.0F, -(float)b1 + 1.0F, -1.0F, 2.0F, (float)b1, 2.0F, new CubeDeformation(0.125F));
-		CubeListBuilder cubelistbuilder3 = CubeListBuilder.create().texOffs(48, 88).mirror().addBox(-1.0F, -(float)b1 + 1.0F, -1.0F, 2.0F, (float)b1, 2.0F, new CubeDeformation(0.125F));
+		CubeListBuilder cubelistbuilder2 = CubeListBuilder.create().texOffs(48, 88).addBox(-1.0F, -(float)b1 + 1.0F, -1.0F, 2.0F, b1, 2.0F, new CubeDeformation(0.125F));
+		CubeListBuilder cubelistbuilder3 = CubeListBuilder.create().texOffs(48, 88).mirror().addBox(-1.0F, -(float)b1 + 1.0F, -1.0F, 2.0F, b1, 2.0F, new CubeDeformation(0.125F));
 		PartPose pp = PartPose.offset(0.0F, -(float)b0 + 0.5F, 0.0F);
 		PartDefinition l1bpd = l1apd.addOrReplaceChild("leg_1b", cubelistbuilder2, pp);
 		PartDefinition l2bpd = l2apd.addOrReplaceChild("leg_2b", cubelistbuilder3, pp);
@@ -232,8 +232,8 @@ public class CrimsonSlaughtererModel<T extends Mob> extends HierarchicalModel<T>
 		PartDefinition l4bpd = l4apd.addOrReplaceChild("leg_4b", cubelistbuilder3, pp);
 		PartDefinition l5bpd = l5apd.addOrReplaceChild("leg_5b", cubelistbuilder2, pp);
 		PartDefinition l6bpd = l6apd.addOrReplaceChild("leg_6b", cubelistbuilder3, pp);
-		CubeListBuilder cubelistbuilder4 = CubeListBuilder.create().texOffs(48, 104).addBox(-1.0F, -1.0F, -1.0F, 2.0F, (float)b2, 2.0F);
-		CubeListBuilder cubelistbuilder5 = CubeListBuilder.create().texOffs(48, 104).mirror().addBox(-1.0F, -1.0F, -1.0F, 2.0F, (float)b2, 2.0F);
+		CubeListBuilder cubelistbuilder4 = CubeListBuilder.create().texOffs(48, 104).addBox(-1.0F, -1.0F, -1.0F, 2.0F, b2, 2.0F);
+		CubeListBuilder cubelistbuilder5 = CubeListBuilder.create().texOffs(48, 104).mirror().addBox(-1.0F, -1.0F, -1.0F, 2.0F, b2, 2.0F);
 		PartPose pp1 = PartPose.offset(0.0F, -(float)b1 + 1.0F, 0.0F);
 		PartDefinition l1cpd = l1bpd.addOrReplaceChild("leg_1c", cubelistbuilder4, pp1);
 		PartDefinition l2cpd = l2bpd.addOrReplaceChild("leg_2c", cubelistbuilder5, pp1);
@@ -241,18 +241,18 @@ public class CrimsonSlaughtererModel<T extends Mob> extends HierarchicalModel<T>
 		PartDefinition l4cpd = l4bpd.addOrReplaceChild("leg_4c", cubelistbuilder5, pp1);
 		PartDefinition l5cpd = l5bpd.addOrReplaceChild("leg_5c", cubelistbuilder4, pp1);
 		PartDefinition l6cpd = l6bpd.addOrReplaceChild("leg_6c", cubelistbuilder5, pp1);
-		CubeListBuilder cubelistbuilder6 = CubeListBuilder.create().texOffs(56, 80).addBox(-1.0F, -1.0F, -1.0F, 2.0F, (float)b3, 2.0F, new CubeDeformation(-0.125F));
-		CubeListBuilder cubelistbuilder7 = CubeListBuilder.create().texOffs(56, 80).mirror().addBox(-1.0F, -1.0F, -1.0F, 2.0F, (float)b3, 2.0F, new CubeDeformation(-0.125F));
-		PartPose pp2 = PartPose.offset(0.0F, (float)b2 - 0.5F, 0.0F);
+		CubeListBuilder cubelistbuilder6 = CubeListBuilder.create().texOffs(56, 80).addBox(-1.0F, -1.0F, -1.0F, 2.0F, b3, 2.0F, new CubeDeformation(-0.125F));
+		CubeListBuilder cubelistbuilder7 = CubeListBuilder.create().texOffs(56, 80).mirror().addBox(-1.0F, -1.0F, -1.0F, 2.0F, b3, 2.0F, new CubeDeformation(-0.125F));
+		PartPose pp2 = PartPose.offset(0.0F, b2 - 0.5F, 0.0F);
 		PartDefinition l1dpd = l1cpd.addOrReplaceChild("leg_1d", cubelistbuilder6, pp2);
 		PartDefinition l2dpd = l2cpd.addOrReplaceChild("leg_2d", cubelistbuilder7, pp2);
 		PartDefinition l3dpd = l3cpd.addOrReplaceChild("leg_3d", cubelistbuilder6, pp2);
 		PartDefinition l4dpd = l4cpd.addOrReplaceChild("leg_4d", cubelistbuilder7, pp2);
 		PartDefinition l5dpd = l5cpd.addOrReplaceChild("leg_5d", cubelistbuilder6, pp2);
 		PartDefinition l6dpd = l6cpd.addOrReplaceChild("leg_6d", cubelistbuilder7, pp2);
-		CubeListBuilder cubelistbuilder8 = CubeListBuilder.create().texOffs(64, 80).addBox(-0.5F, -0.5F, -0.5F, 1.0F, (float)b4, 1.0F);
-		CubeListBuilder cubelistbuilder9 = CubeListBuilder.create().texOffs(64, 80).mirror().addBox(-0.5F, -0.5F, -0.5F, 1.0F, (float)b4, 1.0F);
-		PartPose pp3 = PartPose.offset(0.0F, (float)b3 - 1.0F, 0.0F);
+		CubeListBuilder cubelistbuilder8 = CubeListBuilder.create().texOffs(64, 80).addBox(-0.5F, -0.5F, -0.5F, 1.0F, b4, 1.0F);
+		CubeListBuilder cubelistbuilder9 = CubeListBuilder.create().texOffs(64, 80).mirror().addBox(-0.5F, -0.5F, -0.5F, 1.0F, b4, 1.0F);
+		PartPose pp3 = PartPose.offset(0.0F, b3 - 1.0F, 0.0F);
 		l1dpd.addOrReplaceChild("leg_1e", cubelistbuilder8, pp3);
 		l2dpd.addOrReplaceChild("leg_2e", cubelistbuilder9, pp3);
 		l3dpd.addOrReplaceChild("leg_3e", cubelistbuilder8, pp3);

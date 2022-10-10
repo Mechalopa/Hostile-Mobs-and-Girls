@@ -110,7 +110,7 @@ public class HornetModel<T extends AbstractFlyingMonsterEntity> extends Humanoid
 		PartDefinition lfp1pd = ModClientUtils.addC(headpd, cd, "left_feeler_part_1", 40, 32, -0.5F, -5.0F, -0.5F, 1.0F, 5.0F, 1.0F, 2.0F, -7.5F, -1.5F, true);
 		ModClientUtils.addC(lfp1pd, cd, "left_feeler_part_2", 40, 40, -1.0F, -3.0F, -1.0F, 2.0F, 3.0F, 2.0F, 0.0F, -4.75F, -0.25F, true, -0.25F);
 		PartDefinition bodypd = ModClientUtils.addC(pd, cd, "body", 16, 16, -3.0F, 0.0F, -1.5F, 6.0F, 8.0F, 3.0F, 0.0F, 0.0F, 0.0F);
-		ModClientUtils.addC(bodypd, cd, "bust", 0, 32, -3.0F, -1.5F, -1.5F, 6.0F, 3.0F, 3.0F, 0.0F, 3.5F, -1.1F, -0.001F);
+		ModClientUtils.addC(bodypd, cd, "bust", 0, 32, -3.0F, -1.5F, -1.5F, 6.0F, 3.0F, 3.0F, 0.0F, 3.5F, -1.1F, -0.005F);
 		ModClientUtils.addC(bodypd, cd, "right_wing_a", 24, 96, -16.0F, -8.0F, 0.0F, 16.0F, 8.0F, 1.0F, -1.5F, 4.0F, 1.5F);
 		ModClientUtils.addC(bodypd, cd, "left_wing_a", 24, 96, 0.0F, -8.0F, 0.0F, 16.0F, 8.0F, 1.0F, 1.5F, 4.0F, 1.5F, true);
 		ModClientUtils.addC(bodypd, cd, "right_wing_b", 24, 108, -10.0F, 0.0F, 0.0F, 10.0F, 6.0F, 1.0F, -1.5F, 5.0F, 1.5F);
