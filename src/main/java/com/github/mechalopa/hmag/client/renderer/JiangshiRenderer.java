@@ -3,6 +3,7 @@ package com.github.mechalopa.hmag.client.renderer;
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.JiangshiModel;
+import com.github.mechalopa.hmag.client.renderer.layers.JiangshiEyesLayer;
 import com.github.mechalopa.hmag.world.entity.JiangshiEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
@@ -20,6 +21,7 @@ public class JiangshiRenderer extends AbstractGirlRenderer<JiangshiEntity, Jiang
 	public JiangshiRenderer(EntityRendererProvider.Context context)
 	{
 		super(context, new JiangshiModel<>(context.bakeLayer(ModModelLayers.JIANGSHI)), 0.5F);
+		this.addLayer(new JiangshiEyesLayer<>(this));
 	}
 
 	@Override
