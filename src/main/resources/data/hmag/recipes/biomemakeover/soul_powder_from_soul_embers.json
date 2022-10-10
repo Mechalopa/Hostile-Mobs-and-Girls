@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "biomemakeover:soul_embers"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "biomemakeover:soul_embers"
+    },
+    {
+      "item": "biomemakeover:soul_embers"
+    }
+  ],
+  "result": {
+    "item": "hmag:soul_powder",
+    "count": 4
+  }
+}
