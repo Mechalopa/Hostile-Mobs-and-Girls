@@ -116,8 +116,8 @@ public class EnderExecutorModel<T extends EnderExecutorEntity> extends AbstractG
 		this.body.xRot = 0.0F;
 		this.body.y = f;
 		this.body.z = 0.0F;
-		this.rightLeg.xRot = (float)(this.rightLeg.xRot * 0.5D);
-		this.leftLeg.xRot = (float)(this.leftLeg.xRot * 0.5D);
+		this.rightLeg.xRot = (float)((double)this.rightLeg.xRot * 0.5D);
+		this.leftLeg.xRot = (float)((double)this.leftLeg.xRot * 0.5D);
 //		this.skirt1.xRot = 0.0F;
 //		this.skirt5.xRot = 0.0F;
 

@@ -27,7 +27,7 @@ public class JiangshiRenderer extends AbstractGirlRenderer<JiangshiEntity, Jiang
 	{
 		super.setupRotations(entity, poseStack, ageInTicks, rotationYaw, partialTicks);
 
-		if (this.getModel() != null && !this.getModel().riding && !(entity.animationSpeed < 0.01D))
+		if (this.getModel() != null && !this.getModel().riding && !((double)entity.animationSpeed < 0.01D))
 		{
 			float f = 15.0F;
 			float f1 = entity.animationPosition - entity.animationSpeed * (1.0F - partialTicks) + 7.0F;

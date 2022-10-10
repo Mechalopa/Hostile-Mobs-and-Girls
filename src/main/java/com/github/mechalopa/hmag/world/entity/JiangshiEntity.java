@@ -35,7 +35,6 @@ import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
@@ -76,7 +75,6 @@ public class JiangshiEntity extends Monster
 	@Override
 	protected void registerGoals()
 	{
-		this.goalSelector.addGoal(1, new FloatGoal(this));
 		this.goalSelector.addGoal(3, new LeapGoal(this));
 		this.goalSelector.addGoal(4, new MeleeAttackGoal2(this, 1.0D, false).useRaiseArm());
 		this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
@@ -147,7 +145,7 @@ public class JiangshiEntity extends Monster
 		}
 		else
 		{
-			if (this.isOnFire() || !(this.getTarget() != null && this.getTarget().isAlive() && this.hasLineOfSight(this.getTarget()) && this.distanceToSqr(this.getTarget()) <= 8.0D * 8.0D))
+			if (!this.isNoAi() && (this.isOnFire() || !(this.getTarget() != null && this.getTarget().isAlive() && this.hasLineOfSight(this.getTarget()) && this.distanceToSqr(this.getTarget()) <= 8.0D * 8.0D)))
 			{
 				if (this.getSpeedBonus() > 0 && this.tickCount % 20 == 0 && this.getRandom().nextInt(4) == 0)
 				{
@@ -212,7 +210,7 @@ public class JiangshiEntity extends Monster
 		{
 			return false;
 		}
-		else if (source.isNoAggro() || source.isFire() || amount <= 0.0F || !((source.getEntity() != null && source.getEntity() instanceof LivingEntity)))
+		else if (this.isNoAi() || source.isNoAggro() || source.isFire() || amount <= 0.0F || !((source.getEntity() != null && source.getEntity() instanceof LivingEntity)))
 		{
 			return true;
 		}
@@ -227,7 +225,11 @@ public class JiangshiEntity extends Monster
 	public void thunderHit(ServerLevel serverLevel, LightningBolt lightningBolt)
 	{
 		super.thunderHit(serverLevel, lightningBolt);
-		this.setSpeedBonus(0);
+
+		if (!this.isNoAi())
+		{
+			this.setSpeedBonus(0);
+		}
 	}
 
 	public int getSpeedBonus()

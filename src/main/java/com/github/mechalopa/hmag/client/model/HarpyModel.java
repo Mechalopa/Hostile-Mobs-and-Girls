@@ -142,9 +142,9 @@ public class HarpyModel<T extends HarpyEntity> extends AbstractAdvancedGirlModel
 
 		for (int k = 0; k < 2; ++k)
 		{
-			PartPose pp = PartPose.offset(-1.0F * (k - 0.5F), 0.25F, -0.75F);
+			PartPose pp = PartPose.offset(-1.0F * ((float)k - 0.5F), 0.25F, -0.75F);
 			rlp4pd.addOrReplaceChild("right_leg_part_5_" + k, cubelistbuilder, pp);
-			PartPose pp1 = PartPose.offset(-1.0F * (0.5F - k), 0.25F, -0.75F);
+			PartPose pp1 = PartPose.offset(-1.0F * (0.5F - (float)k), 0.25F, -0.75F);
 			llp4pd.addOrReplaceChild("left_leg_part_5_" + k, cubelistbuilder1, pp1);
 		}
 
@@ -160,7 +160,7 @@ public class HarpyModel<T extends HarpyEntity> extends AbstractAdvancedGirlModel
 
 		for (int k = 0; k < 4; ++k)
 		{
-			PartDefinition t2pd = t1pd.addOrReplaceChild("tail_2_" + k, cubelistbuilder6, PartPose.offset(-1.0F * (k - 1.5F), 0.0F, 0.0F));
+			PartDefinition t2pd = t1pd.addOrReplaceChild("tail_2_" + k, cubelistbuilder6, PartPose.offset(-1.0F * ((float)k - 1.5F), 0.0F, 0.0F));
 			t2pd.addOrReplaceChild("tail_3_" + k, cubelistbuilder7, pp2);
 		}
 
@@ -273,16 +273,16 @@ public class HarpyModel<T extends HarpyEntity> extends AbstractAdvancedGirlModel
 		{
 			this.rightLegPart5[i].xRot = -((float)Math.PI / 3.0F);
 			this.rightLegPart5[i].xRot += f1;
-			this.rightLegPart5[i].yRot = (float)Math.PI * 0.15F * (i - 0.5F);
-			this.rightLegPart5[i].zRot = (float)Math.PI * 0.07F * (i - 0.5F);
+			this.rightLegPart5[i].yRot = (float)Math.PI * 0.15F * ((float)i - 0.5F);
+			this.rightLegPart5[i].zRot = (float)Math.PI * 0.07F * ((float)i - 0.5F);
 		}
 
 		for (int i = 0; i < this.leftLegPart5.length; ++i)
 		{
 			this.leftLegPart5[i].xRot = -((float)Math.PI / 3.0F);
 			this.leftLegPart5[i].xRot += f1;
-			this.leftLegPart5[i].yRot = (float)Math.PI * 0.15F * (0.5F - i);
-			this.leftLegPart5[i].zRot = (float)Math.PI * 0.07F * (0.5F - i);
+			this.leftLegPart5[i].yRot = (float)Math.PI * 0.15F * (0.5F - (float)i);
+			this.leftLegPart5[i].zRot = (float)Math.PI * 0.07F * (0.5F - (float)i);
 		}
 
 		this.rightLegPart6.xRot = (float)Math.PI * 1.0F / 5.0F;
@@ -301,8 +301,8 @@ public class HarpyModel<T extends HarpyEntity> extends AbstractAdvancedGirlModel
 
 		for (int i = 0; i < this.tail2.length; ++i)
 		{
-			this.tail2[i].yRot = (float)Math.PI / 12.0F * (i - 1.5F);
-			this.tail2[i].zRot = (float)Math.PI / 6.0F * (i - 1.5F);
+			this.tail2[i].yRot = (float)Math.PI / 12.0F * ((float)i - 1.5F);
+			this.tail2[i].zRot = (float)Math.PI / 6.0F * ((float)i - 1.5F);
 			this.tail2[i].xRot = (float)Math.PI / 15.0F;
 			this.tail2[i].xRot += Mth.sin(ageInTicks * 0.06F + (float)Math.PI / 2.0F) * 0.06F;
 			this.tail2[i].xRot += 0.25F * Mth.sin(limbSwing * 1.25F * 0.5F) * limbSwingAmount;
