@@ -15,6 +15,10 @@
       {
         "name": "#hmag:is_peaceful",
         "negate": true
+      },
+      {
+        "name": "#hmag:spawns_savagefangs_special",
+        "negate": true
       }
     ]
   ],
