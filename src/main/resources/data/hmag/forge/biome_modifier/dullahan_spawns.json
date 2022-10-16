@@ -43,6 +43,21 @@
         "name": "#hmag:is_peaceful",
         "negate": true
       }
+    ],
+    [
+      {
+        "name": "#hmag:is_overworld"
+      },
+      {
+        "name": "#hmag:is_coniferous"
+      },
+      {
+        "name": "#hmag:is_spooky"
+      },
+      {
+        "name": "#hmag:is_peaceful",
+        "negate": true
+      }
     ]
   ],
   "spawners": {
