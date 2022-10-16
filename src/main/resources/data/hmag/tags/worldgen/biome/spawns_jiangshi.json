@@ -21,6 +21,10 @@
     {
       "id": "graveyard_biomes:eroded_haunted_forest",
       "required": false
+    },
+    {
+      "id": "vampirism:vampire_forest",
+      "required": false
     }
   ]
 }
