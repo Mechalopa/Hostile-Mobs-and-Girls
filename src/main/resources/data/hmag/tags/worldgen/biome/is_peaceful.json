@@ -5,7 +5,7 @@
     "minecraft:deep_dark",
     "minecraft:the_void",
     {
-      "id": "biomesoplenty:rainbow_hills",
+      "id": "biomesoplenty:boreal_forest",
       "required": false
     },
     {
