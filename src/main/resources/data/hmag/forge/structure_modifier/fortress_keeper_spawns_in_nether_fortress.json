@@ -1,6 +1,6 @@
 {
   "type": "hmag:add_spawns",
-  "structures": "minecraft:fortress",
+  "structures": "#hmag:fortress_keepers_spawn_in",
   "spawner": {
     "type": "hmag:fortress_keeper",
     "weight": 5,

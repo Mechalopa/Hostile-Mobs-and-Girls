@@ -98,7 +98,7 @@ public class SnowCanineEntity extends Monster
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn)
+	protected float getStandingEyeHeight(Pose pose, EntityDimensions size)
 	{
 		return 1.74F;
 	}
@@ -110,7 +110,7 @@ public class SnowCanineEntity extends Monster
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSourceIn)
+	protected SoundEvent getHurtSound(DamageSource damageSource)
 	{
 		return ModSoundEvents.GIRL_MOB_HURT.get();
 	}
@@ -122,7 +122,7 @@ public class SnowCanineEntity extends Monster
 	}
 
 	@Override
-	protected void playStepSound(BlockPos pos, BlockState blockIn)
+	protected void playStepSound(BlockPos pos, BlockState block)
 	{
 		this.playSound(SoundEvents.ZOMBIE_STEP, 0.15F, 1.0F);
 	}

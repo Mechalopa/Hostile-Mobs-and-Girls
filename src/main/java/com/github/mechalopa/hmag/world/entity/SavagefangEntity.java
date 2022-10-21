@@ -273,22 +273,22 @@ public class SavagefangEntity extends Monster
 
 	@Override
 	@Nullable
-	public SpawnGroupData finalizeSpawn(ServerLevelAccessor worldIn, DifficultyInstance difficultyIn, MobSpawnType spawnType, @Nullable SpawnGroupData spawnDataIn, @Nullable CompoundTag dataTag)
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag dataTag)
 	{
-		spawnDataIn = super.finalizeSpawn(worldIn, difficultyIn, spawnType, spawnDataIn, dataTag);
+		spawnData = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
 
-		if (spawnDataIn == null)
+		if (spawnData == null)
 		{
-			spawnDataIn = new SavagefangEntity.SchoolSpawnGroupData(this);
+			spawnData = new SavagefangEntity.SchoolSpawnGroupData(this);
 		}
 		else
 		{
-			this.startFollowing(((SavagefangEntity.SchoolSpawnGroupData)spawnDataIn).leader);
+			this.startFollowing(((SavagefangEntity.SchoolSpawnGroupData)spawnData).leader);
 		}
 
 		this.leapCooldown = 0;
 
-		return spawnDataIn;
+		return spawnData;
 	}
 
 	@Override
@@ -330,9 +330,9 @@ public class SavagefangEntity extends Monster
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn)
+	protected float getStandingEyeHeight(Pose pose, EntityDimensions size)
 	{
-		return sizeIn.height * 0.65F;
+		return size.height * 0.65F;
 	}
 
 	public void setLeapCooldown(int value)
@@ -388,9 +388,9 @@ public class SavagefangEntity extends Monster
 	}
 
 	@SuppressWarnings("deprecation")
-	public static boolean checkSavagefangSpawnRules(EntityType<? extends SavagefangEntity> type, ServerLevelAccessor worldIn, MobSpawnType spawnType, BlockPos pos, RandomSource randomIn)
+	public static boolean checkSavagefangSpawnRules(EntityType<? extends SavagefangEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, RandomSource random)
 	{
-		return worldIn.getDifficulty() != Difficulty.PEACEFUL && isDarkEnoughToSpawn(worldIn, pos, randomIn) && worldIn.getFluidState(pos).is(FluidTags.WATER) && (spawnType == MobSpawnType.SPAWNER || (pos.getY() >= worldIn.getSeaLevel() - 10 && worldIn.canSeeSkyFromBelowWater(pos) && randomIn.nextDouble() < ModConfigs.cachedServer.SAVAGEFANG_SPAWN_CHANCE));
+		return levelAccessor.getDifficulty() != Difficulty.PEACEFUL && isDarkEnoughToSpawn(levelAccessor, pos, random) && levelAccessor.getFluidState(pos).is(FluidTags.WATER) && (spawnType == MobSpawnType.SPAWNER || (pos.getY() >= levelAccessor.getSeaLevel() - 10 && levelAccessor.canSeeSkyFromBelowWater(pos) && random.nextDouble() < ModConfigs.cachedServer.SAVAGEFANG_SPAWN_CHANCE));
 	}
 
 	public int getMaxSchoolSize()
@@ -824,8 +824,8 @@ public class SavagefangEntity extends Monster
 					return p.canBeFollowed() || !p.isFollower();
 				};
 				List<? extends SavagefangEntity> list = this.mob.level.getEntitiesOfClass(this.mob.getClass(), this.mob.getBoundingBox().inflate(8.0D, 8.0D, 8.0D), predicate);
-				SavagefangEntity monsterentity = DataFixUtils.orElse(list.stream().filter(SavagefangEntity::canBeFollowed).findAny(), this.mob);
-				monsterentity.addFollowers(list.stream().filter((p) -> {
+				SavagefangEntity savagefang = DataFixUtils.orElse(list.stream().filter(SavagefangEntity::canBeFollowed).findAny(), this.mob);
+				savagefang.addFollowers(list.stream().filter((p) -> {
 					return !p.isFollower();
 				}));
 				return this.mob.isFollower();
@@ -871,19 +871,19 @@ public class SavagefangEntity extends Monster
 		}
 
 		@Override
-		public boolean test(@Nullable LivingEntity livingEntityIn)
+		public boolean test(@Nullable LivingEntity livingEntity)
 		{
-			if (this.parent.isLaunched() || livingEntityIn.getType().is(ModTags.SAVAGEFANG_TARGET_BLACKLIST) || livingEntityIn instanceof SavagefangEntity)
+			if (this.parent.isLaunched() || livingEntity.getType().is(ModTags.SAVAGEFANG_TARGET_BLACKLIST))
 			{
 				return false;
 			}
-			else if (livingEntityIn instanceof Player || (livingEntityIn.getMobType() != MobType.WATER && livingEntityIn.canDrownInFluidType(ForgeMod.WATER_TYPE.get()) && livingEntityIn instanceof Animal && ModConfigs.cachedServer.SAVAGEFANG_ATTACK_ANIMALS) || (livingEntityIn instanceof AbstractVillager && ModConfigs.cachedServer.SAVAGEFANG_ATTACK_VILLAGERS) || (livingEntityIn.getMobType() == MobType.ILLAGER && ModConfigs.cachedServer.SAVAGEFANG_ATTACK_ILLAGERS))
+			else if (livingEntity instanceof Player || (livingEntity.getMobType() != MobType.WATER && livingEntity.canDrownInFluidType(ForgeMod.WATER_TYPE.get()) && livingEntity instanceof Animal && ModConfigs.cachedServer.SAVAGEFANG_ATTACK_ANIMALS) || (livingEntity instanceof AbstractVillager && ModConfigs.cachedServer.SAVAGEFANG_ATTACK_VILLAGERS) || (livingEntity.getMobType() == MobType.ILLAGER && ModConfigs.cachedServer.SAVAGEFANG_ATTACK_ILLAGERS))
 			{
-				return livingEntityIn.distanceToSqr(this.parent) <= 4.0D * 4.0D || (livingEntityIn.isInWaterOrBubble() && livingEntityIn.distanceToSqr(this.parent) <= 9.0D * 9.0D);
+				return livingEntity.distanceToSqr(this.parent) <= 4.0D * 4.0D || (livingEntity.isInWaterOrBubble() && livingEntity.distanceToSqr(this.parent) <= 9.0D * 9.0D);
 			}
-			else if (!(livingEntityIn instanceof FlyingMob) && ModConfigs.cachedServer.SAVAGEFANG_ATTACK_DAMAGED_MOBS)
+			else if (!(livingEntity instanceof FlyingMob) && ModConfigs.cachedServer.SAVAGEFANG_ATTACK_DAMAGED_MOBS)
 			{
-				return (livingEntityIn.isInWaterOrBubble() && livingEntityIn.distanceToSqr(this.parent) <= 9.0D * 9.0D) && ((livingEntityIn.getHealth() < 10.0F && livingEntityIn.getHealth() < livingEntityIn.getMaxHealth()) || livingEntityIn.getHealth() < livingEntityIn.getMaxHealth() * 0.25F);
+				return (livingEntity.isInWaterOrBubble() && livingEntity.distanceToSqr(this.parent) <= 9.0D * 9.0D) && ((livingEntity.getHealth() < 10.0F && livingEntity.getHealth() < livingEntity.getMaxHealth()) || livingEntity.getHealth() < livingEntity.getMaxHealth() * 0.25F);
 			}
 			else
 			{

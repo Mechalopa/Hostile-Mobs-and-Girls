@@ -122,15 +122,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:iron_ingot"
-        },
-        {
-          "type": "minecraft:item",
           "name": "minecraft:gold_ingot"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "hmag:sharp_fang"
         }
       ],
       "rolls": 1.0

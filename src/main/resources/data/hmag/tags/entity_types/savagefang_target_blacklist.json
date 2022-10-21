@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "#hmag:creepers"
+    "#hmag:creepers",
+    "hmag:savagefang"
   ]
 }
