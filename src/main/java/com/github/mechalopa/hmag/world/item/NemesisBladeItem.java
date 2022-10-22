@@ -41,9 +41,9 @@ public class NemesisBladeItem extends ModSwordItem implements ILevelItem
 	public static final UUID NEMESIS_BLADE_MOVEMENT_SPEED_UUID = UUID.fromString("C80A68DD-F985-4245-4EC4-64884C8EBA4C");
 	public static final AttributeModifier NEMESIS_BLADE_MOVEMENT_SPEED_MODIFIER = new AttributeModifier(NEMESIS_BLADE_MOVEMENT_SPEED_UUID, "Nemesis blade move speed penalty", -0.5F, AttributeModifier.Operation.MULTIPLY_TOTAL);
 
-	public NemesisBladeItem(Tier tier, Properties builderIn)
+	public NemesisBladeItem(Tier tier, Properties builder)
 	{
-		super(tier, 4.0F, -3.5F, 2537, 17, builderIn);
+		super(tier, 4.0F, -3.5F, 2537, 17, builder);
 	}
 
 	@Override

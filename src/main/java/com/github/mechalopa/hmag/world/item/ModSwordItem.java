@@ -26,27 +26,27 @@ public class ModSwordItem extends SwordItem
 	private final int enchantability;
 	private final Multimap<Attribute, AttributeModifier> attributeModifiers;
 
-	public ModSwordItem(Tier tier, Item.Properties builderIn)
+	public ModSwordItem(Tier tier, Item.Properties builder)
 	{
-		this(tier, 3.0F, -2.4F, builderIn);
+		this(tier, 3.0F, -2.4F, builder);
 	}
 
-	public ModSwordItem(Tier tier, float attackDamageIn, float attackSpeedIn, Item.Properties builderIn)
+	public ModSwordItem(Tier tier, float attackDamage, float attackSpeed, Item.Properties builder)
 	{
-		this(tier, attackDamageIn, attackSpeedIn, tier.getUses(), tier.getEnchantmentValue(), builderIn);
+		this(tier, attackDamage, attackSpeed, tier.getUses(), tier.getEnchantmentValue(), builder);
 	}
 
-	public ModSwordItem(Tier tier, float attackDamageIn, float attackSpeedIn, int maxDamageIn, int enchantabilityIn, Item.Properties builderIn)
+	public ModSwordItem(Tier tier, float attackDamage, float attackSpeed, int maxDamage, int enchantability, Item.Properties builder)
 	{
-		super(tier, Mth.floor(attackDamageIn), attackSpeedIn, builderIn);
-		this.attackDamage = attackDamageIn + tier.getAttackDamageBonus();
-		this.attackSpeed = attackSpeedIn;
-		Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
-		builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", this.attackDamage, AttributeModifier.Operation.ADDITION));
-		builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", this.attackSpeed, AttributeModifier.Operation.ADDITION));
-		this.attributeModifiers = builder.build();
-		this.maxDamage = maxDamageIn;
-		this.enchantability = enchantabilityIn;
+		super(tier, Mth.floor(attackDamage), attackSpeed, builder);
+		this.attackDamage = attackDamage + tier.getAttackDamageBonus();
+		this.attackSpeed = attackSpeed;
+		Builder<Attribute, AttributeModifier> builder1 = ImmutableMultimap.builder();
+		builder1.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", this.attackDamage, AttributeModifier.Operation.ADDITION));
+		builder1.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", this.attackSpeed, AttributeModifier.Operation.ADDITION));
+		this.attributeModifiers = builder1.build();
+		this.maxDamage = maxDamage;
+		this.enchantability = enchantability;
 	}
 
 	@Override
@@ -76,6 +76,6 @@ public class ModSwordItem extends SwordItem
 	@Override
 	public int getBurnTime(ItemStack stack, @Nullable RecipeType<?> recipeType)
 	{
-		return this.getTier() == Tiers.WOOD? 200 : super.getBurnTime(stack, recipeType);
+		return this.getTier() == Tiers.WOOD ? 200 : super.getBurnTime(stack, recipeType);
 	}
 }

@@ -37,9 +37,9 @@ public class InsomniaSwordItem extends ModSwordItem implements ILevelItem
 {
 	public static final UUID INSOMNIA_SWORD_ATTACK_DAMAGE_UUID = UUID.fromString("04C38766-C1A5-31D4-410B-C6B4BE3B7DD2");
 
-	public InsomniaSwordItem(Tier tier, Properties builderIn)
+	public InsomniaSwordItem(Tier tier, Properties builder)
 	{
-		super(tier, 1.0F, -2.4F, 1750, 15, builderIn);
+		super(tier, 1.0F, -2.4F, 1750, 15, builder);
 	}
 
 	@Override

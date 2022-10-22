@@ -7,9 +7,9 @@ import net.minecraft.world.level.block.Block;
 
 public class NetherStarBlockItem extends BlockItem
 {
-	public NetherStarBlockItem(Block blockIn, Item.Properties builder)
+	public NetherStarBlockItem(Block block, Item.Properties builder)
 	{
-		super(blockIn, builder);
+		super(block, builder);
 	}
 
 	@Override
