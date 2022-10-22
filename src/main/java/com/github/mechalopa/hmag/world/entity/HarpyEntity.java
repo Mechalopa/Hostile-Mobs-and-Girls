@@ -55,9 +55,9 @@ public class HarpyEntity extends Monster
 	private int animationTick;
 	private int animationTickO;
 
-	public HarpyEntity(EntityType<? extends HarpyEntity> type, Level worldIn)
+	public HarpyEntity(EntityType<? extends HarpyEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 		this.xpReward = 12;
 	}
 
@@ -139,11 +139,11 @@ public class HarpyEntity extends Monster
 
 	@Override
 	@Nullable
-	public SpawnGroupData finalizeSpawn(ServerLevelAccessor worldIn, DifficultyInstance difficultyIn, MobSpawnType spawnType, @Nullable SpawnGroupData spawnDataIn, @Nullable CompoundTag dataTag)
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag dataTag)
 	{
-		spawnDataIn = super.finalizeSpawn(worldIn, difficultyIn, spawnType, spawnDataIn, dataTag);
+		spawnData = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
 
-		RandomSource randomsource = worldIn.getRandom();
+		RandomSource randomsource = levelAccessor.getRandom();
 
 		if (randomsource.nextFloat() < 0.001F)
 		{
@@ -151,7 +151,7 @@ public class HarpyEntity extends Monster
 		}
 		else
 		{
-			Holder<Biome> holder = worldIn.getBiome(this.blockPosition());
+			Holder<Biome> holder = levelAccessor.getBiome(this.blockPosition());
 
 			if (holder != null)
 			{
@@ -186,7 +186,7 @@ public class HarpyEntity extends Monster
 			}
 		}
 
-		return spawnDataIn;
+		return spawnData;
 	}
 
 	public int getVariant()
@@ -194,14 +194,14 @@ public class HarpyEntity extends Monster
 		return this.entityData.get(DATA_VARIANT_ID);
 	}
 
-	private void setVariant(int typeIn)
+	private void setVariant(int type)
 	{
-		if (typeIn < 0 || typeIn >= 7)
+		if (type < 0 || type >= 7)
 		{
-			typeIn = this.getRandom().nextInt(6);
+			type = this.getRandom().nextInt(6);
 		}
 
-		this.entityData.set(DATA_VARIANT_ID, typeIn);
+		this.entityData.set(DATA_VARIANT_ID, type);
 	}
 
 	@Override
@@ -231,7 +231,7 @@ public class HarpyEntity extends Monster
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn)
+	protected float getStandingEyeHeight(Pose pose, EntityDimensions size)
 	{
 		return 1.74F;
 	}
@@ -249,7 +249,7 @@ public class HarpyEntity extends Monster
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSourceIn)
+	protected SoundEvent getHurtSound(DamageSource damageSource)
 	{
 		return ModSoundEvents.GIRL_MOB_HURT.get();
 	}
@@ -261,7 +261,7 @@ public class HarpyEntity extends Monster
 	}
 
 	@Override
-	protected void playStepSound(BlockPos pos, BlockState blockIn)
+	protected void playStepSound(BlockPos pos, BlockState block)
 	{
 		this.playSound(SoundEvents.CHICKEN_STEP, 0.15F, 1.0F);
 	}

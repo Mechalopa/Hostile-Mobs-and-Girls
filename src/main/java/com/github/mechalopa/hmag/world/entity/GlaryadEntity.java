@@ -68,9 +68,9 @@ public class GlaryadEntity extends Monster implements NeutralMob
 	private static final UniformInt ALERT_INTERVAL = TimeUtil.rangeOfSeconds(4, 6);
 	private int ticksUntilNextAlert;
 
-	public GlaryadEntity(EntityType<? extends GlaryadEntity> type, Level worldIn)
+	public GlaryadEntity(EntityType<? extends GlaryadEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 		this.xpReward = 12;
 	}
 

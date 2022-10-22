@@ -56,9 +56,9 @@ public class OgreEntity extends Monster
 	private float attackAnimation;
 	private float attackAnimationO;
 
-	public OgreEntity(EntityType<? extends OgreEntity> type, Level worldIn)
+	public OgreEntity(EntityType<? extends OgreEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 		this.xpReward = 25;
 	}
 
@@ -150,15 +150,15 @@ public class OgreEntity extends Monster
 	}
 
 	@Override
-	public boolean doHurtTarget(Entity entityIn)
+	public boolean doHurtTarget(Entity entity)
 	{
 		this.armSwingTimer = 3;
 
-		if (super.doHurtTarget(entityIn))
+		if (super.doHurtTarget(entity))
 		{
 			this.playArmSwingSound();
 
-			if (entityIn instanceof LivingEntity)
+			if (entity instanceof LivingEntity)
 			{
 				int i = 0;
 
@@ -173,7 +173,7 @@ public class OgreEntity extends Monster
 
 				if (i > 0)
 				{
-					((LivingEntity)entityIn).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, i * 20, 3));
+					((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, i * 20, 3));
 				}
 			}
 
@@ -192,7 +192,7 @@ public class OgreEntity extends Monster
 		{
 			amount = amount * 0.25F;
 
-			if (!this.isNoAi() && this.getRandom().nextInt(8) == 0)
+			if (!this.isNoAi() && !source.isNoAggro() && this.getRandom().nextInt(8) == 0)
 			{
 				this.destroyBlock();
 			}
@@ -223,7 +223,7 @@ public class OgreEntity extends Monster
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn)
+	protected float getStandingEyeHeight(Pose pose, EntityDimensions size)
 	{
 		return 2.5F;
 	}
@@ -251,7 +251,7 @@ public class OgreEntity extends Monster
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSourceIn)
+	protected SoundEvent getHurtSound(DamageSource damageSource)
 	{
 		return ModSoundEvents.OGRE_HURT.get();
 	}
@@ -263,7 +263,7 @@ public class OgreEntity extends Monster
 	}
 
 	@Override
-	protected void playStepSound(BlockPos pos, BlockState blockIn)
+	protected void playStepSound(BlockPos pos, BlockState block)
 	{
 		this.playSound(SoundEvents.COW_STEP, 0.25F, 1.0F);
 	}
@@ -316,7 +316,7 @@ public class OgreEntity extends Monster
 		}
 	}
 
-	private boolean canDestroyBlock(BlockState state, Level level, BlockPos pos, LivingEntity entityIn, float maxHardness)
+	private boolean canDestroyBlock(BlockState state, Level level, BlockPos pos, LivingEntity livingEntity, float maxHardness)
 	{
 		if (state.is(ModTags.OGRE_IMMUNE) || state.isAir() || state.getMaterial().isLiquid() || !(state.canEntityDestroy(this.level, pos, this) && ForgeEventFactory.onEntityDestroyBlock(this, pos, state)))
 		{
@@ -338,9 +338,9 @@ public class OgreEntity extends Monster
 
 	private class MeleeAttackAndDestroyGoal extends MeleeAttackGoal
 	{
-		public MeleeAttackAndDestroyGoal(OgreEntity mob, double speedIn, boolean useLongMemory)
+		public MeleeAttackAndDestroyGoal(OgreEntity mob, double speed, boolean useLongMemory)
 		{
-			super(mob, speedIn, useLongMemory);
+			super(mob, speed, useLongMemory);
 		}
 
 		@Override

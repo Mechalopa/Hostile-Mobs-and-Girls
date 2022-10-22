@@ -76,9 +76,9 @@ public class SavagefangEntity extends Monster
 	private float attackAnimation;
 	private float attackAnimationO;
 
-	public SavagefangEntity(EntityType<? extends SavagefangEntity> type, Level worldIn)
+	public SavagefangEntity(EntityType<? extends SavagefangEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 		this.setPathfindingMalus(BlockPathTypes.WATER, 0.0F);
 		this.moveControl = new SavagefangEntity.SavagefangMoveControl(this);
 		this.lookControl = new SavagefangEntity.SavagefangLookControl(this);

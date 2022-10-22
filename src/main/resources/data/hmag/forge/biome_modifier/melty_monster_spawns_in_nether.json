@@ -10,11 +10,10 @@
         "negate": true
       },
       {
-        "name": "minecraft:soul_sand_valley",
-        "negate": true
-      },
-      {
-        "name": "minecraft:warped_forest",
+        "name": [
+          "minecraft:soul_sand_valley",
+          "minecraft:warped_forest"
+        ],
         "negate": true
       }
     ]
