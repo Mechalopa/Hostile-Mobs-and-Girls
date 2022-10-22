@@ -3,7 +3,7 @@ package com.github.mechalopa.hmag.world.item;
 import java.util.function.Supplier;
 
 import com.github.mechalopa.hmag.HMaG;
-import com.github.mechalopa.hmag.registry.ModItems;
+import com.github.mechalopa.hmag.util.ModTags;
 
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -18,10 +18,10 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public enum ModArmorMaterial implements ArmorMaterial
 {
 	ANCIENT(HMaG.MODID + ":ancient", 34, new int[]{3, 6, 8, 3}, 15, SoundEvents.ARMOR_EQUIP_IRON, 2.5F, 0.05F, () -> {
-		return Ingredient.of(ModItems.ANCIENT_STONE.get());
+		return Ingredient.of(ModTags.ANCIENT_ARMOR_REPAIR_ITEMS);
 	}),
 	NECROTIC_CHAIN(HMaG.MODID + ":necrotic_chainmail", 19, new int[]{2, 5, 6, 2}, 15, SoundEvents.ARMOR_EQUIP_CHAIN, 2.0F, 0.0F, () -> {
-		return Ingredient.of(ModItems.NECROFIBER.get());
+		return Ingredient.of(ModTags.NECROTIC_CHAINMAIL_ARMOR_REPAIR_ITEMS);
 	});
 
 	private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};

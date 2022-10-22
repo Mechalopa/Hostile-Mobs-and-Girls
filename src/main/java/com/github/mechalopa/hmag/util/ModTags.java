@@ -17,12 +17,19 @@ public class ModTags
 	public static final TagKey<Block> GLARYADS_SPAWNABLE_ON = createBlockTag("glaryads_spawnable_on");
 	public static final TagKey<Block> OGRE_IMMUNE = createBlockTag("ogre_immune");
 
+	public static final TagKey<Item> ANCIENT_ARMOR_REPAIR_ITEMS = createItemTag("ancient_armor_repair_items");
+	public static final TagKey<Item> ANCIENT_SHIELD_REPAIR_ITEMS = createItemTag("ancient_shield_repair_items");
+	public static final TagKey<Item> CRIMSON_BOW_REPAIR_ITEMS = createItemTag("crimson_bow_repair_items");
 	public static final TagKey<Item> CURSE_REMOVE_ITEMS = createItemTag("curse_remove_items");
 	public static final TagKey<Item> CURSE_UNREMOVABLES = createItemTag("curse_unremovables");
 	public static final TagKey<Item> ENCHANTMENT_NOT_UPGRADEABLES = createItemTag("enchantment_not_upgradeables");
 	public static final TagKey<Item> ENCHANTMENT_UPGRADE_ITEMS = createItemTag("enchantment_upgrade_items");
+	public static final TagKey<Item> FORTRESS_SHIELD_REPAIR_ITEMS = createItemTag("fortress_shield_repair_items");
 	public static final TagKey<Item> GLARYAD_TEMPT_ITEMS = createItemTag("glaryad_tempt_items");
 	public static final TagKey<Item> INSOMNIA_ITEMS = createItemTag("insomnia_items");
+	public static final TagKey<Item> INSOMNIA_SWORD_REPAIR_ITEMS = createItemTag("insomnia_sword_repair_items");
+	public static final TagKey<Item> NECROTIC_CHAINMAIL_ARMOR_REPAIR_ITEMS = createItemTag("necrotic_chainmail_armor_repair_items");
+	public static final TagKey<Item> NEMESIS_BLADE_REPAIR_ITEMS = createItemTag("nemesis_blade_repair_items");
 	public static final TagKey<Item> SUSPICIOUS_STEW_UPGRADE_ITEMS = createItemTag("suspicious_stew_upgrade_items");
 
 	public static final TagKey<EntityType<?>> CREEPER_GIRL_REPLACEABLES = createEntityTypeTag("creeper_girl_replaceables");
