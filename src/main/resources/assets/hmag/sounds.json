@@ -477,5 +477,70 @@
       }
     ],
     "subtitle": "subtitles.hmag.entity.jiangshi.jump"
+  },
+  "entity.giant_mummy.ambient": {
+    "sounds": [
+      {
+        "name": "minecraft:mob/drowned/idle1",
+        "pitch": 0.8,
+        "volume": 0.9
+      },
+      {
+        "name": "minecraft:mob/drowned/idle2",
+        "pitch": 0.8,
+        "volume": 0.9
+      },
+      {
+        "name": "minecraft:mob/drowned/idle3",
+        "pitch": 0.8,
+        "volume": 0.9
+      },
+      {
+        "name": "minecraft:mob/drowned/idle4",
+        "pitch": 0.8,
+        "volume": 0.9
+      },
+      {
+        "name": "minecraft:mob/drowned/idle5",
+        "pitch": 0.8,
+        "volume": 0.9
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.giant_mummy.ambient"
+  },
+  "entity.giant_mummy.death": {
+    "sounds": [
+      {
+        "name": "minecraft:mob/drowned/death1",
+        "pitch": 0.75,
+        "volume": 0.9
+      },
+      {
+        "name": "minecraft:mob/drowned/death2",
+        "pitch": 0.75,
+        "volume": 0.9
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.giant_mummy.death"
+  },
+  "entity.giant_mummy.hurt": {
+    "sounds": [
+      {
+        "name": "minecraft:mob/drowned/hurt1",
+        "pitch": 0.75,
+        "volume": 0.9
+      },
+      {
+        "name": "minecraft:mob/drowned/hurt2",
+        "pitch": 0.75,
+        "volume": 0.9
+      },
+      {
+        "name": "minecraft:mob/drowned/hurt3",
+        "pitch": 0.75,
+        "volume": 0.9
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.giant_mummy.hurt"
   }
 }

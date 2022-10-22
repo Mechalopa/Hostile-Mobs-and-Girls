@@ -1,0 +1,43 @@
+{
+  "type": "hmag:add_spawns",
+  "biomes": [
+    [
+      {
+        "name": "#hmag:is_overworld"
+      },
+      {
+        "name": "#hmag:is_desert"
+      },
+      {
+        "name": "#hmag:is_peaceful",
+        "negate": true
+      }
+    ],
+    [
+      {
+        "name": "#hmag:is_overworld"
+      },
+      {
+        "name": "#hmag:is_sandy"
+      },
+      {
+        "name": "#hmag:is_beach",
+        "negate": true
+      },
+      {
+        "name": "#hmag:is_cold",
+        "negate": true
+      },
+      {
+        "name": "#hmag:is_peaceful",
+        "negate": true
+      }
+    ]
+  ],
+  "spawners": {
+    "type": "hmag:giant_mummy",
+    "weight": 10,
+    "minCount": 1,
+    "maxCount": 2
+  }
+}

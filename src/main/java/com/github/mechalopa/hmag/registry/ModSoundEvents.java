@@ -45,6 +45,9 @@ public class ModSoundEvents
 	public static final RegistryObject<SoundEvent> JIANGSHI_HURT = REGISTRY.register("entity.jiangshi.hurt", () -> new SoundEvent(new ResourceLocation(HMaG.MODID, "entity.jiangshi.hurt")));
 	public static final RegistryObject<SoundEvent> JIANGSHI_DEATH = REGISTRY.register("entity.jiangshi.death", () -> new SoundEvent(new ResourceLocation(HMaG.MODID, "entity.jiangshi.death")));
 	public static final RegistryObject<SoundEvent> JIANGSHI_JUMP = REGISTRY.register("entity.jiangshi.jump", () -> new SoundEvent(new ResourceLocation(HMaG.MODID, "entity.jiangshi.jump")));
+	public static final RegistryObject<SoundEvent> GIANT_MUMMY_AMBIENT = REGISTRY.register("entity.giant_mummy.ambient", () -> new SoundEvent(new ResourceLocation(HMaG.MODID, "entity.giant_mummy.ambient")));
+	public static final RegistryObject<SoundEvent> GIANT_MUMMY_HURT = REGISTRY.register("entity.giant_mummy.hurt", () -> new SoundEvent(new ResourceLocation(HMaG.MODID, "entity.giant_mummy.hurt")));
+	public static final RegistryObject<SoundEvent> GIANT_MUMMY_DEATH = REGISTRY.register("entity.giant_mummy.death", () -> new SoundEvent(new ResourceLocation(HMaG.MODID, "entity.giant_mummy.death")));
 
 	@SubscribeEvent
 	public static void register(IEventBus eventBus)

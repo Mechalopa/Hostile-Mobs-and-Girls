@@ -39,6 +39,7 @@ import com.github.mechalopa.hmag.world.entity.SlimeGirlEntity;
 import com.github.mechalopa.hmag.world.entity.SnowCanineEntity;
 import com.github.mechalopa.hmag.world.entity.SpiderNestEntity;
 import com.github.mechalopa.hmag.world.entity.StrayGirlEntity;
+import com.github.mechalopa.hmag.world.entity.GiantMummyEntity;
 import com.github.mechalopa.hmag.world.entity.WitherGhostEntity;
 import com.github.mechalopa.hmag.world.entity.WitherSkeletonGirlEntity;
 import com.github.mechalopa.hmag.world.entity.ZombieGirlEntity;
@@ -185,6 +186,9 @@ public class ModEntityTypes
 	public static final RegistryObject<EntityType<JiangshiEntity>> JIANGSHI = REGISTRY.register("jiangshi", () -> EntityType.Builder
 			.of(JiangshiEntity::new, MobCategory.MONSTER).sized(0.6F, 1.95F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
 			.build(new ResourceLocation(HMaG.MODID, "jiangshi").toString()));
+	public static final RegistryObject<EntityType<GiantMummyEntity>> GIANT_MUMMY = REGISTRY.register("giant_mummy", () -> EntityType.Builder
+			.of(GiantMummyEntity::new, MobCategory.MONSTER).sized(0.9F, 2.8F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
+			.build(new ResourceLocation(HMaG.MODID, "giant_mummy").toString()));
 
 	public static final RegistryObject<EntityType<MagicBulletEntity>> MAGIC_BULLET = REGISTRY.register("magic_bullet", () -> EntityType.Builder
 			.<MagicBulletEntity>of(MagicBulletEntity::new, MobCategory.MISC).sized(0.3215F, 0.3215F).setTrackingRange(4).setUpdateInterval(1).setShouldReceiveVelocityUpdates(true)

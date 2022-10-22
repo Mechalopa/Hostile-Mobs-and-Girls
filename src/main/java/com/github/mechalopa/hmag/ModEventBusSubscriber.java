@@ -44,6 +44,7 @@ import com.github.mechalopa.hmag.world.entity.SlimeGirlEntity;
 import com.github.mechalopa.hmag.world.entity.SnowCanineEntity;
 import com.github.mechalopa.hmag.world.entity.SpiderNestEntity;
 import com.github.mechalopa.hmag.world.entity.StrayGirlEntity;
+import com.github.mechalopa.hmag.world.entity.GiantMummyEntity;
 import com.github.mechalopa.hmag.world.entity.WitherGhostEntity;
 import com.github.mechalopa.hmag.world.entity.WitherSkeletonGirlEntity;
 import com.github.mechalopa.hmag.world.entity.ZombieGirlEntity;
@@ -195,6 +196,7 @@ public class ModEventBusSubscriber
 		SpawnPlacements.register(ModEntityTypes.IMP.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkAnyLightMonsterSpawnRules);
 		SpawnPlacements.register(ModEntityTypes.GLARYAD.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, GlaryadEntity::checkGlaryadSpawnRules);
 		SpawnPlacements.register(ModEntityTypes.JIANGSHI.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules);
+		SpawnPlacements.register(ModEntityTypes.GIANT_MUMMY.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules);
 	}
 
 	@SubscribeEvent
@@ -241,6 +243,7 @@ public class ModEventBusSubscriber
 		event.put(ModEntityTypes.IMP.get(), ImpEntity.createAttributes().build());
 		event.put(ModEntityTypes.GLARYAD.get(), GlaryadEntity.createAttributes().build());
 		event.put(ModEntityTypes.JIANGSHI.get(), JiangshiEntity.createAttributes().build());
+		event.put(ModEntityTypes.GIANT_MUMMY.get(), GiantMummyEntity.createAttributes().build());
 	}
 
 	private static void registerBrewingRecipe(Potion inputPotion, Item item, Potion outputPotion)

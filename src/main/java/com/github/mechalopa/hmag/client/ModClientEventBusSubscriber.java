@@ -17,6 +17,7 @@ import com.github.mechalopa.hmag.client.model.EnderExecutorModel;
 import com.github.mechalopa.hmag.client.model.FortressKeeperModel;
 import com.github.mechalopa.hmag.client.model.GhastlySeekerModel;
 import com.github.mechalopa.hmag.client.model.GhostModel;
+import com.github.mechalopa.hmag.client.model.GiantMummyModel;
 import com.github.mechalopa.hmag.client.model.GlaryadModel;
 import com.github.mechalopa.hmag.client.model.HarpyModel;
 import com.github.mechalopa.hmag.client.model.HornetModel;
@@ -57,6 +58,7 @@ import com.github.mechalopa.hmag.client.renderer.EnderExecutorRenderer;
 import com.github.mechalopa.hmag.client.renderer.FortressKeeperRenderer;
 import com.github.mechalopa.hmag.client.renderer.GhastlySeekerRenderer;
 import com.github.mechalopa.hmag.client.renderer.GhostRenderer;
+import com.github.mechalopa.hmag.client.renderer.GiantMummyRenderer;
 import com.github.mechalopa.hmag.client.renderer.GlaryadRenderer;
 import com.github.mechalopa.hmag.client.renderer.HarpyRenderer;
 import com.github.mechalopa.hmag.client.renderer.HornetRenderer;
@@ -182,6 +184,7 @@ public class ModClientEventBusSubscriber
 		event.registerEntityRenderer(ModEntityTypes.IMP.get(), ImpRenderer::new);
 		event.registerEntityRenderer(ModEntityTypes.GLARYAD.get(), GlaryadRenderer::new);
 		event.registerEntityRenderer(ModEntityTypes.JIANGSHI.get(), JiangshiRenderer::new);
+		event.registerEntityRenderer(ModEntityTypes.GIANT_MUMMY.get(), GiantMummyRenderer::new);
 
 		event.registerEntityRenderer(ModEntityTypes.MAGIC_BULLET.get(), MagicBulletRenderer::new);
 		event.registerEntityRenderer(ModEntityTypes.HARD_SNOWBALL.get(), ModThrownItemRenderer::new);
@@ -263,6 +266,7 @@ public class ModClientEventBusSubscriber
 		event.registerLayerDefinition(ModModelLayers.IMP, ImpModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.GLARYAD, GlaryadModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.JIANGSHI, JiangshiModel::createBodyLayer);
+		event.registerLayerDefinition(ModModelLayers.GIANT_MUMMY, GiantMummyModel::createBodyLayer);
 
 		event.registerLayerDefinition(ModModelLayers.ANCIENT_SHIELD, ModShieldModel::createLayer);
 		event.registerLayerDefinition(ModModelLayers.FORTRESS_SHIELD, ModShieldModel::createLayer);
