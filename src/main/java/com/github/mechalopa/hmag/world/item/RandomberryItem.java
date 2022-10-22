@@ -1,15 +1,22 @@
 package com.github.mechalopa.hmag.world.item;
 
+import java.util.List;
+
+import com.github.mechalopa.hmag.util.ModTags;
+
+import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class RandomberryItem extends Item
 {
+	public static List<MobEffect> RANDOMBERRY_EFFECTS;
+
 	public RandomberryItem(Item.Properties builder)
 	{
 		super(builder);
@@ -22,55 +29,25 @@ public class RandomberryItem extends Item
 
 		if (!level.isClientSide)
 		{
-			final int i = livingEntity.getRandom().nextInt(3);
-			MobEffect effect = null;
-
-			switch (livingEntity.getRandom().nextInt(12))
+			if (RANDOMBERRY_EFFECTS != null && !RANDOMBERRY_EFFECTS.isEmpty())
 			{
-			case 0:
-				effect = MobEffects.REGENERATION;
-				break;
-			case 1:
-				effect = MobEffects.DAMAGE_RESISTANCE;
-				break;
-			case 2:
-				effect = MobEffects.MOVEMENT_SPEED;
-				break;
-			case 3:
-				effect = MobEffects.DIG_SPEED;
-				break;
-			case 4:
-				effect = MobEffects.DOLPHINS_GRACE;
-				break;
-			case 5:
-				effect = MobEffects.INVISIBILITY;
-				break;
-			case 6:
-				effect = MobEffects.WEAKNESS;
-				break;
-			case 7:
-				effect = MobEffects.HUNGER;
-				break;
-			case 8:
-				effect = MobEffects.JUMP;
-				break;
-			case 9:
-				effect = MobEffects.MOVEMENT_SLOWDOWN;
-				break;
-			case 10:
-				effect = MobEffects.DIG_SLOWDOWN;
-				break;
-			case 11:
-				effect = MobEffects.SLOW_FALLING;
-				break;
-			}
+				MobEffect effect = RANDOMBERRY_EFFECTS.get(livingEntity.getRandom().nextInt(RANDOMBERRY_EFFECTS.size()));
 
-			if (effect != null)
-			{
-				livingEntity.addEffect(new MobEffectInstance(effect, (i + 1) * 5 * 20, 0));
+				if (effect != null)
+				{
+					livingEntity.addEffect(new MobEffectInstance(effect, (livingEntity.getRandom().nextInt(4) + 1) * 5 * 20, 0));
+				}
 			}
 		}
 
 		return stack1;
+	}
+
+	public static void updateEffectList()
+	{
+		RANDOMBERRY_EFFECTS = ForgeRegistries.MOB_EFFECTS.getValues().stream().filter((p) -> {
+			Holder<MobEffect> holder = ForgeRegistries.MOB_EFFECTS.getHolder(p).orElseThrow();
+			return holder != null && holder.is(ModTags.RANDOMBERRY_GIVES);
+		}).toList();
 	}
 }

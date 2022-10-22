@@ -1,0 +1,93 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:dolphins_grace",
+    "minecraft:haste",
+    "minecraft:hunger",
+    "minecraft:invisibility",
+    "minecraft:jump_boost",
+    "minecraft:mining_fatigue",
+    "minecraft:regeneration",
+    "minecraft:resistance",
+    "minecraft:slowness",
+    "minecraft:slow_falling",
+    "minecraft:speed",
+    "minecraft:weakness",
+    {
+      "id": "alexsmobs:knockback_resistance",
+      "required": false
+    },
+    {
+      "id": "alexsmobs:oiled",
+      "required": false
+    },
+    {
+      "id": "alexsmobs:poison_resistance",
+      "required": false
+    },
+    {
+      "id": "alexsmobs:soulsteal",
+      "required": false
+    },
+    {
+      "id": "apotheosis:knowledge",
+      "required": false
+    },
+    {
+      "id": "apotheosis:sundering",
+      "required": false
+    },
+    {
+      "id": "cofh_core:chilled",
+      "required": false
+    },
+    {
+      "id": "cofh_core:clarity",
+      "required": false
+    },
+    {
+      "id": "cofh_core:explosion_resistant",
+      "required": false
+    },
+    {
+      "id": "cofh_core:lightning_resistant",
+      "required": false
+    },
+    {
+      "id": "cofh_core:magic_resistant",
+      "required": false
+    },
+    {
+      "id": "cofh_core:shocked",
+      "required": false
+    },
+    {
+      "id": "ecologics:slippery",
+      "required": false
+    },
+    {
+      "id": "farmersdelight:nourished",
+      "required": false
+    },
+    {
+      "id": "immersiveengineering:flammable",
+      "required": false
+    },
+    {
+      "id": "mowziesmobs:poison_resist",
+      "required": false
+    },
+    {
+      "id": "neapolitan:harmony",
+      "required": false
+    },
+    {
+      "id": "quark:resilience",
+      "required": false
+    },
+    {
+      "id": "seasonals:thorn_resistance",
+      "required": false
+    }
+  ]
+}

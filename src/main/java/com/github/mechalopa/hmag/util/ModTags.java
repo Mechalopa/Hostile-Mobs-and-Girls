@@ -5,6 +5,7 @@ import com.github.mechalopa.hmag.HMaG;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -48,6 +49,8 @@ public class ModTags
 
 	public static final TagKey<Enchantment> UNREMOVABLE_CURSES = createEnchantmentTag("unremovable_curses");
 
+	public static final TagKey<MobEffect> RANDOMBERRY_GIVES = createMobEffectTag("randomberry_gives");
+
 	public static final TagKey<Biome> IS_BADLANDS = createBiomeTag("is_badlands");
 	public static final TagKey<Biome> IS_COLD = createBiomeTag("is_cold");
 	public static final TagKey<Biome> IS_PLAINS = createBiomeTag("is_plains");
@@ -75,6 +78,11 @@ public class ModTags
 	private static TagKey<Enchantment> createEnchantmentTag(String name)
 	{
 		return TagKey.create(Registry.ENCHANTMENT_REGISTRY, new ResourceLocation(HMaG.MODID, name));
+	}
+
+	private static TagKey<MobEffect> createMobEffectTag(String name)
+	{
+		return TagKey.create(Registry.MOB_EFFECT_REGISTRY, new ResourceLocation(HMaG.MODID, name));
 	}
 
 	private static TagKey<Biome> createBiomeTag(String name)
