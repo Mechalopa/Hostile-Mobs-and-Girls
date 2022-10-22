@@ -21,6 +21,7 @@ import com.github.mechalopa.hmag.world.entity.EnderExecutorEntity;
 import com.github.mechalopa.hmag.world.entity.FortressKeeperEntity;
 import com.github.mechalopa.hmag.world.entity.GhastlySeekerEntity;
 import com.github.mechalopa.hmag.world.entity.GhostEntity;
+import com.github.mechalopa.hmag.world.entity.GiantMummyEntity;
 import com.github.mechalopa.hmag.world.entity.GlaryadEntity;
 import com.github.mechalopa.hmag.world.entity.HarpyEntity;
 import com.github.mechalopa.hmag.world.entity.HornetEntity;
@@ -44,7 +45,6 @@ import com.github.mechalopa.hmag.world.entity.SlimeGirlEntity;
 import com.github.mechalopa.hmag.world.entity.SnowCanineEntity;
 import com.github.mechalopa.hmag.world.entity.SpiderNestEntity;
 import com.github.mechalopa.hmag.world.entity.StrayGirlEntity;
-import com.github.mechalopa.hmag.world.entity.GiantMummyEntity;
 import com.github.mechalopa.hmag.world.entity.WitherGhostEntity;
 import com.github.mechalopa.hmag.world.entity.WitherSkeletonGirlEntity;
 import com.github.mechalopa.hmag.world.entity.ZombieGirlEntity;
@@ -147,9 +147,9 @@ public class ModEventBusSubscriber
 			registerBrewingRecipe(Potions.AWKWARD, ModItems.SOUL_APPLE.get(), Potions.INVISIBILITY);
 		if (ModConfigs.cachedServer.REGENERATION_POTION_BREWING_RECIPES)
 			registerBrewingRecipe(Potions.AWKWARD, ModItems.CUBIC_NUCLEUS.get(), Potions.REGENERATION);
-		if (ModConfigs.cachedServer.BLASTING_BOTTLE_BREWING_RECIPES)
+		if (ModConfigs.cachedServer.BLASTING_BOTTLE_BREWING_RECIPE)
 			BrewingRecipeRegistry.addRecipe(new ModBrewingRecipe(Ingredient.of(ModItems.FIRE_BOTTLE.get()), Ingredient.of(ModItems.BURNING_CORE.get()), new ItemStack(ModItems.BLASTING_BOTTLE.get(), 1)));
-		if (ModConfigs.cachedServer.LIGHTNING_BOTTLE_BREWING_RECIPES)
+		if (ModConfigs.cachedServer.LIGHTNING_BOTTLE_BREWING_RECIPE)
 			BrewingRecipeRegistry.addRecipe(new ModBrewingRecipe(Ingredient.of(ModItems.FIRE_BOTTLE.get()), Ingredient.of(ModItems.LIGHTNING_PARTICLE.get()), new ItemStack(ModItems.LIGHTNING_BOTTLE.get(), 1)));
 	}
 

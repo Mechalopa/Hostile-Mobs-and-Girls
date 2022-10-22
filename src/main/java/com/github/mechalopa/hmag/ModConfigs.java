@@ -94,8 +94,8 @@ public class ModConfigs
 	public static ForgeConfigSpec.BooleanValue SLOWNESS_POTION_BREWING_RECIPES;
 	public static ForgeConfigSpec.BooleanValue INVISIBILITY_POTION_BREWING_RECIPES;
 	public static ForgeConfigSpec.BooleanValue REGENERATION_POTION_BREWING_RECIPES;
-	public static ForgeConfigSpec.BooleanValue BLASTING_BOTTLE_BREWING_RECIPES;
-	public static ForgeConfigSpec.BooleanValue LIGHTNING_BOTTLE_BREWING_RECIPES;
+	public static ForgeConfigSpec.BooleanValue BLASTING_BOTTLE_BREWING_RECIPE;
+	public static ForgeConfigSpec.BooleanValue LIGHTNING_BOTTLE_BREWING_RECIPE;
 
 	public static ForgeConfigSpec.BooleanValue ADDITIONAL_CHEST_LOOTS;
 	public static ForgeConfigSpec.BooleanValue ADDITIONAL_VILLAGER_TRADES;
@@ -214,8 +214,8 @@ public class ModConfigs
 		SLOWNESS_POTION_BREWING_RECIPES = SERVER_BUILDER.define("enableSlownessPotionBrewingRecipes", true);
 		INVISIBILITY_POTION_BREWING_RECIPES = SERVER_BUILDER.define("enableInvisibilityPotionBrewingRecipes", true);
 		REGENERATION_POTION_BREWING_RECIPES = SERVER_BUILDER.define("enableRegenerationPotionBrewingRecipes", true);
-		BLASTING_BOTTLE_BREWING_RECIPES = SERVER_BUILDER.define("enableBlastingBottleBrewingRecipes", true);
-		LIGHTNING_BOTTLE_BREWING_RECIPES = SERVER_BUILDER.define("enableLightningBottleBrewingRecipes", true);
+		BLASTING_BOTTLE_BREWING_RECIPE = SERVER_BUILDER.define("enableBlastingBottleBrewingRecipe", true);
+		LIGHTNING_BOTTLE_BREWING_RECIPE = SERVER_BUILDER.define("enableLightningBottleBrewingRecipe", true);
 
 		SERVER_BUILDER.pop();
 
@@ -317,8 +317,8 @@ public class ModConfigs
 		public static boolean SLOWNESS_POTION_BREWING_RECIPES;
 		public static boolean INVISIBILITY_POTION_BREWING_RECIPES;
 		public static boolean REGENERATION_POTION_BREWING_RECIPES;
-		public static boolean BLASTING_BOTTLE_BREWING_RECIPES;
-		public static boolean LIGHTNING_BOTTLE_BREWING_RECIPES;
+		public static boolean BLASTING_BOTTLE_BREWING_RECIPE;
+		public static boolean LIGHTNING_BOTTLE_BREWING_RECIPE;
 
 		public static boolean ADDITIONAL_CHEST_LOOTS;
 		public static boolean ADDITIONAL_VILLAGER_TRADES;
@@ -411,8 +411,8 @@ public class ModConfigs
 			SLOWNESS_POTION_BREWING_RECIPES = ModConfigs.SLOWNESS_POTION_BREWING_RECIPES.get();
 			INVISIBILITY_POTION_BREWING_RECIPES = ModConfigs.INVISIBILITY_POTION_BREWING_RECIPES.get();
 			REGENERATION_POTION_BREWING_RECIPES = ModConfigs.REGENERATION_POTION_BREWING_RECIPES.get();
-			BLASTING_BOTTLE_BREWING_RECIPES = ModConfigs.BLASTING_BOTTLE_BREWING_RECIPES.get();
-			LIGHTNING_BOTTLE_BREWING_RECIPES = ModConfigs.LIGHTNING_BOTTLE_BREWING_RECIPES.get();
+			BLASTING_BOTTLE_BREWING_RECIPE = ModConfigs.BLASTING_BOTTLE_BREWING_RECIPE.get();
+			LIGHTNING_BOTTLE_BREWING_RECIPE = ModConfigs.LIGHTNING_BOTTLE_BREWING_RECIPE.get();
 
 			ADDITIONAL_CHEST_LOOTS = ModConfigs.ADDITIONAL_CHEST_LOOTS.get();
 			ADDITIONAL_VILLAGER_TRADES = ModConfigs.ADDITIONAL_VILLAGER_TRADES.get();
