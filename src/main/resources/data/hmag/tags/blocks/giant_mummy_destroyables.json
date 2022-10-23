@@ -1,0 +1,45 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:cave_vines",
+    "#minecraft:crops",
+    "#minecraft:flowers",
+    "#minecraft:leaves",
+    "#minecraft:saplings",
+    "minecraft:brown_mushroom",
+    "minecraft:cocoa",
+    "minecraft:crimson_fungus",
+    "minecraft:crimson_roots",
+    "minecraft:dead_bush",
+    "minecraft:fern",
+    "minecraft:glow_lichen",
+    "minecraft:grass",
+    "minecraft:hanging_roots",
+    "minecraft:large_fern",
+    "minecraft:mangrove_roots",
+    "minecraft:nether_sprouts",
+    "minecraft:nether_wart",
+    "minecraft:red_mushroom",
+    "minecraft:sugar_cane",
+    "minecraft:tall_grass",
+    "minecraft:twisting_vines",
+    "minecraft:twisting_vines_plant",
+    "minecraft:vine",
+    "minecraft:warped_fungus",
+    "minecraft:warped_roots",
+    "minecraft:weeping_vines",
+    "minecraft:weeping_vines_plant",
+    {
+      "id": "#forge:crops",
+      "required": false
+    },
+    {
+      "id": "#forge:grasses",
+      "required": false
+    },
+    {
+      "id": "#forge:mushrooms",
+      "required": false
+    }
+  ]
+}

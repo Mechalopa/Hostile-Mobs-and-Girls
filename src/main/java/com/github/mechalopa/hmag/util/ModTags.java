@@ -15,6 +15,7 @@ import net.minecraft.world.level.levelgen.structure.Structure;
 
 public class ModTags
 {
+	public static final TagKey<Block> GIANT_MUMMY_DESTROYABLES = createBlockTag("giant_mummy_destroyables");
 	public static final TagKey<Block> GLARYADS_SPAWNABLE_ON = createBlockTag("glaryads_spawnable_on");
 	public static final TagKey<Block> OGRE_IMMUNE = createBlockTag("ogre_immune");
 

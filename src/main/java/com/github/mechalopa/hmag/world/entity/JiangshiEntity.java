@@ -44,6 +44,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.MoveThroughVillageGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
@@ -86,15 +87,18 @@ public class JiangshiEntity extends Monster
 	@Override
 	protected void registerGoals()
 	{
-		this.goalSelector.addGoal(3, new LeapGoal(this));
-		this.goalSelector.addGoal(4, new MeleeAttackGoal2(this, 1.0D, false).useRaiseArm());
+		this.goalSelector.addGoal(2, new LeapGoal(this));
+		this.goalSelector.addGoal(3, new MeleeAttackGoal2(this, 1.0D, false).useRaiseArm());
 		this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
 		this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
 		this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
 		this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
 		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true).setUnseenMemoryTicks(120));
 		if (ModConfigs.cachedServer.JIANGSHI_ATTACK_VILLAGERS)
+		{
+			this.goalSelector.addGoal(4, new MoveThroughVillageGoal(this, 1.0D, true, 4, () -> false));
 			this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, false));
+		}
 		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
 		if (ModConfigs.cachedServer.JIANGSHI_ATTACK_BABY_TURTLES)
 			this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Turtle.class, 10, true, false, Turtle.BABY_ON_LAND_SELECTOR));
@@ -156,7 +160,7 @@ public class JiangshiEntity extends Monster
 		}
 		else
 		{
-			if (!this.isNoAi() && (this.isOnFire() || !(this.getTarget() != null && this.getTarget().isAlive() && this.hasLineOfSight(this.getTarget()) && this.distanceToSqr(this.getTarget()) <= 8.0D * 8.0D)))
+			if (this.isOnFire() || !(this.getTarget() != null && this.getTarget().isAlive() && this.hasLineOfSight(this.getTarget()) && this.distanceToSqr(this.getTarget()) <= 8.0D * 8.0D))
 			{
 				if (this.getSpeedBonus() > 0 && this.tickCount % 20 == 0 && this.getRandom().nextInt(4) == 0)
 				{

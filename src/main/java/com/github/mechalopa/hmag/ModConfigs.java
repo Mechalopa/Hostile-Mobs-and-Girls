@@ -50,6 +50,7 @@ public class ModConfigs
 	public static ForgeConfigSpec.BooleanValue JIANGSHI_ATTACK_BABY_TURTLES;
 	public static ForgeConfigSpec.BooleanValue GIANT_MUMMY_ATTACK_VILLAGERS;
 	public static ForgeConfigSpec.BooleanValue GIANT_MUMMY_ATTACK_BABY_TURTLES;
+	public static ForgeConfigSpec.BooleanValue GIANT_MUMMY_DESTROY_BLOCKS;
 
 	public static ForgeConfigSpec.DoubleValue ZOMBIE_GIRL_REPLACE_CHANCE;
 	public static ForgeConfigSpec.DoubleValue HUSK_GIRL_REPLACE_CHANCE;
@@ -146,6 +147,7 @@ public class ModConfigs
 		JIANGSHI_ATTACK_BABY_TURTLES = SERVER_BUILDER.define("jiangshiAttackBabyTurtles", true);
 		GIANT_MUMMY_ATTACK_VILLAGERS = SERVER_BUILDER.define("giantMummyAttackVillagers", true);
 		GIANT_MUMMY_ATTACK_BABY_TURTLES = SERVER_BUILDER.define("giantMummyAttackBabyTurtles", true);
+		GIANT_MUMMY_DESTROY_BLOCKS = SERVER_BUILDER.define("enableGiantMummyDestroyBlocks", true);
 
 		SERVER_BUILDER.push("spawn");
 
@@ -273,6 +275,7 @@ public class ModConfigs
 		public static boolean JIANGSHI_ATTACK_BABY_TURTLES;
 		public static boolean GIANT_MUMMY_ATTACK_VILLAGERS;
 		public static boolean GIANT_MUMMY_ATTACK_BABY_TURTLES;
+		public static boolean GIANT_MUMMY_DESTROY_BLOCKS;
 
 		public static double ZOMBIE_GIRL_REPLACE_CHANCE;
 		public static double HUSK_GIRL_REPLACE_CHANCE;
@@ -367,6 +370,7 @@ public class ModConfigs
 			JIANGSHI_ATTACK_BABY_TURTLES = ModConfigs.JIANGSHI_ATTACK_BABY_TURTLES.get();
 			GIANT_MUMMY_ATTACK_VILLAGERS = ModConfigs.GIANT_MUMMY_ATTACK_VILLAGERS.get();
 			GIANT_MUMMY_ATTACK_BABY_TURTLES = ModConfigs.GIANT_MUMMY_ATTACK_BABY_TURTLES.get();
+			GIANT_MUMMY_DESTROY_BLOCKS = ModConfigs.GIANT_MUMMY_DESTROY_BLOCKS.get();
 
 			ZOMBIE_GIRL_REPLACE_CHANCE = ModConfigs.ZOMBIE_GIRL_REPLACE_CHANCE.get();
 			HUSK_GIRL_REPLACE_CHANCE = ModConfigs.HUSK_GIRL_REPLACE_CHANCE.get();

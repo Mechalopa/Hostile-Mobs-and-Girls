@@ -75,6 +75,14 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:cactus"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "hmag:exp_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "hmag:randomberry"
         }
       ],
       "rolls": 1.0
