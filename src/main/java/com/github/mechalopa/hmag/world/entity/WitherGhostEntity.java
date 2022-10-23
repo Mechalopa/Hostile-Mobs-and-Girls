@@ -24,9 +24,9 @@ import net.minecraftforge.eventbus.api.Event;
 
 public class WitherGhostEntity extends GhostEntity
 {
-	public WitherGhostEntity(EntityType<? extends WitherGhostEntity> type, Level worldIn)
+	public WitherGhostEntity(EntityType<? extends WitherGhostEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 		this.setPathfindingMalus(BlockPathTypes.LAVA, 8.0F);
 	}
 
@@ -43,17 +43,17 @@ public class WitherGhostEntity extends GhostEntity
 	}
 
 	@Override
-	public boolean doHurtTarget(Entity entityIn)
+	public boolean doHurtTarget(Entity entity)
 	{
-		if (!super.doHurtTarget(entityIn))
+		if (!super.doHurtTarget(entity))
 		{
 			return false;
 		}
 		else
 		{
-			if (entityIn instanceof LivingEntity)
+			if (entity instanceof LivingEntity)
 			{
-				((LivingEntity)entityIn).addEffect(new MobEffectInstance(MobEffects.WITHER, 10 * 20));
+				((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.WITHER, 10 * 20));
 			}
 
 			return true;
@@ -81,15 +81,15 @@ public class WitherGhostEntity extends GhostEntity
 	}
 
 	@Override
-	public boolean canBeAffected(MobEffectInstance potioneffectIn)
+	public boolean canBeAffected(MobEffectInstance potioneffect)
 	{
-		if (potioneffectIn.getEffect() == MobEffects.WITHER)
+		if (potioneffect.getEffect() == MobEffects.WITHER)
 		{
-			MobEffectEvent.Applicable event = new MobEffectEvent.Applicable(this, potioneffectIn);
+			MobEffectEvent.Applicable event = new MobEffectEvent.Applicable(this, potioneffect);
 			MinecraftForge.EVENT_BUS.post(event);
 			return event.getResult() == Event.Result.ALLOW;
 		}
 
-		return super.canBeAffected(potioneffectIn);
+		return super.canBeAffected(potioneffect);
 	}
 }

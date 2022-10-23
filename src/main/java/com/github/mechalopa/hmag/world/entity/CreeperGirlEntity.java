@@ -37,9 +37,9 @@ public class CreeperGirlEntity extends Creeper
 {
 	private static final EntityDataAccessor<Integer> DATA_VARIANT_ID = SynchedEntityData.defineId(CreeperGirlEntity.class, EntityDataSerializers.INT);
 
-	public CreeperGirlEntity(EntityType<? extends CreeperGirlEntity> type, Level worldIn)
+	public CreeperGirlEntity(EntityType<? extends CreeperGirlEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 		this.xpReward = 8;
 	}
 
@@ -78,14 +78,14 @@ public class CreeperGirlEntity extends Creeper
 
 	@Override
 	@Nullable
-	public SpawnGroupData finalizeSpawn(ServerLevelAccessor worldIn, DifficultyInstance difficultyIn, MobSpawnType spawnType, @Nullable SpawnGroupData spawnDataIn, @Nullable CompoundTag dataTag)
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag dataTag)
 	{
-		spawnDataIn = super.finalizeSpawn(worldIn, difficultyIn, spawnType, spawnDataIn, dataTag);
+		spawnData = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
 
-		RandomSource randomsource = worldIn.getRandom();
+		RandomSource randomsource = levelAccessor.getRandom();
 		this.setVariant(randomsource.nextInt(3));
-		this.populateDefaultEquipmentSlots(randomsource, difficultyIn);
-		this.populateDefaultEquipmentEnchantments(randomsource, difficultyIn);
+		this.populateDefaultEquipmentSlots(randomsource, difficulty);
+		this.populateDefaultEquipmentEnchantments(randomsource, difficulty);
 
 		if (this.getItemBySlot(EquipmentSlot.HEAD).isEmpty())
 		{
@@ -100,7 +100,7 @@ public class CreeperGirlEntity extends Creeper
 			}
 		}
 
-		return spawnDataIn;
+		return spawnData;
 	}
 
 	public int getVariant()
@@ -108,14 +108,14 @@ public class CreeperGirlEntity extends Creeper
 		return this.entityData.get(DATA_VARIANT_ID);
 	}
 
-	private void setVariant(int typeIn)
+	private void setVariant(int type)
 	{
-		if (typeIn < 0 || typeIn >= 3)
+		if (type < 0 || type >= 3)
 		{
-			typeIn = this.getRandom().nextInt(3);
+			type = this.getRandom().nextInt(3);
 		}
 
-		this.entityData.set(DATA_VARIANT_ID, typeIn);
+		this.entityData.set(DATA_VARIANT_ID, type);
 	}
 
 	@Override
@@ -139,13 +139,13 @@ public class CreeperGirlEntity extends Creeper
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn)
+	protected float getStandingEyeHeight(Pose pose, EntityDimensions size)
 	{
 		return 1.74F;
 	}
 
 	@Override
-	protected void playStepSound(BlockPos pos, BlockState blockIn)
+	protected void playStepSound(BlockPos pos, BlockState block)
 	{
 		this.playSound(SoundEvents.ZOMBIE_STEP, 0.15F, 1.0F);
 	}

@@ -55,9 +55,9 @@ import net.minecraftforge.network.NetworkHooks;
 
 public class MeltyMonsterEntity extends Monster implements RangedAttackMob
 {
-	public MeltyMonsterEntity(EntityType<? extends MeltyMonsterEntity> type, Level worldIn)
+	public MeltyMonsterEntity(EntityType<? extends MeltyMonsterEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 		this.setPathfindingMalus(BlockPathTypes.WATER, -1.0F);
 		this.setPathfindingMalus(BlockPathTypes.LAVA, 0.0F);
 		this.setPathfindingMalus(BlockPathTypes.DANGER_FIRE, 0.0F);
@@ -153,7 +153,7 @@ public class MeltyMonsterEntity extends Monster implements RangedAttackMob
 		this.playSound(SoundEvents.BLAZE_SHOOT, 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
 	}
 
-	public static boolean checkMeltyMonsterSpawnRules(EntityType<MeltyMonsterEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, RandomSource randomIn)
+	public static boolean checkMeltyMonsterSpawnRules(EntityType<MeltyMonsterEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, RandomSource random)
 	{
 		BlockPos.MutableBlockPos blockpos$mutable = pos.mutable();
 
@@ -163,7 +163,7 @@ public class MeltyMonsterEntity extends Monster implements RangedAttackMob
 		}
 		while(levelAccessor.getFluidState(blockpos$mutable).is(FluidTags.LAVA));
 
-		return levelAccessor.getBlockState(blockpos$mutable).isAir() && (spawnType == MobSpawnType.SPAWNER || pos.getY() < (levelAccessor.getMinBuildHeight() < 0  ? 0 : 32) || randomIn.nextBoolean());
+		return levelAccessor.getBlockState(blockpos$mutable).isAir() && (spawnType == MobSpawnType.SPAWNER || pos.getY() < (levelAccessor.getMinBuildHeight() < 0  ? 0 : 32) || random.nextBoolean());
 	}
 
 	@Override
@@ -256,7 +256,7 @@ public class MeltyMonsterEntity extends Monster implements RangedAttackMob
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn)
+	protected float getStandingEyeHeight(Pose pose, EntityDimensions size)
 	{
 		return 1.74F;
 	}
@@ -274,7 +274,7 @@ public class MeltyMonsterEntity extends Monster implements RangedAttackMob
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSourceIn)
+	protected SoundEvent getHurtSound(DamageSource damageSource)
 	{
 		return SoundEvents.MAGMA_CUBE_HURT;
 	}
@@ -286,7 +286,7 @@ public class MeltyMonsterEntity extends Monster implements RangedAttackMob
 	}
 
 	@Override
-	protected void playStepSound(BlockPos pos, BlockState blockIn)
+	protected void playStepSound(BlockPos pos, BlockState block)
 	{
 		this.playSound(SoundEvents.MAGMA_CUBE_SQUISH, 0.15F, 1.0F);
 	}

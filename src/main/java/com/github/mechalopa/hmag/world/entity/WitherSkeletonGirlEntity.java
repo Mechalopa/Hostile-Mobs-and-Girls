@@ -23,9 +23,9 @@ import net.minecraftforge.network.NetworkHooks;
 
 public class WitherSkeletonGirlEntity extends WitherSkeleton
 {
-	public WitherSkeletonGirlEntity(EntityType<? extends WitherSkeletonGirlEntity> type, Level worldIn)
+	public WitherSkeletonGirlEntity(EntityType<? extends WitherSkeletonGirlEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 		this.xpReward = 10;
 	}
 
@@ -52,9 +52,9 @@ public class WitherSkeletonGirlEntity extends WitherSkeleton
 
 	@Nullable
 	@Override
-	public SpawnGroupData finalizeSpawn(ServerLevelAccessor worldIn, DifficultyInstance difficultyIn, MobSpawnType spawnType, @Nullable SpawnGroupData spawnDataIn, @Nullable CompoundTag dataTag)
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag dataTag)
 	{
-		SpawnGroupData spawngroupdata = super.finalizeSpawn(worldIn, difficultyIn, spawnType, spawnDataIn, dataTag);
+		SpawnGroupData spawngroupdata = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
 		this.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(4.5D);
 		this.reassessWeaponGoal();
 		return spawngroupdata;

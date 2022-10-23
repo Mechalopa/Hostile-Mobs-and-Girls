@@ -29,9 +29,9 @@ import net.minecraftforge.network.NetworkHooks;
 
 public class DrownedGirlEntity extends Drowned
 {
-	public DrownedGirlEntity(EntityType<? extends DrownedGirlEntity> type, Level worldIn)
+	public DrownedGirlEntity(EntityType<? extends DrownedGirlEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 		this.xpReward = 8;
 	}
 
@@ -79,7 +79,7 @@ public class DrownedGirlEntity extends Drowned
 	}
 
 	@SuppressWarnings("deprecation")
-	public static boolean checkDrownedGirlSpawnRules(EntityType<DrownedGirlEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, RandomSource randomIn)
+	public static boolean checkDrownedGirlSpawnRules(EntityType<DrownedGirlEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, RandomSource random)
 	{
 		if (!levelAccessor.getFluidState(pos.below()).is(FluidTags.WATER))
 		{
@@ -88,15 +88,15 @@ public class DrownedGirlEntity extends Drowned
 		else
 		{
 			Holder<Biome> holder = levelAccessor.getBiome(pos);
-			boolean flag = levelAccessor.getDifficulty() != Difficulty.PEACEFUL && isDarkEnoughToSpawn(levelAccessor, pos, randomIn) && (spawnType == MobSpawnType.SPAWNER || levelAccessor.getFluidState(pos).is(FluidTags.WATER));
+			boolean flag = levelAccessor.getDifficulty() != Difficulty.PEACEFUL && isDarkEnoughToSpawn(levelAccessor, pos, random) && (spawnType == MobSpawnType.SPAWNER || levelAccessor.getFluidState(pos).is(FluidTags.WATER));
 
 			if (holder.is(BiomeTags.MORE_FREQUENT_DROWNED_SPAWNS))
 			{
-				return randomIn.nextInt(40) == 0 && (pos.getY() < levelAccessor.getSeaLevel() - 5) && flag;
+				return random.nextInt(40) == 0 && (pos.getY() < levelAccessor.getSeaLevel() - 5) && flag;
 			}
 			else
 			{
-				return randomIn.nextInt(15) == 0 && flag;
+				return random.nextInt(15) == 0 && flag;
 			}
 		}
 	}

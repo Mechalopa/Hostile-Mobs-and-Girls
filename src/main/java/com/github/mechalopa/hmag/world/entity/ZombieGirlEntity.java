@@ -23,9 +23,9 @@ import net.minecraftforge.network.NetworkHooks;
 
 public class ZombieGirlEntity extends Zombie
 {
-	public ZombieGirlEntity(EntityType<? extends ZombieGirlEntity> type, Level worldIn)
+	public ZombieGirlEntity(EntityType<? extends ZombieGirlEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 		this.xpReward = 8;
 	}
 

@@ -24,9 +24,9 @@ import net.minecraftforge.network.NetworkHooks;
 
 public class HuskGirlEntity extends Husk
 {
-	public HuskGirlEntity(EntityType<? extends HuskGirlEntity> type, Level worldIn)
+	public HuskGirlEntity(EntityType<? extends HuskGirlEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 		this.xpReward = 8;
 	}
 

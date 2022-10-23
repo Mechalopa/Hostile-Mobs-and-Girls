@@ -39,9 +39,9 @@ public class EnderExecutorEntity extends EnderMan implements IBeamAttackMob
 	private LivingEntity targetedEntity;
 	private int clientAttackTime;
 
-	public EnderExecutorEntity(EntityType<? extends EnderExecutorEntity> type, Level worldIn)
+	public EnderExecutorEntity(EntityType<? extends EnderExecutorEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 		this.xpReward = 25;
 	}
 
@@ -188,21 +188,21 @@ public class EnderExecutorEntity extends EnderMan implements IBeamAttackMob
 	}
 
 	@Override
-	public void setTarget(@Nullable LivingEntity entitylivingbaseIn)
+	public void setTarget(@Nullable LivingEntity livingEntity)
 	{
-		if (entitylivingbaseIn == null)
+		if (livingEntity == null)
 		{
 			this.setActiveAttackTarget(0);
 		}
 
-		super.setTarget(entitylivingbaseIn);
+		super.setTarget(livingEntity);
 	}
 
 	@Nullable
 	@Override
-	public SpawnGroupData finalizeSpawn(ServerLevelAccessor worldIn, DifficultyInstance difficultyIn, MobSpawnType spawnType, @Nullable SpawnGroupData spawnDataIn, @Nullable CompoundTag dataTag)
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag dataTag)
 	{
-		SpawnGroupData spawngroupdata = super.finalizeSpawn(worldIn, difficultyIn, spawnType, spawnDataIn, dataTag);
+		SpawnGroupData spawngroupdata = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
 		this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.STONE_SWORD));
 
 		return spawngroupdata;

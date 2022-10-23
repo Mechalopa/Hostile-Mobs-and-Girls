@@ -44,9 +44,9 @@ public class GhostEntity extends AbstractFlyingMonsterEntity
 {
 	private static final EntityDataAccessor<Integer> DATA_VARIANT_ID = SynchedEntityData.defineId(GhostEntity.class, EntityDataSerializers.INT);
 
-	public GhostEntity(EntityType<? extends GhostEntity> type, Level worldIn)
+	public GhostEntity(EntityType<? extends GhostEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 	}
 
 	@Override
@@ -98,9 +98,9 @@ public class GhostEntity extends AbstractFlyingMonsterEntity
 	}
 
 	@Override
-	public boolean doHurtTarget(Entity entityIn)
+	public boolean doHurtTarget(Entity entity)
 	{
-		boolean flag = super.doHurtTarget(entityIn);
+		boolean flag = super.doHurtTarget(entity);
 
 		if (flag)
 		{
@@ -108,7 +108,7 @@ public class GhostEntity extends AbstractFlyingMonsterEntity
 
 			if (this.getMainHandItem().isEmpty() && this.isOnFire() && this.getRandom().nextFloat() < f * 0.3F)
 			{
-				entityIn.setSecondsOnFire(2 * (int)f);
+				entity.setSecondsOnFire(2 * (int)f);
 			}
 		}
 
@@ -148,15 +148,15 @@ public class GhostEntity extends AbstractFlyingMonsterEntity
 
 	@Override
 	@Nullable
-	public SpawnGroupData finalizeSpawn(ServerLevelAccessor worldIn, DifficultyInstance difficultyIn, MobSpawnType spawnType, @Nullable SpawnGroupData spawnDataIn, @Nullable CompoundTag dataTag)
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag dataTag)
 	{
-		spawnDataIn = super.finalizeSpawn(worldIn, difficultyIn, spawnType, spawnDataIn, dataTag);
+		spawnData = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
 
-		RandomSource randomsource = worldIn.getRandom();
-		this.setCanPickUpLoot(randomsource.nextFloat() < 0.55F * difficultyIn.getSpecialMultiplier());
+		RandomSource randomsource = levelAccessor.getRandom();
+		this.setCanPickUpLoot(randomsource.nextFloat() < 0.55F * difficulty.getSpecialMultiplier());
 		this.setVariant(randomsource.nextInt(5));
-		this.populateDefaultEquipmentSlots(randomsource, difficultyIn);
-		this.populateDefaultEquipmentEnchantments(randomsource, difficultyIn);
+		this.populateDefaultEquipmentSlots(randomsource, difficulty);
+		this.populateDefaultEquipmentEnchantments(randomsource, difficulty);
 
 		if (this.getItemBySlot(EquipmentSlot.HEAD).isEmpty())
 		{
@@ -171,7 +171,7 @@ public class GhostEntity extends AbstractFlyingMonsterEntity
 			}
 		}
 
-		return spawnDataIn;
+		return spawnData;
 	}
 
 	public int getVariant()
@@ -179,14 +179,14 @@ public class GhostEntity extends AbstractFlyingMonsterEntity
 		return this.entityData.get(DATA_VARIANT_ID);
 	}
 
-	private void setVariant(int typeIn)
+	private void setVariant(int type)
 	{
-		if (typeIn < 0 || typeIn >= 5)
+		if (type < 0 || type >= 5)
 		{
-			typeIn = this.getRandom().nextInt(5);
+			type = this.getRandom().nextInt(5);
 		}
 
-		this.entityData.set(DATA_VARIANT_ID, typeIn);
+		this.entityData.set(DATA_VARIANT_ID, type);
 	}
 
 	@Override
@@ -216,7 +216,7 @@ public class GhostEntity extends AbstractFlyingMonsterEntity
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSourceIn)
+	protected SoundEvent getHurtSound(DamageSource damageSource)
 	{
 		return ModSoundEvents.GHOST_HURT.get();
 	}

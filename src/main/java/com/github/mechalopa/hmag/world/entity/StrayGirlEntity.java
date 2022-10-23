@@ -25,9 +25,9 @@ import net.minecraftforge.network.NetworkHooks;
 
 public class StrayGirlEntity extends Stray
 {
-	public StrayGirlEntity(EntityType<? extends StrayGirlEntity> type, Level worldIn)
+	public StrayGirlEntity(EntityType<? extends StrayGirlEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 		this.xpReward = 8;
 	}
 

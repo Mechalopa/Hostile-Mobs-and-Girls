@@ -21,9 +21,9 @@ import net.minecraftforge.network.NetworkHooks;
 
 public class SkeletonGirlEntity extends Skeleton
 {
-	public SkeletonGirlEntity(EntityType<? extends SkeletonGirlEntity> type, Level worldIn)
+	public SkeletonGirlEntity(EntityType<? extends SkeletonGirlEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 		this.xpReward = 8;
 	}
 
