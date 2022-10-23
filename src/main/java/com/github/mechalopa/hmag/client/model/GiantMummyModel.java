@@ -28,6 +28,7 @@ public class GiantMummyModel<T extends Mob> extends HumanoidModel<T>
 	public GiantMummyModel(ModelPart modelPart)
 	{
 		super(modelPart);
+		this.hat.visible = false;
 		this.bodyPart1 = this.body.getChild("body_part_1");
 		this.bodyPart2 = this.bodyPart1.getChild("body_part_2");
 		this.rightArmPart1 = this.rightArm.getChild("right_arm_part_1");
@@ -44,13 +45,14 @@ public class GiantMummyModel<T extends Mob> extends HumanoidModel<T>
 		MeshDefinition md = HumanoidModel.createMesh(CubeDeformation.NONE, f);
 		PartDefinition pd = md.getRoot();
 		PartDefinition headpd = ModClientUtils.addC(pd, "head", 0, 0, -4.0F, -8.5F, -4.0F, 8.0F, 9.0F, 8.0F, 0.0F, f, 0.0F);
+		ModClientUtils.addC(pd, "hat", 0, 0, -0.5F, -0.5F, -0.5F, 1.0F, 1.0F, 1.0F, 0.0F, f, 0.0F);
 		PartDefinition bodypd = ModClientUtils.addC(pd, "body", 0, 56, -8.0F, 0.0F, -5.0F, 16.0F, 10.0F, 10.0F, 0.0F, f, 0.0F);
 		PartDefinition bp1pd = ModClientUtils.addC(bodypd, "body_part_1", 0, 80, -6.0F, 0.0F, -4.5F, 12.0F, 3.0F, 9.0F, 0.0F, 10.0F, 0.0F);
 		ModClientUtils.addC(bp1pd, "body_part_2", 0, 96, -4.5F, 0.0F, -3.5F, 9.0F, 6.0F, 7.0F, 0.0F, 3.0F, 0.0F);
-		PartDefinition rapd = ModClientUtils.addC(pd, "right_arm", 32, 16, -3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 6.0F, -8.75F, 1.0F + f, -0.5F);
-		PartDefinition lapd = ModClientUtils.addC(pd, "left_arm", 32, 16, -1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 6.0F, 8.75F, 1.0F + f, -0.5F, true);
-		PartDefinition rap1pd = ModClientUtils.addC(rapd, "right_arm_part_1", 56, 16, -3.0F, -2.0F, -2.0F, 4.0F, 13.0F, 6.0F, 0.0F, 10.0F, 0.0F, 0.005F);
-		PartDefinition lap1pd = ModClientUtils.addC(lapd, "left_arm_part_1", 56, 16, -1.0F, -2.0F, -2.0F, 4.0F, 13.0F, 6.0F, 0.0F, 10.0F, 0.0F, true, 0.005F);
+		PartDefinition rapd = ModClientUtils.addC(pd, "right_arm", 32, 16, -4.0F, -2.0F, -2.0F, 5.0F, 12.0F, 6.0F, -8.75F, 1.0F + f, -0.5F, 0.005F);
+		PartDefinition lapd = ModClientUtils.addC(pd, "left_arm", 32, 16, -1.0F, -2.0F, -2.0F, 5.0F, 12.0F, 6.0F, 8.75F, 1.0F + f, -0.5F, true, 0.005F);
+		PartDefinition rap1pd = ModClientUtils.addC(rapd, "right_arm_part_1", 56, 16, -4.0F, -2.0F, -2.0F, 5.0F, 13.0F, 6.0F, 0.0F, 10.0F, 0.0F);
+		PartDefinition lap1pd = ModClientUtils.addC(lapd, "left_arm_part_1", 56, 16, -1.0F, -2.0F, -2.0F, 5.0F, 13.0F, 6.0F, 0.0F, 10.0F, 0.0F, true);
 		ModClientUtils.addC(pd, "right_leg", 0, 16, -0.5F, 0.0F, -0.5F, 1.0F, 1.0F, 1.0F, -2.0F, 12.0F, 0.0F);
 		ModClientUtils.addC(pd, "left_leg", 0, 16, -0.5F, 0.0F, -0.5F, 1.0F, 1.0F, 1.0F, 2.0F, 12.0F, 0.0F, true);
 		PartDefinition rlpd = ModClientUtils.addC(pd, "right_leg", 0, 24, -3.0F, -1.0F, -0.5F, 1.0F, 1.0F, 1.0F, -4.0F, 19.25F + f, 2.0F);
@@ -65,9 +67,6 @@ public class GiantMummyModel<T extends Mob> extends HumanoidModel<T>
 	@Override
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
-//		this.rightArm.xRot = 0.0F;
-//		this.leftArm.xRot = 0.0F;
-
 		super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 
 		float f = -10.0F;

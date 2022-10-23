@@ -82,7 +82,7 @@ public class GiantMummyEntity extends Monster
 				.add(Attributes.MOVEMENT_SPEED, 0.22D)
 				.add(Attributes.ATTACK_DAMAGE, 10.0D)
 				.add(Attributes.ARMOR, 8.0D)
-				.add(Attributes.KNOCKBACK_RESISTANCE, 0.5D)
+				.add(Attributes.KNOCKBACK_RESISTANCE, 0.75D)
 				.add(Attributes.FOLLOW_RANGE, 20.0D);
 	}
 
@@ -135,6 +135,13 @@ public class GiantMummyEntity extends Monster
 	{
 		if (super.doHurtTarget(entity))
 		{
+			float f = this.level.getCurrentDifficultyAt(this.blockPosition()).getEffectiveDifficulty();
+
+			if (this.getMainHandItem().isEmpty() && this.isOnFire() && this.getRandom().nextFloat() < f * 0.3F)
+			{
+				entity.setSecondsOnFire(2 * (int)f);
+			}
+
 			if (entity instanceof LivingEntity)
 			{
 				int i = 0;

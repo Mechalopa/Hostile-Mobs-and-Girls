@@ -64,7 +64,7 @@ public class OgreModel<T extends OgreEntity> extends HumanoidModel<T>
 		MeshDefinition md = HumanoidModel.createMesh(CubeDeformation.NONE, f);
 		PartDefinition pd = md.getRoot();
 		PartDefinition headpd = ModClientUtils.addC(pd, "head", 0, 0, -5.0F, -8.0F, -4.0F, 10.0F, 8.0F, 8.0F, 0.0F, f, 0.0F);
-		ModClientUtils.addC(pd, "hat", 0, 0, -0.5F, -0.5F, -0.5F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F + f, 0.0F);
+		ModClientUtils.addC(pd, "hat", 0, 0, -0.5F, -0.5F, -0.5F, 1.0F, 1.0F, 1.0F, 0.0F, f, 0.0F);
 		PartDefinition horn1pd = ModClientUtils.addC(headpd, "horn_1", 40, 16, -1.0F, -3.0F, -1.0F, 2.0F, 3.0F, 2.0F, 0.0F, -7.75F, 0.5F);
 		ModClientUtils.addC(horn1pd, "horn_2", 48, 16, -0.5F, -2.0F, -0.5F, 1.0F, 2.0F, 1.0F, 0.0F, -3.0F, 0.0F);
 		PartDefinition bodypd = ModClientUtils.addC(pd, "body", 0, 16, -6.0F, 0.0F, -3.0F, 12.0F, 6.0F, 6.0F, 0.0F, f, 0.0F);
