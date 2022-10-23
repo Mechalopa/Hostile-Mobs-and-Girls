@@ -10,11 +10,11 @@ import net.minecraftforge.fml.common.Mod;
 public class ModTagsUpdateEvent
 {
 	@SubscribeEvent
-	public static void onTagsUpdated(TagsUpdatedEvent event)
+	public static void onTagsUpdated(final TagsUpdatedEvent event)
 	{
 		if (event.shouldUpdateStaticData())
 		{
-			RandomberryItem.updateEffectList();
+			RandomberryItem.refreshEffectList();
 		}
 	}
 }

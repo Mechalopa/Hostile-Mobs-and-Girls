@@ -15,7 +15,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class RandomberryItem extends Item
 {
-	public static List<MobEffect> RANDOMBERRY_EFFECTS;
+	private static List<MobEffect> RANDOMBERRY_EFFECTS;
 
 	public RandomberryItem(Item.Properties builder)
 	{
@@ -43,7 +43,7 @@ public class RandomberryItem extends Item
 		return stack1;
 	}
 
-	public static void updateEffectList()
+	public static void refreshEffectList()
 	{
 		RANDOMBERRY_EFFECTS = ForgeRegistries.MOB_EFFECTS.getValues().stream().filter((p) -> {
 			Holder<MobEffect> holder = ForgeRegistries.MOB_EFFECTS.getHolder(p).orElseThrow();
