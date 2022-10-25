@@ -2,6 +2,14 @@
   "replace": false,
   "values": [
     "#hmag:creepers",
-    "hmag:savagefang"
+    "hmag:savagefang",
+    {
+      "id": "grimoireofgaia:creep",
+      "required": false
+    },
+    {
+      "id": "mutantbeasts:mutant_creeper",
+      "required": false
+    }
   ]
 }

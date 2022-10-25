@@ -1,6 +1,10 @@
 {
   "replace": false,
   "values": [
-    "minecraft:fortress"
+    "minecraft:fortress",
+    {
+      "id": "repurposed_structures:stronghold_nether",
+      "required": false
+    }
   ]
 }

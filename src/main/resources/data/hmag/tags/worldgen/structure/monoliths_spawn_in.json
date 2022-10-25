@@ -1,6 +1,10 @@
 {
   "replace": false,
   "values": [
-    "minecraft:end_city"
+    "minecraft:end_city",
+    {
+      "id": "repurposed_structures:stronghold_end",
+      "required": false
+    }
   ]
 }
