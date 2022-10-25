@@ -10,9 +10,11 @@ import com.github.mechalopa.hmag.world.entity.ai.goal.MeleeAttackGoal2;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -21,6 +23,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -40,6 +43,7 @@ import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.pathfinder.PathFinder;
@@ -79,7 +83,7 @@ public class GiantMummyEntity extends Monster
 	{
 		return Monster.createMonsterAttributes()
 				.add(Attributes.MAX_HEALTH, 60.0D)
-				.add(Attributes.MOVEMENT_SPEED, 0.22D)
+				.add(Attributes.MOVEMENT_SPEED, 0.23D)
 				.add(Attributes.ATTACK_DAMAGE, 10.0D)
 				.add(Attributes.ARMOR, 8.0D)
 				.add(Attributes.KNOCKBACK_RESISTANCE, 0.75D)
@@ -179,6 +183,33 @@ public class GiantMummyEntity extends Monster
 		}
 
 		return super.hurt(source, amount);
+	}
+
+	public static boolean checkGiantMummySpawnRules(EntityType<GiantMummyEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, RandomSource random)
+	{
+		if (Monster.checkMonsterSpawnRules(type, levelAccessor, spawnType, pos, random))
+		{
+			if (spawnType == MobSpawnType.SPAWNER || pos.getY() >= ModConfigs.cachedServer.SURFACE_MOB_SPAWN_MIN_HEIGHT)
+			{
+				return true;
+			}
+			else
+			{
+				Level level = levelAccessor.getLevel();
+
+				if (level instanceof ServerLevel)
+				{
+					ServerLevel serverlevel = (ServerLevel)level;
+
+					if (serverlevel.structureManager().getStructureWithPieceAt(pos, ModTags.GIANT_MUMMIES_SPAWN_IN).isValid())
+					{
+						return true;
+					}
+				}
+			}
+		}
+
+		return false;
 	}
 
 	@Override

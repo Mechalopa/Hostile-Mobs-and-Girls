@@ -196,7 +196,7 @@ public class ModEventBusSubscriber
 		SpawnPlacements.register(ModEntityTypes.IMP.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkAnyLightMonsterSpawnRules);
 		SpawnPlacements.register(ModEntityTypes.GLARYAD.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, GlaryadEntity::checkGlaryadSpawnRules);
 		SpawnPlacements.register(ModEntityTypes.JIANGSHI.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.GIANT_MUMMY.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules);
+		SpawnPlacements.register(ModEntityTypes.GIANT_MUMMY.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, GiantMummyEntity::checkGiantMummySpawnRules);
 	}
 
 	@SubscribeEvent

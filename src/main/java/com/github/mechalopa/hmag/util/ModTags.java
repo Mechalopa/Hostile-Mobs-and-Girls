@@ -59,6 +59,7 @@ public class ModTags
 	public static final TagKey<Biome> IS_SAVANNA = createBiomeTag("is_savanna");
 	public static final TagKey<Biome> NO_MOB_REPLACEMENTS = createBiomeTag("no_mob_replacements");
 
+	public static final TagKey<Structure> GIANT_MUMMIES_SPAWN_IN = createStructureTag("giant_mummies_spawn_in");
 	public static final TagKey<Structure> MONOLITHS_SPAWN_IN = createStructureTag("monoliths_spawn_in");
 
 	private static TagKey<Block> createBlockTag(String name)

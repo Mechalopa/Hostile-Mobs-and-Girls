@@ -3,6 +3,7 @@ package com.github.mechalopa.hmag.client.renderer;
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.GiantMummyModel;
+import com.github.mechalopa.hmag.client.renderer.layers.GiantMummyEyesLayer;
 import com.github.mechalopa.hmag.world.entity.GiantMummyEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 
@@ -20,6 +21,7 @@ public class GiantMummyRenderer extends HumanoidMobRenderer<GiantMummyEntity, Gi
 	public  GiantMummyRenderer(EntityRendererProvider.Context context)
 	{
 		super(context, new GiantMummyModel<>(context.bakeLayer(ModModelLayers.GIANT_MUMMY)), 0.7F);
+		this.addLayer(new GiantMummyEyesLayer<>(this));
 	}
 
 	@Override

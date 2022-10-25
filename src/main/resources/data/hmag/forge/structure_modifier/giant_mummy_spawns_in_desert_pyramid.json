@@ -1,0 +1,10 @@
+{
+  "type": "hmag:add_spawns",
+  "structures": "#hmag:giant_mummies_spawn_in",
+  "spawner": {
+    "type": "hmag:giant_mummy",
+    "weight": 3,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:desert_pyramid",
+    {
+      "id": "repurposed_structures:monument_desert",
+      "required": false
+    },
+    {
+      "id": "betterdeserttemples:desert_temple",
+      "required": false
+    }
+  ]
+}
