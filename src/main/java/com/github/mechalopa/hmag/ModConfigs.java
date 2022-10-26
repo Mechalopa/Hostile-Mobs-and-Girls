@@ -88,13 +88,13 @@ public class ModConfigs
 	public static ForgeConfigSpec.BooleanValue KOBOLD_POTION_BREWING_RECIPES;
 	public static ForgeConfigSpec.BooleanValue HEALING_III_POTION_BREWING_RECIPES;
 	public static ForgeConfigSpec.BooleanValue HARMING_III_POTION_BREWING_RECIPES;
+	public static ForgeConfigSpec.BooleanValue REGENERATION_III_POTION_BREWING_RECIPES;
 	public static ForgeConfigSpec.BooleanValue OGRE_POTION_BREWING_RECIPES;
 	public static ForgeConfigSpec.BooleanValue VORACITY_POTION_BREWING_RECIPES;
 	public static ForgeConfigSpec.BooleanValue ENDER_RAGE_POTION_BREWING_RECIPES;
 	public static ForgeConfigSpec.BooleanValue COMBUSTION_POTION_BREWING_RECIPES;
 	public static ForgeConfigSpec.BooleanValue SLOWNESS_POTION_BREWING_RECIPES;
 	public static ForgeConfigSpec.BooleanValue INVISIBILITY_POTION_BREWING_RECIPES;
-	public static ForgeConfigSpec.BooleanValue REGENERATION_POTION_BREWING_RECIPES;
 	public static ForgeConfigSpec.BooleanValue BLASTING_BOTTLE_BREWING_RECIPE;
 	public static ForgeConfigSpec.BooleanValue LIGHTNING_BOTTLE_BREWING_RECIPE;
 
@@ -209,13 +209,13 @@ public class ModConfigs
 		KOBOLD_POTION_BREWING_RECIPES = SERVER_BUILDER.define("enableKoboldPotionBrewingRecipes", true);
 		HEALING_III_POTION_BREWING_RECIPES = SERVER_BUILDER.define("enableHealingIIIPotionBrewingRecipes", true);
 		HARMING_III_POTION_BREWING_RECIPES = SERVER_BUILDER.define("enableHarmingIIIPotionBrewingRecipes", true);
+		REGENERATION_III_POTION_BREWING_RECIPES = SERVER_BUILDER.define("enableRegenerationIIIPotionBrewingRecipes", true);
 		OGRE_POTION_BREWING_RECIPES = SERVER_BUILDER.define("enableOgrePotionBrewingRecipes", true);
 		VORACITY_POTION_BREWING_RECIPES = SERVER_BUILDER.define("enableVoracityPotionBrewingRecipes", true);
 		ENDER_RAGE_POTION_BREWING_RECIPES = SERVER_BUILDER.define("enableEnderRagePotionBrewingRecipes", true);
 		COMBUSTION_POTION_BREWING_RECIPES = SERVER_BUILDER.define("enableCombustionPotionBrewingRecipes", true);
 		SLOWNESS_POTION_BREWING_RECIPES = SERVER_BUILDER.define("enableSlownessPotionBrewingRecipes", true);
 		INVISIBILITY_POTION_BREWING_RECIPES = SERVER_BUILDER.define("enableInvisibilityPotionBrewingRecipes", true);
-		REGENERATION_POTION_BREWING_RECIPES = SERVER_BUILDER.define("enableRegenerationPotionBrewingRecipes", true);
 		BLASTING_BOTTLE_BREWING_RECIPE = SERVER_BUILDER.define("enableBlastingBottleBrewingRecipe", true);
 		LIGHTNING_BOTTLE_BREWING_RECIPE = SERVER_BUILDER.define("enableLightningBottleBrewingRecipe", true);
 
@@ -313,13 +313,13 @@ public class ModConfigs
 		public static boolean KOBOLD_POTION_BREWING_RECIPES;
 		public static boolean HEALING_III_POTION_BREWING_RECIPES;
 		public static boolean HARMING_III_POTION_BREWING_RECIPES;
+		public static boolean REGENERATION_III_POTION_BREWING_RECIPES;
 		public static boolean OGRE_POTION_BREWING_RECIPES;
 		public static boolean VORACITY_POTION_BREWING_RECIPES;
 		public static boolean ENDER_RAGE_POTION_BREWING_RECIPES;
 		public static boolean COMBUSTION_POTION_BREWING_RECIPES;
 		public static boolean SLOWNESS_POTION_BREWING_RECIPES;
 		public static boolean INVISIBILITY_POTION_BREWING_RECIPES;
-		public static boolean REGENERATION_POTION_BREWING_RECIPES;
 		public static boolean BLASTING_BOTTLE_BREWING_RECIPE;
 		public static boolean LIGHTNING_BOTTLE_BREWING_RECIPE;
 
@@ -408,13 +408,13 @@ public class ModConfigs
 			KOBOLD_POTION_BREWING_RECIPES = ModConfigs.KOBOLD_POTION_BREWING_RECIPES.get();
 			HEALING_III_POTION_BREWING_RECIPES = ModConfigs.HEALING_III_POTION_BREWING_RECIPES.get();
 			HARMING_III_POTION_BREWING_RECIPES = ModConfigs.HARMING_III_POTION_BREWING_RECIPES.get();
+			REGENERATION_III_POTION_BREWING_RECIPES = ModConfigs.REGENERATION_III_POTION_BREWING_RECIPES.get();
 			OGRE_POTION_BREWING_RECIPES = ModConfigs.OGRE_POTION_BREWING_RECIPES.get();
 			VORACITY_POTION_BREWING_RECIPES = ModConfigs.VORACITY_POTION_BREWING_RECIPES.get();
 			ENDER_RAGE_POTION_BREWING_RECIPES = ModConfigs.ENDER_RAGE_POTION_BREWING_RECIPES.get();
 			COMBUSTION_POTION_BREWING_RECIPES = ModConfigs.COMBUSTION_POTION_BREWING_RECIPES.get();
 			SLOWNESS_POTION_BREWING_RECIPES = ModConfigs.SLOWNESS_POTION_BREWING_RECIPES.get();
 			INVISIBILITY_POTION_BREWING_RECIPES = ModConfigs.INVISIBILITY_POTION_BREWING_RECIPES.get();
-			REGENERATION_POTION_BREWING_RECIPES = ModConfigs.REGENERATION_POTION_BREWING_RECIPES.get();
 			BLASTING_BOTTLE_BREWING_RECIPE = ModConfigs.BLASTING_BOTTLE_BREWING_RECIPE.get();
 			LIGHTNING_BOTTLE_BREWING_RECIPE = ModConfigs.LIGHTNING_BOTTLE_BREWING_RECIPE.get();
 
