@@ -24,26 +24,6 @@
         "name": "#hmag:is_peaceful",
         "negate": true
       }
-    ],
-    [
-      {
-        "name": "#hmag:is_overworld"
-      },
-      {
-        "name": "#hmag:is_sandy"
-      },
-      {
-        "name": "#hmag:is_beach",
-        "negate": true
-      },
-      {
-        "name": "#hmag:is_cold",
-        "negate": true
-      },
-      {
-        "name": "#hmag:is_peaceful",
-        "negate": true
-      }
     ]
   ],
   "spawners": {

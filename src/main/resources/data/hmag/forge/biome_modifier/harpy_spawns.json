@@ -18,26 +18,6 @@
         "name": "#hmag:is_overworld"
       },
       {
-        "name": "#hmag:is_sandy"
-      },
-      {
-        "name": "#hmag:is_beach",
-        "negate": true
-      },
-      {
-        "name": "#hmag:is_badlands",
-        "negate": true
-      },
-      {
-        "name": "#hmag:is_peaceful",
-        "negate": true
-      }
-    ],
-    [
-      {
-        "name": "#hmag:is_overworld"
-      },
-      {
         "name": "#hmag:is_plains"
       },
       {
