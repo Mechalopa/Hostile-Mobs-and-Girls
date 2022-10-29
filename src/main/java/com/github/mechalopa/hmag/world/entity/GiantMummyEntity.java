@@ -5,6 +5,7 @@ import javax.annotation.Nonnull;
 import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
 import com.github.mechalopa.hmag.util.ModTags;
+import com.github.mechalopa.hmag.util.ModUtils;
 import com.github.mechalopa.hmag.world.entity.ai.goal.MeleeAttackGoal2;
 
 import net.minecraft.core.BlockPos;
@@ -110,7 +111,7 @@ public class GiantMummyEntity extends Monster
 			this.level.addParticle(ParticleTypes.ASH, this.getRandomX(0.5D), this.getRandomY() - 0.25D, this.getRandomZ(0.5D), (this.getRandom().nextDouble() - 0.5D) * 3.0D, -this.getRandom().nextDouble(), (this.getRandom().nextDouble() - 0.5D) * 3.0D);
 		}
 
-//		ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick(), 8);
+		ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick(), 8);
 
 		super.aiStep();
 

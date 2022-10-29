@@ -35,9 +35,9 @@ public abstract class AbstractGirlModel<T extends LivingEntity> extends Humanoid
 	}
 
 	@Override
-	public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
+	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
-		super.setupAnim(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+		super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 
 		if (!this.riding)
 		{
@@ -47,19 +47,19 @@ public abstract class AbstractGirlModel<T extends LivingEntity> extends Humanoid
 	}
 
 	@Override
-	public void translateToHand(HumanoidArm sideIn, PoseStack poseStackIn)
+	public void translateToHand(HumanoidArm side, PoseStack poseStack)
 	{
 		if (this.isSkeletonHandTranslate())
 		{
-			float f = sideIn == HumanoidArm.RIGHT ? 1.0F : -1.0F;
-			ModelPart modelpart = this.getArm(sideIn);
+			float f = side == HumanoidArm.RIGHT ? 1.0F : -1.0F;
+			ModelPart modelpart = this.getArm(side);
 			modelpart.x += f;
-			modelpart.translateAndRotate(poseStackIn);
+			modelpart.translateAndRotate(poseStack);
 			modelpart.x -= f;
 		}
 		else
 		{
-			super.translateToHand(sideIn, poseStackIn);
+			super.translateToHand(side, poseStack);
 		}
 	}
 

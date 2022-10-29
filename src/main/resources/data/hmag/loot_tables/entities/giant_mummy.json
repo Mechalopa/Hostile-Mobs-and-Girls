@@ -54,7 +54,7 @@
               "function": "minecraft:looting_enchant"
             }
           ],
-          "name": "minecraft:sand"
+          "name": "minecraft:paper"
         }
       ],
       "rolls": 1.0
@@ -74,14 +74,64 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:cactus"
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 2.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            },
+            {
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.0
+              },
+              "function": "minecraft:looting_enchant"
+            }
+          ],
+          "name": "hmag:honeyed_lemon"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:killed_by_player"
         },
         {
-          "type": "minecraft:item",
-          "name": "hmag:exp_berry"
-        },
+          "chance": 0.11,
+          "condition": "minecraft:random_chance_with_looting",
+          "looting_multiplier": 0.02
+        }
+      ],
+      "entries": [
         {
           "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 2.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            },
+            {
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.0
+              },
+              "function": "minecraft:looting_enchant"
+            }
+          ],
           "name": "hmag:randomberry"
         }
       ],
@@ -102,15 +152,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:gold_ingot"
-        },
-        {
-          "type": "minecraft:item",
           "name": "minecraft:emerald"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:lapis_lazuli"
         }
       ],
       "rolls": 1.0
@@ -144,8 +186,7 @@
               "function": "minecraft:looting_enchant"
             }
           ],
-          "name": "minecraft:gold_nugget",
-          "weight": 1
+          "name": "minecraft:gold_nugget"
         },
         {
           "type": "minecraft:item",
@@ -168,8 +209,7 @@
               "function": "minecraft:looting_enchant"
             }
           ],
-          "name": "hmag:emerald_fragment",
-          "weight": 3
+          "name": "hmag:emerald_fragment"
         }
       ],
       "rolls": 1.0

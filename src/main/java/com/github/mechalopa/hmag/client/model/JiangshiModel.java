@@ -223,8 +223,8 @@ public class JiangshiModel<T extends JiangshiEntity> extends AbstractAdvancedGir
 		this.hairPart2.zRot += (((float)Math.PI / 9.0F) * Mth.triangleWave(limbSwing + ((float)Math.PI * 3.0F / 8.0F), 15.0F) * limbSwingAmount);
 	}
 
-	public boolean isAggressive(T entityIn)
+	public boolean isAggressive(T entity)
 	{
-		return entityIn.isAggressive();
+		return entity.isAggressive();
 	}
 }
