@@ -2,8 +2,6 @@
   "replace": false,
   "values": [
     "hmag:husk_girl",
-    "hmag:zombie_girl",
-    "hmag:jiangshi",
-    "hmag:giant_mummy"
+    "hmag:zombie_girl"
   ]
 }

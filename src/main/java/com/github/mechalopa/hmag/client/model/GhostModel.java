@@ -33,11 +33,11 @@ public class GhostModel<T extends AbstractFlyingMonsterEntity> extends HumanoidM
 	}
 
 	@Override
-	public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
+	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
-		super.setupAnim(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+		super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 
-		AnimationUtils.animateZombieArms(this.leftArm, this.rightArm, entityIn.isCharging(), this.attackTime, ageInTicks);
+		AnimationUtils.animateZombieArms(this.leftArm, this.rightArm, entity.isCharging(), this.attackTime, ageInTicks);
 
 		float f = Mth.sin(this.attackTime * (float)Math.PI);
 		float f1 = Mth.sin((1.0F - (1.0F - this.attackTime) * (1.0F - this.attackTime)) * (float)Math.PI);
