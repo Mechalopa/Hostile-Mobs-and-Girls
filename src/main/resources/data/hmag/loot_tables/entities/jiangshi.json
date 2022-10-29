@@ -68,8 +68,8 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 1.0,
-                "min": -1.0
+                "max": 2.0,
+                "min": 0.0
               },
               "function": "minecraft:set_count"
             },
@@ -102,7 +102,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "hmag:cursed_talisman"
+          "name": "hmag:sharp_fang"
         }
       ],
       "rolls": 1.0

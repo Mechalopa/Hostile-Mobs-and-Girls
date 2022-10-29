@@ -1,7 +1,6 @@
 package com.github.mechalopa.hmag.registry;
 
 import com.github.mechalopa.hmag.HMaG;
-import com.github.mechalopa.hmag.util.ModUtils;
 import com.github.mechalopa.hmag.world.item.AncientShieldItem;
 import com.github.mechalopa.hmag.world.item.CrimsonBowItem;
 import com.github.mechalopa.hmag.world.item.EnchantmentUpgradeItem;
@@ -124,7 +123,6 @@ public class ModItems
 	public static final RegistryObject<Item> EVIL_THORN = REGISTRY.register("evil_thorn", () -> new EvilThornItem(new Item.Properties().tab(HMaG.MODTAB)));
 	public static final RegistryObject<Item> PURIFICATION_CLOTH = REGISTRY.register("purification_cloth", () -> new PurificationClothItem(new Item.Properties().tab(HMaG.MODTAB).stacksTo(16).rarity(Rarity.UNCOMMON)));
 	public static final RegistryObject<Item> ENDLESS_PEARL = REGISTRY.register("endless_pearl", () -> new EndlessPearlItem(new Item.Properties().tab(HMaG.MODTAB).stacksTo(1).rarity(Rarity.UNCOMMON)));
-	public static final RegistryObject<Item> CURSED_TALISMAN = REGISTRY.register("cursed_talisman", () -> new EnchantmentUpgradeItem(new Item.Properties().tab(HMaG.MODTAB).rarity(ModUtils.CURSED_RARITY), new EnchantmentUpgradeItem.Properties().enchantment(Enchantments.BINDING_CURSE, 0, 0)));
 
 	public static final RegistryObject<Item> ZOMBIE_GIRL_SPAWN_EGG = createSpawnEggRegistryObject("zombie_girl", ModEntityTypes.ZOMBIE_GIRL, 0xB4AD53, 0x577431);
 	public static final RegistryObject<Item> HUSK_GIRL_SPAWN_EGG = createSpawnEggRegistryObject("husk_girl", ModEntityTypes.HUSK_GIRL, 0xD3B87D, 0x62453D);

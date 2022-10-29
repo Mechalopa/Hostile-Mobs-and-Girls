@@ -5,7 +5,6 @@ import javax.annotation.Nonnull;
 import com.github.mechalopa.hmag.HMaG;
 import com.mojang.serialization.Codec;
 
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.Registry;
@@ -23,7 +22,6 @@ import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TridentItem;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionUtils;
@@ -37,7 +35,6 @@ import net.minecraft.world.phys.Vec3;
 public class ModUtils
 {
 	public static final EquipmentSlot[] ARMOR_SLOTS = new EquipmentSlot[]{EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET};
-	public static final Rarity CURSED_RARITY = Rarity.create(HMaG.MODID + ".cursed", ChatFormatting.RED);
 	public static final String LIVING_UPDATE_CHECKING_KEY = HMaG.MODID + ".checking";
 	public static final String LIVING_UPDATE_CHECKED_KEY = HMaG.MODID + ".checked";
 	public static final String LIVING_NOT_REPLACED_KEY = HMaG.MODID + ".notReplaced";
