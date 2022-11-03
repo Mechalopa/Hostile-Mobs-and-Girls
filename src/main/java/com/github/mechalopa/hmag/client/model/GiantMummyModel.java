@@ -16,7 +16,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class GiantMummyModel<T extends Mob> extends HumanoidModel<T>
 {
-	private ModelPart bodyPart1;
+//	private ModelPart bodyPart1;
 //	private ModelPart bodyPart2;
 	private ModelPart clothPart1;
 	private ModelPart clothPart2;
@@ -31,7 +31,7 @@ public class GiantMummyModel<T extends Mob> extends HumanoidModel<T>
 	{
 		super(modelPart);
 		this.hat.visible = false;
-		this.bodyPart1 = this.body.getChild("body_part_1");
+//		this.bodyPart1 = this.body.getChild("body_part_1");
 //		this.bodyPart2 = this.bodyPart1.getChild("body_part_2");
 		this.clothPart1 = this.body.getChild("cloth_part_1");
 		this.clothPart2 = this.clothPart1.getChild("cloth_part_2");
