@@ -81,7 +81,6 @@ public class CreeperGirlEntity extends Creeper
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag dataTag)
 	{
 		spawnData = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
-
 		RandomSource randomsource = levelAccessor.getRandom();
 		this.setVariant(randomsource.nextInt(3));
 		this.populateDefaultEquipmentSlots(randomsource, difficulty);

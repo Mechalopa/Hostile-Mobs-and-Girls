@@ -31,9 +31,9 @@ public abstract class AbstractFlyingMonsterEntity extends Monster
 	protected static final EntityDataAccessor<Byte> ATTACK_PHASE = SynchedEntityData.defineId(AbstractFlyingMonsterEntity.class, EntityDataSerializers.BYTE);
 	private BlockPos boundOrigin;
 
-	public AbstractFlyingMonsterEntity(EntityType<? extends AbstractFlyingMonsterEntity> type, Level worldIn)
+	public AbstractFlyingMonsterEntity(EntityType<? extends AbstractFlyingMonsterEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 		this.moveControl = new AbstractFlyingMonsterEntity.MoveHelperController(this);
 	}
 
@@ -114,9 +114,9 @@ public abstract class AbstractFlyingMonsterEntity extends Monster
 		return this.boundOrigin;
 	}
 
-	public void setBoundOrigin(@Nullable BlockPos boundOriginIn)
+	public void setBoundOrigin(@Nullable BlockPos boundOriginPos)
 	{
-		this.boundOrigin = boundOriginIn;
+		this.boundOrigin = boundOriginPos;
 	}
 
 	public int getAttackPhase()
@@ -153,16 +153,16 @@ public abstract class AbstractFlyingMonsterEntity extends Monster
 			this(0.3D, 2.0F);
 		}
 
-		public ChargeAttackGoal(double moveSpeedIn, float maxAttackDistanceIn)
+		public ChargeAttackGoal(double moveSpeed, float maxAttackDistance)
 		{
-			this(moveSpeedIn, maxAttackDistanceIn, 4);
+			this(moveSpeed, maxAttackDistance, 4);
 		}
 
-		public ChargeAttackGoal(double moveSpeedIn, float maxAttackDistanceIn, int chanceIn)
+		public ChargeAttackGoal(double moveSpeed, float maxAttackDistance, int chance)
 		{
-			this.moveSpeed = moveSpeedIn;
-			this.attackRadius = maxAttackDistanceIn;
-			this.chance = chanceIn;
+			this.moveSpeed = moveSpeed;
+			this.attackRadius = maxAttackDistance;
+			this.chance = chance;
 			this.setFlags(EnumSet.of(Goal.Flag.MOVE));
 		}
 
@@ -302,15 +302,15 @@ public abstract class AbstractFlyingMonsterEntity extends Monster
 			this(0.25D);
 		}
 
-		public MoveRandomGoal(double moveSpeedIn)
+		public MoveRandomGoal(double moveSpeed)
 		{
-			this(moveSpeedIn, 6, 3, 2);
+			this(moveSpeed, 6, 3, 2);
 		}
 
-		public MoveRandomGoal(double moveSpeedIn, int chanceIn, int width, int height)
+		public MoveRandomGoal(double moveSpeed, int chance, int width, int height)
 		{
-			this.moveSpeed = moveSpeedIn;
-			this.chance = chanceIn;
+			this.moveSpeed = moveSpeed;
+			this.chance = chance;
 			this.width = width;
 			this.height = height;
 			this.setFlags(EnumSet.of(Goal.Flag.MOVE));

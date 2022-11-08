@@ -34,9 +34,9 @@ import net.minecraftforge.network.NetworkHooks;
 
 public class SnowCanineEntity extends Monster
 {
-	public SnowCanineEntity(EntityType<? extends SnowCanineEntity> type, Level worldIn)
+	public SnowCanineEntity(EntityType<? extends SnowCanineEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 		this.xpReward = 12;
 	}
 

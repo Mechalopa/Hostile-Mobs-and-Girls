@@ -204,7 +204,6 @@ public class EnderExecutorEntity extends EnderMan implements IBeamAttackMob
 	{
 		SpawnGroupData spawngroupdata = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
 		this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.STONE_SWORD));
-
 		return spawngroupdata;
 	}
 

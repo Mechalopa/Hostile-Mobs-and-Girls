@@ -58,9 +58,9 @@ public class SpiderNestEntity extends Monster
 {
 	private static final EntityDataAccessor<Integer> SUMMON_DELAY = SynchedEntityData.defineId(SpiderNestEntity.class, EntityDataSerializers.INT);
 
-	public SpiderNestEntity(EntityType<? extends SpiderNestEntity> type, Level worldIn)
+	public SpiderNestEntity(EntityType<? extends SpiderNestEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 		this.xpReward = 15;
 	}
 
@@ -112,11 +112,11 @@ public class SpiderNestEntity extends Monster
 	}
 
 	@Override
-	public boolean doHurtTarget(Entity entityIn)
+	public boolean doHurtTarget(Entity entity)
 	{
-		if (super.doHurtTarget(entityIn))
+		if (super.doHurtTarget(entity))
 		{
-			if (entityIn instanceof LivingEntity)
+			if (entity instanceof LivingEntity)
 			{
 				int i = 0;
 
@@ -131,8 +131,8 @@ public class SpiderNestEntity extends Monster
 
 				if (i > 0)
 				{
-					((LivingEntity)entityIn).addEffect(new MobEffectInstance(MobEffects.POISON, i * 20, 0));
-					((LivingEntity)entityIn).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, i * 20, 1));
+					((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.POISON, i * 20, 0));
+					((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, i * 20, 1));
 				}
 			}
 
@@ -156,11 +156,11 @@ public class SpiderNestEntity extends Monster
 	}
 
 	@Override
-	public void makeStuckInBlock(BlockState state, Vec3 stuckSpeedMultiplierIn)
+	public void makeStuckInBlock(BlockState state, Vec3 stuckSpeedMultiplier)
 	{
 		if (!state.is(Blocks.COBWEB))
 		{
-			super.makeStuckInBlock(state, stuckSpeedMultiplierIn);
+			super.makeStuckInBlock(state, stuckSpeedMultiplier);
 		}
 	}
 
@@ -180,16 +180,16 @@ public class SpiderNestEntity extends Monster
 	}
 
 	@Override
-	public boolean canBeAffected(MobEffectInstance potioneffectIn)
+	public boolean canBeAffected(MobEffectInstance potioneffect)
 	{
-		if (potioneffectIn.getEffect() == MobEffects.POISON)
+		if (potioneffect.getEffect() == MobEffects.POISON)
 		{
-			MobEffectEvent.Applicable event = new MobEffectEvent.Applicable(this, potioneffectIn);
+			MobEffectEvent.Applicable event = new MobEffectEvent.Applicable(this, potioneffect);
 			MinecraftForge.EVENT_BUS.post(event);
 			return event.getResult() == Event.Result.ALLOW;
 		}
 
-		return super.canBeAffected(potioneffectIn);
+		return super.canBeAffected(potioneffect);
 	}
 
 	private void summonSpider(ServerLevel serverlevel, LivingEntity attacker, LivingEntity target, RandomSource random, int count)
@@ -230,7 +230,7 @@ public class SpiderNestEntity extends Monster
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn)
+	protected float getStandingEyeHeight(Pose pose, EntityDimensions size)
 	{
 		return 1.1F;
 	}
@@ -283,7 +283,7 @@ public class SpiderNestEntity extends Monster
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSourceIn)
+	protected SoundEvent getHurtSound(DamageSource damageSource)
 	{
 		return ModSoundEvents.SPIDER_NEST_HURT.get();
 	}
@@ -295,7 +295,7 @@ public class SpiderNestEntity extends Monster
 	}
 
 	@Override
-	protected void playStepSound(BlockPos pos, BlockState blockIn)
+	protected void playStepSound(BlockPos pos, BlockState block)
 	{
 		this.playSound(SoundEvents.SHEEP_STEP, 0.15F, 1.0F);
 	}

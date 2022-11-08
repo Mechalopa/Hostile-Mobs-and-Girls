@@ -313,9 +313,9 @@ public class MeltyMonsterEntity extends Monster implements RangedAttackMob
 		}
 
 		@Override
-		protected boolean hasValidPathType(BlockPathTypes blockPathTypesIn)
+		protected boolean hasValidPathType(BlockPathTypes blockPathTypes)
 		{
-			return blockPathTypesIn != BlockPathTypes.LAVA && blockPathTypesIn != BlockPathTypes.DAMAGE_FIRE && blockPathTypesIn != BlockPathTypes.DANGER_FIRE ? super.hasValidPathType(blockPathTypesIn) : true;
+			return blockPathTypes != BlockPathTypes.LAVA && blockPathTypes != BlockPathTypes.DAMAGE_FIRE && blockPathTypes != BlockPathTypes.DANGER_FIRE ? super.hasValidPathType(blockPathTypes) : true;
 		}
 
 		@Override

@@ -66,7 +66,8 @@ import net.minecraftforge.network.NetworkHooks;
 public class JiangshiEntity extends Monster
 {
 	private static final UUID SPEED_MODIFIER_BY_DAMAGE_UUID = UUID.fromString("A25E5B12-7881-3AE6-D9F5-418CB7D9E02E");
-	static final EntityDataAccessor<Integer> DATA_SPEED_BONUS = SynchedEntityData.defineId(JiangshiEntity.class, EntityDataSerializers.INT);
+	private static final EntityDataAccessor<Integer> DATA_SPEED_BONUS = SynchedEntityData.defineId(JiangshiEntity.class, EntityDataSerializers.INT);
+	private static final EntityDataAccessor<Integer> DATA_VARIANT_ID = SynchedEntityData.defineId(JiangshiEntity.class, EntityDataSerializers.INT);
 	public static final int SPEED_BONUS_MAX = 7;
 	private int animationTick;
 	private int animationTickO;
@@ -82,6 +83,7 @@ public class JiangshiEntity extends Monster
 	{
 		super.defineSynchedData();
 		this.entityData.define(DATA_SPEED_BONUS, 0);
+		this.entityData.define(DATA_VARIANT_ID, 0);
 	}
 
 	@Override
@@ -170,7 +172,6 @@ public class JiangshiEntity extends Monster
 		}
 
 		ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick(), 8);
-
 		super.aiStep();
 	}
 
@@ -179,12 +180,7 @@ public class JiangshiEntity extends Monster
 	{
 		if (super.doHurtTarget(entity))
 		{
-			float f = this.level.getCurrentDifficultyAt(this.blockPosition()).getEffectiveDifficulty();
-
-			if (this.getMainHandItem().isEmpty() && this.isOnFire() && this.getRandom().nextFloat() < f * 0.3F)
-			{
-				entity.setSecondsOnFire(2 * (int)f);
-			}
+			ModUtils.catchFire(this, entity, this.getRandom());
 
 			if (entity instanceof LivingEntity)
 			{
@@ -252,8 +248,8 @@ public class JiangshiEntity extends Monster
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag dataTag)
 	{
 		spawnData = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
-
 		RandomSource randomsource = levelAccessor.getRandom();
+		this.setVariant(levelAccessor.getRandom().nextInt(4) == 0 ? 1 : 0);
 
 		if (this.getItemBySlot(EquipmentSlot.HEAD).isEmpty())
 		{
@@ -296,11 +292,27 @@ public class JiangshiEntity extends Monster
 		}
 	}
 
+	public int getVariant()
+	{
+		return this.entityData.get(DATA_VARIANT_ID);
+	}
+
+	private void setVariant(int type)
+	{
+		if (type < 0 || type >= 2)
+		{
+			type = 0;
+		}
+
+		this.entityData.set(DATA_VARIANT_ID, type);
+	}
+
 	@Override
 	public void readAdditionalSaveData(CompoundTag compound)
 	{
 		super.readAdditionalSaveData(compound);
 		this.setSpeedBonus(compound.getInt("SpeedBonus"));
+		this.setVariant(compound.getInt("Variant"));
 	}
 
 	@Override
@@ -308,6 +320,7 @@ public class JiangshiEntity extends Monster
 	{
 		super.addAdditionalSaveData(compound);
 		compound.putInt("SpeedBonus", this.getSpeedBonus());
+		compound.putInt("Variant", this.getVariant());
 	}
 
 	@Override

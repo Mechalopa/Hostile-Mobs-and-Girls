@@ -44,9 +44,9 @@ import net.minecraftforge.network.NetworkHooks;
 
 public class AlrauneEntity extends Monster implements RangedAttackMob
 {
-	public AlrauneEntity(EntityType<? extends AlrauneEntity> type, Level worldIn)
+	public AlrauneEntity(EntityType<? extends AlrauneEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 		this.xpReward = 15;
 	}
 
@@ -91,11 +91,11 @@ public class AlrauneEntity extends Monster implements RangedAttackMob
 	}
 
 	@Override
-	public boolean doHurtTarget(Entity entityIn)
+	public boolean doHurtTarget(Entity entity)
 	{
-		if (super.doHurtTarget(entityIn))
+		if (super.doHurtTarget(entity))
 		{
-			if (entityIn instanceof LivingEntity)
+			if (entity instanceof LivingEntity)
 			{
 				int i = 0;
 
@@ -110,9 +110,9 @@ public class AlrauneEntity extends Monster implements RangedAttackMob
 
 				if (i > 0)
 				{
-					((LivingEntity)entityIn).addEffect(new MobEffectInstance(MobEffects.POISON, i * 20, 1));
-					((LivingEntity)entityIn).addEffect(new MobEffectInstance(MobEffects.WEAKNESS, i * 20, 1));
-					((LivingEntity)entityIn).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, i * 20, 2));
+					((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.POISON, i * 20, 1));
+					((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.WEAKNESS, i * 20, 1));
+					((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, i * 20, 2));
 				}
 			}
 
@@ -136,16 +136,16 @@ public class AlrauneEntity extends Monster implements RangedAttackMob
 	}
 
 	@Override
-	public boolean canBeAffected(MobEffectInstance potioneffectIn)
+	public boolean canBeAffected(MobEffectInstance potioneffect)
 	{
-		if (potioneffectIn.getEffect() == MobEffects.POISON || potioneffectIn.getEffect() == MobEffects.CONFUSION)
+		if (potioneffect.getEffect() == MobEffects.POISON || potioneffect.getEffect() == MobEffects.CONFUSION)
 		{
-			MobEffectEvent.Applicable event = new MobEffectEvent.Applicable(this, potioneffectIn);
+			MobEffectEvent.Applicable event = new MobEffectEvent.Applicable(this, potioneffect);
 			MinecraftForge.EVENT_BUS.post(event);
 			return event.getResult() == Event.Result.ALLOW;
 		}
 
-		return super.canBeAffected(potioneffectIn);
+		return super.canBeAffected(potioneffect);
 	}
 
 	@Override
@@ -183,7 +183,7 @@ public class AlrauneEntity extends Monster implements RangedAttackMob
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn)
+	protected float getStandingEyeHeight(Pose pose, EntityDimensions size)
 	{
 		return 1.74F;
 	}
@@ -195,7 +195,7 @@ public class AlrauneEntity extends Monster implements RangedAttackMob
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSourceIn)
+	protected SoundEvent getHurtSound(DamageSource damageSource)
 	{
 		return ModSoundEvents.GIRL_MOB_HURT.get();
 	}
@@ -207,9 +207,9 @@ public class AlrauneEntity extends Monster implements RangedAttackMob
 	}
 
 	@Override
-	protected void playStepSound(BlockPos pos, BlockState blockIn)
+	protected void playStepSound(BlockPos pos, BlockState block)
 	{
-		this.playSound(SoundEvents.ZOMBIE_STEP, 0.15F, 1.0F);
+		this.playSound(SoundEvents.DROWNED_STEP, 0.15F, 1.0F);
 	}
 
 	@Nonnull

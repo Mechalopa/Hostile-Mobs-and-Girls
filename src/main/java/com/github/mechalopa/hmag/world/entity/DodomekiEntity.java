@@ -45,9 +45,9 @@ public class DodomekiEntity extends Monster
 	private float eyesGlowingAnimation;
 	private float eyesGlowingAnimationO;
 
-	public DodomekiEntity(EntityType<? extends DodomekiEntity> type, Level worldIn)
+	public DodomekiEntity(EntityType<? extends DodomekiEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 		this.xpReward = 12;
 	}
 
@@ -116,23 +116,17 @@ public class DodomekiEntity extends Monster
 		}
 
 		ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick(), 8);
-
 		super.aiStep();
 	}
 
 	@Override
-	public boolean doHurtTarget(Entity entityIn)
+	public boolean doHurtTarget(Entity entity)
 	{
-		if (super.doHurtTarget(entityIn))
+		if (super.doHurtTarget(entity))
 		{
-			float f = this.level.getCurrentDifficultyAt(this.blockPosition()).getEffectiveDifficulty();
+			ModUtils.catchFire(this, entity, this.getRandom());
 
-			if (this.getMainHandItem().isEmpty() && this.isOnFire() && this.getRandom().nextFloat() < f * 0.3F)
-			{
-				entityIn.setSecondsOnFire(2 * (int)f);
-			}
-
-			if (entityIn instanceof LivingEntity)
+			if (entity instanceof LivingEntity)
 			{
 				int i = 0;
 
@@ -147,7 +141,7 @@ public class DodomekiEntity extends Monster
 
 				if (i > 0)
 				{
-					((LivingEntity)entityIn).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, i * 20, 0));
+					((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, i * 20, 0));
 				}
 			}
 
@@ -172,7 +166,7 @@ public class DodomekiEntity extends Monster
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn)
+	protected float getStandingEyeHeight(Pose pose, EntityDimensions size)
 	{
 		return 1.74F;
 	}
@@ -190,7 +184,7 @@ public class DodomekiEntity extends Monster
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSourceIn)
+	protected SoundEvent getHurtSound(DamageSource damageSource)
 	{
 		return ModSoundEvents.GIRL_MOB_HURT.get();
 	}
@@ -202,7 +196,7 @@ public class DodomekiEntity extends Monster
 	}
 
 	@Override
-	protected void playStepSound(BlockPos pos, BlockState blockIn)
+	protected void playStepSound(BlockPos pos, BlockState block)
 	{
 		this.playSound(SoundEvents.ZOMBIE_STEP, 0.15F, 1.0F);
 	}

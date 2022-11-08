@@ -73,9 +73,9 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 	private int animationTick;
 	private int animationTickO;
 
-	public DyssomniaEntity(EntityType<? extends DyssomniaEntity> type, Level worldIn)
+	public DyssomniaEntity(EntityType<? extends DyssomniaEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 		this.xpReward = 25;
 		this.moveControl = new DyssomniaEntity.DyssomniaMoveControl(this);
 		this.lookControl = new DyssomniaEntity.DyssomniaLookControl(this);
@@ -227,16 +227,16 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 	}
 
 	@Override
-	public boolean canBeAffected(MobEffectInstance potioneffectIn)
+	public boolean canBeAffected(MobEffectInstance potioneffect)
 	{
-		if (potioneffectIn.getEffect() == MobEffects.BLINDNESS)
+		if (potioneffect.getEffect() == MobEffects.BLINDNESS)
 		{
-			MobEffectEvent.Applicable event = new MobEffectEvent.Applicable(this, potioneffectIn);
+			MobEffectEvent.Applicable event = new MobEffectEvent.Applicable(this, potioneffect);
 			MinecraftForge.EVENT_BUS.post(event);
 			return event.getResult() == Event.Result.ALLOW;
 		}
 
-		return super.canBeAffected(potioneffectIn);
+		return super.canBeAffected(potioneffect);
 	}
 
 	private void summonPhantom(ServerLevel serverlevel, LivingEntity attacker, LivingEntity target, RandomSource random, int count)
@@ -272,9 +272,9 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 		attacker.playSound(ModSoundEvents.DYSSOMNIA_SUMMON.get(), 5.0F, 1.0F);
 	}
 
-	public static boolean checkDyssomniaSpawnRules(EntityType<DyssomniaEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, RandomSource randomIn)
+	public static boolean checkDyssomniaSpawnRules(EntityType<DyssomniaEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, RandomSource random)
 	{
-		return ModSpawnRules.checkMobSpawnInLightRules(type, levelAccessor, spawnType, pos, randomIn) && (spawnType == MobSpawnType.SPAWNER || (levelAccessor.canSeeSky(pos) && randomIn.nextFloat() < levelAccessor.getMoonBrightness()));
+		return ModSpawnRules.checkMobSpawnInLightRules(type, levelAccessor, spawnType, pos, random) && (spawnType == MobSpawnType.SPAWNER || (levelAccessor.canSeeSky(pos) && random.nextFloat() < levelAccessor.getMoonBrightness()));
 	}
 
 	public DyssomniaEntity.AttackPhase getAttackPhase()
@@ -352,9 +352,9 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn)
+	protected float getStandingEyeHeight(Pose pose, EntityDimensions size)
 	{
-		return sizeIn.height * 0.45F;
+		return size.height * 0.45F;
 	}
 
 	@Override
@@ -370,7 +370,7 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSourceIn)
+	protected SoundEvent getHurtSound(DamageSource damageSource)
 	{
 		return ModSoundEvents.DYSSOMNIA_HURT.get();
 	}
@@ -405,9 +405,9 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 			return new DyssomniaEntity.AttackPhase[p];
 		});
 
-		private AttackPhase(int idIn)
+		private AttackPhase(int id)
 		{
-			this.id = idIn;
+			this.id = id;
 		}
 
 		public int getId()
@@ -415,14 +415,14 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 			return this.id;
 		}
 
-		public static DyssomniaEntity.AttackPhase byId(int idIn)
+		public static DyssomniaEntity.AttackPhase byId(int id)
 		{
-			if (idIn < 0 || idIn >= BY_ID.length)
+			if (id < 0 || id >= BY_ID.length)
 			{
-				idIn = 0;
+				id = 0;
 			}
 
-			return BY_ID[idIn];
+			return BY_ID[id];
 		}
 	}
 

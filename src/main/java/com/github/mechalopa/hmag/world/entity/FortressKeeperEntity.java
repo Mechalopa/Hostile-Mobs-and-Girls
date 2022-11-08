@@ -54,9 +54,9 @@ public class FortressKeeperEntity extends Monster implements RangedAttackMob
 	private float attackHandChangeAnimation;
 	private float attackHandChangeAnimationO;
 
-	public FortressKeeperEntity(EntityType<? extends FortressKeeperEntity> type, Level worldIn)
+	public FortressKeeperEntity(EntityType<? extends FortressKeeperEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 		this.setPathfindingMalus(BlockPathTypes.WATER, -1.0F);
 		this.setPathfindingMalus(BlockPathTypes.LAVA, 0.0F);
 		this.setPathfindingMalus(BlockPathTypes.DANGER_FIRE, 0.0F);
@@ -156,11 +156,11 @@ public class FortressKeeperEntity extends Monster implements RangedAttackMob
 	}
 
 	@Override
-	public boolean doHurtTarget(Entity entityIn)
+	public boolean doHurtTarget(Entity entity)
 	{
-		if (super.doHurtTarget(entityIn))
+		if (super.doHurtTarget(entity))
 		{
-			if (entityIn instanceof LivingEntity)
+			if (entity instanceof LivingEntity)
 			{
 				int i = 0;
 
@@ -175,7 +175,7 @@ public class FortressKeeperEntity extends Monster implements RangedAttackMob
 
 				if (i > 0)
 				{
-					((LivingEntity)entityIn).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, i * 20, 0));
+					((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, i * 20, 0));
 				}
 
 				this.level.broadcastEntityEvent(this, (byte)4);
@@ -271,7 +271,7 @@ public class FortressKeeperEntity extends Monster implements RangedAttackMob
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn)
+	protected float getStandingEyeHeight(Pose pose, EntityDimensions size)
 	{
 		return 1.74F;
 	}
@@ -352,7 +352,7 @@ public class FortressKeeperEntity extends Monster implements RangedAttackMob
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSourceIn)
+	protected SoundEvent getHurtSound(DamageSource damageSource)
 	{
 		return ModSoundEvents.DOLL_HURT.get();
 	}
@@ -364,7 +364,7 @@ public class FortressKeeperEntity extends Monster implements RangedAttackMob
 	}
 
 	@Override
-	protected void playStepSound(BlockPos pos, BlockState blockIn)
+	protected void playStepSound(BlockPos pos, BlockState block)
 	{
 		this.playSound(SoundEvents.NETHER_BRICKS_STEP, 0.5F, 0.25F);
 	}

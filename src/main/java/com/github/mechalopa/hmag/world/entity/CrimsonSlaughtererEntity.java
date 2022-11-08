@@ -49,9 +49,9 @@ import net.minecraftforge.network.NetworkHooks;
 
 public class CrimsonSlaughtererEntity extends Monster
 {
-	public CrimsonSlaughtererEntity(EntityType<? extends CrimsonSlaughtererEntity> type, Level worldIn)
+	public CrimsonSlaughtererEntity(EntityType<? extends CrimsonSlaughtererEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 		this.setPathfindingMalus(BlockPathTypes.LAVA, 0.0F);
 		this.setPathfindingMalus(BlockPathTypes.DANGER_FIRE, 0.0F);
 		this.setPathfindingMalus(BlockPathTypes.DAMAGE_FIRE, 0.0F);
@@ -102,11 +102,11 @@ public class CrimsonSlaughtererEntity extends Monster
 	}
 
 	@Override
-	public boolean doHurtTarget(Entity entityIn)
+	public boolean doHurtTarget(Entity entity)
 	{
-		if (super.doHurtTarget(entityIn))
+		if (super.doHurtTarget(entity))
 		{
-			if (entityIn instanceof LivingEntity)
+			if (entity instanceof LivingEntity)
 			{
 				int i = 0;
 
@@ -121,9 +121,9 @@ public class CrimsonSlaughtererEntity extends Monster
 
 				if (i > 0)
 				{
-					((LivingEntity)entityIn).addEffect(new MobEffectInstance(MobEffects.HUNGER, i * 20, 1));
-					((LivingEntity)entityIn).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, i * 20, 0));
-					((LivingEntity)entityIn).addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, i * 20, 0));
+					((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.HUNGER, i * 20, 1));
+					((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, i * 20, 0));
+					((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, i * 20, 0));
 				}
 			}
 
@@ -147,16 +147,16 @@ public class CrimsonSlaughtererEntity extends Monster
 	}
 
 	@Override
-	public boolean canBeAffected(MobEffectInstance potioneffectIn)
+	public boolean canBeAffected(MobEffectInstance potioneffect)
 	{
-		if (potioneffectIn.getEffect() == MobEffects.HUNGER || potioneffectIn.getEffect() == MobEffects.POISON)
+		if (potioneffect.getEffect() == MobEffects.HUNGER || potioneffect.getEffect() == MobEffects.POISON)
 		{
-			MobEffectEvent.Applicable event = new MobEffectEvent.Applicable(this, potioneffectIn);
+			MobEffectEvent.Applicable event = new MobEffectEvent.Applicable(this, potioneffect);
 			MinecraftForge.EVENT_BUS.post(event);
 			return event.getResult() == Event.Result.ALLOW;
 		}
 
-		return super.canBeAffected(potioneffectIn);
+		return super.canBeAffected(potioneffect);
 	}
 
 	public static boolean checkCrimsonSlaughtererSpawnRules(EntityType<CrimsonSlaughtererEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, RandomSource random)
@@ -171,7 +171,7 @@ public class CrimsonSlaughtererEntity extends Monster
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn)
+	protected float getStandingEyeHeight(Pose pose, EntityDimensions size)
 	{
 		return 0.55F;
 	}
@@ -189,7 +189,7 @@ public class CrimsonSlaughtererEntity extends Monster
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSourceIn)
+	protected SoundEvent getHurtSound(DamageSource damageSource)
 	{
 		return ModSoundEvents.GIRL_MOB_HURT.get();
 	}
@@ -201,7 +201,7 @@ public class CrimsonSlaughtererEntity extends Monster
 	}
 
 	@Override
-	protected void playStepSound(BlockPos pos, BlockState blockIn)
+	protected void playStepSound(BlockPos pos, BlockState block)
 	{
 		this.playSound(SoundEvents.SPIDER_STEP, 0.15F, 1.0F);
 	}

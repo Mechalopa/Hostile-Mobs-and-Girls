@@ -11,6 +11,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
@@ -47,10 +50,19 @@ import net.minecraftforge.network.NetworkHooks;
 
 public class CursedDollEntity extends Monster
 {
+	private static final EntityDataAccessor<Integer> DATA_VARIANT_ID = SynchedEntityData.defineId(CursedDollEntity.class, EntityDataSerializers.INT);
+
 	public CursedDollEntity(EntityType<? extends CursedDollEntity> type, Level level)
 	{
 		super(type, level);
 		this.xpReward = 12;
+	}
+
+	@Override
+	protected void defineSynchedData()
+	{
+		super.defineSynchedData();
+		this.entityData.define(DATA_VARIANT_ID, 0);
 	}
 
 	@Override
@@ -166,9 +178,39 @@ public class CursedDollEntity extends Monster
 	{
 		spawnData = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
 		RandomSource randomsource = levelAccessor.getRandom();
+		this.setVariant(randomsource.nextInt(4) == 0 ? 1 : 0);
 		this.populateDefaultEquipmentSlots(randomsource, difficulty);
 		this.populateDefaultEquipmentEnchantments(randomsource, difficulty);
 		return spawnData;
+	}
+
+	public int getVariant()
+	{
+		return this.entityData.get(DATA_VARIANT_ID);
+	}
+
+	private void setVariant(int type)
+	{
+		if (type < 0 || type >= 2)
+		{
+			type = 0;
+		}
+
+		this.entityData.set(DATA_VARIANT_ID, type);
+	}
+
+	@Override
+	public void readAdditionalSaveData(CompoundTag compound)
+	{
+		super.readAdditionalSaveData(compound);
+		this.setVariant(compound.getInt("Variant"));
+	}
+
+	@Override
+	public void addAdditionalSaveData(CompoundTag compound)
+	{
+		super.addAdditionalSaveData(compound);
+		compound.putInt("Variant", this.getVariant());
 	}
 
 	@Override

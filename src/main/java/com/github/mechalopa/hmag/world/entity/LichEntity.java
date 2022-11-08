@@ -46,9 +46,9 @@ public class LichEntity extends Monster implements RangedAttackMob
 {
 	private static final TargetingConditions VEX_COUNT_TARGETING = TargetingConditions.forNonCombat().range(16.0D).ignoreLineOfSight().ignoreInvisibilityTesting();
 
-	public LichEntity(EntityType<? extends LichEntity> type, Level worldIn)
+	public LichEntity(EntityType<? extends LichEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 		this.xpReward = 25;
 	}
 
@@ -173,7 +173,7 @@ public class LichEntity extends Monster implements RangedAttackMob
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn)
+	protected float getStandingEyeHeight(Pose pose, EntityDimensions size)
 	{
 		return 2.0F;
 	}
@@ -185,7 +185,7 @@ public class LichEntity extends Monster implements RangedAttackMob
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSourceIn)
+	protected SoundEvent getHurtSound(DamageSource damageSource)
 	{
 		return SoundEvents.SKELETON_HURT;
 	}
@@ -197,7 +197,7 @@ public class LichEntity extends Monster implements RangedAttackMob
 	}
 
 	@Override
-	protected void playStepSound(BlockPos pos, BlockState blockIn)
+	protected void playStepSound(BlockPos pos, BlockState block)
 	{
 		this.playSound(SoundEvents.ZOMBIE_STEP, 0.15F, 1.0F);
 	}

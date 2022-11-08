@@ -43,9 +43,9 @@ import net.minecraftforge.network.NetworkHooks;
 
 public class RedcapEntity extends Monster
 {
-	public RedcapEntity(EntityType<? extends RedcapEntity> type, Level worldIn)
+	public RedcapEntity(EntityType<? extends RedcapEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 		this.xpReward = 12;
 	}
 
@@ -114,7 +114,6 @@ public class RedcapEntity extends Monster
 		RandomSource randomsource = worldIn.getRandom();
 		this.populateDefaultEquipmentSlots(randomsource, difficultyIn);
 		this.populateDefaultEquipmentEnchantments(randomsource, difficultyIn);
-
 		return spawnDataIn;
 	}
 
@@ -131,7 +130,7 @@ public class RedcapEntity extends Monster
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn)
+	protected float getStandingEyeHeight(Pose pose, EntityDimensions size)
 	{
 		return 1.52F;
 	}
@@ -143,7 +142,7 @@ public class RedcapEntity extends Monster
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSourceIn)
+	protected SoundEvent getHurtSound(DamageSource damageSource)
 	{
 		return ModSoundEvents.GIRL_MOB_HURT.get();
 	}
@@ -155,9 +154,9 @@ public class RedcapEntity extends Monster
 	}
 
 	@Override
-	protected void playStepSound(BlockPos pos, BlockState blockIn)
+	protected void playStepSound(BlockPos pos, BlockState block)
 	{
-		this.playSound(SoundEvents.ZOMBIE_STEP, 0.15F, 1.0F);
+		this.playSound(SoundEvents.PIGLIN_STEP, 0.15F, 1.0F);
 	}
 
 	@Nonnull

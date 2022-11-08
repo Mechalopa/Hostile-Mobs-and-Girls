@@ -43,9 +43,9 @@ import net.minecraftforge.network.NetworkHooks;
 
 public class NecroticReaperEntity extends Monster
 {
-	public NecroticReaperEntity(EntityType<? extends NecroticReaperEntity> type, Level worldIn)
+	public NecroticReaperEntity(EntityType<? extends NecroticReaperEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 		this.xpReward = 15;
 	}
 
@@ -97,18 +97,13 @@ public class NecroticReaperEntity extends Monster
 	}
 
 	@Override
-	public boolean doHurtTarget(Entity entityIn)
+	public boolean doHurtTarget(Entity entity)
 	{
-		if (super.doHurtTarget(entityIn))
+		if (super.doHurtTarget(entity))
 		{
-			float f = this.level.getCurrentDifficultyAt(this.blockPosition()).getEffectiveDifficulty();
+			ModUtils.catchFire(this, entity, this.getRandom());
 
-			if (this.getMainHandItem().isEmpty() && this.isOnFire() && this.getRandom().nextFloat() < f * 0.3F)
-			{
-				entityIn.setSecondsOnFire(2 * (int)f);
-			}
-
-			if (entityIn instanceof LivingEntity)
+			if (entity instanceof LivingEntity)
 			{
 				int i = 0;
 
@@ -123,7 +118,7 @@ public class NecroticReaperEntity extends Monster
 
 				if (i > 0)
 				{
-					((LivingEntity)entityIn).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, i * 20, 0));
+					((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, i * 20, 0));
 				}
 			}
 
@@ -153,7 +148,7 @@ public class NecroticReaperEntity extends Monster
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn)
+	protected float getStandingEyeHeight(Pose pose, EntityDimensions size)
 	{
 		return 1.74F;
 	}
@@ -165,7 +160,7 @@ public class NecroticReaperEntity extends Monster
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSourceIn)
+	protected SoundEvent getHurtSound(DamageSource damageSource)
 	{
 		return SoundEvents.HUSK_HURT;
 	}
@@ -177,7 +172,7 @@ public class NecroticReaperEntity extends Monster
 	}
 
 	@Override
-	protected void playStepSound(BlockPos pos, BlockState blockIn)
+	protected void playStepSound(BlockPos pos, BlockState block)
 	{
 		this.playSound(SoundEvents.WITHER_SKELETON_STEP, 0.15F, 1.0F);
 	}

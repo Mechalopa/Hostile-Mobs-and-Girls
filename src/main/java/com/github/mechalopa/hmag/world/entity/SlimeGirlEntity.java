@@ -61,9 +61,9 @@ public class SlimeGirlEntity extends Monster
 	public float oSquish;
 	private boolean wasOnGround;
 
-	public SlimeGirlEntity(EntityType<? extends SlimeGirlEntity> type, Level worldIn)
+	public SlimeGirlEntity(EntityType<? extends SlimeGirlEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 		this.xpReward = 15;
 	}
 
@@ -160,13 +160,13 @@ public class SlimeGirlEntity extends Monster
 	}
 
 	@Override
-	public boolean doHurtTarget(Entity entityIn)
+	public boolean doHurtTarget(Entity entity)
 	{
-		if (super.doHurtTarget(entityIn))
+		if (super.doHurtTarget(entity))
 		{
 			this.playSound(SoundEvents.SLIME_ATTACK, 1.0F, (this.getRandom().nextFloat() - this.getRandom().nextFloat()) * 0.2F + 1.0F);
 
-			if (entityIn instanceof LivingEntity)
+			if (entity instanceof LivingEntity)
 			{
 				int i = 0;
 
@@ -181,7 +181,7 @@ public class SlimeGirlEntity extends Monster
 
 				if (i > 0)
 				{
-					((LivingEntity)entityIn).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, i * 20, 1));
+					((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, i * 20, 1));
 				}
 			}
 
@@ -247,12 +247,11 @@ public class SlimeGirlEntity extends Monster
 
 	@Override
 	@Nullable
-	public SpawnGroupData finalizeSpawn(ServerLevelAccessor worldIn, DifficultyInstance difficultyIn, MobSpawnType spawnType, @Nullable SpawnGroupData spawnDataIn, @Nullable CompoundTag dataTag)
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag dataTag)
 	{
-		spawnDataIn = super.finalizeSpawn(worldIn, difficultyIn, spawnType, spawnDataIn, dataTag);
-		this.setVariant(worldIn.getRandom().nextInt(SlimeGirlEntity.ColorVariant.values().length));
-
-		return spawnDataIn;
+		spawnData = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
+		this.setVariant(levelAccessor.getRandom().nextInt(SlimeGirlEntity.ColorVariant.values().length));
+		return spawnData;
 	}
 
 	@Override
@@ -268,7 +267,7 @@ public class SlimeGirlEntity extends Monster
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn)
+	protected float getStandingEyeHeight(Pose poseIn, EntityDimensions size)
 	{
 		return 1.74F;
 	}
@@ -284,14 +283,14 @@ public class SlimeGirlEntity extends Monster
 		return this.entityData.get(DATA_VARIANT_ID);
 	}
 
-	private void setVariant(int typeIn)
+	private void setVariant(int type)
 	{
-		if (typeIn < 0 || typeIn >= SlimeGirlEntity.ColorVariant.values().length)
+		if (type < 0 || type >= SlimeGirlEntity.ColorVariant.values().length)
 		{
-			typeIn = this.getRandom().nextInt(SlimeGirlEntity.ColorVariant.values().length);
+			type = this.getRandom().nextInt(SlimeGirlEntity.ColorVariant.values().length);
 		}
 
-		this.entityData.set(DATA_VARIANT_ID, typeIn);
+		this.entityData.set(DATA_VARIANT_ID, type);
 	}
 
 	@Override
@@ -317,7 +316,7 @@ public class SlimeGirlEntity extends Monster
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSourceIn)
+	protected SoundEvent getHurtSound(DamageSource damageSource)
 	{
 		return SoundEvents.SLIME_HURT;
 	}
@@ -329,7 +328,7 @@ public class SlimeGirlEntity extends Monster
 	}
 
 	@Override
-	protected void playStepSound(BlockPos pos, BlockState blockIn)
+	protected void playStepSound(BlockPos pos, BlockState block)
 	{
 		this.playSound(SoundEvents.SLIME_BLOCK_STEP, 0.15F, 1.0F);
 	}
@@ -382,12 +381,12 @@ public class SlimeGirlEntity extends Monster
 			return new SlimeGirlEntity.ColorVariant[p];
 		});
 
-		private ColorVariant(int idIn, int colorIn)
+		private ColorVariant(int id, int color)
 		{
-			this.id = idIn;
-			int i = (colorIn & 16711680) >> 16;
-			int j = (colorIn & '\uff00') >> 8;
-			int k = (colorIn & 255) >> 0;
+			this.id = id;
+			int i = (color & 16711680) >> 16;
+			int j = (color & '\uff00') >> 8;
+			int k = (color & 255) >> 0;
 			this.colors = new float[]{i / 255.0F, j / 255.0F, k / 255.0F};
 		}
 
@@ -401,14 +400,14 @@ public class SlimeGirlEntity extends Monster
 			return this.colors;
 		}
 
-		public static SlimeGirlEntity.ColorVariant byId(int idIn)
+		public static SlimeGirlEntity.ColorVariant byId(int id)
 		{
-			if (idIn < 0 || idIn >= BY_ID.length)
+			if (id < 0 || id >= BY_ID.length)
 			{
-				idIn = 0;
+				id = 0;
 			}
 
-			return BY_ID[idIn];
+			return BY_ID[id];
 		}
 	}
 

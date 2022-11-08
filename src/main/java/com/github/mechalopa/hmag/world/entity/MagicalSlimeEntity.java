@@ -24,9 +24,9 @@ public class MagicalSlimeEntity extends Slime
 {
 	private static final EntityDataAccessor<Integer> DATA_VARIANT_ID = SynchedEntityData.defineId(MagicalSlimeEntity.class, EntityDataSerializers.INT);
 
-	public MagicalSlimeEntity(EntityType<? extends MagicalSlimeEntity> type, Level worldIn)
+	public MagicalSlimeEntity(EntityType<? extends MagicalSlimeEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 	}
 
 	@Override

@@ -39,9 +39,9 @@ import net.minecraft.world.level.ServerLevelAccessor;
 
 public class HornetEntity extends AbstractFlyingMonsterEntity
 {
-	public HornetEntity(EntityType<? extends HornetEntity> type, Level worldIn)
+	public HornetEntity(EntityType<? extends HornetEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 		this.xpReward = 15;
 	}
 
@@ -74,11 +74,11 @@ public class HornetEntity extends AbstractFlyingMonsterEntity
 	}
 
 	@Override
-	public boolean doHurtTarget(Entity entityIn)
+	public boolean doHurtTarget(Entity entity)
 	{
-		if (super.doHurtTarget(entityIn))
+		if (super.doHurtTarget(entity))
 		{
-			if (entityIn instanceof LivingEntity)
+			if (entity instanceof LivingEntity)
 			{
 				int i = 0;
 
@@ -93,7 +93,7 @@ public class HornetEntity extends AbstractFlyingMonsterEntity
 
 				if (i > 0)
 				{
-					((LivingEntity)entityIn).addEffect(new MobEffectInstance(MobEffects.POISON, i * 20, 1));
+					((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.POISON, i * 20, 1));
 				}
 			}
 
@@ -124,14 +124,13 @@ public class HornetEntity extends AbstractFlyingMonsterEntity
 
 	@Override
 	@Nullable
-	public SpawnGroupData finalizeSpawn(ServerLevelAccessor worldIn, DifficultyInstance difficultyIn, MobSpawnType spawnType, @Nullable SpawnGroupData spawnDataIn, @Nullable CompoundTag dataTag)
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag dataTag)
 	{
-		spawnDataIn = super.finalizeSpawn(worldIn, difficultyIn, spawnType, spawnDataIn, dataTag);
-		RandomSource randomsource = worldIn.getRandom();
-		this.populateDefaultEquipmentSlots(randomsource, difficultyIn);
-		this.populateDefaultEquipmentEnchantments(randomsource, difficultyIn);
-
-		return spawnDataIn;
+		spawnData = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
+		RandomSource randomsource = levelAccessor.getRandom();
+		this.populateDefaultEquipmentSlots(randomsource, difficulty);
+		this.populateDefaultEquipmentEnchantments(randomsource, difficulty);
+		return spawnData;
 	}
 
 	@Override
@@ -141,7 +140,7 @@ public class HornetEntity extends AbstractFlyingMonsterEntity
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn)
+	protected float getStandingEyeHeight(Pose pose, EntityDimensions size)
 	{
 		return 1.52F;
 	}
@@ -153,7 +152,7 @@ public class HornetEntity extends AbstractFlyingMonsterEntity
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSourceIn)
+	protected SoundEvent getHurtSound(DamageSource damageSource)
 	{
 		return SoundEvents.BEE_HURT;
 	}

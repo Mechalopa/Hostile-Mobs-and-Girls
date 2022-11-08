@@ -140,12 +140,7 @@ public class GiantMummyEntity extends Monster
 	{
 		if (super.doHurtTarget(entity))
 		{
-			float f = this.level.getCurrentDifficultyAt(this.blockPosition()).getEffectiveDifficulty();
-
-			if (this.getMainHandItem().isEmpty() && this.isOnFire() && this.getRandom().nextFloat() < f * 0.3F)
-			{
-				entity.setSecondsOnFire(2 * (int)f);
-			}
+			ModUtils.catchFire(this, entity, this.getRandom());
 
 			if (entity instanceof LivingEntity)
 			{

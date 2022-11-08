@@ -80,6 +80,16 @@ public class ModUtils
 		}
 	}
 
+	public static void catchFire(@Nonnull LivingEntity livingEntity, @Nonnull Entity target, RandomSource rand)
+	{
+		float f = livingEntity.level.getCurrentDifficultyAt(livingEntity.blockPosition()).getEffectiveDifficulty();
+
+		if (livingEntity.getMainHandItem().isEmpty() && livingEntity.isOnFire() && rand.nextFloat() < f * 0.3F)
+		{
+			target.setSecondsOnFire(2 * (int)f);
+		}
+	}
+
 	public static boolean canReach(@Nonnull LivingEntity livingEntity, Vec3 vec3, int count)
 	{
 		AABB axisalignedbb = livingEntity.getBoundingBox();

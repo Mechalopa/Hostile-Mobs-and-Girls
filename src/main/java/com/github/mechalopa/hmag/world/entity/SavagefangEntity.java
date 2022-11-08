@@ -488,7 +488,7 @@ public class SavagefangEntity extends Monster
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSourceIn)
+	protected SoundEvent getHurtSound(DamageSource damageSource)
 	{
 		return SoundEvents.COD_HURT;
 	}
@@ -511,7 +511,7 @@ public class SavagefangEntity extends Monster
 	}
 
 	@Override
-	protected void playStepSound(BlockPos pos, BlockState blockIn){}
+	protected void playStepSound(BlockPos pos, BlockState block){}
 
 	@Override
 	protected Entity.MovementEmission getMovementEmission()

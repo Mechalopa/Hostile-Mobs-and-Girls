@@ -36,9 +36,9 @@ import net.minecraftforge.network.NetworkHooks;
 
 public class CatoblepasEntity extends Monster
 {
-	public CatoblepasEntity(EntityType<? extends CatoblepasEntity> type, Level worldIn)
+	public CatoblepasEntity(EntityType<? extends CatoblepasEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 		this.xpReward = 12;
 	}
 
@@ -68,11 +68,11 @@ public class CatoblepasEntity extends Monster
 	}
 
 	@Override
-	public boolean doHurtTarget(Entity entityIn)
+	public boolean doHurtTarget(Entity entity)
 	{
-		if (super.doHurtTarget(entityIn))
+		if (super.doHurtTarget(entity))
 		{
-			if (entityIn instanceof LivingEntity)
+			if (entity instanceof LivingEntity)
 			{
 				int i = 0;
 
@@ -87,8 +87,8 @@ public class CatoblepasEntity extends Monster
 
 				if (i > 0)
 				{
-					((LivingEntity)entityIn).addEffect(new MobEffectInstance(MobEffects.BLINDNESS, i * 20, 0));
-					((LivingEntity)entityIn).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, i * 20, 1));
+					((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.BLINDNESS, i * 20, 0));
+					((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, i * 20, 1));
 				}
 			}
 
@@ -101,16 +101,16 @@ public class CatoblepasEntity extends Monster
 	}
 
 	@Override
-	public boolean canBeAffected(MobEffectInstance potioneffectIn)
+	public boolean canBeAffected(MobEffectInstance potioneffect)
 	{
-		if (potioneffectIn.getEffect() == MobEffects.BLINDNESS)
+		if (potioneffect.getEffect() == MobEffects.BLINDNESS)
 		{
-			MobEffectEvent.Applicable event = new MobEffectEvent.Applicable(this, potioneffectIn);
+			MobEffectEvent.Applicable event = new MobEffectEvent.Applicable(this, potioneffect);
 			MinecraftForge.EVENT_BUS.post(event);
 			return event.getResult() == Event.Result.ALLOW;
 		}
 
-		return super.canBeAffected(potioneffectIn);
+		return super.canBeAffected(potioneffect);
 	}
 
 	@Override
@@ -132,7 +132,7 @@ public class CatoblepasEntity extends Monster
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSourceIn)
+	protected SoundEvent getHurtSound(DamageSource damageSource)
 	{
 		return ModSoundEvents.CATOBLEPAS_HURT.get();
 	}
@@ -144,7 +144,7 @@ public class CatoblepasEntity extends Monster
 	}
 
 	@Override
-	protected void playStepSound(BlockPos pos, BlockState blockIn)
+	protected void playStepSound(BlockPos pos, BlockState block)
 	{
 		this.playSound(SoundEvents.COW_STEP, 0.15F, 1.0F);
 	}

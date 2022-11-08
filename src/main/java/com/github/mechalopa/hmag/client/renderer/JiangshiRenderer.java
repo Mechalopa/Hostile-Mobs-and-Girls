@@ -16,7 +16,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class JiangshiRenderer extends AbstractGirlRenderer<JiangshiEntity, JiangshiModel<JiangshiEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/jiangshi.png");
+	private static final ResourceLocation TEX0 = new ResourceLocation(HMaG.MODID, "textures/entity/jiangshi_0.png");
+	private static final ResourceLocation TEX1 = new ResourceLocation(HMaG.MODID, "textures/entity/jiangshi_1.png");
 
 	public JiangshiRenderer(EntityRendererProvider.Context context)
 	{
@@ -41,6 +42,12 @@ public class JiangshiRenderer extends AbstractGirlRenderer<JiangshiEntity, Jiang
 	@Override
 	public ResourceLocation getTextureLocation(JiangshiEntity entity)
 	{
-		return TEX;
+		switch (entity.getVariant())
+		{
+		case 1:
+			return TEX1;
+		default:
+			return TEX0;
+		}
 	}
 }

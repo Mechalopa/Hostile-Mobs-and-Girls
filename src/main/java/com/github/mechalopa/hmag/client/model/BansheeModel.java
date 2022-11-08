@@ -105,11 +105,11 @@ public class BansheeModel<T extends AbstractFlyingMonsterEntity> extends Abstrac
 	}
 
 	@Override
-	public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
+	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
-		super.setupAnim(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+		super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 
-		if (entityIn.getAttackPhase() == 0)
+		if (entity.getAttackPhase() == 0)
 		{
 			this.head.xRot = (float)Math.PI / 10.0F;
 			this.hat.xRot = (float)Math.PI / 10.0F;
@@ -126,9 +126,9 @@ public class BansheeModel<T extends AbstractFlyingMonsterEntity> extends Abstrac
 		float f = Mth.sin(this.attackTime * (float)Math.PI);
 		float f1 = Mth.sin((1.0F - (1.0F - this.attackTime) * (1.0F - this.attackTime)) * (float)Math.PI);
 
-		if (entityIn.getAttackPhase() != 0)
+		if (entity.getAttackPhase() != 0)
 		{
-			AnimationUtils.animateZombieArms(this.leftArm, this.rightArm, entityIn.isCharging(), this.attackTime, ageInTicks);
+			AnimationUtils.animateZombieArms(this.leftArm, this.rightArm, entity.isCharging(), this.attackTime, ageInTicks);
 		}
 		else
 		{

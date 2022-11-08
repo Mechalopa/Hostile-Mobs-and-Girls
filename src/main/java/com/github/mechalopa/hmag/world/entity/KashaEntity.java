@@ -56,9 +56,9 @@ public class KashaEntity extends Monster
 	private static final AttributeModifier ATTACK_DAMAGE_MODIFIER = new AttributeModifier(ATTACK_DAMAGE_MODIFIER_UUID, "Soul variant attack damage bonus", 1.0D, AttributeModifier.Operation.ADDITION);
 	private static final EntityDataAccessor<Integer> DATA_VARIANT_ID = SynchedEntityData.defineId(KashaEntity.class, EntityDataSerializers.INT);
 
-	public KashaEntity(EntityType<? extends KashaEntity> type, Level worldIn)
+	public KashaEntity(EntityType<? extends KashaEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 		this.setPathfindingMalus(BlockPathTypes.WATER, -1.0F);
 		this.setPathfindingMalus(BlockPathTypes.LAVA, 0.0F);
 		this.setPathfindingMalus(BlockPathTypes.DANGER_FIRE, 0.0F);
@@ -133,11 +133,11 @@ public class KashaEntity extends Monster
 	}
 
 	@Override
-	public boolean doHurtTarget(Entity entityIn)
+	public boolean doHurtTarget(Entity entity)
 	{
-		if (super.doHurtTarget(entityIn))
+		if (super.doHurtTarget(entity))
 		{
-			if (entityIn instanceof LivingEntity)
+			if (entity instanceof LivingEntity)
 			{
 				int i = 0;
 
@@ -152,7 +152,7 @@ public class KashaEntity extends Monster
 
 				if (i > 0)
 				{
-					entityIn.setSecondsOnFire(i);
+					entity.setSecondsOnFire(i);
 				}
 			}
 
@@ -172,9 +172,9 @@ public class KashaEntity extends Monster
 
 	@Override
 	@Nullable
-	public SpawnGroupData finalizeSpawn(ServerLevelAccessor worldIn, DifficultyInstance difficultyIn, MobSpawnType spawnType, @Nullable SpawnGroupData spawnDataIn, @Nullable CompoundTag dataTag)
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag dataTag)
 	{
-		spawnDataIn = super.finalizeSpawn(worldIn, difficultyIn, spawnType, spawnDataIn, dataTag);
+		spawnData = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
 
 		if (this.level.getBlockState(this.blockPosition().below()).is(BlockTags.SOUL_FIRE_BASE_BLOCKS))
 		{
@@ -185,7 +185,7 @@ public class KashaEntity extends Monster
 			this.setVariant(KashaEntity.Variant.NORMAL);
 		}
 
-		return spawnDataIn;
+		return spawnData;
 	}
 
 	public KashaEntity.Variant getVariant()
@@ -247,7 +247,7 @@ public class KashaEntity extends Monster
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSourceIn)
+	protected SoundEvent getHurtSound(DamageSource damageSource)
 	{
 		return ModSoundEvents.KASHA_HURT.get();
 	}

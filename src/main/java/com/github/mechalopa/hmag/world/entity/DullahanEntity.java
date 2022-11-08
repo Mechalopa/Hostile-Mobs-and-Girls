@@ -45,9 +45,9 @@ import net.minecraftforge.network.NetworkHooks;
 
 public class DullahanEntity extends Monster
 {
-	public DullahanEntity(EntityType<? extends DullahanEntity> type, Level worldIn)
+	public DullahanEntity(EntityType<? extends DullahanEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 		this.xpReward = 15;
 	}
 
@@ -78,16 +78,15 @@ public class DullahanEntity extends Monster
 	public void aiStep()
 	{
 		ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick(), 8);
-
 		super.aiStep();
 	}
 
 	@Override
-	public boolean doHurtTarget(Entity entityIn)
+	public boolean doHurtTarget(Entity entity)
 	{
-		if (super.doHurtTarget(entityIn))
+		if (super.doHurtTarget(entity))
 		{
-			if (entityIn instanceof LivingEntity)
+			if (entity instanceof LivingEntity)
 			{
 				int i = 0;
 
@@ -102,7 +101,7 @@ public class DullahanEntity extends Monster
 
 				if (i > 0)
 				{
-					((LivingEntity)entityIn).addEffect(new MobEffectInstance(MobEffects.WEAKNESS, i * 20, 0));
+					((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.WEAKNESS, i * 20, 0));
 				}
 			}
 
@@ -142,14 +141,13 @@ public class DullahanEntity extends Monster
 
 	@Override
 	@Nullable
-	public SpawnGroupData finalizeSpawn(ServerLevelAccessor worldIn, DifficultyInstance difficultyIn, MobSpawnType spawnType, @Nullable SpawnGroupData spawnDataIn, @Nullable CompoundTag dataTag)
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag dataTag)
 	{
-		spawnDataIn = super.finalizeSpawn(worldIn, difficultyIn, spawnType, spawnDataIn, dataTag);
-		RandomSource randomsource = worldIn.getRandom();
-		this.populateDefaultEquipmentSlots(randomsource, difficultyIn);
-		this.populateDefaultEquipmentEnchantments(randomsource, difficultyIn);
-
-		return spawnDataIn;
+		spawnData = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
+		RandomSource randomsource = levelAccessor.getRandom();
+		this.populateDefaultEquipmentSlots(randomsource, difficulty);
+		this.populateDefaultEquipmentEnchantments(randomsource, difficulty);
+		return spawnData;
 	}
 
 	@Override
@@ -165,7 +163,7 @@ public class DullahanEntity extends Monster
 	}
 
 	@Override
-	protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn)
+	protected float getStandingEyeHeight(Pose pose, EntityDimensions size)
 	{
 		return 1.74F;
 	}
@@ -177,7 +175,7 @@ public class DullahanEntity extends Monster
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSourceIn)
+	protected SoundEvent getHurtSound(DamageSource damageSource)
 	{
 		return ModSoundEvents.GIRL_MOB_HURT.get();
 	}
@@ -189,9 +187,9 @@ public class DullahanEntity extends Monster
 	}
 
 	@Override
-	protected void playStepSound(BlockPos pos, BlockState blockIn)
+	protected void playStepSound(BlockPos pos, BlockState block)
 	{
-		this.playSound(SoundEvents.ZOMBIE_STEP, 0.15F, 1.0F);
+		this.playSound(SoundEvents.PIGLIN_STEP, 0.15F, 1.0F);
 	}
 
 	@Nonnull

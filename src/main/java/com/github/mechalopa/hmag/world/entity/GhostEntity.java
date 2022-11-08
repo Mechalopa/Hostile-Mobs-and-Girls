@@ -88,7 +88,6 @@ public class GhostEntity extends AbstractFlyingMonsterEntity
 	public void aiStep()
 	{
 		ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick(), this.shouldBurnInDay(), 8);
-
 		super.aiStep();
 	}
 
@@ -100,19 +99,15 @@ public class GhostEntity extends AbstractFlyingMonsterEntity
 	@Override
 	public boolean doHurtTarget(Entity entity)
 	{
-		boolean flag = super.doHurtTarget(entity);
-
-		if (flag)
+		if (super.doHurtTarget(entity))
 		{
-			float f = this.level.getCurrentDifficultyAt(this.blockPosition()).getEffectiveDifficulty();
-
-			if (this.getMainHandItem().isEmpty() && this.isOnFire() && this.getRandom().nextFloat() < f * 0.3F)
-			{
-				entity.setSecondsOnFire(2 * (int)f);
-			}
+			ModUtils.catchFire(this, entity, this.getRandom());
+			return true;
 		}
-
-		return flag;
+		else
+		{
+			return false;
+		}
 	}
 
 	@Override
@@ -151,7 +146,6 @@ public class GhostEntity extends AbstractFlyingMonsterEntity
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag dataTag)
 	{
 		spawnData = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
-
 		RandomSource randomsource = levelAccessor.getRandom();
 		this.setCanPickUpLoot(randomsource.nextFloat() < 0.55F * difficulty.getSpecialMultiplier());
 		this.setVariant(randomsource.nextInt(5));

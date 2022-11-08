@@ -142,7 +142,6 @@ public class HarpyEntity extends Monster
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag dataTag)
 	{
 		spawnData = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
-
 		RandomSource randomsource = levelAccessor.getRandom();
 
 		if (randomsource.nextFloat() < 0.001F)

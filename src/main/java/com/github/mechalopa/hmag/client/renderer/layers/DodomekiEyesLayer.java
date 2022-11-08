@@ -27,9 +27,9 @@ public class DodomekiEyesLayer<T extends DodomekiEntity, M extends DodomekiModel
 	}
 
 	@Override
-	public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLightIn, T livingEntityIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch)
+	public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, T livingEntity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch)
 	{
-		final float f = Mth.clamp(livingEntityIn.getEyesGlowingAnimationScale(partialTicks), 0.0F, 1.0F);
+		final float f = Mth.clamp(livingEntity.getEyesGlowingAnimationScale(partialTicks), 0.0F, 1.0F);
 
 		if (f > 0.0F)
 		{

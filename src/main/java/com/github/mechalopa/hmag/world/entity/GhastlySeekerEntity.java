@@ -46,9 +46,9 @@ public class GhastlySeekerEntity extends FlyingMob implements Enemy
 	private static final EntityDataAccessor<Integer> ATTACKING_TIME = SynchedEntityData.defineId(GhastlySeekerEntity.class, EntityDataSerializers.INT);
 	private int explosionPower = 1;
 
-	public GhastlySeekerEntity(EntityType<? extends GhastlySeekerEntity> type, Level worldIn)
+	public GhastlySeekerEntity(EntityType<? extends GhastlySeekerEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 		this.xpReward = 25;
 		this.moveControl = new GhastlySeekerEntity.GhastlySeekerMoveControl(this);
 	}
@@ -148,7 +148,7 @@ public class GhastlySeekerEntity extends FlyingMob implements Enemy
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(DamageSource damageSourceIn)
+	protected SoundEvent getHurtSound(DamageSource damageSource)
 	{
 		return SoundEvents.GHAST_HURT;
 	}
@@ -165,9 +165,9 @@ public class GhastlySeekerEntity extends FlyingMob implements Enemy
 		return 5.0F;
 	}
 
-	public static boolean checkGhastlySeekerSpawnRules(EntityType<GhastlySeekerEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, RandomSource randomIn)
+	public static boolean checkGhastlySeekerSpawnRules(EntityType<GhastlySeekerEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, RandomSource random)
 	{
-		return levelAccessor.getDifficulty() != Difficulty.PEACEFUL && randomIn.nextDouble() < ModConfigs.cachedServer.GHASTLY_SEEKER_SPAWN_CHANCE && checkMobSpawnRules(type, levelAccessor, spawnType, pos, randomIn);
+		return levelAccessor.getDifficulty() != Difficulty.PEACEFUL && random.nextDouble() < ModConfigs.cachedServer.GHASTLY_SEEKER_SPAWN_CHANCE && checkMobSpawnRules(type, levelAccessor, spawnType, pos, random);
 	}
 
 	@Override
