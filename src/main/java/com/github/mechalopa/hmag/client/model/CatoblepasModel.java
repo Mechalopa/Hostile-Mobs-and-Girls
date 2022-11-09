@@ -69,7 +69,7 @@ public class CatoblepasModel<T extends Entity> extends HierarchicalModel<T>
 	}
 
 	@Override
-	public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
+	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
 		this.neck.xRot = (float)Math.PI / 9.0F;
 		this.neck.xRot += Mth.cos(limbSwing * 0.6662F + (float)Math.PI / 2.0F) * 0.25F * limbSwingAmount;
