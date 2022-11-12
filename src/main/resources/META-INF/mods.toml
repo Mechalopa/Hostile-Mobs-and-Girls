@@ -16,7 +16,7 @@ itemIcon="hmag:evil_crystal"
 [[dependencies.hmag]]
     modId="forge"
     mandatory=true
-    versionRange="[43.1.1,)"
+    versionRange="[43.1.42,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.hmag]]

@@ -64,6 +64,7 @@ import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -77,7 +78,6 @@ public class ModEventBusSubscriber
 		event.enqueueWork(() -> {
 			registerCompostables();
 			registerBrewingRecipes();
-			registerSpawnPlacements();
 		});
 
 		Registry.register(Registry.LOOT_CONDITION_TYPE, new ResourceLocation(HMaG.MODID, "mod_loaded"), ModLoadedCondition.TYPE);
@@ -153,50 +153,51 @@ public class ModEventBusSubscriber
 			BrewingRecipeRegistry.addRecipe(new ModBrewingRecipe(Ingredient.of(ModItems.FIRE_BOTTLE.get()), Ingredient.of(ModItems.LIGHTNING_PARTICLE.get()), new ItemStack(ModItems.LIGHTNING_BOTTLE.get(), 1)));
 	}
 
-	public static void registerSpawnPlacements()
+	@SubscribeEvent
+	public static void registerSpawnPlacements(final SpawnPlacementRegisterEvent event)
 	{
-		SpawnPlacements.register(ModEntityTypes.ZOMBIE_GIRL.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.HUSK_GIRL.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkMonsterSpawnCanSeeSkyRules);
-		SpawnPlacements.register(ModEntityTypes.DROWNED_GIRL.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, DrownedGirlEntity::checkDrownedGirlSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.SKELETON_GIRL.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.WITHER_SKELETON_GIRL.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.STRAY_GIRL.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, StrayGirlEntity::checkStrayGirlSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.CREEPER_GIRL.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.GHOST.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.WITHER_GHOST.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.ENDER_EXECUTOR.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.KOBOLD.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, KoboldEntity::checkKoboldSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.LICH.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, LichEntity::checkLichSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.OGRE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, OgreEntity::checkOgreSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.SPIDER_NEST.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, SpiderNestEntity::checkSpiderNestSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.MELTY_MONSTER.get(), SpawnPlacements.Type.IN_LAVA, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, MeltyMonsterEntity::checkMeltyMonsterSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.CURSED_DOLL.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.JACK_FROST.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.HORNET.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.DULLAHAN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.BANSHEE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.ALRAUNE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.CATOBLEPAS.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.SCORPION.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.KASHA.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkAnyLightMonsterSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.DOGU.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkMonsterSpawnCanNotSeeSkyRules);
-		SpawnPlacements.register(ModEntityTypes.GHASTLY_SEEKER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, GhastlySeekerEntity::checkGhastlySeekerSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.REDCAP.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.SLIME_GIRL.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.MAGICAL_SLIME.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkMobSpawnInLightRules);
-		SpawnPlacements.register(ModEntityTypes.MONOLITH.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, MonolithEntity::checkMonolithSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.CRIMSON_SLAUGHTERER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, CrimsonSlaughtererEntity::checkCrimsonSlaughtererSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.DYSSOMNIA.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, DyssomniaEntity::checkDyssomniaSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.SNOW_CANINE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.HARPY.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.SAVAGEFANG.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, SavagefangEntity::checkSavagefangSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.FORTRESS_KEEPER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkAnyLightMonsterSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.NECROTIC_REAPER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, NecroticReaperEntity::checkNecroticReaperSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.DODOMEKI.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.IMP.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkAnyLightMonsterSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.GLARYAD.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, GlaryadEntity::checkGlaryadSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.JIANGSHI.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules);
-		SpawnPlacements.register(ModEntityTypes.GIANT_MUMMY.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, GiantMummyEntity::checkGiantMummySpawnRules);
+		event.register(ModEntityTypes.ZOMBIE_GIRL.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.HUSK_GIRL.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkMonsterSpawnCanSeeSkyRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.DROWNED_GIRL.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, DrownedGirlEntity::checkDrownedGirlSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.SKELETON_GIRL.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.WITHER_SKELETON_GIRL.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.STRAY_GIRL.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, StrayGirlEntity::checkStrayGirlSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.CREEPER_GIRL.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.GHOST.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.WITHER_GHOST.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.ENDER_EXECUTOR.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.KOBOLD.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, KoboldEntity::checkKoboldSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.LICH.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, LichEntity::checkLichSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.OGRE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, OgreEntity::checkOgreSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.SPIDER_NEST.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, SpiderNestEntity::checkSpiderNestSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.MELTY_MONSTER.get(), SpawnPlacements.Type.IN_LAVA, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, MeltyMonsterEntity::checkMeltyMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.CURSED_DOLL.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.JACK_FROST.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.HORNET.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.DULLAHAN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.BANSHEE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.ALRAUNE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.CATOBLEPAS.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.SCORPION.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.KASHA.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkAnyLightMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.DOGU.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkMonsterSpawnCanNotSeeSkyRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.GHASTLY_SEEKER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, GhastlySeekerEntity::checkGhastlySeekerSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.REDCAP.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.SLIME_GIRL.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.MAGICAL_SLIME.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkMobSpawnInLightRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.MONOLITH.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, MonolithEntity::checkMonolithSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.CRIMSON_SLAUGHTERER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, CrimsonSlaughtererEntity::checkCrimsonSlaughtererSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.DYSSOMNIA.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, DyssomniaEntity::checkDyssomniaSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.SNOW_CANINE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.HARPY.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.SAVAGEFANG.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, SavagefangEntity::checkSavagefangSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.FORTRESS_KEEPER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkAnyLightMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.NECROTIC_REAPER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, NecroticReaperEntity::checkNecroticReaperSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.DODOMEKI.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.IMP.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkAnyLightMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.GLARYAD.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, GlaryadEntity::checkGlaryadSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.JIANGSHI.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.GIANT_MUMMY.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, GiantMummyEntity::checkGiantMummySpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
 	}
 
 	@SubscribeEvent
