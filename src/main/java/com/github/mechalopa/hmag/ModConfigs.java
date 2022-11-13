@@ -72,6 +72,12 @@ public class ModConfigs
 	public static ForgeConfigSpec.IntValue SPIDER_NEST_SPAWN_MAX_HEIGHT;
 	public static ForgeConfigSpec.IntValue NECROTIC_REAPER_SPAWN_MAX_HEIGHT;
 
+	public static ForgeConfigSpec.IntValue INSOMNIA_FRUIT_COOLDOWN_LEVEL_0;
+	public static ForgeConfigSpec.IntValue INSOMNIA_FRUIT_COOLDOWN_LEVEL_1;
+	public static ForgeConfigSpec.IntValue INSOMNIA_FRUIT_COOLDOWN_LEVEL_2;
+	public static ForgeConfigSpec.IntValue INSOMNIA_FRUIT_COOLDOWN_LEVEL_3;
+	public static ForgeConfigSpec.IntValue INSOMNIA_FRUIT_COOLDOWN_LEVEL_4;
+	public static ForgeConfigSpec.IntValue INSOMNIA_FRUIT_COOLDOWN_LEVEL_5;
 	public static ForgeConfigSpec.IntValue TOTEM_OF_REPULSE_COOLDOWN;
 
 	public static ForgeConfigSpec.IntValue HEALTH_BOOST_MAX_LEVEL;
@@ -191,6 +197,12 @@ public class ModConfigs
 
 		SERVER_BUILDER.push("item");
 
+		INSOMNIA_FRUIT_COOLDOWN_LEVEL_0 = SERVER_BUILDER.defineInRange("insomuniaFruitCooldownLevel0", 1800, 0, 240000);
+		INSOMNIA_FRUIT_COOLDOWN_LEVEL_1 = SERVER_BUILDER.defineInRange("insomuniaFruitCooldownLevel1", 1800, 0, 240000);
+		INSOMNIA_FRUIT_COOLDOWN_LEVEL_2 = SERVER_BUILDER.defineInRange("insomuniaFruitCooldownLevel2", 1800, 0, 240000);
+		INSOMNIA_FRUIT_COOLDOWN_LEVEL_3 = SERVER_BUILDER.defineInRange("insomuniaFruitCooldownLevel3", 1600, 0, 240000);
+		INSOMNIA_FRUIT_COOLDOWN_LEVEL_4 = SERVER_BUILDER.defineInRange("insomuniaFruitCooldownLevel4", 1400, 0, 240000);
+		INSOMNIA_FRUIT_COOLDOWN_LEVEL_5 = SERVER_BUILDER.defineInRange("insomuniaFruitCooldownLevel5", 1200, 0, 240000);
 		TOTEM_OF_REPULSE_COOLDOWN = SERVER_BUILDER.defineInRange("totemOfRepulseCooldown", 1800, 0, 240000);
 
 		SERVER_BUILDER.pop();
@@ -305,6 +317,12 @@ public class ModConfigs
 		public static int SPIDER_NEST_SPAWN_MAX_HEIGHT;
 		public static int NECROTIC_REAPER_SPAWN_MAX_HEIGHT;
 
+		public static int INSOMNIA_FRUIT_COOLDOWN_LEVEL_0;
+		public static int INSOMNIA_FRUIT_COOLDOWN_LEVEL_1;
+		public static int INSOMNIA_FRUIT_COOLDOWN_LEVEL_2;
+		public static int INSOMNIA_FRUIT_COOLDOWN_LEVEL_3;
+		public static int INSOMNIA_FRUIT_COOLDOWN_LEVEL_4;
+		public static int INSOMNIA_FRUIT_COOLDOWN_LEVEL_5;
 		public static int TOTEM_OF_REPULSE_COOLDOWN;
 
 		public static int HEALTH_BOOST_MAX_LEVEL;
@@ -402,6 +420,12 @@ public class ModConfigs
 			SPIDER_NEST_SPAWN_MAX_HEIGHT = ModConfigs.SPIDER_NEST_SPAWN_MAX_HEIGHT.get();
 			NECROTIC_REAPER_SPAWN_MAX_HEIGHT = ModConfigs.NECROTIC_REAPER_SPAWN_MAX_HEIGHT.get();
 
+			INSOMNIA_FRUIT_COOLDOWN_LEVEL_0 = ModConfigs.INSOMNIA_FRUIT_COOLDOWN_LEVEL_0.get();
+			INSOMNIA_FRUIT_COOLDOWN_LEVEL_1 = ModConfigs.INSOMNIA_FRUIT_COOLDOWN_LEVEL_1.get();
+			INSOMNIA_FRUIT_COOLDOWN_LEVEL_2 = ModConfigs.INSOMNIA_FRUIT_COOLDOWN_LEVEL_2.get();
+			INSOMNIA_FRUIT_COOLDOWN_LEVEL_3 = ModConfigs.INSOMNIA_FRUIT_COOLDOWN_LEVEL_3.get();
+			INSOMNIA_FRUIT_COOLDOWN_LEVEL_4 = ModConfigs.INSOMNIA_FRUIT_COOLDOWN_LEVEL_4.get();
+			INSOMNIA_FRUIT_COOLDOWN_LEVEL_5 = ModConfigs.INSOMNIA_FRUIT_COOLDOWN_LEVEL_5.get();
 			TOTEM_OF_REPULSE_COOLDOWN = ModConfigs.TOTEM_OF_REPULSE_COOLDOWN.get();
 
 			HEALTH_BOOST_MAX_LEVEL = ModConfigs.HEALTH_BOOST_MAX_LEVEL.get();
