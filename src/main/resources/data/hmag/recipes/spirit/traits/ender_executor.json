@@ -1,0 +1,25 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "sprit"
+    }
+  ],
+  "type": "spirit:mob_trait",
+  "entity": "hmag:ender_executor",
+  "traits": [
+    {
+      "type": "spirit:damage",
+      "additionalDamage": 4.0
+    },
+    {
+      "type": "spirit:potion_effect",
+      "effects": [
+        {
+          "effect": "hmag:ender_rage",
+          "duration": 60
+        }
+      ]
+    }
+  ]
+}

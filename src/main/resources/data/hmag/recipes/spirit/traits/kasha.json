@@ -1,0 +1,16 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "sprit"
+    }
+  ],
+  "type": "spirit:mob_trait",
+  "entity": "hmag:kasha",
+  "traits": [
+    {
+      "type": "spirit:fire",
+      "duration": 15
+    }
+  ]
+}

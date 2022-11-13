@@ -1,0 +1,25 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "sprit"
+    }
+  ],
+  "type": "spirit:mob_trait",
+  "entity": "hmag:crimson_slaughterer",
+  "traits": [
+    {
+      "type": "spirit:damage",
+      "additionalDamage": 3.0
+    },
+    {
+      "type": "spirit:potion_effect",
+      "effects": [
+        {
+          "effect": "minecraft:hunger",
+          "duration": 150
+        }
+      ]
+    }
+  ]
+}

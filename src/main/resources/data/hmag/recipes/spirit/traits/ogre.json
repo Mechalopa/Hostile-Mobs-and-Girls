@@ -1,0 +1,20 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "sprit"
+    }
+  ],
+  "type": "spirit:mob_trait",
+  "entity": "hmag:ogre",
+  "traits": [
+    {
+      "type": "spirit:knockback",
+      "knockback": 1
+    },
+    {
+      "type": "spirit:damage",
+      "additionalDamage": 3.5
+    }
+  ]
+}

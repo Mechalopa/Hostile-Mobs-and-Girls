@@ -1,0 +1,11 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "vitalize"
+    }
+  ],
+  "type": "vitalize:beheading_drops",
+  "entity": "hmag:zombie_girl",
+  "head": "minecraft:zombie_head"
+}

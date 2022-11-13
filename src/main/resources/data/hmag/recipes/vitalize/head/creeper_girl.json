@@ -1,0 +1,11 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "vitalize"
+    }
+  ],
+  "type": "vitalize:beheading_drops",
+  "entity": "hmag:creeper_girl",
+  "head": "minecraft:creeper_head"
+}

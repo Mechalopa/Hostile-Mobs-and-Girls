@@ -1,0 +1,33 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "sprit"
+    }
+  ],
+  "type": "spirit:mob_trait",
+  "entity": "hmag:monolith",
+  "traits": [
+    {
+      "type": "spirit:potion_effect",
+      "effects": [
+        {
+          "effect": "minecraft:blindness",
+          "duration": 60
+        },
+        {
+          "effect": "minecraft:slowness",
+          "duration": 60
+        },
+        {
+          "effect": "minecraft:mining_fatigue",
+          "duration": 60
+        },
+        {
+          "effect": "minecraft:weakness",
+          "duration": 60
+        }
+      ]
+    }
+  ]
+}
