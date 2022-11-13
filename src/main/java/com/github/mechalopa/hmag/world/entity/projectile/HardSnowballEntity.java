@@ -18,22 +18,28 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.network.PlayMessages;
 
 public class HardSnowballEntity extends ModProjectileItemEntity
 {
-	public HardSnowballEntity(EntityType<? extends HardSnowballEntity> type, Level worldIn)
+	public HardSnowballEntity(EntityType<? extends HardSnowballEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 	}
 
-	public HardSnowballEntity(Level worldIn, LivingEntity throwerIn)
+	public HardSnowballEntity(Level level, LivingEntity thrower)
 	{
-		super(ModEntityTypes.HARD_SNOWBALL.get(), throwerIn, worldIn);
+		super(ModEntityTypes.HARD_SNOWBALL.get(), thrower, level);
 	}
 
-	public HardSnowballEntity(Level worldIn, double x, double y, double z)
+	public HardSnowballEntity(Level level, double x, double y, double z)
 	{
-		super(ModEntityTypes.HARD_SNOWBALL.get(), x, y, z, worldIn);
+		super(ModEntityTypes.HARD_SNOWBALL.get(), x, y, z, level);
+	}
+
+	public HardSnowballEntity(PlayMessages.SpawnEntity spawnEntity, Level level)
+	{
+		this(ModEntityTypes.HARD_SNOWBALL.get(), level);
 	}
 
 	@Override

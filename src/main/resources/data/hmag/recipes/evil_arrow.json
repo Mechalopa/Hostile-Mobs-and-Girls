@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:arrow"
+    },
+    "X": {
+      "item": "hmag:evil_crystal_fragment"
+    }
+  },
+  "result": {
+    "item": "hmag:evil_arrow",
+    "count": 8
+  }
+}

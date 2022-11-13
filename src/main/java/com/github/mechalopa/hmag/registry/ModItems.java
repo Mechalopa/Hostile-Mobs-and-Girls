@@ -5,6 +5,7 @@ import com.github.mechalopa.hmag.world.item.AncientShieldItem;
 import com.github.mechalopa.hmag.world.item.CrimsonBowItem;
 import com.github.mechalopa.hmag.world.item.EnchantmentUpgradeItem;
 import com.github.mechalopa.hmag.world.item.EndlessPearlItem;
+import com.github.mechalopa.hmag.world.item.EvilArrowItem;
 import com.github.mechalopa.hmag.world.item.EvilFlameItem;
 import com.github.mechalopa.hmag.world.item.EvilThornItem;
 import com.github.mechalopa.hmag.world.item.ExperienceBerryItem;
@@ -103,6 +104,7 @@ public class ModItems
 	public static final RegistryObject<Item> IRON_SPEAR = REGISTRY.register("iron_spear", () -> new ModSwordItem(Tiers.IRON, 2.0F, -2.4F, new Item.Properties().tab(HMaG.MODTAB)));
 	public static final RegistryObject<Item> GOLDEN_FORK = REGISTRY.register("golden_fork", () -> new ModSwordItem(Tiers.GOLD, 2.0F, -2.4F, new Item.Properties().tab(HMaG.MODTAB)));
 	public static final RegistryObject<Item> CRIMSON_BOW = REGISTRY.register("crimson_bow", () -> new CrimsonBowItem(new Item.Properties().tab(HMaG.MODTAB).durability(575).rarity(Rarity.RARE)));
+	public static final RegistryObject<Item> EVIL_ARROW = REGISTRY.register("evil_arrow", () -> new EvilArrowItem(new Item.Properties().tab(HMaG.MODTAB)));
 	public static final RegistryObject<Item> ANCIENT_HELMET = REGISTRY.register("ancient_helmet", () -> new ArmorItem(ModArmorMaterial.ANCIENT, EquipmentSlot.HEAD, (new Item.Properties()).tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON)));
 	public static final RegistryObject<Item> ANCIENT_CHESTPLATE = REGISTRY.register("ancient_chestplate", () -> new ArmorItem(ModArmorMaterial.ANCIENT, EquipmentSlot.CHEST, (new Item.Properties()).tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON)));
 	public static final RegistryObject<Item> ANCIENT_LEGGINGS = REGISTRY.register("ancient_leggings", () -> new ArmorItem(ModArmorMaterial.ANCIENT, EquipmentSlot.LEGS, (new Item.Properties()).tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON)));

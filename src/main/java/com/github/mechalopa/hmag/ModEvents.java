@@ -122,28 +122,37 @@ public class ModEvents
 			}
 			else
 			{
-				if (source.getDirectEntity() != null && source.getDirectEntity() instanceof AbstractArrow && source.getEntity() != null && source.getEntity() instanceof LivingEntity)
+				if (source.getDirectEntity() != null && source.getDirectEntity() instanceof AbstractArrow)
 				{
-					if (((AbstractArrow)source.getDirectEntity()).shotFromCrossbow())
+					if (source.getDirectEntity().getType().equals(ModEntityTypes.EVIL_ARROW.get()) && ((AbstractArrow)source.getDirectEntity()).isCritArrow())
 					{
-						LivingEntity attacker = (LivingEntity)source.getEntity();
-						int level = 0;
+						event.setAmount(event.getAmount() * 1.2F);
+						source.bypassArmor().bypassMagic();
+					}
 
-						for (InteractionHand hand : InteractionHand.values())
+					if (source.getEntity() != null && source.getEntity() instanceof LivingEntity)
+					{
+						if (((AbstractArrow)source.getDirectEntity()).shotFromCrossbow())
 						{
-							ItemStack stack = attacker.getItemInHand(hand);
+							LivingEntity attacker = (LivingEntity)source.getEntity();
+							int level = 0;
 
-							if (!stack.isEmpty() && stack.hasTag())
+							for (InteractionHand hand : InteractionHand.values())
 							{
-								level = Math.max(level, EnchantmentHelper.getTagEnchantmentLevel(ModEnchantments.ANTI_AIR.get(), stack));
+								ItemStack stack = attacker.getItemInHand(hand);
+
+								if (!stack.isEmpty() && stack.hasTag())
+								{
+									level = Math.max(level, EnchantmentHelper.getTagEnchantmentLevel(ModEnchantments.ANTI_AIR.get(), stack));
+								}
 							}
-						}
 
-						if (level > 0)
-						{
-							if (!livingentity.isOnGround() && !livingentity.isInWaterOrBubble() && !livingentity.isInLava())
+							if (level > 0)
 							{
-								event.setAmount(event.getAmount() * (1.0F + level * 0.3F));
+								if (!livingentity.isOnGround() && !livingentity.isInWaterOrBubble() && !livingentity.isInLava())
+								{
+									event.setAmount(event.getAmount() * (1.0F + level * 0.3F));
+								}
 							}
 						}
 					}
@@ -498,7 +507,7 @@ public class ModEvents
 
 				if (event.getSlotType().getType() == EquipmentSlot.Type.ARMOR && i >= 0 && i < HealthBoostEnchantment.HEALTH_BOOST_ENCHANTMENT_MAX_HEALTH_UUIDS.length)
 				{
-					int level = EnchantmentHelper.getTagEnchantmentLevel(ModEnchantments.HEALTH_BOOST.get(), stack);
+					final int level = EnchantmentHelper.getTagEnchantmentLevel(ModEnchantments.HEALTH_BOOST.get(), stack);
 
 					if (level > 0)
 					{

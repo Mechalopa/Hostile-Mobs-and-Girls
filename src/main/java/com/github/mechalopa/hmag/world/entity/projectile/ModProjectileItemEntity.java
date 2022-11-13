@@ -18,19 +18,19 @@ public abstract class ModProjectileItemEntity extends ThrowableItemProjectile
 {
 	private static final EntityDataAccessor<Float> DAMAGE = SynchedEntityData.defineId(ModProjectileItemEntity.class, EntityDataSerializers.FLOAT);
 
-	public ModProjectileItemEntity(EntityType<? extends ModProjectileItemEntity> type, Level worldIn)
+	public ModProjectileItemEntity(EntityType<? extends ModProjectileItemEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 	}
 
-	public ModProjectileItemEntity(EntityType<? extends ModProjectileItemEntity> type, LivingEntity throwerIn, Level worldIn)
+	public ModProjectileItemEntity(EntityType<? extends ModProjectileItemEntity> type, LivingEntity thrower, Level level)
 	{
-		super(type, throwerIn, worldIn);
+		super(type, thrower, level);
 	}
 
-	public ModProjectileItemEntity(EntityType<? extends ModProjectileItemEntity> type, double x, double y, double z, Level worldIn)
+	public ModProjectileItemEntity(EntityType<? extends ModProjectileItemEntity> type, double x, double y, double z, Level level)
 	{
-		super(type, x, y, z, worldIn);
+		super(type, x, y, z, level);
 	}
 
 	@Override

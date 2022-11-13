@@ -23,26 +23,32 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.ForgeEventFactory;
+import net.minecraftforge.network.PlayMessages;
 
 public class MagmaBulletEntity extends ModDamagingProjectileEntity
 {
 	private static final EntityDataAccessor<Integer> LIFE_TIME = SynchedEntityData.defineId(MagmaBulletEntity.class, EntityDataSerializers.INT);
 	private int life = 25;
 
-	public MagmaBulletEntity(EntityType<? extends MagmaBulletEntity> type, Level worldIn)
+	public MagmaBulletEntity(EntityType<? extends MagmaBulletEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 	}
 
-	public MagmaBulletEntity(Level worldIn, LivingEntity shooter, double accelX, double accelY, double accelZ)
+	public MagmaBulletEntity(Level level, LivingEntity shooter, double accelX, double accelY, double accelZ)
 	{
-		super(ModEntityTypes.MAGMA_BULLET.get(), shooter, accelX, accelY, accelZ, worldIn);
+		super(ModEntityTypes.MAGMA_BULLET.get(), shooter, accelX, accelY, accelZ, level);
 	}
 
 	@OnlyIn(Dist.CLIENT)
-	public MagmaBulletEntity(Level worldIn, double x, double y, double z, double accelX, double accelY, double accelZ)
+	public MagmaBulletEntity(Level level, double x, double y, double z, double accelX, double accelY, double accelZ)
 	{
-		super(ModEntityTypes.MAGMA_BULLET.get(), x, y, z, accelX, accelY, accelZ, worldIn);
+		super(ModEntityTypes.MAGMA_BULLET.get(), x, y, z, accelX, accelY, accelZ, level);
+	}
+
+	public MagmaBulletEntity(PlayMessages.SpawnEntity spawnEntity, Level level)
+	{
+		this(ModEntityTypes.MAGMA_BULLET.get(), level);
 	}
 
 	@Override
@@ -196,7 +202,7 @@ public class MagmaBulletEntity extends ModDamagingProjectileEntity
 	}
 
 	@Override
-	protected float getEyeHeight(Pose poseIn, EntityDimensions sizeIn)
+	protected float getEyeHeight(Pose pose, EntityDimensions size)
 	{
 		return 0.15F;
 	}

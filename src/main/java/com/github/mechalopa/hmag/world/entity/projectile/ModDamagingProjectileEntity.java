@@ -21,20 +21,20 @@ public abstract class ModDamagingProjectileEntity extends AbstractHurtingProject
 {
 	private static final EntityDataAccessor<Float> DAMAGE = SynchedEntityData.defineId(ModDamagingProjectileEntity.class, EntityDataSerializers.FLOAT);
 
-	public ModDamagingProjectileEntity(EntityType<? extends ModDamagingProjectileEntity> type, Level worldIn)
+	public ModDamagingProjectileEntity(EntityType<? extends ModDamagingProjectileEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 	}
 
-	public ModDamagingProjectileEntity(EntityType<? extends ModDamagingProjectileEntity> type, LivingEntity shooter, double accelX, double accelY, double accelZ, Level worldIn)
+	public ModDamagingProjectileEntity(EntityType<? extends ModDamagingProjectileEntity> type, LivingEntity shooter, double accelX, double accelY, double accelZ, Level level)
 	{
-		super(type, shooter, accelX, accelY, accelZ, worldIn);
+		super(type, shooter, accelX, accelY, accelZ, level);
 	}
 
 	@OnlyIn(Dist.CLIENT)
-	public ModDamagingProjectileEntity(EntityType<? extends ModDamagingProjectileEntity> type, double x, double y, double z, double accelX, double accelY, double accelZ, Level worldIn)
+	public ModDamagingProjectileEntity(EntityType<? extends ModDamagingProjectileEntity> type, double x, double y, double z, double accelX, double accelY, double accelZ, Level level)
 	{
-		super(type, x, y, z, accelX, accelY, accelZ, worldIn);
+		super(type, x, y, z, accelX, accelY, accelZ, level);
 	}
 
 	@Override

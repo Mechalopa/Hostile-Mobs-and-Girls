@@ -27,6 +27,7 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.network.PlayMessages;
 
 public class MagicBulletEntity extends ModDamagingProjectileEntity
 {
@@ -35,20 +36,25 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 	private static final EntityDataAccessor<Byte> PIERCE_LEVEL = SynchedEntityData.defineId(MagicBulletEntity.class, EntityDataSerializers.BYTE);
 	private IntOpenHashSet piercingIgnoreEntityIds;
 
-	public MagicBulletEntity(EntityType<? extends MagicBulletEntity> type, Level worldIn)
+	public MagicBulletEntity(EntityType<? extends MagicBulletEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 	}
 
-	public MagicBulletEntity(Level worldIn, LivingEntity shooter, double accelX, double accelY, double accelZ)
+	public MagicBulletEntity(Level level, LivingEntity shooter, double accelX, double accelY, double accelZ)
 	{
-		super(ModEntityTypes.MAGIC_BULLET.get(), shooter, accelX, accelY, accelZ, worldIn);
+		super(ModEntityTypes.MAGIC_BULLET.get(), shooter, accelX, accelY, accelZ, level);
 	}
 
 	@OnlyIn(Dist.CLIENT)
-	public MagicBulletEntity(Level worldIn, double x, double y, double z, double accelX, double accelY, double accelZ)
+	public MagicBulletEntity(Level level, double x, double y, double z, double accelX, double accelY, double accelZ)
 	{
-		super(ModEntityTypes.MAGIC_BULLET.get(), x, y, z, accelX, accelY, accelZ, worldIn);
+		super(ModEntityTypes.MAGIC_BULLET.get(), x, y, z, accelX, accelY, accelZ, level);
+	}
+
+	public MagicBulletEntity(PlayMessages.SpawnEntity spawnEntity, Level level)
+	{
+		this(ModEntityTypes.MAGIC_BULLET.get(), level);
 	}
 
 	@Override
@@ -209,9 +215,9 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 	}
 
 	@Override
-	protected boolean canHitEntity(Entity entityIn)
+	protected boolean canHitEntity(Entity entity)
 	{
-		return super.canHitEntity(entityIn) && (this.getOwner() != null && !this.getOwner().equals(entityIn)) && (this.piercingIgnoreEntityIds == null || !this.piercingIgnoreEntityIds.contains(entityIn.getId()));
+		return super.canHitEntity(entity) && (this.getOwner() != null && !this.getOwner().equals(entity)) && (this.piercingIgnoreEntityIds == null || !this.piercingIgnoreEntityIds.contains(entity.getId()));
 	}
 
 	@Override
@@ -268,14 +274,14 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 		return this.entityData.get(DATA_VARIANT_ID);
 	}
 
-	public void setVariant(int typeIn)
+	public void setVariant(int type)
 	{
-		if (typeIn < 0 || typeIn >= 3)
+		if (type < 0 || type >= 3)
 		{
-			typeIn = 0;
+			type = 0;
 		}
 
-		this.entityData.set(DATA_VARIANT_ID, typeIn);
+		this.entityData.set(DATA_VARIANT_ID, type);
 	}
 
 	public void setPierceLevel(byte amount)

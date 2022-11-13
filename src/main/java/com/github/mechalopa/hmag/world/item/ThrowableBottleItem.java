@@ -30,10 +30,10 @@ public class ThrowableBottleItem extends ModItem
 		DispenserBlock.registerBehavior(this, new AbstractProjectileDispenseBehavior()
 		{
 			@Override
-			protected Projectile getProjectile(Level worldIn, Position position, ItemStack stackIn)
+			protected Projectile getProjectile(Level level, Position position, ItemStack stack)
 			{
-				return Util.make(new ThrowableBottleEntity(worldIn, position.x(), position.y(), position.z()), (e) -> {
-					e.setItem(stackIn);
+				return Util.make(new ThrowableBottleEntity(level, position.x(), position.y(), position.z()), (e) -> {
+					e.setItem(stack);
 				});
 			}
 

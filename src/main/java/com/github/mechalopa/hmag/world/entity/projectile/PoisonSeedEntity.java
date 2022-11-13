@@ -20,22 +20,28 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.network.PlayMessages;
 
 public class PoisonSeedEntity extends ModProjectileItemEntity
 {
-	public PoisonSeedEntity(EntityType<? extends PoisonSeedEntity> type, Level worldIn)
+	public PoisonSeedEntity(EntityType<? extends PoisonSeedEntity> type, Level level)
 	{
-		super(type, worldIn);
+		super(type, level);
 	}
 
-	public PoisonSeedEntity(Level worldIn, LivingEntity throwerIn)
+	public PoisonSeedEntity(Level level, LivingEntity thrower)
 	{
-		super(ModEntityTypes.POISON_SEED.get(), throwerIn, worldIn);
+		super(ModEntityTypes.POISON_SEED.get(), thrower, level);
 	}
 
-	public PoisonSeedEntity(Level worldIn, double x, double y, double z)
+	public PoisonSeedEntity(Level level, double x, double y, double z)
 	{
-		super(ModEntityTypes.POISON_SEED.get(), x, y, z, worldIn);
+		super(ModEntityTypes.POISON_SEED.get(), x, y, z, level);
+	}
+
+	public PoisonSeedEntity(PlayMessages.SpawnEntity spawnEntity, Level level)
+	{
+		this(ModEntityTypes.POISON_SEED.get(), level);
 	}
 
 	@Override

@@ -55,6 +55,7 @@ import com.github.mechalopa.hmag.client.renderer.DrownedGirlRenderer;
 import com.github.mechalopa.hmag.client.renderer.DullahanRenderer;
 import com.github.mechalopa.hmag.client.renderer.DyssomniaRenderer;
 import com.github.mechalopa.hmag.client.renderer.EnderExecutorRenderer;
+import com.github.mechalopa.hmag.client.renderer.EvilArrowRenderer;
 import com.github.mechalopa.hmag.client.renderer.FortressKeeperRenderer;
 import com.github.mechalopa.hmag.client.renderer.GhastlySeekerRenderer;
 import com.github.mechalopa.hmag.client.renderer.GhostRenderer;
@@ -193,6 +194,7 @@ public class ModClientEventBusSubscriber
 			return new ModThrownItemRenderer<>(p, 1.0F, true);
 		});
 		event.registerEntityRenderer(ModEntityTypes.MAGMA_BULLET.get(), MagmaBulletRenderer::new);
+		event.registerEntityRenderer(ModEntityTypes.EVIL_ARROW.get(), EvilArrowRenderer::new);
 	}
 
 	@SubscribeEvent

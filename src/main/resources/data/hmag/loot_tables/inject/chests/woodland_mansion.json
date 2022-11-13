@@ -162,6 +162,21 @@
             }
           ],
           "name": "hmag:necrofiber"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2.0,
+                "max": 7.0,
+                "type": "minecraft:uniform"
+              }
+            }
+          ],
+          "name": "hmag:evil_arrow"
         }
       ]
     }

@@ -22,22 +22,28 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.network.NetworkHooks;
+import net.minecraftforge.network.PlayMessages;
 
 public class ThrowableBottleEntity extends ThrowableItemProjectile
 {
-	public ThrowableBottleEntity(EntityType<? extends ThrowableBottleEntity> type, Level world)
+	public ThrowableBottleEntity(EntityType<? extends ThrowableBottleEntity> type, Level level)
 	{
-		super(type, world);
+		super(type, level);
 	}
 
-	public ThrowableBottleEntity(Level worldIn, LivingEntity throwerIn)
+	public ThrowableBottleEntity(Level level, LivingEntity thrower)
 	{
-		super(ModEntityTypes.THROWABLE_BOTTLE.get(), throwerIn, worldIn);
+		super(ModEntityTypes.THROWABLE_BOTTLE.get(), thrower, level);
 	}
 
-	public ThrowableBottleEntity(Level worldIn, double x, double y, double z)
+	public ThrowableBottleEntity(Level level, double x, double y, double z)
 	{
-		super(ModEntityTypes.THROWABLE_BOTTLE.get(), x, y, z, worldIn);
+		super(ModEntityTypes.THROWABLE_BOTTLE.get(), x, y, z, level);
+	}
+
+	public ThrowableBottleEntity(PlayMessages.SpawnEntity spawnEntity, Level level)
+	{
+		this(ModEntityTypes.THROWABLE_BOTTLE.get(), level);
 	}
 
 	@Override
