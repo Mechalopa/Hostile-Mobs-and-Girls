@@ -124,10 +124,17 @@ public class ModEvents
 			{
 				if (source.getDirectEntity() != null && source.getDirectEntity() instanceof AbstractArrow)
 				{
-					if (source.getDirectEntity().getType().equals(ModEntityTypes.EVIL_ARROW.get()) && ((AbstractArrow)source.getDirectEntity()).isCritArrow())
+					if (source.getDirectEntity().getType().equals(ModEntityTypes.EVIL_ARROW.get()))
 					{
-						event.setAmount(event.getAmount() * 1.2F);
-						source.bypassArmor().bypassMagic();
+						if (((AbstractArrow)source.getDirectEntity()).isCritArrow())
+						{
+							event.setAmount(event.getAmount() * 1.2F);
+							source.bypassArmor().bypassMagic();
+						}
+						else
+						{
+							event.setAmount(event.getAmount() * 1.1F);
+						}
 					}
 
 					if (source.getEntity() != null && source.getEntity() instanceof LivingEntity)

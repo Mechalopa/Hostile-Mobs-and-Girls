@@ -19,7 +19,7 @@ public class ModEffects
 
 	public static final RegistryObject<MobEffect> ENDER_RAGE = REGISTRY.register("ender_rage", () -> new EnderRageEffect(MobEffectCategory.HARMFUL, 0xC55BD3));
 	public static final RegistryObject<MobEffect> COMBUSTION = REGISTRY.register("combustion", () -> new CombustionEffect(MobEffectCategory.HARMFUL, 0xE66410));
-	public static final RegistryObject<MobEffect> DARKNESS_RESISTANCE = REGISTRY.register("darkness_resistance", () -> new DarknessResistanceEffect(MobEffectCategory.BENEFICIAL, 0xFFFFFF));
+	public static final RegistryObject<MobEffect> DARKNESS_RESISTANCE = REGISTRY.register("darkness_resistance", () -> new DarknessResistanceEffect(MobEffectCategory.BENEFICIAL, 0xD5D8E4));
 
 	@SubscribeEvent
 	public static void register(IEventBus eventBus)

@@ -2,6 +2,7 @@ package com.github.mechalopa.hmag.world.item;
 
 import java.util.List;
 
+import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.registry.ModEffects;
 import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.util.ModUtils;
@@ -100,7 +101,10 @@ public class TotemOfRepulseItem extends Item
 					}
 				}
 
-				player.getCooldowns().addCooldown(this, 1800);
+				if (ModConfigs.cachedServer.TOTEM_OF_REPULSE_COOLDOWN > 0)
+				{
+					player.getCooldowns().addCooldown(this, ModConfigs.cachedServer.TOTEM_OF_REPULSE_COOLDOWN);
+				}
 
 				if (player instanceof ServerPlayer)
 				{

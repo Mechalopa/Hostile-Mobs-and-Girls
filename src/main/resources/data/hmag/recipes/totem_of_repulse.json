@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "EPE",
-    "X#A",
-    "ENE"
+    "YXY",
+    "E#E",
+    "SNS"
   ],
   "key": {
     "#": {
@@ -12,17 +12,17 @@
     "E": {
       "item": "minecraft:echo_shard"
     },
+    "S": {
+      "item": "minecraft:sculk_catalyst"
+    },
     "X": {
-      "item": "hmag:evil_crystal"
+      "item": "hmag:evil_crystal_block"
     },
     "N": {
       "tag": "forge:nether_stars"
     },
-    "P": {
-      "item": "hmag:purification_cloth"
-    },
-    "A": {
-      "item": "hmag:ancient_stone"
+    "Y": {
+      "item": "hmag:necrofiber"
     }
   },
   "result": {

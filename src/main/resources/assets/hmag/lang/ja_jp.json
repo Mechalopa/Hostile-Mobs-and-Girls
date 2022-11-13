@@ -123,7 +123,7 @@
   "item.hmag.evil_thorn": "邪悪な棘",
   "item.hmag.purification_cloth": "浄化の布",
   "item.hmag.endless_pearl": "エンドレスパール",
-  "item.hmag.totem_of_repulse": "撃退のトーテム",
+  "item.hmag.totem_of_repulse": "退散のトーテム",
   "item.hmag.zombie_girl_spawn_egg": "ゾンビガールのスポーンエッグ",
   "item.hmag.husk_girl_spawn_egg": "ハスクガールのスポーンエッグ",
   "item.hmag.drowned_girl_spawn_egg": "ドラウンドガールのスポーンエッグ",
@@ -228,6 +228,6 @@
   "enchantment.hmag.water_aspect.desc": "水に濡れるとダメージを受けるモブに対する攻撃力を増加させます。また、炎上しているモブを消火します。",
   "enchantment.hmag.anti_air.desc": "空中にいるモブに対するダメージを増加させます。",
   "effect.hmag.ender_rage.description": "影響を受けたモブに、視線と関係なくエンダーマンが敵対します。",
-  "effect.hmag.combustion.description": "影響を受けたモブは、濡れていない限り常に炎上します。"
-  "effect.hmag.darkness_resistance.description": "盲目と暗闇のステータス効果を受けなくなります。",
+  "effect.hmag.combustion.description": "影響を受けたモブは、濡れていない限り常に炎上します。",
+  "effect.hmag.darkness_resistance.description": "盲目と暗闇のステータス効果を受けなくなります。"
 }

@@ -72,6 +72,8 @@ public class ModConfigs
 	public static ForgeConfigSpec.IntValue SPIDER_NEST_SPAWN_MAX_HEIGHT;
 	public static ForgeConfigSpec.IntValue NECROTIC_REAPER_SPAWN_MAX_HEIGHT;
 
+	public static ForgeConfigSpec.IntValue TOTEM_OF_REPULSE_COOLDOWN;
+
 	public static ForgeConfigSpec.IntValue HEALTH_BOOST_MAX_LEVEL;
 	public static ForgeConfigSpec.BooleanValue HEALTH_BOOST_IS_TREASURE;
 	public static ForgeConfigSpec.BooleanValue HEALTH_BOOST_IS_TRADEABLE;
@@ -187,6 +189,12 @@ public class ModConfigs
 
 		SERVER_BUILDER.pop();
 
+		SERVER_BUILDER.push("item");
+
+		TOTEM_OF_REPULSE_COOLDOWN = SERVER_BUILDER.defineInRange("totemOfRepulseCooldown", 1800, 0, 240000);
+
+		SERVER_BUILDER.pop();
+
 		SERVER_BUILDER.push("enchantment");
 
 		HEALTH_BOOST_MAX_LEVEL = SERVER_BUILDER.defineInRange("healthBoostMaxLevel", 5, 1, 10);
@@ -297,6 +305,8 @@ public class ModConfigs
 		public static int SPIDER_NEST_SPAWN_MAX_HEIGHT;
 		public static int NECROTIC_REAPER_SPAWN_MAX_HEIGHT;
 
+		public static int TOTEM_OF_REPULSE_COOLDOWN;
+
 		public static int HEALTH_BOOST_MAX_LEVEL;
 		public static boolean HEALTH_BOOST_IS_TREASURE;
 		public static boolean HEALTH_BOOST_IS_TRADEABLE;
@@ -391,6 +401,8 @@ public class ModConfigs
 			OGRE_SPAWN_MAX_HEIGHT = ModConfigs.OGRE_SPAWN_MAX_HEIGHT.get();
 			SPIDER_NEST_SPAWN_MAX_HEIGHT = ModConfigs.SPIDER_NEST_SPAWN_MAX_HEIGHT.get();
 			NECROTIC_REAPER_SPAWN_MAX_HEIGHT = ModConfigs.NECROTIC_REAPER_SPAWN_MAX_HEIGHT.get();
+
+			TOTEM_OF_REPULSE_COOLDOWN = ModConfigs.TOTEM_OF_REPULSE_COOLDOWN.get();
 
 			HEALTH_BOOST_MAX_LEVEL = ModConfigs.HEALTH_BOOST_MAX_LEVEL.get();
 			HEALTH_BOOST_IS_TREASURE = ModConfigs.HEALTH_BOOST_IS_TREASURE.get();
