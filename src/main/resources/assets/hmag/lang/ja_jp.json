@@ -123,6 +123,7 @@
   "item.hmag.evil_thorn": "邪悪な棘",
   "item.hmag.purification_cloth": "浄化の布",
   "item.hmag.endless_pearl": "エンドレスパール",
+  "item.hmag.totem_of_repulse": "撃退のトーテム",
   "item.hmag.zombie_girl_spawn_egg": "ゾンビガールのスポーンエッグ",
   "item.hmag.husk_girl_spawn_egg": "ハスクガールのスポーンエッグ",
   "item.hmag.drowned_girl_spawn_egg": "ドラウンドガールのスポーンエッグ",
@@ -167,6 +168,7 @@
   "item.hmag.giant_mummy_spawn_egg": "ジャイアントミイラのスポーンエッグ",
   "effect.hmag.ender_rage": "エンダーの怒り",
   "effect.hmag.combustion": "炎上",
+  "effect.hmag.darkness_resistance": "闇耐性",
   "item.minecraft.potion.effect.hmag.kobold": "コボルドの知恵のポーション",
   "item.minecraft.potion.effect.hmag.kobold_strong": "コボルドの知恵のポーション",
   "item.minecraft.potion.effect.hmag.healing_3": "治癒のポーション",
@@ -227,4 +229,5 @@
   "enchantment.hmag.anti_air.desc": "空中にいるモブに対するダメージを増加させます。",
   "effect.hmag.ender_rage.description": "影響を受けたモブに、視線と関係なくエンダーマンが敵対します。",
   "effect.hmag.combustion.description": "影響を受けたモブは、濡れていない限り常に炎上します。"
+  "effect.hmag.darkness_resistance.description": "盲目と暗闇のステータス効果を受けなくなります。",
 }

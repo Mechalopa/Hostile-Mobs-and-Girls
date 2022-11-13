@@ -1,10 +1,13 @@
 package com.github.mechalopa.hmag.util;
 
+import java.util.function.Predicate;
+
 import javax.annotation.Nonnull;
 
 import com.github.mechalopa.hmag.HMaG;
 import com.mojang.serialization.Codec;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.Registry;
@@ -17,6 +20,7 @@ import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.Item;
@@ -25,6 +29,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TridentItem;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.dimension.DimensionType;
@@ -34,6 +39,7 @@ import net.minecraft.world.phys.Vec3;
 
 public class ModUtils
 {
+	public static final Minecraft MINECRAFT = Minecraft.getInstance();
 	public static final EquipmentSlot[] ARMOR_SLOTS = new EquipmentSlot[]{EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET};
 	public static final String LIVING_UPDATE_CHECKING_KEY = HMaG.MODID + ".checking";
 	public static final String LIVING_UPDATE_CHECKED_KEY = HMaG.MODID + ".checked";
@@ -210,19 +216,45 @@ public class ModUtils
 		return Mth.lerp(f2, f, f1);
 	}
 
-	public static boolean matchItemBothHands(LivingEntity livingEntity, Item item)
+	public static ItemStack getPlayerInventoryItem(Player player, Predicate<ItemStack> predicate)
 	{
-		for (InteractionHand hand : InteractionHand.values())
+		ItemStack stack = getHeldItem(player, predicate);
+
+		if (!stack.isEmpty())
 		{
-			ItemStack stack = livingEntity.getItemInHand(hand);
-
-			if (!stack.isEmpty() && stack.getItem() == item)
-			{
-				return true;
-			}
+			return stack;
 		}
+		else
+		{
+			for (int i = 0; i < player.getInventory().getContainerSize(); ++i)
+			{
+				ItemStack stack1 = player.getInventory().getItem(i);
 
-		return false;
+				if (predicate.test(stack1))
+				{
+					return stack1;
+				}
+			}
+
+			return ItemStack.EMPTY;
+		}
+	}
+
+	public static ItemStack getHeldItem(LivingEntity livingEntity, Item item)
+	{
+		return getHeldItem(livingEntity, Ingredient.of(item));
+	}
+
+	public static ItemStack getHeldItem(LivingEntity livingEntity, Predicate<ItemStack> predicate)
+	{
+		if (predicate.test(livingEntity.getItemInHand(InteractionHand.OFF_HAND)))
+		{
+			return livingEntity.getItemInHand(InteractionHand.OFF_HAND);
+		}
+		else
+		{
+			return predicate.test(livingEntity.getItemInHand(InteractionHand.MAIN_HAND)) ? livingEntity.getItemInHand(InteractionHand.MAIN_HAND) : ItemStack.EMPTY;
+		}
 	}
 
 	public static boolean isBow(ItemStack stack)

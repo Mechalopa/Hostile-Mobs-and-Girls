@@ -455,7 +455,7 @@ public class ModEvents
 					}
 				}
 
-				if (ModUtils.matchItemBothHands(livingentity, ModItems.ANCIENT_SHIELD.get()))
+				if (!ModUtils.getHeldItem(livingentity, ModItems.ANCIENT_SHIELD.get()).isEmpty())
 				{
 					++i;
 				}
@@ -467,7 +467,11 @@ public class ModEvents
 			}
 			else if (effect == MobEffects.BLINDNESS)
 			{
-				if (livingentity instanceof Player)
+				if (livingentity.hasEffect(ModEffects.DARKNESS_RESISTANCE.get()))
+				{
+					event.setResult(Result.DENY);
+				}
+				else if (livingentity instanceof Player)
 				{
 					ItemStack stack1 = livingentity.getMainHandItem();
 
@@ -477,9 +481,16 @@ public class ModEvents
 					}
 				}
 			}
+			else if (effect == MobEffects.DARKNESS)
+			{
+				if (livingentity.hasEffect(ModEffects.DARKNESS_RESISTANCE.get()))
+				{
+					event.setResult(Result.DENY);
+				}
+			}
 			else if (effect == ModEffects.COMBUSTION.get())
 			{
-				if (livingentity.fireImmune() || ModUtils.matchItemBothHands(livingentity, ModItems.FORTRESS_SHIELD.get()))
+				if (livingentity.fireImmune() || !ModUtils.getHeldItem(livingentity, ModItems.FORTRESS_SHIELD.get()).isEmpty())
 				{
 					event.setResult(Result.DENY);
 				}

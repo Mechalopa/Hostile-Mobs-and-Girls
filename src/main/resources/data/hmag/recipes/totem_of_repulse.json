@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "EPE",
+    "X#A",
+    "ENE"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:totem_of_undying"
+    },
+    "E": {
+      "item": "minecraft:echo_shard"
+    },
+    "X": {
+      "item": "hmag:evil_crystal"
+    },
+    "N": {
+      "tag": "forge:nether_stars"
+    },
+    "P": {
+      "item": "hmag:purification_cloth"
+    },
+    "A": {
+      "item": "hmag:ancient_stone"
+    }
+  },
+  "result": {
+    "item": "hmag:totem_of_repulse"
+  }
+}

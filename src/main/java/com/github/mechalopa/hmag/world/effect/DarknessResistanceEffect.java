@@ -2,11 +2,12 @@ package com.github.mechalopa.hmag.world.effect;
 
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 
-public class CombustionEffect extends MobEffect
+public class DarknessResistanceEffect extends MobEffect
 {
-	public CombustionEffect(MobEffectCategory type, int color)
+	public DarknessResistanceEffect(MobEffectCategory type, int color)
 	{
 		super(type, color);
 	}
@@ -14,10 +15,14 @@ public class CombustionEffect extends MobEffect
 	@Override
 	public void applyEffectTick(LivingEntity livingEntity, int amplifier)
 	{
-		if (!livingEntity.level.isClientSide && !livingEntity.fireImmune() && !livingEntity.isInWaterRainOrBubble() && (!livingEntity.isOnFire() || livingEntity.getRemainingFireTicks() <= 1))
+		if (livingEntity.hasEffect(MobEffects.BLINDNESS))
 		{
-			livingEntity.setRemainingFireTicks(livingEntity.getRemainingFireTicks() + 20);
-			livingEntity.setSecondsOnFire(1);
+			livingEntity.removeEffect(MobEffects.BLINDNESS);
+		}
+
+		if (livingEntity.hasEffect(MobEffects.DARKNESS))
+		{
+			livingEntity.removeEffect(MobEffects.DARKNESS);
 		}
 	}
 

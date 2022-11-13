@@ -13,6 +13,7 @@
     "minecraft:slow_falling",
     "minecraft:speed",
     "minecraft:weakness",
+    "hmag:darkness_resistance",
     {
       "id": "alexsmobs:knockback_resistance",
       "required": false

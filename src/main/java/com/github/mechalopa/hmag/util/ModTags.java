@@ -33,6 +33,7 @@ public class ModTags
 	public static final TagKey<Item> NECROTIC_CHAINMAIL_ARMOR_REPAIR_ITEMS = createItemTag("necrotic_chainmail_armor_repair_items");
 	public static final TagKey<Item> NEMESIS_BLADE_REPAIR_ITEMS = createItemTag("nemesis_blade_repair_items");
 	public static final TagKey<Item> SUSPICIOUS_STEW_UPGRADE_ITEMS = createItemTag("suspicious_stew_upgrade_items");
+	public static final TagKey<Item> TOTEM_OF_REPULSE_COSTS = createItemTag("totem_of_repulse_costs");
 
 	public static final TagKey<EntityType<?>> CREEPER_GIRL_REPLACEABLES = createEntityTypeTag("creeper_girl_replaceables");
 	public static final TagKey<EntityType<?>> CRIMSON_SLAUGHTERER_TARGET_ANIMAL_BLACKLIST = createEntityTypeTag("crimson_slaughterer_target_animal_blacklist");
