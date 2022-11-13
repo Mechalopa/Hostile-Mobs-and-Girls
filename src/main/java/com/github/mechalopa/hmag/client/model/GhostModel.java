@@ -20,6 +20,8 @@ public class GhostModel<T extends AbstractFlyingMonsterEntity> extends HumanoidM
 	public GhostModel(ModelPart modelPart)
 	{
 		super(modelPart);
+		this.rightLeg.visible = false;
+		this.leftLeg.visible = false;
 	}
 
 	public static LayerDefinition createBodyLayer()

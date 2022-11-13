@@ -28,18 +28,6 @@
     "minecraft:warped_fungus",
     "minecraft:warped_roots",
     "minecraft:weeping_vines",
-    "minecraft:weeping_vines_plant",
-    {
-      "id": "#forge:crops",
-      "required": false
-    },
-    {
-      "id": "#forge:grasses",
-      "required": false
-    },
-    {
-      "id": "#forge:mushrooms",
-      "required": false
-    }
+    "minecraft:weeping_vines_plant"
   ]
 }
