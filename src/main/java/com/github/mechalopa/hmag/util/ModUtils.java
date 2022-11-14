@@ -7,7 +7,6 @@ import javax.annotation.Nonnull;
 import com.github.mechalopa.hmag.HMaG;
 import com.mojang.serialization.Codec;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.Registry;
@@ -39,7 +38,6 @@ import net.minecraft.world.phys.Vec3;
 
 public class ModUtils
 {
-	public static final Minecraft MINECRAFT = Minecraft.getInstance();
 	public static final EquipmentSlot[] ARMOR_SLOTS = new EquipmentSlot[]{EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET};
 	public static final String LIVING_UPDATE_CHECKING_KEY = HMaG.MODID + ".checking";
 	public static final String LIVING_UPDATE_CHECKED_KEY = HMaG.MODID + ".checked";
@@ -113,7 +111,7 @@ public class ModUtils
 		return true;
 	}
 
-	public static boolean closerThan(Entity entity, BlockPos pos, int distance)
+	public static boolean closerThan(@Nonnull Entity entity, BlockPos pos, int distance)
 	{
 		return pos.closerThan(entity.blockPosition(), distance);
 	}
@@ -141,12 +139,12 @@ public class ModUtils
 		}
 	}
 
-	public static boolean isThornsDamage(DamageSource source)
+	public static boolean isThornsDamage(@Nonnull DamageSource source)
 	{
 		return source == DamageSource.CACTUS || source == DamageSource.SWEET_BERRY_BUSH || (source instanceof EntityDamageSource && ((EntityDamageSource)source).isThorns());
 	}
 
-	public static boolean isStalagmiteDamage(DamageSource source)
+	public static boolean isStalagmiteDamage(@Nonnull DamageSource source)
 	{
 		return source == DamageSource.STALAGMITE || source == DamageSource.FALLING_STALACTITE;
 	}
@@ -216,7 +214,7 @@ public class ModUtils
 		return Mth.lerp(f2, f, f1);
 	}
 
-	public static ItemStack getPlayerInventoryItem(Player player, Predicate<ItemStack> predicate)
+	public static ItemStack getPlayerInventoryItem(@Nonnull Player player, Predicate<ItemStack> predicate)
 	{
 		ItemStack stack = getHeldItem(player, predicate);
 
@@ -240,12 +238,12 @@ public class ModUtils
 		}
 	}
 
-	public static ItemStack getHeldItem(LivingEntity livingEntity, Item item)
+	public static ItemStack getHeldItem(@Nonnull LivingEntity livingEntity, @Nonnull Item item)
 	{
 		return getHeldItem(livingEntity, Ingredient.of(item));
 	}
 
-	public static ItemStack getHeldItem(LivingEntity livingEntity, Predicate<ItemStack> predicate)
+	public static ItemStack getHeldItem(@Nonnull LivingEntity livingEntity, Predicate<ItemStack> predicate)
 	{
 		if (predicate.test(livingEntity.getItemInHand(InteractionHand.OFF_HAND)))
 		{

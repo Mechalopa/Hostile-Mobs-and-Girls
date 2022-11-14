@@ -3,6 +3,7 @@ package com.github.mechalopa.hmag.world.item;
 import java.util.List;
 
 import com.github.mechalopa.hmag.ModConfigs;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.registry.ModEffects;
 import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.util.ModUtils;
@@ -92,12 +93,12 @@ public class TotemOfRepulseItem extends Item
 				}
 				else
 				{
-					ModUtils.MINECRAFT.particleEngine.createTrackingEmitter(player, ParticleTypes.SCULK_SOUL, 15);
+					ModClientUtils.MINECRAFT.particleEngine.createTrackingEmitter(player, ParticleTypes.SCULK_SOUL, 15);
 					level.playLocalSound(player.getX(), player.getY(), player.getZ(), SoundEvents.TOTEM_USE, SoundSource.PLAYERS, 1.0F, 1.0F, false);
 
-					if (player == ModUtils.MINECRAFT.player)
+					if (player == ModClientUtils.MINECRAFT.player)
 					{
-						ModUtils.MINECRAFT.gameRenderer.displayItemActivation(stack);
+						ModClientUtils.MINECRAFT.gameRenderer.displayItemActivation(stack);
 					}
 				}
 

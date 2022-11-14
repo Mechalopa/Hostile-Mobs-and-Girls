@@ -1,10 +1,13 @@
 package com.github.mechalopa.hmag.client.util;
 
+import javax.annotation.Nonnull;
+
 import com.github.mechalopa.hmag.world.entity.IBeamAttackMob;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Matrix3f;
 import com.mojang.math.Matrix4f;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.CubeListBuilder;
@@ -23,6 +26,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class ModClientUtils
 {
+	public static final Minecraft MINECRAFT = Minecraft.getInstance();
 	public static final ClampedItemPropertyFunction PROPERTY_BOW_PULL = (stack, level, livingentity, seed) -> {
 		if (livingentity == null)
 		{
@@ -40,7 +44,7 @@ public class ModClientUtils
 		return livingentity != null && livingentity.isUsingItem() && livingentity.getUseItem() == stack ? 1.0F : 0.0F;
 	};
 
-	public static Vec3 getPosition(LivingEntity entityLiving, double d0, float f)
+	public static Vec3 getPosition(@Nonnull LivingEntity entityLiving, double d0, float f)
 	{
 		double d1 = Mth.lerp((double)f, entityLiving.xOld, entityLiving.getX());
 		double d2 = Mth.lerp((double)f, entityLiving.yOld, entityLiving.getY()) + d0;
@@ -48,16 +52,16 @@ public class ModClientUtils
 		return new Vec3(d1, d2, d3);
 	}
 
-	public static boolean shouldRenderBeamAttackMob(LivingEntity livingEntityIn, Frustum camera, double camX, double camY, double camZ, IBeamAttackMob beamAttackMobIn)
+	public static boolean shouldRenderBeamAttackMob(@Nonnull LivingEntity livingEntity, @Nonnull Frustum camera, double camX, double camY, double camZ, @Nonnull IBeamAttackMob beamAttackMob)
 	{
-		if (beamAttackMobIn.hasActiveAttackTarget())
+		if (beamAttackMob.hasActiveAttackTarget())
 		{
-			LivingEntity target = beamAttackMobIn.getActiveAttackTarget();
+			LivingEntity target = beamAttackMob.getActiveAttackTarget();
 
 			if (target != null)
 			{
 				Vec3 vec3 = ModClientUtils.getPosition(target, target.getBbHeight() * 0.5D, 1.0F);
-				Vec3 vec31 = ModClientUtils.getPosition(livingEntityIn, livingEntityIn.getEyeHeight(), 1.0F);
+				Vec3 vec31 = ModClientUtils.getPosition(livingEntity, livingEntity.getEyeHeight(), 1.0F);
 				return camera.isVisible(new AABB(vec31.x, vec31.y, vec31.z, vec3.x, vec3.y, vec3.z));
 			}
 		}
