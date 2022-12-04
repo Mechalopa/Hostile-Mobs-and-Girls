@@ -13,6 +13,14 @@
     {
       "id": "foodexpansion:bat_wing",
       "required": false
+    },
+    {
+      "id": "miners_delight:bat_wing",
+      "required": false
+    },
+    {
+      "id": "forcecraft:claw",
+      "required": false
     }
   ]
 }
