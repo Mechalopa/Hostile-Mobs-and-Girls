@@ -28,6 +28,426 @@
     "minecraft:warped_fungus",
     "minecraft:warped_roots",
     "minecraft:weeping_vines",
-    "minecraft:weeping_vines_plant"
+    "minecraft:weeping_vines_plant",
+    {
+      "id": "#forge:grass",
+      "required": false
+    },
+    {
+      "id": "#forge:bushes",
+      "required": false
+    },
+    {
+      "id": "#forge:flowers",
+      "required": false
+    },
+    {
+      "id": "#forge:mushrooms",
+      "required": false
+    },
+    {
+      "id": "biomemakeover:cattail",
+      "required": false
+    },
+    {
+      "id": "biomemakeover:itching_ivy",
+      "required": false
+    },
+    {
+      "id": "biomemakeover:ivy",
+      "required": false
+    },
+    {
+      "id": "biomemakeover:mycelium_roots",
+      "required": false
+    },
+    {
+      "id": "biomemakeover:mycelium_sprouts",
+      "required": false
+    },
+    {
+      "id": "biomemakeover:tall_brown_mushroom",
+      "required": false
+    },
+    {
+      "id": "biomemakeover:tall_red_mushroom",
+      "required": false
+    },
+    {
+      "id": "biomemakeover:wild_mushrooms",
+      "required": false
+    },
+    {
+      "id": "biomemakeover:willowing_branches",
+      "required": false
+    },
+    {
+      "id": "biomemakeover:green_glowshroom",
+      "required": false
+    },
+    {
+      "id": "biomemakeover:purple_glowshroom",
+      "required": false
+    },
+    {
+      "id": "biomemakeover:orange_glowshroom",
+      "required": false
+    },
+    {
+      "id": "biomemakeover:reed",
+      "required": false
+    },
+    {
+      "id": "darkerdepths:glowshroom",
+      "required": false
+    },
+    {
+      "id": "darkerdepths:glowspire",
+      "required": false
+    },
+    {
+      "id": "darkerdepths:glowspire_plant",
+      "required": false
+    },
+    {
+      "id": "darkerdepths:glowspurs",
+      "required": false
+    },
+    {
+      "id": "darkerdepths:long_roots",
+      "required": false
+    },
+    {
+      "id": "darkerdepths:lush_sprouts",
+      "required": false
+    },
+    {
+      "id": "darkerdepths:mossy_sprouts",
+      "required": false
+    },
+    {
+      "id": "darkerdepths:roots",
+      "required": false
+    },
+    {
+      "id": "farmersdelight:brown_mushroom_colony",
+      "required": false
+    },
+    {
+      "id": "farmersdelight:red_mushroom_colony",
+      "required": false
+    },
+    {
+      "id": "farmersdelight:sandy_shrub",
+      "required": false
+    },
+    {
+      "id": "galosphere:bowl_lichen",
+      "required": false
+    },
+    {
+      "id": "galosphere:lichen_cordyceps",
+      "required": false
+    },
+    {
+      "id": "galosphere:lichen_cordyceps_plant",
+      "required": false
+    },
+    {
+      "id": "galosphere:lichen_roots",
+      "required": false
+    },
+    {
+      "id": "galosphere:lichen_shelf",
+      "required": false
+    },
+    {
+      "id": "gardens_of_the_dead:blistercrown",
+      "required": false
+    },
+    {
+      "id": "gardens_of_the_dead:glowing_soul_spore",
+      "required": false
+    },
+    {
+      "id": "gardens_of_the_dead:soul_spore",
+      "required": false
+    },
+    {
+      "id": "gardens_of_the_dead:soulblight_fungus",
+      "required": false
+    },
+    {
+      "id": "gardens_of_the_dead:soulblight_sprouts",
+      "required": false
+    },
+    {
+      "id": "gardens_of_the_dead:tall_blistercrown",
+      "required": false
+    },
+    {
+      "id": "neapolitan:small_banana_frond",
+      "required": false
+    },
+    {
+      "id": "neapolitan:banana_frond",
+      "required": false
+    },
+    {
+      "id": "neapolitan:large_banana_frond",
+      "required": false
+    },
+    {
+      "id": "nethersdelight:crimson_fungus_colony",
+      "required": false
+    },
+    {
+      "id": "nethersdelight:warped_fungus_colony",
+      "required": false
+    },
+    {
+      "id": "snowyspirit:wild_ginger",
+      "required": false
+    },
+    {
+      "id": "sprout:cattail",
+      "required": false
+    },
+    {
+      "id": "sprout:dune_grass",
+      "required": false
+    },
+    {
+      "id": "sprout:sprouts",
+      "required": false
+    },
+    {
+      "id": "sprout:tall_dead_bush",
+      "required": false
+    },
+    {
+      "id": "tofucraft:blockleek",
+      "required": false
+    },
+    {
+      "id": "tofucraft:rice_root",
+      "required": false
+    },
+    {
+      "id": "tofucraft:zundatofu_mushroom",
+      "required": false
+    },
+    {
+      "id": "windswept:snowy_sprouts",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:willow_vine",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:toadstool",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:glowshroom",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:sprout",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:bush",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:clover",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:dune_grass",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:desert_grass",
+      "required": false
+    },
+    {
+      "id": "biomesoplenty:dead_grass",
+      "required": false
+    },
+    {
+      "id": "byg:weeping_roots",
+      "required": false
+    },
+    {
+      "id": "byg:weeping_roots_plant",
+      "required": false
+    },
+    {
+      "id": "byg:skyris_vine",
+      "required": false
+    },
+    {
+      "id": "byg:poison_ivy",
+      "required": false
+    },
+    {
+      "id": "byg:wailing_vine",
+      "required": false
+    },
+    {
+      "id": "byg:nether_bristle",
+      "required": false
+    },
+    {
+      "id": "byg:embur_gel_vines",
+      "required": false
+    },
+    {
+      "id": "byg:hanging_sythian_roots_plant",
+      "required": false
+    },
+    {
+      "id": "byg:lament_vine",
+      "required": false
+    },
+    {
+      "id": "byg:lament_vine_plant",
+      "required": false
+    },
+    {
+      "id": "byg:shulkren_vine",
+      "required": false
+    },
+    {
+      "id": "byg:shulkren_vine_plant",
+      "required": false
+    },
+    {
+      "id": "byg:imparius_vine",
+      "required": false
+    },
+    {
+      "id": "byg:imparius_vine_plant",
+      "required": false
+    },
+    {
+      "id": "#byg:mushrooms",
+      "required": false
+    },
+    {
+      "id": "byg:fungal_imparius_filament",
+      "required": false
+    },
+    {
+      "id": "byg:white_puffball",
+      "required": false
+    },
+    {
+      "id": "byg:soul_shroom_spore",
+      "required": false
+    },
+    {
+      "id": "byg:soul_shroom_spore_end",
+      "required": false
+    },
+    {
+      "id": "byg:sythian_fungus",
+      "required": false
+    },
+    {
+      "id": "byg:bulbis_sprouts",
+      "required": false
+    },
+    {
+      "id": "byg:cattail",
+      "required": false
+    },
+    {
+      "id": "byg:cattail_sprout",
+      "required": false
+    },
+    {
+      "id": "byg:embur_sprouts",
+      "required": false
+    },
+    {
+      "id": "byg:ivis_sprout",
+      "required": false
+    },
+    {
+      "id": "byg:lament_sprouts",
+      "required": false
+    },
+    {
+      "id": "byg:nightshade_sprouts",
+      "required": false
+    },
+    {
+      "id": "byg:sythian_sprout",
+      "required": false
+    },
+    {
+      "id": "byg:embur_roots",
+      "required": false
+    },
+    {
+      "id": "byg:hanging_sythian_roots",
+      "required": false
+    },
+    {
+      "id": "byg:ivis_roots",
+      "required": false
+    },
+    {
+      "id": "byg:nightshade_roots",
+      "required": false
+    },
+    {
+      "id": "byg:sythian_roots",
+      "required": false
+    },
+    {
+      "id": "byg:tall_crimson_roots",
+      "required": false
+    },
+    {
+      "id": "byg:tall_embur_roots",
+      "required": false
+    },
+    {
+      "id": "byg:arisian_bloom_branch",
+      "required": false
+    },
+    {
+      "id": "byg:embur_gel_branch",
+      "required": false
+    },
+    {
+      "id": "byg:imparius_mushroom_branch",
+      "required": false
+    },
+    {
+      "id": "byg:witch_hazel_branch",
+      "required": false
+    },
+    {
+      "id": "byg:cryptic_bramble",
+      "required": false
+    },
+    {
+      "id": "byg:embur_wart",
+      "required": false
+    },
+    {
+      "id": "swampier_swamps:swamp_vine",
+      "required": false
+    },
+    {
+      "id": "swampier_swamps:cattail",
+      "required": false
+    }
   ]
 }
