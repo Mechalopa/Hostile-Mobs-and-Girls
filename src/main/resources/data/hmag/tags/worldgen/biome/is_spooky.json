@@ -8,6 +8,22 @@
     {
       "id": "terralith:cave/infested_caves",
       "required": false
+    },
+    {
+      "id": "graveyard_biomes:haunted_forest",
+      "required": false
+    },
+    {
+      "id": "graveyard_biomes:haunted_lakes",
+      "required": false
+    },
+    {
+      "id": "graveyard_biomes:eroded_haunted_forest",
+      "required": false
+    },
+    {
+      "id": "graveyard_biomes:deep_dark_forest",
+      "required": false
     }
   ]
 }

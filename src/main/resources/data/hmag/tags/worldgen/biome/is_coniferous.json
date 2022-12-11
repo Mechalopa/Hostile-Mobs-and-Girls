@@ -9,6 +9,18 @@
     {
       "id": "#forge:is_taiga",
       "required": false
+    },
+    {
+      "id": "graveyard_biomes:haunted_forest",
+      "required": false
+    },
+    {
+      "id": "graveyard_biomes:haunted_lakes",
+      "required": false
+    },
+    {
+      "id": "graveyard_biomes:eroded_haunted_forest",
+      "required": false
     }
   ]
 }
