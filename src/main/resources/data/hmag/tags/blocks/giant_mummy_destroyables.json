@@ -98,10 +98,6 @@
       "required": false
     },
     {
-      "id": "darkerdepths:roots",
-      "required": false
-    },
-    {
       "id": "darkerdepths:dry_sprouts",
       "required": false
     },
