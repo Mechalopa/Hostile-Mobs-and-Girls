@@ -27,11 +27,11 @@ public class WitherSandBlock extends SoulSandBlock
 	}
 
 	@Override
-	public void entityInside(BlockState state, Level level, BlockPos pos, Entity entityIn)
+	public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity)
 	{
-		if (!level.isClientSide && entityIn != null && entityIn instanceof LivingEntity)
+		if (!level.isClientSide && entity != null && entity instanceof LivingEntity)
 		{
-			LivingEntity livingentity = (LivingEntity)entityIn;
+			LivingEntity livingentity = (LivingEntity)entity;
 
 			if (!livingentity.isInvulnerableTo(DamageSource.WITHER))
 			{
@@ -42,9 +42,9 @@ public class WitherSandBlock extends SoulSandBlock
 
 	@Override
 	@OnlyIn(Dist.CLIENT)
-	public void animateTick(BlockState stateIn, Level level, BlockPos pos, RandomSource rand)
+	public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource rand)
 	{
-		super.animateTick(stateIn, level, pos, rand);
+		super.animateTick(state, level, pos, rand);
 
 		if (rand.nextInt(5) == 0)
 		{

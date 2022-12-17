@@ -17,11 +17,11 @@ public class ThornSandBlock extends SoulSandBlock
 	}
 
 	@Override
-	public void entityInside(BlockState state, Level level, BlockPos pos, Entity entityIn)
+	public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity)
 	{
-		if (entityIn != null && entityIn instanceof LivingEntity)
+		if (entity != null && entity instanceof LivingEntity)
 		{
-			entityIn.hurt(DamageSource.CACTUS, 1.0F);
+			entity.hurt(DamageSource.CACTUS, 1.0F);
 		}
 	}
 }

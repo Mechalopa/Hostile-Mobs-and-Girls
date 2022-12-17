@@ -18,11 +18,11 @@ public class HealingSandBlock extends SoulSandBlock
 	}
 
 	@Override
-	public void entityInside(BlockState state, Level level, BlockPos pos, Entity entityIn)
+	public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity)
 	{
-		if (!level.isClientSide && entityIn != null && entityIn instanceof LivingEntity)
+		if (!level.isClientSide && entity != null && entity instanceof LivingEntity)
 		{
-			LivingEntity livingentity = (LivingEntity)entityIn;
+			LivingEntity livingentity = (LivingEntity)entity;
 
 			if (!livingentity.hasEffect(MobEffects.REGENERATION))
 			{
