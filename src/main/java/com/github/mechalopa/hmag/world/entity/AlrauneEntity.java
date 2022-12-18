@@ -209,7 +209,7 @@ public class AlrauneEntity extends Monster implements IModMob, RangedAttackMob
 	@Override
 	protected void playStepSound(BlockPos pos, BlockState blockIn)
 	{
-		this.playSound(SoundEvents.ZOMBIE_STEP, 0.15F, 1.0F);
+		this.playSound(SoundEvents.DROWNED_STEP, 0.15F, 1.0F);
 	}
 
 	@Nonnull

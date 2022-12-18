@@ -187,7 +187,7 @@ public class DullahanEntity extends Monster implements IModMob
 	@Override
 	protected void playStepSound(BlockPos pos, BlockState blockIn)
 	{
-		this.playSound(SoundEvents.ZOMBIE_STEP, 0.15F, 1.0F);
+		this.playSound(SoundEvents.PIGLIN_STEP, 0.15F, 1.0F);
 	}
 
 	@Nonnull
