@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import javax.annotation.Nullable;
 
+import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.world.entity.projectile.MagicBulletEntity;
 
 import net.minecraft.ChatFormatting;
@@ -204,6 +205,12 @@ public class NemesisBladeItem extends ModSwordItem implements ILevelItem
 	public boolean canBeHurtBy(DamageSource damageSource)
 	{
 		return damageSource != DamageSource.OUT_OF_WORLD ? false : super.canBeHurtBy(damageSource);
+	}
+
+	@Override
+	public boolean isValidRepairItem(ItemStack stack, ItemStack stack1)
+	{
+		return stack1.is(ModTags.NEMESIS_BLADE_REPAIR_ITEMS);
 	}
 
 	@Override

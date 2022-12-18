@@ -2,7 +2,7 @@ package com.github.mechalopa.hmag.world.item;
 
 import java.util.UUID;
 
-import com.github.mechalopa.hmag.registry.ModItems;
+import com.github.mechalopa.hmag.util.ModTags;
 
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.Item;
@@ -21,6 +21,6 @@ public class AncientShieldItem extends ModShieldItem
 	@Override
 	public boolean isValidRepairItem(ItemStack stack, ItemStack stack1)
 	{
-		return stack1.getItem() == ModItems.ANCIENT_STONE.get();
+		return stack1.is(ModTags.ANCIENT_SHIELD_REPAIR_ITEMS);
 	}
 }

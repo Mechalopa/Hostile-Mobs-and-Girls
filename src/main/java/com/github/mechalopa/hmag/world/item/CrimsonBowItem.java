@@ -1,6 +1,6 @@
 package com.github.mechalopa.hmag.world.item;
 
-import com.github.mechalopa.hmag.registry.ModItems;
+import com.github.mechalopa.hmag.util.ModTags;
 
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
@@ -50,6 +50,6 @@ public class CrimsonBowItem extends ModBowItem
 	@Override
 	public boolean isValidRepairItem(ItemStack stack, ItemStack stack1)
 	{
-		return stack1.getItem() == ModItems.CRIMSON_CUTICULA.get() || super.isValidRepairItem(stack, stack1);
+		return stack1.is(ModTags.CRIMSON_BOW_REPAIR_ITEMS) || super.isValidRepairItem(stack, stack1);
 	}
 }

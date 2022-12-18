@@ -5,6 +5,8 @@ import java.util.UUID;
 
 import javax.annotation.Nullable;
 
+import com.github.mechalopa.hmag.util.ModTags;
+
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
@@ -135,6 +137,12 @@ public class InsomniaSwordItem extends ModSwordItem implements ILevelItem
 			compoundnbt.putByte(ILevelItem.LEVEL_KEY, (byte)this.getMaxLevel());
 			list.add(stack);
 		}
+	}
+
+	@Override
+	public boolean isValidRepairItem(ItemStack stack, ItemStack stack1)
+	{
+		return stack1.is(ModTags.INSOMNIA_SWORD_REPAIR_ITEMS);
 	}
 
 	@Override
