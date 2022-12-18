@@ -91,6 +91,8 @@ public class ModEventBusSubscriber
 				registerBrewingRecipe(ModPotions.HEALING_III.get(), Items.FERMENTED_SPIDER_EYE, ModPotions.HARMING_III.get());
 			}
 
+			if (ModConfigs.cachedServer.REGENERATION_III_POTION_BREWING_RECIPES)
+				registerBrewingRecipe(Potions.STRONG_REGENERATION, ModItems.CUBIC_NUCLEUS.get(), ModPotions.REGENERATION_III.get());
 			if (ModConfigs.cachedServer.OGRE_POTION_BREWING_RECIPES)
 				registerBrewingRecipe(Potions.STRENGTH, ModItems.OGRE_HORN.get(), ModPotions.OGRE.get());
 			if (ModConfigs.cachedServer.VORACITY_POTION_BREWING_RECIPES)
@@ -115,8 +117,6 @@ public class ModEventBusSubscriber
 				registerBrewingRecipe(Potions.AWKWARD, ModItems.NECROFIBER.get(), Potions.SLOWNESS);
 			if (ModConfigs.cachedServer.INVISIBILITY_POTION_BREWING_RECIPES)
 				registerBrewingRecipe(Potions.AWKWARD, ModItems.SOUL_APPLE.get(), Potions.INVISIBILITY);
-			if (ModConfigs.cachedServer.REGENERATION_POTION_BREWING_RECIPES)
-				registerBrewingRecipe(Potions.AWKWARD, ModItems.CUBIC_NUCLEUS.get(), Potions.REGENERATION);
 			if (ModConfigs.cachedServer.BLASTING_BOTTLE_BREWING_RECIPE)
 				BrewingRecipeRegistry.addRecipe(new ModBrewingRecipe(Ingredient.of(ModItems.FIRE_BOTTLE.get()), Ingredient.of(ModItems.BURNING_CORE.get()), new ItemStack(ModItems.BLASTING_BOTTLE.get(), 1)));
 			if (ModConfigs.cachedServer.LIGHTNING_BOTTLE_BREWING_RECIPE)

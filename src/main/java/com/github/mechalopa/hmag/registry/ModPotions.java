@@ -19,6 +19,7 @@ public class ModPotions
 	public static final RegistryObject<Potion> KOBOLD_STRONG = REGISTRY.register("hmag.kobold_strong", () -> new Potion(new MobEffectInstance(MobEffects.DIG_SPEED, 90 * 20, 1), new MobEffectInstance(MobEffects.WEAKNESS, 90 * 20, 1)));
 	public static final RegistryObject<Potion> HEALING_III = REGISTRY.register("hmag.healing_3", () -> new Potion(new MobEffectInstance(MobEffects.HEAL, 1, 2)));
 	public static final RegistryObject<Potion> HARMING_III = REGISTRY.register("hmag.harming_3", () -> new Potion(new MobEffectInstance(MobEffects.HARM, 1, 2)));
+	public static final RegistryObject<Potion> REGENERATION_III = REGISTRY.register("hmag.regeneration_3", () -> new Potion(new MobEffectInstance(MobEffects.REGENERATION, 20 * 20, 2)));
 	public static final RegistryObject<Potion> OGRE = REGISTRY.register("hmag.ogre", () -> new Potion(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 120 * 20, 1), new MobEffectInstance(MobEffects.DIG_SPEED, 120 * 20, 0), new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 120 * 20, 1)));
 	public static final RegistryObject<Potion> VORACITY = REGISTRY.register("hmag.voracity", () -> new Potion(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 30 * 20, 2), new MobEffectInstance(MobEffects.HUNGER, 120 * 20, 2)));
 	public static final RegistryObject<Potion> ENDER_RAGE = REGISTRY.register("hmag.ender_rage", () -> new Potion(new MobEffectInstance(ModEffects.ENDER_RAGE.get(), 90 * 20, 0)));
