@@ -93,7 +93,7 @@ public class JEIPlugin implements IModPlugin
 						{
 							if (enchantment != null && enchantment.isCurse())
 							{
-								ItemStack stack1 = getEnchantableItemStack(registration, items, enchantment, ModTags.CURSE_REMOVABLE_BLACKLIST);
+								ItemStack stack1 = getEnchantableItemStack(registration, items, enchantment, ModTags.CURSE_UNREMOVABLES);
 
 								if (!stack1.isEmpty())
 								{
@@ -150,7 +150,7 @@ public class JEIPlugin implements IModPlugin
 											{
 												final int minLevel = eup.getMinLevel();
 												final int maxLevel = eup.getMaxLevel();
-												ItemStack stack1 = getEnchantableItemStack(registration, items, enchantment, ModTags.ENCHANTMENT_UPGRADEABLE_BLACKLIST);
+												ItemStack stack1 = getEnchantableItemStack(registration, items, enchantment, ModTags.ENCHANTMENT_NOT_UPGRADEABLES);
 
 												if (!stack1.isEmpty())
 												{

@@ -40,7 +40,7 @@ public class RemoveCurseRecipe extends UpgradeRecipe
 		ItemStack stack = inv.getItem(0);
 		ItemStack stack1 = inv.getItem(1);
 
-		if (!stack.isEmpty() && !stack1.isEmpty() && stack1.getItem() != null && stack1.is(ModTags.CURSE_REMOVE_ITEMS) && !stack.is(ModTags.CURSE_REMOVABLE_BLACKLIST))
+		if (!stack.isEmpty() && !stack1.isEmpty() && stack1.getItem() != null && stack1.is(ModTags.CURSE_REMOVE_ITEMS) && !stack.is(ModTags.CURSE_UNREMOVABLES))
 		{
 			Map<Enchantment, Integer> map = EnchantmentHelper.getEnchantments(stack);
 
