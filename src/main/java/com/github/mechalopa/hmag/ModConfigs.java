@@ -124,6 +124,13 @@ public class ModConfigs
 	public static ForgeConfigSpec.ConfigValue<List<? extends String>> SPAWN_NETHER_BIOME_WHITELIST;
 	public static ForgeConfigSpec.ConfigValue<List<? extends String>> SPAWN_END_BIOME_WHITELIST;
 
+	public static ForgeConfigSpec.IntValue INSOMNIA_FRUIT_COOLDOWN_LEVEL_0;
+	public static ForgeConfigSpec.IntValue INSOMNIA_FRUIT_COOLDOWN_LEVEL_1;
+	public static ForgeConfigSpec.IntValue INSOMNIA_FRUIT_COOLDOWN_LEVEL_2;
+	public static ForgeConfigSpec.IntValue INSOMNIA_FRUIT_COOLDOWN_LEVEL_3;
+	public static ForgeConfigSpec.IntValue INSOMNIA_FRUIT_COOLDOWN_LEVEL_4;
+	public static ForgeConfigSpec.IntValue INSOMNIA_FRUIT_COOLDOWN_LEVEL_5;
+
 	public static ForgeConfigSpec.IntValue HEALTH_BOOST_MAX_LEVEL;
 	public static ForgeConfigSpec.BooleanValue HEALTH_BOOST_IS_TREASURE;
 	public static ForgeConfigSpec.BooleanValue HEALTH_BOOST_IS_TRADEABLE;
@@ -295,6 +302,17 @@ public class ModConfigs
 
 		SERVER_BUILDER.pop();
 
+		SERVER_BUILDER.push("item");
+
+		INSOMNIA_FRUIT_COOLDOWN_LEVEL_0 = SERVER_BUILDER.defineInRange("insomuniaFruitCooldownLevel0", 1800, 0, 240000);
+		INSOMNIA_FRUIT_COOLDOWN_LEVEL_1 = SERVER_BUILDER.defineInRange("insomuniaFruitCooldownLevel1", 1800, 0, 240000);
+		INSOMNIA_FRUIT_COOLDOWN_LEVEL_2 = SERVER_BUILDER.defineInRange("insomuniaFruitCooldownLevel2", 1800, 0, 240000);
+		INSOMNIA_FRUIT_COOLDOWN_LEVEL_3 = SERVER_BUILDER.defineInRange("insomuniaFruitCooldownLevel3", 1600, 0, 240000);
+		INSOMNIA_FRUIT_COOLDOWN_LEVEL_4 = SERVER_BUILDER.defineInRange("insomuniaFruitCooldownLevel4", 1400, 0, 240000);
+		INSOMNIA_FRUIT_COOLDOWN_LEVEL_5 = SERVER_BUILDER.defineInRange("insomuniaFruitCooldownLevel5", 1200, 0, 240000);
+
+		SERVER_BUILDER.pop();
+
 		SERVER_BUILDER.push("enchantment");
 
 		HEALTH_BOOST_MAX_LEVEL = SERVER_BUILDER.defineInRange("healthBoostMaxLevel", 5, 1, 10);
@@ -452,6 +470,13 @@ public class ModConfigs
 		public static List<? extends String> SPAWN_NETHER_BIOME_WHITELIST;
 		public static List<? extends String> SPAWN_END_BIOME_WHITELIST;
 
+		public static int INSOMNIA_FRUIT_COOLDOWN_LEVEL_0;
+		public static int INSOMNIA_FRUIT_COOLDOWN_LEVEL_1;
+		public static int INSOMNIA_FRUIT_COOLDOWN_LEVEL_2;
+		public static int INSOMNIA_FRUIT_COOLDOWN_LEVEL_3;
+		public static int INSOMNIA_FRUIT_COOLDOWN_LEVEL_4;
+		public static int INSOMNIA_FRUIT_COOLDOWN_LEVEL_5;
+
 		public static int HEALTH_BOOST_MAX_LEVEL;
 		public static boolean HEALTH_BOOST_IS_TREASURE;
 		public static boolean HEALTH_BOOST_IS_TRADEABLE;
@@ -593,6 +618,13 @@ public class ModConfigs
 			SPAWN_OVERWORLD_BIOME_WHITELIST = ModConfigs.SPAWN_OVERWORLD_BIOME_WHITELIST.get();
 			SPAWN_NETHER_BIOME_WHITELIST = ModConfigs.SPAWN_NETHER_BIOME_WHITELIST.get();
 			SPAWN_END_BIOME_WHITELIST = ModConfigs.SPAWN_END_BIOME_WHITELIST.get();
+
+			INSOMNIA_FRUIT_COOLDOWN_LEVEL_0 = ModConfigs.INSOMNIA_FRUIT_COOLDOWN_LEVEL_0.get();
+			INSOMNIA_FRUIT_COOLDOWN_LEVEL_1 = ModConfigs.INSOMNIA_FRUIT_COOLDOWN_LEVEL_1.get();
+			INSOMNIA_FRUIT_COOLDOWN_LEVEL_2 = ModConfigs.INSOMNIA_FRUIT_COOLDOWN_LEVEL_2.get();
+			INSOMNIA_FRUIT_COOLDOWN_LEVEL_3 = ModConfigs.INSOMNIA_FRUIT_COOLDOWN_LEVEL_3.get();
+			INSOMNIA_FRUIT_COOLDOWN_LEVEL_4 = ModConfigs.INSOMNIA_FRUIT_COOLDOWN_LEVEL_4.get();
+			INSOMNIA_FRUIT_COOLDOWN_LEVEL_5 = ModConfigs.INSOMNIA_FRUIT_COOLDOWN_LEVEL_5.get();
 
 			HEALTH_BOOST_MAX_LEVEL = ModConfigs.HEALTH_BOOST_MAX_LEVEL.get();
 			HEALTH_BOOST_IS_TREASURE = ModConfigs.HEALTH_BOOST_IS_TREASURE.get();

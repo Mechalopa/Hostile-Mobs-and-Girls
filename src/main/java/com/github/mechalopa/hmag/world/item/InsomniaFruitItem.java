@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.registry.ModEffects;
 
 import net.minecraft.ChatFormatting;
@@ -86,38 +87,44 @@ public class InsomniaFruitItem extends Item implements ILevelItem
 					livingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 180 * 20, 1));
 					livingEntity.addEffect(new MobEffectInstance(ModEffects.COMBUSTION.get(), 180 * 20, 0));
 					level.playSound((Player)null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), SoundEvents.ITEM_BREAK, SoundSource.PLAYERS, 0.8F, 0.8F + level.getRandom().nextFloat() * 0.4F);
+					j = ModConfigs.cachedServer.INSOMNIA_FRUIT_COOLDOWN_LEVEL_0;
+				}
+				else if (i >= 5)
+				{
+					livingEntity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 20 * 20, 1));
+					livingEntity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 300 * 20, 0));
+					livingEntity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 300 * 20, 0));
+					livingEntity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 120 * 20, 3));
+					j = ModConfigs.cachedServer.INSOMNIA_FRUIT_COOLDOWN_LEVEL_5;
+				}
+				else if (i == 4)
+				{
+					livingEntity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 15 * 20, 0));
+					livingEntity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 150 * 20, 0));
+					livingEntity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 120 * 20, 1));
+					j = ModConfigs.cachedServer.INSOMNIA_FRUIT_COOLDOWN_LEVEL_4;
+				}
+				else if (i == 3)
+				{
+					livingEntity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 10 * 20, 0));
+					livingEntity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 30 * 20, 0));
+					livingEntity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 120 * 20, 0));
+					j = ModConfigs.cachedServer.INSOMNIA_FRUIT_COOLDOWN_LEVEL_3;
+				}
+				else if (i == 2)
+				{
+					livingEntity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 5 * 20, 0));
+					j = ModConfigs.cachedServer.INSOMNIA_FRUIT_COOLDOWN_LEVEL_2;
 				}
 				else
 				{
-					if (i >= 5)
-					{
-						livingEntity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 20 * 20, 1));
-						livingEntity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 300 * 20, 0));
-						livingEntity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 300 * 20, 0));
-						livingEntity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 120 * 20, 3));
-						j = 1200;
-					}
-					else if (i >= 4)
-					{
-						livingEntity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 15 * 20, 0));
-						livingEntity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 150 * 20, 0));
-						livingEntity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 120 * 20, 1));
-						j = 1400;
-					}
-					else if (i >= 3)
-					{
-						livingEntity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 10 * 20, 0));
-						livingEntity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 30 * 20, 0));
-						livingEntity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 120 * 20, 0));
-						j = 1600;
-					}
-					else if (i >= 2)
-					{
-						livingEntity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 5 * 20, 0));
-					}
+					j = ModConfigs.cachedServer.INSOMNIA_FRUIT_COOLDOWN_LEVEL_1;
 				}
 
-				((Player)livingEntity).getCooldowns().addCooldown(this, j);
+				if (j > 0)
+				{
+					((Player)livingEntity).getCooldowns().addCooldown(this, j);
+				}
 			}
 		}
 

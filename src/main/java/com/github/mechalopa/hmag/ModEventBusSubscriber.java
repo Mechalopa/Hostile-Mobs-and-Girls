@@ -117,9 +117,9 @@ public class ModEventBusSubscriber
 				registerBrewingRecipe(Potions.AWKWARD, ModItems.SOUL_APPLE.get(), Potions.INVISIBILITY);
 			if (ModConfigs.cachedServer.REGENERATION_POTION_BREWING_RECIPES)
 				registerBrewingRecipe(Potions.AWKWARD, ModItems.CUBIC_NUCLEUS.get(), Potions.REGENERATION);
-			if (ModConfigs.cachedServer.BLASTING_BOTTLE_BREWING_RECIPES)
+			if (ModConfigs.cachedServer.BLASTING_BOTTLE_BREWING_RECIPE)
 				BrewingRecipeRegistry.addRecipe(new ModBrewingRecipe(Ingredient.of(ModItems.FIRE_BOTTLE.get()), Ingredient.of(ModItems.BURNING_CORE.get()), new ItemStack(ModItems.BLASTING_BOTTLE.get(), 1)));
-			if (ModConfigs.cachedServer.LIGHTNING_BOTTLE_BREWING_RECIPES)
+			if (ModConfigs.cachedServer.LIGHTNING_BOTTLE_BREWING_RECIPE)
 				BrewingRecipeRegistry.addRecipe(new ModBrewingRecipe(Ingredient.of(ModItems.FIRE_BOTTLE.get()), Ingredient.of(ModItems.LIGHTNING_PARTICLE.get()), new ItemStack(ModItems.LIGHTNING_BOTTLE.get(), 1)));
 		});
 
