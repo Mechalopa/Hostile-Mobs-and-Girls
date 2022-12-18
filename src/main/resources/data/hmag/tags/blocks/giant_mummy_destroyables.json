@@ -12,7 +12,6 @@
     "minecraft:crimson_roots",
     "minecraft:dead_bush",
     "minecraft:fern",
-    "minecraft:glow_lichen",
     "minecraft:grass",
     "minecraft:hanging_roots",
     "minecraft:large_fern",
@@ -451,6 +450,218 @@
     },
     {
       "id": "swampier_swamps:cattail",
+      "required": false
+    },
+    {
+      "id": "goodending:birch_mushroom",
+      "required": false
+    },
+    {
+      "id": "goodending:cattail",
+      "required": false
+    },
+    {
+      "id": "goodending:hanging_dark_oak_leaves",
+      "required": false
+    },
+    {
+      "id": "goodending:hanging_dark_oak_leaves_plant",
+      "required": false
+    },
+    {
+      "id": "goodending:hanging_oak_leaves",
+      "required": false
+    },
+    {
+      "id": "goodending:hanging_oak_leaves_plant",
+      "required": false
+    },
+    {
+      "id": "#hibernalherbs:herbs",
+      "required": false
+    },
+    {
+      "id": "colorfulazaleas:blue_drooping_azalea_leaves",
+      "required": false
+    },
+    {
+      "id": "colorfulazaleas:drooping_azalea_leaves",
+      "required": false
+    },
+    {
+      "id": "colorfulazaleas:orange_drooping_azalea_leaves",
+      "required": false
+    },
+    {
+      "id": "colorfulazaleas:pink_drooping_azalea_leaves",
+      "required": false
+    },
+    {
+      "id": "colorfulazaleas:purple_drooping_azalea_leaves",
+      "required": false
+    },
+    {
+      "id": "colorfulazaleas:red_drooping_azalea_leaves",
+      "required": false
+    },
+    {
+      "id": "colorfulazaleas:white_drooping_azalea_leaves",
+      "required": false
+    },
+    {
+      "id": "colorfulazaleas:yellow_drooping_azalea_leaves",
+      "required": false
+    },
+    {
+      "id": "abundant_atmosphere:catsbane",
+      "required": false
+    },
+    {
+      "id": "abundant_atmosphere:curved_mangrove_roots",
+      "required": false
+    },
+    {
+      "id": "abundant_atmosphere:foxfire_mushroom",
+      "required": false
+    },
+    {
+      "id": "abundant_atmosphere:foxfire_shelf",
+      "required": false
+    },
+    {
+      "id": "abundant_atmosphere:poreshroom",
+      "required": false
+    },
+    {
+      "id": "abundant_atmosphere:poreshroom_shelf",
+      "required": false
+    },
+    {
+      "id": "abundant_atmosphere:hanging_ash_leaves",
+      "required": false
+    },
+    {
+      "id": "extendedmushrooms:infested_grass",
+      "required": false
+    },
+    {
+      "id": "farmersrespite:coffee_bush",
+      "required": false
+    },
+    {
+      "id": "farmersrespite:coffee_bush_top",
+      "required": false
+    },
+    {
+      "id": "farmersrespite:small_tea_bush",
+      "required": false
+    },
+    {
+      "id": "farmersrespite:tea_bush",
+      "required": false
+    },
+    {
+      "id": "farmersrespite:wild_coffee_bush",
+      "required": false
+    },
+    {
+      "id": "farmersrespite:wild_tea_bush",
+      "required": false
+    },
+    {
+      "id": "quark:glow_lichen_growth",
+      "required": false
+    },
+    {
+      "id": "quark:glow_shroom",
+      "required": false
+    },
+    {
+      "id": "quark:glow_shroom_ring",
+      "required": false
+    },
+    {
+      "id": "forbidden_arcanus:nipa",
+      "required": false
+    },
+    {
+      "id": "forbidden_arcanus:growing_edelwood",
+      "required": false
+    },
+    {
+      "id": "forbidden_arcanus:fungyss",
+      "required": false
+    },
+    {
+      "id": "forbidden_arcanus:petrified_root",
+      "required": false
+    },
+    {
+      "id": "infernalexp:dullthorns",
+      "required": false
+    },
+    {
+      "id": "infernalexp:luminous_fungus",
+      "required": false
+    },
+    {
+      "id": "infernalexp:shroomlight_fungus",
+      "required": false
+    },
+    {
+      "id": "hexerei:willow_vines",
+      "required": false
+    },
+    {
+      "id": "hexerei:willow_vines_plant",
+      "required": false
+    },
+    {
+      "id": "hexerei:belladonna_flower",
+      "required": false
+    },
+    {
+      "id": "hexerei:mandrake_flower",
+      "required": false
+    },
+    {
+      "id": "hexerei:mugwort_bush",
+      "required": false
+    },
+    {
+      "id": "hexerei:yellow_dock_bush",
+      "required": false
+    },
+    {
+      "id": "twilightforest:fiddlehead",
+      "required": false
+    },
+    {
+      "id": "twilightforest:mayapple",
+      "required": false
+    },
+    {
+      "id": "twilightforest:mushgloom",
+      "required": false
+    },
+    {
+      "id": "twilightforest:torchberry_plant",
+      "required": false
+    },
+    {
+      "id": "twilightforest:root_strand",
+      "required": false
+    },
+    {
+      "id": "twilightforest:trollber",
+      "required": false
+    },
+    {
+      "id": "twilightforest:trollvidr",
+      "required": false
+    },
+    {
+      "id": "twilightforest:unripe_trollber",
       "required": false
     }
   ]
