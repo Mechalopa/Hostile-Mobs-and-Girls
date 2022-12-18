@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "urushi:ghost_core"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "urushi:ghost_core"
+    }
+  ],
+  "result": {
+    "item": "hmag:soul_powder"
+  }
+}

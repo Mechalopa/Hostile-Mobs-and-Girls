@@ -1,0 +1,21 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "sprit"
+    }
+  ],
+  "type": "spirit:mob_trait",
+  "entity": "hmag:harpy",
+  "traits": [
+    {
+      "type": "spirit:potion_effect",
+      "effects": [
+        {
+          "effect": "minecraft:slow_falling",
+          "duration": 150
+        }
+      ]
+    }
+  ]
+}

@@ -251,7 +251,6 @@ public class SlimeGirlEntity extends Monster implements IModMob
 	{
 		spawnDataIn = super.finalizeSpawn(worldIn, difficultyIn, spawnType, spawnDataIn, dataTag);
 		this.setVariant(this.getRandom().nextInt(SlimeGirlEntity.ColorVariant.values().length));
-
 		return spawnDataIn;
 	}
 

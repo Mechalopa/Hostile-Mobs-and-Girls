@@ -1,0 +1,20 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "sprit"
+    }
+  ],
+  "type": "spirit:mob_trait",
+  "entity": "hmag:ghastly_seeker",
+  "traits": [
+    {
+      "type": "spirit:fire",
+      "duration": 5
+    },
+    {
+      "type": "spirit:explosion",
+      "power": 0.75
+    }
+  ]
+}

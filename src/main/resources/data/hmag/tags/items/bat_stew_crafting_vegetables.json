@@ -9,6 +9,10 @@
     {
       "id": "#forge:crops/turnip",
       "required": false
+    },
+    {
+      "id": "miners_delight:cave_carrot",
+      "required": false
     }
   ]
 }

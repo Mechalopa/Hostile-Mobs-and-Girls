@@ -80,7 +80,7 @@ public class EnderExecutorModel<T extends EnderExecutorEntity> extends AbstractG
 		ModClientUtils.addC(rlpd, cd, "right_leg_part_2", 0, 44, -1.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, 0.0F, 18.0F, 0.0F);
 		ModClientUtils.addC(llpd, cd, "left_leg_part_2", 0, 44, -1.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, 0.0F, 18.0F, 0.0F, true);
 		PartDefinition bodypd = pd.getChild("body");
-		ModClientUtils.addC(bodypd, cd, "bust", 0, 32, -3.0F, -1.5F, -1.5F, 6.0F, 3.0F, 3.0F, 0.0F, 3.5F, -1.1F, -0.001F);
+		ModClientUtils.addC(bodypd, cd, "bust", 0, 32, -3.0F, -1.5F, -1.5F, 6.0F, 3.0F, 3.0F, 0.0F, 3.5F, -1.1F, -0.005F);
 		ModClientUtils.addC(bodypd, cd, "skirt_1", 0, 64, -3.5F, 0.0F, -2.0F, 7.0F, 2.0F, 4.0F, 0.0F, 11.0F, 0.0F);
 		PartDefinition s2pd = ModClientUtils.addC(bodypd, cd, "skirt_2", 24, 64, -4.0F, 0.0F, -2.5F, 8.0F, 2.0F, 5.0F, 0.0F, 13.0F, 0.0F);
 		PartDefinition s3pd = ModClientUtils.addC(s2pd, cd, "skirt_3", 0, 72, -4.5F, 0.0F, -3.0F, 9.0F, 2.0F, 6.0F, 0.0F, 2.0F, 0.0F);

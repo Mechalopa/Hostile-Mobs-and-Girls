@@ -1,0 +1,16 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "sprit"
+    }
+  ],
+  "type": "spirit:mob_trait",
+  "entity": "hmag:creeper_girl",
+  "traits": [
+    {
+      "type": "spirit:explosion",
+      "power": 0.75
+    }
+  ]
+}

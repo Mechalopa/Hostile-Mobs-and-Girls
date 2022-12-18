@@ -495,7 +495,7 @@ public class ModEvents
 
 				if (event.getSlotType().getType() == EquipmentSlot.Type.ARMOR && i >= 0 && i < HealthBoostEnchantment.HEALTH_BOOST_ENCHANTMENT_MAX_HEALTH_UUIDS.length)
 				{
-					int level = EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.HEALTH_BOOST.get(), stack);
+					final int level = EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.HEALTH_BOOST.get(), stack);
 
 					if (level > 0)
 					{

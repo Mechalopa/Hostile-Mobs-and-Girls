@@ -201,20 +201,8 @@ public class EnderExecutorEntity extends EnderMan implements IModMob, IBeamAttac
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor worldIn, DifficultyInstance difficultyIn, MobSpawnType spawnType, @Nullable SpawnGroupData spawnDataIn, @Nullable CompoundTag dataTag)
 	{
 		SpawnGroupData spawngroupdata = super.finalizeSpawn(worldIn, difficultyIn, spawnType, spawnDataIn, dataTag);
-
 		this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.STONE_SWORD));
-
 		return spawngroupdata;
-	}
-
-	@Override
-	protected void populateDefaultEquipmentSlots(DifficultyInstance difficulty)
-	{
-		super.populateDefaultEquipmentSlots(difficulty);
-
-		if (this.getRandom().nextFloat() < 0.05F)
-		{
-		}
 	}
 
 	@Override

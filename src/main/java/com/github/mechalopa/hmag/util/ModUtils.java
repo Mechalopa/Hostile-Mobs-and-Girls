@@ -2,6 +2,7 @@ package com.github.mechalopa.hmag.util;
 
 import java.util.List;
 import java.util.Random;
+import java.util.function.Predicate;
 
 import javax.annotation.Nonnull;
 
@@ -26,6 +27,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TridentItem;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.ServerLevelAccessor;
@@ -77,6 +79,16 @@ public class ModUtils
 					livingEntityIn.setSecondsOnFire(seconds);
 				}
 			}
+		}
+	}
+
+	public static void catchFire(@Nonnull LivingEntity livingEntity, @Nonnull Entity target, Random rand)
+	{
+		float f = livingEntity.level.getCurrentDifficultyAt(livingEntity.blockPosition()).getEffectiveDifficulty();
+
+		if (livingEntity.getMainHandItem().isEmpty() && livingEntity.isOnFire() && rand.nextFloat() < f * 0.3F)
+		{
+			target.setSecondsOnFire(2 * (int)f);
 		}
 	}
 
@@ -192,6 +204,23 @@ public class ModUtils
 		}
 
 		return Mth.lerp(f2, f, f1);
+	}
+
+	public static ItemStack getHeldItem(@Nonnull LivingEntity livingEntity, @Nonnull Item item)
+	{
+		return getHeldItem(livingEntity, Ingredient.of(item));
+	}
+
+	public static ItemStack getHeldItem(@Nonnull LivingEntity livingEntity, Predicate<ItemStack> predicate)
+	{
+		if (predicate.test(livingEntity.getItemInHand(InteractionHand.OFF_HAND)))
+		{
+			return livingEntity.getItemInHand(InteractionHand.OFF_HAND);
+		}
+		else
+		{
+			return predicate.test(livingEntity.getItemInHand(InteractionHand.MAIN_HAND)) ? livingEntity.getItemInHand(InteractionHand.MAIN_HAND) : ItemStack.EMPTY;
+		}
 	}
 
 	public static boolean matchItemBothHands(LivingEntity livingEntity, Item item)

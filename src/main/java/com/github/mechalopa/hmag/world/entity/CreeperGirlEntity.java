@@ -80,7 +80,6 @@ public class CreeperGirlEntity extends Creeper implements IModMob
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor worldIn, DifficultyInstance difficultyIn, MobSpawnType spawnType, @Nullable SpawnGroupData spawnDataIn, @Nullable CompoundTag dataTag)
 	{
 		spawnDataIn = super.finalizeSpawn(worldIn, difficultyIn, spawnType, spawnDataIn, dataTag);
-
 		this.setVariant(this.getRandom().nextInt(3));
 		this.populateDefaultEquipmentSlots(difficultyIn);
 		this.populateDefaultEquipmentEnchantments(difficultyIn);

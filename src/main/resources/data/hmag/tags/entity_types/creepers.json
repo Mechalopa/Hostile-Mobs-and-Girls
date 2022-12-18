@@ -85,6 +85,10 @@
     {
       "id": "specialmobs:splittingcreeper",
       "required": false
+    },
+    {
+      "id": "more_babies:creeper",
+      "required": false
     }
   ]
 }

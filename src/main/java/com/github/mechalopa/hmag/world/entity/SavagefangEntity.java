@@ -873,7 +873,7 @@ public class SavagefangEntity extends Monster implements IModMob
 		@Override
 		public boolean test(@Nullable LivingEntity livingEntityIn)
 		{
-			if (this.parent.isLaunched() || livingEntityIn.getType().is(ModTags.SAVAGEFANG_TARGET_BLACKLIST) || livingEntityIn instanceof SavagefangEntity)
+			if (this.parent.isLaunched() || livingEntityIn.getType().is(ModTags.SAVAGEFANG_TARGET_BLACKLIST))
 			{
 				return false;
 			}

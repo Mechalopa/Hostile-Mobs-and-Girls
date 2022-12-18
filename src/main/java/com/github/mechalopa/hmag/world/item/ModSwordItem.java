@@ -76,6 +76,6 @@ public class ModSwordItem extends SwordItem
 	@Override
 	public int getBurnTime(ItemStack stack, @Nullable RecipeType<?> recipeType)
 	{
-		return this.getTier() == Tiers.WOOD? 200 : super.getBurnTime(stack, recipeType);
+		return this.getTier() == Tiers.WOOD ? 200 : super.getBurnTime(stack, recipeType);
 	}
 }

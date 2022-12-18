@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "spirit:soul_powder"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "spirit:soul_powder"
+    },
+    {
+      "item": "spirit:soul_powder"
+    },
+    {
+      "item": "spirit:soul_powder"
+    }
+  ],
+  "result": {
+    "item": "hmag:soul_powder",
+    "count": 2
+  }
+}

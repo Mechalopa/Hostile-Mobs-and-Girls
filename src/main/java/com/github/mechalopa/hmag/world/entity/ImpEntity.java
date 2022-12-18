@@ -136,7 +136,6 @@ public class ImpEntity extends Monster implements IModMob
 		spawnDataIn = super.finalizeSpawn(worldIn, difficultyIn, spawnType, spawnDataIn, dataTag);
 		this.populateDefaultEquipmentSlots(difficultyIn);
 		this.populateDefaultEquipmentEnchantments(difficultyIn);
-
 		return spawnDataIn;
 	}
 

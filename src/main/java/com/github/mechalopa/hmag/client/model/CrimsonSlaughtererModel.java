@@ -194,7 +194,7 @@ public class CrimsonSlaughtererModel<T extends Mob> extends HierarchicalModel<T>
 		ModClientUtils.addC(headpd, "hair_band", 88, 24, -3.5F, 0.0F, 0.0F, 7.0F, 2.0F, 1.0F, 0.0F, 8.0F, -0.5F);
 
 		PartDefinition bodypd = ModClientUtils.addC(pd, "body", 0, 16, -3.0F, -6.0F, -1.5F, 6.0F, 6.0F, 3.0F, 0.0F, f, 0.0F);
-		ModClientUtils.addC(bodypd, "bust", 0, 26, -3.0F, -1.5F, -1.5F, 6.0F, 3.0F, 3.0F, 0.0F, -3.5F, -1.1F, -0.001F);
+		ModClientUtils.addC(bodypd, "bust", 0, 26, -3.0F, -1.5F, -1.5F, 6.0F, 3.0F, 3.0F, 0.0F, -3.5F, -1.1F, -0.005F);
 		PartDefinition bp1pd = ModClientUtils.addC(bodypd, "body_part_1", 24, 16, -2.5F, -1.0F, -1.0F, 5.0F, 1.0F, 2.0F, 0.0F, -6.0F, 0.0F, 0.125F);
 		ModClientUtils.addC(bp1pd, "body_part_2", 24, 24, -2.5F, -4.0F, -1.0F, 5.0F, 4.0F, 2.0F, 0.0F, -1.0F, 0.0F);
 

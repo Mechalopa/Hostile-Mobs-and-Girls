@@ -126,8 +126,8 @@ public class HarpyModel<T extends HarpyEntity> extends AbstractAdvancedGirlModel
 		PartDefinition lap3pd = ModClientUtils.addC(lap2pd, cd, "left_arm_part_3", 26, 32, -1.0F, -0.5F, -1.5F, 1.0F, 7.0F, 2.0F, -0.5F, 5.0F, 0.0F, true);
 		ModClientUtils.addC(rap2pd, cd, "right_arm_part_2_wing", 16, 44, 0.0F, 0.0F, 0.0F, 1.0F, 7.0F, 5.0F, 0.5F, -2.5F, 1.0F);
 		ModClientUtils.addC(lap2pd, cd, "left_arm_part_2_wing", 16, 44, -1.0F, 0.0F, 0.0F, 1.0F, 7.0F, 5.0F, -0.5F, -2.5F, 1.0F, true);
-		ModClientUtils.addC(rap3pd, cd, "right_arm_part_3_wing", 16, 56, 0.0F, 0.0F, 0.0F, 1.0F, 8.0F, 7.0F, 0.0F, 0.0F, -1.0F, -0.001F);
-		ModClientUtils.addC(lap3pd, cd, "left_arm_part_3_wing", 16, 56, -1.0F, 0.0F, 0.0F, 1.0F, 8.0F, 7.0F, 0.0F, 0.0F, -1.0F, true, -0.001F);
+		ModClientUtils.addC(rap3pd, cd, "right_arm_part_3_wing", 16, 56, 0.0F, 0.0F, 0.0F, 1.0F, 8.0F, 7.0F, 0.0F, 0.0F, -1.0F, -0.005F);
+		ModClientUtils.addC(lap3pd, cd, "left_arm_part_3_wing", 16, 56, -1.0F, 0.0F, 0.0F, 1.0F, 8.0F, 7.0F, 0.0F, 0.0F, -1.0F, true, -0.005F);
 
 		PartDefinition rlp1pd = ModClientUtils.addC(rlpd, cd, "right_leg_part_1", 0, 20, -2.25F, 0.0F, -1.75F, 4.0F, 5.0F, 4.0F, 0.0F, -1.5F, 0.0F);
 		PartDefinition llp1pd = ModClientUtils.addC(llpd, cd, "left_leg_part_1", 0, 20, -1.75F, 0.0F, -1.75F, 4.0F, 5.0F, 4.0F, 0.0F, -1.5F, 0.0F, true);

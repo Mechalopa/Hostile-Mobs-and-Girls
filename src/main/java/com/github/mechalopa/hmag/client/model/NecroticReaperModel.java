@@ -210,8 +210,8 @@ public class NecroticReaperModel<T extends Mob> extends AbstractGirlModel<T>
 		ModClientUtils.addC(lap2pd, cd, "left_arm_part_4b", 16, 48, -1.0F, -1.5F, 0.0F, 1.0F, 3.0F, 5.0F, -0.5F, 2.0F, 0.25F, true);
 		PartDefinition rap5pd = ModClientUtils.addC(rap2pd, cd, "right_arm_part_5", 24, 32, 0.0F, -0.5F, -1.5F, 1.0F, 8.0F, 2.0F, 0.5F, 5.0F, 0.0F);
 		PartDefinition lap5pd = ModClientUtils.addC(lap2pd, cd, "left_arm_part_5", 24, 32, -1.0F, -0.5F, -1.5F, 1.0F, 8.0F, 2.0F, -0.5F, 5.0F, 0.0F, true);
-		ModClientUtils.addC(rap5pd, cd, "right_arm_part_6", 0, 56, 0.0F, 0.0F, 0.0F, 1.0F, 6.0F, 11.0F, 0.5F, 2.0F, -0.5F, -0.001F);
-		ModClientUtils.addC(lap5pd, cd, "left_arm_part_6", 0, 56, -1.0F, 0.0F, 0.0F, 1.0F, 6.0F, 11.0F, -0.5F, 2.0F, -0.5F, true, -0.001F);
+		ModClientUtils.addC(rap5pd, cd, "right_arm_part_6", 0, 56, 0.0F, 0.0F, 0.0F, 1.0F, 6.0F, 11.0F, 0.5F, 2.0F, -0.5F, -0.005F);
+		ModClientUtils.addC(lap5pd, cd, "left_arm_part_6", 0, 56, -1.0F, 0.0F, 0.0F, 1.0F, 6.0F, 11.0F, -0.5F, 2.0F, -0.5F, true, -0.005F);
 
 		ModClientUtils.addC(rlpd, cd, "right_leg_part_1", 0, 38, -0.5F, 0.0F, -1.0F, 1.0F, 2.0F, 2.0F, -1.0F, 5.5F, -0.25F);
 		ModClientUtils.addC(llpd, cd, "left_leg_part_1", 0, 38, -0.5F, 0.0F, -1.0F, 1.0F, 2.0F, 2.0F, 1.0F, 5.5F, -0.25F, true);

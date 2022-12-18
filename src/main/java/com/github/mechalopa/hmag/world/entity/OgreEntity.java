@@ -193,7 +193,7 @@ public class OgreEntity extends Monster implements IModMob
 		{
 			amount = amount * 0.25F;
 
-			if (!this.isNoAi() && this.getRandom().nextInt(8) == 0)
+			if (!this.isNoAi() && !source.isNoAggro() && this.getRandom().nextInt(8) == 0)
 			{
 				this.destroyBlock();
 			}

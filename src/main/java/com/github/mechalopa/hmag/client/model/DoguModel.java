@@ -44,6 +44,7 @@ public class DoguModel<T extends Mob> extends HumanoidModel<T>
 	public DoguModel(ModelPart modelPart)
 	{
 		super(modelPart);
+		this.hat.visible = false;
 //		this.headPart1 = this.head.getChild("head_part_1");
 		this.headPart2 = this.head.getChild("head_part_2");
 		Arrays.setAll(this.headPart2Parts, (p) -> {

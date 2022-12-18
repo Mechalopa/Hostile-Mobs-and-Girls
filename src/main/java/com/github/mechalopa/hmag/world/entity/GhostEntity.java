@@ -97,21 +97,17 @@ public class GhostEntity extends AbstractFlyingMonsterEntity implements IModMob
 	}
 
 	@Override
-	public boolean doHurtTarget(Entity entityIn)
+	public boolean doHurtTarget(Entity entity)
 	{
-		boolean flag = super.doHurtTarget(entityIn);
-
-		if (flag)
+		if (super.doHurtTarget(entity))
 		{
-			float f = this.level.getCurrentDifficultyAt(this.blockPosition()).getEffectiveDifficulty();
-
-			if (this.getMainHandItem().isEmpty() && this.isOnFire() && this.getRandom().nextFloat() < f * 0.3F)
-			{
-				entityIn.setSecondsOnFire(2 * (int)f);
-			}
+			ModUtils.catchFire(this, entity, this.getRandom());
+			return true;
 		}
-
-		return flag;
+		else
+		{
+			return false;
+		}
 	}
 
 	@Override
@@ -150,7 +146,6 @@ public class GhostEntity extends AbstractFlyingMonsterEntity implements IModMob
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor worldIn, DifficultyInstance difficultyIn, MobSpawnType spawnType, @Nullable SpawnGroupData spawnDataIn, @Nullable CompoundTag dataTag)
 	{
 		spawnDataIn = super.finalizeSpawn(worldIn, difficultyIn, spawnType, spawnDataIn, dataTag);
-
 		this.setCanPickUpLoot(this.getRandom().nextFloat() < 0.55F * difficultyIn.getSpecialMultiplier());
 		this.setVariant(this.getRandom().nextInt(5));
 		this.populateDefaultEquipmentSlots(difficultyIn);

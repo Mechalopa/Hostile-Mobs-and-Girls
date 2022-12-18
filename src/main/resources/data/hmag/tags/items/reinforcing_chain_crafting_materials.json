@@ -19,6 +19,10 @@
     {
       "id": "omnis:ravaged_scrap",
       "required": false
+    },
+    {
+      "id": "friendsandfoes:wildfire_crown_fragment",
+      "required": false
     }
   ]
 }

@@ -46,7 +46,7 @@ public class RedcapModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 		PartDefinition pd = md.getRoot();
 		PartDefinition headpd = pd.getChild("head");
 		PartDefinition cap1pd = ModClientUtils.addC(headpd, cd, "cap_1", 0, 64, -5.0F, -1.0F, -5.0F, 10.0F, 2.0F, 10.0F, 0.0F, -7.0F, 0.0F);
-		PartDefinition cap2pd = ModClientUtils.addC(cap1pd, cd, "cap_2", 0, 48, -4.0F, 0.0F, -4.0F, 8.0F, 1.0F, 8.0F, 0.0F, -2.0F, 0.5F);
+		PartDefinition cap2pd = ModClientUtils.addC(cap1pd, cd, "cap_2", 0, 48, -4.0F, 0.0F, -4.0F, 8.0F, 1.0F, 8.0F, 0.0F, -2.0F, 0.5F, 0.005F);
 		ModClientUtils.addC(cap2pd, cd, "cap_3", 0, 40, -3.0F, 0.0F, -3.0F, 6.0F, 1.0F, 6.0F, 0.0F, -1.0F, 0.5F);
 		ModClientUtils.addC(cap1pd, cd, "cap_4", 0, 80, -4.0F, 0.0F, -3.0F, 8.0F, 1.0F, 3.0F, 0.0F, 0.0F, -5.0F);
 		PartDefinition rh1pd = ModClientUtils.addC(headpd, cd, "right_hair_1", 32, 80, -1.0F, 0.0F, -1.0F, 2.0F, 2.0F, 2.0F, -3.5F, -1.0F, 3.0F);

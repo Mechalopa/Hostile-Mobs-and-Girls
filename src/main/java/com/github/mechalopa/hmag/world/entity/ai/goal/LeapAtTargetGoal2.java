@@ -33,7 +33,7 @@ public class LeapAtTargetGoal2 extends Goal
 		this.xzd = xzd;
 		this.maxAttackDistance = maxAttackDistance * maxAttackDistance;
 		this.chance = chance;
-		this.setFlags(EnumSet.of(Goal.Flag.JUMP, Goal.Flag.MOVE));
+		this.setFlags(EnumSet.of(Goal.Flag.JUMP, Goal.Flag.MOVE, Goal.Flag.LOOK));
 	}
 
 	@Override

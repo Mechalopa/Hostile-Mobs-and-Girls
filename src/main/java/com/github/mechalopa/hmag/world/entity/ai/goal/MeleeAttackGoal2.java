@@ -8,6 +8,13 @@ public class MeleeAttackGoal2 extends MeleeAttackGoal
 {
 	private final float reachScale;
 	private final float maxAttackDistance;
+	private boolean useRaiseArm;
+	private int raiseArmTicks;
+
+	public MeleeAttackGoal2(PathfinderMob mob, double speedIn, boolean useLongMemory)
+	{
+		this(mob, speedIn, useLongMemory, -1.0F);
+	}
 
 	public MeleeAttackGoal2(PathfinderMob mob, double speedIn, boolean useLongMemory, float reachScaleIn)
 	{
@@ -21,6 +28,12 @@ public class MeleeAttackGoal2 extends MeleeAttackGoal
 		this.maxAttackDistance = maxAttackDistance;
 	}
 
+	public MeleeAttackGoal2 useRaiseArm()
+	{
+		this.useRaiseArm = true;
+		return this;
+	}
+
 	@Override
 	public boolean canUse()
 	{
@@ -31,6 +44,37 @@ public class MeleeAttackGoal2 extends MeleeAttackGoal
 	public boolean canContinueToUse()
 	{
 		return super.canContinueToUse() && this.isValidDistance(this.mob.getTarget());
+	}
+
+	@Override
+	public void stop()
+	{
+		super.stop();
+
+		if (this.useRaiseArm)
+		{
+			this.mob.setAggressive(false);
+		}
+	}
+
+	@Override
+	public void tick()
+	{
+		super.tick();
+
+		if (this.useRaiseArm)
+		{
+			++this.raiseArmTicks;
+
+			if (this.raiseArmTicks >= 5 && this.getTicksUntilNextAttack() < this.getAttackInterval() / 2)
+			{
+				this.mob.setAggressive(true);
+			}
+			else
+			{
+				this.mob.setAggressive(false);
+			}
+		}
 	}
 
 	@Override

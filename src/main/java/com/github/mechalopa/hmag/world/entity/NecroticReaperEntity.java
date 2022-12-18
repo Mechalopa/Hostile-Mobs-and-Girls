@@ -102,12 +102,7 @@ public class NecroticReaperEntity extends Monster implements IModMob
 	{
 		if (super.doHurtTarget(entityIn))
 		{
-			float f = this.level.getCurrentDifficultyAt(this.blockPosition()).getEffectiveDifficulty();
-
-			if (this.getMainHandItem().isEmpty() && this.isOnFire() && this.getRandom().nextFloat() < f * 0.3F)
-			{
-				entityIn.setSecondsOnFire(2 * (int)f);
-			}
+			ModUtils.catchFire(this, entityIn, this.getRandom());
 
 			if (entityIn instanceof LivingEntity)
 			{

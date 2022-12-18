@@ -38,6 +38,7 @@ public class OgreModel<T extends OgreEntity> extends HumanoidModel<T>
 	public OgreModel(ModelPart modelPart)
 	{
 		super(modelPart);
+		this.hat.visible = false;
 		this.horn1 = this.head.getChild("horn_1");
 		this.horn2 = this.horn1.getChild("horn_2");
 		this.bodyPart1 = this.body.getChild("body_part_1");
@@ -62,11 +63,11 @@ public class OgreModel<T extends OgreEntity> extends HumanoidModel<T>
 		float f = -5.0F;
 		MeshDefinition md = HumanoidModel.createMesh(CubeDeformation.NONE, f);
 		PartDefinition pd = md.getRoot();
-		PartDefinition headpd = ModClientUtils.addC(pd, "head", 0, 0, -5.0F, -8.0F, -4.0F, 10.0F, 8.0F, 8.0F, 0.0F, 0.0F + f, 0.0F);
-		ModClientUtils.addC(pd, "hat", 0, 0, -0.5F, -0.5F, -0.5F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F + f, 0.0F);
+		PartDefinition headpd = ModClientUtils.addC(pd, "head", 0, 0, -5.0F, -8.0F, -4.0F, 10.0F, 8.0F, 8.0F, 0.0F, f, 0.0F);
+		ModClientUtils.addC(pd, "hat", 0, 0, -0.5F, -0.5F, -0.5F, 1.0F, 1.0F, 1.0F, 0.0F, f, 0.0F);
 		PartDefinition horn1pd = ModClientUtils.addC(headpd, "horn_1", 40, 16, -1.0F, -3.0F, -1.0F, 2.0F, 3.0F, 2.0F, 0.0F, -7.75F, 0.5F);
 		ModClientUtils.addC(horn1pd, "horn_2", 48, 16, -0.5F, -2.0F, -0.5F, 1.0F, 2.0F, 1.0F, 0.0F, -3.0F, 0.0F);
-		PartDefinition bodypd = ModClientUtils.addC(pd, "body", 0, 16, -6.0F, 0.0F, -3.0F, 12.0F, 6.0F, 6.0F, 0.0F, 0.0F + f, 0.0F);
+		PartDefinition bodypd = ModClientUtils.addC(pd, "body", 0, 16, -6.0F, 0.0F, -3.0F, 12.0F, 6.0F, 6.0F, 0.0F, f, 0.0F);
 		ModClientUtils.addC(bodypd, "body_part_1", 0, 56, -6.5F, 0.0F, -3.5F, 13.0F, 6.0F, 7.0F, 0.0F, 6.0F, 0.0F);
 		PartDefinition bodypart2pd = ModClientUtils.addC(bodypd, "body_part_2", 0, 72, -7.0F, 0.0F, -4.0F, 14.0F, 5.0F, 8.0F, 0.0F, 12.0F, 0.0F);
 		ModClientUtils.addC(bodypart2pd, "body_part_3", 0, 88, -7.0F, 0.0F, -4.0F, 14.0F, 3.0F, 8.0F, 0.0F, 5.0F, 0.0F);

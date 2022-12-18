@@ -22,7 +22,6 @@ public class RandomberryItem extends Item
 
 		if (!level.isClientSide)
 		{
-			final int i = livingEntity.getRandom().nextInt(3);
 			MobEffect effect = null;
 
 			switch (livingEntity.getRandom().nextInt(12))
@@ -67,7 +66,7 @@ public class RandomberryItem extends Item
 
 			if (effect != null)
 			{
-				livingEntity.addEffect(new MobEffectInstance(effect, (i + 1) * 5 * 20, 0));
+				livingEntity.addEffect(new MobEffectInstance(effect, (livingEntity.getRandom().nextInt(4) + 1) * 5 * 20, 0));
 			}
 		}
 

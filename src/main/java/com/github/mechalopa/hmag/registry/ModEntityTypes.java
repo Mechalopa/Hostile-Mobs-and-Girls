@@ -195,7 +195,7 @@ public class ModEntityTypes
 			.<ThrowableBottleEntity>of(ThrowableBottleEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(10).setShouldReceiveVelocityUpdates(true)
 			.build(new ResourceLocation(HMaG.MODID, "throwable_bottle").toString()));
 	public static final RegistryObject<EntityType<MagmaBulletEntity>> MAGMA_BULLET = REGISTRY.register("magma_bullet", () -> EntityType.Builder
-			.<MagmaBulletEntity>of(MagmaBulletEntity::new, MobCategory.MISC).sized(0.5F, 0.5F).setTrackingRange(4).setUpdateInterval(1).setShouldReceiveVelocityUpdates(true)
+			.<MagmaBulletEntity>of(MagmaBulletEntity::new, MobCategory.MISC).fireImmune().sized(0.5F, 0.5F).setTrackingRange(4).setUpdateInterval(1).setShouldReceiveVelocityUpdates(true)
 			.build(new ResourceLocation(HMaG.MODID, "magma_bullet").toString()));
 
 	@SubscribeEvent

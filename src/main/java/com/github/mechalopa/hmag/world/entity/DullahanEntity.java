@@ -77,7 +77,6 @@ public class DullahanEntity extends Monster implements IModMob
 	public void aiStep()
 	{
 		ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick(), 8);
-
 		super.aiStep();
 	}
 
@@ -146,7 +145,6 @@ public class DullahanEntity extends Monster implements IModMob
 		spawnDataIn = super.finalizeSpawn(worldIn, difficultyIn, spawnType, spawnDataIn, dataTag);
 		this.populateDefaultEquipmentSlots(difficultyIn);
 		this.populateDefaultEquipmentEnchantments(difficultyIn);
-
 		return spawnDataIn;
 	}
 
