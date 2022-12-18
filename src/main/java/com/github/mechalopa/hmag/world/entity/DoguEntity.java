@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
 import com.github.mechalopa.hmag.util.ModUtils;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.sounds.SoundEvent;
@@ -39,6 +40,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.network.NetworkHooks;
 
 public class DoguEntity extends Monster implements IModMob
@@ -196,6 +198,9 @@ public class DoguEntity extends Monster implements IModMob
 	{
 		return ModSoundEvents.DOLL_DEATH.get();
 	}
+
+	@Override
+	protected void playStepSound(BlockPos pos, BlockState block){}
 
 	@Nonnull
 	@Override
