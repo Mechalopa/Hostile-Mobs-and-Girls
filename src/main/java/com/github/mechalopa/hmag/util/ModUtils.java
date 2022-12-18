@@ -109,7 +109,7 @@ public class ModUtils
 		return true;
 	}
 
-	public static boolean closerThan(Entity entity, BlockPos pos, int distance)
+	public static boolean closerThan(@Nonnull Entity entity, BlockPos pos, int distance)
 	{
 		return pos.closerThan(entity.blockPosition(), distance);
 	}
@@ -131,12 +131,12 @@ public class ModUtils
 		}
 	}
 
-	public static boolean isThornsDamage(DamageSource source)
+	public static boolean isThornsDamage(@Nonnull DamageSource source)
 	{
 		return source == DamageSource.CACTUS || source == DamageSource.SWEET_BERRY_BUSH || (source instanceof EntityDamageSource && ((EntityDamageSource)source).isThorns());
 	}
 
-	public static boolean isStalagmiteDamage(DamageSource source)
+	public static boolean isStalagmiteDamage(@Nonnull DamageSource source)
 	{
 		return source == DamageSource.STALAGMITE || source == DamageSource.FALLING_STALACTITE;
 	}

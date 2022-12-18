@@ -97,8 +97,8 @@ public class FortressKeeperModel<T extends FortressKeeperEntity> extends Hierarc
 		MeshDefinition md = new MeshDefinition();
 		PartDefinition pd = md.getRoot();
 		PartDefinition headpd = ModClientUtils.addC(pd, "head", 0, 0, -4.0F, -3.0F, -4.0F, 8.0F, 7.0F, 6.0F, 0.0F, -4.0F, -4.0F);
-		ModClientUtils.addC(headpd, "right_head_part", 32, 0, -1.0F, -2.0F, -1.0F, 3.0F, 2.0F, 3.0F, -3.5F, 4.5F, -3.5F);
-		ModClientUtils.addC(headpd, "left_head_part", 32, 0, -2.0F, -2.0F, -1.0F, 3.0F, 2.0F, 3.0F, 3.5F, 4.5F, -3.5F, true);
+		ModClientUtils.addC(headpd, "right_head_part", 32, 0, -1.0F, -2.0F, -1.0F, 3.0F, 3.0F, 3.0F, -3.5F, 4.5F, -3.5F);
+		ModClientUtils.addC(headpd, "left_head_part", 32, 0, -2.0F, -2.0F, -1.0F, 3.0F, 3.0F, 3.0F, 3.5F, 4.5F, -3.5F, true);
 		PartDefinition bodypd = ModClientUtils.addC(pd, "body", 0, 16, -8.0F, 0.0F, -5.0F, 16.0F, 12.0F, 10.0F, 0.0F, -9.0F, 0.0F);
 		PartDefinition bp1pd = ModClientUtils.addC(bodypd, "body_part_1", 0, 40, -5.0F, 0.0F, -4.0F, 10.0F, 3.0F, 8.0F, 0.0F, 12.0F, 0.0F);
 		PartDefinition bp2pd = ModClientUtils.addC(bp1pd, "body_part_2", 0, 52, -3.5F, 0.0F, -2.5F, 7.0F, 6.0F, 5.0F, 0.0F, 3.0F, 0.0F);

@@ -1,5 +1,7 @@
 package com.github.mechalopa.hmag.client.util;
 
+import javax.annotation.Nonnull;
+
 import com.github.mechalopa.hmag.world.entity.IBeamAttackMob;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Matrix3f;
@@ -40,7 +42,7 @@ public class ModClientUtils
 		return livingentity != null && livingentity.isUsingItem() && livingentity.getUseItem() == stack ? 1.0F : 0.0F;
 	};
 
-	public static Vec3 getPosition(LivingEntity entityLiving, double d0, float f)
+	public static Vec3 getPosition(@Nonnull LivingEntity entityLiving, double d0, float f)
 	{
 		double d1 = Mth.lerp((double)f, entityLiving.xOld, entityLiving.getX());
 		double d2 = Mth.lerp((double)f, entityLiving.yOld, entityLiving.getY()) + d0;
@@ -48,7 +50,7 @@ public class ModClientUtils
 		return new Vec3(d1, d2, d3);
 	}
 
-	public static boolean shouldRenderBeamAttackMob(LivingEntity livingEntityIn, Frustum camera, double camX, double camY, double camZ, IBeamAttackMob beamAttackMobIn)
+	public static boolean shouldRenderBeamAttackMob(@Nonnull LivingEntity livingEntityIn, Frustum camera, double camX, double camY, double camZ, @Nonnull IBeamAttackMob beamAttackMobIn)
 	{
 		if (beamAttackMobIn.hasActiveAttackTarget())
 		{

@@ -1,7 +1,5 @@
 package com.github.mechalopa.hmag.client.model;
 
-import java.util.Arrays;
-
 import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.SpiderNestEntity;
 
@@ -56,10 +54,10 @@ public class SpiderNestModel<T extends SpiderNestEntity> extends HierarchicalMod
 	private final ModelPart bodyPart6;
 	private final ModelPart bodyPart7;
 	private final ModelPart bodyPart8;
-	private final ModelPart bodyPartsRightA[] = new ModelPart[4];
-	private final ModelPart bodyPartsLeftA[] = new ModelPart[4];
-//	private final ModelPart bodyPartsRightB[] = new ModelPart[4];
-//	private final ModelPart bodyPartsLeftB[] = new ModelPart[4];
+	private final ModelPart bodyPart9Right;
+	private final ModelPart bodyPart9Left;
+	private final ModelPart bodyPart10Right;
+	private final ModelPart bodyPart10Left;
 
 	public SpiderNestModel(ModelPart modelPart)
 	{
@@ -98,18 +96,10 @@ public class SpiderNestModel<T extends SpiderNestEntity> extends HierarchicalMod
 		this.bodyPart6 = this.body.getChild("body_part_6");
 		this.bodyPart7 = this.body.getChild("body_part_7");
 		this.bodyPart8 = this.body.getChild("body_part_8");
-		Arrays.setAll(this.bodyPartsRightA, (p) -> {
-			return this.body.getChild("body_part_right_a" + p);
-		});
-		Arrays.setAll(this.bodyPartsLeftA, (p) -> {
-			return this.body.getChild("body_part_left_a" + p);
-		});
-//		Arrays.setAll(this.bodyPartsRightB, (p) -> {
-//			return this.bodyPartsRightA[p].getChild("body_part_right_b" + p);
-//		});
-//		Arrays.setAll(this.bodyPartsLeftB, (p) -> {
-//			return this.bodyPartsLeftA[p].getChild("body_part_left_b" + p);
-//		});
+		this.bodyPart9Right = this.body.getChild("body_part_9_right");
+		this.bodyPart9Left = this.body.getChild("body_part_9_left");
+		this.bodyPart10Right = this.body.getChild("body_part_10_right");
+		this.bodyPart10Left = this.body.getChild("body_part_10_left");
 	}
 
 	public static LayerDefinition createBodyLayer()
@@ -120,11 +110,11 @@ public class SpiderNestModel<T extends SpiderNestEntity> extends HierarchicalMod
 		MeshDefinition md = new MeshDefinition();
 		PartDefinition pd = md.getRoot();
 		ModClientUtils.addC(pd, "head", 0, 0, -4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 6.0F, 0.0F, 15.0F, -8.0F);
-		PartDefinition bodypd = ModClientUtils.addC(pd, "body", 0, 16, -7.0F, -11.0F, -8.0F, 14.0F, 16.0F, 16.0F, 0.0F, 14.0F, 0.0F);
+		PartDefinition bodypd = ModClientUtils.addC(pd, "body", 0, 32, -7.0F, -11.0F, -8.0F, 14.0F, 16.0F, 16.0F, 0.0F, 14.0F, 0.0F);
 		ModClientUtils.addC(bodypd, "body_part_1", 0, 64, -8.0F, -8.0F, -7.0F, 16.0F, 16.0F, 14.0F, 0.0F, -3.0F, 0.0F);
 		ModClientUtils.addC(bodypd, "body_part_2", 0, 96, -7.0F, -9.0F, -7.0F, 14.0F, 18.0F, 14.0F, 0.0F, -3.0F, 0.0F);
-		CubeListBuilder cubelistbuilder = CubeListBuilder.create().texOffs(0, 48).addBox(-1.0F, -0.5F, -1.0F, 2.0F, f, 2.0F);
-		CubeListBuilder cubelistbuilder1 = CubeListBuilder.create().texOffs(0, 48).mirror().addBox(-1.0F, -0.5F, -1.0F, 2.0F, f, 2.0F);
+		CubeListBuilder cubelistbuilder = CubeListBuilder.create().texOffs(0, 14).addBox(-1.0F, -0.5F, -1.0F, 2.0F, f, 2.0F);
+		CubeListBuilder cubelistbuilder1 = CubeListBuilder.create().texOffs(0, 14).mirror().addBox(-1.0F, -0.5F, -1.0F, 2.0F, f, 2.0F);
 		PartDefinition l1pd = pd.addOrReplaceChild("leg_1", cubelistbuilder, PartPose.offset(-f2, f1, -6.0F));
 		PartDefinition l2pd = pd.addOrReplaceChild("leg_2", cubelistbuilder1, PartPose.offset(f2, f1, -6.0F));
 		PartDefinition l3pd = pd.addOrReplaceChild("leg_3", cubelistbuilder, PartPose.offset(-f2, f1, -2.0F));
@@ -133,8 +123,8 @@ public class SpiderNestModel<T extends SpiderNestEntity> extends HierarchicalMod
 		PartDefinition l6pd = pd.addOrReplaceChild("leg_6", cubelistbuilder1, PartPose.offset(f2, f1, 2.0F));
 		PartDefinition l7pd = pd.addOrReplaceChild("leg_7", cubelistbuilder, PartPose.offset(-f2, f1, 6.0F));
 		PartDefinition l8pd = pd.addOrReplaceChild("leg_8", cubelistbuilder1, PartPose.offset(f2, f1, 6.0F));
-		CubeListBuilder cubelistbuilder2 = CubeListBuilder.create().texOffs(8, 48).addBox(-1.5F, 0.0F, -1.5F, 3.0F, 9.0F, 3.0F, new CubeDeformation(-0.25F));
-		CubeListBuilder cubelistbuilder3 = CubeListBuilder.create().texOffs(8, 48).mirror().addBox(-1.5F, 0.0F, -1.5F, 3.0F, 9.0F, 3.0F, new CubeDeformation(-0.25F));
+		CubeListBuilder cubelistbuilder2 = CubeListBuilder.create().texOffs(0, 24).addBox(-1.5F, 0.0F, -1.5F, 3.0F, 9.0F, 3.0F, new CubeDeformation(-0.25F));
+		CubeListBuilder cubelistbuilder3 = CubeListBuilder.create().texOffs(0, 24).mirror().addBox(-1.5F, 0.0F, -1.5F, 3.0F, 9.0F, 3.0F, new CubeDeformation(-0.25F));
 		PartPose pp = PartPose.offset(0.0F, -1.0F, 0.0F);
 		l1pd.addOrReplaceChild("leg_1_part_1", cubelistbuilder2, pp);
 		l2pd.addOrReplaceChild("leg_2_part_1", cubelistbuilder3, pp);
@@ -144,8 +134,8 @@ public class SpiderNestModel<T extends SpiderNestEntity> extends HierarchicalMod
 		l6pd.addOrReplaceChild("leg_6_part_1", cubelistbuilder3, pp);
 		l7pd.addOrReplaceChild("leg_7_part_1", cubelistbuilder2, pp);
 		l8pd.addOrReplaceChild("leg_8_part_1", cubelistbuilder3, pp);
-		CubeListBuilder cubelistbuilder4 = CubeListBuilder.create().texOffs(20, 48).addBox(-1.5F, -1.0F, -1.5F, 3.0F, 11.0F, 3.0F);
-		CubeListBuilder cubelistbuilder5 = CubeListBuilder.create().texOffs(20, 48).mirror().addBox(-1.5F, -1.0F, -1.5F, 3.0F, 11.0F, 3.0F);
+		CubeListBuilder cubelistbuilder4 = CubeListBuilder.create().texOffs(12, 14).addBox(-1.5F, -1.0F, -1.5F, 3.0F, 11.0F, 3.0F);
+		CubeListBuilder cubelistbuilder5 = CubeListBuilder.create().texOffs(12, 14).mirror().addBox(-1.5F, -1.0F, -1.5F, 3.0F, 11.0F, 3.0F);
 		PartPose pp1 = PartPose.offset(0.0F, f, 0.0F);
 		l1pd.addOrReplaceChild("leg_1_part_2", cubelistbuilder4, pp1);
 		l2pd.addOrReplaceChild("leg_2_part_2", cubelistbuilder5, pp1);
@@ -155,33 +145,16 @@ public class SpiderNestModel<T extends SpiderNestEntity> extends HierarchicalMod
 		l6pd.addOrReplaceChild("leg_6_part_2", cubelistbuilder5, pp1);
 		l7pd.addOrReplaceChild("leg_7_part_2", cubelistbuilder4, pp1);
 		l8pd.addOrReplaceChild("leg_8_part_2", cubelistbuilder5, pp1);
-		ModClientUtils.addC(bodypd, "body_part_3", 32, 48, -2.0F, -4.5F, -1.0F, 4.0F, 5.0F, 3.0F, -1.0F, -11.0F, -3.5F, true);
-		ModClientUtils.addC(bodypd, "body_part_4", 32, 48, -2.0F, -4.5F, -1.0F, 4.0F, 5.0F, 3.0F, 3.0F, -11.5F, 3.5F);
-		ModClientUtils.addC(bodypd, "body_part_5", 32, 48, -2.0F, -4.5F, -1.0F, 4.0F, 5.0F, 3.0F, -4.5F, -11.0F, 7.0F, true);
-		ModClientUtils.addC(bodypd, "body_part_6", 48, 48, -2.0F, -7.5F, -1.0F, 4.0F, 8.0F, 3.0F, 1.0F, -6.0F, 8.0F, true);
-		ModClientUtils.addC(bodypd, "body_part_7", 48, 48, -2.0F, -7.5F, -1.0F, 4.0F, 8.0F, 3.0F, -4.0F, 0.0F, 8.0F, true);
-		ModClientUtils.addC(bodypd, "body_part_8", 48, 48, -2.0F, -7.5F, -1.0F, 4.0F, 8.0F, 3.0F, 4.5F, 2.0F, 8.0F);
-
-		CubeListBuilder cubelistbuilder6 = CubeListBuilder.create().texOffs(32, 0).addBox(-1.0F, -2.5F, -1.0F, 2.0F, 3.0F, 2.0F);
-		CubeListBuilder cubelistbuilder7 = CubeListBuilder.create().texOffs(40, 0).addBox(-1.5F, -4.0F, -1.5F, 3.0F, 4.0F, 3.0F, new CubeDeformation(-0.25F));
-		CubeListBuilder cubelistbuilder8 = CubeListBuilder.create().texOffs(32, 0).mirror().addBox(-1.0F, -2.5F, -1.0F, 2.0F, 3.0F, 2.0F);
-		CubeListBuilder cubelistbuilder9 = CubeListBuilder.create().texOffs(40, 0).mirror().addBox(-1.5F, -4.0F, -1.5F, 3.0F, 4.0F, 3.0F, new CubeDeformation(-0.25F));
-		PartPose pp2 = PartPose.ZERO;
-
-		for (int k = 0; k < 4; ++k)
-		{
-			PartPose pp3 = PartPose.offset(7.5F, -9.0F - (float)k * 0.25F, -4.5F + (float)k * 3.0F);
-			PartDefinition bprapd = bodypd.addOrReplaceChild("body_part_right_a" + k, cubelistbuilder6, pp3);
-			bprapd.addOrReplaceChild("body_part_right_b" + k, cubelistbuilder7, pp2);
-		}
-
-		for (int k = 0; k < 4; ++k)
-		{
-			PartPose pp4 = PartPose.offset(-7.5F, -9.0F - (float)k * 0.25F, -4.5F + (float)k * 3.0F);
-			PartDefinition bplapd = bodypd.addOrReplaceChild("body_part_left_a" + k, cubelistbuilder8, pp4);
-			bplapd.addOrReplaceChild("body_part_left_b" + k, cubelistbuilder9, pp2);
-		}
-
+		ModClientUtils.addC(bodypd, "body_part_3", 24, 24, -2.0F, -4.5F, -1.0F, 4.0F, 5.0F, 3.0F, -1.0F, -11.0F, -3.5F, true);
+		ModClientUtils.addC(bodypd, "body_part_4", 24, 24, -2.0F, -4.5F, -1.0F, 4.0F, 5.0F, 3.0F, 4.0F, -11.5F, 3.5F);
+		ModClientUtils.addC(bodypd, "body_part_5", 24, 24, -2.0F, -4.5F, -1.0F, 4.0F, 5.0F, 3.0F, -4.5F, -11.0F, 7.0F, true);
+		ModClientUtils.addC(bodypd, "body_part_6", 0, 36, -2.0F, -7.5F, -1.0F, 4.0F, 8.0F, 3.0F, 1.0F, -6.0F, 8.0F, true);
+		ModClientUtils.addC(bodypd, "body_part_7", 0, 36, -2.0F, -7.5F, -1.0F, 4.0F, 8.0F, 3.0F, -4.0F, 0.0F, 8.0F, true);
+		ModClientUtils.addC(bodypd, "body_part_8", 0, 36, -2.0F, -7.5F, -1.0F, 4.0F, 8.0F, 3.0F, 4.5F, 2.0F, 8.0F);
+		ModClientUtils.addC(bodypd, "body_part_9_right", 24, 0, 0.0F, -7.0F, -8.0F, 0.0F, 7.0F, 16.0F, -8.0F, -8.5F, 3.0F);
+		ModClientUtils.addC(bodypd, "body_part_9_left", 24, 0, 0.0F, -7.0F, -8.0F, 0.0F, 7.0F, 16.0F, 8.0F, -8.5F, 3.0F, true);
+		ModClientUtils.addC(bodypd, "body_part_10_right", 28, 0, 0.0F, -4.0F, -2.0F, 0.0F, 4.0F, 5.0F, -8.0F, -11.0F, -4.0F);
+		ModClientUtils.addC(bodypd, "body_part_10_left", 28, 0, 0.0F, -4.0F, -2.0F, 0.0F, 4.0F, 5.0F, 8.0F, -11.0F, -4.0F, true);
 		return LayerDefinition.create(md, 64, 128);
 	}
 
@@ -192,11 +165,11 @@ public class SpiderNestModel<T extends SpiderNestEntity> extends HierarchicalMod
 	}
 
 	@Override
-	public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
+	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
-		if (entityIn.isCharging())
+		if (entity.isCharging())
 		{
-			this.head.zRot = (ageInTicks * 1.2F) % (180.0F / (float)Math.PI) * (entityIn.getMainArm() == HumanoidArm.RIGHT ? 1.0F : -1.0F);
+			this.head.zRot = (ageInTicks * 1.2F) % (180.0F / (float)Math.PI) * (entity.getMainArm() == HumanoidArm.RIGHT ? 1.0F : -1.0F);
 			this.head.yRot = 0.0F;
 			this.head.xRot = 0.0F;
 		}
@@ -282,20 +255,13 @@ public class SpiderNestModel<T extends SpiderNestEntity> extends HierarchicalMod
 		this.bodyPart7.zRot += Mth.cos(ageInTicks * 0.045F - (float)Math.PI * 4.0F / 9.0F) * 0.033F;
 		this.bodyPart8.zRot += Mth.cos(ageInTicks * 0.045F + (float)Math.PI / 2.0F) * 0.033F;
 
-		for (int i = 0; i < this.bodyPartsRightA.length; ++i)
-		{
-			this.bodyPartsRightA[i].xRot = -((float)Math.PI * (float)(i - 2) / 15.0F);
-			this.bodyPartsRightA[i].xRot += Mth.cos(ageInTicks * 0.06F + (float)Math.PI * (float)i / 3.0F) * 0.15F;
-			this.bodyPartsRightA[i].zRot = ((float)Math.PI * 2.0F / 9.0F);
-			this.bodyPartsRightA[i].zRot += Mth.sin(ageInTicks * 0.06F + (float)Math.PI * (float)(i + 4) / 3.0F) * 0.3F;
-		}
-
-		for (int i = 0; i < this.bodyPartsLeftA.length; ++i)
-		{
-			this.bodyPartsLeftA[i].xRot = -((float)Math.PI * (float)(i - 2) / 15.0F);
-			this.bodyPartsLeftA[i].xRot += Mth.cos(ageInTicks * 0.06F + (float)Math.PI * (float)i / 3.0F) * 0.15F;
-			this.bodyPartsLeftA[i].zRot = -((float)Math.PI * 2.0F / 9.0F);
-			this.bodyPartsLeftA[i].zRot -= Mth.sin(ageInTicks * 0.06F + (float)Math.PI * (float)(i + 4) / 3.0F) * 0.3F;
-		}
+		this.bodyPart9Right.zRot = -((float)Math.PI / 7.0F);
+		this.bodyPart9Left.zRot = (float)Math.PI / 7.0F;
+		this.bodyPart9Right.zRot += Mth.sin(ageInTicks * 0.067F - (float)Math.PI / 6.0F) * 0.036F;
+		this.bodyPart9Left.zRot -= Mth.sin(ageInTicks * 0.067F - (float)Math.PI / 6.0F) * 0.036F;
+		this.bodyPart10Right.zRot = -((float)Math.PI / 15.0F);
+		this.bodyPart10Left.zRot = (float)Math.PI / 15.0F;
+		this.bodyPart10Right.zRot += Mth.sin(ageInTicks * 0.067F - (float)Math.PI / 3.0F) * 0.036F;
+		this.bodyPart10Left.zRot -= Mth.sin(ageInTicks * 0.067F - (float)Math.PI / 3.0F) * 0.036F;
 	}
 }

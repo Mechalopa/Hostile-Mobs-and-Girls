@@ -15,7 +15,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class BansheeLayer extends AbstractClothingLayer<BansheeEntity, BansheeModel<BansheeEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/banshee_overlay.png");
+	private static final ResourceLocation TEX0 = new ResourceLocation(HMaG.MODID, "textures/entity/banshee_overlay_0.png");
+	private static final ResourceLocation TEX1 = new ResourceLocation(HMaG.MODID, "textures/entity/banshee_overlay_1.png");
 	private final BansheeModel<BansheeEntity> model;
 
 	public BansheeLayer(RenderLayerParent<BansheeEntity, BansheeModel<BansheeEntity>> renderLayerParent, EntityModelSet modelSet)
@@ -39,6 +40,12 @@ public class BansheeLayer extends AbstractClothingLayer<BansheeEntity, BansheeMo
 	@Override
 	public ResourceLocation getLayerTexture(BansheeEntity entity)
 	{
-		return TEX;
+		switch (entity.getVariant())
+		{
+		case 1:
+			return TEX1;
+		default:
+			return TEX0;
+		}
 	}
 }

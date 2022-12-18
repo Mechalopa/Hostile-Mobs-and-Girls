@@ -3,6 +3,7 @@ package com.github.mechalopa.hmag.client.renderer;
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.CursedDollModel;
+import com.github.mechalopa.hmag.client.renderer.layers.CursedDollEyesLayer;
 import com.github.mechalopa.hmag.world.entity.CursedDollEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
@@ -16,11 +17,13 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class CursedDollRenderer extends AbstractGirlRenderer<CursedDollEntity, CursedDollModel<CursedDollEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/cursed_doll.png");
+	private static final ResourceLocation TEX0 = new ResourceLocation(HMaG.MODID, "textures/entity/cursed_doll_0.png");
+	private static final ResourceLocation TEX1 = new ResourceLocation(HMaG.MODID, "textures/entity/cursed_doll_1.png");
 
 	public CursedDollRenderer(EntityRendererProvider.Context context)
 	{
 		super(context, new CursedDollModel<>(context.bakeLayer(ModModelLayers.CURSED_DOLL)), 0.375F);
+		this.addLayer(new CursedDollEyesLayer<>(this));
 	}
 
 	@Override
@@ -42,6 +45,12 @@ public class CursedDollRenderer extends AbstractGirlRenderer<CursedDollEntity, C
 	@Override
 	public ResourceLocation getTextureLocation(CursedDollEntity entity)
 	{
-		return TEX;
+		switch (entity.getVariant())
+		{
+		case 1:
+			return TEX1;
+		default:
+			return TEX0;
+		}
 	}
 }
