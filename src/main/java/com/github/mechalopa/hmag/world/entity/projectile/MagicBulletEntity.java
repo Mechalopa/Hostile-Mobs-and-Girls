@@ -27,6 +27,7 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.network.PlayMessages;
 
 public class MagicBulletEntity extends ModDamagingProjectileEntity
 {
@@ -49,6 +50,11 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 	public MagicBulletEntity(Level worldIn, double x, double y, double z, double accelX, double accelY, double accelZ)
 	{
 		super(ModEntityTypes.MAGIC_BULLET.get(), x, y, z, accelX, accelY, accelZ, worldIn);
+	}
+
+	public MagicBulletEntity(PlayMessages.SpawnEntity spawnEntity, Level level)
+	{
+		this(ModEntityTypes.MAGIC_BULLET.get(), level);
 	}
 
 	@Override

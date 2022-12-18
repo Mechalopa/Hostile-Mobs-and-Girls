@@ -23,6 +23,7 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.ForgeEventFactory;
+import net.minecraftforge.network.PlayMessages;
 
 public class MagmaBulletEntity extends ModDamagingProjectileEntity
 {
@@ -43,6 +44,11 @@ public class MagmaBulletEntity extends ModDamagingProjectileEntity
 	public MagmaBulletEntity(Level worldIn, double x, double y, double z, double accelX, double accelY, double accelZ)
 	{
 		super(ModEntityTypes.MAGMA_BULLET.get(), x, y, z, accelX, accelY, accelZ, worldIn);
+	}
+
+	public MagmaBulletEntity(PlayMessages.SpawnEntity spawnEntity, Level level)
+	{
+		this(ModEntityTypes.MAGMA_BULLET.get(), level);
 	}
 
 	@Override

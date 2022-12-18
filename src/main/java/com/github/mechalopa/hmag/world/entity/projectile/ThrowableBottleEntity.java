@@ -23,6 +23,7 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.network.NetworkHooks;
+import net.minecraftforge.network.PlayMessages;
 
 public class ThrowableBottleEntity extends ThrowableItemProjectile
 {
@@ -39,6 +40,11 @@ public class ThrowableBottleEntity extends ThrowableItemProjectile
 	public ThrowableBottleEntity(Level worldIn, double x, double y, double z)
 	{
 		super(ModEntityTypes.THROWABLE_BOTTLE.get(), x, y, z, worldIn);
+	}
+
+	public ThrowableBottleEntity(PlayMessages.SpawnEntity spawnEntity, Level level)
+	{
+		this(ModEntityTypes.THROWABLE_BOTTLE.get(), level);
 	}
 
 	@Override

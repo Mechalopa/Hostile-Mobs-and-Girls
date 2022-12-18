@@ -223,21 +223,6 @@ public class ModUtils
 		}
 	}
 
-	public static boolean matchItemBothHands(LivingEntity livingEntity, Item item)
-	{
-		for (InteractionHand hand : InteractionHand.values())
-		{
-			ItemStack stack = livingEntity.getItemInHand(hand);
-
-			if (!stack.isEmpty() && stack.getItem() == item)
-			{
-				return true;
-			}
-		}
-
-		return false;
-	}
-
 	public static boolean isBow(ItemStack stack)
 	{
 		if (!stack.isEmpty())

@@ -183,19 +183,19 @@ public class ModEntityTypes
 			.build(new ResourceLocation(HMaG.MODID, "glaryad").toString()));
 
 	public static final RegistryObject<EntityType<MagicBulletEntity>> MAGIC_BULLET = REGISTRY.register("magic_bullet", () -> EntityType.Builder
-			.<MagicBulletEntity>of(MagicBulletEntity::new, MobCategory.MISC).sized(0.3215F, 0.3215F).setTrackingRange(4).setUpdateInterval(1).setShouldReceiveVelocityUpdates(true)
+			.<MagicBulletEntity>of(MagicBulletEntity::new, MobCategory.MISC).sized(0.3215F, 0.3215F).setTrackingRange(4).setUpdateInterval(1).setShouldReceiveVelocityUpdates(true).setCustomClientFactory(MagicBulletEntity::new)
 			.build(new ResourceLocation(HMaG.MODID, "magic_bullet").toString()));
 	public static final RegistryObject<EntityType<HardSnowballEntity>> HARD_SNOWBALL = REGISTRY.register("hard_snowball", () -> EntityType.Builder
-			.<HardSnowballEntity>of(HardSnowballEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(10).setShouldReceiveVelocityUpdates(true)
+			.<HardSnowballEntity>of(HardSnowballEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(10).setShouldReceiveVelocityUpdates(true).setCustomClientFactory(HardSnowballEntity::new)
 			.build(new ResourceLocation(HMaG.MODID, "hard_snowball").toString()));
 	public static final RegistryObject<EntityType<PoisonSeedEntity>> POISON_SEED = REGISTRY.register("poison_seed", () -> EntityType.Builder
-			.<PoisonSeedEntity>of(PoisonSeedEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(10).setShouldReceiveVelocityUpdates(true)
+			.<PoisonSeedEntity>of(PoisonSeedEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(10).setShouldReceiveVelocityUpdates(true).setCustomClientFactory(PoisonSeedEntity::new)
 			.build(new ResourceLocation(HMaG.MODID, "poison_seed").toString()));
 	public static final RegistryObject<EntityType<ThrowableBottleEntity>> THROWABLE_BOTTLE = REGISTRY.register("throwable_bottle", () -> EntityType.Builder
-			.<ThrowableBottleEntity>of(ThrowableBottleEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(10).setShouldReceiveVelocityUpdates(true)
+			.<ThrowableBottleEntity>of(ThrowableBottleEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(10).setShouldReceiveVelocityUpdates(true).setCustomClientFactory(ThrowableBottleEntity::new)
 			.build(new ResourceLocation(HMaG.MODID, "throwable_bottle").toString()));
 	public static final RegistryObject<EntityType<MagmaBulletEntity>> MAGMA_BULLET = REGISTRY.register("magma_bullet", () -> EntityType.Builder
-			.<MagmaBulletEntity>of(MagmaBulletEntity::new, MobCategory.MISC).fireImmune().sized(0.5F, 0.5F).setTrackingRange(4).setUpdateInterval(1).setShouldReceiveVelocityUpdates(true)
+			.<MagmaBulletEntity>of(MagmaBulletEntity::new, MobCategory.MISC).fireImmune().sized(0.5F, 0.5F).setTrackingRange(4).setUpdateInterval(1).setShouldReceiveVelocityUpdates(true).setCustomClientFactory(MagmaBulletEntity::new)
 			.build(new ResourceLocation(HMaG.MODID, "magma_bullet").toString()));
 
 	@SubscribeEvent

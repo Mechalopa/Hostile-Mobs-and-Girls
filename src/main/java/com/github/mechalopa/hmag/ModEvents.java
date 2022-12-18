@@ -443,7 +443,7 @@ public class ModEvents
 					}
 				}
 
-				if (ModUtils.matchItemBothHands(livingentity, ModItems.ANCIENT_SHIELD.get()))
+				if (!ModUtils.getHeldItem(livingentity, ModItems.ANCIENT_SHIELD.get()).isEmpty())
 				{
 					++i;
 				}
@@ -467,7 +467,7 @@ public class ModEvents
 			}
 			else if (effect == ModEffects.COMBUSTION.get())
 			{
-				if (livingentity.fireImmune() || ModUtils.matchItemBothHands(livingentity, ModItems.FORTRESS_SHIELD.get()))
+				if (livingentity.fireImmune() || !ModUtils.getHeldItem(livingentity, ModItems.FORTRESS_SHIELD.get()).isEmpty())
 				{
 					event.setResult(Result.DENY);
 				}

@@ -20,6 +20,7 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.network.PlayMessages;
 
 public class PoisonSeedEntity extends ModProjectileItemEntity
 {
@@ -36,6 +37,11 @@ public class PoisonSeedEntity extends ModProjectileItemEntity
 	public PoisonSeedEntity(Level worldIn, double x, double y, double z)
 	{
 		super(ModEntityTypes.POISON_SEED.get(), x, y, z, worldIn);
+	}
+
+	public PoisonSeedEntity(PlayMessages.SpawnEntity spawnEntity, Level level)
+	{
+		this(ModEntityTypes.POISON_SEED.get(), level);
 	}
 
 	@Override
