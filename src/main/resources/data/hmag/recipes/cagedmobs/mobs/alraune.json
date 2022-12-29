@@ -30,7 +30,7 @@
     {
       "chance": 0.3,
       "output": {
-        "item": "hmag:cure_berry"
+        "item": "hmag:cureberry"
       },
       "minAmount": 1,
       "maxAmount": 2
