@@ -70,7 +70,7 @@ public class StrayGirlEntity extends Stray
 		}
 		while(levelAccessor.getBlockState(blockpos).is(Blocks.POWDER_SNOW));
 
-		return Monster.checkMonsterSpawnRules(type, levelAccessor, spawnType, pos, random) && (spawnType == MobSpawnType.SPAWNER || levelAccessor.canSeeSky(pos));
+		return Monster.checkMonsterSpawnRules(type, levelAccessor, spawnType, pos, random) && (spawnType == MobSpawnType.SPAWNER || levelAccessor.canSeeSky(pos.below()));
 	}
 
 	@Nonnull

@@ -16,7 +16,7 @@ public class AntiAirEnchantment extends Enchantment
 	@Override
 	public int getMinCost(int level)
 	{
-		return 5 + ((level + 1) * 8);
+		return 7 + ((level - 1) * 5);
 	}
 
 	@Override
