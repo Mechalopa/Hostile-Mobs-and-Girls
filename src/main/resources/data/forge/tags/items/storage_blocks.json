@@ -1,7 +1,14 @@
 {
   "replace": false,
   "values": [
+    "#forge:storage_blocks/ender_eye",
+    "#forge:storage_blocks/prismarine",
+    "#forge:storage_blocks/scute",
+    "#forge:storage_blocks/netherite_scrap",
     "#forge:storage_blocks/nether_star",
-    "#forge:storage_blocks/heart_of_the_sea"
+    "#forge:storage_blocks/shulker_shell",
+    "#forge:storage_blocks/nautilus_shell",
+    "#forge:storage_blocks/heart_of_the_sea",
+    "#forge:storage_blocks/echo_shard"
   ]
 }

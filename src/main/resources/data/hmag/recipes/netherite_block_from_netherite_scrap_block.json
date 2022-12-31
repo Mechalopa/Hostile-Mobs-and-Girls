@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:storage_blocks/netherite_scrap"
+    },
+    {
+      "tag": "forge:storage_blocks/netherite_scrap"
+    },
+    {
+      "tag": "forge:storage_blocks/netherite_scrap"
+    },
+    {
+      "tag": "forge:storage_blocks/netherite_scrap"
+    },
+    {
+      "tag": "forge:storage_blocks/gold"
+    },
+    {
+      "tag": "forge:storage_blocks/gold"
+    },
+    {
+      "tag": "forge:storage_blocks/gold"
+    },
+    {
+      "tag": "forge:storage_blocks/gold"
+    }
+  ],
+  "result": {
+    "item": "minecraft:netherite_block"
+  }
+}

@@ -3,8 +3,16 @@
   "values": [
     "hmag:evil_crystal_block",
     "hmag:ancient_stone_block",
+    "hmag:burning_core_block",
+    "hmag:ender_eye_block",
+    "hmag:prismarine_crystal_block",
+    "hmag:scute_block",
+    "hmag:netherite_scrap_block",
     "hmag:nether_star_block",
+    "hmag:shulker_shell_block",
+    "hmag:nautilus_shell_block",
     "hmag:heart_of_the_sea_block",
+    "hmag:echo_shard_block",
     "hmag:reinforced_block",
     "hmag:reinforced_glass",
     "hmag:tinted_reinforced_glass"

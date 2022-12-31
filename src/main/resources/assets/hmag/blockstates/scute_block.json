@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "hmag:block/scute_block"
+      },
+      {
+        "model": "hmag:block/scute_block",
+        "y": 90
+      },
+      {
+        "model": "hmag:block/scute_block",
+        "y": 180
+      },
+      {
+        "model": "hmag:block/scute_block",
+        "y": 270
+      }
+    ]
+  }
+}

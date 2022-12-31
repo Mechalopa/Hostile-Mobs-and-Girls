@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "hmag:block/echo_shard_block"
+    }
+  }
+}

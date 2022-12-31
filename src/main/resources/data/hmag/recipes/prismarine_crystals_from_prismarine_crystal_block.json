@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:storage_blocks/prismarine"
+    }
+  ],
+  "result": {
+    "item": "minecraft:prismarine_crystals",
+    "count": 9
+  }
+}

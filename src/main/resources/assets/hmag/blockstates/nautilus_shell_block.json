@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "hmag:block/nautilus_shell_block"
+    }
+  }
+}

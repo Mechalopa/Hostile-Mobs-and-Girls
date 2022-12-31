@@ -1,5 +1,7 @@
 package com.github.mechalopa.hmag.registry;
 
+import javax.annotation.Nullable;
+
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.world.item.AncientShieldItem;
 import com.github.mechalopa.hmag.world.item.CrimsonBowItem;
@@ -35,8 +37,10 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.BowlFoodItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.Tiers;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -52,8 +56,23 @@ public class ModItems
 	public static final RegistryObject<Item> EVIL_CRYSTAL_BLOCK = REGISTRY.register("evil_crystal_block", () -> new BlockItem(ModBlocks.EVIL_CRYSTAL_BLOCK.get(), new Item.Properties().tab(HMaG.MODTAB)));
 	public static final RegistryObject<Item> SOUL_POWDER_BLOCK = REGISTRY.register("soul_powder_block", () -> new BlockItem(ModBlocks.SOUL_POWDER_BLOCK.get(), new Item.Properties().tab(HMaG.MODTAB)));
 	public static final RegistryObject<Item> ANCIENT_STONE_BLOCK = REGISTRY.register("ancient_stone_block", () -> new BlockItem(ModBlocks.ANCIENT_STONE_BLOCK.get(), new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON)));
+	public static final RegistryObject<Item> BURNING_CORE_BLOCK = REGISTRY.register("burning_core_block", () -> new BlockItem(ModBlocks.BURNING_CORE_BLOCK.get(), new Item.Properties().tab(HMaG.MODTAB))
+	{
+		@Override
+		public int getBurnTime(ItemStack stack, @Nullable RecipeType<?> recipeType)
+		{
+			return 40000;
+		}
+	});
+	public static final RegistryObject<Item> ENDER_EYE_BLOCK = REGISTRY.register("ender_eye_block", () -> new BlockItem(ModBlocks.ENDER_EYE_BLOCK.get(), new Item.Properties().tab(HMaG.MODTAB)));
+	public static final RegistryObject<Item> PRISMARINE_CRYSTAL_BLOCK = REGISTRY.register("prismarine_crystal_block", () -> new BlockItem(ModBlocks.PRISMARINE_CRYSTAL_BLOCK.get(), new Item.Properties().tab(HMaG.MODTAB)));
+	public static final RegistryObject<Item> SCUTE_BLOCK = REGISTRY.register("scute_block", () -> new BlockItem(ModBlocks.SCUTE_BLOCK.get(), new Item.Properties().tab(HMaG.MODTAB)));
+	public static final RegistryObject<Item> NETHERITE_SCRAP_BLOCK = REGISTRY.register("netherite_scrap_block", () -> new BlockItem(ModBlocks.NETHERITE_SCRAP_BLOCK.get(), new Item.Properties().tab(HMaG.MODTAB).fireResistant()));
 	public static final RegistryObject<Item> NETHER_STAR_BLOCK = REGISTRY.register("nether_star_block", () -> new NetherStarBlockItem(ModBlocks.NETHER_STAR_BLOCK.get(), new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON)));
+	public static final RegistryObject<Item> SHULKER_SHELL_BLOCK = REGISTRY.register("shulker_shell_block", () -> new BlockItem(ModBlocks.SHULKER_SHELL_BLOCK.get(), new Item.Properties().tab(HMaG.MODTAB)));
+	public static final RegistryObject<Item> NAUTILUS_SHELL_BLOCK = REGISTRY.register("nautilus_shell_block", () -> new BlockItem(ModBlocks.NAUTILUS_SHELL_BLOCK.get(), new Item.Properties().tab(HMaG.MODTAB)));
 	public static final RegistryObject<Item> HEART_OF_THE_SEA_BLOCK = REGISTRY.register("heart_of_the_sea_block", () -> new BlockItem(ModBlocks.HEART_OF_THE_SEA_BLOCK.get(), new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON)));
+	public static final RegistryObject<Item> ECHO_SHARD_BLOCK = REGISTRY.register("echo_shard_block", () -> new BlockItem(ModBlocks.ECHO_SHARD_BLOCK.get(), new Item.Properties().tab(HMaG.MODTAB)));
 	public static final RegistryObject<Item> THORN_SAND = REGISTRY.register("thorn_sand", () -> new BlockItem(ModBlocks.THORN_SAND.get(), new Item.Properties().tab(HMaG.MODTAB)));
 	public static final RegistryObject<Item> POISON_SAND = REGISTRY.register("poison_sand", () -> new BlockItem(ModBlocks.POISON_SAND.get(), new Item.Properties().tab(HMaG.MODTAB)));
 	public static final RegistryObject<Item> WITHER_SAND = REGISTRY.register("wither_sand", () -> new BlockItem(ModBlocks.WITHER_SAND.get(), new Item.Properties().tab(HMaG.MODTAB)));
