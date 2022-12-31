@@ -45,6 +45,14 @@
     {
       "id": "hexerei:willow_swamp",
       "required": false
+    },
+    {
+      "id": "wildlands:bayou",
+      "required": false
+    },
+    {
+      "id": "wildlands:burnt_forest",
+      "required": false
     }
   ]
 }

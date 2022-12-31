@@ -5,6 +5,14 @@
     {
       "id": "#forge:is_nether",
       "required": false
+    },
+    {
+      "id": "pyromancer:flaming_grove",
+      "required": false
+    },
+    {
+      "id": "pyromancer:forest_of_rot",
+      "required": false
     }
   ]
 }

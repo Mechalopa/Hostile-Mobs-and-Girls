@@ -663,6 +663,74 @@
     {
       "id": "twilightforest:unripe_trollber",
       "required": false
+    },
+    {
+      "id": "sanguis:crimson_lily",
+      "required": false
+    },
+    {
+      "id": "pyromancer:faded_fungus",
+      "required": false
+    },
+    {
+      "id": "pyromancer:faded_roots",
+      "required": false
+    },
+    {
+      "id": "pyromancer:infern",
+      "required": false
+    },
+    {
+      "id": "pyromancer:pyromoss_sprouts",
+      "required": false
+    },
+    {
+      "id": "pyromancer:rafflesia",
+      "required": false
+    },
+    {
+      "id": "pyromancer:rotten_fungus",
+      "required": false
+    },
+    {
+      "id": "pyromancer:sizzling_vine",
+      "required": false
+    },
+    {
+      "id": "ravageandcabbage:cabbage_crop",
+      "required": false
+    },
+    {
+      "id": "ravageandcabbage:corrupted_cabbage_crop",
+      "required": false
+    },
+    {
+      "id": "wildlands:beard_moss",
+      "required": false
+    },
+    {
+      "id": "wildlands:beard_moss_top",
+      "required": false
+    },
+    {
+      "id": "wildlands:cattail",
+      "required": false
+    },
+    {
+      "id": "wildlands:charred_bush",
+      "required": false
+    },
+    {
+      "id": "wildlands:charred_tall_grass",
+      "required": false
+    },
+    {
+      "id": "wildlands:duckweed",
+      "required": false
+    },
+    {
+      "id": "wildlands:palmetto",
+      "required": false
     }
   ]
 }
