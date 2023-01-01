@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "type": "forge:tag_empty",
+      "tag": "hmag:enderites"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "hmag:fortune_crystal"
+    },
+    {
+      "item": "hmag:fortune_crystal"
+    },
+    {
+      "item": "minecraft:enchanted_golden_apple"
+    },
+    {
+      "item": "minecraft:end_crystal"
+    },
+    {
+      "tag": "forge:nether_stars"
+    },
+    {
+      "tag": "forge:ingots/netherite"
+    },
+    {
+      "item": "minecraft:echo_shard"
+    },
+    {
+      "item": "hmag:lightning_particle"
+    }
+  ],
+  "result": {
+    "item": "hmag:fortune_crystal_plus"
+  }
+}

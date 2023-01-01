@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#forge:ingots/enderite",
+      "required": false
+    },
+    {
+      "id": "enderitemod:enderite_ingot",
+      "required": false
+    }
+  ]
+}
