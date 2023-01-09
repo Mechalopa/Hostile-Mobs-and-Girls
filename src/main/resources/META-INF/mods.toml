@@ -1,12 +1,12 @@
 modLoader="javafml"
-loaderVersion="[43,)"
+loaderVersion="[44,)"
 license="LGPL-3.0"
 issueTrackerURL="https://github.com/Mechalopa/Hostile-Mobs-and-Girls/issues"
 [[mods]]
 modId="hmag"
 version="${file.jarVersion}"
 displayName="Hostile Mobs and Girls"
-updateJSONURL="https://github.com/Mechalopa/Hostile-Mobs-and-Girls/raw/1.19.2/update.json"
+updateJSONURL="https://github.com/Mechalopa/Hostile-Mobs-and-Girls/raw/1.19.3/update.json"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/hostile-mobs-and-girls"
 #logoFile="logo.png"
 credits="Mechalopa"
@@ -16,12 +16,12 @@ itemIcon="hmag:evil_crystal"
 [[dependencies.hmag]]
     modId="forge"
     mandatory=true
-    versionRange="[43.1.42,)"
+    versionRange="[44.1.0,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.hmag]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.19.2]"
+    versionRange="[1.19.3]"
     ordering="NONE"
     side="BOTH"
