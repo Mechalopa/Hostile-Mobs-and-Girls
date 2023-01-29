@@ -5,4 +5,4 @@ More Hostile Mobs and Girls!!!
 ## Japanese Forum and Descriptions
 - [Minecraft Japan Forum Thread](https://forum.civa.jp/viewtopic.php?f=3&t=750)
 ## Credits
-- zh_cn.json by Kzeroko
+- zh_cn.json by Kzeroko, SodiumZH
