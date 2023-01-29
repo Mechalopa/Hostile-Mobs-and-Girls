@@ -35,14 +35,6 @@
       "required": false
     },
     {
-      "id": "goodending:marshy_swamp",
-      "required": false
-    },
-    {
-      "id": "goodending:oak_hammock_forest",
-      "required": false
-    },
-    {
       "id": "hexerei:willow_swamp",
       "required": false
     },
