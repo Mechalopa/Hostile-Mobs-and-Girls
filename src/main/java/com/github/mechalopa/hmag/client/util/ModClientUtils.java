@@ -2,10 +2,11 @@ package com.github.mechalopa.hmag.client.util;
 
 import javax.annotation.Nonnull;
 
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+
 import com.github.mechalopa.hmag.world.entity.IBeamAttackMob;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Matrix3f;
-import com.mojang.math.Matrix4f;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.geom.PartPose;

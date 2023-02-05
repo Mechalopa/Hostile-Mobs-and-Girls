@@ -8,6 +8,7 @@ import javax.annotation.Nonnull;
 import com.github.mechalopa.hmag.registry.ModEntityTypes;
 
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.EntityType;
@@ -69,7 +70,7 @@ public class ZombieGirlEntity extends Zombie
 
 	@Nonnull
 	@Override
-	public Packet<?> getAddEntityPacket()
+	public Packet<ClientGamePacketListener> getAddEntityPacket()
 	{
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}

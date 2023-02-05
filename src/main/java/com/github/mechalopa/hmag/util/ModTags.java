@@ -2,7 +2,7 @@ package com.github.mechalopa.hmag.util;
 
 import com.github.mechalopa.hmag.HMaG;
 
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffect;
@@ -65,36 +65,36 @@ public class ModTags
 
 	private static TagKey<Block> createBlockTag(String name)
 	{
-		return TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(HMaG.MODID, name));
+		return TagKey.create(Registries.BLOCK, new ResourceLocation(HMaG.MODID, name));
 	}
 
 	private static TagKey<Item> createItemTag(String name)
 	{
-		return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(HMaG.MODID, name));
+		return TagKey.create(Registries.ITEM, new ResourceLocation(HMaG.MODID, name));
 	}
 
 	private static TagKey<EntityType<?>> createEntityTypeTag(String name)
 	{
-		return TagKey.create(Registry.ENTITY_TYPE_REGISTRY, new ResourceLocation(HMaG.MODID, name));
+		return TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(HMaG.MODID, name));
 	}
 
 	private static TagKey<Enchantment> createEnchantmentTag(String name)
 	{
-		return TagKey.create(Registry.ENCHANTMENT_REGISTRY, new ResourceLocation(HMaG.MODID, name));
+		return TagKey.create(Registries.ENCHANTMENT, new ResourceLocation(HMaG.MODID, name));
 	}
 
 	private static TagKey<MobEffect> createMobEffectTag(String name)
 	{
-		return TagKey.create(Registry.MOB_EFFECT_REGISTRY, new ResourceLocation(HMaG.MODID, name));
+		return TagKey.create(Registries.MOB_EFFECT, new ResourceLocation(HMaG.MODID, name));
 	}
 
 	private static TagKey<Biome> createBiomeTag(String name)
 	{
-		return TagKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(HMaG.MODID, name));
+		return TagKey.create(Registries.BIOME, new ResourceLocation(HMaG.MODID, name));
 	}
 
 	private static TagKey<Structure> createStructureTag(String name)
 	{
-		return TagKey.create(Registry.STRUCTURE_REGISTRY, new ResourceLocation(HMaG.MODID, name));
+		return TagKey.create(Registries.STRUCTURE, new ResourceLocation(HMaG.MODID, name));
 	}
 }

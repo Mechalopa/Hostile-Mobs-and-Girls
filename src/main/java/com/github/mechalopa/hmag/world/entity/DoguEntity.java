@@ -9,6 +9,7 @@ import com.github.mechalopa.hmag.util.ModUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
@@ -129,7 +130,7 @@ public class DoguEntity extends Monster
 		}
 		else
 		{
-			if (source.isProjectile() || source.isExplosion() || source == DamageSource.FALL || source == DamageSource.FALLING_BLOCK || ModUtils.isStalagmiteDamage(source))
+			if (source.isProjectile() || source.isExplosion() || source.isFall() || source.getMsgId().equals("fallingBlock") || ModUtils.isStalagmiteDamage(source))
 			{
 				amount = amount * 0.5F;
 			}
@@ -205,7 +206,7 @@ public class DoguEntity extends Monster
 
 	@Nonnull
 	@Override
-	public Packet<?> getAddEntityPacket()
+	public Packet<ClientGamePacketListener> getAddEntityPacket()
 	{
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}

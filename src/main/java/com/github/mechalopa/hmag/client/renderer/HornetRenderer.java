@@ -5,7 +5,7 @@ import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.HornetModel;
 import com.github.mechalopa.hmag.world.entity.HornetEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
@@ -33,7 +33,7 @@ public class HornetRenderer extends AbstractGirlRenderer<HornetEntity, HornetMod
 	protected void setupRotations(HornetEntity entity, PoseStack poseStack, float ageInTicks, float rotationYaw, float partialTicks)
 	{
 		super.setupRotations(entity, poseStack, ageInTicks, rotationYaw, partialTicks);
-		poseStack.mulPose(Vector3f.XP.rotationDegrees(-6.0F));
+		poseStack.mulPose(Axis.XP.rotationDegrees(-6.0F));
 	}
 
 	@Override

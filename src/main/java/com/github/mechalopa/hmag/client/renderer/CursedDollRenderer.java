@@ -6,7 +6,7 @@ import com.github.mechalopa.hmag.client.model.CursedDollModel;
 import com.github.mechalopa.hmag.client.renderer.layers.CursedDollEyesLayer;
 import com.github.mechalopa.hmag.world.entity.CursedDollEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
@@ -39,7 +39,7 @@ public class CursedDollRenderer extends AbstractGirlRenderer<CursedDollEntity, C
 	protected void setupRotations(CursedDollEntity entity, PoseStack poseStack, float ageInTicks, float rotationYaw, float partialTicks)
 	{
 		super.setupRotations(entity, poseStack, ageInTicks, rotationYaw, partialTicks);
-		poseStack.mulPose(Vector3f.XP.rotationDegrees(-10.0F));
+		poseStack.mulPose(Axis.XP.rotationDegrees(-10.0F));
 	}
 
 	@Override

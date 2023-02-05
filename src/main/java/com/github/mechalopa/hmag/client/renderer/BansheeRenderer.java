@@ -6,7 +6,7 @@ import com.github.mechalopa.hmag.client.model.BansheeModel;
 import com.github.mechalopa.hmag.client.renderer.layers.BansheeLayer;
 import com.github.mechalopa.hmag.world.entity.BansheeEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.core.BlockPos;
@@ -39,7 +39,7 @@ public class BansheeRenderer extends AbstractGirlRenderer<BansheeEntity, Banshee
 	protected void setupRotations(BansheeEntity entity, PoseStack poseStack, float ageInTicks, float rotationYaw, float partialTicks)
 	{
 		super.setupRotations(entity, poseStack, ageInTicks, rotationYaw, partialTicks);
-		poseStack.mulPose(Vector3f.XP.rotationDegrees(-10.0F));
+		poseStack.mulPose(Axis.XP.rotationDegrees(-10.0F));
 	}
 
 	@Override

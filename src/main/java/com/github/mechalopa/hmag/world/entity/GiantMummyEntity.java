@@ -11,6 +11,7 @@ import com.github.mechalopa.hmag.world.entity.ai.goal.MeleeAttackGoal2;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -257,7 +258,7 @@ public class GiantMummyEntity extends Monster
 
 	@Nonnull
 	@Override
-	public Packet<?> getAddEntityPacket()
+	public Packet<ClientGamePacketListener> getAddEntityPacket()
 	{
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}

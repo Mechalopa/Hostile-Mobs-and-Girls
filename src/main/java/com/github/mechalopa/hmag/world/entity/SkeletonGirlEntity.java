@@ -6,6 +6,7 @@ import java.time.temporal.ChronoField;
 import javax.annotation.Nonnull;
 
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.EntityType;
@@ -65,7 +66,7 @@ public class SkeletonGirlEntity extends Skeleton
 
 	@Nonnull
 	@Override
-	public Packet<?> getAddEntityPacket()
+	public Packet<ClientGamePacketListener> getAddEntityPacket()
 	{
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}

@@ -1,7 +1,7 @@
 package com.github.mechalopa.hmag.client.renderer.layers;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 
 import net.minecraft.client.model.ArmedModel;
 import net.minecraft.client.model.EntityModel;
@@ -41,8 +41,8 @@ public class ItemInHandLayer2<T extends LivingEntity, M extends EntityModel<T> &
 		{
 			poseStack.pushPose();
 			this.getParentModel().translateToHand(handSide, poseStack);
-			poseStack.mulPose(Vector3f.XP.rotationDegrees(-90.0F));
-			poseStack.mulPose(Vector3f.YP.rotationDegrees(180.0F));
+			poseStack.mulPose(Axis.XP.rotationDegrees(-90.0F));
+			poseStack.mulPose(Axis.YP.rotationDegrees(180.0F));
 			boolean flag = handSide == HumanoidArm.LEFT;
 			poseStack.translate((double)((float)(flag ? -this.translateX : this.translateX) / 16.0F), 0.125D, -0.625D);
 			this.itemInHandRenderer.renderItem(livingEntity, stack, type, flag, poseStack, buffer, packedLight);

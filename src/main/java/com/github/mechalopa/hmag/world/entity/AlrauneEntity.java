@@ -10,6 +10,7 @@ import com.github.mechalopa.hmag.world.entity.projectile.PoisonSeedEntity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.Difficulty;
@@ -214,7 +215,7 @@ public class AlrauneEntity extends Monster implements RangedAttackMob
 
 	@Nonnull
 	@Override
-	public Packet<?> getAddEntityPacket()
+	public Packet<ClientGamePacketListener> getAddEntityPacket()
 	{
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}

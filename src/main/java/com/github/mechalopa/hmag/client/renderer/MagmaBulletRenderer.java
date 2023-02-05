@@ -2,7 +2,7 @@ package com.github.mechalopa.hmag.client.renderer;
 
 import com.github.mechalopa.hmag.world.entity.projectile.MagmaBulletEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -39,12 +39,12 @@ public class MagmaBulletRenderer extends EntityRenderer<MagmaBulletEntity>
 		poseStack.translate(0.0D, 0.25D, 0.0D);
 		float f = ((float)entity.tickCount + partialTicks) * 30.0F % 360.0F;
 		float f1 = ((float)entity.tickCount + partialTicks) * 45.0F % 360.0F;
-		poseStack.mulPose(Vector3f.YP.rotationDegrees(f));
-		poseStack.mulPose(Vector3f.XP.rotationDegrees(f1));
+		poseStack.mulPose(Axis.YP.rotationDegrees(f));
+		poseStack.mulPose(Axis.XP.rotationDegrees(f1));
 		poseStack.scale(0.5F, 0.5F, 0.5F);
-		poseStack.mulPose(Vector3f.YP.rotationDegrees(-90.0F));
+		poseStack.mulPose(Axis.YP.rotationDegrees(-90.0F));
 		poseStack.translate(-0.5D, -0.5D, 0.5D);
-		poseStack.mulPose(Vector3f.YP.rotationDegrees(90.0F));
+		poseStack.mulPose(Axis.YP.rotationDegrees(90.0F));
 		Minecraft.getInstance().getBlockRenderer().renderSingleBlock(Blocks.MAGMA_BLOCK.defaultBlockState(), poseStack, buffer, packedLight, OverlayTexture.NO_OVERLAY, ModelData.EMPTY, null);
 		poseStack.popPose();
 		super.render(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);

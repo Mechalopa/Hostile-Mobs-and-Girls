@@ -9,6 +9,7 @@ import com.github.mechalopa.hmag.util.ModUtils;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -197,7 +198,7 @@ public class OgreEntity extends Monster
 				this.destroyBlock();
 			}
 		}
-		else if (source.isProjectile() || source.isExplosion() || source.isFire() || source == DamageSource.FALL || source == DamageSource.FALLING_BLOCK || source == DamageSource.FREEZE)
+		else if (source.isProjectile() || source.isExplosion() || source.isFire() || source.isFall() || source.getMsgId().equals("fallingBlock") || source == DamageSource.FREEZE)
 		{
 			amount = amount * 0.5F;
 		}
@@ -331,7 +332,7 @@ public class OgreEntity extends Monster
 
 	@Nonnull
 	@Override
-	public Packet<?> getAddEntityPacket()
+	public Packet<ClientGamePacketListener> getAddEntityPacket()
 	{
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}

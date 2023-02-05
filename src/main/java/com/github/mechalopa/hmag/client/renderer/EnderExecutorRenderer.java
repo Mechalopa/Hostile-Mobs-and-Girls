@@ -2,6 +2,9 @@ package com.github.mechalopa.hmag.client.renderer;
 
 import java.util.Random;
 
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.EnderExecutorModel;
@@ -12,9 +15,7 @@ import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.EnderExecutorEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Matrix3f;
-import com.mojang.math.Matrix4f;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -85,8 +86,8 @@ public class EnderExecutorRenderer extends MobRenderer<EnderExecutorEntity, Ende
 			vec32 = vec32.normalize();
 			float f5 = (float)Math.acos(vec32.y);
 			float f6 = (float)Math.atan2(vec32.z, vec32.x);
-			poseStack.mulPose(Vector3f.YP.rotationDegrees((((float)Math.PI / 2.0F) - f6) * (180.0F / (float)Math.PI)));
-			poseStack.mulPose(Vector3f.XP.rotationDegrees(f5 * (180.0F / (float)Math.PI)));
+			poseStack.mulPose(Axis.YP.rotationDegrees((((float)Math.PI / 2.0F) - f6) * (180.0F / (float)Math.PI)));
+			poseStack.mulPose(Axis.XP.rotationDegrees(f5 * (180.0F / (float)Math.PI)));
 			float f7 = 0.0F;
 			float f8 = f * f;
 			int i = 200 + (int)(f8 * 4.0F);

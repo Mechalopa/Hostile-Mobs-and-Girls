@@ -51,6 +51,7 @@ import com.github.mechalopa.hmag.world.entity.ZombieGirlEntity;
 import com.github.mechalopa.hmag.world.level.storage.loot.conditions.ModLoadedCondition;
 
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.monster.Monster;
@@ -80,7 +81,7 @@ public class ModEventBusSubscriber
 			registerBrewingRecipes();
 		});
 
-		Registry.register(Registry.LOOT_CONDITION_TYPE, new ResourceLocation(HMaG.MODID, "mod_loaded"), ModLoadedCondition.TYPE);
+		Registry.register(BuiltInRegistries.LOOT_CONDITION_TYPE, new ResourceLocation(HMaG.MODID, "mod_loaded"), ModLoadedCondition.TYPE);
 	}
 
 //	@SubscribeEvent

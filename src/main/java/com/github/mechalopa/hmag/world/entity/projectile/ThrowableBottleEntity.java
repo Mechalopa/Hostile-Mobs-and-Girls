@@ -7,6 +7,7 @@ import com.github.mechalopa.hmag.registry.ModItems;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -16,7 +17,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
@@ -71,7 +71,7 @@ public class ThrowableBottleEntity extends ThrowableItemProjectile
 			{
 				this.level.levelEvent(2002, this.blockPosition(), MobEffects.FIRE_RESISTANCE.getColor());
 				boolean flag = ForgeEventFactory.getMobGriefingEvent(this.level, this.getOwner());
-				this.level.explode((Entity)null, this.getX(), this.getY(), this.getZ(), item == ModItems.BLASTING_BOTTLE.get() ? 2.5F : 1.0F, flag, flag ? Explosion.BlockInteraction.DESTROY : Explosion.BlockInteraction.NONE);
+				this.level.explode((Entity)null, this.getX(), this.getY(), this.getZ(), item == ModItems.BLASTING_BOTTLE.get() ? 2.5F : 1.0F, flag, Level.ExplosionInteraction.MOB);
 			}
 			else if (item == ModItems.LIGHTNING_BOTTLE.get())
 			{
@@ -105,7 +105,7 @@ public class ThrowableBottleEntity extends ThrowableItemProjectile
 
 	@Nonnull
 	@Override
-	public Packet<?> getAddEntityPacket()
+	public Packet<ClientGamePacketListener> getAddEntityPacket()
 	{
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}

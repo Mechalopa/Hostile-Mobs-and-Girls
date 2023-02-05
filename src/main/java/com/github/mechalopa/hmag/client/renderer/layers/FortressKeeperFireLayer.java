@@ -3,7 +3,7 @@ package com.github.mechalopa.hmag.client.renderer.layers;
 import com.github.mechalopa.hmag.client.model.FortressKeeperModel;
 import com.github.mechalopa.hmag.world.entity.FortressKeeperEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -50,7 +50,7 @@ public class FortressKeeperFireLayer extends RenderLayer<FortressKeeperEntity, F
 		this.getParentModel().translateToHand(hand, poseStack);
 		float f = 0.4375F;
 		poseStack.translate((hand == HumanoidArm.LEFT ? 0.25D : -0.25D) + 0.21875D, -0.5D, -0.21875D);
-		poseStack.mulPose(Vector3f.YP.rotationDegrees(180.0F));
+		poseStack.mulPose(Axis.YP.rotationDegrees(180.0F));
 		poseStack.scale(f, -f, -f);
 		BlockState state = Blocks.FIRE.defaultBlockState();
 

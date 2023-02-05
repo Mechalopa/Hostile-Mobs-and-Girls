@@ -15,7 +15,6 @@ import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Pose;
-import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.EntityHitResult;
@@ -126,7 +125,7 @@ public class MagmaBulletEntity extends ModDamagingProjectileEntity
 	protected void onHitServer(HitResult result)
 	{
 		boolean flag = ForgeEventFactory.getMobGriefingEvent(this.level, this.getOwner());
-		this.level.explode((Entity)null, this.getX(), this.getY(), this.getZ(), 0.75F, flag, flag ? Explosion.BlockInteraction.DESTROY : Explosion.BlockInteraction.NONE);
+		this.level.explode((Entity)null, this.getX(), this.getY(), this.getZ(), 0.75F, flag, Level.ExplosionInteraction.MOB);
 		this.level.broadcastEntityEvent(this, (byte)3);
 		super.onHitServer(result);
 	}

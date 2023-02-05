@@ -4,7 +4,6 @@ import javax.annotation.Nullable;
 
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
 import com.github.mechalopa.hmag.util.ModUtils;
-import com.mojang.math.Vector3f;
 
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.nbt.CompoundTag;
@@ -34,6 +33,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.phys.Vec3;
 
 public class BansheeEntity extends AbstractFlyingMonsterEntity
 {
@@ -85,7 +85,8 @@ public class BansheeEntity extends AbstractFlyingMonsterEntity
 	{
 		if (this.level.isClientSide)
 		{
-			this.level.addParticle(new DustParticleOptions(this.getVariant() == 1 ? new Vector3f(this.getRandom().nextFloat() * 0.125F + 0.875F, this.getRandom().nextFloat() * 0.1F + 0.9F, this.getRandom().nextFloat() * 0.375F + 0.5F) : new Vector3f(this.getRandom().nextFloat() * 0.25F + 0.75F, this.getRandom().nextFloat() * 0.25F + 0.25F, this.getRandom().nextFloat() * 0.5F + 0.5F), 0.875F), this.getRandomX(0.75D), this.getRandomY() - 0.25D, this.getRandomZ(0.75D), 0.0D, 0.0D, 0.0D);
+			Vec3 vec3 = this.getVariant() == 1 ? new Vec3(this.getRandom().nextFloat() * 0.125F + 0.875F, this.getRandom().nextFloat() * 0.1F + 0.9F, this.getRandom().nextFloat() * 0.375F + 0.5F) : new Vec3(this.getRandom().nextFloat() * 0.25F + 0.75F, this.getRandom().nextFloat() * 0.25F + 0.25F, this.getRandom().nextFloat() * 0.5F + 0.5F);
+			this.level.addParticle(new DustParticleOptions(vec3.toVector3f(), 0.875F), this.getRandomX(0.75D), this.getRandomY() - 0.25D, this.getRandomZ(0.75D), 0.0D, 0.0D, 0.0D);
 		}
 
 		ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick(), 8);

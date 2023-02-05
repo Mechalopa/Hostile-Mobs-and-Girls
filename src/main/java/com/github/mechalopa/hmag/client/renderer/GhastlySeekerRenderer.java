@@ -6,7 +6,7 @@ import com.github.mechalopa.hmag.client.model.GhastlySeekerModel;
 import com.github.mechalopa.hmag.client.renderer.layers.GhastlySeekerLayer;
 import com.github.mechalopa.hmag.world.entity.GhastlySeekerEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
@@ -36,7 +36,7 @@ public class GhastlySeekerRenderer extends MobRenderer<GhastlySeekerEntity, Ghas
 	protected void setupRotations(GhastlySeekerEntity entity, PoseStack poseStack, float ageInTicks, float rotationYaw, float partialTicks)
 	{
 		super.setupRotations(entity, poseStack, ageInTicks, rotationYaw, partialTicks);
-		poseStack.mulPose(Vector3f.XP.rotationDegrees(-15.0F));
+		poseStack.mulPose(Axis.XP.rotationDegrees(-15.0F));
 	}
 
 	@Override

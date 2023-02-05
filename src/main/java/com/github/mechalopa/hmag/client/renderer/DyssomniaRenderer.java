@@ -8,7 +8,7 @@ import com.github.mechalopa.hmag.client.model.DyssomniaModel;
 import com.github.mechalopa.hmag.client.renderer.layers.DyssomniaEyesLayer;
 import com.github.mechalopa.hmag.world.entity.DyssomniaEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
@@ -40,7 +40,7 @@ public class DyssomniaRenderer extends MobRenderer<DyssomniaEntity, DyssomniaMod
 	protected void setupRotations(DyssomniaEntity entity, PoseStack poseStack, float ageInTicks, float rotationYaw, float partialTicks)
 	{
 		super.setupRotations(entity, poseStack, ageInTicks, rotationYaw, partialTicks);
-		poseStack.mulPose(Vector3f.XP.rotationDegrees(entity.getXRotAnimationScale(partialTicks) * 180.0F));
+		poseStack.mulPose(Axis.XP.rotationDegrees(entity.getXRotAnimationScale(partialTicks) * 180.0F));
 	}
 
 	@Override

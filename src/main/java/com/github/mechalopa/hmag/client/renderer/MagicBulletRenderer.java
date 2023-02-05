@@ -1,12 +1,13 @@
 package com.github.mechalopa.hmag.client.renderer;
 
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.world.entity.projectile.MagicBulletEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Matrix3f;
-import com.mojang.math.Matrix4f;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -49,7 +50,7 @@ public class MagicBulletRenderer extends EntityRenderer<MagicBulletEntity>
 		poseStack.pushPose();
 		poseStack.scale(2.0F, 2.0F, 2.0F);
 		poseStack.mulPose(this.entityRenderDispatcher.cameraOrientation());
-		poseStack.mulPose(Vector3f.YP.rotationDegrees(180.0F));
+		poseStack.mulPose(Axis.YP.rotationDegrees(180.0F));
 		float f = (float)entity.tickCount + partialTicks;
 		float f1 = 0.5F + (entity.getVariant() == 2 ? Mth.sin(f * 0.8F) * 0.03F : Mth.sin(f * 0.4F) * 0.09F);
 		poseStack.scale(f1, f1, f1);

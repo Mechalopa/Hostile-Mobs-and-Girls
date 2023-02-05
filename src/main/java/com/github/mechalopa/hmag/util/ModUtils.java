@@ -9,8 +9,8 @@ import com.mojang.serialization.Codec;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderSet;
-import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryCodecs;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
@@ -43,7 +43,7 @@ public class ModUtils
 	public static final String LIVING_UPDATE_CHECKED_KEY = HMaG.MODID + ".checked";
 	public static final String LIVING_NOT_REPLACED_KEY = HMaG.MODID + ".notReplaced";
 	public static final String WITH_SPAWN_PARTICLE_KEY = HMaG.MODID + ".withSpawnParticle";
-	public static final Codec<HolderSet<Structure>> STRUCTURE_LIST_CODEC = RegistryCodecs.homogeneousList(Registry.STRUCTURE_REGISTRY, Structure.DIRECT_CODEC);
+	public static final Codec<HolderSet<Structure>> STRUCTURE_LIST_CODEC = RegistryCodecs.homogeneousList(Registries.STRUCTURE, Structure.DIRECT_CODEC);
 
 	public static void burnInDay(@Nonnull LivingEntity livingEntity, RandomSource rand, Boolean isSunBurnTick, int seconds)
 	{
@@ -146,7 +146,7 @@ public class ModUtils
 
 	public static boolean isStalagmiteDamage(@Nonnull DamageSource source)
 	{
-		return source == DamageSource.STALAGMITE || source == DamageSource.FALLING_STALACTITE;
+		return source == DamageSource.STALAGMITE || source.getMsgId().equals("fallingStalactite");
 	}
 
 	public static float rotlerp(float f, float f1, float f2, boolean flag)

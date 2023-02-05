@@ -5,7 +5,7 @@ import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.DrownedGirlArmorModel;
 import com.github.mechalopa.hmag.client.model.DrownedGirlModel;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
@@ -38,7 +38,7 @@ public class DrownedGirlRenderer extends ZombieGirlRenderer
 
 		if (f > 0.0F)
 		{
-			poseStack.mulPose(Vector3f.XP.rotationDegrees(Mth.lerp(f, entity.getXRot(), -10.0F - entity.getXRot())));
+			poseStack.mulPose(Axis.XP.rotationDegrees(Mth.lerp(f, entity.getXRot(), -10.0F - entity.getXRot())));
 		}
 	}
 }

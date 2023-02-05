@@ -6,6 +6,7 @@ import com.github.mechalopa.hmag.registry.ModEntityTypes;
 import com.github.mechalopa.hmag.registry.ModItems;
 
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -44,7 +45,7 @@ public class EvilArrowEntity extends AbstractArrow
 
 	@Nonnull
 	@Override
-	public Packet<?> getAddEntityPacket()
+	public Packet<ClientGamePacketListener> getAddEntityPacket()
 	{
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}

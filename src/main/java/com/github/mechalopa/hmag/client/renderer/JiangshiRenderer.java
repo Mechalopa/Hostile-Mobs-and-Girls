@@ -6,7 +6,7 @@ import com.github.mechalopa.hmag.client.model.JiangshiModel;
 import com.github.mechalopa.hmag.client.renderer.layers.JiangshiEyesLayer;
 import com.github.mechalopa.hmag.world.entity.JiangshiEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
@@ -35,7 +35,7 @@ public class JiangshiRenderer extends AbstractGirlRenderer<JiangshiEntity, Jiang
 			float f = 15.0F;
 			float f1 = entity.animationPosition - entity.animationSpeed * (1.0F - partialTicks) + 7.0F;
 			float f2 = (Math.abs(f1 % f - 7.5F) - 3.75F) / 3.75F;
-			poseStack.mulPose(Vector3f.ZP.rotationDegrees(2.5F * f2));
+			poseStack.mulPose(Axis.ZP.rotationDegrees(2.5F * f2));
 		}
 	}
 

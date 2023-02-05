@@ -6,7 +6,7 @@ import com.github.mechalopa.hmag.client.model.SavagefangModel;
 import com.github.mechalopa.hmag.client.renderer.layers.SavagefangEyesLayer;
 import com.github.mechalopa.hmag.world.entity.SavagefangEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
@@ -39,16 +39,16 @@ public class SavagefangRenderer extends MobRenderer<SavagefangEntity, Savagefang
 		super.setupRotations(entity, poseStack, ageInTicks, rotationYaw, partialTicks);
 
 		float f = 4.3F * Mth.sin(0.6F * ageInTicks);
-		poseStack.mulPose(Vector3f.YP.rotationDegrees(f));
+		poseStack.mulPose(Axis.YP.rotationDegrees(f));
 
 		if (entity.isLaunched())
 		{
 			poseStack.translate((double)0.1F, (double)0.1F, (double)-0.1F);
-			poseStack.mulPose(Vector3f.ZP.rotationDegrees(90.0F));
+			poseStack.mulPose(Axis.ZP.rotationDegrees(90.0F));
 		}
 		else
 		{
-			poseStack.mulPose(Vector3f.XP.rotationDegrees(entity.getXRotAnimationScale(partialTicks) * 180.0F));
+			poseStack.mulPose(Axis.XP.rotationDegrees(entity.getXRotAnimationScale(partialTicks) * 180.0F));
 		}
 	}
 
