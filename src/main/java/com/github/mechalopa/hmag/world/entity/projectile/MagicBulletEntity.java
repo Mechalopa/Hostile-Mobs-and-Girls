@@ -269,6 +269,12 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 		}
 	}
 
+	@Override
+	public boolean isInWater()
+	{
+		return false;
+	}
+
 	public int getVariant()
 	{
 		return this.entityData.get(DATA_VARIANT_ID);
