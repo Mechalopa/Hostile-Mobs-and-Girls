@@ -23,6 +23,10 @@
     {
       "id": "friendsandfoes:wildfire_crown_fragment",
       "required": false
+    },
+    {
+      "id": "iceandfire:dread_shard",
+      "required": false
     }
   ]
 }

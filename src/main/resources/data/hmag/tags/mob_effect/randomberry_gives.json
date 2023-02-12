@@ -89,6 +89,22 @@
     {
       "id": "seasonals:thorn_resistance",
       "required": false
+    },
+    {
+      "id": "atmospheric:relief",
+      "required": false
+    },
+    {
+      "id": "atmospheric:worsening",
+      "required": false
+    },
+    {
+      "id": "upgrade_aquatic:repellence",
+      "required": false
+    },
+    {
+      "id": "upgrade_aquatic:vibing",
+      "required": false
     }
   ]
 }

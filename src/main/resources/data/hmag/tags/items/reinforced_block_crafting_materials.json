@@ -22,6 +22,10 @@
     {
       "id": "#forge:nuggets/bedrockium",
       "required": false
+    },
+    {
+      "id": "#forge:nuggets/enderite",
+      "required": false
     }
   ]
 }

@@ -701,10 +701,6 @@
       "required": false
     },
     {
-      "id": "ravageandcabbage:corrupted_cabbage_crop",
-      "required": false
-    },
-    {
       "id": "wildlands:beard_moss",
       "required": false
     },
@@ -770,6 +766,242 @@
     },
     {
       "id": "quark:chorus_weeds",
+      "required": false
+    },
+    {
+      "id": "neapolitan:adzuki_sprouts",
+      "required": false
+    },
+    {
+      "id": "neapolitan:mint",
+      "required": false
+    },
+    {
+      "id": "neapolitan:strawberry_bush",
+      "required": false
+    },
+    {
+      "id": "atmospheric:arid_sprouts",
+      "required": false
+    },
+    {
+      "id": "autumnity:foul_berry_bush_pips",
+      "required": false
+    },
+    {
+      "id": "berry_good:cave_vine_pips",
+      "required": false
+    },
+    {
+      "id": "berry_good:sweet_berry_bush_pips",
+      "required": false
+    },
+    {
+      "id": "environmental:blue_hanging_wisteria_leaves",
+      "required": false
+    },
+    {
+      "id": "environmental:cattail",
+      "required": false
+    },
+    {
+      "id": "environmental:cattail_sprouts",
+      "required": false
+    },
+    {
+      "id": "environmental:giant_tall_grass",
+      "required": false
+    },
+    {
+      "id": "environmental:hanging_willow_leaves",
+      "required": false
+    },
+    {
+      "id": "environmental:environmental:mycelium_sprouts",
+      "required": false
+    },
+    {
+      "id": "environmental:pink_hanging_wisteria_leaves",
+      "required": false
+    },
+    {
+      "id": "environmental:purple_hanging_wisteria_leaves",
+      "required": false
+    },
+    {
+      "id": "environmental:tall_cattail",
+      "required": false
+    },
+    {
+      "id": "environmental:tall_dead_bush",
+      "required": false
+    },
+    {
+      "id": "environmental:white_hanging_wisteria_leaves",
+      "required": false
+    },
+    {
+      "id": "upgrade_aquatic:beachgrass",
+      "required": false
+    },
+    {
+      "id": "upgrade_aquatic:mulberry_vine",
+      "required": false
+    },
+    {
+      "id": "upgrade_aquatic:tall_beachgrass",
+      "required": false
+    },
+    {
+      "id": "malum:blighted_tumor",
+      "required": false
+    },
+    {
+      "id": "malum:blighted_weed",
+      "required": false
+    },
+    {
+      "id": "urushi:double_eulalia",
+      "required": false
+    },
+    {
+      "id": "urushi:eulalia",
+      "required": false
+    },
+    {
+      "id": "urushi:shiitake",
+      "required": false
+    },
+    {
+      "id": "urushi:yomi_vines",
+      "required": false
+    },
+    {
+      "id": "urushi:yomi_vines_plant",
+      "required": false
+    },
+    {
+      "id": "tconstruct:blood_slime_fern",
+      "required": false
+    },
+    {
+      "id": "tconstruct:blood_slime_sapling",
+      "required": false
+    },
+    {
+      "id": "tconstruct:blood_slime_tall_grass",
+      "required": false
+    },
+    {
+      "id": "tconstruct:earth_slime_fern",
+      "required": false
+    },
+    {
+      "id": "tconstruct:earth_slime_tall_grass",
+      "required": false
+    },
+    {
+      "id": "tconstruct:ender_slime_fern",
+      "required": false
+    },
+    {
+      "id": "tconstruct:ender_slime_tall_grass",
+      "required": false
+    },
+    {
+      "id": "tconstruct:ender_slime_vine",
+      "required": false
+    },
+    {
+      "id": "tconstruct:ichor_slime_fern",
+      "required": false
+    },
+    {
+      "id": "tconstruct:ichor_slime_sapling",
+      "required": false
+    },
+    {
+      "id": "tconstruct:ichor_slime_tall_grass",
+      "required": false
+    },
+    {
+      "id": "tconstruct:sky_slime_fern",
+      "required": false
+    },
+    {
+      "id": "tconstruct:sky_slime_tall_grass",
+      "required": false
+    },
+    {
+      "id": "tconstruct:sky_slime_vine",
+      "required": false
+    },
+    {
+      "id": "collectorsreap:portobello",
+      "required": false
+    },
+    {
+      "id": "collectorsreap:portobello_colony",
+      "required": false
+    },
+    {
+      "id": "collectorsreap:small_lime_bush",
+      "required": false
+    },
+    {
+      "id": "collectorsreap:small_pomegranate_bush",
+      "required": false
+    },
+    {
+      "id": "delightful:salmonberry_bush",
+      "required": false
+    },
+    {
+      "id": "miners_delight:cave_carrots",
+      "required": false
+    },
+    {
+      "id": "miners_delight:gossypium",
+      "required": false
+    },
+    {
+      "id": "terraincognita:apple",
+      "required": false
+    },
+    {
+      "id": "terraincognita:caribou_moss",
+      "required": false
+    },
+    {
+      "id": "terraincognita:caribou_moss_wall",
+      "required": false
+    },
+    {
+      "id": "terraincognita:hanging_moss",
+      "required": false
+    },
+    {
+      "id": "terraincognita:swamp_reeds",
+      "required": false
+    },
+    {
+      "id": "windswept:wild_berry_bush",
+      "required": false
+    },
+    {
+      "id": "windswept:wild_berry_bush_pips",
+      "required": false
+    },
+    {
+      "id": "hauntedharvest:corn_base",
+      "required": false
+    },
+    {
+      "id": "hauntedharvest:corn_middle",
+      "required": false
+    },
+    {
+      "id": "hauntedharvest:corn_top",
       "required": false
     }
   ]
