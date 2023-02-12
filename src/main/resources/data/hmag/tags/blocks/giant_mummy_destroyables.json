@@ -817,7 +817,7 @@
       "required": false
     },
     {
-      "id": "environmental:environmental:mycelium_sprouts",
+      "id": "environmental:mycelium_sprouts",
       "required": false
     },
     {
@@ -845,7 +845,15 @@
       "required": false
     },
     {
+      "id": "upgrade_aquatic:blue_pickerelweed",
+      "required": false
+    },
+    {
       "id": "upgrade_aquatic:mulberry_vine",
+      "required": false
+    },
+    {
+      "id": "upgrade_aquatic:purple_pickerelweed",
       "required": false
     },
     {
