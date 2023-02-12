@@ -25,6 +25,10 @@
     {
       "id": "vampirism:vampire_forest",
       "required": false
+    },
+    {
+      "id": "environmental:blossom_woods",
+      "required": false
     }
   ]
 }
