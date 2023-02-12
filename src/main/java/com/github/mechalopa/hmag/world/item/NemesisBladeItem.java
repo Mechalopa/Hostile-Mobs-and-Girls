@@ -100,7 +100,7 @@ public class NemesisBladeItem extends ModSwordItem implements ILevelItem
 			final int i = ILevelItem.getItemLevel(stack);
 			Player player = (Player)livingEntity;
 
-			if (this.getUseDuration(stack) - count < 12 || !((player.experienceLevel > 0 && i > 0) || player.isCreative()))
+			if (this.getUseDuration(stack) - count < 8 || !((player.experienceLevel > 0 && i > 0) || player.isCreative()))
 			{
 				return;
 			}
@@ -140,7 +140,7 @@ public class NemesisBladeItem extends ModSwordItem implements ILevelItem
 		{
 			Player player = (Player)livingEntity;
 
-			if (this.getUseDuration(stack) - count != 12 || !((player.experienceLevel > 0 && ILevelItem.getItemLevel(stack) > 0) || player.isCreative()))
+			if (this.getUseDuration(stack) - count != 8 || !((player.experienceLevel > 0 && ILevelItem.getItemLevel(stack) > 0) || player.isCreative()))
 			{
 				return;
 			}
