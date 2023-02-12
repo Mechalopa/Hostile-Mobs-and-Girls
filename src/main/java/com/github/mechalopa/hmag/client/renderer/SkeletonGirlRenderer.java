@@ -40,4 +40,10 @@ public class SkeletonGirlRenderer extends AbstractGirlRenderer<AbstractSkeleton,
 	{
 		return TEX;
 	}
+
+	@Override
+	protected boolean isShaking(AbstractSkeleton entity)
+	{
+		return entity.isShaking();
+	}
 }
