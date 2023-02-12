@@ -1,12 +1,9 @@
 package com.github.mechalopa.hmag.world.entity.projectile;
 
-import javax.annotation.Nonnull;
-
 import com.github.mechalopa.hmag.registry.ModEntityTypes;
 import com.github.mechalopa.hmag.registry.ModItems;
 
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.Packet;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -21,7 +18,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.ForgeEventFactory;
-import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
 
 public class ThrowableBottleEntity extends ThrowableItemProjectile
@@ -101,12 +97,5 @@ public class ThrowableBottleEntity extends ThrowableItemProjectile
 	public float getLightLevelDependentMagicValue()
 	{
 		return 1.0F;
-	}
-
-	@Nonnull
-	@Override
-	public Packet<?> getAddEntityPacket()
-	{
-		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 }

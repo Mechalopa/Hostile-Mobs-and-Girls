@@ -1,17 +1,13 @@
 package com.github.mechalopa.hmag.world.entity.projectile;
 
-import javax.annotation.Nonnull;
-
 import com.github.mechalopa.hmag.registry.ModEntityTypes;
 import com.github.mechalopa.hmag.registry.ModItems;
 
-import net.minecraft.network.protocol.Packet;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
 
 public class EvilArrowEntity extends AbstractArrow
@@ -40,12 +36,5 @@ public class EvilArrowEntity extends AbstractArrow
 	protected ItemStack getPickupItem()
 	{
 		return new ItemStack(ModItems.EVIL_ARROW.get());
-	}
-
-	@Nonnull
-	@Override
-	public Packet<?> getAddEntityPacket()
-	{
-		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 }
