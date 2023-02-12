@@ -4,10 +4,6 @@
     {
       "id": "#forge:is_dense",
       "required": false
-    },
-    {
-      "id": "graveyard_biomes:deep_dark_forest",
-      "required": false
     }
   ]
 }

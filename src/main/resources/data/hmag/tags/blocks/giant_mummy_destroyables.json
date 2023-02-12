@@ -731,6 +731,46 @@
     {
       "id": "wildlands:palmetto",
       "required": false
+    },
+    {
+      "id": "abundant_atmosphere:catsbane_shelf",
+      "required": false
+    },
+    {
+      "id": "abundant_atmosphere:cave_sprouts",
+      "required": false
+    },
+    {
+      "id": "abundant_atmosphere:tall_cave_sprouts",
+      "required": false
+    },
+    {
+      "id": "habitat:rafflesia",
+      "required": false
+    },
+    {
+      "id": "habitat:slime_fern",
+      "required": false
+    },
+    {
+      "id": "habitat:wall_slime_fern",
+      "required": false
+    },
+    {
+      "id": "habitat:kabloom_bush",
+      "required": false
+    },
+    {
+      "id": "quark:cut_vine",
+      "required": false
+    },
+    {
+      "id": "quark:chorus_twist",
+      "required": false
+    },
+    {
+      "id": "quark:chorus_weeds",
+      "required": false
     }
   ]
 }
