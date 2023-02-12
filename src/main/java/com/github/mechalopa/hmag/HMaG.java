@@ -16,10 +16,6 @@ import com.github.mechalopa.hmag.registry.ModRecipes;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
 import com.github.mechalopa.hmag.registry.ModStructureModifiers;
 
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -34,16 +30,6 @@ public class HMaG
 	public static final String MODID = "hmag";
 
 	public static final Logger LOGGER = LogManager.getLogger();
-
-	public static final CreativeModeTab MODTAB = new CreativeModeTab(HMaG.MODID + ".tab")
-	{
-		@OnlyIn(Dist.CLIENT)
-		@Override
-		public ItemStack makeIcon()
-		{
-			return new ItemStack(ModItems.EVIL_CRYSTAL.get());
-		}
-	};
 
 	public HMaG()
 	{

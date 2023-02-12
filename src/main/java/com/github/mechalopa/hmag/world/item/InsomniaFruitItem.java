@@ -8,7 +8,6 @@ import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.registry.ModEffects;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -22,7 +21,6 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -136,18 +134,6 @@ public class InsomniaFruitItem extends Item implements ILevelItem
 	{
 		final int i = ILevelItem.getItemLevel(stack);
 		list.add(Component.translatable("text.hmag.level", i + 1).withStyle(i >= 5 ? ChatFormatting.LIGHT_PURPLE : (i >= 4 ? ChatFormatting.AQUA : (i >= 2 ? ChatFormatting.YELLOW : (i <= 0 ? ChatFormatting.RED : ChatFormatting.GRAY)))));
-	}
-
-	@Override
-	public void fillItemCategory(CreativeModeTab tab, NonNullList<ItemStack> list)
-	{
-		if (this.allowedIn(tab))
-		{
-			ItemStack stack = new ItemStack(this);
-			CompoundTag compoundnbt = stack.getOrCreateTag();
-			compoundnbt.putByte(ILevelItem.LEVEL_KEY, (byte)this.getMaxLevel());
-			list.add(stack);
-		}
 	}
 
 	@Override

@@ -9,7 +9,6 @@ import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.world.entity.projectile.MagicBulletEntity;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -25,7 +24,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
@@ -184,18 +182,6 @@ public class NemesisBladeItem extends ModSwordItem implements ILevelItem
 	{
 		final int i = ILevelItem.getItemLevel(stack);
 		list.add(Component.translatable("text.hmag.level", i + 1).withStyle(i >= 6 ? ChatFormatting.LIGHT_PURPLE : (i >= 5 ? ChatFormatting.AQUA : (i >= 3 ? ChatFormatting.YELLOW : (i <= 0 ? ChatFormatting.RED : ChatFormatting.GRAY)))));
-	}
-
-	@Override
-	public void fillItemCategory(CreativeModeTab tab, NonNullList<ItemStack> list)
-	{
-		if (this.allowedIn(tab))
-		{
-			ItemStack stack = new ItemStack(this);
-			CompoundTag compoundnbt = stack.getOrCreateTag();
-			compoundnbt.putByte(ILevelItem.LEVEL_KEY, (byte)this.getMaxLevel());
-			list.add(stack);
-		}
 	}
 
 	@Override

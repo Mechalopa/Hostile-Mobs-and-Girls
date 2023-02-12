@@ -53,10 +53,10 @@ public class ModItems
 {
 	private static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, HMaG.MODID);
 
-	public static final RegistryObject<Item> EVIL_CRYSTAL_BLOCK = REGISTRY.register("evil_crystal_block", () -> new BlockItem(ModBlocks.EVIL_CRYSTAL_BLOCK.get(), new Item.Properties().tab(HMaG.MODTAB)));
-	public static final RegistryObject<Item> SOUL_POWDER_BLOCK = REGISTRY.register("soul_powder_block", () -> new BlockItem(ModBlocks.SOUL_POWDER_BLOCK.get(), new Item.Properties().tab(HMaG.MODTAB)));
-	public static final RegistryObject<Item> ANCIENT_STONE_BLOCK = REGISTRY.register("ancient_stone_block", () -> new BlockItem(ModBlocks.ANCIENT_STONE_BLOCK.get(), new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON)));
-	public static final RegistryObject<Item> BURNING_CORE_BLOCK = REGISTRY.register("burning_core_block", () -> new BlockItem(ModBlocks.BURNING_CORE_BLOCK.get(), new Item.Properties().tab(HMaG.MODTAB))
+	public static final RegistryObject<Item> EVIL_CRYSTAL_BLOCK = REGISTRY.register("evil_crystal_block", () -> new BlockItem(ModBlocks.EVIL_CRYSTAL_BLOCK.get(), new Item.Properties()));
+	public static final RegistryObject<Item> SOUL_POWDER_BLOCK = REGISTRY.register("soul_powder_block", () -> new BlockItem(ModBlocks.SOUL_POWDER_BLOCK.get(), new Item.Properties()));
+	public static final RegistryObject<Item> ANCIENT_STONE_BLOCK = REGISTRY.register("ancient_stone_block", () -> new BlockItem(ModBlocks.ANCIENT_STONE_BLOCK.get(), new Item.Properties().rarity(Rarity.UNCOMMON)));
+	public static final RegistryObject<Item> BURNING_CORE_BLOCK = REGISTRY.register("burning_core_block", () -> new BlockItem(ModBlocks.BURNING_CORE_BLOCK.get(), new Item.Properties())
 	{
 		@Override
 		public int getBurnTime(ItemStack stack, @Nullable RecipeType<?> recipeType)
@@ -64,92 +64,92 @@ public class ModItems
 			return 40000;
 		}
 	});
-	public static final RegistryObject<Item> ENDER_EYE_BLOCK = REGISTRY.register("ender_eye_block", () -> new BlockItem(ModBlocks.ENDER_EYE_BLOCK.get(), new Item.Properties().tab(HMaG.MODTAB)));
-	public static final RegistryObject<Item> PRISMARINE_CRYSTAL_BLOCK = REGISTRY.register("prismarine_crystal_block", () -> new BlockItem(ModBlocks.PRISMARINE_CRYSTAL_BLOCK.get(), new Item.Properties().tab(HMaG.MODTAB)));
-	public static final RegistryObject<Item> SCUTE_BLOCK = REGISTRY.register("scute_block", () -> new BlockItem(ModBlocks.SCUTE_BLOCK.get(), new Item.Properties().tab(HMaG.MODTAB)));
-	public static final RegistryObject<Item> NETHERITE_SCRAP_BLOCK = REGISTRY.register("netherite_scrap_block", () -> new BlockItem(ModBlocks.NETHERITE_SCRAP_BLOCK.get(), new Item.Properties().tab(HMaG.MODTAB).fireResistant()));
-	public static final RegistryObject<Item> NETHER_STAR_BLOCK = REGISTRY.register("nether_star_block", () -> new NetherStarBlockItem(ModBlocks.NETHER_STAR_BLOCK.get(), new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON)));
-	public static final RegistryObject<Item> SHULKER_SHELL_BLOCK = REGISTRY.register("shulker_shell_block", () -> new BlockItem(ModBlocks.SHULKER_SHELL_BLOCK.get(), new Item.Properties().tab(HMaG.MODTAB)));
-	public static final RegistryObject<Item> NAUTILUS_SHELL_BLOCK = REGISTRY.register("nautilus_shell_block", () -> new BlockItem(ModBlocks.NAUTILUS_SHELL_BLOCK.get(), new Item.Properties().tab(HMaG.MODTAB)));
-	public static final RegistryObject<Item> HEART_OF_THE_SEA_BLOCK = REGISTRY.register("heart_of_the_sea_block", () -> new BlockItem(ModBlocks.HEART_OF_THE_SEA_BLOCK.get(), new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON)));
-	public static final RegistryObject<Item> ECHO_SHARD_BLOCK = REGISTRY.register("echo_shard_block", () -> new BlockItem(ModBlocks.ECHO_SHARD_BLOCK.get(), new Item.Properties().tab(HMaG.MODTAB)));
-	public static final RegistryObject<Item> THORN_SAND = REGISTRY.register("thorn_sand", () -> new BlockItem(ModBlocks.THORN_SAND.get(), new Item.Properties().tab(HMaG.MODTAB)));
-	public static final RegistryObject<Item> POISON_SAND = REGISTRY.register("poison_sand", () -> new BlockItem(ModBlocks.POISON_SAND.get(), new Item.Properties().tab(HMaG.MODTAB)));
-	public static final RegistryObject<Item> WITHER_SAND = REGISTRY.register("wither_sand", () -> new BlockItem(ModBlocks.WITHER_SAND.get(), new Item.Properties().tab(HMaG.MODTAB)));
-	public static final RegistryObject<Item> HEALING_SAND = REGISTRY.register("healing_sand", () -> new BlockItem(ModBlocks.HEALING_SAND.get(), new Item.Properties().tab(HMaG.MODTAB)));
-	public static final RegistryObject<Item> REINFORCED_BLOCK = REGISTRY.register("reinforced_block", () -> new InvincibleBlockItem(ModBlocks.REINFORCED_BLOCK.get(), new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON).fireResistant()));
-	public static final RegistryObject<Item> REINFORCED_GLASS = REGISTRY.register("reinforced_glass", () -> new InvincibleBlockItem(ModBlocks.REINFORCED_GLASS.get(), new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON).fireResistant()));
-	public static final RegistryObject<Item> TINTED_REINFORCED_GLASS = REGISTRY.register("tinted_reinforced_glass", () -> new InvincibleBlockItem(ModBlocks.TINTED_REINFORCED_GLASS.get(), new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON).fireResistant()));
+	public static final RegistryObject<Item> ENDER_EYE_BLOCK = REGISTRY.register("ender_eye_block", () -> new BlockItem(ModBlocks.ENDER_EYE_BLOCK.get(), new Item.Properties()));
+	public static final RegistryObject<Item> PRISMARINE_CRYSTAL_BLOCK = REGISTRY.register("prismarine_crystal_block", () -> new BlockItem(ModBlocks.PRISMARINE_CRYSTAL_BLOCK.get(), new Item.Properties()));
+	public static final RegistryObject<Item> SCUTE_BLOCK = REGISTRY.register("scute_block", () -> new BlockItem(ModBlocks.SCUTE_BLOCK.get(), new Item.Properties()));
+	public static final RegistryObject<Item> NETHERITE_SCRAP_BLOCK = REGISTRY.register("netherite_scrap_block", () -> new BlockItem(ModBlocks.NETHERITE_SCRAP_BLOCK.get(), new Item.Properties().fireResistant()));
+	public static final RegistryObject<Item> NETHER_STAR_BLOCK = REGISTRY.register("nether_star_block", () -> new NetherStarBlockItem(ModBlocks.NETHER_STAR_BLOCK.get(), new Item.Properties().rarity(Rarity.UNCOMMON)));
+	public static final RegistryObject<Item> SHULKER_SHELL_BLOCK = REGISTRY.register("shulker_shell_block", () -> new BlockItem(ModBlocks.SHULKER_SHELL_BLOCK.get(), new Item.Properties()));
+	public static final RegistryObject<Item> NAUTILUS_SHELL_BLOCK = REGISTRY.register("nautilus_shell_block", () -> new BlockItem(ModBlocks.NAUTILUS_SHELL_BLOCK.get(), new Item.Properties()));
+	public static final RegistryObject<Item> HEART_OF_THE_SEA_BLOCK = REGISTRY.register("heart_of_the_sea_block", () -> new BlockItem(ModBlocks.HEART_OF_THE_SEA_BLOCK.get(), new Item.Properties().rarity(Rarity.UNCOMMON)));
+	public static final RegistryObject<Item> ECHO_SHARD_BLOCK = REGISTRY.register("echo_shard_block", () -> new BlockItem(ModBlocks.ECHO_SHARD_BLOCK.get(), new Item.Properties()));
+	public static final RegistryObject<Item> THORN_SAND = REGISTRY.register("thorn_sand", () -> new BlockItem(ModBlocks.THORN_SAND.get(), new Item.Properties()));
+	public static final RegistryObject<Item> POISON_SAND = REGISTRY.register("poison_sand", () -> new BlockItem(ModBlocks.POISON_SAND.get(), new Item.Properties()));
+	public static final RegistryObject<Item> WITHER_SAND = REGISTRY.register("wither_sand", () -> new BlockItem(ModBlocks.WITHER_SAND.get(), new Item.Properties()));
+	public static final RegistryObject<Item> HEALING_SAND = REGISTRY.register("healing_sand", () -> new BlockItem(ModBlocks.HEALING_SAND.get(), new Item.Properties()));
+	public static final RegistryObject<Item> REINFORCED_BLOCK = REGISTRY.register("reinforced_block", () -> new InvincibleBlockItem(ModBlocks.REINFORCED_BLOCK.get(), new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
+	public static final RegistryObject<Item> REINFORCED_GLASS = REGISTRY.register("reinforced_glass", () -> new InvincibleBlockItem(ModBlocks.REINFORCED_GLASS.get(), new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
+	public static final RegistryObject<Item> TINTED_REINFORCED_GLASS = REGISTRY.register("tinted_reinforced_glass", () -> new InvincibleBlockItem(ModBlocks.TINTED_REINFORCED_GLASS.get(), new Item.Properties().rarity(Rarity.UNCOMMON).fireResistant()));
 
-	public static final RegistryObject<Item> EVIL_CRYSTAL_FRAGMENT = REGISTRY.register("evil_crystal_fragment", () -> new Item(new Item.Properties().tab(HMaG.MODTAB)));
-	public static final RegistryObject<Item> EVIL_CRYSTAL = REGISTRY.register("evil_crystal", () -> new Item(new Item.Properties().tab(HMaG.MODTAB)));
-	public static final RegistryObject<Item> SOUL_POWDER = REGISTRY.register("soul_powder", () -> new Item(new Item.Properties().tab(HMaG.MODTAB)));
-	public static final RegistryObject<Item> KOBOLD_LEATHER = REGISTRY.register("kobold_leather", () -> new Item(new Item.Properties().tab(HMaG.MODTAB)));
-	public static final RegistryObject<Item> LICH_CLOTH = REGISTRY.register("lich_cloth", () -> new Item(new Item.Properties().tab(HMaG.MODTAB)));
-	public static final RegistryObject<Item> OGRE_HORN = REGISTRY.register("ogre_horn", () -> new Item(new Item.Properties().tab(HMaG.MODTAB)));
-	public static final RegistryObject<Item> ENDER_PLASM = REGISTRY.register("ender_plasm", () -> new Item(new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON)));
-	public static final RegistryObject<Item> ANCIENT_STONE = REGISTRY.register("ancient_stone", () -> new Item(new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON)));
-	public static final RegistryObject<Item> CRIMSON_CUTICULA = REGISTRY.register("crimson_cuticula", () -> new Item(new Item.Properties().tab(HMaG.MODTAB)));
-	public static final RegistryObject<Item> DYSSOMNIA_SKIN = REGISTRY.register("dyssomnia_skin", () -> new Item(new Item.Properties().tab(HMaG.MODTAB)));
-	public static final RegistryObject<Item> MYSTERIOUS_PETAL = REGISTRY.register("mysterious_petal", () -> new Item(new Item.Properties().tab(HMaG.MODTAB)));
-	public static final RegistryObject<Item> SHARP_FANG = REGISTRY.register("sharp_fang", () -> new Item(new Item.Properties().tab(HMaG.MODTAB)));
-	public static final RegistryObject<Item> BURNING_CORE = REGISTRY.register("burning_core", () -> new ModItem(new Item.Properties().tab(HMaG.MODTAB), new ModItem.Properties().burnTime(4000)));
-	public static final RegistryObject<Item> NECROFIBER = REGISTRY.register("necrofiber", () -> new Item(new Item.Properties().tab(HMaG.MODTAB)));
-	public static final RegistryObject<Item> BAT_WING = REGISTRY.register("bat_wing", () -> new Item(new Item.Properties().tab(HMaG.MODTAB)));
-	public static final RegistryObject<Item> LIGHTNING_PARTICLE = REGISTRY.register("lightning_particle", () -> new Item(new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON)));
-	public static final RegistryObject<Item> COPPER_NUGGET = REGISTRY.register("copper_nugget", () -> new Item(new Item.Properties().tab(HMaG.MODTAB)));
-	public static final RegistryObject<Item> DIAMOND_FRAGMENT = REGISTRY.register("diamond_fragment", () -> new Item(new Item.Properties().tab(HMaG.MODTAB)));
-	public static final RegistryObject<Item> EMERALD_FRAGMENT = REGISTRY.register("emerald_fragment", () -> new Item(new Item.Properties().tab(HMaG.MODTAB)));
-	public static final RegistryObject<Item> TINY_NETHERITE_SCRAP = REGISTRY.register("tiny_netherite_scrap", () -> new Item(new Item.Properties().tab(HMaG.MODTAB).fireResistant()));
-	public static final RegistryObject<Item> NETHERITE_NUGGET = REGISTRY.register("netherite_nugget", () -> new Item(new Item.Properties().tab(HMaG.MODTAB).fireResistant()));
-	public static final RegistryObject<Item> NETHER_STAR_FRAGMENT = REGISTRY.register("nether_star_fragment", () -> new ModItem(new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON), new ModItem.Properties().foil().setResistanceType(ModItem.ResistanceType.NETHER_STAR)));
-	public static final RegistryObject<Item> LEMON = REGISTRY.register("lemon", () -> new Item(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(2).saturationMod(0.1F).build())));
-	public static final RegistryObject<Item> CUREBERRY = REGISTRY.register("cureberry", () -> new ModFoodItem(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(2).saturationMod(0.4F).alwaysEat().build()), new ModFoodItem.Properties().healAmount(4.0F)));
-	public static final RegistryObject<Item> RANDOMBERRY = REGISTRY.register("randomberry", () -> new RandomberryItem(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(3).saturationMod(0.2F).alwaysEat().build())));
-	public static final RegistryObject<Item> EXP_BERRY = REGISTRY.register("exp_berry", () -> new ExperienceBerryItem(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(3).saturationMod(0.2F).alwaysEat().build()).rarity(Rarity.UNCOMMON)));
-	public static final RegistryObject<Item> SOUL_APPLE = REGISTRY.register("soul_apple", () -> new ModFoodItem(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(3).saturationMod(0.3F).effect(() -> new MobEffectInstance(MobEffects.INVISIBILITY, 3 * 20, 0), 1.0F).alwaysEat().build()), new ModFoodItem.Properties().eatDuration(16).healAmount(1.0F)));
-	public static final RegistryObject<Item> HONEYED_APPLE = REGISTRY.register("honeyed_apple", () -> new ModFoodItem(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(6).saturationMod(0.4F).alwaysEat().build()), new ModFoodItem.Properties().eatDuration(24).removePoison()));
-	public static final RegistryObject<Item> HONEYED_LEMON = REGISTRY.register("honeyed_lemon", () -> new ModFoodItem(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(6).saturationMod(0.3F).alwaysEat().build()), new ModFoodItem.Properties().removePoison()));
-	public static final RegistryObject<Item> LEMON_PIE = REGISTRY.register("lemon_pie", () -> new Item(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(7).saturationMod(0.3F).build())));
-	public static final RegistryObject<Item> GOLDEN_TROPICAL_FISH = REGISTRY.register("golden_tropical_fish", () -> new Item(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(5).saturationMod(2.5F).effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 60 * 20, 1), 1.0F).effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 15 * 20, 0), 1.0F).effect(() -> new MobEffectInstance(MobEffects.WATER_BREATHING, 15 * 20, 0), 1.0F).alwaysEat().build()).rarity(Rarity.RARE)));
-	public static final RegistryObject<Item> CUBIC_NUCLEUS = REGISTRY.register("cubic_nucleus", () -> new ModFoodItem(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(4).saturationMod(0.8F).effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 15 * 20, 0), 1.0F).alwaysEat().build()), new ModFoodItem.Properties().eatDuration(48)));
-	public static final RegistryObject<Item> SAVAGEFANG_MEAT = REGISTRY.register("savagefang_meat", () -> new Item(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(3).saturationMod(0.1F).effect(() -> new MobEffectInstance(MobEffects.HUNGER, 30 * 20, 0), 0.2F).build())));
-	public static final RegistryObject<Item> COOKED_SAVAGEFANG_MEAT = REGISTRY.register("cooked_savagefang_meat", () -> new Item(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(6).saturationMod(0.7F).build())));
-	public static final RegistryObject<Item> BAT_STEW = REGISTRY.register("bat_stew", () -> new BowlFoodItem(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(6).saturationMod(0.6F).effect(() -> new MobEffectInstance(ModEffects.DARKNESS_RESISTANCE.get(), 10 * 20, 0), 0.3F).build()).stacksTo(1)));
-	public static final RegistryObject<Item> SPECTRAL_SOUP = REGISTRY.register("spectral_soup", () -> new BowlFoodItem(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(6).saturationMod(1.5F).effect(() -> new MobEffectInstance(MobEffects.GLOWING, 30 * 20, 0), 1.0F).alwaysEat().build()).stacksTo(1)));
-	public static final RegistryObject<Item> LIGHTNING_SOUP = REGISTRY.register("lightning_soup", () -> new LightningSoupItem(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(9).saturationMod(1.8F).effect(() -> new MobEffectInstance(MobEffects.GLOWING, 60 * 20, 0), 1.0F).effect(() -> new MobEffectInstance(MobEffects.NIGHT_VISION, 60 * 20, 0), 1.0F).effect(() -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 60 * 20, 0), 1.0F).effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 60 * 20, 0), 1.0F).effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 60 * 20, 1), 1.0F).effect(() -> new MobEffectInstance(MobEffects.JUMP, 60 * 20, 1), 1.0F).alwaysEat().build()).stacksTo(1).rarity(Rarity.RARE)));
-	public static final RegistryObject<Item> INSOMNIA_FRUIT = REGISTRY.register("insomnia_fruit", () -> new InsomniaFruitItem(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(5).saturationMod(0.3F).alwaysEat().build()).stacksTo(1).rarity(Rarity.RARE)));
-	public static final RegistryObject<Item> INSOMNIA_SWORD = REGISTRY.register("insomnia_sword", () -> new InsomniaSwordItem(Tiers.DIAMOND, new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.RARE)));
-	public static final RegistryObject<Item> NEMESIS_BLADE = REGISTRY.register("nemesis_blade", () -> new NemesisBladeItem(Tiers.NETHERITE, new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.EPIC).fireResistant()));
-	public static final RegistryObject<Item> IRON_SPEAR = REGISTRY.register("iron_spear", () -> new ModSwordItem(Tiers.IRON, 2.0F, -2.4F, new Item.Properties().tab(HMaG.MODTAB)));
-	public static final RegistryObject<Item> GOLDEN_FORK = REGISTRY.register("golden_fork", () -> new ModSwordItem(Tiers.GOLD, 2.0F, -2.4F, new Item.Properties().tab(HMaG.MODTAB)));
-	public static final RegistryObject<Item> CRIMSON_BOW = REGISTRY.register("crimson_bow", () -> new CrimsonBowItem(new Item.Properties().tab(HMaG.MODTAB).durability(575).rarity(Rarity.RARE)));
-	public static final RegistryObject<Item> EVIL_ARROW = REGISTRY.register("evil_arrow", () -> new EvilArrowItem(new Item.Properties().tab(HMaG.MODTAB)));
-	public static final RegistryObject<Item> ANCIENT_HELMET = REGISTRY.register("ancient_helmet", () -> new ArmorItem(ModArmorMaterial.ANCIENT, EquipmentSlot.HEAD, (new Item.Properties()).tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON)));
-	public static final RegistryObject<Item> ANCIENT_CHESTPLATE = REGISTRY.register("ancient_chestplate", () -> new ArmorItem(ModArmorMaterial.ANCIENT, EquipmentSlot.CHEST, (new Item.Properties()).tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON)));
-	public static final RegistryObject<Item> ANCIENT_LEGGINGS = REGISTRY.register("ancient_leggings", () -> new ArmorItem(ModArmorMaterial.ANCIENT, EquipmentSlot.LEGS, (new Item.Properties()).tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON)));
-	public static final RegistryObject<Item> ANCIENT_BOOTS = REGISTRY.register("ancient_boots", () -> new ArmorItem(ModArmorMaterial.ANCIENT, EquipmentSlot.FEET, (new Item.Properties()).tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON)));
-	public static final RegistryObject<Item> ANCIENT_SHIELD = REGISTRY.register("ancient_shield", () -> new AncientShieldItem(new Item.Properties().tab(HMaG.MODTAB).durability(671).rarity(Rarity.UNCOMMON)));
-	public static final RegistryObject<Item> FORTRESS_SHIELD = REGISTRY.register("fortress_shield", () -> new FortressShieldItem(new Item.Properties().tab(HMaG.MODTAB).durability(671).rarity(Rarity.UNCOMMON)));
-	public static final RegistryObject<Item> NECROTIC_CHAINMAIL_HELMET = REGISTRY.register("necrotic_chainmail_helmet", () -> new ArmorItem(ModArmorMaterial.NECROTIC_CHAIN, EquipmentSlot.HEAD, (new Item.Properties()).tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON)));
-	public static final RegistryObject<Item> NECROTIC_CHAINMAIL_CHESTPLATE = REGISTRY.register("necrotic_chainmail_chestplate", () -> new ArmorItem(ModArmorMaterial.NECROTIC_CHAIN, EquipmentSlot.CHEST, (new Item.Properties()).tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON)));
-	public static final RegistryObject<Item> NECROTIC_CHAINMAIL_LEGGINGS = REGISTRY.register("necrotic_chainmail_leggings", () -> new ArmorItem(ModArmorMaterial.NECROTIC_CHAIN, EquipmentSlot.LEGS, (new Item.Properties()).tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON)));
-	public static final RegistryObject<Item> NECROTIC_CHAINMAIL_BOOTS = REGISTRY.register("necrotic_chainmail_boots", () -> new ArmorItem(ModArmorMaterial.NECROTIC_CHAIN, EquipmentSlot.FEET, (new Item.Properties()).tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON)));
-	public static final RegistryObject<Item> FIRE_BOTTLE = REGISTRY.register("fire_bottle", () -> new ThrowableBottleItem(new Item.Properties().tab(HMaG.MODTAB).stacksTo(16), new ModItem.Properties().burnTime(800)));
-	public static final RegistryObject<Item> BLASTING_BOTTLE = REGISTRY.register("blasting_bottle", () -> new ThrowableBottleItem(new Item.Properties().tab(HMaG.MODTAB).stacksTo(16).rarity(Rarity.UNCOMMON), new ModItem.Properties().burnTime(3200)));
-	public static final RegistryObject<Item> LIGHTNING_BOTTLE = REGISTRY.register("lightning_bottle", () -> new ThrowableBottleItem(new Item.Properties().tab(HMaG.MODTAB).stacksTo(16).rarity(Rarity.RARE), new ModItem.Properties().foil()));
-	public static final RegistryObject<Item> REINFORCING_CHAIN = REGISTRY.register("reinforcing_chain", () -> new EnchantmentUpgradeItem(new Item.Properties().tab(HMaG.MODTAB), new EnchantmentUpgradeItem.Properties().enchantment(Enchantments.UNBREAKING, 0, 2)));
-	public static final RegistryObject<Item> MULTIPLEX_REINFORCING_CHAIN = REGISTRY.register("multiplex_reinforcing_chain", () -> new EnchantmentUpgradeItem(new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON), new ModItem.Properties().foil(), new EnchantmentUpgradeItem.Properties().enchantment(Enchantments.UNBREAKING, 3, 9)));
-	public static final RegistryObject<Item> REPULSION_GADGET = REGISTRY.register("repulsion_gadget", () -> new EnchantmentUpgradeItem(new Item.Properties().tab(HMaG.MODTAB), new EnchantmentUpgradeItem.Properties().enchantment(Enchantments.KNOCKBACK, 0, 9).enchantment(Enchantments.PUNCH_ARROWS, 0, 9)));
-	public static final RegistryObject<Item> EVIL_FLAME = REGISTRY.register("evil_flame", () -> new EvilFlameItem(new Item.Properties().tab(HMaG.MODTAB)));
-	public static final RegistryObject<Item> EVIL_THORN = REGISTRY.register("evil_thorn", () -> new EvilThornItem(new Item.Properties().tab(HMaG.MODTAB)));
-	public static final RegistryObject<Item> GREEDY_CRYSTAL = REGISTRY.register("greedy_crystal", () -> new EnchantmentUpgradeItem(new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON), new ModItem.Properties().foil(), new EnchantmentUpgradeItem.Properties().enchantment(Enchantments.MOB_LOOTING, 3, 3)));
-	public static final RegistryObject<Item> GREEDY_CRYSTAL_PLUS = REGISTRY.register("greedy_crystal_plus", () -> new EnchantmentUpgradeItem(new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.RARE), new ModItem.Properties().foil(), new EnchantmentUpgradeItem.Properties().enchantment(Enchantments.MOB_LOOTING, 4, 4)));
-	public static final RegistryObject<Item> FORTUNE_CRYSTAL = REGISTRY.register("fortune_crystal", () -> new EnchantmentUpgradeItem(new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.UNCOMMON), new ModItem.Properties().foil(), new EnchantmentUpgradeItem.Properties().enchantment(Enchantments.BLOCK_FORTUNE, 3, 3)));
-	public static final RegistryObject<Item> FORTUNE_CRYSTAL_PLUS = REGISTRY.register("fortune_crystal_plus", () -> new EnchantmentUpgradeItem(new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.RARE), new ModItem.Properties().foil(), new EnchantmentUpgradeItem.Properties().enchantment(Enchantments.BLOCK_FORTUNE, 4, 4)));
-	public static final RegistryObject<Item> PURIFICATION_CLOTH = REGISTRY.register("purification_cloth", () -> new PurificationClothItem(new Item.Properties().tab(HMaG.MODTAB).stacksTo(16).rarity(Rarity.UNCOMMON)));
-	public static final RegistryObject<Item> ENDLESS_PEARL = REGISTRY.register("endless_pearl", () -> new EndlessPearlItem(new Item.Properties().tab(HMaG.MODTAB).stacksTo(1).rarity(Rarity.UNCOMMON)));
-	public static final RegistryObject<Item> TOTEM_OF_REPULSE = REGISTRY.register("totem_of_repulse", () -> new TotemOfRepulseItem(new Item.Properties().tab(HMaG.MODTAB).stacksTo(1).rarity(Rarity.RARE)));
+	public static final RegistryObject<Item> EVIL_CRYSTAL_FRAGMENT = REGISTRY.register("evil_crystal_fragment", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> EVIL_CRYSTAL = REGISTRY.register("evil_crystal", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> SOUL_POWDER = REGISTRY.register("soul_powder", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> KOBOLD_LEATHER = REGISTRY.register("kobold_leather", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> LICH_CLOTH = REGISTRY.register("lich_cloth", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> OGRE_HORN = REGISTRY.register("ogre_horn", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> ENDER_PLASM = REGISTRY.register("ender_plasm", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
+	public static final RegistryObject<Item> ANCIENT_STONE = REGISTRY.register("ancient_stone", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
+	public static final RegistryObject<Item> CRIMSON_CUTICULA = REGISTRY.register("crimson_cuticula", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> DYSSOMNIA_SKIN = REGISTRY.register("dyssomnia_skin", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> MYSTERIOUS_PETAL = REGISTRY.register("mysterious_petal", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> SHARP_FANG = REGISTRY.register("sharp_fang", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> BURNING_CORE = REGISTRY.register("burning_core", () -> new ModItem(new Item.Properties(), new ModItem.Properties().burnTime(4000)));
+	public static final RegistryObject<Item> NECROFIBER = REGISTRY.register("necrofiber", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> BAT_WING = REGISTRY.register("bat_wing", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> LIGHTNING_PARTICLE = REGISTRY.register("lightning_particle", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
+	public static final RegistryObject<Item> COPPER_NUGGET = REGISTRY.register("copper_nugget", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> DIAMOND_FRAGMENT = REGISTRY.register("diamond_fragment", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> EMERALD_FRAGMENT = REGISTRY.register("emerald_fragment", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<Item> TINY_NETHERITE_SCRAP = REGISTRY.register("tiny_netherite_scrap", () -> new Item(new Item.Properties().fireResistant()));
+	public static final RegistryObject<Item> NETHERITE_NUGGET = REGISTRY.register("netherite_nugget", () -> new Item(new Item.Properties().fireResistant()));
+	public static final RegistryObject<Item> NETHER_STAR_FRAGMENT = REGISTRY.register("nether_star_fragment", () -> new ModItem(new Item.Properties().rarity(Rarity.UNCOMMON), new ModItem.Properties().foil().setResistanceType(ModItem.ResistanceType.NETHER_STAR)));
+	public static final RegistryObject<Item> LEMON = REGISTRY.register("lemon", () -> new Item(new Item.Properties().food((new FoodProperties.Builder()).nutrition(2).saturationMod(0.1F).build())));
+	public static final RegistryObject<Item> CUREBERRY = REGISTRY.register("cureberry", () -> new ModFoodItem(new Item.Properties().food((new FoodProperties.Builder()).nutrition(2).saturationMod(0.4F).alwaysEat().build()), new ModFoodItem.Properties().healAmount(4.0F)));
+	public static final RegistryObject<Item> RANDOMBERRY = REGISTRY.register("randomberry", () -> new RandomberryItem(new Item.Properties().food((new FoodProperties.Builder()).nutrition(3).saturationMod(0.2F).alwaysEat().build())));
+	public static final RegistryObject<Item> EXP_BERRY = REGISTRY.register("exp_berry", () -> new ExperienceBerryItem(new Item.Properties().food((new FoodProperties.Builder()).nutrition(3).saturationMod(0.2F).alwaysEat().build()).rarity(Rarity.UNCOMMON)));
+	public static final RegistryObject<Item> SOUL_APPLE = REGISTRY.register("soul_apple", () -> new ModFoodItem(new Item.Properties().food((new FoodProperties.Builder()).nutrition(3).saturationMod(0.3F).effect(() -> new MobEffectInstance(MobEffects.INVISIBILITY, 3 * 20, 0), 1.0F).alwaysEat().build()), new ModFoodItem.Properties().eatDuration(16).healAmount(1.0F)));
+	public static final RegistryObject<Item> HONEYED_APPLE = REGISTRY.register("honeyed_apple", () -> new ModFoodItem(new Item.Properties().food((new FoodProperties.Builder()).nutrition(6).saturationMod(0.4F).alwaysEat().build()), new ModFoodItem.Properties().eatDuration(24).removePoison()));
+	public static final RegistryObject<Item> HONEYED_LEMON = REGISTRY.register("honeyed_lemon", () -> new ModFoodItem(new Item.Properties().food((new FoodProperties.Builder()).nutrition(6).saturationMod(0.3F).alwaysEat().build()), new ModFoodItem.Properties().removePoison()));
+	public static final RegistryObject<Item> LEMON_PIE = REGISTRY.register("lemon_pie", () -> new Item(new Item.Properties().food((new FoodProperties.Builder()).nutrition(7).saturationMod(0.3F).build())));
+	public static final RegistryObject<Item> GOLDEN_TROPICAL_FISH = REGISTRY.register("golden_tropical_fish", () -> new Item(new Item.Properties().food((new FoodProperties.Builder()).nutrition(5).saturationMod(2.5F).effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 60 * 20, 1), 1.0F).effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 15 * 20, 0), 1.0F).effect(() -> new MobEffectInstance(MobEffects.WATER_BREATHING, 15 * 20, 0), 1.0F).alwaysEat().build()).rarity(Rarity.RARE)));
+	public static final RegistryObject<Item> CUBIC_NUCLEUS = REGISTRY.register("cubic_nucleus", () -> new ModFoodItem(new Item.Properties().food((new FoodProperties.Builder()).nutrition(4).saturationMod(0.8F).effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 15 * 20, 0), 1.0F).alwaysEat().build()), new ModFoodItem.Properties().eatDuration(48)));
+	public static final RegistryObject<Item> SAVAGEFANG_MEAT = REGISTRY.register("savagefang_meat", () -> new Item(new Item.Properties().food((new FoodProperties.Builder()).nutrition(3).saturationMod(0.1F).effect(() -> new MobEffectInstance(MobEffects.HUNGER, 30 * 20, 0), 0.2F).build())));
+	public static final RegistryObject<Item> COOKED_SAVAGEFANG_MEAT = REGISTRY.register("cooked_savagefang_meat", () -> new Item(new Item.Properties().food((new FoodProperties.Builder()).nutrition(6).saturationMod(0.7F).build())));
+	public static final RegistryObject<Item> BAT_STEW = REGISTRY.register("bat_stew", () -> new BowlFoodItem(new Item.Properties().food((new FoodProperties.Builder()).nutrition(6).saturationMod(0.6F).effect(() -> new MobEffectInstance(ModEffects.DARKNESS_RESISTANCE.get(), 10 * 20, 0), 0.3F).build()).stacksTo(1)));
+	public static final RegistryObject<Item> SPECTRAL_SOUP = REGISTRY.register("spectral_soup", () -> new BowlFoodItem(new Item.Properties().food((new FoodProperties.Builder()).nutrition(6).saturationMod(1.5F).effect(() -> new MobEffectInstance(MobEffects.GLOWING, 30 * 20, 0), 1.0F).alwaysEat().build()).stacksTo(1)));
+	public static final RegistryObject<Item> LIGHTNING_SOUP = REGISTRY.register("lightning_soup", () -> new LightningSoupItem(new Item.Properties().food((new FoodProperties.Builder()).nutrition(9).saturationMod(1.8F).effect(() -> new MobEffectInstance(MobEffects.GLOWING, 60 * 20, 0), 1.0F).effect(() -> new MobEffectInstance(MobEffects.NIGHT_VISION, 60 * 20, 0), 1.0F).effect(() -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 60 * 20, 0), 1.0F).effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 60 * 20, 0), 1.0F).effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 60 * 20, 1), 1.0F).effect(() -> new MobEffectInstance(MobEffects.JUMP, 60 * 20, 1), 1.0F).alwaysEat().build()).stacksTo(1).rarity(Rarity.RARE)));
+	public static final RegistryObject<Item> INSOMNIA_FRUIT = REGISTRY.register("insomnia_fruit", () -> new InsomniaFruitItem(new Item.Properties().food((new FoodProperties.Builder()).nutrition(5).saturationMod(0.3F).alwaysEat().build()).stacksTo(1).rarity(Rarity.RARE)));
+	public static final RegistryObject<Item> INSOMNIA_SWORD = REGISTRY.register("insomnia_sword", () -> new InsomniaSwordItem(Tiers.DIAMOND, new Item.Properties().rarity(Rarity.RARE)));
+	public static final RegistryObject<Item> NEMESIS_BLADE = REGISTRY.register("nemesis_blade", () -> new NemesisBladeItem(Tiers.NETHERITE, new Item.Properties().rarity(Rarity.EPIC).fireResistant()));
+	public static final RegistryObject<Item> IRON_SPEAR = REGISTRY.register("iron_spear", () -> new ModSwordItem(Tiers.IRON, 2.0F, -2.4F, new Item.Properties()));
+	public static final RegistryObject<Item> GOLDEN_FORK = REGISTRY.register("golden_fork", () -> new ModSwordItem(Tiers.GOLD, 2.0F, -2.4F, new Item.Properties()));
+	public static final RegistryObject<Item> CRIMSON_BOW = REGISTRY.register("crimson_bow", () -> new CrimsonBowItem(new Item.Properties().durability(575).rarity(Rarity.RARE)));
+	public static final RegistryObject<Item> EVIL_ARROW = REGISTRY.register("evil_arrow", () -> new EvilArrowItem(new Item.Properties()));
+	public static final RegistryObject<Item> ANCIENT_HELMET = REGISTRY.register("ancient_helmet", () -> new ArmorItem(ModArmorMaterial.ANCIENT, EquipmentSlot.HEAD, (new Item.Properties()).rarity(Rarity.UNCOMMON)));
+	public static final RegistryObject<Item> ANCIENT_CHESTPLATE = REGISTRY.register("ancient_chestplate", () -> new ArmorItem(ModArmorMaterial.ANCIENT, EquipmentSlot.CHEST, (new Item.Properties()).rarity(Rarity.UNCOMMON)));
+	public static final RegistryObject<Item> ANCIENT_LEGGINGS = REGISTRY.register("ancient_leggings", () -> new ArmorItem(ModArmorMaterial.ANCIENT, EquipmentSlot.LEGS, (new Item.Properties()).rarity(Rarity.UNCOMMON)));
+	public static final RegistryObject<Item> ANCIENT_BOOTS = REGISTRY.register("ancient_boots", () -> new ArmorItem(ModArmorMaterial.ANCIENT, EquipmentSlot.FEET, (new Item.Properties()).rarity(Rarity.UNCOMMON)));
+	public static final RegistryObject<Item> ANCIENT_SHIELD = REGISTRY.register("ancient_shield", () -> new AncientShieldItem(new Item.Properties().durability(671).rarity(Rarity.UNCOMMON)));
+	public static final RegistryObject<Item> FORTRESS_SHIELD = REGISTRY.register("fortress_shield", () -> new FortressShieldItem(new Item.Properties().durability(671).rarity(Rarity.UNCOMMON)));
+	public static final RegistryObject<Item> NECROTIC_CHAINMAIL_HELMET = REGISTRY.register("necrotic_chainmail_helmet", () -> new ArmorItem(ModArmorMaterial.NECROTIC_CHAIN, EquipmentSlot.HEAD, (new Item.Properties()).rarity(Rarity.UNCOMMON)));
+	public static final RegistryObject<Item> NECROTIC_CHAINMAIL_CHESTPLATE = REGISTRY.register("necrotic_chainmail_chestplate", () -> new ArmorItem(ModArmorMaterial.NECROTIC_CHAIN, EquipmentSlot.CHEST, (new Item.Properties()).rarity(Rarity.UNCOMMON)));
+	public static final RegistryObject<Item> NECROTIC_CHAINMAIL_LEGGINGS = REGISTRY.register("necrotic_chainmail_leggings", () -> new ArmorItem(ModArmorMaterial.NECROTIC_CHAIN, EquipmentSlot.LEGS, (new Item.Properties()).rarity(Rarity.UNCOMMON)));
+	public static final RegistryObject<Item> NECROTIC_CHAINMAIL_BOOTS = REGISTRY.register("necrotic_chainmail_boots", () -> new ArmorItem(ModArmorMaterial.NECROTIC_CHAIN, EquipmentSlot.FEET, (new Item.Properties()).rarity(Rarity.UNCOMMON)));
+	public static final RegistryObject<Item> FIRE_BOTTLE = REGISTRY.register("fire_bottle", () -> new ThrowableBottleItem(new Item.Properties().stacksTo(16), new ModItem.Properties().burnTime(800)));
+	public static final RegistryObject<Item> BLASTING_BOTTLE = REGISTRY.register("blasting_bottle", () -> new ThrowableBottleItem(new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON), new ModItem.Properties().burnTime(3200)));
+	public static final RegistryObject<Item> LIGHTNING_BOTTLE = REGISTRY.register("lightning_bottle", () -> new ThrowableBottleItem(new Item.Properties().stacksTo(16).rarity(Rarity.RARE), new ModItem.Properties().foil()));
+	public static final RegistryObject<Item> REINFORCING_CHAIN = REGISTRY.register("reinforcing_chain", () -> new EnchantmentUpgradeItem(new Item.Properties(), new EnchantmentUpgradeItem.Properties().enchantment(Enchantments.UNBREAKING, 0, 2)));
+	public static final RegistryObject<Item> MULTIPLEX_REINFORCING_CHAIN = REGISTRY.register("multiplex_reinforcing_chain", () -> new EnchantmentUpgradeItem(new Item.Properties().rarity(Rarity.UNCOMMON), new ModItem.Properties().foil(), new EnchantmentUpgradeItem.Properties().enchantment(Enchantments.UNBREAKING, 3, 9)));
+	public static final RegistryObject<Item> REPULSION_GADGET = REGISTRY.register("repulsion_gadget", () -> new EnchantmentUpgradeItem(new Item.Properties(), new EnchantmentUpgradeItem.Properties().enchantment(Enchantments.KNOCKBACK, 0, 9).enchantment(Enchantments.PUNCH_ARROWS, 0, 9)));
+	public static final RegistryObject<Item> EVIL_FLAME = REGISTRY.register("evil_flame", () -> new EvilFlameItem(new Item.Properties()));
+	public static final RegistryObject<Item> EVIL_THORN = REGISTRY.register("evil_thorn", () -> new EvilThornItem(new Item.Properties()));
+	public static final RegistryObject<Item> GREEDY_CRYSTAL = REGISTRY.register("greedy_crystal", () -> new EnchantmentUpgradeItem(new Item.Properties().rarity(Rarity.UNCOMMON), new ModItem.Properties().foil(), new EnchantmentUpgradeItem.Properties().enchantment(Enchantments.MOB_LOOTING, 3, 3)));
+	public static final RegistryObject<Item> GREEDY_CRYSTAL_PLUS = REGISTRY.register("greedy_crystal_plus", () -> new EnchantmentUpgradeItem(new Item.Properties().rarity(Rarity.RARE), new ModItem.Properties().foil(), new EnchantmentUpgradeItem.Properties().enchantment(Enchantments.MOB_LOOTING, 4, 4)));
+	public static final RegistryObject<Item> FORTUNE_CRYSTAL = REGISTRY.register("fortune_crystal", () -> new EnchantmentUpgradeItem(new Item.Properties().rarity(Rarity.UNCOMMON), new ModItem.Properties().foil(), new EnchantmentUpgradeItem.Properties().enchantment(Enchantments.BLOCK_FORTUNE, 3, 3)));
+	public static final RegistryObject<Item> FORTUNE_CRYSTAL_PLUS = REGISTRY.register("fortune_crystal_plus", () -> new EnchantmentUpgradeItem(new Item.Properties().rarity(Rarity.RARE), new ModItem.Properties().foil(), new EnchantmentUpgradeItem.Properties().enchantment(Enchantments.BLOCK_FORTUNE, 4, 4)));
+	public static final RegistryObject<Item> PURIFICATION_CLOTH = REGISTRY.register("purification_cloth", () -> new PurificationClothItem(new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON)));
+	public static final RegistryObject<Item> ENDLESS_PEARL = REGISTRY.register("endless_pearl", () -> new EndlessPearlItem(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+	public static final RegistryObject<Item> TOTEM_OF_REPULSE = REGISTRY.register("totem_of_repulse", () -> new TotemOfRepulseItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
 	public static final RegistryObject<Item> ZOMBIE_GIRL_SPAWN_EGG = createSpawnEggRegistryObject("zombie_girl", ModEntityTypes.ZOMBIE_GIRL, 0xB4AD53, 0x577431);
 	public static final RegistryObject<Item> HUSK_GIRL_SPAWN_EGG = createSpawnEggRegistryObject("husk_girl", ModEntityTypes.HUSK_GIRL, 0xD3B87D, 0x62453D);
@@ -200,8 +200,13 @@ public class ModItems
 		REGISTRY.register(eventBus);
 	}
 
-	private static RegistryObject<Item> createSpawnEggRegistryObject(String name, RegistryObject<? extends EntityType<? extends Mob>> entityTypeSupplier, int primaryColorIn, int secondaryColorIn)
+	private static RegistryObject<Item> createSpawnEggRegistryObject(String name, RegistryObject<? extends EntityType<? extends Mob>> entityTypeSupplier, int primaryColor, int secondaryColor)
 	{
-		return REGISTRY.register(name + "_spawn_egg", () -> new ForgeSpawnEggItem(entityTypeSupplier, primaryColorIn, secondaryColorIn, new Item.Properties().tab(HMaG.MODTAB)));
+		return REGISTRY.register(name + "_spawn_egg", () -> new ForgeSpawnEggItem(entityTypeSupplier, primaryColor, secondaryColor, new Item.Properties()));
+	}
+
+	public static DeferredRegister<Item> getItemRegistry()
+	{
+		return REGISTRY;
 	}
 }
