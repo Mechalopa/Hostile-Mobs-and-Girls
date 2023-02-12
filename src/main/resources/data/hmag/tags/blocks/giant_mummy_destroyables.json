@@ -845,7 +845,15 @@
       "required": false
     },
     {
+      "id": "upgrade_aquatic:blue_pickerelweed",
+      "required": false
+    },
+    {
       "id": "upgrade_aquatic:mulberry_vine",
+      "required": false
+    },
+    {
+      "id": "upgrade_aquatic:purple_pickerelweed",
       "required": false
     },
     {
