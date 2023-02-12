@@ -5,16 +5,12 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
-import javax.annotation.Nonnull;
-
 import com.github.mechalopa.hmag.registry.ModRecipes;
 import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.world.item.EnchantmentUpgradeItem;
 import com.github.mechalopa.hmag.world.item.EnchantmentUpgradeItem.Properties.EnchantmentUpgradeProp;
 import com.google.common.collect.ImmutableMap;
-import com.google.gson.JsonObject;
 
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.inventory.AnvilMenu;
@@ -26,7 +22,6 @@ import net.minecraft.world.item.crafting.UpgradeRecipe;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.registries.ForgeRegistryEntry;
 
 public class EnchantmentUpgradeRecipe extends UpgradeRecipe
 {
@@ -166,24 +161,5 @@ public class EnchantmentUpgradeRecipe extends UpgradeRecipe
 	public RecipeSerializer<?> getSerializer()
 	{
 		return ModRecipes.ENCHANTMENT_UPGRADE.get();
-	}
-
-	public static class Serializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<EnchantmentUpgradeRecipe>
-	{
-		@Override
-		public EnchantmentUpgradeRecipe fromJson(ResourceLocation recipeId, JsonObject json)
-		{
-			return new EnchantmentUpgradeRecipe(this.getRegistryName());
-		}
-
-		@Override
-		@Nonnull
-		public EnchantmentUpgradeRecipe fromNetwork(@Nonnull ResourceLocation recipeId, FriendlyByteBuf buffer)
-		{
-			return new EnchantmentUpgradeRecipe(this.getRegistryName());
-		}
-
-		@Override
-		public void toNetwork(FriendlyByteBuf buffer, EnchantmentUpgradeRecipe recipe){}
 	}
 }

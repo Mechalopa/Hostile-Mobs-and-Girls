@@ -1,9 +1,6 @@
 package com.github.mechalopa.hmag.world.entity.projectile;
 
-import javax.annotation.Nonnull;
-
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -12,7 +9,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
-import net.minecraftforge.network.NetworkHooks;
 
 public abstract class ModProjectileItemEntity extends ThrowableItemProjectile
 {
@@ -78,12 +74,5 @@ public abstract class ModProjectileItemEntity extends ThrowableItemProjectile
 	{
 		super.readAdditionalSaveData(compound);
 		this.setDamage(compound.getFloat("Damage"));
-	}
-
-	@Nonnull
-	@Override
-	public Packet<?> getAddEntityPacket()
-	{
-		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 }

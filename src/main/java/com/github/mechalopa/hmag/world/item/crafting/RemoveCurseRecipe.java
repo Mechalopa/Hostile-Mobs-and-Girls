@@ -4,13 +4,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
-import javax.annotation.Nonnull;
-
 import com.github.mechalopa.hmag.registry.ModRecipes;
 import com.github.mechalopa.hmag.util.ModTags;
-import com.google.gson.JsonObject;
 
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.inventory.AnvilMenu;
@@ -22,7 +18,6 @@ import net.minecraft.world.item.crafting.UpgradeRecipe;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.registries.ForgeRegistryEntry;
 
 public class RemoveCurseRecipe extends UpgradeRecipe
 {
@@ -107,24 +102,5 @@ public class RemoveCurseRecipe extends UpgradeRecipe
 	public RecipeSerializer<?> getSerializer()
 	{
 		return ModRecipes.REMOVE_CURSE.get();
-	}
-
-	public static class Serializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<RemoveCurseRecipe>
-	{
-		@Override
-		public RemoveCurseRecipe fromJson(ResourceLocation recipeId, JsonObject json)
-		{
-			return new RemoveCurseRecipe(this.getRegistryName());
-		}
-
-		@Override
-		@Nonnull
-		public RemoveCurseRecipe fromNetwork(@Nonnull ResourceLocation recipeId, FriendlyByteBuf buffer)
-		{
-			return new RemoveCurseRecipe(this.getRegistryName());
-		}
-
-		@Override
-		public void toNetwork(FriendlyByteBuf buffer, RemoveCurseRecipe recipe){}
 	}
 }

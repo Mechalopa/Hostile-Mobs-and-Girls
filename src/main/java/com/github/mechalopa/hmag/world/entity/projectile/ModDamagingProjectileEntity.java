@@ -1,9 +1,6 @@
 package com.github.mechalopa.hmag.world.entity.projectile;
 
-import javax.annotation.Nonnull;
-
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -15,7 +12,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.network.NetworkHooks;
 
 public abstract class ModDamagingProjectileEntity extends AbstractHurtingProjectile
 {
@@ -127,12 +123,5 @@ public abstract class ModDamagingProjectileEntity extends AbstractHurtingProject
 	protected boolean shouldBurn()
 	{
 		return false;
-	}
-
-	@Nonnull
-	@Override
-	public Packet<?> getAddEntityPacket()
-	{
-		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 }

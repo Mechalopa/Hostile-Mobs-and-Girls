@@ -171,7 +171,7 @@ public class ModItems
 		REGISTRY.register(eventBus);
 	}
 
-	protected static RegistryObject<Item> createSpawnEggRegistryObject(String name, RegistryObject<? extends EntityType<? extends Mob>> entityTypeSupplier, int primaryColorIn, int secondaryColorIn)
+	private static RegistryObject<Item> createSpawnEggRegistryObject(String name, RegistryObject<? extends EntityType<? extends Mob>> entityTypeSupplier, int primaryColorIn, int secondaryColorIn)
 	{
 		return REGISTRY.register(name + "_spawn_egg", () -> new ForgeSpawnEggItem(entityTypeSupplier, primaryColorIn, secondaryColorIn, new Item.Properties().tab(HMaG.MODTAB)));
 	}

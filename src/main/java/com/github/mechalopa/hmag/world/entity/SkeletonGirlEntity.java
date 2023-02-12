@@ -5,6 +5,8 @@ import java.time.temporal.ChronoField;
 
 import javax.annotation.Nonnull;
 
+import com.github.mechalopa.hmag.registry.ModEntityTypes;
+
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.EntityType;
@@ -13,6 +15,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Skeleton;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -59,6 +62,17 @@ public class SkeletonGirlEntity extends Skeleton implements IModMob
 		if (j == 4 && i == 1 && this.random.nextFloat() < 0.5F)
 		{
 			this.setItemSlot(EquipmentSlot.OFFHAND, new ItemStack(Items.WOODEN_HOE));
+		}
+	}
+
+	@Override
+	protected void doFreezeConversion()
+	{
+		this.convertTo(ModEntityTypes.STRAY_GIRL.get(), true);
+
+		if (!this.isSilent())
+		{
+			this.level.levelEvent((Player)null, 1048, this.blockPosition(), 0);
 		}
 	}
 
