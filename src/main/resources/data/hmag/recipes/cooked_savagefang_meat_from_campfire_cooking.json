@@ -1,5 +1,6 @@
 {
   "type": "minecraft:campfire_cooking",
+  "category": "food",
   "ingredient": {
     "item": "hmag:savagefang_meat"
   },
