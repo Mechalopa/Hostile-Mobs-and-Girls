@@ -477,10 +477,6 @@
       "required": false
     },
     {
-      "id": "#hibernalherbs:herbs",
-      "required": false
-    },
-    {
       "id": "colorfulazaleas:blue_drooping_azalea_leaves",
       "required": false
     },
@@ -566,6 +562,14 @@
     },
     {
       "id": "farmersrespite:wild_tea_bush",
+      "required": false
+    },
+    {
+      "id": "farmersrespite:wither_roots",
+      "required": false
+    },
+    {
+      "id": "farmersrespite:wither_roots_plant",
       "required": false
     },
     {
@@ -962,6 +966,10 @@
     },
     {
       "id": "delightful:salmonberry_bush",
+      "required": false
+    },
+    {
+      "id": "delightful:wild_salmonberries",
       "required": false
     },
     {

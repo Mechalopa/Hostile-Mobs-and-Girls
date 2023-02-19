@@ -105,6 +105,22 @@
     {
       "id": "upgrade_aquatic:vibing",
       "required": false
+    },
+    {
+      "id": "collectorsreap:corrosion",
+      "required": false
+    },
+    {
+      "id": "collectorsreap:volatility",
+      "required": false
+    },
+    {
+      "id": "habitat:blast_endurance",
+      "required": false
+    },
+    {
+      "id": "habitat:prickling",
+      "required": false
     }
   ]
 }
