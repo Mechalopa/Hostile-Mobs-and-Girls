@@ -5,6 +5,10 @@
     {
       "id": "repurposed_structures:stronghold_nether",
       "required": false
+    },
+    {
+      "id": "betterfortresses:fortress",
+      "required": false
     }
   ]
 }
