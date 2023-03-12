@@ -73,6 +73,10 @@
     {
       "id": "darkerdepths:glowshroom_forest",
       "required": false
+    },
+    {
+      "id": "jellyfishing:jellyfish_fields",
+      "required": false
     }
   ]
 }

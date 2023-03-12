@@ -1019,6 +1019,26 @@
     {
       "id": "hauntedharvest:corn_top",
       "required": false
+    },
+    {
+      "id": "biome_backlog:baobab_flower",
+      "required": false
+    },
+    {
+      "id": "biome_backlog:baobab_fruit",
+      "required": false
+    },
+    {
+      "id": "biome_backlog:coconut_sapling",
+      "required": false
+    },
+    {
+      "id": "biome_backlog:palm_leaves_hanging",
+      "required": false
+    },
+    {
+      "id": "biome_backlog:tumbleweed",
+      "required": false
     }
   ]
 }
