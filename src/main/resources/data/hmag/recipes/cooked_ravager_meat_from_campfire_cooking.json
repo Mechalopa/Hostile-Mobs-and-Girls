@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "ingredient": {
+    "item": "hmag:ravager_meat"
+  },
+  "result": "hmag:cooked_ravager_meat",
+  "experience": 0.35,
+  "cookingtime": 600
+}

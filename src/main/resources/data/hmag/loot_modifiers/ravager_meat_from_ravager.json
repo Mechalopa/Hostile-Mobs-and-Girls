@@ -1,0 +1,48 @@
+{
+  "type": "hmag:additional_entity_loot",
+  "conditions": [
+    {
+      "condition": "minecraft:entity_properties",
+      "entity": "this",
+      "predicate": {
+        "type": "#hmag:ravagers",
+        "flags": {
+          "is_baby": false
+        }
+      }
+    }
+  ],
+  "functions": [
+    {
+      "count": {
+        "max": 2,
+        "min": 5,
+        "type": "minecraft:uniform"
+      },
+      "function": "minecraft:set_count"
+    },
+    {
+      "conditions": [
+        {
+          "condition": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "flags": {
+              "is_on_fire": true
+            }
+          }
+        }
+      ],
+      "function": "minecraft:furnace_smelt"
+    },
+    {
+      "count": {
+        "max": 1,
+        "min": 0,
+        "type": "minecraft:uniform"
+      },
+      "function": "minecraft:looting_enchant"
+    }
+  ],
+  "addition": "hmag:ravager_meat"
+}
