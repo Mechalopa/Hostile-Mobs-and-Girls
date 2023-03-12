@@ -9,6 +9,7 @@ import javax.annotation.Nullable;
 
 import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
+import com.github.mechalopa.hmag.util.ModTags;
 
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -37,11 +38,9 @@ import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.animal.Turtle;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.monster.hoglin.Hoglin;
 import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -84,12 +83,9 @@ public class KashaEntity extends Monster
 		this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
 		this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
 		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
-		if (ModConfigs.cachedServer.KASHA_ATTACK_CHICKENS)
-			this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Chicken.class, false));
-		if (ModConfigs.cachedServer.KASHA_ATTACK_BABY_HOGLINS)
-			this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Hoglin.class, 10, false, false, (p) -> {
-				return p.isBaby();
-			}));
+		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, LivingEntity.class, 10, true, false, (p) -> {
+			return p.getType().is(ModTags.KASHA_TARGETS) && !(p.getType().is(ModTags.KASHA_TARGETS_BABY_ONLY) && !p.isBaby());
+		}));
 		if (ModConfigs.cachedServer.KASHA_ATTACK_VILLAGERS)
 			this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, false));
 		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));

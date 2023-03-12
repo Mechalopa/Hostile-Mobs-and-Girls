@@ -4,6 +4,7 @@ import javax.annotation.Nonnull;
 
 import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
+import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.world.entity.ai.goal.LeapAtTargetGoal2;
 
 import net.minecraft.core.BlockPos;
@@ -13,6 +14,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -23,8 +25,6 @@ import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.animal.Rabbit;
-import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.entity.animal.Turtle;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
@@ -51,14 +51,9 @@ public class SnowCanineEntity extends Monster
 		this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
 		this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
 		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
-		if (ModConfigs.cachedServer.SNOW_CANINE_ATTACK_SHEEP)
-			this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Sheep.class, 10, true, false, (p) -> {
-				return p.distanceToSqr(this) <= 6.0D * 6.0D;
-			}));
-		if (ModConfigs.cachedServer.SNOW_CANINE_ATTACK_RABBITS)
-			this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Rabbit.class, 10, true, false, (p) -> {
-				return p.distanceToSqr(this) <= 6.0D * 6.0D;
-			}));
+		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, LivingEntity.class, 10, true, false, (p) -> {
+			return p.getType().is(ModTags.SNOW_CANINE_TARGETS) && p.distanceToSqr(this) <= 6.0D * 6.0D;
+		}));
 		if (ModConfigs.cachedServer.SNOW_CANINE_ATTACK_BABY_TURTLES)
 			this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Turtle.class, 10, true, false, Turtle.BABY_ON_LAND_SELECTOR));
 	}

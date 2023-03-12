@@ -41,10 +41,13 @@ public class ModTags
 	public static final TagKey<EntityType<?>> ENDER_EXECUTOR_REPLACEABLES = createEntityTypeTag("ender_executor_replaceables");
 	public static final TagKey<EntityType<?>> HARD_SNOWBALL_HURTS_EXTRA_TYPES = createEntityTypeTag("hard_snowball_hurts_extra_types");
 	public static final TagKey<EntityType<?>> HUSK_GIRL_REPLACEABLES = createEntityTypeTag("husk_girl_replaceables");
+	public static final TagKey<EntityType<?>> KASHA_TARGETS = createEntityTypeTag("kasha_targets");
+	public static final TagKey<EntityType<?>> KASHA_TARGETS_BABY_ONLY = createEntityTypeTag("kasha_targets_baby_only");
 	public static final TagKey<EntityType<?>> MELTY_MONSTER_AVOID_MOBS = createEntityTypeTag("melty_monster_avoid_mobs");
 	public static final TagKey<EntityType<?>> MONOLITH_TARGET_BLACKLIST = createEntityTypeTag("monolith_target_blacklist");
 	public static final TagKey<EntityType<?>> SAVAGEFANG_TARGET_BLACKLIST = createEntityTypeTag("savagefang_target_blacklist");
 	public static final TagKey<EntityType<?>> SKELETON_GIRL_REPLACEABLES = createEntityTypeTag("skeleton_girl_replaceables");
+	public static final TagKey<EntityType<?>> SNOW_CANINE_TARGETS = createEntityTypeTag("snow_canine_targets");
 	public static final TagKey<EntityType<?>> STRAY_GIRL_REPLACEABLES = createEntityTypeTag("stray_girl_replaceables");
 	public static final TagKey<EntityType<?>> WITHER_SKELETON_GIRL_REPLACEABLES = createEntityTypeTag("wither_skeleton_girl_replaceables");
 	public static final TagKey<EntityType<?>> ZOMBIE_GIRL_REPLACEABLES = createEntityTypeTag("zombie_girl_replaceables");

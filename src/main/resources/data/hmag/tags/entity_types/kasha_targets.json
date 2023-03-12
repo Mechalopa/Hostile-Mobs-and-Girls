@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:chicken",
+    "#hmag:kasha_targets_baby_only",
+    {
+      "id": "#forge:chickens",
+      "required": false
+    },
+    {
+      "id": "earthmobsmod:fancy_chicken",
+      "required": false
+    }
+  ]
+}
