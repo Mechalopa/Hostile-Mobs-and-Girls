@@ -1039,6 +1039,182 @@
     {
       "id": "biome_backlog:tumbleweed",
       "required": false
+    },
+    {
+      "id": "#regions_unexplored:branches",
+      "required": false
+    },
+    {
+      "id": "#regions_unexplored:tall_saplings",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:barley",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:blue_bioshroom",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:cattail",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:cobalt_earlight",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:cobalt_roots",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:dead_steppe_shrub",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:duckweed",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:elephant_ear",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:forest_fern",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:frozen_grass",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:glister_bulb",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:glister_spire",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:glistering_ivy",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:glistering_ivy_plant",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:glistering_sprout",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:green_bioshroom",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:hanging_earlight",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:hanging_earlight_plant",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:medium_grass",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:mycotoxic_daisy",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:mycotoxic_grass",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:pink_bioshroom",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:sandy_grass",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:sandy_tall_grass",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:sculk_sprout",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:sculk_tendril",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:seeded_grass",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:seeded_tall_grass",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:small_desert_shrub",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:spanish_moss",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:spanish_moss_plant",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:steppe_grass",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:steppe_shrub",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:stone_bud",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:stone_grass_block",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:tall_blue_bioshroom",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:tall_forest_fern",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:tall_green_bioshroom",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:tall_pink_bioshroom",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:tall_steppe_grass",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:tall_yellow_bioshroom",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:yellow_bioshroom",
+      "required": false
     }
   ]
 }

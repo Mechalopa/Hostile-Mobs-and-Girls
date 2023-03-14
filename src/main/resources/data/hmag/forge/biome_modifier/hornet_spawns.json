@@ -13,7 +13,11 @@
         "negate": true
       },
       {
-        "name": "#hmag:is_cold",
+        "name": "#hmag:is_snowy",
+        "negate": true
+      },
+      {
+        "name": "#hmag:is_coniferous",
         "negate": true
       },
       {

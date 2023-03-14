@@ -29,6 +29,10 @@
     {
       "id": "environmental:blossom_woods",
       "required": false
+    },
+    {
+      "id": "regions_unexplored:bamboo_forest",
+      "required": false
     }
   ]
 }

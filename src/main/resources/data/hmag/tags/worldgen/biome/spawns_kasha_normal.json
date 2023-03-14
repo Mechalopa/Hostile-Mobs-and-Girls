@@ -93,6 +93,14 @@
     {
       "id": "incendium:withered_forest",
       "required": false
+    },
+    {
+      "id": "regions_unexplored:redstone_hell",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:mycotoxic_undergrowth",
+      "required": false
     }
   ]
 }
