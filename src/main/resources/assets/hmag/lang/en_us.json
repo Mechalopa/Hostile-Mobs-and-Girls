@@ -234,7 +234,7 @@
   "enchantment.hmag.health_boost": "Health Boost",
   "enchantment.hmag.water_aspect": "Water Aspect",
   "enchantment.hmag.anti_air": "Anti-Air",
-  "itemGroup.hmag.tab": "Hostile Mobs and Girls",
+  "item_group.hmag.tab": "Hostile Mobs and Girls",
   "text.hmag.level": "Level %s",
   "text.hmag.upgraded_suspicious_stew": "Stronger Potency",
   "message.hmag.insomnia_item": "You may not rest now; you have a insomnia item",

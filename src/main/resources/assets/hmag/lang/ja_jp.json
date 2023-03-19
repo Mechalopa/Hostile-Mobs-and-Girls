@@ -234,7 +234,7 @@
   "enchantment.hmag.health_boost": "体力増加",
   "enchantment.hmag.water_aspect": "水属性",
   "enchantment.hmag.anti_air": "対空",
-  "itemGroup.hmag.tab": "Hostile Mobs and Girls",
+  "item_group.hmag.tab": "Hostile Mobs and Girls",
   "text.hmag.level": "レベル %s",
   "text.hmag.upgraded_suspicious_stew": "より強い効能",
   "message.hmag.insomnia_item": "不眠者のアイテムを持っているため眠れません",
