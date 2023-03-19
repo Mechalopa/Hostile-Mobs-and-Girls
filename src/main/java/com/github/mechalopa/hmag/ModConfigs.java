@@ -248,7 +248,7 @@ public class ModConfigs
 		GHASTLY_SEEKER_SPAWN_WEIGHT_IN_BASALT_DELTAS = SERVER_BUILDER.defineInRange("ghastlySeekerSpawnWeightInBasaltDeltas", 2, 0, Integer.MAX_VALUE);
 		REDCAP_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("redcapSpawnWeight", 15, 0, Integer.MAX_VALUE);
 		SLIME_GIRL_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("slimeGirlSpawnWeight", 10, 0, Integer.MAX_VALUE);
-		MONOLITH_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("monolithSpawnWeight", 3, 0, Integer.MAX_VALUE);
+		MONOLITH_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("monolithSpawnWeight", 4, 0, Integer.MAX_VALUE);
 		MONOLITH_SPAWN_WEIGHT_IN_END_CITY = SERVER_BUILDER.defineInRange("monolithSpawnWeightInEndCity", 40, 0, Integer.MAX_VALUE);
 		CRIMSON_SLAUGHTERER_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("crimsonSlaughtererSpawnWeight", 2, 0, Integer.MAX_VALUE);
 		DYSSOMNIA_SPAWN_WEIGHT = SERVER_BUILDER.defineInRange("dyssomniaSpawnWeight", 5, 0, Integer.MAX_VALUE);
