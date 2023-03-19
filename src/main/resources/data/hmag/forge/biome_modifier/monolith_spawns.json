@@ -9,7 +9,7 @@
   ],
   "spawners": {
     "type": "hmag:monolith",
-    "weight": 3,
+    "weight": 4,
     "minCount": 1,
     "maxCount": 3
   }
