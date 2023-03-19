@@ -175,7 +175,7 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
-    implementation fg.deobf("curse.maven:jade-324717:4330163")
+    implementation fg.deobf("curse.maven:jade-324717:4434045")
     // implementation fg.deobf("curse.maven:neat-238372:3878735")
     // implementation fg.deobf("curse.maven:just-enough-resources-jer-240630:4092965")
 
