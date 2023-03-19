@@ -7,14 +7,6 @@
       "required": false
     },
     {
-      "id": "#terralith:all_terralith_biomes",
-      "required": false
-    },
-    {
-      "id": "terralith:cave/underground_jungle",
-      "required": false
-    },
-    {
       "id": "graveyard_biomes:ancient_dead_coral_reef",
       "required": false
     },
