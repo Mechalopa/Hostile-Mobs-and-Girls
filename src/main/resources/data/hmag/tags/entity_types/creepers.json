@@ -93,6 +93,10 @@
     {
       "id": "more_babies:creeper",
       "required": false
+    },
+    {
+      "id": "tofucraft:tofucreeper",
+      "required": false
     }
   ]
 }

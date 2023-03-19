@@ -244,7 +244,7 @@ public class ModEvents
 					mob.getPersistentData().remove(ModUtils.WITH_SPAWN_PARTICLE_KEY);
 				}
 
-				if (mob.isEffectiveAi() && mob.getPersistentData().getBoolean(ModUtils.LIVING_UPDATE_CHECKING_KEY) && !mob.getPersistentData().getBoolean(ModUtils.LIVING_NOT_REPLACED_KEY) && !mob.isPersistenceRequired() && !mob.requiresCustomPersistence() && !mob.isVehicle() && !mob.isPassenger())
+				if (mob.isEffectiveAi() && mob.getPersistentData().getBoolean(ModUtils.LIVING_UPDATE_CHECKING_KEY) && !mob.getPersistentData().getBoolean(ModUtils.LIVING_NOT_REPLACED_KEY) && !mob.isVehicle() && !mob.isPassenger() && !mob.isPersistenceRequired() && !mob.requiresCustomPersistence())
 				{
 					ServerLevel serverlevel = (ServerLevel)event.getEntity().getCommandSenderWorld();
 					final double d = event.getEntity().getRandom().nextDouble();
@@ -352,45 +352,44 @@ public class ModEvents
 		{
 			Level level = event.getEntity().getCommandSenderWorld();
 
-			if (level != null)
+			if (level != null && event.getEntity() instanceof Mob)
 			{
 				Holder<Biome> holder = level.getBiome(event.getEntity().blockPosition());
+				Mob mob = (Mob)event.getEntity();
 
 				if (!holder.containsTag(ModTags.NO_MOB_REPLACEMENTS))
 				{
-					LivingEntity livingentity = event.getEntity();
-
-					if (ModConfigs.cachedServer.ZOMBIE_GIRL_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.ZOMBIE_GIRL_REPLACEABLES))
+					if (ModConfigs.cachedServer.ZOMBIE_GIRL_REPLACE_CHANCE > 0.0D && mob.getType().is(ModTags.ZOMBIE_GIRL_REPLACEABLES))
 					{
-						putCheckingTag(livingentity);
+						putCheckingTag(mob);
 					}
-					else if (ModConfigs.cachedServer.HUSK_GIRL_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.HUSK_GIRL_REPLACEABLES))
+					else if (ModConfigs.cachedServer.HUSK_GIRL_REPLACE_CHANCE > 0.0D && mob.getType().is(ModTags.HUSK_GIRL_REPLACEABLES))
 					{
-						putCheckingTag(livingentity);
+						putCheckingTag(mob);
 					}
-					else if (ModConfigs.cachedServer.DROWNED_GIRL_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.DROWNED_GIRL_REPLACEABLES))
+					else if (ModConfigs.cachedServer.DROWNED_GIRL_REPLACE_CHANCE > 0.0D && mob.getType().is(ModTags.DROWNED_GIRL_REPLACEABLES))
 					{
-						putCheckingTag(livingentity);
+						putCheckingTag(mob);
 					}
-					else if (ModConfigs.cachedServer.SKELETON_GIRL_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.SKELETON_GIRL_REPLACEABLES))
+					else if (ModConfigs.cachedServer.SKELETON_GIRL_REPLACE_CHANCE > 0.0D && mob.getType().is(ModTags.SKELETON_GIRL_REPLACEABLES))
 					{
-						putCheckingTag(livingentity);
+						putCheckingTag(mob);
 					}
-					else if (ModConfigs.cachedServer.WITHER_SKELETON_GIRL_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.WITHER_SKELETON_GIRL_REPLACEABLES))
+					else if (ModConfigs.cachedServer.WITHER_SKELETON_GIRL_REPLACE_CHANCE > 0.0D && mob.getType().is(ModTags.WITHER_SKELETON_GIRL_REPLACEABLES))
 					{
-						putCheckingTag(livingentity);
+						putCheckingTag(mob);
 					}
-					else if (ModConfigs.cachedServer.STRAY_GIRL_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.STRAY_GIRL_REPLACEABLES))
+					else if (ModConfigs.cachedServer.STRAY_GIRL_REPLACE_CHANCE > 0.0D && mob.getType().is(ModTags.STRAY_GIRL_REPLACEABLES))
 					{
-						putCheckingTag(livingentity);
+						putCheckingTag(mob);
 					}
-					else if (ModConfigs.cachedServer.CREEPER_GIRL_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.CREEPER_GIRL_REPLACEABLES))
+					else if (ModConfigs.cachedServer.CREEPER_GIRL_REPLACE_CHANCE > 0.0D && mob.getType().is(ModTags.CREEPER_GIRL_REPLACEABLES))
 					{
-						putCheckingTag(livingentity);
+						putCheckingTag(mob);
 					}
-					else if (ModConfigs.cachedServer.ENDER_EXECUTOR_REPLACE_CHANCE > 0.0D && livingentity.getType().is(ModTags.ENDER_EXECUTOR_REPLACEABLES))
+					else if (ModConfigs.cachedServer.ENDER_EXECUTOR_REPLACE_CHANCE > 0.0D && mob.getType().is(ModTags.ENDER_EXECUTOR_REPLACEABLES))
 					{
-						putCheckingTag(livingentity);
+						putCheckingTag(mob);
 					}
 				}
 			}

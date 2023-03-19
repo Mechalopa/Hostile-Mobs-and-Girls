@@ -7,14 +7,6 @@
       "required": false
     },
     {
-      "id": "#terralith:all_terralith_biomes",
-      "required": false
-    },
-    {
-      "id": "terralith:cave/underground_jungle",
-      "required": false
-    },
-    {
       "id": "graveyard_biomes:ancient_dead_coral_reef",
       "required": false
     },
@@ -60,6 +52,22 @@
     },
     {
       "id": "cave_enhancements:rose_quartz_caves",
+      "required": false
+    },
+    {
+      "id": "darkerdepths:molten_cavern",
+      "required": false
+    },
+    {
+      "id": "darkerdepths:sandy_catacombs",
+      "required": false
+    },
+    {
+      "id": "darkerdepths:glowshroom_forest",
+      "required": false
+    },
+    {
+      "id": "jellyfishing:jellyfish_fields",
       "required": false
     }
   ]

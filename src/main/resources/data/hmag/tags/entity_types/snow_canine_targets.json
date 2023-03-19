@@ -1,0 +1,51 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:rabbit",
+    "minecraft:sheep",
+    {
+      "id": "#forge:rabbits",
+      "required": false
+    },
+    {
+      "id": "#forge:sheep",
+      "required": false
+    },
+    {
+      "id": "earthmobsmod:horned_sheep",
+      "required": false
+    },
+    {
+      "id": "earthmobsmod:hyper_rabbit",
+      "required": false
+    },
+    {
+      "id": "earthmobsmod:jumbo_rabbit",
+      "required": false
+    },
+    {
+      "id": "energeticsheep:energetic_sheep",
+      "required": false
+    },
+    {
+      "id": "extendedmushrooms:mushroom_sheep",
+      "required": false
+    },
+    {
+      "id": "habitat:pooka",
+      "required": false
+    },
+    {
+      "id": "nethersheep:atre",
+      "required": false
+    },
+    {
+      "id": "twilightforest:bighorn_sheep",
+      "required": false
+    },
+    {
+      "id": "twilightforest:dwarf_rabbit",
+      "required": false
+    }
+  ]
+}

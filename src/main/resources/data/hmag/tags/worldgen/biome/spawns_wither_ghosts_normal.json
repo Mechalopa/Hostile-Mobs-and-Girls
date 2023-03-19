@@ -93,6 +93,10 @@
     {
       "id": "incendium:withered_forest",
       "required": false
+    },
+    {
+      "id": "regions_unexplored:blackstone_basin",
+      "required": false
     }
   ]
 }

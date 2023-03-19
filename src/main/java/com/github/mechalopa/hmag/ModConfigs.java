@@ -18,8 +18,6 @@ public class ModConfigs
 	public static ForgeConfigSpec.BooleanValue OGRE_DESTROY_BLOCKS;
 	public static ForgeConfigSpec.BooleanValue SPIDER_NEST_SUMMON_CAVE_SPIDER;
 	public static ForgeConfigSpec.BooleanValue MELTY_MONSTER_SET_FIRE;
-	public static ForgeConfigSpec.BooleanValue KASHA_ATTACK_CHICKENS;
-	public static ForgeConfigSpec.BooleanValue KASHA_ATTACK_BABY_HOGLINS;
 	public static ForgeConfigSpec.BooleanValue KASHA_ATTACK_VILLAGERS;
 	public static ForgeConfigSpec.BooleanValue KASHA_ATTACK_BABY_TURTLES;
 	public static ForgeConfigSpec.BooleanValue JACK_FROST_FREEZES_WATER;
@@ -36,8 +34,6 @@ public class ModConfigs
 	public static ForgeConfigSpec.BooleanValue CRIMSON_SLAUGHTERER_ATTACK_ANIMALS;
 	public static ForgeConfigSpec.BooleanValue CRIMSON_SLAUGHTERER_ATTACK_VILLAGERS;
 	public static ForgeConfigSpec.BooleanValue DYSSOMNIA_SUMMON_PHANTOM;
-	public static ForgeConfigSpec.BooleanValue SNOW_CANINE_ATTACK_SHEEP;
-	public static ForgeConfigSpec.BooleanValue SNOW_CANINE_ATTACK_RABBITS;
 	public static ForgeConfigSpec.BooleanValue SNOW_CANINE_ATTACK_BABY_TURTLES;
 	public static ForgeConfigSpec.BooleanValue SAVAGEFANG_ATTACK_ANIMALS;
 	public static ForgeConfigSpec.BooleanValue SAVAGEFANG_ATTACK_VILLAGERS;
@@ -123,8 +119,6 @@ public class ModConfigs
 		OGRE_DESTROY_BLOCKS = SERVER_BUILDER.define("enableOgreDestroyBlocks", true);
 		SPIDER_NEST_SUMMON_CAVE_SPIDER = SERVER_BUILDER.define("spiderNestSummonCaveSpider", true);
 		MELTY_MONSTER_SET_FIRE = SERVER_BUILDER.define("enableMeltyMonsterSetFire", true);
-		KASHA_ATTACK_CHICKENS = SERVER_BUILDER.define("kashaAttackChickens", true);
-		KASHA_ATTACK_BABY_HOGLINS = SERVER_BUILDER.define("kashaAttackBabyHoglins", true);
 		KASHA_ATTACK_VILLAGERS = SERVER_BUILDER.define("kashaAttackVillagers", true);
 		KASHA_ATTACK_BABY_TURTLES = SERVER_BUILDER.define("kashaAttackBabyTurtles", true);
 		JACK_FROST_FREEZES_WATER = SERVER_BUILDER.define("enableJackFrostFreezesWater", true);
@@ -141,8 +135,6 @@ public class ModConfigs
 		CRIMSON_SLAUGHTERER_ATTACK_ANIMALS = SERVER_BUILDER.define("crimsonSlaughtererAttackAnimals", true);
 		CRIMSON_SLAUGHTERER_ATTACK_VILLAGERS = SERVER_BUILDER.define("crimsonSlaughtererAttackVillagers", true);
 		DYSSOMNIA_SUMMON_PHANTOM = SERVER_BUILDER.define("dyssomniaSummonPhantom", true);
-		SNOW_CANINE_ATTACK_SHEEP = SERVER_BUILDER.define("snowCanineAttackSheep", true);
-		SNOW_CANINE_ATTACK_RABBITS = SERVER_BUILDER.define("snowCanineAttackRabbits", true);
 		SNOW_CANINE_ATTACK_BABY_TURTLES = SERVER_BUILDER.define("snowCanineAttackBabyTurtles", true);
 		SAVAGEFANG_ATTACK_ANIMALS = SERVER_BUILDER.define("savagefangAttackAnimals", true);
 		SAVAGEFANG_ATTACK_VILLAGERS = SERVER_BUILDER.define("savagefangAttackVillagers", true);
@@ -263,8 +255,6 @@ public class ModConfigs
 		public static boolean OGRE_DESTROY_BLOCKS;
 		public static boolean SPIDER_NEST_SUMMON_CAVE_SPIDER;
 		public static boolean MELTY_MONSTER_SET_FIRE;
-		public static boolean KASHA_ATTACK_CHICKENS;
-		public static boolean KASHA_ATTACK_BABY_HOGLINS;
 		public static boolean KASHA_ATTACK_VILLAGERS;
 		public static boolean KASHA_ATTACK_BABY_TURTLES;
 		public static boolean JACK_FROST_FREEZES_WATER;
@@ -281,8 +271,6 @@ public class ModConfigs
 		public static boolean CRIMSON_SLAUGHTERER_ATTACK_ANIMALS;
 		public static boolean CRIMSON_SLAUGHTERER_ATTACK_VILLAGERS;
 		public static boolean DYSSOMNIA_SUMMON_PHANTOM;
-		public static boolean SNOW_CANINE_ATTACK_SHEEP;
-		public static boolean SNOW_CANINE_ATTACK_RABBITS;
 		public static boolean SNOW_CANINE_ATTACK_BABY_TURTLES;
 		public static boolean SAVAGEFANG_ATTACK_ANIMALS;
 		public static boolean SAVAGEFANG_ATTACK_VILLAGERS;
@@ -366,8 +354,6 @@ public class ModConfigs
 			OGRE_DESTROY_BLOCKS = ModConfigs.OGRE_DESTROY_BLOCKS.get();
 			SPIDER_NEST_SUMMON_CAVE_SPIDER = ModConfigs.SPIDER_NEST_SUMMON_CAVE_SPIDER.get();
 			MELTY_MONSTER_SET_FIRE = ModConfigs.MELTY_MONSTER_SET_FIRE.get();
-			KASHA_ATTACK_CHICKENS = ModConfigs.KASHA_ATTACK_CHICKENS.get();
-			KASHA_ATTACK_BABY_HOGLINS = ModConfigs.KASHA_ATTACK_BABY_HOGLINS.get();
 			KASHA_ATTACK_VILLAGERS = ModConfigs.KASHA_ATTACK_VILLAGERS.get();
 			KASHA_ATTACK_BABY_TURTLES = ModConfigs.KASHA_ATTACK_BABY_TURTLES.get();
 			JACK_FROST_FREEZES_WATER = ModConfigs.JACK_FROST_FREEZES_WATER.get();
@@ -384,8 +370,6 @@ public class ModConfigs
 			CRIMSON_SLAUGHTERER_ATTACK_ANIMALS = ModConfigs.CRIMSON_SLAUGHTERER_ATTACK_ANIMALS.get();
 			CRIMSON_SLAUGHTERER_ATTACK_VILLAGERS = ModConfigs.CRIMSON_SLAUGHTERER_ATTACK_VILLAGERS.get();
 			DYSSOMNIA_SUMMON_PHANTOM = ModConfigs.DYSSOMNIA_SUMMON_PHANTOM.get();
-			SNOW_CANINE_ATTACK_SHEEP = ModConfigs.SNOW_CANINE_ATTACK_SHEEP.get();
-			SNOW_CANINE_ATTACK_RABBITS = ModConfigs.SNOW_CANINE_ATTACK_RABBITS.get();
 			SNOW_CANINE_ATTACK_BABY_TURTLES = ModConfigs.SNOW_CANINE_ATTACK_BABY_TURTLES.get();
 			SAVAGEFANG_ATTACK_ANIMALS = ModConfigs.SAVAGEFANG_ATTACK_ANIMALS.get();
 			SAVAGEFANG_ATTACK_VILLAGERS = ModConfigs.SAVAGEFANG_ATTACK_VILLAGERS.get();
