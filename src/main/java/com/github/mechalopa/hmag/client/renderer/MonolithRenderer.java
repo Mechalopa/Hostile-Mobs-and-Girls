@@ -29,11 +29,11 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class MonolithRenderer extends MobRenderer<MonolithEntity, MonolithModel<MonolithEntity>>
 {
-	private static final ResourceLocation TEX0 = new ResourceLocation(HMaG.MODID, "textures/entity/monolith_0.png");
-	private static final ResourceLocation TEX1 = new ResourceLocation(HMaG.MODID, "textures/entity/monolith_1.png");
-	private static final ResourceLocation TEX2 = new ResourceLocation(HMaG.MODID, "textures/entity/monolith_2.png");
-	private static final ResourceLocation TEX3 = new ResourceLocation(HMaG.MODID, "textures/entity/monolith_3.png");
-	private static final ResourceLocation TEX4 = new ResourceLocation(HMaG.MODID, "textures/entity/monolith_4.png");
+	private static final ResourceLocation TEX0 = new ResourceLocation(HMaG.MODID, "textures/entity/monolith/monolith_0.png");
+	private static final ResourceLocation TEX1 = new ResourceLocation(HMaG.MODID, "textures/entity/monolith/monolith_1.png");
+	private static final ResourceLocation TEX2 = new ResourceLocation(HMaG.MODID, "textures/entity/monolith/monolith_2.png");
+	private static final ResourceLocation TEX3 = new ResourceLocation(HMaG.MODID, "textures/entity/monolith/monolith_3.png");
+	private static final ResourceLocation TEX4 = new ResourceLocation(HMaG.MODID, "textures/entity/monolith/monolith_4.png");
 	private static final ResourceLocation BEAM_TEX = new ResourceLocation("textures/entity/guardian_beam.png");
 	private static final RenderType BEAM_RENDER_TYPE = RenderType.entityCutoutNoCull(BEAM_TEX);
 	private final Random rand = new Random();
