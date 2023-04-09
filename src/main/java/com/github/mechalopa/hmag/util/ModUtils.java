@@ -45,12 +45,12 @@ public class ModUtils
 	public static final String WITH_SPAWN_PARTICLE_KEY = HMaG.MODID + ".withSpawnParticle";
 	public static final Codec<HolderSet<Structure>> STRUCTURE_LIST_CODEC = RegistryCodecs.homogeneousList(Registry.STRUCTURE_REGISTRY, Structure.DIRECT_CODEC);
 
-	public static void burnInDay(@Nonnull LivingEntity livingEntity, RandomSource rand, Boolean isSunBurnTick, int seconds)
+	public static void burnInDay(@Nonnull LivingEntity livingEntity, RandomSource random, Boolean isSunBurnTick, int seconds)
 	{
-		burnInDay(livingEntity, rand, isSunBurnTick, true, seconds);
+		burnInDay(livingEntity, random, isSunBurnTick, true, seconds);
 	}
 
-	public static void burnInDay(@Nonnull LivingEntity livingEntity, RandomSource rand, Boolean isSunBurnTick, Boolean shouldBurn, int seconds)
+	public static void burnInDay(@Nonnull LivingEntity livingEntity, RandomSource random, Boolean isSunBurnTick, Boolean shouldBurn, int seconds)
 	{
 		if (livingEntity != null && livingEntity.level != null && !livingEntity.level.isClientSide && livingEntity.isAlive())
 		{
@@ -64,7 +64,7 @@ public class ModUtils
 				{
 					if (stack.isDamageableItem())
 					{
-						stack.setDamageValue(stack.getDamageValue() + rand.nextInt(2));
+						stack.setDamageValue(stack.getDamageValue() + random.nextInt(2));
 
 						if (stack.getDamageValue() >= stack.getMaxDamage())
 						{
@@ -84,11 +84,11 @@ public class ModUtils
 		}
 	}
 
-	public static void catchFire(@Nonnull LivingEntity livingEntity, @Nonnull Entity target, RandomSource rand)
+	public static void catchFire(@Nonnull LivingEntity livingEntity, @Nonnull Entity target, RandomSource random)
 	{
 		float f = livingEntity.level.getCurrentDifficultyAt(livingEntity.blockPosition()).getEffectiveDifficulty();
 
-		if (livingEntity.getMainHandItem().isEmpty() && livingEntity.isOnFire() && rand.nextFloat() < f * 0.3F)
+		if (livingEntity.getMainHandItem().isEmpty() && livingEntity.isOnFire() && random.nextFloat() < f * 0.3F)
 		{
 			target.setSecondsOnFire(2 * (int)f);
 		}

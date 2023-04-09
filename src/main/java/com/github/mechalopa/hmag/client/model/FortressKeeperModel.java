@@ -155,15 +155,15 @@ public class FortressKeeperModel<T extends FortressKeeperEntity> extends Hierarc
 	}
 
 	@Override
-	public void prepareMobModel(T entityIn, float limbSwing, float limbSwingAmount, float partialTick)
+	public void prepareMobModel(T entity, float limbSwing, float limbSwingAmount, float partialTick)
 	{
-		super.prepareMobModel(entityIn, limbSwing, limbSwingAmount, partialTick);
-		this.animationAmount = Mth.clamp(entityIn.getAttackAnimationScale(partialTick), 0.0F, 1.0F);
-		this.animationAmount1 = Mth.clamp(entityIn.getAttackHandChangeAnimationScale(partialTick), 0.0F, 1.0F);
+		super.prepareMobModel(entity, limbSwing, limbSwingAmount, partialTick);
+		this.animationAmount = Mth.clamp(entity.getAttackAnimationScale(partialTick), 0.0F, 1.0F);
+		this.animationAmount1 = Mth.clamp(entity.getAttackHandChangeAnimationScale(partialTick), 0.0F, 1.0F);
 	}
 
 	@Override
-	public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
+	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
 		this.head.yRot = netHeadYaw / (180.0F / (float)Math.PI);
 		this.head.xRot = headPitch / (180.0F / (float)Math.PI);
@@ -183,8 +183,8 @@ public class FortressKeeperModel<T extends FortressKeeperEntity> extends Hierarc
 		this.leg3.zRot = f;
 		this.leg4.zRot = -f;
 
-		float f1 = entityIn.getMainArm() == HumanoidArm.RIGHT ? (1.0F - animationAmount1) : animationAmount1;
-		float f2 = entityIn.getMainArm() != HumanoidArm.RIGHT ? (1.0F - animationAmount1) : animationAmount1;
+		float f1 = entity.getMainArm() == HumanoidArm.RIGHT ? (1.0F - animationAmount1) : animationAmount1;
+		float f2 = entity.getMainArm() != HumanoidArm.RIGHT ? (1.0F - animationAmount1) : animationAmount1;
 		float f3 = 1.0F - (this.animationAmount * f1);
 		float f4 = 1.0F - (this.animationAmount * f2);
 

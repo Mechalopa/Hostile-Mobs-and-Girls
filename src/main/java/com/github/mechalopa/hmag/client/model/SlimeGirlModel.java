@@ -75,9 +75,9 @@ public class SlimeGirlModel<T extends SlimeGirlEntity> extends AbstractAdvancedG
 	}
 
 	@Override
-	public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
+	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
-		super.setupAnim(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+		super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 
 		this.rightArm.zRot = (float)Math.PI / 10.0F;
 		this.leftArm.zRot = -((float)Math.PI / 10.0F);

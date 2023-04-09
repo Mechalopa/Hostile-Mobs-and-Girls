@@ -51,13 +51,13 @@ public class DullahanModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 	}
 
 	@Override
-	public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
+	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
-		super.setupAnim(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+		super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 
 		float f = Mth.sin(this.attackTime * (float)Math.PI);
 		float f1 = Mth.sin((1.0F - (1.0F - this.attackTime) * (1.0F - this.attackTime)) * (float)Math.PI);
-		boolean flag = entityIn.getMainArm() == HumanoidArm.LEFT;
+		boolean flag = entity.getMainArm() == HumanoidArm.LEFT;
 
 		if (flag)
 		{
