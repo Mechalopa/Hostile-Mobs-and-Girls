@@ -789,6 +789,14 @@
       "required": false
     },
     {
+      "id": "atmospheric:passion_vine",
+      "required": false
+    },
+    {
+      "id": "atmospheric:yucca_branch",
+      "required": false
+    },
+    {
       "id": "autumnity:foul_berry_bush_pips",
       "required": false
     },
@@ -1214,6 +1222,58 @@
     },
     {
       "id": "regions_unexplored:yellow_bioshroom",
+      "required": false
+    },
+    {
+      "id": "untamedwilds:flora_bush_creosote",
+      "required": false
+    },
+    {
+      "id": "untamedwilds:flora_bush_temperate",
+      "required": false
+    },
+    {
+      "id": "untamedwilds:flora_canola",
+      "required": false
+    },
+    {
+      "id": "untamedwilds:flora_common_reed",
+      "required": false
+    },
+    {
+      "id": "untamedwilds:flora_elephant_ear",
+      "required": false
+    },
+    {
+      "id": "untamedwilds:flora_junegrass",
+      "required": false
+    },
+    {
+      "id": "untamedwilds:flora_orchid_magenta",
+      "required": false
+    },
+    {
+      "id": "untamedwilds:flora_orchid_pink",
+      "required": false
+    },
+    {
+      "id": "untamedwilds:flora_orchid_purple",
+      "required": false
+    },
+    {
+      "id": "untamedwilds:flora_orchid_red",
+      "required": false
+    },
+    {
+      "id": "untamedwilds:flora_pampas_grass",
+      "required": false
+    },
+    {
+      "id": "untamedwilds:flora_titan_arum",
+      "required": false
+    },
+    {
+      "id": "untamedwilds:flora_yarrow",
       "required": false
     }
   ]

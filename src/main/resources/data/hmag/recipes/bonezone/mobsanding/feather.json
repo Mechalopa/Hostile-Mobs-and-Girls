@@ -1,0 +1,14 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "bonezone"
+    }
+  ],
+  "type": "bonezone:mobsanding",
+  "condition": "hmag:harpy",
+  "drops": {
+    "result": "minecraft:feather",
+    "chance": 0.05
+  }
+}

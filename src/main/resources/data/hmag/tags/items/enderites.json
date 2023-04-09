@@ -8,6 +8,10 @@
     {
       "id": "enderitemod:enderite_ingot",
       "required": false
+    },
+    {
+      "id": "enderite:enderite_ingot",
+      "required": false
     }
   ]
 }

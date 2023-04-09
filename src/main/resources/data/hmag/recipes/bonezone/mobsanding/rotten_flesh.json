@@ -1,0 +1,14 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "bonezone"
+    }
+  ],
+  "type": "bonezone:mobsanding",
+  "condition": ["hmag:drowned_girl", "hmag:husk_girl", "hmag:zombie_girl", "hmag:jiangshi"],
+  "drops": {
+    "result": "minecraft:rotten_flesh",
+    "chance": 0.15
+  }
+}

@@ -46,6 +46,18 @@
     {
       "id": "twilightforest:dwarf_rabbit",
       "required": false
+    },
+    {
+      "id": "minecraft_earth_mod:horned_sheep",
+      "required": false
+    },
+    {
+      "id": "minecraft_earth_mod:rainbow_sheep",
+      "required": false
+    },
+    {
+      "id": "minecraft_earth_mod:rocky_sheep",
+      "required": false
     }
   ]
 }

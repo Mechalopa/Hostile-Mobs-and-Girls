@@ -1,0 +1,14 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "bonezone"
+    }
+  ],
+  "type": "bonezone:mobsanding",
+  "condition": "hmag:spider_nest",
+  "drops": {
+    "result": "minecraft:string",
+    "chance": 0.05
+  }
+}
