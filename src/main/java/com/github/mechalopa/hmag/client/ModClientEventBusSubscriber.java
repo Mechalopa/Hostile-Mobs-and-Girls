@@ -32,6 +32,7 @@ import com.github.mechalopa.hmag.client.model.MeltyMonsterModel;
 import com.github.mechalopa.hmag.client.model.ModShieldModel;
 import com.github.mechalopa.hmag.client.model.MonolithModel;
 import com.github.mechalopa.hmag.client.model.NecroticReaperModel;
+import com.github.mechalopa.hmag.client.model.NightwalkerModel;
 import com.github.mechalopa.hmag.client.model.OgreModel;
 import com.github.mechalopa.hmag.client.model.RedcapModel;
 import com.github.mechalopa.hmag.client.model.SavagefangModel;
@@ -43,6 +44,8 @@ import com.github.mechalopa.hmag.client.model.SnowCanineModel;
 import com.github.mechalopa.hmag.client.model.SpiderNestModel;
 import com.github.mechalopa.hmag.client.model.ZombieGirlModel;
 import com.github.mechalopa.hmag.client.particle.EnchantmentRuneParticle;
+import com.github.mechalopa.hmag.client.particle.NightwalkerBulletParticle;
+import com.github.mechalopa.hmag.client.particle.SuspendedTownParticle2;
 import com.github.mechalopa.hmag.client.renderer.AlrauneRenderer;
 import com.github.mechalopa.hmag.client.renderer.BansheeRenderer;
 import com.github.mechalopa.hmag.client.renderer.CatoblepasRenderer;
@@ -77,6 +80,7 @@ import com.github.mechalopa.hmag.client.renderer.MeltyMonsterRenderer;
 import com.github.mechalopa.hmag.client.renderer.ModThrownItemRenderer;
 import com.github.mechalopa.hmag.client.renderer.MonolithRenderer;
 import com.github.mechalopa.hmag.client.renderer.NecroticReaperRenderer;
+import com.github.mechalopa.hmag.client.renderer.NightwalkerRenderer;
 import com.github.mechalopa.hmag.client.renderer.OgreRenderer;
 import com.github.mechalopa.hmag.client.renderer.RedcapRenderer;
 import com.github.mechalopa.hmag.client.renderer.SavagefangRenderer;
@@ -186,6 +190,7 @@ public class ModClientEventBusSubscriber
 		event.registerEntityRenderer(ModEntityTypes.GLARYAD.get(), GlaryadRenderer::new);
 		event.registerEntityRenderer(ModEntityTypes.JIANGSHI.get(), JiangshiRenderer::new);
 		event.registerEntityRenderer(ModEntityTypes.GIANT_MUMMY.get(), GiantMummyRenderer::new);
+		event.registerEntityRenderer(ModEntityTypes.NIGHTWALKER.get(), NightwalkerRenderer::new);
 
 		event.registerEntityRenderer(ModEntityTypes.MAGIC_BULLET.get(), MagicBulletRenderer::new);
 		event.registerEntityRenderer(ModEntityTypes.HARD_SNOWBALL.get(), ModThrownItemRenderer::new);
@@ -269,6 +274,7 @@ public class ModClientEventBusSubscriber
 		event.registerLayerDefinition(ModModelLayers.GLARYAD, GlaryadModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.JIANGSHI, JiangshiModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.GIANT_MUMMY, GiantMummyModel::createBodyLayer);
+		event.registerLayerDefinition(ModModelLayers.NIGHTWALKER, NightwalkerModel::createBodyLayer);
 
 		event.registerLayerDefinition(ModModelLayers.ANCIENT_SHIELD, ModShieldModel::createLayer);
 		event.registerLayerDefinition(ModModelLayers.FORTRESS_SHIELD, ModShieldModel::createLayer);
@@ -279,5 +285,7 @@ public class ModClientEventBusSubscriber
 	{
 		event.register(ModParticleTypes.ENCHANTMENT_RUNE.get(), EnchantmentRuneParticle.Provider::new);
 		event.register(ModParticleTypes.NEMESIS_FLAME.get(), FlameParticle.Provider::new);
+		event.register(ModParticleTypes.BLACK_MYCELIUM.get(), SuspendedTownParticle2.BlackMyceliumProvider::new);
+		event.register(ModParticleTypes.NIGHTWALKER_BULLET.get(), NightwalkerBulletParticle.Provider::new);
 	}
 }

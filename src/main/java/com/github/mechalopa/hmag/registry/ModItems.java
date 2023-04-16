@@ -195,6 +195,7 @@ public class ModItems
 	public static final RegistryObject<Item> GLARYAD_SPAWN_EGG = createSpawnEggRegistryObject("glaryad", ModEntityTypes.GLARYAD, 0x70922D, 0xBA62CE);
 	public static final RegistryObject<Item> JIANGSHI_SPAWN_EGG = createSpawnEggRegistryObject("jiangshi", ModEntityTypes.JIANGSHI, 0x5C6E8A, 0x84263F);
 	public static final RegistryObject<Item> GIANT_MUMMY_SPAWN_EGG = createSpawnEggRegistryObject("giant_mummy", ModEntityTypes.GIANT_MUMMY, 0xDFDDC7, 0x7F794E);
+	public static final RegistryObject<Item> NIGHTWALKER_SPAWN_EGG = createSpawnEggRegistryObject("nightwalker", ModEntityTypes.NIGHTWALKER, 0x2F2C85, 0x0D0D0D);
 
 	@SubscribeEvent
 	public static void register(IEventBus eventBus)
