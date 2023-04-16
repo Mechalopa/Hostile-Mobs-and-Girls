@@ -20,9 +20,9 @@ public class NightwalkerBulletParticle extends TextureSheetParticle
 	{
 		super(clientWorld, xIn, yIn, zIn, xdIn, ydIn, zdIn);
 		this.sprites = sprites;
-		this.rCol = Mth.nextFloat(this.random, 0.35F, 0.5F);
-		this.gCol = Mth.nextFloat(this.random, 0.352F, 0.52F);
-		this.bCol = Mth.nextFloat(this.random, 0.8F, 0.98F);
+		this.rCol = Mth.nextFloat(this.random, 0.40F, 0.55F);
+		this.gCol = Mth.nextFloat(this.random, 0.402F, 0.57F);
+		this.bCol = Mth.nextFloat(this.random, 0.85F, 0.98F);
 		this.setSize(0.001F, 0.001F);
 		this.quadSize *= this.random.nextFloat() * 0.6F + 0.6F;
 		this.lifetime = (int)(16.0D / (Math.random() * 0.8D + 0.2D));

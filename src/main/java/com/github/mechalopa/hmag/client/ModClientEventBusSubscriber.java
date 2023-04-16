@@ -285,7 +285,7 @@ public class ModClientEventBusSubscriber
 	{
 		event.register(ModParticleTypes.ENCHANTMENT_RUNE.get(), EnchantmentRuneParticle.Provider::new);
 		event.register(ModParticleTypes.NEMESIS_FLAME.get(), FlameParticle.Provider::new);
-		event.register(ModParticleTypes.BLACK_MYCELIUM.get(), SuspendedTownParticle2.BlackMyceliumProvider::new);
+		event.register(ModParticleTypes.NIGHTWALKER.get(), SuspendedTownParticle2.NightwalkerParticleProvider::new);
 		event.register(ModParticleTypes.NIGHTWALKER_BULLET.get(), NightwalkerBulletParticle.Provider::new);
 	}
 }

@@ -12,6 +12,10 @@
     {
       "id": "enderite:enderite_ingot",
       "required": false
+    },
+    {
+      "id": "bitz:enderite_ingot",
+      "required": false
     }
   ]
 }

@@ -11,6 +11,7 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -57,7 +58,6 @@ public class NightwalkerEntity extends Monster implements RangedAttackMob
 		return Monster.createMonsterAttributes()
 				.add(Attributes.MAX_HEALTH, 40.0D)
 				.add(Attributes.MOVEMENT_SPEED, 0.22D)
-				.add(Attributes.ATTACK_DAMAGE, 6.0D)
 				.add(Attributes.ARMOR, 2.0D)
 				.add(Attributes.KNOCKBACK_RESISTANCE, 0.5D)
 				.add(ForgeMod.STEP_HEIGHT_ADDITION.get(), 1.0D);
@@ -68,7 +68,7 @@ public class NightwalkerEntity extends Monster implements RangedAttackMob
 	{
 		if (this.level.isClientSide && this.tickCount % 2 == 0)
 		{
-			this.level.addParticle(ModParticleTypes.BLACK_MYCELIUM.get(), this.getRandomX(0.75D), this.getRandomY() - 0.25D, this.getRandomZ(0.75D), (this.getRandom().nextDouble() - 0.5D) * 3.0D, -this.getRandom().nextDouble(), (this.getRandom().nextDouble() - 0.5D) * 3.0D);
+			this.level.addParticle(ModParticleTypes.NIGHTWALKER.get(), this.getRandomX(0.75D), this.getRandomY() - 0.25D, this.getRandomZ(0.75D), (this.getRandom().nextDouble() - 0.5D) * 3.0D, -this.getRandom().nextDouble(), (this.getRandom().nextDouble() - 0.5D) * 3.0D);
 		}
 
 		super.aiStep();
@@ -99,6 +99,23 @@ public class NightwalkerEntity extends Monster implements RangedAttackMob
 		bullet.setVariant(3);
 		this.level.addFreshEntity(bullet);
 		this.playSound(SoundEvents.SHULKER_SHOOT, 2.0F, (this.getRandom().nextFloat() - this.getRandom().nextFloat()) * 0.2F + 1.0F);
+	}
+
+	@Override
+	public boolean isAlliedTo(Entity entity)
+	{
+		if (super.isAlliedTo(entity))
+		{
+			return true;
+		}
+		else if (entity instanceof NightwalkerEntity)
+		{
+			return this.getTeam() == null && entity.getTeam() == null;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	@Override

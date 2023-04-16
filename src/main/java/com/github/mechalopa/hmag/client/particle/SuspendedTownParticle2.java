@@ -62,11 +62,11 @@ public class SuspendedTownParticle2 extends TextureSheetParticle
 	}
 
 	@OnlyIn(Dist.CLIENT)
-	public static class BlackMyceliumProvider implements ParticleProvider<SimpleParticleType>
+	public static class NightwalkerParticleProvider implements ParticleProvider<SimpleParticleType>
 	{
 		private final SpriteSet sprite;
 
-		public BlackMyceliumProvider(SpriteSet spriteIn)
+		public NightwalkerParticleProvider(SpriteSet spriteIn)
 		{
 			this.sprite = spriteIn;
 		}

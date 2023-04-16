@@ -123,12 +123,6 @@ public class NightwalkerModel<T extends Mob> extends HierarchicalModel<T>
 	}
 
 	@Override
-	public void prepareMobModel(T entity, float limbSwing, float limbSwingAmount, float partialTick)
-	{
-		super.prepareMobModel(entity, limbSwing, limbSwingAmount, partialTick);
-	}
-
-	@Override
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
 		this.head.yRot = netHeadYaw / (180.0F / (float)Math.PI);
