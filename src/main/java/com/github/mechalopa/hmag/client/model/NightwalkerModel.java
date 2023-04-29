@@ -25,6 +25,7 @@ public class NightwalkerModel<T extends Mob> extends HierarchicalModel<T>
 	private final ModelPart rightLeg;
 	private final ModelPart leftLeg;
 	private final ModelPart hairPart;
+	private final ModelPart ahoge;
 	private final ModelPart rightHairLeg1;
 	private final ModelPart leftHairLeg1;
 	private final ModelPart rightHairLeg2;
@@ -56,6 +57,7 @@ public class NightwalkerModel<T extends Mob> extends HierarchicalModel<T>
 		this.rightLeg = this.body.getChild("right_leg");
 		this.leftLeg = this.body.getChild("left_leg");
 		this.hairPart = this.head.getChild("hair_part");
+		this.ahoge = this.head.getChild("ahoge");
 		this.rightHairLeg1 = modelPart.getChild("right_hair_leg_1");
 		this.leftHairLeg1 = modelPart.getChild("left_hair_leg_1");
 		this.rightHairLeg2 = this.rightHairLeg1.getChild("right_hair_leg_2");
@@ -93,6 +95,7 @@ public class NightwalkerModel<T extends Mob> extends HierarchicalModel<T>
 		ModClientUtils.addC(bodypd, "left_leg", 0, 16, 0.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F, 0.5F, 4.0F, 0.0F, true);
 
 		ModClientUtils.addC(headpd, "hair_part", 32, 88, -4.0F, 0.0F, -1.0F, 8.0F, 2.0F, 1.0F, 0.0F, 0.0F, 4.0F);
+		ModClientUtils.addC(headpd, "ahoge", 42, 42, -2.5F, -4.0F, 0.0F, 5.0F, 4.0F, 1.0F, 0.0F, -7.75F, 0.0F, -0.25F);
 
 		PartDefinition rhl1pd = ModClientUtils.addC(pd, "right_hair_leg_1", 32, 16, -3.0F, -2.5F, -2.5F, 3.0F, 5.0F, 5.0F, -3.0F, f - 7.0F, 0.0F);
 		PartDefinition lhl1pd = ModClientUtils.addC(pd, "left_hair_leg_1", 32, 16, 0.0F, -2.5F, -2.5F, 3.0F, 5.0F, 5.0F, 3.0F, f - 7.0F, 0.0F, true);
@@ -154,6 +157,9 @@ public class NightwalkerModel<T extends Mob> extends HierarchicalModel<T>
 
 		this.hairPart.xRot = (float)Math.PI / 30.0F;
 		this.hairPart.xRot += Mth.sin(ageInTicks * 0.18F) * 0.033F;
+
+		this.ahoge.xRot = -((float)Math.PI / 12.0F);
+		this.ahoge.xRot += Mth.cos(ageInTicks * 0.03F + (float)Math.PI) * 0.09F;
 
 		float f3 = (float)Math.PI / 30.0F;
 		f3 += Mth.sin(ageInTicks * 0.18F + (float)Math.PI / 2.0F) * 0.012F;
