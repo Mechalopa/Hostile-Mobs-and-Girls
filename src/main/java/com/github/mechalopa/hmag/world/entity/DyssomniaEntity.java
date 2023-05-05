@@ -217,7 +217,7 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 			@SuppressWarnings("deprecation")
 			float f = this.getLightLevelDependentMagicValue();
 
-			if (f <= 0.5F && this.random.nextFloat() * 30.0F < (0.6F - f) * 2.0F)
+			if (f <= 0.5F && this.getRandom().nextFloat() * 30.0F < (0.6F - f) * 2.0F)
 			{
 				return true;
 			}

@@ -54,7 +54,7 @@ public class ModUtils
 	{
 		if (livingEntity != null && livingEntity.level != null && !livingEntity.level.isClientSide && livingEntity.isAlive())
 		{
-			boolean flag = isSunBurnTick && shouldBurn && !livingEntity.isInWaterOrRain();
+			boolean flag = isSunBurnTick && shouldBurn && !livingEntity.isInWaterRainOrBubble();
 
 			if (flag)
 			{
