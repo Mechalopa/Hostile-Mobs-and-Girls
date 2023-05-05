@@ -79,6 +79,9 @@ public class ModModelLayers
 	public static final ModelLayerLocation JIANGSHI = create("jiangshi");
 	public static final ModelLayerLocation GIANT_MUMMY = create("giant_mummy");
 	public static final ModelLayerLocation NIGHTWALKER = create("nightwalker");
+	public static final ModelLayerLocation SWAMPER = create("swamper");
+
+	public static final ModelLayerLocation INK_SPIT = create("ink_spit");
 
 	public static final ModelLayerLocation ANCIENT_SHIELD = create("ancient_shield");
 	public static final ModelLayerLocation FORTRESS_SHIELD = create("fortress_shield");

@@ -31,6 +31,7 @@ import com.github.mechalopa.hmag.world.entity.JackFrostEntity;
 import com.github.mechalopa.hmag.world.entity.JiangshiEntity;
 import com.github.mechalopa.hmag.world.entity.KashaEntity;
 import com.github.mechalopa.hmag.world.entity.KoboldEntity;
+import com.github.mechalopa.hmag.world.entity.SwamperEntity;
 import com.github.mechalopa.hmag.world.entity.LichEntity;
 import com.github.mechalopa.hmag.world.entity.MagicalSlimeEntity;
 import com.github.mechalopa.hmag.world.entity.MeltyMonsterEntity;
@@ -200,6 +201,7 @@ public class ModEventBusSubscriber
 		event.register(ModEntityTypes.JIANGSHI.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
 		event.register(ModEntityTypes.GIANT_MUMMY.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, GiantMummyEntity::checkGiantMummySpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
 		event.register(ModEntityTypes.NIGHTWALKER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.SWAMPER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
 	}
 
 	@SubscribeEvent
@@ -248,6 +250,7 @@ public class ModEventBusSubscriber
 		event.put(ModEntityTypes.JIANGSHI.get(), JiangshiEntity.createAttributes().build());
 		event.put(ModEntityTypes.GIANT_MUMMY.get(), GiantMummyEntity.createAttributes().build());
 		event.put(ModEntityTypes.NIGHTWALKER.get(), NightwalkerEntity.createAttributes().build());
+		event.put(ModEntityTypes.SWAMPER.get(), SwamperEntity.createAttributes().build());
 	}
 
 	private static void registerBrewingRecipe(Potion inputPotion, Item item, Potion outputPotion)
