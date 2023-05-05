@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "#forge:food/meat"
+    "#forge:food/meat",
+    "#forge:food/seafood"
   ]
 }

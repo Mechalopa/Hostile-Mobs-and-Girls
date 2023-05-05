@@ -12,7 +12,7 @@
       "type": "spirit:potion_effect",
       "effects": [
         {
-          "effect": "minecraft:weakness",
+          "effect": "minecraft:blindness",
           "duration": 150
         }
       ]
