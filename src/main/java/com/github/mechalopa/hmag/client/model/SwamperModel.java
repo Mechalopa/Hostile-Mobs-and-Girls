@@ -21,7 +21,15 @@ public class SwamperModel<T extends Mob> extends HierarchicalModel<T>
 	private final ModelPart root;
 	private final ModelPart head;
 	private final ModelPart headPart;
+	private final ModelPart rightFin;
+	private final ModelPart leftFin;
 	private final ModelPart body;
+	private final ModelPart rightArm;
+	private final ModelPart leftArm;
+	private final ModelPart rightArmPart1;
+	private final ModelPart leftArmPart1;
+	private final ModelPart rightArmPart2;
+	private final ModelPart leftArmPart2;
 	private final ModelPart rightLeg1;
 	private final ModelPart leftLeg1;
 	private final ModelPart rightLeg2;
@@ -40,7 +48,15 @@ public class SwamperModel<T extends Mob> extends HierarchicalModel<T>
 		this.root = modelPart;
 		this.head = modelPart.getChild("head");
 		this.headPart = this.head.getChild("head_part");
+		this.rightFin = this.headPart.getChild("right_fin");
+		this.leftFin = this.headPart.getChild("left_fin");
 		this.body = modelPart.getChild("body");
+		this.rightArm = modelPart.getChild("right_arm");
+		this.leftArm = modelPart.getChild("left_arm");
+		this.rightArmPart1 = this.rightArm.getChild("right_arm_part_1");
+		this.leftArmPart1 = this.leftArm.getChild("left_arm_part_1");
+		this.rightArmPart2 = this.rightArmPart1.getChild("right_arm_part_2");
+		this.leftArmPart2 = this.leftArmPart1.getChild("left_arm_part_2");
 		this.rightLeg1 = modelPart.getChild("right_leg_1");
 		this.leftLeg1 = modelPart.getChild("left_leg_1");
 		this.rightLeg2 = modelPart.getChild("right_leg_2");
@@ -60,24 +76,36 @@ public class SwamperModel<T extends Mob> extends HierarchicalModel<T>
 		float f = 14.0F;
 		MeshDefinition md = new MeshDefinition();
 		PartDefinition pd = md.getRoot();
-		PartDefinition headpd = ModClientUtils.addC(pd, "head", 0, 32, -6.0F, -4.0F, -6.0F, 12.0F, 4.0F, 12.0F, 0.0F, f, 0.0F);
-		ModClientUtils.addC(headpd, "head_part", 0, 0, -8.0F, -12.0F, -7.0F, 16.0F, 12.0F, 16.0F, 0.0F, -3.0F, 0.0F);
-		ModClientUtils.addC(pd, "body", 0, 58, -4.0F, 0.0F, -4.0F, 8.0F, 2.0F, 8.0F, 0.0F, f - 0.5F, 0.0F);
-		CubeListBuilder cubelistbuilder = CubeListBuilder.create().texOffs(0, 48).addBox(-3.0F, 0.0F, -2.0F, 6.0F, 4.0F, 4.0F);
+		PartDefinition headpd = ModClientUtils.addC(pd, "head", 0, 28, -6.0F, -4.0F, -6.0F, 12.0F, 4.0F, 12.0F, 0.0F, f, 0.0F);
+		PartDefinition hppd = ModClientUtils.addC(headpd, "head_part", 0, 0, -8.0F, -12.0F, -7.0F, 16.0F, 12.0F, 16.0F, 0.0F, -3.0F, 0.0F);
+		ModClientUtils.addC(hppd, "right_fin", 36, 28, -7.0F, 0.0F, -3.0F, 7.0F, 0.0F, 6.0F, -7.75F, -10.0F, 5.0F);
+		ModClientUtils.addC(hppd, "left_fin", 36, 28, 0.0F, 0.0F, -3.0F, 7.0F, 0.0F, 6.0F, 7.75F, -10.0F, 5.0F, true);
+		ModClientUtils.addC(pd, "body", 0, 44, -4.0F, 0.0F, -4.0F, 8.0F, 2.0F, 8.0F, 0.0F, f - 0.5F, 0.0F);
+
+		PartDefinition rapd = ModClientUtils.addC(pd, "right_arm", 32, 44, -1.0F, -0.5F, -1.0F, 2.0F, 7.0F, 2.0F, -6.0F, f - 2.0F, -2.0F);
+		PartDefinition lapd = ModClientUtils.addC(pd, "left_arm", 32, 44, -1.0F, -0.5F, -1.0F, 2.0F, 7.0F, 2.0F, 6.0F, f - 2.0F, -2.0F, true);
+		PartDefinition rap1pd = ModClientUtils.addC(rapd, "right_arm_part_1", 40, 44, -1.5F, -0.5F, -1.5F, 3.0F, 6.0F, 3.0F, 0.0F, 6.5F, 0.0F);
+		PartDefinition lap1pd = ModClientUtils.addC(lapd, "left_arm_part_1", 40, 44, -1.5F, -0.5F, -1.5F, 3.0F, 6.0F, 3.0F, 0.0F, 6.5F, 0.0F, true);
+		ModClientUtils.addC(rap1pd, "right_arm_part_2", 52, 44, -1.5F, -0.5F, -1.5F, 3.0F, 9.0F, 3.0F, 0.0F, 5.5F, 0.0F, 0.25F);
+		ModClientUtils.addC(lap1pd, "left_arm_part_2", 52, 44, -1.5F, -0.5F, -1.5F, 3.0F, 9.0F, 3.0F, 0.0F, 5.5F, 0.0F, true, 0.25F);
+
+		CubeListBuilder cubelistbuilder = CubeListBuilder.create().texOffs(0, 54).addBox(-3.0F, 0.0F, -2.0F, 6.0F, 4.0F, 4.0F);
+		CubeListBuilder cubelistbuilder1 = CubeListBuilder.create().texOffs(0, 54).mirror().addBox(-3.0F, 0.0F, -2.0F, 6.0F, 4.0F, 4.0F);
 		PartDefinition rl1pd = pd.addOrReplaceChild("right_leg_1", cubelistbuilder, PartPose.offset(-3.75F, f, -4.5F));
-		PartDefinition ll1pd = pd.addOrReplaceChild("left_leg_1", cubelistbuilder.mirror(), PartPose.offset(3.75F, f, -4.5F));
+		PartDefinition ll1pd = pd.addOrReplaceChild("left_leg_1", cubelistbuilder1, PartPose.offset(3.75F, f, -4.5F));
 		PartDefinition rl2pd = pd.addOrReplaceChild("right_leg_2", cubelistbuilder, PartPose.offset(-4.75F, f, -0.5F));
-		PartDefinition ll2pd = pd.addOrReplaceChild("left_leg_2", cubelistbuilder.mirror(), PartPose.offset(4.75F, f, -0.5F));
+		PartDefinition ll2pd = pd.addOrReplaceChild("left_leg_2", cubelistbuilder1, PartPose.offset(4.75F, f, -0.5F));
 		PartDefinition rl3pd = pd.addOrReplaceChild("right_leg_3", cubelistbuilder, PartPose.offset(-4.5F, f, 4.75F));
-		PartDefinition ll3pd = pd.addOrReplaceChild("left_leg_3", cubelistbuilder.mirror(), PartPose.offset(4.5F, f, 4.75F));
-		CubeListBuilder cubelistbuilder1 = CubeListBuilder.create().texOffs(24, 48).addBox(-3.0F, 0.0F, -2.0F, 6.0F, 6.0F, 4.0F, new CubeDeformation(0.25F));
-		rl1pd.addOrReplaceChild("right_leg_1_part", cubelistbuilder1, PartPose.offset(0.0F, 3.75F, 0.0F));
-		ll1pd.addOrReplaceChild("left_leg_1_part", cubelistbuilder1.mirror(), PartPose.offset(0.0F, 3.75F, 0.0F));
-		rl2pd.addOrReplaceChild("right_leg_2_part", cubelistbuilder1, PartPose.offset(0.0F, 3.75F, 0.0F));
-		ll2pd.addOrReplaceChild("left_leg_2_part", cubelistbuilder1.mirror(), PartPose.offset(0.0F, 3.75F, 0.0F));
-		rl3pd.addOrReplaceChild("right_leg_3_part", cubelistbuilder1, PartPose.offset(0.0F, 3.75F, 0.0F));
-		ll3pd.addOrReplaceChild("left_leg_3_part", cubelistbuilder1.mirror(), PartPose.offset(0.0F, 3.75F, 0.0F));
-		return LayerDefinition.create(md, 64, 128);
+		PartDefinition ll3pd = pd.addOrReplaceChild("left_leg_3", cubelistbuilder1, PartPose.offset(4.5F, f, 4.75F));
+		CubeListBuilder cubelistbuilder2 = CubeListBuilder.create().texOffs(20, 54).addBox(-3.0F, 0.0F, -2.0F, 6.0F, 6.0F, 4.0F, new CubeDeformation(0.25F));
+		CubeListBuilder cubelistbuilder3 = CubeListBuilder.create().texOffs(20, 54).mirror().addBox(-3.0F, 0.0F, -2.0F, 6.0F, 6.0F, 4.0F, new CubeDeformation(0.25F));
+		rl1pd.addOrReplaceChild("right_leg_1_part", cubelistbuilder2, PartPose.offset(0.0F, 3.75F, 0.0F));
+		ll1pd.addOrReplaceChild("left_leg_1_part", cubelistbuilder3, PartPose.offset(0.0F, 3.75F, 0.0F));
+		rl2pd.addOrReplaceChild("right_leg_2_part", cubelistbuilder2, PartPose.offset(0.0F, 3.75F, 0.0F));
+		ll2pd.addOrReplaceChild("left_leg_2_part", cubelistbuilder3, PartPose.offset(0.0F, 3.75F, 0.0F));
+		rl3pd.addOrReplaceChild("right_leg_3_part", cubelistbuilder2, PartPose.offset(0.0F, 3.75F, 0.0F));
+		ll3pd.addOrReplaceChild("left_leg_3_part", cubelistbuilder3, PartPose.offset(0.0F, 3.75F, 0.0F));
+		return LayerDefinition.create(md, 64, 64);
 	}
 
 	@Override
@@ -93,9 +121,60 @@ public class SwamperModel<T extends Mob> extends HierarchicalModel<T>
 		this.head.xRot = headPitch / (180.0F / (float)Math.PI);
 		this.headPart.xRot = -((float)Math.PI / 24.0F);
 		this.headPart.xRot += Mth.sin(ageInTicks * 0.067F) * 0.024F;
+
+		this.rightFin.xRot = -((float)Math.PI / 18.0F);
+		this.leftFin.xRot = -((float)Math.PI / 18.0F);
+		this.rightFin.zRot = (float)Math.PI / 5.0F;
+		this.leftFin.zRot = -((float)Math.PI / 5.0F);
+		this.rightFin.zRot += Mth.cos(ageInTicks * 0.105F) * 0.045F;
+		this.leftFin.zRot -= Mth.cos(ageInTicks * 0.105F) * 0.045F;
+
 		this.body.yRot = 0.0F;
+
 		float f = limbSwing * 0.6662F;
 		float f1 = Math.min(0.25F, limbSwingAmount);
+		float f2 = 1.0F - limbSwingAmount;
+		float f3 = Math.abs(Mth.clamp(this.attackTime, 0.0F, 1.0F) * 2.0F - 1.0F);
+		f3 = f3 * f3 * f3;
+		float f4 = 1.0F - f3;
+
+		this.rightArm.xRot = ((float)Math.PI / 12.0F) * f3;
+		this.leftArm.xRot = ((float)Math.PI / 12.0F) * f3;
+		this.rightArm.xRot += Mth.cos(f + (float)Math.PI / 2.0F) * 0.21F * f1 * f3;
+		this.leftArm.xRot += Mth.cos(f + (float)Math.PI / 4.0F) * 0.21F * f1 * f3;
+		this.rightArm.xRot += -((float)Math.PI * 4.0F / 9.0F) * f4;
+		this.leftArm.xRot += -((float)Math.PI * 4.0F / 9.0F) * f4;
+		this.rightArm.yRot = ((float)Math.PI / 8.0F) * f4;
+		this.leftArm.yRot = -((float)Math.PI / 8.0F) * f4;
+		this.rightArm.zRot = ((float)Math.PI / 8.0F) * f3;
+		this.leftArm.zRot = -((float)Math.PI / 8.0F) * f3;
+		this.rightArm.zRot += ((float)Math.PI / 4.0F) * f4;
+		this.leftArm.zRot += -((float)Math.PI / 4.0F) * f4;
+		this.rightArm.zRot += Mth.cos(ageInTicks * 0.067F) * 0.021F;
+		this.leftArm.zRot -= Mth.cos(ageInTicks * 0.067F + (float)Math.PI / 8.0F) * 0.021F;
+		this.rightArmPart1.xRot = Mth.sin(ageInTicks * 0.045F + (float)Math.PI / 4.0F) * 0.018F * f2;
+		this.leftArmPart1.xRot = Mth.sin(ageInTicks * 0.045F) * 0.018F * f2;
+		this.rightArmPart1.xRot += Mth.cos(f + (float)Math.PI * 5.0F / 8.0F) * 0.14F * f1 * f3;
+		this.leftArmPart1.xRot += Mth.cos(f + (float)Math.PI * 3.0F / 8.0F) * 0.14F * f1 * f3;
+		this.rightArmPart1.zRot = -((float)Math.PI * 4.0F / 3.0F) * f3;
+		this.leftArmPart1.zRot = ((float)Math.PI * 4.0F / 3.0F) * f3;
+		this.rightArmPart1.zRot -= Mth.cos(f + (float)Math.PI / 2.0F) * 0.42F * f1 * f3;
+		this.leftArmPart1.zRot += Mth.cos(f + (float)Math.PI / 4.0F) * 0.42F * f1 * f3;
+		this.rightArmPart1.zRot += -((float)Math.PI / 6.0F) * f4;
+		this.leftArmPart1.zRot += ((float)Math.PI / 6.0F) * f4;
+		this.rightArmPart1.zRot += Mth.cos(ageInTicks * 0.067F + (float)Math.PI / 6.0F) * 0.024F * f2;
+		this.leftArmPart1.zRot -= Mth.cos(ageInTicks * 0.067F + (float)Math.PI * 7.0F / 24.0F) * 0.024F * f2;
+		this.rightArmPart2.xRot = Mth.sin(ageInTicks * 0.045F) * 0.015F;
+		this.leftArmPart2.xRot = Mth.sin(ageInTicks * 0.045F - (float)Math.PI / 4.0F) * 0.015F;
+		this.rightArmPart2.zRot = ((float)Math.PI / 6.0F) * f3;
+		this.leftArmPart2.zRot = -((float)Math.PI / 6.0F) * f3;
+		this.rightArmPart2.zRot -= Mth.cos(f + (float)Math.PI * 5.0F / 8.0F) * 0.21F * f1 * f3;
+		this.leftArmPart2.zRot += Mth.cos(f + (float)Math.PI * 3.0F / 8.0F) * 0.21F * f1 * f3;
+		this.rightArmPart2.zRot += -((float)Math.PI / 7.0F) * f4;
+		this.leftArmPart2.zRot += ((float)Math.PI / 7.0F) * f4;
+		this.rightArmPart2.zRot += Mth.cos(ageInTicks * 0.067F + (float)Math.PI / 3.0F) * 0.024F * f2;
+		this.leftArmPart2.zRot -= Mth.cos(ageInTicks * 0.067F + (float)Math.PI * 11.0F / 24.0F) * 0.024F * f2;
+
 		this.rightLeg1.xRot = Mth.cos(f + (float)Math.PI) * 1.4F * f1;
 		this.leftLeg1.xRot = Mth.cos(f + (float)Math.PI) * 1.4F * f1;
 		this.rightLeg2.xRot = Mth.cos(f + (float)Math.PI * 7.0F / 8.0F) * 1.4F * f1;
@@ -118,7 +197,7 @@ public class SwamperModel<T extends Mob> extends HierarchicalModel<T>
 		this.leftLeg1.xRot += Mth.cos(f + (float)Math.PI) * 0.21F * f1;
 		this.rightLeg2.xRot += Mth.cos(f + (float)Math.PI * 7.0F / 8.0F) * 0.21F * f1;
 		this.leftLeg2.xRot += Mth.cos(f + (float)Math.PI * 7.0F / 8.0F) * 0.21F * f1;
-		this.rightLeg3.xRot += Mth.cos(f - (float)Math.PI / 4.0F) * 0.21F * f1;
-		this.leftLeg3.xRot += Mth.cos(f - (float)Math.PI / 4.0F) * 0.21F * f1;
+		this.rightLeg3.xRot += Mth.cos(f - (float)Math.PI * 3.0F / 4.0F) * 0.21F * f1;
+		this.leftLeg3.xRot += Mth.cos(f - (float)Math.PI * 3.0F / 4.0F) * 0.21F * f1;
 	}
 }

@@ -34,4 +34,10 @@ public class SwamperRenderer extends MobRenderer<SwamperEntity, SwamperModel<Swa
 	{
 		return TEX;
 	}
+
+	@Override
+	protected boolean isShaking(SwamperEntity entity)
+	{
+		return super.isShaking(entity) || entity.isSuffocating();
+	}
 }

@@ -24,6 +24,7 @@ import com.github.mechalopa.hmag.world.item.NemesisBladeItem;
 import com.github.mechalopa.hmag.world.item.NetherStarBlockItem;
 import com.github.mechalopa.hmag.world.item.PurificationClothItem;
 import com.github.mechalopa.hmag.world.item.RandomberryItem;
+import com.github.mechalopa.hmag.world.item.SwampyStewItem;
 import com.github.mechalopa.hmag.world.item.ThrowableBottleItem;
 import com.github.mechalopa.hmag.world.item.TotemOfRepulseItem;
 
@@ -119,8 +120,9 @@ public class ModItems
 	public static final RegistryObject<Item> COOKED_SWAMPER_TENTACLE = REGISTRY.register("cooked_swamper_tentacle", () -> new Item(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(6).saturationMod(0.8F).build())));
 	public static final RegistryObject<Item> RAVAGER_MEAT = REGISTRY.register("ravager_meat", () -> new Item(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(2).saturationMod(0.3F).effect(() -> new MobEffectInstance(MobEffects.HUNGER, 30 * 20, 0), 0.6F).meat().build())));
 	public static final RegistryObject<Item> COOKED_RAVAGER_MEAT = REGISTRY.register("cooked_ravager_meat", () -> new Item(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(8).saturationMod(0.8F).effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 10 * 20, 0), 0.1F).meat().build())));
-	public static final RegistryObject<Item> BAT_STEW = REGISTRY.register("bat_stew", () -> new BowlFoodItem(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(6).saturationMod(0.6F).effect(() -> new MobEffectInstance(ModEffects.DARKNESS_RESISTANCE.get(), 10 * 20, 0), 0.3F).build()).stacksTo(1)));
-	public static final RegistryObject<Item> SPECTRAL_SOUP = REGISTRY.register("spectral_soup", () -> new BowlFoodItem(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(6).saturationMod(1.2F).effect(() -> new MobEffectInstance(MobEffects.GLOWING, 30 * 20, 0), 1.0F).alwaysEat().build()).stacksTo(1)));
+	public static final RegistryObject<Item> BAT_STEW = REGISTRY.register("bat_stew", () -> new BowlFoodItem(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(6).saturationMod(0.6F).effect(() -> new MobEffectInstance(ModEffects.DARKNESS_RESISTANCE.get(), 10 * 20, 0), 0.3F).alwaysEat().build()).stacksTo(1)));
+	public static final RegistryObject<Item> SWAMPY_STEW = REGISTRY.register("swampy_stew", () -> new SwampyStewItem(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(11).saturationMod(0.8F).effect(() -> new MobEffectInstance(MobEffects.WATER_BREATHING, 10 * 20, 0), 0.3F).alwaysEat().build()).stacksTo(1)));
+	public static final RegistryObject<Item> SPECTRAL_SOUP = REGISTRY.register("spectral_soup", () -> new BowlFoodItem(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(6).saturationMod(1.0F).effect(() -> new MobEffectInstance(MobEffects.GLOWING, 30 * 20, 0), 1.0F).alwaysEat().build()).stacksTo(1)));
 	public static final RegistryObject<Item> LIGHTNING_SOUP = REGISTRY.register("lightning_soup", () -> new LightningSoupItem(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(9).saturationMod(1.8F).effect(() -> new MobEffectInstance(MobEffects.GLOWING, 60 * 20, 0), 1.0F).effect(() -> new MobEffectInstance(MobEffects.NIGHT_VISION, 60 * 20, 0), 1.0F).effect(() -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 60 * 20, 0), 1.0F).effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 60 * 20, 0), 1.0F).effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 60 * 20, 1), 1.0F).effect(() -> new MobEffectInstance(MobEffects.JUMP, 60 * 20, 1), 1.0F).alwaysEat().build()).stacksTo(1).rarity(Rarity.RARE)));
 	public static final RegistryObject<Item> INSOMNIA_FRUIT = REGISTRY.register("insomnia_fruit", () -> new InsomniaFruitItem(new Item.Properties().tab(HMaG.MODTAB).food((new FoodProperties.Builder()).nutrition(5).saturationMod(0.3F).alwaysEat().build()).stacksTo(1).rarity(Rarity.RARE)));
 	public static final RegistryObject<Item> INSOMNIA_SWORD = REGISTRY.register("insomnia_sword", () -> new InsomniaSwordItem(Tiers.DIAMOND, new Item.Properties().tab(HMaG.MODTAB).rarity(Rarity.RARE)));
@@ -198,7 +200,7 @@ public class ModItems
 	public static final RegistryObject<Item> JIANGSHI_SPAWN_EGG = createSpawnEggRegistryObject("jiangshi", ModEntityTypes.JIANGSHI, 0x5C6E8A, 0x84263F);
 	public static final RegistryObject<Item> GIANT_MUMMY_SPAWN_EGG = createSpawnEggRegistryObject("giant_mummy", ModEntityTypes.GIANT_MUMMY, 0xDFDDC7, 0x7F794E);
 	public static final RegistryObject<Item> NIGHTWALKER_SPAWN_EGG = createSpawnEggRegistryObject("nightwalker", ModEntityTypes.NIGHTWALKER, 0x2F2C85, 0x0D0D0D);
-	public static final RegistryObject<Item> SWAMPER_SPAWN_EGG = createSpawnEggRegistryObject("swamper", ModEntityTypes.SWAMPER, 0x33FF00, 0x000033);
+	public static final RegistryObject<Item> SWAMPER_SPAWN_EGG = createSpawnEggRegistryObject("swamper", ModEntityTypes.SWAMPER, 0x4F532F, 0x9C9056);
 
 	@SubscribeEvent
 	public static void register(IEventBus eventBus)

@@ -126,7 +126,7 @@ public class InkSpitEntity extends Projectile
 
 				if (flag && entity1 instanceof LivingEntity)
 				{
-					int i = 3;
+					int i = 2;
 
 					if (this.level.getDifficulty() == Difficulty.NORMAL)
 					{

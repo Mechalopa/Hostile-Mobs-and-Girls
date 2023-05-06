@@ -1,6 +1,9 @@
 package com.github.mechalopa.hmag.world.entity;
 
+import java.util.EnumSet;
+
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
 import com.github.mechalopa.hmag.world.entity.ai.goal.MeleeAttackGoal2;
@@ -14,6 +17,7 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -27,10 +31,11 @@ import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.RangedAttackGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.IronGolem;
@@ -38,13 +43,16 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.network.NetworkHooks;
 
 public class SwamperEntity extends Monster implements RangedAttackMob
 {
 	private static final EntityDataAccessor<Integer> SHOULD_SPIT_TIMER = SynchedEntityData.defineId(SwamperEntity.class, EntityDataSerializers.INT);
+	private static final EntityDataAccessor<Boolean> DATA_SUFFOCATING = SynchedEntityData.defineId(SwamperEntity.class, EntityDataSerializers.BOOLEAN);
 
 	public SwamperEntity(EntityType<? extends SwamperEntity> type, Level level)
 	{
@@ -58,15 +66,17 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 	{
 		super.defineSynchedData();
 		this.entityData.define(SHOULD_SPIT_TIMER, 0);
+		this.entityData.define(DATA_SUFFOCATING, false);
 	}
 
 	@Override
 	protected void registerGoals()
 	{
 		this.goalSelector.addGoal(1, new SwamperEntity.SwamperFloatGoal(this));
+		this.goalSelector.addGoal(2, new SwamperEntity.SwamperGoToWaterGoal(this, 1.2D));
 		this.goalSelector.addGoal(3, new SwamperEntity.SwamperMeleeAttackGoal(this, 1.2D, false, 8.0F / 9.0F, 6.0F));
-		this.goalSelector.addGoal(4, new RangedAttackGoal(this, 1.0D, 40, 60, 8.0F));
-		this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+		this.goalSelector.addGoal(4, new RangedAttackGoal(this, 1.0D, 30, 60, 8.0F));
+		this.goalSelector.addGoal(5, new RandomStrollGoal(this, 1.0D));
 		this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 3.0F, 1.0F));
 		this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Mob.class, 8.0F));
 		this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
@@ -81,7 +91,7 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 				.add(Attributes.MAX_HEALTH, 40.0D)
 				.add(Attributes.MOVEMENT_SPEED, 0.17D)
 				.add(Attributes.ATTACK_DAMAGE, 6.0D)
-				.add(Attributes.ARMOR, 4.0D)
+				.add(Attributes.ARMOR, 2.0D)
 				.add(Attributes.KNOCKBACK_RESISTANCE, 0.5D);
 	}
 
@@ -89,6 +99,44 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 	public boolean canBreatheUnderwater()
 	{
 		return true;
+	}
+
+	@Override
+	public void baseTick()
+	{
+		int i = this.getAirSupply();
+		super.baseTick();
+		this.handleAirSupply(i);
+	}
+
+	protected void handleAirSupply(int airSupply)
+	{
+		if (this.isAlive() && !this.isInWaterOrBubble() && this.isSuffocating())
+		{
+			this.setAirSupply(airSupply - 1);
+
+			if (this.getAirSupply() == -20)
+			{
+				this.setAirSupply(0);
+				this.hurt(DamageSource.DROWN, 2.0F);
+			}
+		}
+		else
+		{
+			this.setAirSupply(300);
+		}
+	}
+
+	@Override
+	public void tick()
+	{
+		if (!this.isNoAi())
+		{
+			BlockPos blockpos = new BlockPos(Mth.floor(this.getX()), Mth.floor(this.getY()), Mth.floor(this.getZ()));
+			this.setSuffocating((!this.isInWaterOrBubble() && this.level.getBiome(blockpos).value().shouldSnowGolemBurn(blockpos)) || this.isOnFire());
+		}
+
+		super.tick();
 	}
 
 	@Override
@@ -103,17 +151,7 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 
 		if (!this.level.isClientSide)
 		{
-			int i = Mth.floor(this.getX());
-			int j = Mth.floor(this.getY());
-			int k = Mth.floor(this.getZ());
-			BlockPos blockpos = new BlockPos(i, j, k);
-
-			if (!this.isInWaterRainOrBubble() && this.level.getBiome(blockpos).value().shouldSnowGolemBurn(blockpos))
-			{
-				this.hurt(DamageSource.ON_FIRE, 1.0F);
-			}
-
-			if (this.getTarget() != null && this.getTarget().isAlive() && this.getTarget().getHealth() <= 1.0F)
+			if (this.getTarget() != null && this.getTarget().isAlive() && this.getTarget().getHealth() <= 1.0F && this.getHealth() <= this.getMaxHealth() / 4.0F)
 			{
 				this.setShouldSpitTimer(Math.max(20, this.getShouldSpitTimer() - 1));
 			}
@@ -229,6 +267,16 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 		this.entityData.set(SHOULD_SPIT_TIMER, value);
 	}
 
+	public boolean isSuffocating()
+	{
+		return this.entityData.get(DATA_SUFFOCATING);
+	}
+
+	public void setSuffocating(boolean flag)
+	{
+		this.entityData.set(DATA_SUFFOCATING, flag);
+	}
+
 	@Override
 	public int getMaxSpawnClusterSize()
 	{
@@ -321,6 +369,80 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 		public boolean canContinueToUse()
 		{
 			return super.canContinueToUse() && this.mob.getShouldSpitTimer() <= 0;
+		}
+	}
+
+	private class SwamperGoToWaterGoal extends Goal
+	{
+		private final SwamperEntity mob;
+		private double wantedX;
+		private double wantedY;
+		private double wantedZ;
+		private final double speedModifier;
+		private final Level level;
+
+		public SwamperGoToWaterGoal(SwamperEntity mob, double speed)
+		{
+			this.mob = mob;
+			this.speedModifier = speed;
+			this.level = mob.level;
+			this.setFlags(EnumSet.of(Goal.Flag.MOVE));
+		}
+
+		@Override
+		public boolean canUse()
+		{
+			if (!this.mob.isSuffocating() || this.mob.isInWaterOrBubble())
+			{
+				return false;
+			}
+			else
+			{
+				Vec3 vec3 = this.getWaterPos();
+
+				if (vec3 == null)
+				{
+					return false;
+				}
+				else
+				{
+					this.wantedX = vec3.x;
+					this.wantedY = vec3.y;
+					this.wantedZ = vec3.z;
+					return true;
+				}
+			}
+		}
+
+		@Override
+		public boolean canContinueToUse()
+		{
+			return !this.mob.getNavigation().isDone();
+		}
+
+		@Override
+		public void start()
+		{
+			this.mob.getNavigation().moveTo(this.wantedX, this.wantedY, this.wantedZ, this.speedModifier);
+		}
+
+		@Nullable
+		private Vec3 getWaterPos()
+		{
+			RandomSource random = this.mob.getRandom();
+			BlockPos blockpos = this.mob.blockPosition();
+
+			for (int i = 0; i < 10; ++i)
+			{
+				BlockPos blockpos1 = blockpos.offset(random.nextInt(20) - 10, 2 - random.nextInt(8), random.nextInt(20) - 10);
+
+				if (this.level.getBlockState(blockpos1).is(Blocks.WATER))
+				{
+					return Vec3.atBottomCenterOf(blockpos1);
+				}
+			}
+
+			return null;
 		}
 	}
 }
