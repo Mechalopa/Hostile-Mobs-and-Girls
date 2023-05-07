@@ -61,10 +61,7 @@ public class ModLootTableLoadingEvent
 
 	private static LootPool getInjectPool(String name)
 	{
-		return LootPool.lootPool()
-				.add(getInjectEntry(name))
-				.name("hmag_inject")
-				.build();
+		return LootPool.lootPool().add(getInjectEntry(name)).name("hmag_inject").build();
 	}
 
 	private static LootPoolEntryContainer.Builder<?> getInjectEntry(String name)

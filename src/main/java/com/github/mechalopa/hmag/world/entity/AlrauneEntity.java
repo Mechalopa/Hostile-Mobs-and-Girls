@@ -160,7 +160,7 @@ public class AlrauneEntity extends Monster implements IModMob, RangedAttackMob
 			double d1 = target.getX() - this.getX();
 			double d2 = d0 - shot.getY();
 			double d3 = target.getZ() - this.getZ();
-			double d4 = Math.sqrt(d1 * d1 + d3 * d3) * 0.15F;
+			double d4 = Math.sqrt(d1 * d1 + d3 * d3) * 0.15D;
 			shot.shoot(d1, d2 + d4, d3, 1.5F, 10.0F);
 			shot.setDamage(4.0F);
 			this.level.addFreshEntity(shot);

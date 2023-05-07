@@ -34,7 +34,6 @@ public class GlaryadModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 	public GlaryadModel(ModelPart modelPart)
 	{
 		super(modelPart);
-
 		this.rightArmPart1 = this.rightArm.getChild("right_arm_part_1");
 		this.leftArmPart1 = this.leftArm.getChild("left_arm_part_1");
 		this.rightArmPart2 = this.rightArm.getChild("right_arm_part_2");
@@ -65,7 +64,7 @@ public class GlaryadModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 		PartDefinition bodypd = pd.getChild("body");
 		PartDefinition s1pd = ModClientUtils.addC(bodypd, cd, "skirt_1", 0, 48, -3.5F, 0.0F, -2.0F, 7.0F, 2.0F, 4.0F, 0.0F, 6.0F, 0.0F);
 		PartDefinition s2pd = ModClientUtils.addC(s1pd, cd, "skirt_2", 0, 56, -4.0F, 0.0F, -2.5F, 8.0F, 2.0F, 5.0F, 0.0F, 2.0F, 0.0F);
-		PartDefinition s3pd = ModClientUtils.addC(s2pd, cd, "skirt_3", 0, 64, -4.5F, 0.0F, -3.0F, 9.0F, 9.0F, 6.0F, 0.0F, 2.0F, 0.0F);
+		PartDefinition s3pd = ModClientUtils.addC(s2pd, cd, "skirt_3", 0, 64, -4.5F, 0.0F, -3.0F, 9.0F, 6.0F, 6.0F, 0.0F, 2.0F, 0.0F);
 		ModClientUtils.addC(s3pd, cd, "right_skirt_part", 24, 48, 0.0F, 0.0F, -1.5F, 1.0F, 4.0F, 3.0F, -4.5F, 4.5F, 1.0F);
 		ModClientUtils.addC(s3pd, cd, "left_skirt_part", 24, 48, -1.0F, 0.0F, -1.5F, 1.0F, 4.0F, 3.0F, 4.5F, 4.5F, 1.0F, true);
 		PartDefinition headpd = pd.getChild("head");
@@ -93,9 +92,9 @@ public class GlaryadModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 	}
 
 	@Override
-	public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
+	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
-		super.setupAnim(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+		super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 
 		this.rightArm.zRot = (float)Math.PI / 12.0F;
 		this.leftArm.zRot = -((float)Math.PI / 12.0F);

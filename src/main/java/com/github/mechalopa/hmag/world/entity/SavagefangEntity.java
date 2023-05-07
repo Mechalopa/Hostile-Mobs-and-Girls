@@ -124,6 +124,12 @@ public class SavagefangEntity extends Monster implements IModMob
 	}
 
 	@Override
+	public boolean canBreatheUnderwater()
+	{
+		return true;
+	}
+
+	@Override
 	public void baseTick()
 	{
 		int i = this.getAirSupply();

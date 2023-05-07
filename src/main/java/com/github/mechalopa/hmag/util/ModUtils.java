@@ -43,16 +43,16 @@ public class ModUtils
 	public static final String LIVING_NOT_REPLACED_KEY = HMaG.MODID + ".notReplaced";
 	public static final String WITH_SPAWN_PARTICLE_KEY = HMaG.MODID + ".withSpawnParticle";
 
-	public static void burnInDay(@Nonnull LivingEntity livingEntityIn, Random rand, Boolean isSunBurnTick, int seconds)
+	public static void burnInDay(@Nonnull LivingEntity livingEntityIn, Random random, Boolean isSunBurnTick, int seconds)
 	{
-		burnInDay(livingEntityIn, rand, isSunBurnTick, true, seconds);
+		burnInDay(livingEntityIn, random, isSunBurnTick, true, seconds);
 	}
 
-	public static void burnInDay(@Nonnull LivingEntity livingEntityIn, Random rand, Boolean isSunBurnTick, Boolean shouldBurn, int seconds)
+	public static void burnInDay(@Nonnull LivingEntity livingEntityIn, Random random, Boolean isSunBurnTick, Boolean shouldBurn, int seconds)
 	{
 		if (livingEntityIn != null && livingEntityIn.level != null && !livingEntityIn.level.isClientSide && livingEntityIn.isAlive())
 		{
-			boolean flag = isSunBurnTick && shouldBurn && !livingEntityIn.isInWaterOrRain();
+			boolean flag = isSunBurnTick && shouldBurn && !livingEntityIn.isInWaterRainOrBubble();
 
 			if (flag)
 			{
@@ -62,7 +62,7 @@ public class ModUtils
 				{
 					if (itemstack.isDamageableItem())
 					{
-						itemstack.setDamageValue(itemstack.getDamageValue() + rand.nextInt(2));
+						itemstack.setDamageValue(itemstack.getDamageValue() + random.nextInt(2));
 
 						if (itemstack.getDamageValue() >= itemstack.getMaxDamage())
 						{
@@ -82,11 +82,11 @@ public class ModUtils
 		}
 	}
 
-	public static void catchFire(@Nonnull LivingEntity livingEntity, @Nonnull Entity target, Random rand)
+	public static void catchFire(@Nonnull LivingEntity livingEntity, @Nonnull Entity target, Random random)
 	{
 		float f = livingEntity.level.getCurrentDifficultyAt(livingEntity.blockPosition()).getEffectiveDifficulty();
 
-		if (livingEntity.getMainHandItem().isEmpty() && livingEntity.isOnFire() && rand.nextFloat() < f * 0.3F)
+		if (livingEntity.getMainHandItem().isEmpty() && livingEntity.isOnFire() && random.nextFloat() < f * 0.3F)
 		{
 			target.setSecondsOnFire(2 * (int)f);
 		}

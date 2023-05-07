@@ -157,7 +157,7 @@ public class JackFrostEntity extends Monster implements IModMob, RangedAttackMob
 			double d1 = target.getX() - this.getX();
 			double d2 = d0 - snowball.getY();
 			double d3 = target.getZ() - this.getZ();
-			double d4 = Math.sqrt(d1 * d1 + d3 * d3) * 0.2F;
+			double d4 = Math.sqrt(d1 * d1 + d3 * d3) * 0.2D;
 			snowball.shoot(d1, d2 + d4, d3, 1.5F, 10.0F);
 			snowball.setDamage(3.0F);
 			this.level.addFreshEntity(snowball);
