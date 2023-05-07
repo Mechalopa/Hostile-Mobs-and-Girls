@@ -14,11 +14,14 @@ import com.mojang.serialization.JsonOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.common.loot.LootModifier;
@@ -67,7 +70,9 @@ public class AdditionalEntityLootModifier extends LootModifier
 	@Override
 	public ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context)
 	{
-		if (this.addition != null && !this.addition.equals(Items.BARRIER))
+		Entity entity = context.getParamOrNull(LootContextParams.THIS_ENTITY);
+
+		if (entity != null && entity instanceof LivingEntity && ((LivingEntity)entity).getLootTable() != null && context.getQueriedLootTableId().equals(((LivingEntity)entity).getLootTable()) && this.addition != null && !this.addition.equals(Items.BARRIER))
 		{
 			ItemStack stack = this.addition.getDefaultInstance();
 
