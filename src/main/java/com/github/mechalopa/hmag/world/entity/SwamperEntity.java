@@ -34,10 +34,11 @@ import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.RangedAttackGoal;
+import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.ai.util.DefaultRandomPos;
 import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.RangedAttackMob;
@@ -76,7 +77,7 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 		this.goalSelector.addGoal(2, new SwamperEntity.SwamperGoToWaterGoal(this, 1.2D));
 		this.goalSelector.addGoal(3, new SwamperEntity.SwamperMeleeAttackGoal(this, 1.2D, false, 8.0F / 9.0F, 6.0F));
 		this.goalSelector.addGoal(4, new RangedAttackGoal(this, 1.0D, 30, 60, 8.0F));
-		this.goalSelector.addGoal(5, new RandomStrollGoal(this, 1.0D));
+		this.goalSelector.addGoal(5, new SwamperEntity.SwamperRandomStrollGoal(this, 1.0D));
 		this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 3.0F, 1.0F));
 		this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Mob.class, 8.0F));
 		this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
@@ -132,11 +133,16 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 	{
 		if (!this.isNoAi())
 		{
-			BlockPos blockpos = new BlockPos(Mth.floor(this.getX()), Mth.floor(this.getY()), Mth.floor(this.getZ()));
-			this.setSuffocating((!this.isInWaterOrBubble() && this.level.getBiome(blockpos).value().shouldSnowGolemBurn(blockpos)) || this.isOnFire());
+			this.setSuffocating((!this.isInWaterOrBubble() && isSuffocatingBiome(this, this.level)) || this.isOnFire());
 		}
 
 		super.tick();
+	}
+
+	private static boolean isSuffocatingBiome(Entity enity, Level level)
+	{
+		BlockPos blockpos = new BlockPos(Mth.floor(enity.getX()), Mth.floor(enity.getY()), Mth.floor(enity.getZ()));
+		return level.getBiome(blockpos).value().shouldSnowGolemBurn(blockpos);
 	}
 
 	@Override
@@ -352,11 +358,13 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 	private class SwamperMeleeAttackGoal extends MeleeAttackGoal2
 	{
 		private final SwamperEntity mob;
+		private final Level level;
 
 		public SwamperMeleeAttackGoal(SwamperEntity mob, double speed, boolean useLongMemory, float reachScale, float maxAttackDistance)
 		{
 			super(mob, speed, useLongMemory, reachScale, maxAttackDistance);
 			this.mob = mob;
+			this.level = mob.level;
 		}
 
 		@Override
@@ -369,6 +377,12 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 		public boolean canContinueToUse()
 		{
 			return super.canContinueToUse() && this.mob.getShouldSpitTimer() <= 0;
+		}
+
+		@Override
+		protected boolean isValidDistance(LivingEntity attackTarget)
+		{
+			return (!this.mob.isInWaterOrBubble() || !SwamperEntity.isSuffocatingBiome(this.mob, this.level)) ? super.isValidDistance(attackTarget) : 4.0D >= this.mob.distanceToSqr(attackTarget.getX(), attackTarget.getY(), attackTarget.getZ());
 		}
 	}
 
@@ -443,6 +457,38 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 			}
 
 			return null;
+		}
+	}
+
+	private class SwamperRandomStrollGoal extends WaterAvoidingRandomStrollGoal
+	{
+		private final SwamperEntity mob;
+		private final Level level;
+
+		public SwamperRandomStrollGoal(SwamperEntity mob, double speed)
+		{
+			super(mob, speed);
+			this.mob = mob;
+			this.level = mob.level;
+		}
+
+		@Override
+		@Nullable
+		protected Vec3 getPosition()
+		{
+			if (this.mob.isInWaterOrBubble() && SwamperEntity.isSuffocatingBiome(this.mob, this.level))
+			{
+				Vec3 vec3 = super.getPosition();
+				return (vec3 != null && this.level.getBlockState(new BlockPos(vec3)).is(Blocks.WATER)) ? vec3 : null;
+			}
+			else if ((this.level.isDay() && this.level.canSeeSky(this.mob.blockPosition())))
+			{
+				return super.getPosition();
+			}
+			else
+			{
+				return DefaultRandomPos.getPos(this.mob, 10, 7);
+			}
 		}
 	}
 }
