@@ -15,7 +15,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class SlimeGirlEyesLayer extends AbstractClothingLayer<SlimeGirlEntity, SlimeGirlModel<SlimeGirlEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/slime_girl_eyes.png");
+	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/slime_girl/slime_girl_eyes.png");
 	private final SlimeGirlModel<SlimeGirlEntity> model;
 
 	public SlimeGirlEyesLayer(RenderLayerParent<SlimeGirlEntity, SlimeGirlModel<SlimeGirlEntity>> renderLayerParent, EntityModelSet modelSet)
@@ -26,9 +26,27 @@ public class SlimeGirlEyesLayer extends AbstractClothingLayer<SlimeGirlEntity, S
 	}
 
 	@Override
+	protected float getR(SlimeGirlEntity entity)
+	{
+		return (entity.getColor())[0];
+	}
+
+	@Override
+	protected float getG(SlimeGirlEntity entity)
+	{
+		return (entity.getColor())[1];
+	}
+
+	@Override
+	protected float getB(SlimeGirlEntity entity)
+	{
+		return (entity.getColor())[2];
+	}
+
+	@Override
 	protected float getAlpha(SlimeGirlEntity entity)
 	{
-		return 0.875F;
+		return 0.9375F;
 	}
 
 	@Override

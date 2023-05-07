@@ -218,7 +218,7 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 			@SuppressWarnings("deprecation")
 			float f = this.getLightLevelDependentMagicValue();
 
-			if (f <= 0.5F && this.random.nextFloat() * 30.0F < (0.6F - f) * 2.0F)
+			if (f <= 0.5F && this.getRandom().nextFloat() * 30.0F < (0.6F - f) * 2.0F)
 			{
 				return true;
 			}
@@ -563,7 +563,7 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 						level.levelEvent((Player)null, 1024, this.parent.blockPosition(), 0);
 					}
 
-					double d6 = Math.sqrt(d3 * d3 + d5 * d5) * 0.02F;
+					double d6 = Math.sqrt(d3 * d3 + d5 * d5) * 0.02D;
 					MagicBulletEntity bullet = new MagicBulletEntity(level, this.parent, d3 + this.parent.getRandom().nextGaussian() * d6, d4, d5 + this.parent.getRandom().nextGaussian() * d6);
 					bullet.setPos(this.parent.getX() + vec3.x * d1, this.parent.getEyeY() - vec3.y * d2, this.parent.getZ() + vec3.z * d1);
 					bullet.setDamage(5.0F);

@@ -142,6 +142,12 @@ public class MeltyMonsterEntity extends Monster implements RangedAttackMob
 	}
 
 	@Override
+	public boolean isOnFire()
+	{
+		return false;
+	}
+
+	@Override
 	public void performRangedAttack(LivingEntity target, float distanceFactor)
 	{
 		double d1 = target.getX() - this.getX();

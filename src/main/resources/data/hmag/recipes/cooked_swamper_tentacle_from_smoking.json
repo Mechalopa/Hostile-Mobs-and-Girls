@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "ingredient": {
+    "item": "hmag:swamper_tentacle"
+  },
+  "result": "hmag:cooked_swamper_tentacle",
+  "experience": 0.35,
+  "cookingtime": 100
+}

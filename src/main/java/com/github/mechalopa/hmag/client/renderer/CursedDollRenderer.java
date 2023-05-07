@@ -17,8 +17,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class CursedDollRenderer extends AbstractGirlRenderer<CursedDollEntity, CursedDollModel<CursedDollEntity>>
 {
-	private static final ResourceLocation TEX0 = new ResourceLocation(HMaG.MODID, "textures/entity/cursed_doll_0.png");
-	private static final ResourceLocation TEX1 = new ResourceLocation(HMaG.MODID, "textures/entity/cursed_doll_1.png");
+	private static final ResourceLocation TEX0 = new ResourceLocation(HMaG.MODID, "textures/entity/cursed_doll/cursed_doll_0.png");
+	private static final ResourceLocation TEX1 = new ResourceLocation(HMaG.MODID, "textures/entity/cursed_doll/cursed_doll_1.png");
 
 	public CursedDollRenderer(EntityRendererProvider.Context context)
 	{

@@ -126,6 +126,12 @@ public class SavagefangEntity extends Monster
 	}
 
 	@Override
+	public boolean canBreatheUnderwater()
+	{
+		return true;
+	}
+
+	@Override
 	public void baseTick()
 	{
 		int i = this.getAirSupply();

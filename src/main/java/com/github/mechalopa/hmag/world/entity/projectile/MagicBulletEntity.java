@@ -207,6 +207,22 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 					}
 
 					break;
+				case 3:
+					if (this.level.getDifficulty() == Difficulty.NORMAL)
+					{
+						i = 7;
+					}
+					else if (this.level.getDifficulty() == Difficulty.HARD)
+					{
+						i = 15;
+					}
+
+					if (i > 0)
+					{
+						((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 20 * i, 0));
+					}
+
+					break;
 				}
 			}
 
@@ -282,7 +298,7 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 
 	public void setVariant(int type)
 	{
-		if (type < 0 || type >= 3)
+		if (type < 0 || type >= 4)
 		{
 			type = 0;
 		}
@@ -337,6 +353,8 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 			return ParticleTypes.LARGE_SMOKE;
 		case 2:
 			return ParticleTypes.SMOKE;
+		case 3:
+			return ModParticleTypes.NIGHTWALKER_BULLET.get();
 		case 0:
 		default:
 			return ParticleTypes.DRAGON_BREATH;

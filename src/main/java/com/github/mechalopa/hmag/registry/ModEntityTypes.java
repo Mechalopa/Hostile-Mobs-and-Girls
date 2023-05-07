@@ -31,6 +31,7 @@ import com.github.mechalopa.hmag.world.entity.MagicalSlimeEntity;
 import com.github.mechalopa.hmag.world.entity.MeltyMonsterEntity;
 import com.github.mechalopa.hmag.world.entity.MonolithEntity;
 import com.github.mechalopa.hmag.world.entity.NecroticReaperEntity;
+import com.github.mechalopa.hmag.world.entity.NightwalkerEntity;
 import com.github.mechalopa.hmag.world.entity.OgreEntity;
 import com.github.mechalopa.hmag.world.entity.RedcapEntity;
 import com.github.mechalopa.hmag.world.entity.SavagefangEntity;
@@ -40,11 +41,13 @@ import com.github.mechalopa.hmag.world.entity.SlimeGirlEntity;
 import com.github.mechalopa.hmag.world.entity.SnowCanineEntity;
 import com.github.mechalopa.hmag.world.entity.SpiderNestEntity;
 import com.github.mechalopa.hmag.world.entity.StrayGirlEntity;
+import com.github.mechalopa.hmag.world.entity.SwamperEntity;
 import com.github.mechalopa.hmag.world.entity.WitherGhostEntity;
 import com.github.mechalopa.hmag.world.entity.WitherSkeletonGirlEntity;
 import com.github.mechalopa.hmag.world.entity.ZombieGirlEntity;
 import com.github.mechalopa.hmag.world.entity.projectile.EvilArrowEntity;
 import com.github.mechalopa.hmag.world.entity.projectile.HardSnowballEntity;
+import com.github.mechalopa.hmag.world.entity.projectile.InkSpitEntity;
 import com.github.mechalopa.hmag.world.entity.projectile.MagicBulletEntity;
 import com.github.mechalopa.hmag.world.entity.projectile.MagmaBulletEntity;
 import com.github.mechalopa.hmag.world.entity.projectile.PoisonSeedEntity;
@@ -190,6 +193,12 @@ public class ModEntityTypes
 	public static final RegistryObject<EntityType<GiantMummyEntity>> GIANT_MUMMY = REGISTRY.register("giant_mummy", () -> EntityType.Builder
 			.of(GiantMummyEntity::new, MobCategory.MONSTER).sized(0.9F, 2.9F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
 			.build(new ResourceLocation(HMaG.MODID, "giant_mummy").toString()));
+	public static final RegistryObject<EntityType<NightwalkerEntity>> NIGHTWALKER = REGISTRY.register("nightwalker", () -> EntityType.Builder
+			.of(NightwalkerEntity::new, MobCategory.MONSTER).sized(1.2F, 2.52F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
+			.build(new ResourceLocation(HMaG.MODID, "nightwalker").toString()));
+	public static final RegistryObject<EntityType<SwamperEntity>> SWAMPER = REGISTRY.register("swamper", () -> EntityType.Builder
+			.of(SwamperEntity::new, MobCategory.MONSTER).sized(0.9F, 1.9F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
+			.build(new ResourceLocation(HMaG.MODID, "swamper").toString()));
 
 	public static final RegistryObject<EntityType<MagicBulletEntity>> MAGIC_BULLET = REGISTRY.register("magic_bullet", () -> EntityType.Builder
 			.<MagicBulletEntity>of(MagicBulletEntity::new, MobCategory.MISC).sized(0.3215F, 0.3215F).setTrackingRange(4).setUpdateInterval(1).setShouldReceiveVelocityUpdates(true).setCustomClientFactory(MagicBulletEntity::new)
@@ -209,6 +218,9 @@ public class ModEntityTypes
 	public static final RegistryObject<EntityType<EvilArrowEntity>> EVIL_ARROW = REGISTRY.register("evil_arrow", () -> EntityType.Builder
 			.<EvilArrowEntity>of(EvilArrowEntity::new, MobCategory.MISC).sized(0.5F, 0.5F).setTrackingRange(4).setUpdateInterval(20).setShouldReceiveVelocityUpdates(true).setCustomClientFactory(EvilArrowEntity::new)
 			.build(new ResourceLocation(HMaG.MODID, "evil_arrow").toString()));
+	public static final RegistryObject<EntityType<InkSpitEntity>> INK_SPIT = REGISTRY.register("ink_spit", () -> EntityType.Builder
+			.<InkSpitEntity>of(InkSpitEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(10).setShouldReceiveVelocityUpdates(true).setCustomClientFactory(InkSpitEntity::new)
+			.build(new ResourceLocation(HMaG.MODID, "ink_spit").toString()));
 
 	@SubscribeEvent
 	public static void register(IEventBus eventBus)

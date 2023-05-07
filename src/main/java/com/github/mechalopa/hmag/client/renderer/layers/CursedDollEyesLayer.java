@@ -13,8 +13,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class CursedDollEyesLayer<T extends CursedDollEntity, M extends CursedDollModel<T>> extends EyesLayer2<T, M>
 {
-	private static final RenderType RENDER_TYPE0 = RenderType.eyes(new ResourceLocation(HMaG.MODID, "textures/entity/cursed_doll_eyes_0.png"));
-	private static final RenderType RENDER_TYPE1 = RenderType.eyes(new ResourceLocation(HMaG.MODID, "textures/entity/cursed_doll_eyes_1.png"));
+	private static final RenderType RENDER_TYPE0 = RenderType.eyes(new ResourceLocation(HMaG.MODID, "textures/entity/cursed_doll/cursed_doll_eyes_0.png"));
+	private static final RenderType RENDER_TYPE1 = RenderType.eyes(new ResourceLocation(HMaG.MODID, "textures/entity/cursed_doll/cursed_doll_eyes_1.png"));
 
 	public CursedDollEyesLayer(RenderLayerParent<T, M> renderLayerParent)
 	{

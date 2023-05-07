@@ -520,5 +520,85 @@
       }
     ],
     "subtitle": "subtitles.hmag.entity.giant_mummy.hurt"
+  },
+  "entity.swamper.ambient": {
+    "sounds": [
+      {
+        "name": "minecraft:entity/squid/ambient1",
+        "pitch": 0.9
+      },
+      {
+        "name": "minecraft:entity/squid/ambient2",
+        "pitch": 0.9
+      },
+      {
+        "name": "minecraft:entity/squid/ambient3",
+        "pitch": 0.9
+      },
+      {
+        "name": "minecraft:entity/squid/ambient4",
+        "pitch": 0.9
+      },
+      {
+        "name": "minecraft:entity/squid/ambient5",
+        "pitch": 0.9
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.swamper.ambient"
+  },
+  "entity.swamper.death": {
+    "sounds": [
+      {
+        "name": "minecraft:entity/squid/death1",
+        "pitch": 0.9
+      },
+      {
+        "name": "minecraft:entity/squid/death2",
+        "pitch": 0.9
+      },
+      {
+        "name": "minecraft:entity/squid/death3",
+        "pitch": 0.9
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.swamper.death"
+  },
+  "entity.swamper.hurt": {
+    "sounds": [
+      {
+        "name": "minecraft:entity/squid/hurt1",
+        "pitch": 0.9
+      },
+      {
+        "name": "minecraft:entity/squid/hurt2",
+        "pitch": 0.9
+      },
+      {
+        "name": "minecraft:entity/squid/hurt3",
+        "pitch": 0.9
+      },
+      {
+        "name": "minecraft:entity/squid/hurt4",
+        "pitch": 0.9
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.swamper.hurt"
+  },
+  "entity.swamper.squirt": {
+    "sounds": [
+      {
+        "name": "minecraft:entity/squid/squirt1",
+        "pitch": 0.9
+      },
+      {
+        "name": "minecraft:entity/squid/squirt2",
+        "pitch": 0.9
+      },
+      {
+        "name": "minecraft:entity/squid/squirt3",
+        "pitch": 0.9
+      }
+    ],
+    "subtitle": "subtitles.hmag.entity.swamper.squirt"
   }
 }

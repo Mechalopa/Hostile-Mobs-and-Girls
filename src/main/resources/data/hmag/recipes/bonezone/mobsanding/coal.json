@@ -1,0 +1,14 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "bonezone"
+    }
+  ],
+  "type": "bonezone:mobsanding",
+  "condition": "hmag:wither_skeleton_girl",
+  "drops": {
+    "result": "minecraft:coal",
+    "chance": 0.05
+  }
+}

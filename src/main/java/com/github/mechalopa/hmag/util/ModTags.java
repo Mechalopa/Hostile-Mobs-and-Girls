@@ -41,6 +41,7 @@ public class ModTags
 	public static final TagKey<EntityType<?>> ENDER_EXECUTOR_REPLACEABLES = createEntityTypeTag("ender_executor_replaceables");
 	public static final TagKey<EntityType<?>> HARD_SNOWBALL_HURTS_EXTRA_TYPES = createEntityTypeTag("hard_snowball_hurts_extra_types");
 	public static final TagKey<EntityType<?>> HUSK_GIRL_REPLACEABLES = createEntityTypeTag("husk_girl_replaceables");
+	public static final TagKey<EntityType<?>> INK_SPIT_IMMUNE = createEntityTypeTag("ink_spit_immune");
 	public static final TagKey<EntityType<?>> KASHA_TARGETS = createEntityTypeTag("kasha_targets");
 	public static final TagKey<EntityType<?>> KASHA_TARGETS_BABY_ONLY = createEntityTypeTag("kasha_targets_baby_only");
 	public static final TagKey<EntityType<?>> MELTY_MONSTER_AVOID_MOBS = createEntityTypeTag("melty_monster_avoid_mobs");
@@ -62,6 +63,7 @@ public class ModTags
 	public static final TagKey<Biome> IS_SANDY = createBiomeTag("is_sandy");
 	public static final TagKey<Biome> IS_SAVANNA = createBiomeTag("is_savanna");
 	public static final TagKey<Biome> NO_MOB_REPLACEMENTS = createBiomeTag("no_mob_replacements");
+	public static final TagKey<Biome> SUFFOCATES_SWAMPERS_BLACKLIST = createBiomeTag("suffocates_swampers_blacklist");
 
 	public static final TagKey<Structure> GIANT_MUMMIES_SPAWN_IN = createStructureTag("giant_mummies_spawn_in");
 	public static final TagKey<Structure> MONOLITHS_SPAWN_IN = createStructureTag("monoliths_spawn_in");

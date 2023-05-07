@@ -22,6 +22,7 @@ import com.github.mechalopa.hmag.client.model.GlaryadModel;
 import com.github.mechalopa.hmag.client.model.HarpyModel;
 import com.github.mechalopa.hmag.client.model.HornetModel;
 import com.github.mechalopa.hmag.client.model.ImpModel;
+import com.github.mechalopa.hmag.client.model.InkSpitModel;
 import com.github.mechalopa.hmag.client.model.JackFrostModel;
 import com.github.mechalopa.hmag.client.model.JiangshiModel;
 import com.github.mechalopa.hmag.client.model.KashaModel;
@@ -32,6 +33,7 @@ import com.github.mechalopa.hmag.client.model.MeltyMonsterModel;
 import com.github.mechalopa.hmag.client.model.ModShieldModel;
 import com.github.mechalopa.hmag.client.model.MonolithModel;
 import com.github.mechalopa.hmag.client.model.NecroticReaperModel;
+import com.github.mechalopa.hmag.client.model.NightwalkerModel;
 import com.github.mechalopa.hmag.client.model.OgreModel;
 import com.github.mechalopa.hmag.client.model.RedcapModel;
 import com.github.mechalopa.hmag.client.model.SavagefangModel;
@@ -41,8 +43,11 @@ import com.github.mechalopa.hmag.client.model.SkeletonGirlModel;
 import com.github.mechalopa.hmag.client.model.SlimeGirlModel;
 import com.github.mechalopa.hmag.client.model.SnowCanineModel;
 import com.github.mechalopa.hmag.client.model.SpiderNestModel;
+import com.github.mechalopa.hmag.client.model.SwamperModel;
 import com.github.mechalopa.hmag.client.model.ZombieGirlModel;
 import com.github.mechalopa.hmag.client.particle.EnchantmentRuneParticle;
+import com.github.mechalopa.hmag.client.particle.NightwalkerBulletParticle;
+import com.github.mechalopa.hmag.client.particle.SuspendedTownParticle2;
 import com.github.mechalopa.hmag.client.renderer.AlrauneRenderer;
 import com.github.mechalopa.hmag.client.renderer.BansheeRenderer;
 import com.github.mechalopa.hmag.client.renderer.CatoblepasRenderer;
@@ -65,6 +70,7 @@ import com.github.mechalopa.hmag.client.renderer.HarpyRenderer;
 import com.github.mechalopa.hmag.client.renderer.HornetRenderer;
 import com.github.mechalopa.hmag.client.renderer.HuskGirlRenderer;
 import com.github.mechalopa.hmag.client.renderer.ImpRenderer;
+import com.github.mechalopa.hmag.client.renderer.InkSpitRenderer;
 import com.github.mechalopa.hmag.client.renderer.JackFrostRenderer;
 import com.github.mechalopa.hmag.client.renderer.JiangshiRenderer;
 import com.github.mechalopa.hmag.client.renderer.KashaRenderer;
@@ -77,6 +83,7 @@ import com.github.mechalopa.hmag.client.renderer.MeltyMonsterRenderer;
 import com.github.mechalopa.hmag.client.renderer.ModThrownItemRenderer;
 import com.github.mechalopa.hmag.client.renderer.MonolithRenderer;
 import com.github.mechalopa.hmag.client.renderer.NecroticReaperRenderer;
+import com.github.mechalopa.hmag.client.renderer.NightwalkerRenderer;
 import com.github.mechalopa.hmag.client.renderer.OgreRenderer;
 import com.github.mechalopa.hmag.client.renderer.RedcapRenderer;
 import com.github.mechalopa.hmag.client.renderer.SavagefangRenderer;
@@ -86,6 +93,7 @@ import com.github.mechalopa.hmag.client.renderer.SlimeGirlRenderer;
 import com.github.mechalopa.hmag.client.renderer.SnowCanineRenderer;
 import com.github.mechalopa.hmag.client.renderer.SpiderNestRenderer;
 import com.github.mechalopa.hmag.client.renderer.StrayGirlRenderer;
+import com.github.mechalopa.hmag.client.renderer.SwamperRenderer;
 import com.github.mechalopa.hmag.client.renderer.WitherGhostRenderer;
 import com.github.mechalopa.hmag.client.renderer.WitherSkeletonGirlRenderer;
 import com.github.mechalopa.hmag.client.renderer.ZombieGirlRenderer;
@@ -186,6 +194,8 @@ public class ModClientEventBusSubscriber
 		event.registerEntityRenderer(ModEntityTypes.GLARYAD.get(), GlaryadRenderer::new);
 		event.registerEntityRenderer(ModEntityTypes.JIANGSHI.get(), JiangshiRenderer::new);
 		event.registerEntityRenderer(ModEntityTypes.GIANT_MUMMY.get(), GiantMummyRenderer::new);
+		event.registerEntityRenderer(ModEntityTypes.NIGHTWALKER.get(), NightwalkerRenderer::new);
+		event.registerEntityRenderer(ModEntityTypes.SWAMPER.get(), SwamperRenderer::new);
 
 		event.registerEntityRenderer(ModEntityTypes.MAGIC_BULLET.get(), MagicBulletRenderer::new);
 		event.registerEntityRenderer(ModEntityTypes.HARD_SNOWBALL.get(), ModThrownItemRenderer::new);
@@ -195,6 +205,7 @@ public class ModClientEventBusSubscriber
 		});
 		event.registerEntityRenderer(ModEntityTypes.MAGMA_BULLET.get(), MagmaBulletRenderer::new);
 		event.registerEntityRenderer(ModEntityTypes.EVIL_ARROW.get(), EvilArrowRenderer::new);
+		event.registerEntityRenderer(ModEntityTypes.INK_SPIT.get(), InkSpitRenderer::new);
 	}
 
 	@SubscribeEvent
@@ -269,6 +280,10 @@ public class ModClientEventBusSubscriber
 		event.registerLayerDefinition(ModModelLayers.GLARYAD, GlaryadModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.JIANGSHI, JiangshiModel::createBodyLayer);
 		event.registerLayerDefinition(ModModelLayers.GIANT_MUMMY, GiantMummyModel::createBodyLayer);
+		event.registerLayerDefinition(ModModelLayers.NIGHTWALKER, NightwalkerModel::createBodyLayer);
+		event.registerLayerDefinition(ModModelLayers.SWAMPER, SwamperModel::createBodyLayer);
+
+		event.registerLayerDefinition(ModModelLayers.INK_SPIT, InkSpitModel::createBodyLayer);
 
 		event.registerLayerDefinition(ModModelLayers.ANCIENT_SHIELD, ModShieldModel::createLayer);
 		event.registerLayerDefinition(ModModelLayers.FORTRESS_SHIELD, ModShieldModel::createLayer);
@@ -279,5 +294,7 @@ public class ModClientEventBusSubscriber
 	{
 		event.register(ModParticleTypes.ENCHANTMENT_RUNE.get(), EnchantmentRuneParticle.Provider::new);
 		event.register(ModParticleTypes.NEMESIS_FLAME.get(), FlameParticle.Provider::new);
+		event.register(ModParticleTypes.NIGHTWALKER.get(), SuspendedTownParticle2.NightwalkerParticleProvider::new);
+		event.register(ModParticleTypes.NIGHTWALKER_BULLET.get(), NightwalkerBulletParticle.Provider::new);
 	}
 }

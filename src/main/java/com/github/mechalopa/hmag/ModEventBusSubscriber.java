@@ -36,6 +36,7 @@ import com.github.mechalopa.hmag.world.entity.MagicalSlimeEntity;
 import com.github.mechalopa.hmag.world.entity.MeltyMonsterEntity;
 import com.github.mechalopa.hmag.world.entity.MonolithEntity;
 import com.github.mechalopa.hmag.world.entity.NecroticReaperEntity;
+import com.github.mechalopa.hmag.world.entity.NightwalkerEntity;
 import com.github.mechalopa.hmag.world.entity.OgreEntity;
 import com.github.mechalopa.hmag.world.entity.RedcapEntity;
 import com.github.mechalopa.hmag.world.entity.SavagefangEntity;
@@ -45,6 +46,7 @@ import com.github.mechalopa.hmag.world.entity.SlimeGirlEntity;
 import com.github.mechalopa.hmag.world.entity.SnowCanineEntity;
 import com.github.mechalopa.hmag.world.entity.SpiderNestEntity;
 import com.github.mechalopa.hmag.world.entity.StrayGirlEntity;
+import com.github.mechalopa.hmag.world.entity.SwamperEntity;
 import com.github.mechalopa.hmag.world.entity.WitherGhostEntity;
 import com.github.mechalopa.hmag.world.entity.WitherSkeletonGirlEntity;
 import com.github.mechalopa.hmag.world.entity.ZombieGirlEntity;
@@ -225,6 +227,8 @@ public class ModEventBusSubscriber
 		event.register(ModEntityTypes.GLARYAD.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, GlaryadEntity::checkGlaryadSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
 		event.register(ModEntityTypes.JIANGSHI.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
 		event.register(ModEntityTypes.GIANT_MUMMY.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, GiantMummyEntity::checkGiantMummySpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.NIGHTWALKER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(ModEntityTypes.SWAMPER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ModSpawnRules::checkSurfaceMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
 	}
 
 	@SubscribeEvent
@@ -272,6 +276,8 @@ public class ModEventBusSubscriber
 		event.put(ModEntityTypes.GLARYAD.get(), GlaryadEntity.createAttributes().build());
 		event.put(ModEntityTypes.JIANGSHI.get(), JiangshiEntity.createAttributes().build());
 		event.put(ModEntityTypes.GIANT_MUMMY.get(), GiantMummyEntity.createAttributes().build());
+		event.put(ModEntityTypes.NIGHTWALKER.get(), NightwalkerEntity.createAttributes().build());
+		event.put(ModEntityTypes.SWAMPER.get(), SwamperEntity.createAttributes().build());
 	}
 
 	private static void registerBrewingRecipe(Potion inputPotion, Item item, Potion outputPotion)

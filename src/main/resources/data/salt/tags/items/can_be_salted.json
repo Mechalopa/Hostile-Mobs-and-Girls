@@ -2,7 +2,9 @@
   "replace": false,
   "values": [
     "hmag:bat_stew",
+    "hmag:swampy_stew",
     "hmag:spectral_soup",
+    "hmag:cooked_swamper_tentacle",
     "hmag:cooked_ravager_meat"
   ]
 }

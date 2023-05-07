@@ -15,7 +15,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class GhastlySeekerLayer extends AbstractClothingLayer<GhastlySeekerEntity, GhastlySeekerModel<GhastlySeekerEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/ghastly_seeker_overlay.png");
+	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/ghastly_seeker/ghastly_seeker_overlay.png");
 	private final GhastlySeekerModel<GhastlySeekerEntity> model;
 
 	public GhastlySeekerLayer(RenderLayerParent<GhastlySeekerEntity, GhastlySeekerModel<GhastlySeekerEntity>> renderLayerParent, EntityModelSet modelSet)

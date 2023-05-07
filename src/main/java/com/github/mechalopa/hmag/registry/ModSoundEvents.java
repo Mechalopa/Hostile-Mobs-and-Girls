@@ -48,6 +48,10 @@ public class ModSoundEvents
 	public static final RegistryObject<SoundEvent> GIANT_MUMMY_AMBIENT = createSoundEvent("entity.giant_mummy.ambient");
 	public static final RegistryObject<SoundEvent> GIANT_MUMMY_HURT = createSoundEvent("entity.giant_mummy.hurt");
 	public static final RegistryObject<SoundEvent> GIANT_MUMMY_DEATH = createSoundEvent("entity.giant_mummy.death");
+	public static final RegistryObject<SoundEvent> SWAMPER_AMBIENT = createSoundEvent("entity.swamper.ambient");
+	public static final RegistryObject<SoundEvent> SWAMPER_HURT = createSoundEvent("entity.swamper.hurt");
+	public static final RegistryObject<SoundEvent> SWAMPER_DEATH = createSoundEvent("entity.swamper.death");
+	public static final RegistryObject<SoundEvent> SWAMPER_SQUIRT = createSoundEvent("entity.swamper.squirt");
 
 	@SubscribeEvent
 	public static void register(IEventBus eventBus)

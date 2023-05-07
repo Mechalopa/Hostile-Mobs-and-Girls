@@ -97,6 +97,10 @@
     {
       "id": "tofucraft:tofucreeper",
       "required": false
+    },
+    {
+      "id": "enderzoology:concussion_creeper",
+      "required": false
     }
   ]
 }
