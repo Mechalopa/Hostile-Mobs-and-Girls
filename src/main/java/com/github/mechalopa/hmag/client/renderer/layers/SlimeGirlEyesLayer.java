@@ -26,9 +26,27 @@ public class SlimeGirlEyesLayer extends AbstractClothingLayer<SlimeGirlEntity, S
 	}
 
 	@Override
+	protected float getR(SlimeGirlEntity entity)
+	{
+		return (entity.getColor())[0];
+	}
+
+	@Override
+	protected float getG(SlimeGirlEntity entity)
+	{
+		return (entity.getColor())[1];
+	}
+
+	@Override
+	protected float getB(SlimeGirlEntity entity)
+	{
+		return (entity.getColor())[2];
+	}
+
+	@Override
 	protected float getAlpha(SlimeGirlEntity entity)
 	{
-		return 0.875F;
+		return 0.9375F;
 	}
 
 	@Override
