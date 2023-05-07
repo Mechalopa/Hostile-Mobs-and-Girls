@@ -9,7 +9,12 @@
         "name": "#hmag:is_swamp"
       },
       {
-        "name": "#hmag:is_wet"
+        "name": "#hmag:is_dry",
+        "negate": true
+      },
+      {
+        "name": "#hmag:is_savanna",
+        "negate": true
       },
       {
         "name": "#hmag:is_cold",

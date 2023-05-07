@@ -6,10 +6,12 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
+import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.world.entity.ai.goal.MeleeAttackGoal2;
 import com.github.mechalopa.hmag.world.entity.projectile.InkSpitEntity;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -44,6 +46,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.phys.Vec3;
@@ -142,7 +145,8 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 	private static boolean isSuffocatingBiome(Entity enity, Level level)
 	{
 		BlockPos blockpos = new BlockPos(Mth.floor(enity.getX()), Mth.floor(enity.getY()), Mth.floor(enity.getZ()));
-		return level.getBiome(blockpos).value().shouldSnowGolemBurn(blockpos);
+		Holder<Biome> holder = level.getBiome(blockpos);
+		return holder.value().shouldSnowGolemBurn(blockpos) && !holder.containsTag(ModTags.SUFFOCATES_SWAMPERS_BLACKLIST);
 	}
 
 	@Override
