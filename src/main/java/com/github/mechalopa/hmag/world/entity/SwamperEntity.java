@@ -151,7 +151,7 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 
 		if (!this.level.isClientSide)
 		{
-			if (this.getTarget() != null && this.getTarget().isAlive() && this.getTarget().getHealth() <= 1.0F && this.getHealth() <= this.getMaxHealth() / 4.0F)
+			if (!this.isSuffocating() && this.getTarget() != null && this.getTarget().isAlive() && this.getTarget().getHealth() <= 1.0F && this.getHealth() <= this.getMaxHealth() / 4.0F)
 			{
 				this.setShouldSpitTimer(Math.max(20, this.getShouldSpitTimer() - 1));
 			}
@@ -244,7 +244,7 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 
 		if (super.hurt(source, amount))
 		{
-			if (!this.level.isClientSide && !this.isNoAi() && this.getShouldSpitTimer() <= 0 && source.getDirectEntity() != null && source.getDirectEntity() instanceof LivingEntity && this.getTarget() != null && source.getDirectEntity().equals(this.getTarget()) && !this.getTarget().hasEffect(MobEffects.BLINDNESS))
+			if (!this.level.isClientSide && !this.isNoAi() && this.getShouldSpitTimer() <= 0 && !this.isSuffocating() && this.getRandom().nextInt(3) == 0 && source.getDirectEntity() != null && source.getDirectEntity() instanceof LivingEntity && this.getTarget() != null && source.getDirectEntity().equals(this.getTarget()) && !this.getTarget().hasEffect(MobEffects.BLINDNESS))
 			{
 				this.setShouldSpitTimer(60);
 			}
