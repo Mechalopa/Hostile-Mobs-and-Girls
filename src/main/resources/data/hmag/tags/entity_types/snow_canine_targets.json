@@ -58,6 +58,46 @@
     {
       "id": "minecraft_earth_mod:rocky_sheep",
       "required": false
+    },
+    {
+      "id": "earthtojavamobs:bold_striped_rabbit",
+      "required": false
+    },
+    {
+      "id": "earthtojavamobs:flecked_sheep",
+      "required": false
+    },
+    {
+      "id": "earthtojavamobs:freckled_rabbit",
+      "required": false
+    },
+    {
+      "id": "earthtojavamobs:fuzzy_sheep",
+      "required": false
+    },
+    {
+      "id": "earthtojavamobs:harelequin_rabbit",
+      "required": false
+    },
+    {
+      "id": "earthtojavamobs:muddy_foot_rabbit",
+      "required": false
+    },
+    {
+      "id": "earthtojavamobs:patched_sheep",
+      "required": false
+    },
+    {
+      "id": "earthtojavamobs:rainbow_sheep",
+      "required": false
+    },
+    {
+      "id": "earthtojavamobs:rocky_sheep",
+      "required": false
+    },
+    {
+      "id": "earthtojavamobs:vested_rabbit",
+      "required": false
     }
   ]
 }

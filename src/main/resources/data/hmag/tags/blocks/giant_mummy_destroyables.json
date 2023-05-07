@@ -1275,6 +1275,122 @@
     {
       "id": "untamedwilds:flora_yarrow",
       "required": false
+    },
+    {
+      "id": "naturalist:cattail",
+      "required": false
+    },
+    {
+      "id": "#habitat:dreadbud",
+      "required": false
+    },
+    {
+      "id": "habitat:edelweiss_shrub",
+      "required": false
+    },
+    {
+      "id": "immersive_weathering:frosty_fern",
+      "required": false
+    },
+    {
+      "id": "immersive_weathering:frosty_grass",
+      "required": false
+    },
+    {
+      "id": "immersive_weathering:hanging_roots_wall",
+      "required": false
+    },
+    {
+      "id": "immersive_weathering:ivy",
+      "required": false
+    },
+    {
+      "id": "immersive_weathering:weeds",
+      "required": false
+    },
+    {
+      "id": "spelunkery:button_mushroom",
+      "required": false
+    },
+    {
+      "id": "spelunkery:conk_fungus",
+      "required": false
+    },
+    {
+      "id": "spelunkery:crimini",
+      "required": false
+    },
+    {
+      "id": "spelunkery:inkcap_mushroom",
+      "required": false
+    },
+    {
+      "id": "spelunkery:milly_bubcap",
+      "required": false
+    },
+    {
+      "id": "spelunkery:mushgloom",
+      "required": false
+    },
+    {
+      "id": "spelunkery:phosphor_fungus",
+      "required": false
+    },
+    {
+      "id": "spelunkery:portabella",
+      "required": false
+    },
+    {
+      "id": "spelunkery:sporophyte",
+      "required": false
+    },
+    {
+      "id": "spelunkery:tall_sporophyte",
+      "required": false
+    },
+    {
+      "id": "spelunkery:tangle_roots",
+      "required": false
+    },
+    {
+      "id": "spelunkery:tangle_roots_plant",
+      "required": false
+    },
+    {
+      "id": "spelunkery:white_inkcap_mushroom",
+      "required": false
+    },
+    {
+      "id": "vinery:jungle_grape_bush_red",
+      "required": false
+    },
+    {
+      "id": "vinery:jungle_grape_bush_white",
+      "required": false
+    },
+    {
+      "id": "vinery:red_grape_bush",
+      "required": false
+    },
+    {
+      "id": "vinery:savanna_grape_bush_red",
+      "required": false
+    },
+    {
+      "id": "vinery:savanna_grape_bush_white",
+      "required": false
+    },
+    {
+      "id": "vinery:taiga_grape_bush_red",
+      "required": false
+    },
+    {
+      "id": "vinery:taiga_grape_bush_white",
+      "required": false
+    },
+    {
+      "id": "vinery:white_grape_bush",
+      "required": false
     }
   ]
 }

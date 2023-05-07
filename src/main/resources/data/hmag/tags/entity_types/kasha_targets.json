@@ -46,6 +46,38 @@
     {
       "id": "minecraft_earth_mod:stormy_chicken",
       "required": false
+    },
+    {
+      "id": "earthtojavamobs:amber_chicken",
+      "required": false
+    },
+    {
+      "id": "earthtojavamobs:bronzed_chicken",
+      "required": false
+    },
+    {
+      "id": "earthtojavamobs:cluckshroom",
+      "required": false
+    },
+    {
+      "id": "earthtojavamobs:fancy_chicken",
+      "required": false
+    },
+    {
+      "id": "earthtojavamobs:gold_crested_chicken",
+      "required": false
+    },
+    {
+      "id": "earthtojavamobs:midnight_chicken",
+      "required": false
+    },
+    {
+      "id": "earthtojavamobs:skewbald_chicken",
+      "required": false
+    },
+    {
+      "id": "earthtojavamobs:stormy_chicken",
+      "required": false
     }
   ]
 }
