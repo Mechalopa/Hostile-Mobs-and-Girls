@@ -1,10 +1,13 @@
 package com.github.mechalopa.hmag.world.item.enchantment;
 
 import com.github.mechalopa.hmag.ModConfigs;
+import com.github.mechalopa.hmag.util.ModTags;
 
+import net.minecraft.core.Holder;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class AntiAirEnchantment extends Enchantment
 {
@@ -29,6 +32,13 @@ public class AntiAirEnchantment extends Enchantment
 	public int getMaxLevel()
 	{
 		return ModConfigs.cachedServer.ANTI_AIR_MAX_LEVEL;
+	}
+
+	@Override
+	public boolean checkCompatibility(Enchantment enchantment)
+	{
+		Holder<Enchantment> holder = ForgeRegistries.ENCHANTMENTS.getHolder(enchantment).orElseThrow();
+		return super.checkCompatibility(enchantment) && !(holder != null && holder.is(ModTags.INCOMPATIBLE_WITH_ANTI_AIR));
 	}
 
 	@Override

@@ -53,6 +53,9 @@ public class ModTags
 	public static final TagKey<EntityType<?>> WITHER_SKELETON_GIRL_REPLACEABLES = createEntityTypeTag("wither_skeleton_girl_replaceables");
 	public static final TagKey<EntityType<?>> ZOMBIE_GIRL_REPLACEABLES = createEntityTypeTag("zombie_girl_replaceables");
 
+	public static final TagKey<Enchantment> INCOMPATIBLE_WITH_ANTI_AIR = createEnchantmentTag("incompatible_with_anti_air");
+	public static final TagKey<Enchantment> INCOMPATIBLE_WITH_HEALTH_BOOST = createEnchantmentTag("incompatible_with_health_boost");
+	public static final TagKey<Enchantment> INCOMPATIBLE_WITH_WATER_ASPECT = createEnchantmentTag("incompatible_with_water_aspect");
 	public static final TagKey<Enchantment> UNREMOVABLE_CURSES = createEnchantmentTag("unremovable_curses");
 
 	public static final TagKey<MobEffect> RANDOMBERRY_GIVES = createMobEffectTag("randomberry_gives");

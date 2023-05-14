@@ -61,7 +61,7 @@ public class RemoveCurseRecipe extends UpgradeRecipe
 		{
 			Holder<Enchantment> holder = ForgeRegistries.ENCHANTMENTS.getHolder(enchantment).orElseThrow();
 
-			if (holder != null && !holder.is(ModTags.UNREMOVABLE_CURSES))
+			if (!(holder != null && holder.is(ModTags.UNREMOVABLE_CURSES)))
 			{
 				return true;
 			}
