@@ -3,7 +3,7 @@
   "pattern": [
     "YXY",
     "E#E",
-    "SNS"
+    "SSS"
   ],
   "key": {
     "#": {
@@ -16,10 +16,7 @@
       "item": "minecraft:sculk_catalyst"
     },
     "X": {
-      "item": "hmag:evil_crystal_block"
-    },
-    "N": {
-      "tag": "forge:nether_stars"
+      "item": "hmag:evil_crystal"
     },
     "Y": {
       "item": "hmag:necrofiber"
