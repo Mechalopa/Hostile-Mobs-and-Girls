@@ -6,6 +6,8 @@ import java.util.List;
 
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.util.ModTags;
+import com.github.mechalopa.hmag.world.item.EnchantmentUpgradeItem;
+import com.github.mechalopa.hmag.world.item.EnchantmentUpgradeItem.Properties.EnchantmentUpgradeProp;
 import com.github.mechalopa.hmag.world.item.crafting.EnchantmentUpgradeRecipe;
 import com.github.mechalopa.hmag.world.item.crafting.RemoveCurseRecipe;
 import com.github.mechalopa.hmag.world.item.crafting.SuspiciousStewUpgradeRecipe;
@@ -74,6 +76,7 @@ public class JEIPlugin implements IModPlugin
 		List<CraftingRecipe> shapelessRecipes = new ArrayList<CraftingRecipe>();
 		boolean flag = false;
 		boolean flag1 = false;
+		boolean flag2 = false;
 
 		for (Recipe<?> recipe : recipes)
 		{
@@ -118,38 +121,71 @@ public class JEIPlugin implements IModPlugin
 						}
 					}
 				}
-				else if (recipe instanceof EnchantmentUpgradeRecipe)
+				else if (recipe instanceof EnchantmentUpgradeRecipe && !flag1)
 				{
-					EnchantmentUpgradeRecipe enchantmentUpgradeRecipe = (EnchantmentUpgradeRecipe)recipe;
-					Enchantment enchantment = enchantmentUpgradeRecipe.getEnchantment();
+					flag1 = true;
+					Ingredient ingredient = Ingredient.of(ModTags.ENCHANTMENT_UPGRADE_ITEMS);
 
-					if (enchantment != null)
+					if (!ingredient.isEmpty())
 					{
-						ItemStack stack1 = getEnchantableItemStack(registration, items, enchantment, ModTags.ENCHANTMENT_NOT_UPGRADEABLES);
+						int i = 0;
 
-						if (!stack1.isEmpty())
+						for (ItemStack stack : ingredient.getItems())
 						{
-							for (int i = enchantmentUpgradeRecipe.getMinLevel(); i <= enchantmentUpgradeRecipe.getMaxLevel(); ++i)
+							if (stack != null && !stack.isEmpty() && stack.getItem() != null && stack.getItem() instanceof EnchantmentUpgradeItem)
 							{
-								ResourceLocation id = new ResourceLocation(HMaG.MODID, "jei." + enchantmentUpgradeRecipe.getId().getPath() + "." + i);
-								ItemStack stack2 = stack1.copy();
-								ItemStack stack3 = stack1.copy();
+								Item item = stack.getItem();
+								final List<EnchantmentUpgradeProp> eups = ((EnchantmentUpgradeItem)item).getEnchantmentUpgradeProps();
 
-								if (i > 0)
+								if (!eups.isEmpty())
 								{
-									EnchantmentHelper.setEnchantments(ImmutableMap.of(enchantment, i), stack2);
-								}
+									int j = 0;
 
-								EnchantmentHelper.setEnchantments(ImmutableMap.of(enchantment, i + 1), stack3);
-								UpgradeRecipe recipe2 = new UpgradeRecipe(id, Ingredient.of(stack2), enchantmentUpgradeRecipe.getAddition(), stack3);
-								smithingRecipes.add(recipe2);
+									for (EnchantmentUpgradeProp eup : eups)
+									{
+										if (eup != null)
+										{
+											Enchantment enchantment = eup.getEnchantment();
+
+											if (enchantment != null)
+											{
+												final int minLevel = eup.getMinLevel();
+												final int maxLevel = eup.getMaxLevel();
+												ItemStack stack1 = getEnchantableItemStack(registration, items, enchantment, ModTags.ENCHANTMENT_NOT_UPGRADEABLES);
+
+												if (!stack1.isEmpty())
+												{
+													for (int k = minLevel; k <= maxLevel; ++k)
+													{
+														ResourceLocation id = new ResourceLocation(HMaG.MODID, "jei." + recipe.getId().getPath() + "." + i + "." + j + "." + k);
+														ItemStack stack2 = stack1.copy();
+														ItemStack stack3 = stack1.copy();
+
+														if (k > 0)
+														{
+															EnchantmentHelper.setEnchantments(ImmutableMap.of(enchantment, k), stack2);
+														}
+
+														EnchantmentHelper.setEnchantments(ImmutableMap.of(enchantment, k + 1), stack3);
+														UpgradeRecipe recipe2 = new UpgradeRecipe(id, Ingredient.of(stack2), Ingredient.of(item), stack3);
+														smithingRecipes.add(recipe2);
+													}
+
+													++j;
+												}
+											}
+										}
+									}
+
+									++i;
+								}
 							}
 						}
 					}
 				}
-				else if (recipe instanceof SuspiciousStewUpgradeRecipe && !flag1)
+				else if (recipe instanceof SuspiciousStewUpgradeRecipe && !flag2)
 				{
-					flag1 = true;
+					flag2 = true;
 					Ingredient ingredient = Ingredient.of(ModTags.SUSPICIOUS_STEW_UPGRADE_ITEMS);
 
 					if (!ingredient.isEmpty())
@@ -163,6 +199,11 @@ public class JEIPlugin implements IModPlugin
 						ShapelessRecipe recipe3 = new ShapelessRecipe(id, group, output, inputs);
 						shapelessRecipes.add(recipe3);
 					}
+				}
+
+				if (flag && flag1 && flag2)
+				{
+					break;
 				}
 			}
 		}
