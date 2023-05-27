@@ -4,11 +4,13 @@ import javax.annotation.Nonnull;
 
 import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
+import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.world.entity.ai.goal.RangedAttackGoal2;
 import com.github.mechalopa.hmag.world.entity.projectile.HardSnowballEntity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -16,6 +18,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -33,6 +36,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -78,12 +82,7 @@ public class JackFrostEntity extends Monster implements RangedAttackMob
 
 		if (!this.level.isClientSide)
 		{
-			int i = Mth.floor(this.getX());
-			int j = Mth.floor(this.getY());
-			int k = Mth.floor(this.getZ());
-			BlockPos blockpos = new BlockPos(i, j, k);
-
-			if (this.level.getBiome(blockpos).value().shouldSnowGolemBurn(blockpos))
+			if (isMeltingBiome(this, this.level))
 			{
 				this.hurt(DamageSource.ON_FIRE, 1.0F);
 			}
@@ -93,24 +92,24 @@ public class JackFrostEntity extends Monster implements RangedAttackMob
 				{
 					BlockState blockstate = Blocks.FROSTED_ICE.defaultBlockState();
 					float f = 2.0F;
-					BlockPos blockpos1 = this.blockPosition();
+					BlockPos blockpos = this.blockPosition();
 					BlockPos.MutableBlockPos blockpos$mutable = new BlockPos.MutableBlockPos();
 
-					for (BlockPos blockpos2 : BlockPos.betweenClosed(blockpos1.offset((-f), -1.0D, (-f)), blockpos1.offset(f, -1.0D, f)))
+					for (BlockPos blockpos1 : BlockPos.betweenClosed(blockpos.offset((-f), -1.0D, (-f)), blockpos.offset(f, -1.0D, f)))
 					{
-						if (blockpos2.closerToCenterThan(this.position(), f))
+						if (blockpos1.closerToCenterThan(this.position(), f))
 						{
-							blockpos$mutable.set(blockpos2.getX(), blockpos2.getY() + 1, blockpos2.getZ());
+							blockpos$mutable.set(blockpos1.getX(), blockpos1.getY() + 1, blockpos1.getZ());
 
 							if (this.level.isEmptyBlock(blockpos$mutable))
 							{
-								BlockState blockstate1 = level.getBlockState(blockpos2);
+								BlockState blockstate1 = level.getBlockState(blockpos1);
 								boolean isFull = blockstate1.getBlock() == Blocks.WATER && blockstate1.getValue(LiquidBlock.LEVEL) == 0;
 
-								if (blockstate1.getMaterial() == Material.WATER && isFull && blockstate.canSurvive(level, blockpos2) && level.isUnobstructed(blockstate, blockpos2, CollisionContext.empty()) && !ForgeEventFactory.onBlockPlace(this, BlockSnapshot.create(level.dimension(), level, blockpos2), Direction.UP))
+								if (blockstate1.getMaterial() == Material.WATER && isFull && blockstate.canSurvive(level, blockpos1) && level.isUnobstructed(blockstate, blockpos1, CollisionContext.empty()) && !ForgeEventFactory.onBlockPlace(this, BlockSnapshot.create(level.dimension(), level, blockpos1), Direction.UP))
 								{
-									this.level.setBlockAndUpdate(blockpos2, blockstate);
-									this.level.scheduleTick(blockpos2, Blocks.FROSTED_ICE, Mth.nextInt(this.getRandom(), 60, 120));
+									this.level.setBlockAndUpdate(blockpos1, blockstate);
+									this.level.scheduleTick(blockpos1, Blocks.FROSTED_ICE, Mth.nextInt(this.getRandom(), 60, 120));
 								}
 							}
 						}
@@ -118,6 +117,13 @@ public class JackFrostEntity extends Monster implements RangedAttackMob
 				}
 			}
 		}
+	}
+
+	private static boolean isMeltingBiome(Entity enity, Level level)
+	{
+		BlockPos blockpos = new BlockPos(Mth.floor(enity.getX()), Mth.floor(enity.getY()), Mth.floor(enity.getZ()));
+		Holder<Biome> holder = level.getBiome(blockpos);
+		return holder.value().shouldSnowGolemBurn(blockpos) && !holder.containsTag(ModTags.MELTS_JACK_FROSTS_BLACKLIST);
 	}
 
 	@Override

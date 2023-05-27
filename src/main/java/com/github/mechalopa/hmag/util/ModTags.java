@@ -60,6 +60,7 @@ public class ModTags
 
 	public static final TagKey<MobEffect> RANDOMBERRY_GIVES = createMobEffectTag("randomberry_gives");
 
+	public static final TagKey<Biome> MELTS_JACK_FROSTS_BLACKLIST = createBiomeTag("melts_jack_frosts_blacklist");
 	public static final TagKey<Biome> IS_BADLANDS = createBiomeTag("is_badlands");
 	public static final TagKey<Biome> IS_COLD = createBiomeTag("is_cold");
 	public static final TagKey<Biome> IS_PLAINS = createBiomeTag("is_plains");
