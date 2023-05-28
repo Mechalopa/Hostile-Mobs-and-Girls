@@ -34,7 +34,7 @@ public abstract class AbstractFlyingMonsterEntity extends Monster
 	public AbstractFlyingMonsterEntity(EntityType<? extends AbstractFlyingMonsterEntity> type, Level level)
 	{
 		super(type, level);
-		this.moveControl = new AbstractFlyingMonsterEntity.MoveHelperController(this);
+		this.moveControl = new AbstractFlyingMonsterEntity.FlyingMonsterMoveControl(this);
 	}
 
 	@Override
@@ -66,7 +66,7 @@ public abstract class AbstractFlyingMonsterEntity extends Monster
 		}
 		else
 		{
-			if (!this.level.isClientSide && source.getEntity() instanceof LivingEntity && this.isCharging() && this.getRandom().nextInt(3) == 0)
+			if (!this.level.isClientSide && !this.isNoAi() && source.getEntity() instanceof LivingEntity && this.isCharging() && this.getRandom().nextInt(3) == 0)
 			{
 				this.setAttackPhase(1);
 			}
@@ -245,9 +245,9 @@ public abstract class AbstractFlyingMonsterEntity extends Monster
 		}
 	}
 
-	protected class MoveHelperController extends MoveControl
+	protected class FlyingMonsterMoveControl extends MoveControl
 	{
-		public MoveHelperController(AbstractFlyingMonsterEntity mob)
+		public FlyingMonsterMoveControl(AbstractFlyingMonsterEntity mob)
 		{
 			super(mob);
 		}
