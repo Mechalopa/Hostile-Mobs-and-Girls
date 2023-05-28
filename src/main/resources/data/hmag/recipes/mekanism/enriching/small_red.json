@@ -1,0 +1,18 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "type": "mekanism:enriching",
+  "input": {
+    "ingredient": {
+      "item": "hmag:cureberry"
+    }
+  },
+  "output": {
+    "count": 2,
+    "item": "minecraft:red_dye"
+  }
+}

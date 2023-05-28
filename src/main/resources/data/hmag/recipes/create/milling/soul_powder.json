@@ -1,0 +1,28 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "create:milling",
+  "ingredients": [
+    {
+      "item": "hmag:soul_powder"
+    }
+  ],
+  "processingTime": 50,
+  "results": [
+    {
+      "item": "minecraft:light_blue_dye"
+    },
+    {
+      "chance": 0.5,
+      "item": "minecraft:cyan_dye"
+    },
+    {
+      "chance": 0.1,
+      "item": "minecraft:light_blue_dye"
+    }
+  ]
+}

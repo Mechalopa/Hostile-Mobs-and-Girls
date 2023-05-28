@@ -3,7 +3,7 @@
   "group": "red_dye",
   "ingredients": [
     {
-      "tag": "forge:crops/cureberry"
+      "item": "hmag:cureberry"
     }
   ],
   "result": {

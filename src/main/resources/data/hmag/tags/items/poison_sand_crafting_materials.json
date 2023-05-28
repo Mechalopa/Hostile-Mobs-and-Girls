@@ -10,6 +10,10 @@
     {
       "id": "urushi:lycoris",
       "required": false
+    },
+    {
+      "id": "evilcraft:poison_sac",
+      "required": false
     }
   ]
 }

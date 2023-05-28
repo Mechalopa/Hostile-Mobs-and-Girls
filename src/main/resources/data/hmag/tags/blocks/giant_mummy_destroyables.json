@@ -1391,6 +1391,22 @@
     {
       "id": "vinery:white_grape_bush",
       "required": false
+    },
+    {
+      "id": "beachparty:beach_grass",
+      "required": false
+    },
+    {
+      "id": "beachparty:dry_bush",
+      "required": false
+    },
+    {
+      "id": "beachparty:dry_bush_tall",
+      "required": false
+    },
+    {
+      "id": "dolt_compat:glowshroom_colony",
+      "required": false
     }
   ]
 }

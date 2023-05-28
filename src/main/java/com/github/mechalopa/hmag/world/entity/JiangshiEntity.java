@@ -90,7 +90,7 @@ public class JiangshiEntity extends Monster
 	@Override
 	protected void registerGoals()
 	{
-		this.goalSelector.addGoal(2, new LeapGoal(this));
+		this.goalSelector.addGoal(2, new JiangshiEntity.LeapGoal(this));
 		this.goalSelector.addGoal(3, new MeleeAttackGoal2(this, 1.0D, false).useRaiseArm());
 		this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
 		this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
