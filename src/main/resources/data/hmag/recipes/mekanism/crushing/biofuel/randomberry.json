@@ -1,0 +1,22 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "mekanism:bio_fuel"
+    }
+  ],
+  "type": "mekanism:crushing",
+  "input": {
+    "ingredient": {
+      "item": "hmag:randomberry"
+    }
+  },
+  "output": {
+    "count": 2,
+    "item": "mekanism:bio_fuel"
+  }
+}

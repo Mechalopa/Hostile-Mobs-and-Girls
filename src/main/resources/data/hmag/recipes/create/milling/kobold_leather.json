@@ -1,0 +1,29 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "create:milling",
+  "ingredients": [
+    {
+      "item": "hmag:kobold_leather"
+    }
+  ],
+  "processingTime": 200,
+  "results": [
+    {
+      "count": 5,
+      "item": "minecraft:blue_dye"
+    },
+    {
+      "chance": 0.1,
+      "item": "minecraft:blue_dye"
+    },
+    {
+      "chance": 0.1,
+      "item": "minecraft:blue_dye"
+    }
+  ]
+}
