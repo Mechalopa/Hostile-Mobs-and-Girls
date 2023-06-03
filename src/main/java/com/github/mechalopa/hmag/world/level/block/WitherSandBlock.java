@@ -4,7 +4,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -33,7 +32,7 @@ public class WitherSandBlock extends SoulSandBlock
 		{
 			LivingEntity livingentity = (LivingEntity)entity;
 
-			if (!livingentity.isInvulnerableTo(DamageSource.WITHER))
+			if (!livingentity.isInvulnerableTo(level.damageSources().wither()))
 			{
 				livingentity.addEffect(new MobEffectInstance(MobEffects.WITHER, 2 * 20, 0));
 			}

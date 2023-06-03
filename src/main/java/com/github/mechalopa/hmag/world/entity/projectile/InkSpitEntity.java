@@ -10,7 +10,6 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.Difficulty;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -122,7 +121,7 @@ public class InkSpitEntity extends Projectile
 
 			if (!entity1.getType().is(ModTags.INK_SPIT_IMMUNE))
 			{
-				boolean flag = entity1.hurt(DamageSource.indirectMobAttack(this, livingEntity).setProjectile(), this.getDamage());
+				boolean flag = entity1.hurt(this.damageSources().mobProjectile(this, livingEntity), this.getDamage());
 
 				if (flag && entity1 instanceof LivingEntity)
 				{

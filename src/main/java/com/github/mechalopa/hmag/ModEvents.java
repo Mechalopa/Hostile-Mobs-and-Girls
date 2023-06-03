@@ -24,6 +24,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
@@ -93,7 +94,7 @@ public class ModEvents
 			LivingEntity livingentity = event.getEntity();
 			DamageSource source = event.getSource();
 
-			if (!event.getSource().isProjectile())
+			if (!event.getSource().is(DamageTypeTags.IS_PROJECTILE))
 			{
 				if (source.getEntity() != null && source.getEntity() instanceof LivingEntity)
 				{
@@ -177,7 +178,7 @@ public class ModEvents
 
 		if (event.getEntity() != null && event.getSource() != null)
 		{
-			if (event.getSource().isFire())
+			if (event.getSource().is(DamageTypeTags.IS_FIRE))
 			{
 				if (!event.getEntity().getUseItem().isEmpty() && event.getEntity().getUseItem().getItem() == ModItems.FORTRESS_SHIELD.get())
 				{

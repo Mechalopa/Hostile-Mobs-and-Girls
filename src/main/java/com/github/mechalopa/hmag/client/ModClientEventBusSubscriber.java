@@ -292,9 +292,9 @@ public class ModClientEventBusSubscriber
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public static void registerParticleProviders(final RegisterParticleProvidersEvent event)
 	{
-		event.register(ModParticleTypes.ENCHANTMENT_RUNE.get(), EnchantmentRuneParticle.Provider::new);
-		event.register(ModParticleTypes.NEMESIS_FLAME.get(), FlameParticle.Provider::new);
-		event.register(ModParticleTypes.NIGHTWALKER.get(), SuspendedTownParticle2.NightwalkerParticleProvider::new);
-		event.register(ModParticleTypes.NIGHTWALKER_BULLET.get(), NightwalkerBulletParticle.Provider::new);
+		event.registerSpriteSet(ModParticleTypes.ENCHANTMENT_RUNE.get(), EnchantmentRuneParticle.Provider::new);
+		event.registerSpriteSet(ModParticleTypes.NEMESIS_FLAME.get(), FlameParticle.Provider::new);
+		event.registerSpriteSet(ModParticleTypes.NIGHTWALKER.get(), SuspendedTownParticle2.NightwalkerParticleProvider::new);
+		event.registerSpriteSet(ModParticleTypes.NIGHTWALKER_BULLET.get(), NightwalkerBulletParticle.Provider::new);
 	}
 }

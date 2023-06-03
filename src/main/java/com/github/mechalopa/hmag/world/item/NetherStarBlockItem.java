@@ -1,5 +1,6 @@
 package com.github.mechalopa.hmag.world.item;
 
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -15,6 +16,6 @@ public class NetherStarBlockItem extends BlockItem
 	@Override
 	public boolean canBeHurtBy(DamageSource damageSource)
 	{
-		return damageSource.isExplosion() ? false : super.canBeHurtBy(damageSource);
+		return damageSource.is(DamageTypeTags.IS_EXPLOSION) ? false : super.canBeHurtBy(damageSource);
 	}
 }

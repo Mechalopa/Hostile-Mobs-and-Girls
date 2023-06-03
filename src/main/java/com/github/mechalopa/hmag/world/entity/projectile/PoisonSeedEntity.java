@@ -7,7 +7,6 @@ import com.github.mechalopa.hmag.registry.ModEntityTypes;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.Difficulty;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
@@ -119,6 +118,6 @@ public class PoisonSeedEntity extends ModProjectileItemEntity
 	protected void onHitEntity(EntityHitResult result)
 	{
 		super.onHitEntity(result);
-		result.getEntity().hurt(DamageSource.thrown(this, this.getOwner()), this.getDamage());
+		result.getEntity().hurt(this.damageSources().thrown(this, this.getOwner()), this.getDamage());
 	}
 }

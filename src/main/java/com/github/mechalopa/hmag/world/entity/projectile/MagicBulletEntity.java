@@ -12,7 +12,6 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.Difficulty;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -141,7 +140,7 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 					}
 				}
 
-				flag = entity.hurt(DamageSource.indirectMagic(this, livingentity), damage);
+				flag = entity.hurt(this.damageSources().indirectMagic(this, livingentity), damage);
 
 				if (flag)
 				{
@@ -153,7 +152,7 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 			}
 			else
 			{
-				flag = entity.hurt(DamageSource.MAGIC, damage);
+				flag = entity.hurt(this.damageSources().magic(), damage);
 			}
 
 			if (flag && entity instanceof LivingEntity && this.getEffectLevel() > 0)

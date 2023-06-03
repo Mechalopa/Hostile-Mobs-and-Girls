@@ -6,7 +6,6 @@ import com.github.mechalopa.hmag.util.ModTags;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -89,6 +88,6 @@ public class HardSnowballEntity extends ModProjectileItemEntity
 			f *= 2.0;
 		}
 
-		entity.hurt(DamageSource.thrown(this, this.getOwner()), f);
+		entity.hurt(this.damageSources().thrown(this, this.getOwner()), f);
 	}
 }

@@ -14,6 +14,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -187,7 +188,7 @@ public class NemesisBladeItem extends ModSwordItem implements ILevelItem
 	@Override
 	public boolean canBeHurtBy(DamageSource damageSource)
 	{
-		return damageSource != DamageSource.OUT_OF_WORLD ? false : super.canBeHurtBy(damageSource);
+		return !damageSource.is(DamageTypeTags.BYPASSES_INVULNERABILITY) ? false : super.canBeHurtBy(damageSource);
 	}
 
 	@Override

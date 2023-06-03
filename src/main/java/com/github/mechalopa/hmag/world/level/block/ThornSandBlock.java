@@ -1,7 +1,6 @@
 package com.github.mechalopa.hmag.world.level.block;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
@@ -21,7 +20,7 @@ public class ThornSandBlock extends SoulSandBlock
 	{
 		if (entity != null && entity instanceof LivingEntity)
 		{
-			entity.hurt(DamageSource.CACTUS, 1.0F);
+			entity.hurt(level.damageSources().cactus(), 1.0F);
 		}
 	}
 }

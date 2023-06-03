@@ -2,6 +2,7 @@ package com.github.mechalopa.hmag.world.item;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -30,7 +31,7 @@ public class ModItem extends Item
 	@Override
 	public boolean canBeHurtBy(DamageSource damageSource)
 	{
-		return ((this.resistanceType == ResistanceType.NETHER_STAR && damageSource.isExplosion()) || (this.resistanceType == ResistanceType.INVINCIBLE && damageSource != DamageSource.OUT_OF_WORLD)) ? false : super.canBeHurtBy(damageSource);
+		return ((this.resistanceType == ResistanceType.NETHER_STAR && damageSource.is(DamageTypeTags.IS_EXPLOSION)) || (this.resistanceType == ResistanceType.INVINCIBLE && !damageSource.is(DamageTypeTags.BYPASSES_INVULNERABILITY))) ? false : super.canBeHurtBy(damageSource);
 	}
 
 	@Override
