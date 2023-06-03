@@ -6,6 +6,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
+import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.world.entity.ai.goal.MeleeAttackGoal2;
 import com.github.mechalopa.hmag.world.entity.projectile.InkSpitEntity;
 
@@ -17,7 +18,6 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.tags.BiomeTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
@@ -142,7 +142,7 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 
 	private static boolean isSuffocatingBiome(Entity enity, Level level)
 	{
-		return level.getBiome(enity.blockPosition()).is(BiomeTags.SNOW_GOLEM_MELTS);
+		return level.getBiome(enity.blockPosition()).is(ModTags.SWAMPER_SUFFOCATES);
 	}
 
 	@Override

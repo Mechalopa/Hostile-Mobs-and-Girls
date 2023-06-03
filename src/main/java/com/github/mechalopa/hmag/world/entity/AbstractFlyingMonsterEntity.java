@@ -53,12 +53,6 @@ public abstract class AbstractFlyingMonsterEntity extends Monster
 	}
 
 	@Override
-	public boolean causeFallDamage(float distance, float damageMultiplier, DamageSource source)
-	{
-		return false;
-	}
-
-	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
 		if (this.isInvulnerableTo(source))

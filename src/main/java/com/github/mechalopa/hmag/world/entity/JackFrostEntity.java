@@ -4,6 +4,7 @@ import javax.annotation.Nonnull;
 
 import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
+import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.world.entity.ai.goal.RangedAttackGoal2;
 import com.github.mechalopa.hmag.world.entity.projectile.HardSnowballEntity;
 
@@ -13,7 +14,6 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.BiomeTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -80,7 +80,7 @@ public class JackFrostEntity extends Monster implements RangedAttackMob
 
 		if (!this.level.isClientSide)
 		{
-			if (this.level.getBiome(this.blockPosition()).is(BiomeTags.SNOW_GOLEM_MELTS))
+			if (this.level.getBiome(this.blockPosition()).is(ModTags.JACK_FROST_MELTS))
 			{
 				this.hurt(this.damageSources().onFire(), 1.0F);
 			}

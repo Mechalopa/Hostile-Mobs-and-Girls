@@ -110,12 +110,6 @@ public class CursedDollEntity extends Monster
 	}
 
 	@Override
-	public boolean causeFallDamage(float distance, float damageMultiplier, DamageSource source)
-	{
-		return false;
-	}
-
-	@Override
 	public boolean doHurtTarget(Entity entity)
 	{
 		if (super.doHurtTarget(entity))

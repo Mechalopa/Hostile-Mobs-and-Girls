@@ -20,7 +20,6 @@ import com.github.mechalopa.hmag.world.item.NemesisBladeItem;
 import com.github.mechalopa.hmag.world.item.enchantment.HealthBoostEnchantment;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -64,8 +63,8 @@ import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingTickEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.event.entity.living.MobEffectEvent;
+import net.minecraftforge.event.entity.living.MobSpawnEvent;
 import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.event.village.WandererTradesEvent;
@@ -286,6 +285,7 @@ public class ModEvents
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	private static boolean replace(ServerLevel level, Mob replacementMob, EntityType<?> type)
 	{
 		if (replacementMob.getType().equals(type))
@@ -302,7 +302,7 @@ public class ModEvents
 
 		SpawnGroupData spawndata = null;
 		mob.copyPosition(replacementMob);
-		spawndata = mob.finalizeSpawn(level, level.getCurrentDifficultyAt(new BlockPos(replacementMob.position())), MobSpawnType.NATURAL, spawndata, (CompoundTag)null);
+		spawndata = mob.finalizeSpawn(level, level.getCurrentDifficultyAt(replacementMob.blockPosition()), MobSpawnType.NATURAL, spawndata, (CompoundTag)null);
 		mob.setNoAi(replacementMob.isNoAi());
 
 		if (replacementMob.hasCustomName())
@@ -341,14 +341,14 @@ public class ModEvents
 	}
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
-	public void onCheckSpawn(LivingSpawnEvent.CheckSpawn event)
+	public void onCheckSpawn(MobSpawnEvent.FinalizeSpawn event)
 	{
 		if (event.getResult() == Result.DENY || event.getEntity() == null)
 		{
 			return;
 		}
 
-		if (event.getSpawnReason() == MobSpawnType.NATURAL)
+		if (event.getSpawnType() == MobSpawnType.NATURAL)
 		{
 			Level level = event.getEntity().getCommandSenderWorld();
 

@@ -60,14 +60,14 @@ public class ModTags
 
 	public static final TagKey<MobEffect> RANDOMBERRY_GIVES = createMobEffectTag("randomberry_gives");
 
-	public static final TagKey<Biome> MELTS_JACK_FROSTS_BLACKLIST = createBiomeTag("melts_jack_frosts_blacklist");
 	public static final TagKey<Biome> IS_BADLANDS = createBiomeTag("is_badlands");
 	public static final TagKey<Biome> IS_COLD = createBiomeTag("is_cold");
 	public static final TagKey<Biome> IS_PLAINS = createBiomeTag("is_plains");
 	public static final TagKey<Biome> IS_SANDY = createBiomeTag("is_sandy");
 	public static final TagKey<Biome> IS_SAVANNA = createBiomeTag("is_savanna");
+	public static final TagKey<Biome> JACK_FROST_MELTS = createBiomeTag("jack_frost_melts");
 	public static final TagKey<Biome> NO_MOB_REPLACEMENTS = createBiomeTag("no_mob_replacements");
-	public static final TagKey<Biome> SUFFOCATES_SWAMPERS_BLACKLIST = createBiomeTag("suffocates_swampers_blacklist");
+	public static final TagKey<Biome> SWAMPER_SUFFOCATES = createBiomeTag("swamper_suffocates");
 
 	public static final TagKey<Structure> GIANT_MUMMIES_SPAWN_IN = createStructureTag("giant_mummies_spawn_in");
 	public static final TagKey<Structure> MONOLITHS_SPAWN_IN = createStructureTag("monoliths_spawn_in");

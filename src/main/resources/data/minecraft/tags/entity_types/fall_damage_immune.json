@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "hmag:ghost",
+    "hmag:wither_ghost",
+    "hmag:cursed_doll",
+    "hmag:hornet",
+    "hmag:banshee",
+    "hmag:kasha",
+    "hmag:dogu",
+    "hmag:ghastly_seeker",
+    "hmag:monolith",
+    "hmag:crimson_slaughterer",
+    "hmag:dyssomnia",
+    "hmag:harpy"
+  ]
+}

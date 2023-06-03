@@ -77,12 +77,6 @@ public class DoguEntity extends Monster
 	}
 
 	@Override
-	public boolean causeFallDamage(float distance, float damageMultiplier, DamageSource source)
-	{
-		return false;
-	}
-
-	@Override
 	public boolean canBreatheUnderwater()
 	{
 		return true;
