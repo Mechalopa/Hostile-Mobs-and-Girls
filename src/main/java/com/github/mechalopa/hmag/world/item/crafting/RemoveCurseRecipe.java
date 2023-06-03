@@ -8,23 +8,26 @@ import com.github.mechalopa.hmag.registry.ModRecipes;
 import com.github.mechalopa.hmag.util.ModTags;
 
 import net.minecraft.core.Holder;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.inventory.AnvilMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.LegacyUpgradeRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.UpgradeRecipe;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.ForgeRegistries;
 
-public class RemoveCurseRecipe extends UpgradeRecipe
+@SuppressWarnings("removal")
+public class RemoveCurseRecipe extends LegacyUpgradeRecipe
 {
 	private final ResourceLocation recipeId;
 
+	@SuppressWarnings("deprecation")
 	public RemoveCurseRecipe(ResourceLocation recipeId)
 	{
 		super(recipeId, Ingredient.EMPTY, Ingredient.EMPTY, ItemStack.EMPTY);
@@ -71,7 +74,7 @@ public class RemoveCurseRecipe extends UpgradeRecipe
 	}
 
 	@Override
-	public ItemStack assemble(Container inv)
+	public ItemStack assemble(Container inv, RegistryAccess registryAccess)
 	{
 		ItemStack stack = inv.getItem(0);
 		ItemStack stack1 = stack.copy();

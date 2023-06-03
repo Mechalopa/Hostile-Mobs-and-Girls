@@ -31,29 +31,28 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class AdditionalEntityLootModifier extends LootModifier
 {
 	private static final Codec<LootItemFunction[]> LOOT_FUNCTIONS_CODEC = Codec.PASSTHROUGH.flatXmap(d -> {
-				try
-				{
-					LootItemFunction[] functions = LootModifierManager.GSON_INSTANCE.fromJson(IGlobalLootModifier.getJson(d), LootItemFunction[].class);
-					return DataResult.success(functions);
-				}
-				catch (JsonSyntaxException e)
-				{
-					LootModifierManager.LOGGER.warn("Unable to decode loot functions", e);
-					return DataResult.error(e.getMessage());
-				}
-			},
-			functions -> {
-				try
-				{
-					JsonElement element = LootModifierManager.GSON_INSTANCE.toJsonTree(functions);
-					return DataResult.success(new Dynamic<>(JsonOps.INSTANCE, element));
-				}
-				catch (JsonSyntaxException e)
-				{
-					LootModifierManager.LOGGER.warn("Unable to encode loot functions", e);
-					return DataResult.error(e.getMessage());
-				}
-			});
+		try
+		{
+			LootItemFunction[] functions = LootModifierManager.GSON_INSTANCE.fromJson(IGlobalLootModifier.getJson(d), LootItemFunction[].class);
+			return DataResult.success(functions);
+		}
+		catch (JsonSyntaxException e)
+		{
+			LootModifierManager.LOGGER.warn("Unable to decode loot functions", e);
+			return DataResult.error(e::getMessage);
+		}
+	}, functions -> {
+		try
+		{
+			JsonElement element = LootModifierManager.GSON_INSTANCE.toJsonTree(functions);
+			return DataResult.success(new Dynamic<>(JsonOps.INSTANCE, element));
+		}
+		catch (JsonSyntaxException e)
+		{
+			LootModifierManager.LOGGER.warn("Unable to encode loot functions", e);
+			return DataResult.error(e::getMessage);
+		}
+	});
 
 	public static final Supplier<Codec<AdditionalEntityLootModifier>> CODEC = Suppliers.memoize(() -> RecordCodecBuilder.create(inst -> codecStart(inst).and(inst.group(LOOT_FUNCTIONS_CODEC.optionalFieldOf("functions", new LootItemFunction[0]).forGetter(m -> m.functions),ForgeRegistries.ITEMS.getCodec().optionalFieldOf("addition", Items.BARRIER).forGetter(m -> m.addition))).apply(inst, AdditionalEntityLootModifier::new)));
 	private final LootItemFunction[] functions;

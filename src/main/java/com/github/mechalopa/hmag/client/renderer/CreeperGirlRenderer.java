@@ -31,7 +31,7 @@ public class CreeperGirlRenderer extends AbstractGirlRenderer<CreeperGirlEntity,
 	public CreeperGirlRenderer(EntityRendererProvider.Context context, CreeperGirlModel<CreeperGirlEntity> model, AbstractGirlModel<CreeperGirlEntity> model1, AbstractGirlModel<CreeperGirlEntity> model2)
 	{
 		super(context, model, 0.5F);
-		this.addLayer(new HumanoidArmorLayer<>(this, model1, model2));
+		this.addLayer(new HumanoidArmorLayer<>(this, model1, model2, context.getModelManager()));
 		this.addLayer(new CreeperGirlPowerLayer(this, context.getModelSet()));
 	}
 

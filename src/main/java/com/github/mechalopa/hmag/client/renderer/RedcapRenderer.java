@@ -27,7 +27,7 @@ public class RedcapRenderer extends AbstractGirlRenderer<RedcapEntity, RedcapMod
 	public RedcapRenderer(EntityRendererProvider.Context context, RedcapModel<RedcapEntity> model, AbstractGirlModel<RedcapEntity> model1, AbstractGirlModel<RedcapEntity> model2)
 	{
 		super(context, model, 0.5F);
-		this.addLayer(new HumanoidArmorLayer<>(this, model1, model2));
+		this.addLayer(new HumanoidArmorLayer<>(this, model1, model2, context.getModelManager()));
 	}
 
 	@Override

@@ -32,7 +32,7 @@ public class ZombieGirlRenderer extends AbstractGirlRenderer<Zombie, AbstractGir
 	public ZombieGirlRenderer(EntityRendererProvider.Context context, ZombieGirlModel<Zombie> model, AbstractGirlModel<Zombie> model1,AbstractGirlModel<Zombie> model2)
 	{
 		super(context, model, 0.5F);
-		this.addLayer(new HumanoidArmorLayer<>(this, model1, model2));
+		this.addLayer(new HumanoidArmorLayer<>(this, model1, model2, context.getModelManager()));
 	}
 
 	@Override

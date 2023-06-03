@@ -7,11 +7,11 @@ import net.minecraft.client.model.ArmedModel;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.ItemInHandRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -35,7 +35,7 @@ public class ItemInHandLayer2<T extends LivingEntity, M extends EntityModel<T> &
 	}
 
 	@Override
-	protected void renderArmWithItem(LivingEntity livingEntity, ItemStack stack, ItemTransforms.TransformType type, HumanoidArm handSide, PoseStack poseStack, MultiBufferSource buffer, int packedLight)
+	protected void renderArmWithItem(LivingEntity livingEntity, ItemStack stack, ItemDisplayContext type, HumanoidArm handSide, PoseStack poseStack, MultiBufferSource buffer, int packedLight)
 	{
 		if (!stack.isEmpty())
 		{

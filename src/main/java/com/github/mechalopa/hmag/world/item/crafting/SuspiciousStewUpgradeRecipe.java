@@ -6,6 +6,7 @@ import com.github.mechalopa.hmag.util.ModTags;
 import com.google.common.base.Strings;
 
 import net.minecraft.ResourceLocationException;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.resources.ResourceLocation;
@@ -60,7 +61,7 @@ public class SuspiciousStewUpgradeRecipe extends CustomRecipe
 	}
 
 	@Override
-	public ItemStack assemble(CraftingContainer inv)
+	public ItemStack assemble(CraftingContainer inv, RegistryAccess registryAccess)
 	{
 		ItemStack stack = ItemStack.EMPTY;
 

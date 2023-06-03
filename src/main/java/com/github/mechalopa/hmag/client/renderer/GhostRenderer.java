@@ -37,7 +37,7 @@ public class GhostRenderer extends HumanoidMobRenderer<GhostEntity, GhostModel<G
 	public GhostRenderer(EntityRendererProvider.Context context, GhostModel<GhostEntity> model, GhostModel<GhostEntity> model1, GhostModel<GhostEntity> model2)
 	{
 		super(context, model, 0.375F);
-		this.addLayer(new HumanoidArmorLayer<>(this, model1, model2));
+		this.addLayer(new HumanoidArmorLayer<>(this, model1, model2, context.getModelManager()));
 		this.addLayer(this.getLayer(context));
 	}
 

@@ -32,7 +32,7 @@ public class SkeletonGirlRenderer extends AbstractGirlRenderer<AbstractSkeleton,
 	public SkeletonGirlRenderer(EntityRendererProvider.Context context, SkeletonGirlModel<AbstractSkeleton> model, AbstractGirlModel<AbstractSkeleton> model1, AbstractGirlModel<AbstractSkeleton> model2)
 	{
 		super(context, model, 0.5F);
-		this.addLayer(new HumanoidArmorLayer<>(this, model1, model2));
+		this.addLayer(new HumanoidArmorLayer<>(this, model1, model2, context.getModelManager()));
 	}
 
 	@Override

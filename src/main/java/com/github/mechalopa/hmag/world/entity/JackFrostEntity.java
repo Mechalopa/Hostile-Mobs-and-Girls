@@ -4,22 +4,20 @@ import javax.annotation.Nonnull;
 
 import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
-import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.world.entity.ai.goal.RangedAttackGoal2;
 import com.github.mechalopa.hmag.world.entity.projectile.HardSnowballEntity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -37,7 +35,6 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -83,22 +80,22 @@ public class JackFrostEntity extends Monster implements RangedAttackMob
 
 		if (!this.level.isClientSide)
 		{
-			if (isMeltingBiome(this, this.level))
+			if (this.level.getBiome(this.blockPosition()).is(BiomeTags.SNOW_GOLEM_MELTS))
 			{
-				this.hurt(DamageSource.ON_FIRE, 1.0F);
+				this.hurt(this.damageSources().onFire(), 1.0F);
 			}
 			else if (ModConfigs.cachedServer.JACK_FROST_FREEZES_WATER && ForgeEventFactory.getMobGriefingEvent(this.level, this))
 			{
 				if (this.isOnGround())
 				{
 					BlockState blockstate = Blocks.FROSTED_ICE.defaultBlockState();
-					float f = 2.0F;
+					int i = 2;
 					BlockPos blockpos = this.blockPosition();
 					BlockPos.MutableBlockPos blockpos$mutable = new BlockPos.MutableBlockPos();
 
-					for (BlockPos blockpos1 : BlockPos.betweenClosed(blockpos.offset((-f), -1.0D, (-f)), blockpos.offset(f, -1.0D, f)))
+					for (BlockPos blockpos1 : BlockPos.betweenClosed(blockpos.offset(-i, -1, -i), blockpos.offset(i, -1, i)))
 					{
-						if (blockpos1.closerToCenterThan(this.position(), f))
+						if (blockpos1.closerToCenterThan(this.position(), (double)i))
 						{
 							blockpos$mutable.set(blockpos1.getX(), blockpos1.getY() + 1, blockpos1.getZ());
 
@@ -118,13 +115,6 @@ public class JackFrostEntity extends Monster implements RangedAttackMob
 				}
 			}
 		}
-	}
-
-	private static boolean isMeltingBiome(Entity enity, Level level)
-	{
-		BlockPos blockpos = new BlockPos(Mth.floor(enity.getX()), Mth.floor(enity.getY()), Mth.floor(enity.getZ()));
-		Holder<Biome> holder = level.getBiome(blockpos);
-		return holder.value().shouldSnowGolemBurn(blockpos) && !holder.containsTag(ModTags.MELTS_JACK_FROSTS_BLACKLIST);
 	}
 
 	@Override

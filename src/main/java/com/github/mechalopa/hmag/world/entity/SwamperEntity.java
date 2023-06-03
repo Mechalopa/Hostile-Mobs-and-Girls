@@ -6,12 +6,10 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
-import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.world.entity.ai.goal.MeleeAttackGoal2;
 import com.github.mechalopa.hmag.world.entity.projectile.InkSpitEntity;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -19,7 +17,7 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.util.Mth;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
@@ -47,7 +45,6 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.phys.Vec3;
@@ -123,7 +120,7 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 			if (this.getAirSupply() == -20)
 			{
 				this.setAirSupply(0);
-				this.hurt(DamageSource.DROWN, 2.0F);
+				this.hurt(this.damageSources().drown(), 2.0F);
 			}
 		}
 		else
@@ -145,9 +142,7 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 
 	private static boolean isSuffocatingBiome(Entity enity, Level level)
 	{
-		BlockPos blockpos = new BlockPos(Mth.floor(enity.getX()), Mth.floor(enity.getY()), Mth.floor(enity.getZ()));
-		Holder<Biome> holder = level.getBiome(blockpos);
-		return holder.value().shouldSnowGolemBurn(blockpos) && !holder.containsTag(ModTags.SUFFOCATES_SWAMPERS_BLACKLIST);
+		return level.getBiome(enity.blockPosition()).is(BiomeTags.SNOW_GOLEM_MELTS);
 	}
 
 	@Override
@@ -484,7 +479,7 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 			if (this.mob.isInWaterOrBubble() && SwamperEntity.isSuffocatingBiome(this.mob, this.level))
 			{
 				Vec3 vec3 = super.getPosition();
-				return (vec3 != null && this.level.getBlockState(new BlockPos(vec3)).is(Blocks.WATER)) ? vec3 : null;
+				return (vec3 != null && this.level.getBlockState(BlockPos.containing(vec3)).is(Blocks.WATER)) ? vec3 : null;
 			}
 			else if ((this.level.isDay() && this.level.canSeeSky(this.mob.blockPosition())))
 			{

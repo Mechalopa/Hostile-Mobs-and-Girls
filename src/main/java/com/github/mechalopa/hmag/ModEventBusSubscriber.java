@@ -164,7 +164,7 @@ public class ModEventBusSubscriber
 	@SubscribeEvent
 	public static void registerCreativeModeTab(final CreativeModeTabEvent.Register event)
 	{
-		event.registerCreativeModeTab(new ResourceLocation(HMaG.MODID, "tab"), builder -> builder.title(Component.translatable("item_group." + HMaG.MODID + ".tab")).icon(() -> new ItemStack(ModItems.EVIL_CRYSTAL.get())).displayItems((flag, populator, hasPermissions) -> {
+		event.registerCreativeModeTab(new ResourceLocation(HMaG.MODID, "tab"), builder -> builder.title(Component.translatable("item_group." + HMaG.MODID + ".tab")).icon(() -> new ItemStack(ModItems.EVIL_CRYSTAL.get())).displayItems((features, output) -> {
 			for (RegistryObject<Item> item : ModItems.getItemRegistry().getEntries())
 			{
 				if (item.get() instanceof ILevelItem)
@@ -172,11 +172,11 @@ public class ModEventBusSubscriber
 					ItemStack stack = new ItemStack(item.get());
 					CompoundTag compoundnbt = stack.getOrCreateTag();
 					compoundnbt.putByte(ILevelItem.LEVEL_KEY, (byte)((ILevelItem)item.get()).getMaxLevel());
-					populator.accept(stack);
+					output.accept(stack);
 				}
 				else
 				{
-					populator.accept(item.get());
+					output.accept(item.get());
 				}
 			}
 		}));

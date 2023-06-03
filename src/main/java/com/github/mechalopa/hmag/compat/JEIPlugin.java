@@ -31,13 +31,15 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CraftingBookCategory;
 import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.LegacyUpgradeRecipe;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.ShapelessRecipe;
-import net.minecraft.world.item.crafting.UpgradeRecipe;
+import net.minecraft.world.item.crafting.SmithingRecipe;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 
+@SuppressWarnings({"removal"})
 @JeiPlugin
 public class JEIPlugin implements IModPlugin
 {
@@ -73,7 +75,7 @@ public class JEIPlugin implements IModPlugin
 
 		Minecraft minecraft = Minecraft.getInstance();
 		Iterable<Recipe<?>> recipes = minecraft.level.getRecipeManager().getRecipes();
-		List<UpgradeRecipe> smithingRecipes = new ArrayList<UpgradeRecipe>();
+		List<SmithingRecipe> smithingRecipes = new ArrayList<SmithingRecipe>();
 		List<CraftingRecipe> shapelessRecipes = new ArrayList<CraftingRecipe>();
 		boolean flag = false;
 		boolean flag1 = false;
@@ -114,7 +116,7 @@ public class JEIPlugin implements IModPlugin
 									{
 										ResourceLocation enchid = ForgeRegistries.ENCHANTMENTS.getKey(enchantment);
 										ResourceLocation id = new ResourceLocation(HMaG.MODID, "jei." + recipe.getId().getPath() + "." + enchid.getNamespace() + "." + enchid.getPath());
-										UpgradeRecipe recipe1 = new UpgradeRecipe(id, Ingredient.of(stacks.stream()), ingredient, stack1);
+										LegacyUpgradeRecipe recipe1 = new LegacyUpgradeRecipe(id, Ingredient.of(stacks.stream()), ingredient, stack1);
 										smithingRecipes.add(recipe1);
 									}
 								}
@@ -168,7 +170,7 @@ public class JEIPlugin implements IModPlugin
 														}
 
 														EnchantmentHelper.setEnchantments(ImmutableMap.of(enchantment, k + 1), stack3);
-														UpgradeRecipe recipe2 = new UpgradeRecipe(id, Ingredient.of(stack2), Ingredient.of(item), stack3);
+														LegacyUpgradeRecipe recipe2 = new LegacyUpgradeRecipe(id, Ingredient.of(stack2), Ingredient.of(item), stack3);
 														smithingRecipes.add(recipe2);
 													}
 
