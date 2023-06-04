@@ -247,7 +247,8 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 		{
 			amount = amount * 1.5F;
 		}
-		else if (source == DamageSource.FALL)
+
+		if (source == DamageSource.FALL)
 		{
 			amount = amount * 0.5F;
 		}

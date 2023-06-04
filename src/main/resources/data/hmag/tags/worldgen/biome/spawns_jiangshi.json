@@ -33,6 +33,10 @@
     {
       "id": "regions_unexplored:bamboo_forest",
       "required": false
+    },
+    {
+      "id": "cherryblossomgrotto:cherry_blossom_bamboo_jungle",
+      "required": false
     }
   ]
 }

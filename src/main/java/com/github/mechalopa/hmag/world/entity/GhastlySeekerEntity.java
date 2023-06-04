@@ -118,20 +118,27 @@ public class GhastlySeekerEntity extends FlyingMob implements Enemy
 		return true;
 	}
 
+	private static boolean isReflectedFireball(DamageSource source)
+	{
+		return source.getDirectEntity() != null && source.getDirectEntity() instanceof LargeFireball && source.getEntity() instanceof Player;
+	}
+
+	@Override
+	public boolean isInvulnerableTo(DamageSource source)
+	{
+		return !isReflectedFireball(source) && super.isInvulnerableTo(source);
+	}
+
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (this.isInvulnerableTo(source))
-		{
-			return false;
-		}
-		else if (source.getDirectEntity() != null && source.getDirectEntity() instanceof LargeFireball && source.getEntity() != null && source.getEntity() instanceof Player)
+		if (isReflectedFireball(source))
 		{
 			return super.hurt(source, amount * 2.0F);
 		}
 		else
 		{
-			return super.hurt(source, amount);
+			return this.isInvulnerableTo(source) ? false : super.hurt(source, amount);
 		}
 	}
 

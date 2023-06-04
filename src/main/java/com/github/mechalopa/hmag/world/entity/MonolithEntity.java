@@ -220,7 +220,7 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.isProjectile() || source.isFire() || source.isMagic() || ModUtils.isThornsDamage(source) || ModUtils.isStalagmiteDamage(source))
+		if (source.isProjectile() || source.isFire() || source.isMagic() || ModUtils.isThornsDamage(source) || ModUtils.isStalagmiteDamage(source) || source == DamageSource.FREEZE)
 		{
 			amount = amount * 0.5F;
 		}
