@@ -1,0 +1,20 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "evilcraft"
+    }
+  ],
+  "type": "evilcraft:blood_infuser",
+  "duration": 500,
+  "fluid": {
+    "amount": 3500,
+    "fluid": "evilcraft:blood"
+  },
+  "item": "hmag:ender_plasm",
+  "result": {
+    "item": "minecraft:ghast_tear"
+  },
+  "tier": 3,
+  "xp": 1.5
+}
