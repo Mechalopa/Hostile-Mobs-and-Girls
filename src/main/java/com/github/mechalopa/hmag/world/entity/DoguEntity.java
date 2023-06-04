@@ -128,11 +128,11 @@ public class DoguEntity extends Monster implements IModMob
 		}
 		else
 		{
-			if (source.isProjectile() || source.isExplosion() || source == DamageSource.FALL || source == DamageSource.FALLING_BLOCK || ModUtils.isStalagmiteDamage(source))
+			if (source.isProjectile() || source.isExplosion() || source == DamageSource.FALL || source == DamageSource.FALLING_BLOCK || source == DamageSource.ANVIL || ModUtils.isStalagmiteDamage(source) || source == DamageSource.FREEZE)
 			{
 				amount = amount * 0.5F;
 			}
-			else if (!source.isProjectile() && source instanceof EntityDamageSource && source.getEntity() != null && source.getEntity() instanceof LivingEntity)
+			else if (source instanceof EntityDamageSource && source.getEntity() != null && source.getEntity() instanceof LivingEntity)
 			{
 				ItemStack stack = ((LivingEntity)source.getEntity()).getMainHandItem();
 

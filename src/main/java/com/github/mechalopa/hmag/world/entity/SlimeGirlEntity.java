@@ -425,7 +425,7 @@ public class SlimeGirlEntity extends Monster implements IModMob
 		public void start()
 		{
 			super.start();
-			this.mob.playSound(SoundEvents.SLIME_JUMP, 1.0F, ((this.mob.getRandom().nextFloat() - this.mob.getRandom().nextFloat()) * 0.2F + 1.0F) * 1.4F);
+			this.mob.playSound(SoundEvents.SLIME_JUMP, 1.0F, ((this.mob.getRandom().nextFloat() - this.mob.getRandom().nextFloat()) * 0.2F + 1.0F) * 0.8F);
 		}
 	}
 }

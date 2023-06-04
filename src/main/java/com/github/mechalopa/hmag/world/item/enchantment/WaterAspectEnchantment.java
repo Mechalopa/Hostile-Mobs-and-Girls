@@ -35,7 +35,7 @@ public class WaterAspectEnchantment extends Enchantment
 	@Override
 	public boolean checkCompatibility(Enchantment enchantment)
 	{
-		return enchantment != Enchantments.FIRE_ASPECT;
+		return super.checkCompatibility(enchantment) && enchantment != Enchantments.FIRE_ASPECT;
 	}
 
 	@Override

@@ -198,7 +198,7 @@ public class OgreEntity extends Monster implements IModMob
 				this.destroyBlock();
 			}
 		}
-		else if (source.isProjectile() || source.isExplosion() || source.isFire() || source == DamageSource.FALL || source == DamageSource.FALLING_BLOCK || source == DamageSource.FREEZE)
+		else if (source.isProjectile() || source.isExplosion() || source.isFire() || source == DamageSource.FALL || source == DamageSource.FALLING_BLOCK || source == DamageSource.ANVIL || source == DamageSource.FREEZE)
 		{
 			amount = amount * 0.5F;
 		}

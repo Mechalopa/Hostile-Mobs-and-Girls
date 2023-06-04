@@ -9,14 +9,6 @@
     "hmag:necrofiber",
     "hmag:cubic_nucleus",
     {
-      "id": "thermal:basalz_rod",
-      "required": false
-    },
-    {
-      "id": "thermal:blitz_rod",
-      "required": false
-    },
-    {
       "id": "omnis:ravaged_scrap",
       "required": false
     },
@@ -26,6 +18,10 @@
     },
     {
       "id": "iceandfire:dread_shard",
+      "required": false
+    },
+    {
+      "id": "cnb:yeti_antler",
       "required": false
     }
   ]
