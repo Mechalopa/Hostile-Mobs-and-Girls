@@ -14,7 +14,6 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.IndirectEntityDamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -168,22 +167,7 @@ public class EnderExecutorEntity extends EnderMan implements IBeamAttackMob
 				}
 			}
 
-			if (source instanceof IndirectEntityDamageSource)
-			{
-				for (int i = 0; i < 64; ++i)
-				{
-					if (this.teleport())
-					{
-						return true;
-					}
-				}
-
-				return false;
-			}
-			else
-			{
-				return super.hurt(source, f);
-			}
+			return super.hurt(source, f);
 		}
 	}
 
