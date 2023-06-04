@@ -184,6 +184,7 @@ public class EnderExecutorEntity extends EnderMan implements IBeamAttackMob
 		super.setTarget(livingEntity);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Nullable
 	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag dataTag)

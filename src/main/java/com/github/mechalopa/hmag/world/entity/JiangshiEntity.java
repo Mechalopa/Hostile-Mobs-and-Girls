@@ -31,7 +31,6 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -225,7 +224,7 @@ public class JiangshiEntity extends Monster
 		{
 			return false;
 		}
-		else if (this.isNoAi() || source.is(DamageTypes.MOB_ATTACK_NO_AGGRO) || source.is(DamageTypeTags.IS_FIRE) || amount <= 0.0F || !((source.getEntity() != null && source.getEntity() instanceof LivingEntity)))
+		else if (this.isNoAi() || source.is(DamageTypeTags.NO_ANGER) || source.is(DamageTypeTags.IS_FIRE) || amount <= 0.0F || !((source.getEntity() != null && source.getEntity() instanceof LivingEntity)))
 		{
 			return true;
 		}
@@ -247,6 +246,7 @@ public class JiangshiEntity extends Monster
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	@Nullable
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag dataTag)

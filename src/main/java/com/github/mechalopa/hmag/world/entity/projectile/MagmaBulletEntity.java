@@ -1,7 +1,7 @@
 package com.github.mechalopa.hmag.world.entity.projectile;
 
-import com.github.mechalopa.hmag.registry.ModDamageTypes;
 import com.github.mechalopa.hmag.registry.ModEntityTypes;
+import com.github.mechalopa.hmag.util.ModDamageTypes;
 
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleOptions;

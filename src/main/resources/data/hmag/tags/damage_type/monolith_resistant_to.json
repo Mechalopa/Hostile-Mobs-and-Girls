@@ -1,11 +1,11 @@
 {
   "replace": false,
   "values": [
-    "#hmag:is_magic",
     "#hmag:is_stalagmite",
     "#hmag:is_thorns",
     "#minecraft:is_projectile",
     "#minecraft:is_fire",
-    "#minecraft:is_freezing"
+    "#minecraft:is_freezing",
+    "#minecraft:witch_resistant_to"
   ]
 }

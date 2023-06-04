@@ -1,4 +1,4 @@
-package com.github.mechalopa.hmag.registry;
+package com.github.mechalopa.hmag.util;
 
 import javax.annotation.Nullable;
 

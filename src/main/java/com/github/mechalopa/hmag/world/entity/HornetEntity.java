@@ -123,6 +123,7 @@ public class HornetEntity extends AbstractFlyingMonsterEntity
 		this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(ModItems.IRON_SPEAR.get()));
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	@Nullable
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag dataTag)

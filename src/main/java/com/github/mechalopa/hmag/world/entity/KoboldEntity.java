@@ -120,6 +120,7 @@ public class KoboldEntity extends Monster
 		this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.STONE_PICKAXE));
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	@Nullable
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag dataTag)

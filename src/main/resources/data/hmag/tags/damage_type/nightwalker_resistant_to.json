@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "#hmag:is_magic"
+    "#minecraft:witch_resistant_to"
   ]
 }

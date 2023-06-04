@@ -256,6 +256,7 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 		return true;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	@Nullable
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor worldIn, DifficultyInstance difficultyIn, MobSpawnType spawnType, @Nullable SpawnGroupData spawnDataIn, @Nullable CompoundTag dataTag)

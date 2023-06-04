@@ -132,6 +132,7 @@ public class ImpEntity extends Monster
 		this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(ModItems.GOLDEN_FORK.get()));
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	@Nullable
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag dataTag)

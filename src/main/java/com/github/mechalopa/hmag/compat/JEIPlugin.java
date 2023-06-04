@@ -9,6 +9,8 @@ import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.world.item.EnchantmentUpgradeItem;
 import com.github.mechalopa.hmag.world.item.EnchantmentUpgradeItem.Properties.EnchantmentUpgradeProp;
 import com.github.mechalopa.hmag.world.item.crafting.EnchantmentUpgradeRecipe;
+import com.github.mechalopa.hmag.world.item.crafting.NewerEnchantmentUpgradeRecipe;
+import com.github.mechalopa.hmag.world.item.crafting.NewerRemoveCurseRecipe;
 import com.github.mechalopa.hmag.world.item.crafting.RemoveCurseRecipe;
 import com.github.mechalopa.hmag.world.item.crafting.SuspiciousStewUpgradeRecipe;
 import com.google.common.collect.ImmutableList;
@@ -25,6 +27,7 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -39,7 +42,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 
-@SuppressWarnings({"removal"})
+@SuppressWarnings("removal")
 @JeiPlugin
 public class JEIPlugin implements IModPlugin
 {
@@ -85,7 +88,7 @@ public class JEIPlugin implements IModPlugin
 		{
 			if (recipe != null)
 			{
-				if (recipe instanceof RemoveCurseRecipe && !flag)
+				if ((minecraft.level.enabledFeatures().contains(FeatureFlags.UPDATE_1_20) ? recipe instanceof NewerRemoveCurseRecipe : recipe instanceof RemoveCurseRecipe) && !flag)
 				{
 					flag = true;
 					Ingredient ingredient = Ingredient.of(ModTags.CURSE_REMOVE_ITEMS);
@@ -116,15 +119,14 @@ public class JEIPlugin implements IModPlugin
 									{
 										ResourceLocation enchid = ForgeRegistries.ENCHANTMENTS.getKey(enchantment);
 										ResourceLocation id = new ResourceLocation(HMaG.MODID, "jei." + recipe.getId().getPath() + "." + enchid.getNamespace() + "." + enchid.getPath());
-										LegacyUpgradeRecipe recipe1 = new LegacyUpgradeRecipe(id, Ingredient.of(stacks.stream()), ingredient, stack1);
-										smithingRecipes.add(recipe1);
+										addSmithingRecipe(smithingRecipes, id, Ingredient.of(stacks.stream()), ingredient, stack1);
 									}
 								}
 							}
 						}
 					}
 				}
-				else if (recipe instanceof EnchantmentUpgradeRecipe && !flag1)
+				else if ((minecraft.level.enabledFeatures().contains(FeatureFlags.UPDATE_1_20) ? recipe instanceof NewerEnchantmentUpgradeRecipe : recipe instanceof EnchantmentUpgradeRecipe) && !flag1)
 				{
 					flag1 = true;
 					Ingredient ingredient = Ingredient.of(ModTags.ENCHANTMENT_UPGRADE_ITEMS);
@@ -170,8 +172,7 @@ public class JEIPlugin implements IModPlugin
 														}
 
 														EnchantmentHelper.setEnchantments(ImmutableMap.of(enchantment, k + 1), stack3);
-														LegacyUpgradeRecipe recipe2 = new LegacyUpgradeRecipe(id, Ingredient.of(stack2), Ingredient.of(item), stack3);
-														smithingRecipes.add(recipe2);
+														addSmithingRecipe(smithingRecipes, id, Ingredient.of(stack2), Ingredient.of(item), stack3);
 													}
 
 													++j;
@@ -213,6 +214,12 @@ public class JEIPlugin implements IModPlugin
 
 		registration.addRecipes(RecipeTypes.SMITHING, smithingRecipes);
 		registration.addRecipes(RecipeTypes.CRAFTING, shapelessRecipes);
+	}
+
+	@SuppressWarnings("deprecation")
+	private static void addSmithingRecipe(List<SmithingRecipe> smithingRecipes, ResourceLocation id, Ingredient base, Ingredient addition, ItemStack output)
+	{
+		smithingRecipes.add(new LegacyUpgradeRecipe(id, base, addition, output));
 	}
 
 	private static ItemStack getEnchantableItemStack(IRecipeRegistration registration, List<Item> list, Enchantment enchantment, TagKey<Item> blacklist)

@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "#hmag:is_magic",
     "#hmag:is_stalagmite",
-    "#minecraft:is_projectile"
+    "#minecraft:is_projectile",
+    "#minecraft:witch_resistant_to"
   ]
 }

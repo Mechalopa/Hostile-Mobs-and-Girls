@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "#minecraft:witch_resistant_to"
+    "hmag:critical_evil_arrow"
   ]
 }

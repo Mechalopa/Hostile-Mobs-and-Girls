@@ -5,11 +5,11 @@ import java.util.UUID;
 
 import javax.annotation.Nullable;
 
-import com.github.mechalopa.hmag.registry.ModDamageTypes;
 import com.github.mechalopa.hmag.registry.ModEffects;
 import com.github.mechalopa.hmag.registry.ModEnchantments;
 import com.github.mechalopa.hmag.registry.ModEntityTypes;
 import com.github.mechalopa.hmag.registry.ModItems;
+import com.github.mechalopa.hmag.util.ModDamageTypes;
 import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.util.ModUtils;
 import com.github.mechalopa.hmag.world.entity.KashaEntity;
