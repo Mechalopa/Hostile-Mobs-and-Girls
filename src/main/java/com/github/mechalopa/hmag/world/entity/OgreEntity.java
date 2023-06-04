@@ -198,7 +198,7 @@ public class OgreEntity extends Monster
 				this.destroyBlock();
 			}
 		}
-		else if (source.isProjectile() || source.isExplosion() || source.isFire() || source.isFall() || source.getMsgId().equals("fallingBlock") || source == DamageSource.FREEZE)
+		else if (source.isProjectile() || source.isExplosion() || source.isFire() || source.isFall() || source.getMsgId().equals("fallingBlock") || source.getMsgId().equals("anvil") || source == DamageSource.FREEZE)
 		{
 			amount = amount * 0.5F;
 		}

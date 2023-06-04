@@ -168,13 +168,14 @@ public class SpiderNestEntity extends Monster
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
+		if (source.isFire())
+		{
+			amount = amount * 1.5F;
+		}
+
 		if (source.isProjectile() || source.isExplosion() || ModUtils.isThornsDamage(source) || ModUtils.isStalagmiteDamage(source))
 		{
 			amount = amount * 0.5F;
-		}
-		else if (source.isFire())
-		{
-			amount = amount * 1.5F;
 		}
 
 		return super.hurt(source, amount);

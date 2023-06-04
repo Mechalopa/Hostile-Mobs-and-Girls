@@ -84,7 +84,7 @@ public class LichEntity extends Monster implements RangedAttackMob
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.isMagic() || source.isFire())
+		if (source.isMagic() || source.isFire() || source == DamageSource.FREEZE)
 		{
 			amount = amount * 0.5F;
 		}

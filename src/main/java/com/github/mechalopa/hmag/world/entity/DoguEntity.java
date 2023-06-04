@@ -130,7 +130,7 @@ public class DoguEntity extends Monster
 		}
 		else
 		{
-			if (source.isProjectile() || source.isExplosion() || source.isFall() || source.getMsgId().equals("fallingBlock") || ModUtils.isStalagmiteDamage(source))
+			if (source.isProjectile() || source.isExplosion() || source.isFall() || source.getMsgId().equals("fallingBlock") || source.getMsgId().equals("anvil") || ModUtils.isStalagmiteDamage(source) || source == DamageSource.FREEZE)
 			{
 				amount = amount * 0.5F;
 			}

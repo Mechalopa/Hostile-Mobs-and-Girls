@@ -194,7 +194,7 @@ public class FortressKeeperEntity extends Monster implements RangedAttackMob
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.isProjectile() || source.isMagic() || source.isFire() || ModUtils.isThornsDamage(source))
+		if (source.isProjectile() || source.isMagic() || ModUtils.isThornsDamage(source))
 		{
 			amount = amount * 0.5F;
 		}
