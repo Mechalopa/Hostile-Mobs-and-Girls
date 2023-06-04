@@ -4,6 +4,7 @@ import javax.annotation.Nonnull;
 
 import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
+import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.world.entity.ai.goal.MeleeAttackGoal2;
 import com.github.mechalopa.hmag.world.entity.ai.goal.RangedAttackGoal2;
 import com.github.mechalopa.hmag.world.entity.projectile.PoisonSeedEntity;
@@ -128,7 +129,7 @@ public class AlrauneEntity extends Monster implements RangedAttackMob
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.isFire())
+		if (source.is(ModTags.ALRAUNE_VULNERABLE_TO))
 		{
 			amount = amount * 2.0F;
 		}

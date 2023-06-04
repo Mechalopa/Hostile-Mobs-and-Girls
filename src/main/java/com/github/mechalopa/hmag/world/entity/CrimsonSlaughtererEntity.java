@@ -5,7 +5,6 @@ import javax.annotation.Nonnull;
 import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
 import com.github.mechalopa.hmag.util.ModTags;
-import com.github.mechalopa.hmag.util.ModUtils;
 import com.github.mechalopa.hmag.world.entity.ai.goal.MeleeAttackGoal2;
 
 import net.minecraft.core.BlockPos;
@@ -133,7 +132,7 @@ public class CrimsonSlaughtererEntity extends Monster
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.isProjectile() || source == DamageSource.IN_WALL || source == DamageSource.CRAMMING || source == DamageSource.STARVE || ModUtils.isThornsDamage(source) || ModUtils.isStalagmiteDamage(source))
+		if (source.is(ModTags.CRIMSON_SLAUGHTERER_RESISTANT_TO))
 		{
 			amount = amount * 0.5F;
 		}

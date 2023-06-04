@@ -31,7 +31,6 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -221,11 +220,11 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.isProjectile() || source.isFire() || source.isMagic() || ModUtils.isThornsDamage(source) || ModUtils.isStalagmiteDamage(source))
+		if (source.is(ModTags.MONOLITH_RESISTANT_TO))
 		{
 			amount = amount * 0.5F;
 		}
-		else if (source instanceof EntityDamageSource && source.getEntity() != null && source.getEntity() instanceof LivingEntity)
+		else if (!source.isIndirect() && source.getEntity() != null && source.getEntity() instanceof LivingEntity)
 		{
 			ItemStack stack = ((LivingEntity)source.getEntity()).getMainHandItem();
 
@@ -409,8 +408,8 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 			i = 10;
 		}
 
-		final boolean flag = target.hurt(DamageSource.indirectMagic(this, this), f);
-		final boolean flag1 = target.hurt(DamageSource.mobAttack(this), (float)this.getAttributeValue(Attributes.ATTACK_DAMAGE));
+		final boolean flag = target.hurt(this.damageSources().indirectMagic(this, this), f);
+		final boolean flag1 = target.hurt(this.damageSources().mobAttack(this), (float)this.getAttributeValue(Attributes.ATTACK_DAMAGE));
 
 		if (flag || flag1)
 		{
@@ -639,7 +638,7 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 							}
 
 							livingentity.knockback(1.5F, this.parent.getX() - livingentity.getX(), this.parent.getZ() - livingentity.getZ());
-							livingentity.hurt(DamageSource.indirectMagic(this.parent, this.parent), f);
+							livingentity.hurt(this.parent.damageSources().indirectMagic(this.parent, this.parent), f);
 						}
 					}
 

@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#hmag:is_magic",
+    "minecraft:fall"
+  ]
+}

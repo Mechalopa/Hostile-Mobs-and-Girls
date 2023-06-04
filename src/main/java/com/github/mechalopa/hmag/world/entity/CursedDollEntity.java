@@ -4,6 +4,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
+import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.util.ModUtils;
 import com.github.mechalopa.hmag.world.entity.ai.goal.MeleeAttackGoal2;
 
@@ -144,7 +145,7 @@ public class CursedDollEntity extends Monster
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.isFire())
+		if (source.is(ModTags.CURSED_DOLL_VULNERABLE_TO))
 		{
 			amount = amount * 2.0F;
 		}

@@ -4,6 +4,7 @@ import javax.annotation.Nonnull;
 
 import com.github.mechalopa.hmag.registry.ModParticleTypes;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
+import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.world.entity.projectile.MagicBulletEntity;
 
 import net.minecraft.core.BlockPos;
@@ -76,7 +77,7 @@ public class NightwalkerEntity extends Monster implements RangedAttackMob
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.isMagic())
+		if (source.is(ModTags.NIGHTWALKER_RESISTANT_TO))
 		{
 			amount = amount * 0.5F;
 		}

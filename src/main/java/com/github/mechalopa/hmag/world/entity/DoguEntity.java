@@ -4,7 +4,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
-import com.github.mechalopa.hmag.util.ModUtils;
+import com.github.mechalopa.hmag.util.ModTags;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -15,7 +15,6 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -118,17 +117,17 @@ public class DoguEntity extends Monster
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (this.isInvulnerableTo(source) || ModUtils.isThornsDamage(source))
+		if (this.isInvulnerableTo(source) || source.is(ModTags.DOGU_IMMUNE_TO))
 		{
 			return false;
 		}
 		else
 		{
-			if (source.isProjectile() || source.isExplosion() || source.isFall() || source.getMsgId().equals("fallingBlock") || ModUtils.isStalagmiteDamage(source))
+			if (source.is(ModTags.DOGU_RESISTANT_TO))
 			{
 				amount = amount * 0.5F;
 			}
-			else if (!source.isProjectile() && source instanceof EntityDamageSource && source.getEntity() != null && source.getEntity() instanceof LivingEntity)
+			else if (!source.isIndirect() && source.getEntity() != null && source.getEntity() instanceof LivingEntity)
 			{
 				ItemStack stack = ((LivingEntity)source.getEntity()).getMainHandItem();
 

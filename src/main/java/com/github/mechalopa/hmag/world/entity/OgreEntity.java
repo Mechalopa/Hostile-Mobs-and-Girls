@@ -5,7 +5,6 @@ import javax.annotation.Nonnull;
 import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
 import com.github.mechalopa.hmag.util.ModTags;
-import com.github.mechalopa.hmag.util.ModUtils;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.protocol.Packet;
@@ -20,6 +19,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -189,18 +189,18 @@ public class OgreEntity extends Monster
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source == DamageSource.IN_WALL || source == DamageSource.CRAMMING || ModUtils.isThornsDamage(source) || ModUtils.isStalagmiteDamage(source))
+		if (source.is(ModTags.OGRE_HIGHLY_RESISTANT_TO))
 		{
 			amount = amount * 0.25F;
-
-			if (!this.isNoAi() && !source.isNoAggro() && this.getRandom().nextInt(8) == 0)
-			{
-				this.destroyBlock();
-			}
 		}
-		else if (source.isProjectile() || source.isExplosion() || source.isFire() || source.isFall() || source.getMsgId().equals("fallingBlock") || source == DamageSource.FREEZE)
+		else if (source.is(ModTags.OGRE_RESISTANT_TO))
 		{
 			amount = amount * 0.5F;
+		}
+
+		if (!this.isNoAi() && !source.is(DamageTypes.MOB_ATTACK_NO_AGGRO) && source.is(ModTags.TRIGGERS_OGRE_DESTROYING) && this.getRandom().nextInt(8) == 0)
+		{
+			this.destroyBlock();
 		}
 
 		return super.hurt(source, amount);

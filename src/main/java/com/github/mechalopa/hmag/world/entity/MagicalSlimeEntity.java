@@ -2,6 +2,8 @@ package com.github.mechalopa.hmag.world.entity;
 
 import javax.annotation.Nonnull;
 
+import com.github.mechalopa.hmag.util.ModTags;
+
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -45,7 +47,7 @@ public class MagicalSlimeEntity extends Slime
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.isMagic() || source == DamageSource.FALL)
+		if (source.is(ModTags.MAGICAL_SLIME_RESISTANT_TO))
 		{
 			amount = amount * 0.5F;
 		}

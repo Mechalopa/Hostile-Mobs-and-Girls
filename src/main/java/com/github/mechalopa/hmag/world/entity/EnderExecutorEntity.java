@@ -4,6 +4,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.github.mechalopa.hmag.ModConfigs;
+import com.github.mechalopa.hmag.util.ModTags;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
@@ -15,7 +16,6 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.IndirectEntityDamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -156,7 +156,7 @@ public class EnderExecutorEntity extends EnderMan implements IBeamAttackMob
 
 			if (ModConfigs.cachedServer.ENDER_EXECUTOR_REDUCE_DAMAGE)
 			{
-				if (!(source.getEntity() != null && source.isCreativePlayer()) && source != DamageSource.OUT_OF_WORLD && f > 10.0F)
+				if (!(source.getEntity() != null && source.isCreativePlayer()) && !source.is(ModTags.BYPASSES_ENDER_EXECUTOR_DAMAGE_REDUCING) && f > 10.0F)
 				{
 					if (this.level.getDifficulty() == Difficulty.NORMAL)
 					{
@@ -169,22 +169,7 @@ public class EnderExecutorEntity extends EnderMan implements IBeamAttackMob
 				}
 			}
 
-			if (source instanceof IndirectEntityDamageSource)
-			{
-				for (int i = 0; i < 64; ++i)
-				{
-					if (this.teleport())
-					{
-						return true;
-					}
-				}
-
-				return false;
-			}
-			else
-			{
-				return super.hurt(source, f);
-			}
+			return super.hurt(source, f);
 		}
 	}
 
@@ -275,7 +260,7 @@ public class EnderExecutorEntity extends EnderMan implements IBeamAttackMob
 			f += 2.0F;
 		}
 
-		return target.hurt(DamageSource.indirectMagic(this, this), f);
+		return target.hurt(this.damageSources().indirectMagic(this, this), f);
 	}
 
 	@Override

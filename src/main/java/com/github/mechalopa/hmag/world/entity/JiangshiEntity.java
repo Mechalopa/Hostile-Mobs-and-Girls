@@ -9,6 +9,7 @@ import javax.annotation.Nullable;
 
 import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
+import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.util.ModUtils;
 import com.github.mechalopa.hmag.world.entity.ai.goal.LeapAtTargetGoal2;
 import com.github.mechalopa.hmag.world.entity.ai.goal.MeleeAttackGoal2;
@@ -24,11 +25,13 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -213,7 +216,7 @@ public class JiangshiEntity extends Monster
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.isProjectile())
+		if (source.is(ModTags.JIANGSHI_RESISTANT_TO))
 		{
 			amount = amount * 0.5F;
 		}
@@ -222,7 +225,7 @@ public class JiangshiEntity extends Monster
 		{
 			return false;
 		}
-		else if (this.isNoAi() || source.isNoAggro() || source.isFire() || amount <= 0.0F || !((source.getEntity() != null && source.getEntity() instanceof LivingEntity)))
+		else if (this.isNoAi() || source.is(DamageTypes.MOB_ATTACK_NO_AGGRO) || source.is(DamageTypeTags.IS_FIRE) || amount <= 0.0F || !((source.getEntity() != null && source.getEntity() instanceof LivingEntity)))
 		{
 			return true;
 		}

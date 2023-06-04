@@ -3,7 +3,7 @@ package com.github.mechalopa.hmag.world.entity;
 import javax.annotation.Nonnull;
 
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
-import com.github.mechalopa.hmag.util.ModUtils;
+import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.world.entity.ai.goal.MeleeAttackGoal2;
 import com.github.mechalopa.hmag.world.entity.ai.goal.RangedAttackGoal2;
 import com.github.mechalopa.hmag.world.entity.projectile.MagmaBulletEntity;
@@ -194,7 +194,7 @@ public class FortressKeeperEntity extends Monster implements RangedAttackMob
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.isProjectile() || source.isMagic() || source.isFire() || ModUtils.isThornsDamage(source))
+		if (source.is(ModTags.FORTRESS_KEEPER_RESISTANT_TO))
 		{
 			amount = amount * 0.5F;
 		}

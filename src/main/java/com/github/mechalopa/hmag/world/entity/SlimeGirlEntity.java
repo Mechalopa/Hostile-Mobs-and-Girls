@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 
 import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.registry.ModEntityTypes;
+import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.world.entity.ai.goal.LeapAtTargetGoal2;
 
 import net.minecraft.core.BlockPos;
@@ -238,7 +239,7 @@ public class SlimeGirlEntity extends Monster
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.isMagic() || source == DamageSource.FALL)
+		if (source.is(ModTags.SLIME_GIRL_RESISTANT_TO))
 		{
 			amount = amount * 0.5F;
 		}

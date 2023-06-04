@@ -134,7 +134,7 @@ public class JackFrostEntity extends Monster implements RangedAttackMob
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.isFire())
+		if (source.is(ModTags.JACK_FROST_VULNERABLE_TO))
 		{
 			amount = amount * 2.0F;
 		}

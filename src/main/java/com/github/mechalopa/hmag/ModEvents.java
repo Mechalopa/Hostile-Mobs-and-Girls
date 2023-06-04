@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import javax.annotation.Nullable;
 
+import com.github.mechalopa.hmag.registry.ModDamageTypes;
 import com.github.mechalopa.hmag.registry.ModEffects;
 import com.github.mechalopa.hmag.registry.ModEnchantments;
 import com.github.mechalopa.hmag.registry.ModEntityTypes;
@@ -129,7 +130,7 @@ public class ModEvents
 						if (((AbstractArrow)source.getDirectEntity()).isCritArrow())
 						{
 							event.setAmount(event.getAmount() * 1.2F);
-							source.bypassArmor().bypassMagic();
+							source = ModDamageTypes.source(source.getEntity().getLevel(), ModDamageTypes.CRITICAL_EVIL_ARROW, source.getEntity(), source.getDirectEntity());
 						}
 						else
 						{

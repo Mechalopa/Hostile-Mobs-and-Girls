@@ -5,6 +5,7 @@ import javax.annotation.Nullable;
 
 import com.github.mechalopa.hmag.registry.ModItems;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
+import com.github.mechalopa.hmag.util.ModTags;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -117,7 +118,7 @@ public class ImpEntity extends Monster
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.isMagic() || source == DamageSource.FALL)
+		if (source.is(ModTags.IMP_RESISTANT_TO))
 		{
 			amount = amount * 0.5F;
 		}

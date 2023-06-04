@@ -148,7 +148,7 @@ public class SavagefangEntity extends Monster
 			if (this.getAirSupply() == -20)
 			{
 				this.setAirSupply(0);
-				this.hurt(DamageSource.DROWN, 2.0F);
+				this.hurt(this.damageSources().drown(), 2.0F);
 			}
 		}
 		else
@@ -749,7 +749,7 @@ public class SavagefangEntity extends Monster
 				vec31 = vec31.normalize().scale(0.25D + this.mob.getRandom().nextFloat() * 0.05F).add(vec3.scale(0.5D));
 			}
 
-			if (!this.target.isInWaterOrBubble() || ( this.target.getY() + 1.0D > this.mob.getEyeY() && this.mob.level.isEmptyBlock(new BlockPos(this.mob.blockPosition().getX(), this.mob.blockPosition().getY() + 1.0D, this.mob.blockPosition().getZ()))))
+			if (!this.target.isInWaterOrBubble() || ( this.target.getY() + 1.0D > this.mob.getEyeY() && this.mob.level.isEmptyBlock(this.mob.blockPosition().above())))
 			{
 				this.mob.setDeltaMovement(vec31.x, 0.4D + this.mob.getRandom().nextFloat() * 0.2F, vec31.z);
 			}

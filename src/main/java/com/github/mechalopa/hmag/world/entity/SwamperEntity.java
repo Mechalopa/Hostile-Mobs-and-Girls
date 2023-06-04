@@ -239,11 +239,12 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.isFire())
+		if (source.is(ModTags.SWAMPER_VULNERABLE_TO))
 		{
 			amount = amount * 1.5F;
 		}
-		else if (source == DamageSource.FALL)
+
+		if (source.is(ModTags.SWAMPER_RESISTANT_TO))
 		{
 			amount = amount * 0.5F;
 		}

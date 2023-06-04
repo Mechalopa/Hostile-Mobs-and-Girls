@@ -3,6 +3,7 @@ package com.github.mechalopa.hmag.world.entity;
 import javax.annotation.Nonnull;
 
 import com.github.mechalopa.hmag.ModConfigs;
+import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.world.entity.ai.goal.RangedAttackGoal2;
 import com.github.mechalopa.hmag.world.entity.projectile.MagicBulletEntity;
 
@@ -84,7 +85,7 @@ public class LichEntity extends Monster implements RangedAttackMob
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.isMagic() || source.isFire())
+		if (source.is(ModTags.LICH_RESISTANT_TO))
 		{
 			amount = amount * 0.5F;
 		}

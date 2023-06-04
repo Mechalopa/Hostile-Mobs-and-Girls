@@ -5,6 +5,7 @@ import com.github.mechalopa.hmag.HMaG;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
@@ -53,6 +54,34 @@ public class ModTags
 	public static final TagKey<EntityType<?>> WITHER_SKELETON_GIRL_REPLACEABLES = createEntityTypeTag("wither_skeleton_girl_replaceables");
 	public static final TagKey<EntityType<?>> ZOMBIE_GIRL_REPLACEABLES = createEntityTypeTag("zombie_girl_replaceables");
 
+	public static final TagKey<DamageType> ALRAUNE_VULNERABLE_TO = createDamageTypeTag("alraune_vulnerable_to");
+	public static final TagKey<DamageType> BYPASSES_ENDER_EXECUTOR_DAMAGE_REDUCING = createDamageTypeTag("bypasses_ender_executor_damage_reducing");
+	public static final TagKey<DamageType> CRIMSON_SLAUGHTERER_RESISTANT_TO = createDamageTypeTag("crimson_slaughterer_resistant_to");
+	public static final TagKey<DamageType> CURSED_DOLL_VULNERABLE_TO = createDamageTypeTag("cursed_doll_vulnerable_to");
+	public static final TagKey<DamageType> DOGU_IMMUNE_TO = createDamageTypeTag("dogu_immune_to");
+	public static final TagKey<DamageType> DOGU_RESISTANT_TO = createDamageTypeTag("dogu_resistant_to");
+	public static final TagKey<DamageType> DULLAHAN_RESISTANT_TO = createDamageTypeTag("dullahan_resistant_to");
+	public static final TagKey<DamageType> FORTRESS_KEEPER_RESISTANT_TO = createDamageTypeTag("fortress_keeper_resistant_to");
+	public static final TagKey<DamageType> GIANT_MUMMY_RESISTANT_TO = createDamageTypeTag("giant_mummy_resistant_to");
+	public static final TagKey<DamageType> GLARYAD_VULNERABLE_TO = createDamageTypeTag("glaryad_vulnerable_to");
+	public static final TagKey<DamageType> HORNET_VULNERABLE_TO = createDamageTypeTag("hornet_vulnerable_to");
+	public static final TagKey<DamageType> IMP_RESISTANT_TO = createDamageTypeTag("imp_resistant_to");
+	public static final TagKey<DamageType> JACK_FROST_VULNERABLE_TO = createDamageTypeTag("jack_frost_vulnerable_to");
+	public static final TagKey<DamageType> JIANGSHI_RESISTANT_TO = createDamageTypeTag("jiangshi_resistant_to");
+	public static final TagKey<DamageType> LICH_RESISTANT_TO = createDamageTypeTag("lich_resistant_to");
+	public static final TagKey<DamageType> MAGICAL_SLIME_RESISTANT_TO = createDamageTypeTag("magical_slime_resistant_to");
+	public static final TagKey<DamageType> MONOLITH_RESISTANT_TO = createDamageTypeTag("monolith_resistant_to");
+	public static final TagKey<DamageType> NIGHTWALKER_RESISTANT_TO = createDamageTypeTag("nightwalker_resistant_to");
+	public static final TagKey<DamageType> OGRE_HIGHLY_RESISTANT_TO = createDamageTypeTag("ogre_highly_resistant_to");
+	public static final TagKey<DamageType> OGRE_RESISTANT_TO = createDamageTypeTag("ogre_resistant_to");
+	public static final TagKey<DamageType> SLIME_GIRL_RESISTANT_TO = createDamageTypeTag("slime_girl_resistant_to");
+	public static final TagKey<DamageType> SNOW_CANINE_RESISTANT_TO = createDamageTypeTag("snow_canine_resistant_to");
+	public static final TagKey<DamageType> SPIDER_NEST_RESISTANT_TO = createDamageTypeTag("spider_nest_resistant_to");
+	public static final TagKey<DamageType> SPIDER_NEST_VULNERABLE_TO = createDamageTypeTag("spider_nest_vulnerable_to");
+	public static final TagKey<DamageType> SWAMPER_RESISTANT_TO = createDamageTypeTag("swamper_resistant_to");
+	public static final TagKey<DamageType> SWAMPER_VULNERABLE_TO = createDamageTypeTag("swamper_vulnerable_to");
+	public static final TagKey<DamageType> TRIGGERS_OGRE_DESTROYING = createDamageTypeTag("triggers_ogre_destroying");
+
 	public static final TagKey<Enchantment> INCOMPATIBLE_WITH_ANTI_AIR = createEnchantmentTag("incompatible_with_anti_air");
 	public static final TagKey<Enchantment> INCOMPATIBLE_WITH_HEALTH_BOOST = createEnchantmentTag("incompatible_with_health_boost");
 	public static final TagKey<Enchantment> INCOMPATIBLE_WITH_WATER_ASPECT = createEnchantmentTag("incompatible_with_water_aspect");
@@ -85,6 +114,11 @@ public class ModTags
 	private static TagKey<EntityType<?>> createEntityTypeTag(String name)
 	{
 		return TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(HMaG.MODID, name));
+	}
+
+	private static TagKey<DamageType> createDamageTypeTag(String name)
+	{
+		return TagKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(HMaG.MODID, name));
 	}
 
 	private static TagKey<Enchantment> createEnchantmentTag(String name)

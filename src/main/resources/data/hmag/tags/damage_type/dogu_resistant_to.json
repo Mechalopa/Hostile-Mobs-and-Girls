@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "#hmag:is_stalagmite",
+    "#minecraft:is_explosion",
+    "#minecraft:is_fall",
+    "#minecraft:is_freezing",
+    "#minecraft:is_projectile",
+    "minecraft:falling_anvil",
+    "minecraft:falling_block"
+  ]
+}

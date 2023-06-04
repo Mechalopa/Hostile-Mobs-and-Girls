@@ -1,6 +1,11 @@
 {
   "replace": false,
   "values": [
-    "#minecraft:is_fire"
+    "#hmag:is_stalagmite",
+    "#hmag:is_thorns",
+    "#minecraft:is_projectile",
+    "minecraft:cramming",
+    "minecraft:in_wall",
+    "minecraft:starve"
   ]
 }

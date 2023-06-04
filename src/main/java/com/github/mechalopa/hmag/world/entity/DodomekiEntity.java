@@ -90,7 +90,7 @@ public class DodomekiEntity extends Monster
 		{
 			if (this.isAggressive())
 			{
-				BlockPos pos = new BlockPos(this.getEyePosition(1.0F));
+				BlockPos pos = BlockPos.containing(this.getEyePosition(1.0F));
 
 				if (Math.max(this.level.getBrightness(LightLayer.SKY, pos) - ModClientUtils.getSkyDarken(this.level), this.level.getBrightness(LightLayer.BLOCK, pos)) < 7)
 				{

@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "#hmag:is_magic",
+    "#minecraft:is_fire",
+    "#minecraft:is_freezing"
+  ]
+}

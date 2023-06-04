@@ -735,7 +735,7 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 		public void start()
 		{
 			RandomSource random = this.parent.getRandom();
-			BlockPos blockpos = new BlockPos(this.parent.getX(), Math.round(this.parent.getY()), this.parent.getZ());
+			BlockPos blockpos = BlockPos.containing(this.parent.getX(), Math.round(this.parent.getY()), this.parent.getZ());
 			boolean flag = this.parent.isActuallyRetreating();
 			double d0 = this.parent.getX();
 			double d1 = this.parent.getY();

@@ -1,5 +1,6 @@
 package com.github.mechalopa.hmag.world.entity.projectile;
 
+import com.github.mechalopa.hmag.registry.ModDamageTypes;
 import com.github.mechalopa.hmag.registry.ModEntityTypes;
 
 import net.minecraft.core.particles.BlockParticleOption;
@@ -9,7 +10,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
@@ -107,7 +107,8 @@ public class MagmaBulletEntity extends ModDamagingProjectileEntity
 				Entity entity1 = this.getOwner();
 				int i = entity.getRemainingFireTicks();
 				entity.setSecondsOnFire(5);
-				boolean flag = entity.hurt(DamageSource.thrown(this, entity1).setIsFire(), this.getDamage());
+
+				boolean flag = entity.hurt(ModDamageTypes.source(this.level, ModDamageTypes.MAGMA_BULLET, this, entity1), this.getDamage());
 
 				if (!flag)
 				{

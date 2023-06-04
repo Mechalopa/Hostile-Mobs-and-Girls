@@ -282,7 +282,7 @@ public class GlaryadEntity extends Monster implements NeutralMob
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.isFire())
+		if (source.is(ModTags.GLARYAD_VULNERABLE_TO))
 		{
 			amount = amount * 2.0F;
 		}

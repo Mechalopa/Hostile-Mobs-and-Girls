@@ -73,7 +73,7 @@ public class SnowCanineEntity extends Monster
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source == DamageSource.FALL)
+		if (source.is(ModTags.SNOW_CANINE_RESISTANT_TO))
 		{
 			amount = amount * 0.5F;
 		}

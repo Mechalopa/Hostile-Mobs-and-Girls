@@ -4,6 +4,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
+import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.util.ModUtils;
 
 import net.minecraft.core.BlockPos;
@@ -117,7 +118,7 @@ public class DullahanEntity extends Monster
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.isMagic())
+		if (source.is(ModTags.DULLAHAN_RESISTANT_TO))
 		{
 			amount = amount * 0.5F;
 		}

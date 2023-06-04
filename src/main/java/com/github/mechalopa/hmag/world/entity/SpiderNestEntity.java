@@ -4,6 +4,7 @@ import javax.annotation.Nonnull;
 
 import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
+import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.util.ModUtils;
 import com.github.mechalopa.hmag.world.entity.ai.goal.MeleeAttackGoal2;
 
@@ -168,13 +169,14 @@ public class SpiderNestEntity extends Monster
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.isProjectile() || source.isExplosion() || ModUtils.isThornsDamage(source) || ModUtils.isStalagmiteDamage(source))
-		{
-			amount = amount * 0.5F;
-		}
-		else if (source.isFire())
+		if (source.is(ModTags.SPIDER_NEST_VULNERABLE_TO))
 		{
 			amount = amount * 1.5F;
+		}
+
+		if (source.is(ModTags.SPIDER_NEST_RESISTANT_TO))
+		{
+			amount = amount * 0.5F;
 		}
 
 		return super.hurt(source, amount);

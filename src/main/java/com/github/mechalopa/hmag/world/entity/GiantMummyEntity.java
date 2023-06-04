@@ -174,7 +174,7 @@ public class GiantMummyEntity extends Monster
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.isProjectile())
+		if (source.is(ModTags.GIANT_MUMMY_RESISTANT_TO))
 		{
 			amount = amount * 0.5F;
 		}
@@ -281,7 +281,7 @@ public class GiantMummyEntity extends Monster
 	private static class GiantMummyNodeEvaluator extends WalkNodeEvaluator
 	{
 		@Override
-		protected BlockPathTypes evaluateBlockPathType(BlockGetter getter, boolean flag, boolean flag1, BlockPos pos, BlockPathTypes blockPathTypes)
+		protected BlockPathTypes evaluateBlockPathType(BlockGetter getter, BlockPos pos, BlockPathTypes blockPathTypes)
 		{
 			if ((blockPathTypes == BlockPathTypes.BLOCKED || blockPathTypes == BlockPathTypes.FENCE || blockPathTypes == BlockPathTypes.LEAVES || blockPathTypes == BlockPathTypes.COCOA) && this.mob != null && this.mob.isAlive() && ModConfigs.cachedServer.GIANT_MUMMY_DESTROY_BLOCKS && this.mob.level.getDifficulty().getId() > 1 && this.mob.getTarget() != null && getter.getBlockState(pos).is(ModTags.GIANT_MUMMY_DESTROYABLES))
 			{
@@ -289,7 +289,7 @@ public class GiantMummyEntity extends Monster
 			}
 			else
 			{
-				return super.evaluateBlockPathType(getter, flag, flag1, pos, blockPathTypes);
+				return super.evaluateBlockPathType(getter, pos, blockPathTypes);
 			}
 		}
 	}

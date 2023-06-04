@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "#hmag:is_stalagmite",
+    "#hmag:is_thorns",
+    "#minecraft:is_explosion",
+    "#minecraft:is_projectile"
+  ]
+}

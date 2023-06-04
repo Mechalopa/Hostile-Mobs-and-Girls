@@ -4,6 +4,7 @@ import javax.annotation.Nullable;
 
 import com.github.mechalopa.hmag.registry.ModItems;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
+import com.github.mechalopa.hmag.util.ModTags;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvent;
@@ -108,7 +109,7 @@ public class HornetEntity extends AbstractFlyingMonsterEntity
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.isFire())
+		if (source.is(ModTags.HORNET_VULNERABLE_TO))
 		{
 			amount = amount * 2.0F;
 		}

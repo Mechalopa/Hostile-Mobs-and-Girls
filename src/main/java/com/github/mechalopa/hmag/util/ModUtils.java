@@ -14,8 +14,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -137,16 +135,6 @@ public class ModUtils
 				return j <= dimensiontype.monsterSpawnLightTest().sample(random);
 			}
 		}
-	}
-
-	public static boolean isThornsDamage(@Nonnull DamageSource source)
-	{
-		return source == DamageSource.CACTUS || source == DamageSource.SWEET_BERRY_BUSH || (source instanceof EntityDamageSource && ((EntityDamageSource)source).isThorns());
-	}
-
-	public static boolean isStalagmiteDamage(@Nonnull DamageSource source)
-	{
-		return source == DamageSource.STALAGMITE || source.getMsgId().equals("fallingStalactite");
 	}
 
 	public static float rotlerp(float f, float f1, float f2, boolean flag)
