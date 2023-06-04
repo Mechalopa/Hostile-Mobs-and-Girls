@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "hmag:ancient_helmet",
+    "hmag:ancient_chestplate",
+    "hmag:ancient_leggings",
+    "hmag:ancient_boots",
+    "hmag:necrotic_chainmail_helmet",
+    "hmag:necrotic_chainmail_chestplate",
+    "hmag:necrotic_chainmail_leggings",
+    "hmag:necrotic_chainmail_boots"
+  ]
+}
