@@ -9,6 +9,11 @@
         "name": "#hmag:is_peaceful",
         "negate": true
       }
+    ],
+    [
+      {
+        "name": "#hmag:evilcraft/degraded"
+      }
     ]
   ],
   "spawners": [
