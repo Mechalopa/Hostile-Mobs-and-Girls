@@ -18,4 +18,6 @@ public interface IBeamAttackMob
 	public LivingEntity getActiveAttackTarget();
 
 	public float getAttackAnimationScale(float f);
+
+	public float getClientSideAttackTime();
 }

@@ -74,7 +74,7 @@ public class EnderExecutorRenderer extends MobRenderer<EnderExecutorEntity, Ende
 		if (entity.isAlive() && target != null)
 		{
 			float f = entity.getAttackAnimationScale(partialTicks);
-			float f1 = (float)(entity.level.getGameTime() % 24000L) + partialTicks;
+			float f1 = entity.getClientSideAttackTime() + partialTicks;
 			float f2 = f1 * 0.5F % 1.0F;
 			float f3 = entity.getEyeHeight();
 			poseStack.pushPose();

@@ -476,7 +476,13 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 	@Override
 	public float getAttackAnimationScale(float f)
 	{
-		return (this.clientAttackTime + f) / this.getAttackDuration();
+		return ((float)this.clientAttackTime + f) / this.getAttackDuration();
+	}
+
+	@Override
+	public float getClientSideAttackTime()
+	{
+		return (float)(this.level.getGameTime() % 24000L);
 	}
 
 	@Nonnull

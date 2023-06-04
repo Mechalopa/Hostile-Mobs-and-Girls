@@ -38,7 +38,7 @@ public class DrownedGirlRenderer extends ZombieGirlRenderer
 
 		if (f > 0.0F)
 		{
-			poseStack.mulPose(Axis.XP.rotationDegrees(Mth.lerp(f, entity.getXRot(), -10.0F - entity.getXRot())));
+			poseStack.rotateAround(Axis.XP.rotationDegrees(Mth.lerp(f, 0.0F, -10.0F - entity.getXRot())), 0.0F, entity.getBbHeight() / 2.0F, 0.0F);
 		}
 	}
 }

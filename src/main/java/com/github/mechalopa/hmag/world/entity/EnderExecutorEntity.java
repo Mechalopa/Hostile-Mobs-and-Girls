@@ -314,7 +314,13 @@ public class EnderExecutorEntity extends EnderMan implements IBeamAttackMob
 	@Override
 	public float getAttackAnimationScale(float f)
 	{
-		return (this.clientAttackTime + f) / this.getAttackDuration();
+		return ((float)this.clientAttackTime + f) / this.getAttackDuration();
+	}
+
+	@Override
+	public float getClientSideAttackTime()
+	{
+		return (float)this.clientAttackTime;
 	}
 
 	@Nonnull
