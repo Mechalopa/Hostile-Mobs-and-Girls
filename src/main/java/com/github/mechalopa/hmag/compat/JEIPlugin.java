@@ -216,7 +216,7 @@ public class JEIPlugin implements IModPlugin
 		registration.addRecipes(RecipeTypes.CRAFTING, shapelessRecipes);
 	}
 
-	@SuppressWarnings("deprecation")
+	@Deprecated(forRemoval = true)
 	private static void addSmithingRecipe(List<SmithingRecipe> smithingRecipes, ResourceLocation id, Ingredient base, Ingredient addition, ItemStack output)
 	{
 		smithingRecipes.add(new LegacyUpgradeRecipe(id, base, addition, output));

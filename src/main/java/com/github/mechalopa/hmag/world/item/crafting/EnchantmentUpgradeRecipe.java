@@ -24,12 +24,11 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 
-@SuppressWarnings("removal")
+@Deprecated(forRemoval = true)
 public class EnchantmentUpgradeRecipe extends LegacyUpgradeRecipe
 {
 	private final ResourceLocation recipeId;
 
-	@SuppressWarnings("deprecation")
 	public EnchantmentUpgradeRecipe(ResourceLocation recipeId)
 	{
 		super(recipeId, Ingredient.EMPTY, Ingredient.EMPTY, ItemStack.EMPTY);

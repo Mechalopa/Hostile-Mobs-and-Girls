@@ -22,12 +22,11 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.ForgeRegistries;
 
-@SuppressWarnings("removal")
+@Deprecated(forRemoval = true)
 public class RemoveCurseRecipe extends LegacyUpgradeRecipe
 {
 	private final ResourceLocation recipeId;
 
-	@SuppressWarnings("deprecation")
 	public RemoveCurseRecipe(ResourceLocation recipeId)
 	{
 		super(recipeId, Ingredient.EMPTY, Ingredient.EMPTY, ItemStack.EMPTY);
