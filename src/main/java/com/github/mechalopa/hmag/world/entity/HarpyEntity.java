@@ -5,6 +5,7 @@ import java.util.EnumSet;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
 import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.world.entity.ai.goal.LeapAtTargetGoal2;
@@ -140,7 +141,7 @@ public class HarpyEntity extends Monster
 		spawnData = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
 		RandomSource randomsource = levelAccessor.getRandom();
 
-		if (randomsource.nextFloat() < 0.001F)
+		if (randomsource.nextDouble() < ModConfigs.cachedServer.PINK_HARPY_SPAWN_CHANCE)
 		{
 			this.setVariant(6);
 		}

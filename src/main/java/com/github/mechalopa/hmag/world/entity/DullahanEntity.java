@@ -3,6 +3,7 @@ package com.github.mechalopa.hmag.world.entity;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
 import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.util.ModUtils;
@@ -79,7 +80,7 @@ public class DullahanEntity extends Monster
 	@Override
 	public void aiStep()
 	{
-		ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick(), 8);
+		ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick(), ModConfigs.cachedServer.DULLAHAN_BURNS_IN_DAYLIGHT, 8);
 		super.aiStep();
 	}
 
