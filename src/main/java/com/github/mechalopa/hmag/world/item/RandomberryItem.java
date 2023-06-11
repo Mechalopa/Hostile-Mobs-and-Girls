@@ -47,7 +47,7 @@ public class RandomberryItem extends Item
 	{
 		RANDOMBERRY_EFFECTS = ForgeRegistries.MOB_EFFECTS.getValues().stream().filter((p) -> {
 			Holder<MobEffect> holder = ForgeRegistries.MOB_EFFECTS.getHolder(p).orElseThrow();
-			return holder != null && holder.is(ModTags.RANDOMBERRY_GIVES);
+			return holder != null && holder.is(ModTags.MobEffectTags.RANDOMBERRY_GIVES);
 		}).toList();
 	}
 }

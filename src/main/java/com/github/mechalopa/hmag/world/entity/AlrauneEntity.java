@@ -129,7 +129,7 @@ public class AlrauneEntity extends Monster implements RangedAttackMob
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.is(ModTags.ALRAUNE_VULNERABLE_TO))
+		if (source.is(ModTags.DamageTypeTags.ALRAUNE_VULNERABLE_TO))
 		{
 			amount = amount * 2.0F;
 		}
@@ -140,7 +140,7 @@ public class AlrauneEntity extends Monster implements RangedAttackMob
 	@Override
 	public boolean canBeAffected(MobEffectInstance potioneffect)
 	{
-		if (potioneffect.getEffect() == MobEffects.POISON || potioneffect.getEffect() == MobEffects.CONFUSION)
+		if (ModTags.checkTagContains(potioneffect.getEffect(), ModTags.MobEffectTags.ALRAUNE_IMMUNE_TO))
 		{
 			MobEffectEvent.Applicable event = new MobEffectEvent.Applicable(this, potioneffect);
 			MinecraftForge.EVENT_BUS.post(event);

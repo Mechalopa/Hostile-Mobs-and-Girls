@@ -50,7 +50,7 @@ public class TotemOfRepulseItem extends Item
 			}
 
 			Player player = (Player)livingEntity;
-			ItemStack stack1 = ModUtils.getPlayerInventoryItem(player, Ingredient.of(ModTags.TOTEM_OF_REPULSE_COSTS));
+			ItemStack stack1 = ModUtils.getPlayerInventoryItem(player, Ingredient.of(ModTags.ItemTags.TOTEM_OF_REPULSE_COSTS));
 
 			if (!stack1.isEmpty() || player.getAbilities().instabuild)
 			{
@@ -154,7 +154,7 @@ public class TotemOfRepulseItem extends Item
 	{
 		ItemStack stack = player.getItemInHand(hand);
 
-		if (!player.getAbilities().instabuild && ModUtils.getPlayerInventoryItem(player, Ingredient.of(ModTags.TOTEM_OF_REPULSE_COSTS)).isEmpty())
+		if (!player.getAbilities().instabuild && ModUtils.getPlayerInventoryItem(player, Ingredient.of(ModTags.ItemTags.TOTEM_OF_REPULSE_COSTS)).isEmpty())
 		{
 			return InteractionResultHolder.fail(stack);
 		}

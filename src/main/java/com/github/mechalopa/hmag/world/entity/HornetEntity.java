@@ -109,7 +109,7 @@ public class HornetEntity extends AbstractFlyingMonsterEntity
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.is(ModTags.HORNET_VULNERABLE_TO))
+		if (source.is(ModTags.DamageTypeTags.HORNET_VULNERABLE_TO))
 		{
 			amount = amount * 2.0F;
 		}

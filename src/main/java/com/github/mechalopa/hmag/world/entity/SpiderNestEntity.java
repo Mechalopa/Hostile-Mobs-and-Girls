@@ -169,12 +169,12 @@ public class SpiderNestEntity extends Monster
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.is(ModTags.SPIDER_NEST_VULNERABLE_TO))
+		if (source.is(ModTags.DamageTypeTags.SPIDER_NEST_VULNERABLE_TO))
 		{
 			amount = amount * 1.5F;
 		}
 
-		if (source.is(ModTags.SPIDER_NEST_RESISTANT_TO))
+		if (source.is(ModTags.DamageTypeTags.SPIDER_NEST_RESISTANT_TO))
 		{
 			amount = amount * 0.5F;
 		}
@@ -185,7 +185,7 @@ public class SpiderNestEntity extends Monster
 	@Override
 	public boolean canBeAffected(MobEffectInstance potioneffect)
 	{
-		if (potioneffect.getEffect() == MobEffects.POISON)
+		if (ModTags.checkTagContains(potioneffect.getEffect(), ModTags.MobEffectTags.SPIDER_NEST_IMMUNE_TO))
 		{
 			MobEffectEvent.Applicable event = new MobEffectEvent.Applicable(this, potioneffect);
 			MinecraftForge.EVENT_BUS.post(event);

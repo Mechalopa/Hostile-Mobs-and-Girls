@@ -151,23 +151,23 @@ public class HarpyEntity extends Monster
 
 			if (holder != null)
 			{
-				if (holder.is(ModTags.IS_COLD))
+				if (holder.is(ModTags.BiomeTags.IS_COLD))
 				{
 					this.setVariant(randomsource.nextInt(4) == 0 ? (randomsource.nextInt(3) + 2) : 5);
 				}
-				else if (holder.is(ModTags.IS_BADLANDS))
+				else if (holder.is(ModTags.BiomeTags.IS_BADLANDS))
 				{
 					this.setVariant(randomsource.nextInt(5) == 0 ? 3 : (randomsource.nextInt(3) == 0 ? 0 : (randomsource.nextInt(2) + 1)));
 				}
-				else if (holder.is(ModTags.IS_SANDY))
+				else if (holder.is(ModTags.BiomeTags.IS_SANDY))
 				{
 					this.setVariant(randomsource.nextInt(5) == 0 ? 5 : (randomsource.nextInt(3) == 0 ? 1 : (randomsource.nextBoolean() ? 0 : 2)));
 				}
-				else if (holder.is(ModTags.IS_SAVANNA))
+				else if (holder.is(ModTags.BiomeTags.IS_SAVANNA))
 				{
 					this.setVariant(randomsource.nextInt(6) == 0 ? 4 : randomsource.nextInt(3));
 				}
-				else if (holder.is(ModTags.IS_PLAINS))
+				else if (holder.is(ModTags.BiomeTags.IS_PLAINS))
 				{
 					this.setVariant(randomsource.nextInt(3) == 0 ? (randomsource.nextBoolean() ? 1 : 4) : 3);
 				}

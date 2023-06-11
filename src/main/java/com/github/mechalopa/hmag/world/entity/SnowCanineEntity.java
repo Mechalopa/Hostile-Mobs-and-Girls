@@ -53,7 +53,7 @@ public class SnowCanineEntity extends Monster
 		this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
 		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
 		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, LivingEntity.class, 10, true, false, (p) -> {
-			return p.getType().is(ModTags.SNOW_CANINE_TARGETS) && p.distanceToSqr(this) <= 6.0D * 6.0D;
+			return p.getType().is(ModTags.EntityTypeTags.SNOW_CANINE_TARGETS) && p.distanceToSqr(this) <= 6.0D * 6.0D;
 		}));
 		if (ModConfigs.cachedServer.SNOW_CANINE_ATTACK_BABY_TURTLES)
 			this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Turtle.class, 10, true, false, Turtle.BABY_ON_LAND_SELECTOR));
@@ -73,7 +73,7 @@ public class SnowCanineEntity extends Monster
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.is(ModTags.SNOW_CANINE_RESISTANT_TO))
+		if (source.is(ModTags.DamageTypeTags.SNOW_CANINE_RESISTANT_TO))
 		{
 			amount = amount * 0.5F;
 		}

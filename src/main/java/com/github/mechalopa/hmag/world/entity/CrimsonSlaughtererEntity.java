@@ -70,7 +70,7 @@ public class CrimsonSlaughtererEntity extends Monster
 		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true).setUnseenMemoryTicks(120));
 		if (ModConfigs.cachedServer.CRIMSON_SLAUGHTERER_ATTACK_ANIMALS)
 			this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Animal.class, 10, false, false, (p) -> {
-				return !p.getType().is(ModTags.CRIMSON_SLAUGHTERER_TARGET_ANIMAL_BLACKLIST) && p.distanceToSqr(this) <= 8.0D * 8.0D;
+				return !p.getType().is(ModTags.EntityTypeTags.CRIMSON_SLAUGHTERER_TARGET_ANIMAL_BLACKLIST) && p.distanceToSqr(this) <= 8.0D * 8.0D;
 			}));
 		if (ModConfigs.cachedServer.CRIMSON_SLAUGHTERER_ATTACK_VILLAGERS)
 			this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, false));
@@ -132,7 +132,7 @@ public class CrimsonSlaughtererEntity extends Monster
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.is(ModTags.CRIMSON_SLAUGHTERER_RESISTANT_TO))
+		if (source.is(ModTags.DamageTypeTags.CRIMSON_SLAUGHTERER_RESISTANT_TO))
 		{
 			amount = amount * 0.5F;
 		}
@@ -143,7 +143,7 @@ public class CrimsonSlaughtererEntity extends Monster
 	@Override
 	public boolean canBeAffected(MobEffectInstance potioneffect)
 	{
-		if (potioneffect.getEffect() == MobEffects.HUNGER || potioneffect.getEffect() == MobEffects.POISON)
+		if (ModTags.checkTagContains(potioneffect.getEffect(), ModTags.MobEffectTags.CRIMSON_SLAUGHTERER_IMMUNE_TO))
 		{
 			MobEffectEvent.Applicable event = new MobEffectEvent.Applicable(this, potioneffect);
 			MinecraftForge.EVENT_BUS.post(event);

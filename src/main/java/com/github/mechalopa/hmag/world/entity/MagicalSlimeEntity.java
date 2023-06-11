@@ -47,7 +47,7 @@ public class MagicalSlimeEntity extends Slime
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.is(ModTags.MAGICAL_SLIME_RESISTANT_TO))
+		if (source.is(ModTags.DamageTypeTags.MAGICAL_SLIME_RESISTANT_TO))
 		{
 			amount = amount * 0.5F;
 		}

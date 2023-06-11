@@ -881,7 +881,7 @@ public class SavagefangEntity extends Monster
 		@Override
 		public boolean test(@Nullable LivingEntity livingEntity)
 		{
-			if (this.parent.isLaunched() || livingEntity.getType().is(ModTags.SAVAGEFANG_TARGET_BLACKLIST))
+			if (this.parent.isLaunched() || livingEntity.getType().is(ModTags.EntityTypeTags.SAVAGEFANG_TARGET_BLACKLIST))
 			{
 				return false;
 			}

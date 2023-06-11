@@ -125,7 +125,7 @@ public class InsomniaSwordItem extends ModSwordItem implements ILevelItem
 	@Override
 	public boolean isValidRepairItem(ItemStack stack, ItemStack stack1)
 	{
-		return stack1.is(ModTags.INSOMNIA_SWORD_REPAIR_ITEMS);
+		return stack1.is(ModTags.ItemTags.INSOMNIA_SWORD_REPAIR_ITEMS);
 	}
 
 	@Override

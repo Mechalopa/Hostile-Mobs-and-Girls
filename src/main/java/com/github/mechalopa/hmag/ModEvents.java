@@ -250,35 +250,35 @@ public class ModEvents
 					ServerLevel serverlevel = (ServerLevel)event.getEntity().getCommandSenderWorld();
 					final double d = event.getEntity().getRandom().nextDouble();
 
-					if (ModConfigs.cachedServer.ZOMBIE_GIRL_REPLACE_CHANCE > d && mob.getType().is(ModTags.ZOMBIE_GIRL_REPLACEABLES))
+					if (ModConfigs.cachedServer.ZOMBIE_GIRL_REPLACE_CHANCE > d && mob.getType().is(ModTags.EntityTypeTags.ZOMBIE_GIRL_REPLACEABLES))
 					{
 						replace(serverlevel, mob, ModEntityTypes.ZOMBIE_GIRL.get());
 					}
-					else if (ModConfigs.cachedServer.HUSK_GIRL_REPLACE_CHANCE > d && mob.getType().is(ModTags.HUSK_GIRL_REPLACEABLES))
+					else if (ModConfigs.cachedServer.HUSK_GIRL_REPLACE_CHANCE > d && mob.getType().is(ModTags.EntityTypeTags.HUSK_GIRL_REPLACEABLES))
 					{
 						replace(serverlevel, mob, ModEntityTypes.HUSK_GIRL.get());
 					}
-					else if (ModConfigs.cachedServer.DROWNED_GIRL_REPLACE_CHANCE > d && mob.getType().is(ModTags.DROWNED_GIRL_REPLACEABLES))
+					else if (ModConfigs.cachedServer.DROWNED_GIRL_REPLACE_CHANCE > d && mob.getType().is(ModTags.EntityTypeTags.DROWNED_GIRL_REPLACEABLES))
 					{
 						replace(serverlevel, mob, ModEntityTypes.DROWNED_GIRL.get());
 					}
-					else if (ModConfigs.cachedServer.SKELETON_GIRL_REPLACE_CHANCE > d && mob.getType().is(ModTags.SKELETON_GIRL_REPLACEABLES))
+					else if (ModConfigs.cachedServer.SKELETON_GIRL_REPLACE_CHANCE > d && mob.getType().is(ModTags.EntityTypeTags.SKELETON_GIRL_REPLACEABLES))
 					{
 						replace(serverlevel, mob, ModEntityTypes.SKELETON_GIRL.get());
 					}
-					else if (ModConfigs.cachedServer.WITHER_SKELETON_GIRL_REPLACE_CHANCE > d && mob.getType().is(ModTags.WITHER_SKELETON_GIRL_REPLACEABLES))
+					else if (ModConfigs.cachedServer.WITHER_SKELETON_GIRL_REPLACE_CHANCE > d && mob.getType().is(ModTags.EntityTypeTags.WITHER_SKELETON_GIRL_REPLACEABLES))
 					{
 						replace(serverlevel, mob, ModEntityTypes.WITHER_SKELETON_GIRL.get());
 					}
-					else if (ModConfigs.cachedServer.STRAY_GIRL_REPLACE_CHANCE > d && mob.getType().is(ModTags.STRAY_GIRL_REPLACEABLES))
+					else if (ModConfigs.cachedServer.STRAY_GIRL_REPLACE_CHANCE > d && mob.getType().is(ModTags.EntityTypeTags.STRAY_GIRL_REPLACEABLES))
 					{
 						replace(serverlevel, mob, ModEntityTypes.STRAY_GIRL.get());
 					}
-					else if (ModConfigs.cachedServer.CREEPER_GIRL_REPLACE_CHANCE > d && mob.getType().is(ModTags.CREEPER_GIRL_REPLACEABLES))
+					else if (ModConfigs.cachedServer.CREEPER_GIRL_REPLACE_CHANCE > d && mob.getType().is(ModTags.EntityTypeTags.CREEPER_GIRL_REPLACEABLES))
 					{
 						replace(serverlevel, mob, ModEntityTypes.CREEPER_GIRL.get());
 					}
-					else if (ModConfigs.cachedServer.ENDER_EXECUTOR_REPLACE_CHANCE > d && mob.getType().is(ModTags.ENDER_EXECUTOR_REPLACEABLES))
+					else if (ModConfigs.cachedServer.ENDER_EXECUTOR_REPLACE_CHANCE > d && mob.getType().is(ModTags.EntityTypeTags.ENDER_EXECUTOR_REPLACEABLES))
 					{
 						replace(serverlevel, mob, ModEntityTypes.ENDER_EXECUTOR.get());
 					}
@@ -359,37 +359,37 @@ public class ModEvents
 				Holder<Biome> holder = level.getBiome(event.getEntity().blockPosition());
 				Mob mob = (Mob)event.getEntity();
 
-				if (!holder.containsTag(ModTags.NO_MOB_REPLACEMENTS))
+				if (!holder.containsTag(ModTags.BiomeTags.NO_MOB_REPLACEMENTS))
 				{
-					if (ModConfigs.cachedServer.ZOMBIE_GIRL_REPLACE_CHANCE > 0.0D && mob.getType().is(ModTags.ZOMBIE_GIRL_REPLACEABLES))
+					if (ModConfigs.cachedServer.ZOMBIE_GIRL_REPLACE_CHANCE > 0.0D && mob.getType().is(ModTags.EntityTypeTags.ZOMBIE_GIRL_REPLACEABLES))
 					{
 						putCheckingTag(mob);
 					}
-					else if (ModConfigs.cachedServer.HUSK_GIRL_REPLACE_CHANCE > 0.0D && mob.getType().is(ModTags.HUSK_GIRL_REPLACEABLES))
+					else if (ModConfigs.cachedServer.HUSK_GIRL_REPLACE_CHANCE > 0.0D && mob.getType().is(ModTags.EntityTypeTags.HUSK_GIRL_REPLACEABLES))
 					{
 						putCheckingTag(mob);
 					}
-					else if (ModConfigs.cachedServer.DROWNED_GIRL_REPLACE_CHANCE > 0.0D && mob.getType().is(ModTags.DROWNED_GIRL_REPLACEABLES))
+					else if (ModConfigs.cachedServer.DROWNED_GIRL_REPLACE_CHANCE > 0.0D && mob.getType().is(ModTags.EntityTypeTags.DROWNED_GIRL_REPLACEABLES))
 					{
 						putCheckingTag(mob);
 					}
-					else if (ModConfigs.cachedServer.SKELETON_GIRL_REPLACE_CHANCE > 0.0D && mob.getType().is(ModTags.SKELETON_GIRL_REPLACEABLES))
+					else if (ModConfigs.cachedServer.SKELETON_GIRL_REPLACE_CHANCE > 0.0D && mob.getType().is(ModTags.EntityTypeTags.SKELETON_GIRL_REPLACEABLES))
 					{
 						putCheckingTag(mob);
 					}
-					else if (ModConfigs.cachedServer.WITHER_SKELETON_GIRL_REPLACE_CHANCE > 0.0D && mob.getType().is(ModTags.WITHER_SKELETON_GIRL_REPLACEABLES))
+					else if (ModConfigs.cachedServer.WITHER_SKELETON_GIRL_REPLACE_CHANCE > 0.0D && mob.getType().is(ModTags.EntityTypeTags.WITHER_SKELETON_GIRL_REPLACEABLES))
 					{
 						putCheckingTag(mob);
 					}
-					else if (ModConfigs.cachedServer.STRAY_GIRL_REPLACE_CHANCE > 0.0D && mob.getType().is(ModTags.STRAY_GIRL_REPLACEABLES))
+					else if (ModConfigs.cachedServer.STRAY_GIRL_REPLACE_CHANCE > 0.0D && mob.getType().is(ModTags.EntityTypeTags.STRAY_GIRL_REPLACEABLES))
 					{
 						putCheckingTag(mob);
 					}
-					else if (ModConfigs.cachedServer.CREEPER_GIRL_REPLACE_CHANCE > 0.0D && mob.getType().is(ModTags.CREEPER_GIRL_REPLACEABLES))
+					else if (ModConfigs.cachedServer.CREEPER_GIRL_REPLACE_CHANCE > 0.0D && mob.getType().is(ModTags.EntityTypeTags.CREEPER_GIRL_REPLACEABLES))
 					{
 						putCheckingTag(mob);
 					}
-					else if (ModConfigs.cachedServer.ENDER_EXECUTOR_REPLACE_CHANCE > 0.0D && mob.getType().is(ModTags.ENDER_EXECUTOR_REPLACEABLES))
+					else if (ModConfigs.cachedServer.ENDER_EXECUTOR_REPLACE_CHANCE > 0.0D && mob.getType().is(ModTags.EntityTypeTags.ENDER_EXECUTOR_REPLACEABLES))
 					{
 						putCheckingTag(mob);
 					}
@@ -578,7 +578,7 @@ public class ModEvents
 	{
 		if (event.getResultStatus() == null)
 		{
-			if (event.getEntity().getInventory().contains(ModTags.INSOMNIA_ITEMS))
+			if (event.getEntity().getInventory().contains(ModTags.ItemTags.INSOMNIA_ITEMS))
 			{
 				event.setResult(BedSleepingProblem.OTHER_PROBLEM);
 				event.getEntity().displayClientMessage(INSOMNIA_ITEM_MESSAGE, true);

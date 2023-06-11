@@ -156,7 +156,7 @@ public class EnderExecutorEntity extends EnderMan implements IBeamAttackMob
 
 			if (ModConfigs.cachedServer.ENDER_EXECUTOR_REDUCE_DAMAGE)
 			{
-				if (!(source.getEntity() != null && source.isCreativePlayer()) && !source.is(ModTags.BYPASSES_ENDER_EXECUTOR_DAMAGE_REDUCING) && f > 10.0F)
+				if (!(source.getEntity() != null && source.isCreativePlayer()) && !source.is(ModTags.DamageTypeTags.BYPASSES_ENDER_EXECUTOR_DAMAGE_REDUCING) && f > 10.0F)
 				{
 					if (this.level.getDifficulty() == Difficulty.NORMAL)
 					{

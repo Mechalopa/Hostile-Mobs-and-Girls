@@ -42,7 +42,7 @@ public class HealthBoostEnchantment extends Enchantment
 	public boolean checkCompatibility(Enchantment enchantment)
 	{
 		Holder<Enchantment> holder = ForgeRegistries.ENCHANTMENTS.getHolder(enchantment).orElseThrow();
-		return super.checkCompatibility(enchantment) && !(holder != null && holder.is(ModTags.INCOMPATIBLE_WITH_HEALTH_BOOST));
+		return super.checkCompatibility(enchantment) && !(holder != null && holder.is(ModTags.EnchantmentTags.INCOMPATIBLE_WITH_HEALTH_BOOST));
 	}
 
 	@Override

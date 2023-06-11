@@ -85,7 +85,7 @@ public class LichEntity extends Monster implements RangedAttackMob
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.is(ModTags.LICH_RESISTANT_TO))
+		if (source.is(ModTags.DamageTypeTags.LICH_RESISTANT_TO))
 		{
 			amount = amount * 0.5F;
 		}

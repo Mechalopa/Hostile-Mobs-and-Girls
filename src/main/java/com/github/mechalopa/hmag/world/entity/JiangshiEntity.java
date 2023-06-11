@@ -215,7 +215,7 @@ public class JiangshiEntity extends Monster
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.is(ModTags.JIANGSHI_RESISTANT_TO))
+		if (source.is(ModTags.DamageTypeTags.JIANGSHI_RESISTANT_TO))
 		{
 			amount = amount * 0.5F;
 		}

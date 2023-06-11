@@ -80,7 +80,7 @@ public class JackFrostEntity extends Monster implements RangedAttackMob
 
 		if (!this.level.isClientSide)
 		{
-			if (this.level.getBiome(this.blockPosition()).is(ModTags.JACK_FROST_MELTS))
+			if (this.level.getBiome(this.blockPosition()).is(ModTags.BiomeTags.JACK_FROST_MELTS))
 			{
 				this.hurt(this.damageSources().onFire(), 1.0F);
 			}
@@ -134,7 +134,7 @@ public class JackFrostEntity extends Monster implements RangedAttackMob
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.is(ModTags.JACK_FROST_VULNERABLE_TO))
+		if (source.is(ModTags.DamageTypeTags.JACK_FROST_VULNERABLE_TO))
 		{
 			amount = amount * 2.0F;
 		}

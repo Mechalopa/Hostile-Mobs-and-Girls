@@ -80,7 +80,7 @@ public class GlaryadEntity extends Monster implements NeutralMob
 	{
 		this.goalSelector.addGoal(1, new FloatGoal(this));
 		this.goalSelector.addGoal(3, new MeleeAttackGoal(this, 1.2D, false));
-		this.goalSelector.addGoal(4, new GlaryadEntity.GlaryadTemptGoal(this, 1.0D, Ingredient.of(ModTags.GLARYAD_TEMPT_ITEMS)));
+		this.goalSelector.addGoal(4, new GlaryadEntity.GlaryadTemptGoal(this, 1.0D, Ingredient.of(ModTags.ItemTags.GLARYAD_TEMPT_ITEMS)));
 		this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
 		this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 3.0F, 1.0F));
 		this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Mob.class, 8.0F));
@@ -282,7 +282,7 @@ public class GlaryadEntity extends Monster implements NeutralMob
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.is(ModTags.GLARYAD_VULNERABLE_TO))
+		if (source.is(ModTags.DamageTypeTags.GLARYAD_VULNERABLE_TO))
 		{
 			amount = amount * 2.0F;
 		}
@@ -304,7 +304,7 @@ public class GlaryadEntity extends Monster implements NeutralMob
 
 	public static boolean checkGlaryadSpawnRules(EntityType<? extends GlaryadEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, RandomSource random)
 	{
-		return Monster.checkAnyLightMonsterSpawnRules(type, levelAccessor, spawnType, pos, random) && (spawnType == MobSpawnType.SPAWNER || levelAccessor.getBlockState(pos.below()).is(ModTags.GLARYADS_SPAWNABLE_ON));
+		return Monster.checkAnyLightMonsterSpawnRules(type, levelAccessor, spawnType, pos, random) && (spawnType == MobSpawnType.SPAWNER || levelAccessor.getBlockState(pos.below()).is(ModTags.BlockTags.GLARYADS_SPAWNABLE_ON));
 	}
 
 	@OnlyIn(Dist.CLIENT)

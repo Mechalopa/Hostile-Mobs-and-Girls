@@ -41,7 +41,7 @@ public class EnchantmentUpgradeRecipe extends LegacyUpgradeRecipe
 		ItemStack stack = inv.getItem(0);
 		ItemStack stack1 = inv.getItem(1);
 
-		if (!stack.isEmpty() && !(stack.getItem() == null || stack.getItem() == Items.ENCHANTED_BOOK) && !stack1.isEmpty() && stack1.getItem() != null && stack1.getItem() instanceof EnchantmentUpgradeItem && stack1.is(ModTags.ENCHANTMENT_UPGRADE_ITEMS) && !stack.is(ModTags.ENCHANTMENT_NOT_UPGRADEABLES))
+		if (!stack.isEmpty() && !(stack.getItem() == null || stack.getItem() == Items.ENCHANTED_BOOK) && !stack1.isEmpty() && stack1.getItem() != null && stack1.getItem() instanceof EnchantmentUpgradeItem && stack1.is(ModTags.ItemTags.ENCHANTMENT_UPGRADE_ITEMS) && !stack.is(ModTags.ItemTags.ENCHANTMENT_NOT_UPGRADEABLES))
 		{
 			final List<EnchantmentUpgradeProp> eups = ((EnchantmentUpgradeItem)stack1.getItem()).getEnchantmentUpgradeProps();
 

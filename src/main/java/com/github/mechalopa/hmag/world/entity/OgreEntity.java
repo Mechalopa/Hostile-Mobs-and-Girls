@@ -189,16 +189,16 @@ public class OgreEntity extends Monster
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.is(ModTags.OGRE_HIGHLY_RESISTANT_TO))
+		if (source.is(ModTags.DamageTypeTags.OGRE_HIGHLY_RESISTANT_TO))
 		{
 			amount = amount * 0.25F;
 		}
-		else if (source.is(ModTags.OGRE_RESISTANT_TO))
+		else if (source.is(ModTags.DamageTypeTags.OGRE_RESISTANT_TO))
 		{
 			amount = amount * 0.5F;
 		}
 
-		if (!this.isNoAi() && !source.is(DamageTypes.MOB_ATTACK_NO_AGGRO) && source.is(ModTags.TRIGGERS_OGRE_DESTROYING) && this.getRandom().nextInt(8) == 0)
+		if (!this.isNoAi() && !source.is(DamageTypes.MOB_ATTACK_NO_AGGRO) && source.is(ModTags.DamageTypeTags.TRIGGERS_OGRE_DESTROYING) && this.getRandom().nextInt(8) == 0)
 		{
 			this.destroyBlock();
 		}
@@ -319,7 +319,7 @@ public class OgreEntity extends Monster
 
 	private boolean canDestroyBlock(BlockState state, Level level, BlockPos pos, LivingEntity livingEntity, float maxHardness)
 	{
-		if (state.is(ModTags.OGRE_IMMUNE) || state.isAir() || state.getMaterial().isLiquid() || !(state.canEntityDestroy(this.level, pos, this) && ForgeEventFactory.onEntityDestroyBlock(this, pos, state)))
+		if (state.is(ModTags.BlockTags.OGRE_IMMUNE) || state.isAir() || state.getMaterial().isLiquid() || !(state.canEntityDestroy(this.level, pos, this) && ForgeEventFactory.onEntityDestroyBlock(this, pos, state)))
 		{
 			return false;
 		}

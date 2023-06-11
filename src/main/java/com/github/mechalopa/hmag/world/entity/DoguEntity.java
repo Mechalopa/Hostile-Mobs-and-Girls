@@ -117,13 +117,13 @@ public class DoguEntity extends Monster
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (this.isInvulnerableTo(source) || source.is(ModTags.DOGU_IMMUNE_TO))
+		if (this.isInvulnerableTo(source) || source.is(ModTags.DamageTypeTags.DOGU_IMMUNE_TO))
 		{
 			return false;
 		}
 		else
 		{
-			if (source.is(ModTags.DOGU_RESISTANT_TO))
+			if (source.is(ModTags.DamageTypeTags.DOGU_RESISTANT_TO))
 			{
 				amount = amount * 0.5F;
 			}

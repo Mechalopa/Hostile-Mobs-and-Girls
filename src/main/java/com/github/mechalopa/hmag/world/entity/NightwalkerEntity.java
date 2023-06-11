@@ -77,7 +77,7 @@ public class NightwalkerEntity extends Monster implements RangedAttackMob
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.is(ModTags.NIGHTWALKER_RESISTANT_TO))
+		if (source.is(ModTags.DamageTypeTags.NIGHTWALKER_RESISTANT_TO))
 		{
 			amount = amount * 0.5F;
 		}

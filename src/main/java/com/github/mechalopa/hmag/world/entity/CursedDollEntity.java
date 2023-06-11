@@ -146,7 +146,7 @@ public class CursedDollEntity extends Monster
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.is(ModTags.CURSED_DOLL_VULNERABLE_TO))
+		if (source.is(ModTags.DamageTypeTags.CURSED_DOLL_VULNERABLE_TO))
 		{
 			amount = amount * 2.0F;
 		}

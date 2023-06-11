@@ -50,6 +50,6 @@ public class CrimsonBowItem extends ModBowItem
 	@Override
 	public boolean isValidRepairItem(ItemStack stack, ItemStack stack1)
 	{
-		return stack1.is(ModTags.CRIMSON_BOW_REPAIR_ITEMS) || super.isValidRepairItem(stack, stack1);
+		return stack1.is(ModTags.ItemTags.CRIMSON_BOW_REPAIR_ITEMS) || super.isValidRepairItem(stack, stack1);
 	}
 }

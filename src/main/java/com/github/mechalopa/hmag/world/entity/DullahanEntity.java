@@ -119,7 +119,7 @@ public class DullahanEntity extends Monster
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.is(ModTags.DULLAHAN_RESISTANT_TO))
+		if (source.is(ModTags.DamageTypeTags.DULLAHAN_RESISTANT_TO))
 		{
 			amount = amount * 0.5F;
 		}

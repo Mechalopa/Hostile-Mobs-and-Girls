@@ -118,7 +118,7 @@ public class ImpEntity extends Monster
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.is(ModTags.IMP_RESISTANT_TO))
+		if (source.is(ModTags.DamageTypeTags.IMP_RESISTANT_TO))
 		{
 			amount = amount * 0.5F;
 		}

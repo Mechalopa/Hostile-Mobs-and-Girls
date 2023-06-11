@@ -38,7 +38,7 @@ public class WaterAspectEnchantment extends Enchantment
 	public boolean checkCompatibility(Enchantment enchantment)
 	{
 		Holder<Enchantment> holder = ForgeRegistries.ENCHANTMENTS.getHolder(enchantment).orElseThrow();
-		return super.checkCompatibility(enchantment) && !(holder != null && holder.is(ModTags.INCOMPATIBLE_WITH_WATER_ASPECT));
+		return super.checkCompatibility(enchantment) && !(holder != null && holder.is(ModTags.EnchantmentTags.INCOMPATIBLE_WITH_WATER_ASPECT));
 	}
 
 	@Override

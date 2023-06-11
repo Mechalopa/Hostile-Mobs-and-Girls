@@ -142,7 +142,7 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 
 	private static boolean isSuffocatingBiome(Entity enity, Level level)
 	{
-		return level.getBiome(enity.blockPosition()).is(ModTags.SWAMPER_SUFFOCATES);
+		return level.getBiome(enity.blockPosition()).is(ModTags.BiomeTags.SWAMPER_SUFFOCATES);
 	}
 
 	@Override
@@ -239,12 +239,12 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.is(ModTags.SWAMPER_VULNERABLE_TO))
+		if (source.is(ModTags.DamageTypeTags.SWAMPER_VULNERABLE_TO))
 		{
 			amount = amount * 1.5F;
 		}
 
-		if (source.is(ModTags.SWAMPER_RESISTANT_TO))
+		if (source.is(ModTags.DamageTypeTags.SWAMPER_RESISTANT_TO))
 		{
 			amount = amount * 0.5F;
 		}

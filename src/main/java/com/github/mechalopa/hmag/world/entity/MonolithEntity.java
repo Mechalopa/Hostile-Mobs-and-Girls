@@ -220,7 +220,7 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.is(ModTags.MONOLITH_RESISTANT_TO))
+		if (source.is(ModTags.DamageTypeTags.MONOLITH_RESISTANT_TO))
 		{
 			amount = amount * 0.5F;
 		}
@@ -238,16 +238,16 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 	}
 
 	@Override
-	public boolean canBeAffected(MobEffectInstance potioneffectIn)
+	public boolean canBeAffected(MobEffectInstance potioneffect)
 	{
-		if (potioneffectIn.getEffect() == MobEffects.POISON || potioneffectIn.getEffect() == MobEffects.BLINDNESS)
+		if (ModTags.checkTagContains(potioneffect.getEffect(), ModTags.MobEffectTags.MONOLITH_IMMUNE_TO))
 		{
-			MobEffectEvent.Applicable event = new MobEffectEvent.Applicable(this, potioneffectIn);
+			MobEffectEvent.Applicable event = new MobEffectEvent.Applicable(this, potioneffect);
 			MinecraftForge.EVENT_BUS.post(event);
 			return event.getResult() == Event.Result.ALLOW;
 		}
 
-		return super.canBeAffected(potioneffectIn);
+		return super.canBeAffected(potioneffect);
 	}
 
 	@Override
@@ -336,7 +336,7 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 				{
 					ServerLevel serverlevel = (ServerLevel)level;
 
-					if (serverlevel.structureManager().getStructureWithPieceAt(pos, ModTags.MONOLITHS_SPAWN_IN).isValid())
+					if (serverlevel.structureManager().getStructureWithPieceAt(pos, ModTags.StructureTags.MONOLITHS_SPAWN_IN).isValid())
 					{
 						return true;
 					}
@@ -932,7 +932,7 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 			{
 				return livingEntityIn.distanceToSqr(this.parent) <= 9.0D * 9.0D;
 			}
-			else if (livingEntityIn.getType().is(ModTags.MONOLITH_TARGET_BLACKLIST))
+			else if (livingEntityIn.getType().is(ModTags.EntityTypeTags.MONOLITH_TARGET_BLACKLIST))
 			{
 				return false;
 			}

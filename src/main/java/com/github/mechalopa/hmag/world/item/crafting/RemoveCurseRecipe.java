@@ -39,7 +39,7 @@ public class RemoveCurseRecipe extends LegacyUpgradeRecipe
 		ItemStack stack = inv.getItem(0);
 		ItemStack stack1 = inv.getItem(1);
 
-		if (!stack.isEmpty() && !stack1.isEmpty() && stack1.getItem() != null && stack1.is(ModTags.CURSE_REMOVE_ITEMS) && !stack.is(ModTags.CURSE_UNREMOVABLES))
+		if (!stack.isEmpty() && !stack1.isEmpty() && stack1.getItem() != null && stack1.is(ModTags.ItemTags.CURSE_REMOVE_ITEMS) && !stack.is(ModTags.ItemTags.CURSE_UNREMOVABLES))
 		{
 			Map<Enchantment, Integer> map = EnchantmentHelper.getEnchantments(stack);
 
@@ -63,7 +63,7 @@ public class RemoveCurseRecipe extends LegacyUpgradeRecipe
 		{
 			Holder<Enchantment> holder = ForgeRegistries.ENCHANTMENTS.getHolder(enchantment).orElseThrow();
 
-			if (!(holder != null && holder.is(ModTags.UNREMOVABLE_CURSES)))
+			if (!(holder != null && holder.is(ModTags.EnchantmentTags.UNREMOVABLE_CURSES)))
 			{
 				return true;
 			}

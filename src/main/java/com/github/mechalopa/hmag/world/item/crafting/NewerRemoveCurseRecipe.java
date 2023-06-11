@@ -35,7 +35,7 @@ public class NewerRemoveCurseRecipe extends AbstractNewerUpgradeRecipe
 			ItemStack stack = inv.getItem(1);
 			ItemStack stack1 = inv.getItem(2);
 
-			if (!stack.isEmpty() && !stack1.isEmpty() && stack1.getItem() != null && stack1.is(ModTags.CURSE_REMOVE_ITEMS) && !stack.is(ModTags.CURSE_UNREMOVABLES))
+			if (!stack.isEmpty() && !stack1.isEmpty() && stack1.getItem() != null && stack1.is(ModTags.ItemTags.CURSE_REMOVE_ITEMS) && !stack.is(ModTags.ItemTags.CURSE_UNREMOVABLES))
 			{
 				Map<Enchantment, Integer> map = EnchantmentHelper.getEnchantments(stack);
 
@@ -60,7 +60,7 @@ public class NewerRemoveCurseRecipe extends AbstractNewerUpgradeRecipe
 		{
 			Holder<Enchantment> holder = ForgeRegistries.ENCHANTMENTS.getHolder(enchantment).orElseThrow();
 
-			if (!(holder != null && holder.is(ModTags.UNREMOVABLE_CURSES)))
+			if (!(holder != null && holder.is(ModTags.EnchantmentTags.UNREMOVABLE_CURSES)))
 			{
 				return true;
 			}
@@ -105,13 +105,13 @@ public class NewerRemoveCurseRecipe extends AbstractNewerUpgradeRecipe
 	@Override
 	public boolean isBaseIngredient(ItemStack stack)
 	{
-		return !stack.is(ModTags.CURSE_UNREMOVABLES);
+		return !stack.is(ModTags.ItemTags.CURSE_UNREMOVABLES);
 	}
 
 	@Override
 	public boolean isAdditionIngredient(ItemStack stack)
 	{
-		return stack.is(ModTags.CURSE_REMOVE_ITEMS);
+		return stack.is(ModTags.ItemTags.CURSE_REMOVE_ITEMS);
 	}
 
 	@Override
