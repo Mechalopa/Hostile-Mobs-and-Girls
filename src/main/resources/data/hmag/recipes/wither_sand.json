@@ -2,9 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "pattern": [
-    " # ",
+    "###",
     "#X#",
-    " # "
+    "###"
   ],
   "key": {
     "#": {
