@@ -2,6 +2,7 @@ package com.github.mechalopa.hmag.world.entity;
 
 import javax.annotation.Nonnull;
 
+import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
 import com.github.mechalopa.hmag.util.ModUtils;
@@ -116,7 +117,7 @@ public class DodomekiEntity extends Monster
 			this.level.addParticle(ParticleTypes.MYCELIUM, this.getRandomX(0.75D), this.getRandomY() - 0.5D, this.getRandomZ(0.75D), (this.getRandom().nextDouble() - 0.5D) * 3.0D, -this.getRandom().nextDouble(), (this.getRandom().nextDouble() - 0.5D) * 3.0D);
 		}
 
-		ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick(), 8);
+		ModUtils.burnInDay(this, this.getRandom(), ModConfigs.cachedServer.DODOMEKI_BURNS_IN_DAYLIGHT, 8);
 		super.aiStep();
 	}
 

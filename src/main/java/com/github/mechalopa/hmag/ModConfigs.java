@@ -43,6 +43,7 @@ public class ModConfigs
 	public static ForgeConfigSpec.BooleanValue SAVAGEFANG_ATTACK_DAMAGED_MOBS;
 	public static ForgeConfigSpec.BooleanValue NECROTIC_REAPER_ATTACK_VILLAGERS;
 	public static ForgeConfigSpec.BooleanValue NECROTIC_REAPER_ATTACK_BABY_TURTLES;
+	public static ForgeConfigSpec.BooleanValue DODOMEKI_BURNS_IN_DAYLIGHT;
 	public static ForgeConfigSpec.BooleanValue GLARYAD_REGEN;
 	public static ForgeConfigSpec.BooleanValue JIANGSHI_ATTACK_VILLAGERS;
 	public static ForgeConfigSpec.BooleanValue JIANGSHI_ATTACK_BABY_TURTLES;
@@ -148,6 +149,7 @@ public class ModConfigs
 		SAVAGEFANG_ATTACK_DAMAGED_MOBS = SERVER_BUILDER.define("savagefangAttackDamagedMobs", true);
 		NECROTIC_REAPER_ATTACK_VILLAGERS = SERVER_BUILDER.define("necroticReaperAttackVillagers", true);
 		NECROTIC_REAPER_ATTACK_BABY_TURTLES = SERVER_BUILDER.define("necroticReaperAttackBabyTurtles", true);
+		DODOMEKI_BURNS_IN_DAYLIGHT = SERVER_BUILDER.define("dodomekiBurnsInDaylight", true);
 		GLARYAD_REGEN = SERVER_BUILDER.define("enableGlaryadRegen", true);
 		JIANGSHI_ATTACK_VILLAGERS = SERVER_BUILDER.define("jiangshiAttackVillagers", true);
 		JIANGSHI_ATTACK_BABY_TURTLES = SERVER_BUILDER.define("jiangshiAttackBabyTurtles", true);
@@ -288,6 +290,7 @@ public class ModConfigs
 		public static boolean SAVAGEFANG_ATTACK_DAMAGED_MOBS;
 		public static boolean NECROTIC_REAPER_ATTACK_VILLAGERS;
 		public static boolean NECROTIC_REAPER_ATTACK_BABY_TURTLES;
+		public static boolean DODOMEKI_BURNS_IN_DAYLIGHT;
 		public static boolean GLARYAD_REGEN;
 		public static boolean JIANGSHI_ATTACK_VILLAGERS;
 		public static boolean JIANGSHI_ATTACK_BABY_TURTLES;
@@ -391,6 +394,7 @@ public class ModConfigs
 			SAVAGEFANG_ATTACK_DAMAGED_MOBS = ModConfigs.SAVAGEFANG_ATTACK_DAMAGED_MOBS.get();
 			NECROTIC_REAPER_ATTACK_VILLAGERS = ModConfigs.NECROTIC_REAPER_ATTACK_VILLAGERS.get();
 			NECROTIC_REAPER_ATTACK_BABY_TURTLES = ModConfigs.NECROTIC_REAPER_ATTACK_BABY_TURTLES.get();
+			DODOMEKI_BURNS_IN_DAYLIGHT = ModConfigs.DODOMEKI_BURNS_IN_DAYLIGHT.get();
 			GLARYAD_REGEN = ModConfigs.GLARYAD_REGEN.get();
 			JIANGSHI_ATTACK_VILLAGERS = ModConfigs.JIANGSHI_ATTACK_VILLAGERS.get();
 			JIANGSHI_ATTACK_BABY_TURTLES = ModConfigs.JIANGSHI_ATTACK_BABY_TURTLES.get();
