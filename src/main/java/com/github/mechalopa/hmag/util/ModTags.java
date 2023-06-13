@@ -174,6 +174,11 @@ public class ModTags
 		return TagKey.create(Registries.STRUCTURE, new ResourceLocation(HMaG.MODID, name));
 	}
 
+	public static boolean checkTagContains(Enchantment enchantment, TagKey<Enchantment> tag)
+	{
+		return enchantment != null && tag != null && ForgeRegistries.ENCHANTMENTS.getHolder(enchantment).orElseThrow().is(tag);
+	}
+
 	public static boolean checkTagContains(MobEffect effect, TagKey<MobEffect> tag)
 	{
 		return effect != null && tag != null && ForgeRegistries.MOB_EFFECTS.getHolder(effect).orElseThrow().is(tag);

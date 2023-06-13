@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 import com.github.mechalopa.hmag.registry.ModRecipes;
 import com.github.mechalopa.hmag.util.ModTags;
 
-import net.minecraft.core.Holder;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
@@ -20,7 +19,6 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.registries.ForgeRegistries;
 
 @Deprecated(forRemoval = true)
 public class RemoveCurseRecipe extends LegacyUpgradeRecipe
@@ -59,17 +57,7 @@ public class RemoveCurseRecipe extends LegacyUpgradeRecipe
 
 	public static boolean isRemovableCurse(Enchantment enchantment)
 	{
-		if (enchantment.isCurse())
-		{
-			Holder<Enchantment> holder = ForgeRegistries.ENCHANTMENTS.getHolder(enchantment).orElseThrow();
-
-			if (!(holder != null && holder.is(ModTags.EnchantmentTags.UNREMOVABLE_CURSES)))
-			{
-				return true;
-			}
-		}
-
-		return false;
+		return enchantment.isCurse() && !ModTags.checkTagContains(enchantment, ModTags.EnchantmentTags.UNREMOVABLE_CURSES);
 	}
 
 	@Override
