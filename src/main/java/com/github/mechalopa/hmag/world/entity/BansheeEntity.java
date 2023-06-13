@@ -89,7 +89,7 @@ public class BansheeEntity extends AbstractFlyingMonsterEntity
 			this.level.addParticle(new DustParticleOptions(vec3.toVector3f(), 0.875F), this.getRandomX(0.75D), this.getRandomY() - 0.25D, this.getRandomZ(0.75D), 0.0D, 0.0D, 0.0D);
 		}
 
-		ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick(), 8);
+		ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick());
 		super.aiStep();
 	}
 

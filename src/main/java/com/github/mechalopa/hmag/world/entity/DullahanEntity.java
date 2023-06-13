@@ -80,7 +80,7 @@ public class DullahanEntity extends Monster
 	@Override
 	public void aiStep()
 	{
-		ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick(), ModConfigs.cachedServer.DULLAHAN_BURNS_IN_DAYLIGHT, 8);
+		ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick(), ModConfigs.cachedServer.DULLAHAN_BURNS_IN_DAYLIGHT);
 		super.aiStep();
 	}
 

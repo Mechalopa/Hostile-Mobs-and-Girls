@@ -87,7 +87,7 @@ public class GhostEntity extends AbstractFlyingMonsterEntity
 	@Override
 	public void aiStep()
 	{
-		ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick(), this.shouldBurnInDay(), 8);
+		ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick(), this.shouldBurnInDay());
 		super.aiStep();
 	}
 
