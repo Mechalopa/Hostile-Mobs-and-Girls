@@ -27,4 +27,9 @@ public class ModEnchantments
 	{
 		REGISTRY.register(eventBus);
 	}
+
+	public static DeferredRegister<Enchantment> getEnchantmentRegistry()
+	{
+		return REGISTRY;
+	}
 }

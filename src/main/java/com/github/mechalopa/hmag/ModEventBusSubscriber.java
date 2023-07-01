@@ -1,5 +1,6 @@
 package com.github.mechalopa.hmag;
 
+import com.github.mechalopa.hmag.registry.ModEnchantments;
 import com.github.mechalopa.hmag.registry.ModEntityTypes;
 import com.github.mechalopa.hmag.registry.ModItems;
 import com.github.mechalopa.hmag.registry.ModPotions;
@@ -60,12 +61,15 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.item.EnchantedBookItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
@@ -177,6 +181,22 @@ public class ModEventBusSubscriber
 				else
 				{
 					output.accept(item.get());
+				}
+			}
+
+			for (RegistryObject<Enchantment> enchantment : ModEnchantments.getEnchantmentRegistry().getEntries())
+			{
+				if (enchantment.get().isAllowedOnBooks())
+				{
+					output.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(enchantment.get(), enchantment.get().getMaxLevel())));
+				}
+			}
+
+			for (Item potionItem : ModUtils.POTION_ITEMS)
+			{
+				for (RegistryObject<Potion> potion : ModPotions.getPotionRegistry().getEntries())
+				{
+					output.accept(ModUtils.getPotionStack(potion.get(), potionItem));
 				}
 			}
 		}));

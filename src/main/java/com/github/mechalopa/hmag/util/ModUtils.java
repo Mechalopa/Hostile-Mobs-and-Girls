@@ -36,6 +36,7 @@ import net.minecraft.world.phys.Vec3;
 
 public class ModUtils
 {
+	public static final Item[] POTION_ITEMS = new Item[]{Items.POTION, Items.SPLASH_POTION, Items.LINGERING_POTION, Items.TIPPED_ARROW};
 	public static final EquipmentSlot[] ARMOR_SLOTS = new EquipmentSlot[]{EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET};
 	public static final String LIVING_UPDATE_CHECKING_KEY = HMaG.MODID + ".checking";
 	public static final String LIVING_UPDATE_CHECKED_KEY = HMaG.MODID + ".checked";

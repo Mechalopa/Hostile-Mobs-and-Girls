@@ -33,4 +33,9 @@ public class ModPotions
 	{
 		REGISTRY.register(eventBus);
 	}
+
+	public static DeferredRegister<Potion> getPotionRegistry()
+	{
+		return REGISTRY;
+	}
 }
