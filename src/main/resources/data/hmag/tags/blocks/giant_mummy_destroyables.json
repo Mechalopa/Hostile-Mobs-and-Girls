@@ -1407,6 +1407,34 @@
     {
       "id": "dolt_compat:glowshroom_colony",
       "required": false
+    },
+    {
+      "id": "abundant_atmosphere:hanging_mangrove_leaves",
+      "required": false
+    },
+    {
+      "id": "abundant_atmosphere:wild_cave_parsnip",
+      "required": false
+    },
+    {
+      "id": "candlelight:broccoli_crop",
+      "required": false
+    },
+    {
+      "id": "candlelight:tomato_crop",
+      "required": false
+    },
+    {
+      "id": "candlelight:tomatoes_wild",
+      "required": false
+    },
+    {
+      "id": "candlelight:wild_broccoli",
+      "required": false
+    },
+    {
+      "id": "feywild:fey_mushroom",
+      "required": false
     }
   ]
 }
