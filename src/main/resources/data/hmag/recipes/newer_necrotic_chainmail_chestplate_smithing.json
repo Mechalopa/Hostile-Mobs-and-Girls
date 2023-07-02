@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "hmag:necrofiber"
+  },
+  "base": {
+    "item": "minecraft:chainmail_chestplate"
+  },
+  "result": {
+    "item": "hmag:necrotic_chainmail_chestplate"
+  },
+  "template": {
+    "tag": "forge:nuggets/iron"
+  }
+}

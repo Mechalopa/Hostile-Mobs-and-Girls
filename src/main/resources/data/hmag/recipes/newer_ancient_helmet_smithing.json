@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "hmag:ancient_stone_block"
+  },
+  "base": {
+    "item": "minecraft:diamond_helmet"
+  },
+  "result": {
+    "item": "hmag:ancient_helmet"
+  },
+  "template": {
+    "tag": "forge:nuggets/diamond"
+  }
+}

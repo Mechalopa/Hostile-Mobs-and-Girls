@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "hmag:ancient_stone_block"
+  },
+  "base": {
+    "item": "minecraft:diamond_leggings"
+  },
+  "result": {
+    "item": "hmag:ancient_leggings"
+  },
+  "template": {
+    "tag": "forge:nuggets/diamond"
+  }
+}
