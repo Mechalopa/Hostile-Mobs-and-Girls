@@ -1,0 +1,14 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "aether"
+    }
+  ],
+  "type": "aether:repairing",
+  "group": "altar_leggings_repair",
+  "ingredient": {
+    "item": "hmag:ancient_leggings"
+  },
+  "repairTime": 1750
+}

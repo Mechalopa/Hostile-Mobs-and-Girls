@@ -1435,6 +1435,110 @@
     {
       "id": "feywild:fey_mushroom",
       "required": false
+    },
+    {
+      "id": "aether_redux:aether_grass",
+      "required": false
+    },
+    {
+      "id": "aether_redux:enchanted_aether_grass",
+      "required": false
+    },
+    {
+      "id": "aether_redux:blighted_aether_grass",
+      "required": false
+    },
+    {
+      "id": "aether_redux:frosted_aether_grass",
+      "required": false
+    },
+    {
+      "id": "aether_redux:frosted_aether_grass",
+      "required": false
+    },
+    {
+      "id": "aether_redux:blightberry_bush",
+      "required": false
+    },
+    {
+      "id": "aether_redux:blightberry_bush_stem",
+      "required": false
+    },
+    {
+      "id": "aether_redux:aevyrn_bush",
+      "required": false
+    },
+    {
+      "id": "aether_redux:skysprouts",
+      "required": false
+    },
+    {
+      "id": "aether_redux:golden_clover",
+      "required": false
+    },
+    {
+      "id": "aether_redux:glowsprouts",
+      "required": false
+    },
+    {
+      "id": "aether_redux:thorncap",
+      "required": false
+    },
+    {
+      "id": "aether_redux:vallyx",
+      "required": false
+    },
+    {
+      "id": "aether_redux:lumina",
+      "required": false
+    },
+    {
+      "id": "aether_redux:frosted_fern",
+      "required": false
+    },
+    {
+      "id": "aether_redux:frostbud",
+      "required": false
+    },
+    {
+      "id": "aether_redux:quickroots",
+      "required": false
+    },
+    {
+      "id": "aether:berry_bush",
+      "required": false
+    },
+    {
+      "id": "aether:berry_bush_stem",
+      "required": false
+    },
+    {
+      "id": "deep_aether:golden_vines",
+      "required": false
+    },
+    {
+      "id": "deep_aether:golden_vines_plant",
+      "required": false
+    },
+    {
+      "id": "deep_aether:medium_golden_grass",
+      "required": false
+    },
+    {
+      "id": "deep_aether:mini_golden_grass",
+      "required": false
+    },
+    {
+      "id": "deep_aether:short_golden_grass",
+      "required": false
+    },
+    {
+      "id": "deep_aether:tall_golden_grass",
+      "required": false
+    },
+    {
+      "id": "deep_aether:yagroot_vine",
+      "required": false
     }
   ]
 }

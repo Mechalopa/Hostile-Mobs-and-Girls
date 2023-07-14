@@ -85,6 +85,10 @@
     {
       "id": "meadow:rocky_sheep",
       "required": false
+    },
+    {
+      "id": "aether:sheepuff",
+      "required": false
     }
   ]
 }

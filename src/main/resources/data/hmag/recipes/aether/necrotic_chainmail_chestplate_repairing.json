@@ -1,0 +1,14 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "aether"
+    }
+  ],
+  "type": "aether:repairing",
+  "group": "altar_chestplate_repair",
+  "ingredient": {
+    "item": "hmag:necrotic_chainmail_chestplate"
+  },
+  "repairTime": 1000
+}

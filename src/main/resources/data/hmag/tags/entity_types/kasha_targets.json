@@ -2,6 +2,10 @@
   "replace": false,
   "values": [
     "#hmag:chickens",
-    "#hmag:kasha_targets_baby_only"
+    "#hmag:kasha_targets_baby_only",
+    {
+      "id": "deep_aether:quail",
+      "required": false
+    }
   ]
 }

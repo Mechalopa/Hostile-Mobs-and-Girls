@@ -1,0 +1,14 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "aether"
+    }
+  ],
+  "type": "aether:repairing",
+  "group": "altar_sword_repair",
+  "ingredient": {
+    "item": "hmag:golden_fork"
+  },
+  "repairTime": 300
+}

@@ -41,6 +41,10 @@
     {
       "id": "earthtojavamobs:vested_rabbit",
       "required": false
+    },
+    {
+      "id": "aether:aerbunny",
+      "required": false
     }
   ]
 }
