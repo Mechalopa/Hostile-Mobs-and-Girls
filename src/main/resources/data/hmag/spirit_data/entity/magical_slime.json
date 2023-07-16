@@ -1,0 +1,14 @@
+{
+  "registry_name": "hmag:magical_slime",
+  "primary_type": "aqueous",
+  "spirits": [
+    {
+      "spirit": "arcane",
+      "count": 2
+    },
+    {
+      "spirit": "aqueous",
+      "count": 1
+    }
+  ]
+}

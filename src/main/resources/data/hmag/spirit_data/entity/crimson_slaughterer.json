@@ -1,0 +1,18 @@
+{
+  "registry_name": "hmag:crimson_slaughterer",
+  "primary_type": "infernal",
+  "spirits": [
+    {
+      "spirit": "infernal",
+      "count": 3
+    },
+    {
+      "spirit": "wicked",
+      "count": 3
+    },
+    {
+      "spirit": "earthen",
+      "count": 1
+    }
+  ]
+}

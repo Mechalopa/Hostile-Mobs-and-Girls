@@ -1,0 +1,14 @@
+{
+  "registry_name": "hmag:dogu",
+  "primary_type": "earthen",
+  "spirits": [
+    {
+      "spirit": "arcane",
+      "count": 3
+    },
+    {
+      "spirit": "earthen",
+      "count": 4
+    }
+  ]
+}

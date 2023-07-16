@@ -1,0 +1,14 @@
+{
+  "registry_name": "hmag:cursed_doll",
+  "primary_type": "wicked",
+  "spirits": [
+    {
+      "spirit": "arcane",
+      "count": 1
+    },
+    {
+      "spirit": "wicked",
+      "count": 2
+    }
+  ]
+}

@@ -1539,6 +1539,74 @@
     {
       "id": "deep_aether:yagroot_vine",
       "required": false
+    },
+    {
+      "id": "cinderscapes:crystinium",
+      "required": false
+    },
+    {
+      "id": "cinderscapes:ghastly_ectoplasm",
+      "required": false
+    },
+    {
+      "id": "cinderscapes:luminous_pod",
+      "required": false
+    },
+    {
+      "id": "cinderscapes:photofern",
+      "required": false
+    },
+    {
+      "id": "cinderscapes:pyracinth",
+      "required": false
+    },
+    {
+      "id": "cinderscapes:scorched_shrub",
+      "required": false
+    },
+    {
+      "id": "cinderscapes:scorched_sprouts",
+      "required": false
+    },
+    {
+      "id": "cinderscapes:scorched_tendrils",
+      "required": false
+    },
+    {
+      "id": "cinderscapes:tall_photofern",
+      "required": false
+    },
+    {
+      "id": "cinderscapes:twilight_fescues",
+      "required": false
+    },
+    {
+      "id": "cinderscapes:twilight_tendrils",
+      "required": false
+    },
+    {
+      "id": "cinderscapes:umbral_fungus",
+      "required": false
+    },
+    {
+      "id": "terrestria:agave",
+      "required": false
+    },
+    {
+      "id": "terrestria:aloe_vera",
+      "required": false
+    },
+    {
+      "id": "terrestria:cattail",
+      "required": false
+    },
+    {
+      "id": "terrestria:dead_grass",
+      "required": false
+    },
+    {
+      "id": "terrestria:tall_cattail",
+      "required": false
     }
   ]
 }

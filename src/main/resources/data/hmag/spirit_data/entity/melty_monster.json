@@ -1,0 +1,14 @@
+{
+  "registry_name": "hmag:melty_monster",
+  "primary_type": "infernal",
+  "spirits": [
+    {
+      "spirit": "arcane",
+      "count": 1
+    },
+    {
+      "spirit": "infernal",
+      "count": 2
+    }
+  ]
+}
