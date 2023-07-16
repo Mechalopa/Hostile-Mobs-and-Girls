@@ -1,6 +1,10 @@
 {
   "replace": false,
   "values": [
-    "hmag:swamper"
+    "hmag:swamper",
+    {
+      "id": "alexsmobs:cachalot_whale",
+      "required": false
+    }
   ]
 }

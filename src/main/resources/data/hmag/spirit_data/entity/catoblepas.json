@@ -1,0 +1,14 @@
+{
+  "registry_name": "hmag:catoblepas",
+  "primary_type": "wicked",
+  "spirits": [
+    {
+      "spirit": "earthen",
+      "count": 1
+    },
+    {
+      "spirit": "wicked",
+      "count": 2
+    }
+  ]
+}

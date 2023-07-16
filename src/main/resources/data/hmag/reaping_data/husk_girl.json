@@ -1,0 +1,13 @@
+{
+  "registry_name": "hmag:husk_girl",
+  "drops": [
+    {
+      "ingredient": {
+        "item": "malum:rotting_essence"
+      },
+      "chance": "0.15",
+      "min": "1",
+      "max": "2"
+    }
+  ]
+}

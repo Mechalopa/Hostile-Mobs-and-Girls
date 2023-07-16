@@ -1,0 +1,13 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "aether"
+    }
+  ],
+  "type": "aether:repairing",
+  "ingredient": {
+    "item": "hmag:crimson_bow"
+  },
+  "repairTime": 4000
+}

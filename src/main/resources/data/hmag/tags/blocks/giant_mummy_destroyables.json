@@ -1407,6 +1407,206 @@
     {
       "id": "dolt_compat:glowshroom_colony",
       "required": false
+    },
+    {
+      "id": "abundant_atmosphere:hanging_mangrove_leaves",
+      "required": false
+    },
+    {
+      "id": "abundant_atmosphere:wild_cave_parsnip",
+      "required": false
+    },
+    {
+      "id": "candlelight:broccoli_crop",
+      "required": false
+    },
+    {
+      "id": "candlelight:tomato_crop",
+      "required": false
+    },
+    {
+      "id": "candlelight:tomatoes_wild",
+      "required": false
+    },
+    {
+      "id": "candlelight:wild_broccoli",
+      "required": false
+    },
+    {
+      "id": "feywild:fey_mushroom",
+      "required": false
+    },
+    {
+      "id": "aether_redux:aether_grass",
+      "required": false
+    },
+    {
+      "id": "aether_redux:enchanted_aether_grass",
+      "required": false
+    },
+    {
+      "id": "aether_redux:blighted_aether_grass",
+      "required": false
+    },
+    {
+      "id": "aether_redux:frosted_aether_grass",
+      "required": false
+    },
+    {
+      "id": "aether_redux:frosted_aether_grass",
+      "required": false
+    },
+    {
+      "id": "aether_redux:blightberry_bush",
+      "required": false
+    },
+    {
+      "id": "aether_redux:blightberry_bush_stem",
+      "required": false
+    },
+    {
+      "id": "aether_redux:aevyrn_bush",
+      "required": false
+    },
+    {
+      "id": "aether_redux:skysprouts",
+      "required": false
+    },
+    {
+      "id": "aether_redux:golden_clover",
+      "required": false
+    },
+    {
+      "id": "aether_redux:glowsprouts",
+      "required": false
+    },
+    {
+      "id": "aether_redux:thorncap",
+      "required": false
+    },
+    {
+      "id": "aether_redux:vallyx",
+      "required": false
+    },
+    {
+      "id": "aether_redux:lumina",
+      "required": false
+    },
+    {
+      "id": "aether_redux:frosted_fern",
+      "required": false
+    },
+    {
+      "id": "aether_redux:frostbud",
+      "required": false
+    },
+    {
+      "id": "aether_redux:quickroots",
+      "required": false
+    },
+    {
+      "id": "aether:berry_bush",
+      "required": false
+    },
+    {
+      "id": "aether:berry_bush_stem",
+      "required": false
+    },
+    {
+      "id": "deep_aether:golden_vines",
+      "required": false
+    },
+    {
+      "id": "deep_aether:golden_vines_plant",
+      "required": false
+    },
+    {
+      "id": "deep_aether:medium_golden_grass",
+      "required": false
+    },
+    {
+      "id": "deep_aether:mini_golden_grass",
+      "required": false
+    },
+    {
+      "id": "deep_aether:short_golden_grass",
+      "required": false
+    },
+    {
+      "id": "deep_aether:tall_golden_grass",
+      "required": false
+    },
+    {
+      "id": "deep_aether:yagroot_vine",
+      "required": false
+    },
+    {
+      "id": "cinderscapes:crystinium",
+      "required": false
+    },
+    {
+      "id": "cinderscapes:ghastly_ectoplasm",
+      "required": false
+    },
+    {
+      "id": "cinderscapes:luminous_pod",
+      "required": false
+    },
+    {
+      "id": "cinderscapes:photofern",
+      "required": false
+    },
+    {
+      "id": "cinderscapes:pyracinth",
+      "required": false
+    },
+    {
+      "id": "cinderscapes:scorched_shrub",
+      "required": false
+    },
+    {
+      "id": "cinderscapes:scorched_sprouts",
+      "required": false
+    },
+    {
+      "id": "cinderscapes:scorched_tendrils",
+      "required": false
+    },
+    {
+      "id": "cinderscapes:tall_photofern",
+      "required": false
+    },
+    {
+      "id": "cinderscapes:twilight_fescues",
+      "required": false
+    },
+    {
+      "id": "cinderscapes:twilight_tendrils",
+      "required": false
+    },
+    {
+      "id": "cinderscapes:umbral_fungus",
+      "required": false
+    },
+    {
+      "id": "terrestria:agave",
+      "required": false
+    },
+    {
+      "id": "terrestria:aloe_vera",
+      "required": false
+    },
+    {
+      "id": "terrestria:cattail",
+      "required": false
+    },
+    {
+      "id": "terrestria:dead_grass",
+      "required": false
+    },
+    {
+      "id": "terrestria:tall_cattail",
+      "required": false
     }
   ]
 }

@@ -1,0 +1,18 @@
+{
+  "registry_name": "hmag:spider_nest",
+  "primary_type": "aerial",
+  "spirits": [
+    {
+      "spirit": "wicked",
+      "count": 2
+    },
+    {
+      "spirit": "aerial",
+      "count": 2
+    },
+    {
+      "spirit": "earthen",
+      "count": 1
+    }
+  ]
+}

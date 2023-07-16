@@ -1,82 +1,10 @@
 {
   "replace": false,
   "values": [
-    "minecraft:chicken",
+    "#hmag:chickens",
     "#hmag:kasha_targets_baby_only",
     {
-      "id": "#forge:chickens",
-      "required": false
-    },
-    {
-      "id": "earthmobsmod:cluck_shroom",
-      "required": false
-    },
-    {
-      "id": "earthmobsmod:fancy_chicken",
-      "required": false
-    },
-    {
-      "id": "minecraft_earth_mod:amber_chicken",
-      "required": false
-    },
-    {
-      "id": "minecraft_earth_mod:bronzed_chicken",
-      "required": false
-    },
-    {
-      "id": "minecraft_earth_mod:cluckshroom",
-      "required": false
-    },
-    {
-      "id": "minecraft_earth_mod:fancy_chicken",
-      "required": false
-    },
-    {
-      "id": "minecraft_earth_mod:gold_crested_chicken",
-      "required": false
-    },
-    {
-      "id": "minecraft_earth_mod:midnight_chicken",
-      "required": false
-    },
-    {
-      "id": "minecraft_earth_mod:skewbald_chicken",
-      "required": false
-    },
-    {
-      "id": "minecraft_earth_mod:stormy_chicken",
-      "required": false
-    },
-    {
-      "id": "earthtojavamobs:amber_chicken",
-      "required": false
-    },
-    {
-      "id": "earthtojavamobs:bronzed_chicken",
-      "required": false
-    },
-    {
-      "id": "earthtojavamobs:cluckshroom",
-      "required": false
-    },
-    {
-      "id": "earthtojavamobs:fancy_chicken",
-      "required": false
-    },
-    {
-      "id": "earthtojavamobs:gold_crested_chicken",
-      "required": false
-    },
-    {
-      "id": "earthtojavamobs:midnight_chicken",
-      "required": false
-    },
-    {
-      "id": "earthtojavamobs:skewbald_chicken",
-      "required": false
-    },
-    {
-      "id": "earthtojavamobs:stormy_chicken",
+      "id": "deep_aether:quail",
       "required": false
     }
   ]

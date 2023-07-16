@@ -1,0 +1,94 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:sheep",
+    {
+      "id": "#forge:sheep",
+      "required": false
+    },
+    {
+      "id": "earthmobsmod:horned_sheep",
+      "required": false
+    },
+    {
+      "id": "energeticsheep:energetic_sheep",
+      "required": false
+    },
+    {
+      "id": "extendedmushrooms:mushroom_sheep",
+      "required": false
+    },
+    {
+      "id": "nethersheep:atre",
+      "required": false
+    },
+    {
+      "id": "twilightforest:bighorn_sheep",
+      "required": false
+    },
+    {
+      "id": "minecraft_earth_mod:horned_sheep",
+      "required": false
+    },
+    {
+      "id": "minecraft_earth_mod:rainbow_sheep",
+      "required": false
+    },
+    {
+      "id": "minecraft_earth_mod:rocky_sheep",
+      "required": false
+    },
+    {
+      "id": "earthtojavamobs:flecked_sheep",
+      "required": false
+    },
+    {
+      "id": "earthtojavamobs:fuzzy_sheep",
+      "required": false
+    },
+    {
+      "id": "earthtojavamobs:patched_sheep",
+      "required": false
+    },
+    {
+      "id": "earthtojavamobs:rainbow_sheep",
+      "required": false
+    },
+    {
+      "id": "earthtojavamobs:rocky_sheep",
+      "required": false
+    },
+    {
+      "id": "meadow:flecked_sheep",
+      "required": false
+    },
+    {
+      "id": "meadow:fuzzy_sheep",
+      "required": false
+    },
+    {
+      "id": "meadow:horned_sheep",
+      "required": false
+    },
+    {
+      "id": "meadow:inky_sheep",
+      "required": false
+    },
+    {
+      "id": "meadow:long_nosed_sheep",
+      "required": false
+    },
+    {
+      "id": "meadow:patched_sheep",
+      "required": false
+    },
+    {
+      "id": "meadow:rocky_sheep",
+      "required": false
+    },
+    {
+      "id": "aether:sheepuff",
+      "required": false
+    }
+  ]
+}

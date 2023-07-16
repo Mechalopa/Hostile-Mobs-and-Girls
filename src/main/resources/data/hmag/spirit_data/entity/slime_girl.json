@@ -1,0 +1,14 @@
+{
+  "registry_name": "hmag:slime_girl",
+  "primary_type": "aqueous",
+  "spirits": [
+    {
+      "spirit": "arcane",
+      "count": 3
+    },
+    {
+      "spirit": "aqueous",
+      "count": 2
+    }
+  ]
+}

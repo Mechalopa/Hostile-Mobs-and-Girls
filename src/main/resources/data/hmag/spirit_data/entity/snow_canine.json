@@ -1,0 +1,10 @@
+{
+  "registry_name": "hmag:snow_canine",
+  "primary_type": "wicked",
+  "spirits": [
+    {
+      "spirit": "wicked",
+      "count": 2
+    }
+  ]
+}

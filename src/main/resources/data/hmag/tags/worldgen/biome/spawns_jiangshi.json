@@ -37,6 +37,10 @@
     {
       "id": "cherryblossomgrotto:cherry_blossom_bamboo_jungle",
       "required": false
+    },
+    {
+      "id": "cherryblossomgrotto:stone_forest",
+      "required": false
     }
   ]
 }

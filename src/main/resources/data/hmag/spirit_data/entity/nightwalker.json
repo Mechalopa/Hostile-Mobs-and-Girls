@@ -1,0 +1,18 @@
+{
+  "registry_name": "hmag:nightwalker",
+  "primary_type": "arcane",
+  "spirits": [
+    {
+      "spirit": "arcane",
+      "count": 3
+    },
+    {
+      "spirit": "earthen",
+      "count": 1
+    },
+    {
+      "spirit": "eldritch",
+      "count": 1
+    }
+  ]
+}

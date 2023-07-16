@@ -1,0 +1,14 @@
+{
+  "registry_name": "hmag:husk_girl",
+  "primary_type": "infernal",
+  "spirits": [
+    {
+      "spirit": "wicked",
+      "count": 1
+    },
+    {
+      "spirit": "infernal",
+      "count": 1
+    }
+  ]
+}
