@@ -205,7 +205,7 @@ public class ModEvents
 			{
 				if (livingentity.getUseItem().getItem() == ModItems.ANCIENT_SHIELD.get())
 				{
-					if (livingentity.getRandom().nextInt(5) == 0)
+					if (livingentity.getRandom().nextInt(3) == 0)
 					{
 						final int i = livingentity.getRandom().nextInt(3);
 						((LivingEntity)source.getEntity()).addEffect(new MobEffectInstance(i == 2 ? MobEffects.WEAKNESS : (i == 1 ? MobEffects.MOVEMENT_SLOWDOWN : MobEffects.DIG_SLOWDOWN), 5 * 20, 0));
@@ -213,7 +213,7 @@ public class ModEvents
 				}
 				else if (livingentity.getUseItem().getItem() == ModItems.FORTRESS_SHIELD.get())
 				{
-					if (livingentity.getRandom().nextInt(5) == 0)
+					if (livingentity.getRandom().nextInt(3) == 0)
 					{
 						source.getEntity().setSecondsOnFire(8);
 					}
