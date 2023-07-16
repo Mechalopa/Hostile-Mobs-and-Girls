@@ -84,7 +84,7 @@ public class HardSnowballEntity extends ModProjectileItemEntity
 		float f = this.getDamage();
 		Entity entity = result.getEntity();
 
-		if (entity.getType().is(ModTags.HARD_SNOWBALL_HURTS_EXTRA_TYPES))
+		if (entity.getType().is(ModTags.EntityTypeTags.HARD_SNOWBALL_HURTS_EXTRA_TYPES))
 		{
 			f *= 2.0;
 		}

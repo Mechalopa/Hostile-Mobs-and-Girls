@@ -45,7 +45,7 @@ public class SuspiciousStewUpgradeRecipe extends CustomRecipe
 				}
 				else
 				{
-					if (!stack.is(ModTags.SUSPICIOUS_STEW_UPGRADE_ITEMS) || flag1)
+					if (!stack.is(ModTags.ItemTags.SUSPICIOUS_STEW_UPGRADE_ITEMS) || flag1)
 					{
 						return false;
 					}

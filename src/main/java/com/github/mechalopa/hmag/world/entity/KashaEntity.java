@@ -84,7 +84,7 @@ public class KashaEntity extends Monster
 		this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
 		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
 		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, LivingEntity.class, 10, true, false, (p) -> {
-			return p.getType().is(ModTags.KASHA_TARGETS) && !(p.getType().is(ModTags.KASHA_TARGETS_BABY_ONLY) && !p.isBaby());
+			return p.getType().is(ModTags.EntityTypeTags.KASHA_TARGETS) && !(p.getType().is(ModTags.EntityTypeTags.KASHA_TARGETS_BABY_ONLY) && !p.isBaby());
 		}));
 		if (ModConfigs.cachedServer.KASHA_ATTACK_VILLAGERS)
 			this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, false));

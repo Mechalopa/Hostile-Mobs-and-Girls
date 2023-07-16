@@ -85,7 +85,7 @@ public class JEIPlugin implements IModPlugin
 				if (recipe instanceof RemoveCurseRecipe && !flag)
 				{
 					flag = true;
-					Ingredient ingredient = Ingredient.of(ModTags.CURSE_REMOVE_ITEMS);
+					Ingredient ingredient = Ingredient.of(ModTags.ItemTags.CURSE_REMOVE_ITEMS);
 
 					if (!ingredient.isEmpty())
 					{
@@ -93,7 +93,7 @@ public class JEIPlugin implements IModPlugin
 						{
 							if (enchantment != null && RemoveCurseRecipe.isRemovableCurse(enchantment))
 							{
-								ItemStack stack1 = getEnchantableItemStack(registration, items, enchantment, ModTags.CURSE_UNREMOVABLES);
+								ItemStack stack1 = getEnchantableItemStack(registration, items, enchantment, ModTags.ItemTags.CURSE_UNREMOVABLES);
 
 								if (!stack1.isEmpty())
 								{
@@ -124,7 +124,7 @@ public class JEIPlugin implements IModPlugin
 				else if (recipe instanceof EnchantmentUpgradeRecipe && !flag1)
 				{
 					flag1 = true;
-					Ingredient ingredient = Ingredient.of(ModTags.ENCHANTMENT_UPGRADE_ITEMS);
+					Ingredient ingredient = Ingredient.of(ModTags.ItemTags.ENCHANTMENT_UPGRADE_ITEMS);
 
 					if (!ingredient.isEmpty())
 					{
@@ -151,7 +151,7 @@ public class JEIPlugin implements IModPlugin
 											{
 												final int minLevel = eup.getMinLevel();
 												final int maxLevel = eup.getMaxLevel();
-												ItemStack stack1 = getEnchantableItemStack(registration, items, enchantment, ModTags.ENCHANTMENT_NOT_UPGRADEABLES);
+												ItemStack stack1 = getEnchantableItemStack(registration, items, enchantment, ModTags.ItemTags.ENCHANTMENT_NOT_UPGRADEABLES);
 
 												if (!stack1.isEmpty())
 												{
@@ -186,7 +186,7 @@ public class JEIPlugin implements IModPlugin
 				else if (recipe instanceof SuspiciousStewUpgradeRecipe && !flag2)
 				{
 					flag2 = true;
-					Ingredient ingredient = Ingredient.of(ModTags.SUSPICIOUS_STEW_UPGRADE_ITEMS);
+					Ingredient ingredient = Ingredient.of(ModTags.ItemTags.SUSPICIOUS_STEW_UPGRADE_ITEMS);
 
 					if (!ingredient.isEmpty())
 					{

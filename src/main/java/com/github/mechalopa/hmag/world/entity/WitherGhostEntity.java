@@ -3,6 +3,8 @@ package com.github.mechalopa.hmag.world.entity;
 import java.time.LocalDate;
 import java.time.temporal.ChronoField;
 
+import com.github.mechalopa.hmag.util.ModTags;
+
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
@@ -83,7 +85,7 @@ public class WitherGhostEntity extends GhostEntity
 	@Override
 	public boolean canBeAffected(MobEffectInstance potioneffect)
 	{
-		if (potioneffect.getEffect() == MobEffects.WITHER)
+		if (ModTags.checkTagContains(potioneffect.getEffect(), ModTags.MobEffectTags.WITHER_GHOST_IMMUNE_TO))
 		{
 			MobEffectEvent.Applicable event = new MobEffectEvent.Applicable(this, potioneffect);
 			MinecraftForge.EVENT_BUS.post(event);

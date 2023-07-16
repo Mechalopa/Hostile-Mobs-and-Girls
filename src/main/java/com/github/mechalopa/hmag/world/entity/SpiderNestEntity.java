@@ -4,6 +4,7 @@ import javax.annotation.Nonnull;
 
 import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
+import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.util.ModUtils;
 import com.github.mechalopa.hmag.world.entity.ai.goal.MeleeAttackGoal2;
 
@@ -183,7 +184,7 @@ public class SpiderNestEntity extends Monster
 	@Override
 	public boolean canBeAffected(MobEffectInstance potioneffect)
 	{
-		if (potioneffect.getEffect() == MobEffects.POISON)
+		if (ModTags.checkTagContains(potioneffect.getEffect(), ModTags.MobEffectTags.SPIDER_NEST_IMMUNE_TO))
 		{
 			MobEffectEvent.Applicable event = new MobEffectEvent.Applicable(this, potioneffect);
 			MinecraftForge.EVENT_BUS.post(event);

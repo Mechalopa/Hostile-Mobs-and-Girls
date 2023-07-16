@@ -69,7 +69,7 @@ public class MeltyMonsterEntity extends Monster implements RangedAttackMob
 	protected void registerGoals()
 	{
 		this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, LivingEntity.class, (p) -> {
-			return p.getType().is(ModTags.MELTY_MONSTER_AVOID_MOBS);
+			return p.getType().is(ModTags.EntityTypeTags.MELTY_MONSTER_AVOID_MOBS);
 		}, 10.0F, 1.0D, 1.5D, EntitySelector.NO_SPECTATORS::test));
 		this.goalSelector.addGoal(3, new MeltyMonsterEntity.GoToLavaGoal(this, 1.5D));
 		this.goalSelector.addGoal(5, new RangedAttackGoal(this, 1.0D, 30, 40, 8.0F));
@@ -78,7 +78,7 @@ public class MeltyMonsterEntity extends Monster implements RangedAttackMob
 		this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
 		this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
 		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, (p) -> {
-			return !(p.getVehicle() != null && p.getType().is(ModTags.MELTY_MONSTER_AVOID_MOBS));
+			return !(p.getVehicle() != null && p.getType().is(ModTags.EntityTypeTags.MELTY_MONSTER_AVOID_MOBS));
 		}));
 	}
 

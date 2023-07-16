@@ -5,6 +5,7 @@ import java.util.EnumSet;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
 import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.world.entity.ai.goal.LeapAtTargetGoal2;
@@ -144,7 +145,7 @@ public class HarpyEntity extends Monster
 		spawnData = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
 		RandomSource randomsource = levelAccessor.getRandom();
 
-		if (randomsource.nextFloat() < 0.001F)
+		if (randomsource.nextDouble() < ModConfigs.cachedServer.PINK_HARPY_SPAWN_CHANCE)
 		{
 			this.setVariant(6);
 		}
@@ -154,23 +155,23 @@ public class HarpyEntity extends Monster
 
 			if (holder != null)
 			{
-				if (holder.is(ModTags.IS_COLD))
+				if (holder.is(ModTags.BiomeTags.IS_COLD))
 				{
 					this.setVariant(randomsource.nextInt(4) == 0 ? (randomsource.nextInt(3) + 2) : 5);
 				}
-				else if (holder.is(ModTags.IS_BADLANDS))
+				else if (holder.is(ModTags.BiomeTags.IS_BADLANDS))
 				{
 					this.setVariant(randomsource.nextInt(5) == 0 ? 3 : (randomsource.nextInt(3) == 0 ? 0 : (randomsource.nextInt(2) + 1)));
 				}
-				else if (holder.is(ModTags.IS_SANDY))
+				else if (holder.is(ModTags.BiomeTags.IS_SANDY))
 				{
 					this.setVariant(randomsource.nextInt(5) == 0 ? 5 : (randomsource.nextInt(3) == 0 ? 1 : (randomsource.nextBoolean() ? 0 : 2)));
 				}
-				else if (holder.is(ModTags.IS_SAVANNA))
+				else if (holder.is(ModTags.BiomeTags.IS_SAVANNA))
 				{
 					this.setVariant(randomsource.nextInt(6) == 0 ? 4 : randomsource.nextInt(3));
 				}
-				else if (holder.is(ModTags.IS_PLAINS))
+				else if (holder.is(ModTags.BiomeTags.IS_PLAINS))
 				{
 					this.setVariant(randomsource.nextInt(3) == 0 ? (randomsource.nextBoolean() ? 1 : 4) : 3);
 				}

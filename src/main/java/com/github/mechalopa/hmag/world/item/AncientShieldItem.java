@@ -21,6 +21,6 @@ public class AncientShieldItem extends ModShieldItem
 	@Override
 	public boolean isValidRepairItem(ItemStack stack, ItemStack stack1)
 	{
-		return stack1.is(ModTags.ANCIENT_SHIELD_REPAIR_ITEMS);
+		return stack1.is(ModTags.ItemTags.ANCIENT_SHIELD_REPAIR_ITEMS);
 	}
 }

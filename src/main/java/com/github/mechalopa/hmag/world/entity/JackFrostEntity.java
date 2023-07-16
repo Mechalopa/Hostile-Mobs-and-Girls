@@ -123,7 +123,7 @@ public class JackFrostEntity extends Monster implements RangedAttackMob
 	{
 		BlockPos blockpos = new BlockPos(Mth.floor(enity.getX()), Mth.floor(enity.getY()), Mth.floor(enity.getZ()));
 		Holder<Biome> holder = level.getBiome(blockpos);
-		return holder.value().shouldSnowGolemBurn(blockpos) && !holder.containsTag(ModTags.MELTS_JACK_FROSTS_BLACKLIST);
+		return holder.value().shouldSnowGolemBurn(blockpos) && !holder.containsTag(ModTags.BiomeTags.MELTS_JACK_FROSTS_BLACKLIST);
 	}
 
 	@Override

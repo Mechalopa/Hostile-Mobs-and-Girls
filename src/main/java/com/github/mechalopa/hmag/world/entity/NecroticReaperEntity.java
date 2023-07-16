@@ -91,8 +91,7 @@ public class NecroticReaperEntity extends Monster
 			this.level.addParticle(ParticleTypes.MYCELIUM, this.getRandomX(0.5D), this.getRandomY() - 0.5D, this.getRandomZ(0.5D), (this.getRandom().nextDouble() - 0.5D) * 3.0D, -this.getRandom().nextDouble(), (this.getRandom().nextDouble() - 0.5D) * 3.0D);
 		}
 
-		ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick(), 8);
-
+		ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick());
 		super.aiStep();
 	}
 

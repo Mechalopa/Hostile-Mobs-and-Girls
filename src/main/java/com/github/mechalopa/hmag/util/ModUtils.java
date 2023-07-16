@@ -45,6 +45,16 @@ public class ModUtils
 	public static final String WITH_SPAWN_PARTICLE_KEY = HMaG.MODID + ".withSpawnParticle";
 	public static final Codec<HolderSet<Structure>> STRUCTURE_LIST_CODEC = RegistryCodecs.homogeneousList(Registry.STRUCTURE_REGISTRY, Structure.DIRECT_CODEC);
 
+	public static void burnInDay(@Nonnull LivingEntity livingEntity, RandomSource random, Boolean isSunBurnTick)
+	{
+		burnInDay(livingEntity, random, isSunBurnTick, 8);
+	}
+
+	public static void burnInDay(@Nonnull LivingEntity livingEntity, RandomSource random, Boolean isSunBurnTick, Boolean shouldBurn)
+	{
+		burnInDay(livingEntity, random, isSunBurnTick, shouldBurn, 8);
+	}
+
 	public static void burnInDay(@Nonnull LivingEntity livingEntity, RandomSource random, Boolean isSunBurnTick, int seconds)
 	{
 		burnInDay(livingEntity, random, isSunBurnTick, true, seconds);

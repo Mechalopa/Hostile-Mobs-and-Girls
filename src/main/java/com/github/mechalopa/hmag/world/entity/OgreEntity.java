@@ -318,7 +318,7 @@ public class OgreEntity extends Monster
 
 	private boolean canDestroyBlock(BlockState state, Level level, BlockPos pos, LivingEntity livingEntity, float maxHardness)
 	{
-		if (state.is(ModTags.OGRE_IMMUNE) || state.isAir() || state.getMaterial().isLiquid() || !(state.canEntityDestroy(this.level, pos, this) && ForgeEventFactory.onEntityDestroyBlock(this, pos, state)))
+		if (state.is(ModTags.BlockTags.OGRE_IMMUNE) || state.isAir() || state.getMaterial().isLiquid() || !(state.canEntityDestroy(this.level, pos, this) && ForgeEventFactory.onEntityDestroyBlock(this, pos, state)))
 		{
 			return false;
 		}

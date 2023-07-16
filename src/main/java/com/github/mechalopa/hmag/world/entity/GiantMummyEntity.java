@@ -111,8 +111,7 @@ public class GiantMummyEntity extends Monster
 			this.level.addParticle(ParticleTypes.ASH, this.getRandomX(0.5D), this.getRandomY() - 0.25D, this.getRandomZ(0.5D), (this.getRandom().nextDouble() - 0.5D) * 3.0D, -this.getRandom().nextDouble(), (this.getRandom().nextDouble() - 0.5D) * 3.0D);
 		}
 
-		ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick(), 8);
-
+		ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick());
 		super.aiStep();
 
 		if (this.isAlive())
@@ -197,7 +196,7 @@ public class GiantMummyEntity extends Monster
 				{
 					ServerLevel serverlevel = (ServerLevel)level;
 
-					if (serverlevel.structureManager().getStructureWithPieceAt(pos, ModTags.GIANT_MUMMIES_SPAWN_IN).isValid())
+					if (serverlevel.structureManager().getStructureWithPieceAt(pos, ModTags.StructureTags.GIANT_MUMMIES_SPAWN_IN).isValid())
 					{
 						return true;
 					}
@@ -252,7 +251,7 @@ public class GiantMummyEntity extends Monster
 
 	private boolean canDestroyBlock(BlockState state, Level level, BlockPos pos, LivingEntity livingEntity)
 	{
-		return state.is(ModTags.GIANT_MUMMY_DESTROYABLES) && state.canEntityDestroy(this.level, pos, this) && ForgeEventFactory.onEntityDestroyBlock(this, pos, state);
+		return state.is(ModTags.BlockTags.GIANT_MUMMY_DESTROYABLES) && state.canEntityDestroy(this.level, pos, this) && ForgeEventFactory.onEntityDestroyBlock(this, pos, state);
 	}
 
 	@Nonnull
@@ -282,7 +281,7 @@ public class GiantMummyEntity extends Monster
 		@Override
 		protected BlockPathTypes evaluateBlockPathType(BlockGetter getter, boolean flag, boolean flag1, BlockPos pos, BlockPathTypes blockPathTypes)
 		{
-			if ((blockPathTypes == BlockPathTypes.BLOCKED || blockPathTypes == BlockPathTypes.FENCE || blockPathTypes == BlockPathTypes.LEAVES || blockPathTypes == BlockPathTypes.COCOA) && this.mob != null && this.mob.isAlive() && ModConfigs.cachedServer.GIANT_MUMMY_DESTROY_BLOCKS && this.mob.level.getDifficulty().getId() > 1 && this.mob.getTarget() != null && getter.getBlockState(pos).is(ModTags.GIANT_MUMMY_DESTROYABLES))
+			if ((blockPathTypes == BlockPathTypes.BLOCKED || blockPathTypes == BlockPathTypes.FENCE || blockPathTypes == BlockPathTypes.LEAVES || blockPathTypes == BlockPathTypes.COCOA) && this.mob != null && this.mob.isAlive() && ModConfigs.cachedServer.GIANT_MUMMY_DESTROY_BLOCKS && this.mob.level.getDifficulty().getId() > 1 && this.mob.getTarget() != null && getter.getBlockState(pos).is(ModTags.BlockTags.GIANT_MUMMY_DESTROYABLES))
 			{
 				return BlockPathTypes.OPEN;
 			}

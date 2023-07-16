@@ -120,7 +120,7 @@ public class InkSpitEntity extends Projectile
 			LivingEntity livingEntity = (entity != null && entity instanceof LivingEntity) ? (LivingEntity)entity : null;
 			Entity entity1 = result.getEntity();
 
-			if (!entity1.getType().is(ModTags.INK_SPIT_IMMUNE))
+			if (!entity1.getType().is(ModTags.EntityTypeTags.INK_SPIT_IMMUNE))
 			{
 				boolean flag = entity1.hurt(DamageSource.indirectMobAttack(this, livingEntity).setProjectile(), this.getDamage());
 

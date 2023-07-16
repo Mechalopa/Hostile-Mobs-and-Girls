@@ -4,6 +4,7 @@ import javax.annotation.Nonnull;
 
 import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
+import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.world.entity.ai.goal.MeleeAttackGoal2;
 import com.github.mechalopa.hmag.world.entity.ai.goal.RangedAttackGoal2;
 import com.github.mechalopa.hmag.world.entity.projectile.PoisonSeedEntity;
@@ -138,7 +139,7 @@ public class AlrauneEntity extends Monster implements RangedAttackMob
 	@Override
 	public boolean canBeAffected(MobEffectInstance potioneffect)
 	{
-		if (potioneffect.getEffect() == MobEffects.POISON || potioneffect.getEffect() == MobEffects.CONFUSION)
+		if (ModTags.checkTagContains(potioneffect.getEffect(), ModTags.MobEffectTags.ALRAUNE_IMMUNE_TO))
 		{
 			MobEffectEvent.Applicable event = new MobEffectEvent.Applicable(this, potioneffect);
 			MinecraftForge.EVENT_BUS.post(event);

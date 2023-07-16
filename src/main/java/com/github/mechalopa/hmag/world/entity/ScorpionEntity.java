@@ -2,6 +2,7 @@ package com.github.mechalopa.hmag.world.entity;
 
 import javax.annotation.Nonnull;
 
+import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.world.entity.ai.goal.MeleeAttackGoal2;
 
 import net.minecraft.core.BlockPos;
@@ -106,7 +107,7 @@ public class ScorpionEntity extends Monster
 	@Override
 	public boolean canBeAffected(MobEffectInstance potioneffect)
 	{
-		if (potioneffect.getEffect() == MobEffects.POISON)
+		if (ModTags.checkTagContains(potioneffect.getEffect(), ModTags.MobEffectTags.SCORPION_IMMUNE_TO))
 		{
 			MobEffectEvent.Applicable event = new MobEffectEvent.Applicable(this, potioneffect);
 			MinecraftForge.EVENT_BUS.post(event);

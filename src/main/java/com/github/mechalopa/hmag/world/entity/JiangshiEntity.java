@@ -171,7 +171,7 @@ public class JiangshiEntity extends Monster
 			}
 		}
 
-		ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick(), 8);
+		ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick());
 		super.aiStep();
 	}
 

@@ -15,6 +15,6 @@ public class FortressShieldItem extends ModShieldItem
 	@Override
 	public boolean isValidRepairItem(ItemStack stack, ItemStack stack1)
 	{
-		return stack1.is(ModTags.FORTRESS_SHIELD_REPAIR_ITEMS);
+		return stack1.is(ModTags.ItemTags.FORTRESS_SHIELD_REPAIR_ITEMS);
 	}
 }

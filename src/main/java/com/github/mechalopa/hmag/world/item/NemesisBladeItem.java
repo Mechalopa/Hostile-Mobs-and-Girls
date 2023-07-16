@@ -207,7 +207,7 @@ public class NemesisBladeItem extends ModSwordItem implements ILevelItem
 	@Override
 	public boolean isValidRepairItem(ItemStack stack, ItemStack stack1)
 	{
-		return stack1.is(ModTags.NEMESIS_BLADE_REPAIR_ITEMS);
+		return stack1.is(ModTags.ItemTags.NEMESIS_BLADE_REPAIR_ITEMS);
 	}
 
 	@Override

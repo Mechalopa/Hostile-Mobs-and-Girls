@@ -18,10 +18,12 @@ public class ModConfigs
 	public static ForgeConfigSpec.BooleanValue OGRE_DESTROY_BLOCKS;
 	public static ForgeConfigSpec.BooleanValue SPIDER_NEST_SUMMON_CAVE_SPIDER;
 	public static ForgeConfigSpec.BooleanValue MELTY_MONSTER_SET_FIRE;
+	public static ForgeConfigSpec.BooleanValue CURSED_DOLL_BURNS_IN_DAYLIGHT;
 	public static ForgeConfigSpec.BooleanValue KASHA_ATTACK_VILLAGERS;
 	public static ForgeConfigSpec.BooleanValue KASHA_ATTACK_BABY_TURTLES;
 	public static ForgeConfigSpec.BooleanValue JACK_FROST_FREEZES_WATER;
 	public static ForgeConfigSpec.BooleanValue JACK_FROST_REGEN;
+	public static ForgeConfigSpec.BooleanValue DULLAHAN_BURNS_IN_DAYLIGHT;
 	public static ForgeConfigSpec.BooleanValue ALRAUNE_ATTACK_VILLAGERS;
 	public static ForgeConfigSpec.BooleanValue ALRAUNE_REGEN;
 	public static ForgeConfigSpec.BooleanValue REDCAP_ATTACK_VILLAGERS;
@@ -41,12 +43,15 @@ public class ModConfigs
 	public static ForgeConfigSpec.BooleanValue SAVAGEFANG_ATTACK_DAMAGED_MOBS;
 	public static ForgeConfigSpec.BooleanValue NECROTIC_REAPER_ATTACK_VILLAGERS;
 	public static ForgeConfigSpec.BooleanValue NECROTIC_REAPER_ATTACK_BABY_TURTLES;
+	public static ForgeConfigSpec.BooleanValue DODOMEKI_BURNS_IN_DAYLIGHT;
 	public static ForgeConfigSpec.BooleanValue GLARYAD_REGEN;
 	public static ForgeConfigSpec.BooleanValue JIANGSHI_ATTACK_VILLAGERS;
 	public static ForgeConfigSpec.BooleanValue JIANGSHI_ATTACK_BABY_TURTLES;
 	public static ForgeConfigSpec.BooleanValue GIANT_MUMMY_ATTACK_VILLAGERS;
 	public static ForgeConfigSpec.BooleanValue GIANT_MUMMY_ATTACK_BABY_TURTLES;
 	public static ForgeConfigSpec.BooleanValue GIANT_MUMMY_DESTROY_BLOCKS;
+
+	public static ForgeConfigSpec.DoubleValue PINK_HARPY_SPAWN_CHANCE;
 
 	public static ForgeConfigSpec.DoubleValue ZOMBIE_GIRL_REPLACE_CHANCE;
 	public static ForgeConfigSpec.DoubleValue HUSK_GIRL_REPLACE_CHANCE;
@@ -119,10 +124,12 @@ public class ModConfigs
 		OGRE_DESTROY_BLOCKS = SERVER_BUILDER.define("enableOgreDestroyBlocks", true);
 		SPIDER_NEST_SUMMON_CAVE_SPIDER = SERVER_BUILDER.define("spiderNestSummonCaveSpider", true);
 		MELTY_MONSTER_SET_FIRE = SERVER_BUILDER.define("enableMeltyMonsterSetFire", true);
+		CURSED_DOLL_BURNS_IN_DAYLIGHT = SERVER_BUILDER.define("cursedDollBurnsInDaylight", true);
 		KASHA_ATTACK_VILLAGERS = SERVER_BUILDER.define("kashaAttackVillagers", true);
 		KASHA_ATTACK_BABY_TURTLES = SERVER_BUILDER.define("kashaAttackBabyTurtles", true);
 		JACK_FROST_FREEZES_WATER = SERVER_BUILDER.define("enableJackFrostFreezesWater", true);
 		JACK_FROST_REGEN = SERVER_BUILDER.define("enableJackFrostRegen", true);
+		DULLAHAN_BURNS_IN_DAYLIGHT = SERVER_BUILDER.define("dullahanBurnsInDaylight", true);
 		ALRAUNE_ATTACK_VILLAGERS = SERVER_BUILDER.define("alrauneAttackVillagers", true);
 		ALRAUNE_REGEN = SERVER_BUILDER.define("enableAlrauneRegen", true);
 		REDCAP_ATTACK_VILLAGERS = SERVER_BUILDER.define("redcapAttackVillagers", true);
@@ -142,6 +149,7 @@ public class ModConfigs
 		SAVAGEFANG_ATTACK_DAMAGED_MOBS = SERVER_BUILDER.define("savagefangAttackDamagedMobs", true);
 		NECROTIC_REAPER_ATTACK_VILLAGERS = SERVER_BUILDER.define("necroticReaperAttackVillagers", true);
 		NECROTIC_REAPER_ATTACK_BABY_TURTLES = SERVER_BUILDER.define("necroticReaperAttackBabyTurtles", true);
+		DODOMEKI_BURNS_IN_DAYLIGHT = SERVER_BUILDER.define("dodomekiBurnsInDaylight", true);
 		GLARYAD_REGEN = SERVER_BUILDER.define("enableGlaryadRegen", true);
 		JIANGSHI_ATTACK_VILLAGERS = SERVER_BUILDER.define("jiangshiAttackVillagers", true);
 		JIANGSHI_ATTACK_BABY_TURTLES = SERVER_BUILDER.define("jiangshiAttackBabyTurtles", true);
@@ -150,6 +158,8 @@ public class ModConfigs
 		GIANT_MUMMY_DESTROY_BLOCKS = SERVER_BUILDER.define("enableGiantMummyDestroyBlocks", true);
 
 		SERVER_BUILDER.push("spawn");
+
+		PINK_HARPY_SPAWN_CHANCE = SERVER_BUILDER.defineInRange("pinkHarpySpawnChance", 0.001D, 0.0D, 1.0D);
 
 		SERVER_BUILDER.push("replaceChance");
 
@@ -255,10 +265,12 @@ public class ModConfigs
 		public static boolean OGRE_DESTROY_BLOCKS;
 		public static boolean SPIDER_NEST_SUMMON_CAVE_SPIDER;
 		public static boolean MELTY_MONSTER_SET_FIRE;
+		public static boolean CURSED_DOLL_BURNS_IN_DAYLIGHT;
 		public static boolean KASHA_ATTACK_VILLAGERS;
 		public static boolean KASHA_ATTACK_BABY_TURTLES;
 		public static boolean JACK_FROST_FREEZES_WATER;
 		public static boolean JACK_FROST_REGEN;
+		public static boolean DULLAHAN_BURNS_IN_DAYLIGHT;
 		public static boolean ALRAUNE_ATTACK_VILLAGERS;
 		public static boolean ALRAUNE_REGEN;
 		public static boolean REDCAP_ATTACK_VILLAGERS;
@@ -278,12 +290,15 @@ public class ModConfigs
 		public static boolean SAVAGEFANG_ATTACK_DAMAGED_MOBS;
 		public static boolean NECROTIC_REAPER_ATTACK_VILLAGERS;
 		public static boolean NECROTIC_REAPER_ATTACK_BABY_TURTLES;
+		public static boolean DODOMEKI_BURNS_IN_DAYLIGHT;
 		public static boolean GLARYAD_REGEN;
 		public static boolean JIANGSHI_ATTACK_VILLAGERS;
 		public static boolean JIANGSHI_ATTACK_BABY_TURTLES;
 		public static boolean GIANT_MUMMY_ATTACK_VILLAGERS;
 		public static boolean GIANT_MUMMY_ATTACK_BABY_TURTLES;
 		public static boolean GIANT_MUMMY_DESTROY_BLOCKS;
+
+		public static double PINK_HARPY_SPAWN_CHANCE;
 
 		public static double ZOMBIE_GIRL_REPLACE_CHANCE;
 		public static double HUSK_GIRL_REPLACE_CHANCE;
@@ -354,10 +369,12 @@ public class ModConfigs
 			OGRE_DESTROY_BLOCKS = ModConfigs.OGRE_DESTROY_BLOCKS.get();
 			SPIDER_NEST_SUMMON_CAVE_SPIDER = ModConfigs.SPIDER_NEST_SUMMON_CAVE_SPIDER.get();
 			MELTY_MONSTER_SET_FIRE = ModConfigs.MELTY_MONSTER_SET_FIRE.get();
+			CURSED_DOLL_BURNS_IN_DAYLIGHT = ModConfigs.CURSED_DOLL_BURNS_IN_DAYLIGHT.get();
 			KASHA_ATTACK_VILLAGERS = ModConfigs.KASHA_ATTACK_VILLAGERS.get();
 			KASHA_ATTACK_BABY_TURTLES = ModConfigs.KASHA_ATTACK_BABY_TURTLES.get();
 			JACK_FROST_FREEZES_WATER = ModConfigs.JACK_FROST_FREEZES_WATER.get();
 			JACK_FROST_REGEN = ModConfigs.JACK_FROST_REGEN.get();
+			DULLAHAN_BURNS_IN_DAYLIGHT = ModConfigs.DULLAHAN_BURNS_IN_DAYLIGHT.get();
 			ALRAUNE_ATTACK_VILLAGERS = ModConfigs.ALRAUNE_ATTACK_VILLAGERS.get();
 			ALRAUNE_REGEN = ModConfigs.ALRAUNE_REGEN.get();
 			REDCAP_ATTACK_VILLAGERS = ModConfigs.REDCAP_ATTACK_VILLAGERS.get();
@@ -377,12 +394,15 @@ public class ModConfigs
 			SAVAGEFANG_ATTACK_DAMAGED_MOBS = ModConfigs.SAVAGEFANG_ATTACK_DAMAGED_MOBS.get();
 			NECROTIC_REAPER_ATTACK_VILLAGERS = ModConfigs.NECROTIC_REAPER_ATTACK_VILLAGERS.get();
 			NECROTIC_REAPER_ATTACK_BABY_TURTLES = ModConfigs.NECROTIC_REAPER_ATTACK_BABY_TURTLES.get();
+			DODOMEKI_BURNS_IN_DAYLIGHT = ModConfigs.DODOMEKI_BURNS_IN_DAYLIGHT.get();
 			GLARYAD_REGEN = ModConfigs.GLARYAD_REGEN.get();
 			JIANGSHI_ATTACK_VILLAGERS = ModConfigs.JIANGSHI_ATTACK_VILLAGERS.get();
 			JIANGSHI_ATTACK_BABY_TURTLES = ModConfigs.JIANGSHI_ATTACK_BABY_TURTLES.get();
 			GIANT_MUMMY_ATTACK_VILLAGERS = ModConfigs.GIANT_MUMMY_ATTACK_VILLAGERS.get();
 			GIANT_MUMMY_ATTACK_BABY_TURTLES = ModConfigs.GIANT_MUMMY_ATTACK_BABY_TURTLES.get();
 			GIANT_MUMMY_DESTROY_BLOCKS = ModConfigs.GIANT_MUMMY_DESTROY_BLOCKS.get();
+
+			PINK_HARPY_SPAWN_CHANCE = ModConfigs.PINK_HARPY_SPAWN_CHANCE.get();
 
 			ZOMBIE_GIRL_REPLACE_CHANCE = ModConfigs.ZOMBIE_GIRL_REPLACE_CHANCE.get();
 			HUSK_GIRL_REPLACE_CHANCE = ModConfigs.HUSK_GIRL_REPLACE_CHANCE.get();
