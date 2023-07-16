@@ -1,0 +1,18 @@
+{
+  "registry_name": "hmag:lich",
+  "primary_type": "arcane",
+  "spirits": [
+    {
+      "spirit": "wicked",
+      "count": 2
+    },
+    {
+      "spirit": "arcane",
+      "count": 2
+    },
+    {
+      "spirit": "aerial",
+      "count": 1
+    }
+  ]
+}

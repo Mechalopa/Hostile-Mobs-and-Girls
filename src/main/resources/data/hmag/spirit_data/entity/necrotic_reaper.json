@@ -1,0 +1,18 @@
+{
+  "registry_name": "hmag:necrotic_reaper",
+  "primary_type": "wicked",
+  "spirits": [
+    {
+      "spirit": "wicked",
+      "count": 3
+    },
+    {
+      "spirit": "arcane",
+      "count": 1
+    },
+    {
+      "spirit": "earthen",
+      "count": 1
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "registry_name": "hmag:ghost",
+  "primary_type": "arcane",
+  "spirits": [
+    {
+      "spirit": "arcane",
+      "count": 1
+    },
+    {
+      "spirit": "wicked",
+      "count": 1
+    },
+    {
+      "spirit": "aerial",
+      "count": 1
+    }
+  ]
+}

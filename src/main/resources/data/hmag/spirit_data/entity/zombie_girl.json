@@ -1,0 +1,14 @@
+{
+  "registry_name": "hmag:zombie_girl",
+  "primary_type": "wicked",
+  "spirits": [
+    {
+      "spirit": "wicked",
+      "count": 1
+    },
+    {
+      "spirit": "earthen",
+      "count": 1
+    }
+  ]
+}
