@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.github.mechalopa.hmag.util.ModTags;
 
-import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
@@ -46,8 +45,7 @@ public class RandomberryItem extends Item
 	public static void refreshEffectList()
 	{
 		RANDOMBERRY_EFFECTS = ForgeRegistries.MOB_EFFECTS.getValues().stream().filter((p) -> {
-			Holder<MobEffect> holder = ForgeRegistries.MOB_EFFECTS.getHolder(p).orElseThrow();
-			return holder != null && holder.is(ModTags.MobEffectTags.RANDOMBERRY_GIVES);
+			return ModTags.checkTagContains(p, ModTags.MobEffectTags.RANDOMBERRY_GIVES);
 		}).toList();
 	}
 }
