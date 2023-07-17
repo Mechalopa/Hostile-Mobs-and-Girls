@@ -79,7 +79,7 @@ public class MeltyMonsterEntity extends Monster implements IModMob, RangedAttack
 		this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
 		this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
 		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, (p) -> {
-			return !(p.getVehicle() != null && p.getType().is(ModTags.MELTY_MONSTER_AVOID_MOBS));
+			return !(p.getVehicle() != null && p.getVehicle().getType().is(ModTags.MELTY_MONSTER_AVOID_MOBS));
 		}));
 	}
 
