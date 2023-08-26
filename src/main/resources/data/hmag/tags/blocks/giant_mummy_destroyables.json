@@ -1607,6 +1607,126 @@
     {
       "id": "terrestria:tall_cattail",
       "required": false
+    },
+    {
+      "id": "eidolon:avennian_sprig",
+      "required": false
+    },
+    {
+      "id": "eidolon:merammer_root",
+      "required": false
+    },
+    {
+      "id": "eidolon:oanna_bloom",
+      "required": false
+    },
+    {
+      "id": "eidolon:sildrian_seed",
+      "required": false
+    },
+    {
+      "id": "malum:soulwood_growth",
+      "required": false
+    },
+    {
+      "id": "aether_redux:aevelium_sprouts",
+      "required": false
+    },
+    {
+      "id": "aether_redux:aevelium_growth",
+      "required": false
+    },
+    {
+      "id": "aether_redux:cloudcap_mushling",
+      "required": false
+    },
+    {
+      "id": "aether_redux:highfields_flower_patch",
+      "required": false
+    },
+    {
+      "id": "aether_redux:sprouting_lightroots",
+      "required": false
+    },
+    {
+      "id": "good_nights_sleep:dream_grass",
+      "required": false
+    },
+    {
+      "id": "good_nights_sleep:lollipop_bush",
+      "required": false
+    },
+    {
+      "id": "good_nights_sleep:nightmare_grass",
+      "required": false
+    },
+    {
+      "id": "good_nights_sleep:prickly_nightmare_grass",
+      "required": false
+    }
+    {
+      "id": "good_nights_sleep:rainbow_berries",
+      "required": false
+    },
+    {
+      "id": "#good_nights_sleep:mushrooms",
+      "required": false
+    },
+    {
+      "id": "blue_skies:turquoise_grass",
+      "required": false
+    },
+    {
+      "id": "blue_skies:tall_turquoise_grass",
+      "required": false
+    },
+    {
+      "id": "blue_skies:brittlebush",
+      "required": false
+    },
+    {
+      "id": "blue_skies:brewberry_bush",
+      "required": false
+    },
+    {
+      "id": "blue_skies:lunar_grass",
+      "required": false
+    },
+    {
+      "id": "blue_skies:tall_lunar_grass",
+      "required": false
+    },
+    {
+      "id": "blue_skies:muckweed",
+      "required": false
+    },
+    {
+      "id": "blue_skies:crystallized_grass",
+      "required": false
+    },
+    {
+      "id": "blue_skies:baneful_mushroom",
+      "required": false
+    },
+    {
+      "id": "blue_skies:glimmer_reed",
+      "required": false
+    },
+    {
+      "id": "blue_skies:cherry_grass",
+      "required": false
+    },
+    {
+      "id": "blue_skies:snowcap_pinhead",
+      "required": false
+    },
+    {
+      "id": "blue_skies:snowcap_mushroom",
+      "required": false
+    },
+    {
+      "id": "#blue_skies:vines",
+      "required": false
     }
   ]
 }

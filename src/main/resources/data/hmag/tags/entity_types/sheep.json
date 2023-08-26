@@ -89,6 +89,10 @@
     {
       "id": "aether:sheepuff",
       "required": false
+    },
+    {
+      "id": "blue_skies:stardust_ram",
+      "required": false
     }
   ]
 }
