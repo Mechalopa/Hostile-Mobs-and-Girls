@@ -58,28 +58,28 @@ public class ThrowableBottleEntity extends ThrowableItemProjectile
 	{
 		super.onHit(result);
 
-		if (!this.level.isClientSide)
+		if (!this.level().isClientSide())
 		{
 			final Item item = this.getItem().getItem();
 
 			if (item == ModItems.FIRE_BOTTLE.get() || item == ModItems.BLASTING_BOTTLE.get())
 			{
-				this.level.levelEvent(2002, this.blockPosition(), MobEffects.FIRE_RESISTANCE.getColor());
-				boolean flag = ForgeEventFactory.getMobGriefingEvent(this.level, this.getOwner());
-				this.level.explode((Entity)null, this.getX(), this.getY(), this.getZ(), item == ModItems.BLASTING_BOTTLE.get() ? 2.5F : 1.0F, flag, Level.ExplosionInteraction.MOB);
+				this.level().levelEvent(2002, this.blockPosition(), MobEffects.FIRE_RESISTANCE.getColor());
+				boolean flag = ForgeEventFactory.getMobGriefingEvent(this.level(), this.getOwner());
+				this.level().explode((Entity)null, this.getX(), this.getY(), this.getZ(), item == ModItems.BLASTING_BOTTLE.get() ? 2.5F : 1.0F, flag, Level.ExplosionInteraction.MOB);
 			}
 			else if (item == ModItems.LIGHTNING_BOTTLE.get())
 			{
-				LightningBolt lightningbolt = EntityType.LIGHTNING_BOLT.create(this.level);
+				LightningBolt lightningbolt = EntityType.LIGHTNING_BOLT.create(this.level());
 				lightningbolt.moveTo(Vec3.atBottomCenterOf(this.blockPosition()));
 				Entity owner = this.getOwner();
 				lightningbolt.setCause((owner != null && owner instanceof ServerPlayer) ? (ServerPlayer)owner : null);
-				this.level.addFreshEntity(lightningbolt);
-				this.level.levelEvent(2002, this.blockPosition(), MobEffects.NIGHT_VISION.getColor());
+				this.level().addFreshEntity(lightningbolt);
+				this.level().levelEvent(2002, this.blockPosition(), MobEffects.NIGHT_VISION.getColor());
 			}
 			else
 			{
-				this.level.levelEvent(2002, this.blockPosition(), MobEffects.HARM.getColor());
+				this.level().levelEvent(2002, this.blockPosition(), MobEffects.HARM.getColor());
 			}
 
 			this.discard();

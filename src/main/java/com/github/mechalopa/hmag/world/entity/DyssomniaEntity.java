@@ -128,7 +128,7 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 	@Override
 	public void tick()
 	{
-		if (this.level.isClientSide)
+		if (this.level().isClientSide())
 		{
 			this.xRotAnimationO = this.xRotAnimation;
 			this.animationTickO = this.animationTick;
@@ -136,14 +136,14 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 
 		super.tick();
 
-		if (this.level.isClientSide)
+		if (this.level().isClientSide())
 		{
 			float f = Mth.cos((this.getId() * 3 + this.tickCount) * 0.13F + (float)Math.PI);
 			float f1 = Mth.cos((this.getId() * 3 + this.tickCount + 1) * 0.13F + (float)Math.PI);
 
 			if (f > 0.0F && f1 <= 0.0F)
 			{
-				this.level.playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.PHANTOM_FLAP, this.getSoundSource(), 0.95F + this.random.nextFloat() * 0.05F, 0.95F + this.random.nextFloat() * 0.05F, false);
+				this.level().playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.PHANTOM_FLAP, this.getSoundSource(), 0.95F + this.random.nextFloat() * 0.05F, 0.95F + this.random.nextFloat() * 0.05F, false);
 			}
 
 			boolean flag = this.isActuallyRetreating();
@@ -156,13 +156,13 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 
 				if (flag && this.tickCount % 12 == i * 3)
 				{
-					this.level.addParticle(ParticleTypes.FLAME, this.getX() + f2, this.getY() + f4, this.getZ() + f3, 0.0D, 0.0D, 0.0D);
-					this.level.addParticle(ParticleTypes.FLAME, this.getX() - f2, this.getY() + f4, this.getZ() - f3, 0.0D, 0.0D, 0.0D);
+					this.level().addParticle(ParticleTypes.FLAME, this.getX() + f2, this.getY() + f4, this.getZ() + f3, 0.0D, 0.0D, 0.0D);
+					this.level().addParticle(ParticleTypes.FLAME, this.getX() - f2, this.getY() + f4, this.getZ() - f3, 0.0D, 0.0D, 0.0D);
 				}
 				else
 				{
-					this.level.addParticle(ParticleTypes.MYCELIUM, this.getX() + f2, this.getY() + f4, this.getZ() + f3, 0.0D, 0.0D, 0.0D);
-					this.level.addParticle(ParticleTypes.MYCELIUM, this.getX() - f2, this.getY() + f4, this.getZ() - f3, 0.0D, 0.0D, 0.0D);
+					this.level().addParticle(ParticleTypes.MYCELIUM, this.getX() + f2, this.getY() + f4, this.getZ() + f3, 0.0D, 0.0D, 0.0D);
+					this.level().addParticle(ParticleTypes.MYCELIUM, this.getX() - f2, this.getY() + f4, this.getZ() - f3, 0.0D, 0.0D, 0.0D);
 				}
 			}
 
@@ -173,7 +173,7 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 					double d0 = 1.75D;
 					double d1 = 1.5D;
 					Vec3 vec3 = this.getViewVector(1.0F);
-					this.level.addParticle(ParticleTypes.SMOKE, this.getX() + vec3.x * d0, this.getEyeY() - vec3.y * d1, this.getZ() + vec3.z * d0, 0.0D, 0.0D, 0.0D);
+					this.level().addParticle(ParticleTypes.SMOKE, this.getX() + vec3.x * d0, this.getEyeY() - vec3.y * d1, this.getZ() + vec3.z * d0, 0.0D, 0.0D, 0.0D);
 				}
 
 				if (this.animationTick < 30)
@@ -193,7 +193,7 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 	@Override
 	public void aiStep()
 	{
-		if (!this.level.isClientSide)
+		if (!this.level().isClientSide())
 		{
 			if (this.isAlive() && !this.isNoAi())
 			{
@@ -213,7 +213,7 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 
 	private boolean isStopRetreatTick()
 	{
-		if (this.level.isNight() && !this.level.isClientSide)
+		if (this.level().isNight() && !this.level().isClientSide)
 		{
 			@SuppressWarnings("deprecation")
 			float f = this.getLightLevelDependentMagicValue();
@@ -250,9 +250,9 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 			double d2 = attacker.getY() + 0.5D;
 			double d3 = attacker.getZ() + (random.nextDouble() - random.nextDouble()) * 3.0D;
 
-			Phantom phantom = EntityType.PHANTOM.create(attacker.level);
+			Phantom phantom = EntityType.PHANTOM.create(attacker.level());
 			phantom.moveTo(d1, d2, d3, this.getYRot() + (random.nextFloat() - 0.5F) * 12.0F, 0.0F);
-			phantom.finalizeSpawn(serverlevel, attacker.level.getCurrentDifficultyAt(attacker.blockPosition()), MobSpawnType.MOB_SUMMONED, (SpawnGroupData)null, (CompoundTag)null);
+			phantom.finalizeSpawn(serverlevel, attacker.level().getCurrentDifficultyAt(attacker.blockPosition()), MobSpawnType.MOB_SUMMONED, (SpawnGroupData)null, (CompoundTag)null);
 			serverlevel.addFreshEntityWithPassengers(phantom);
 			phantom.getPersistentData().putBoolean(ModUtils.WITH_SPAWN_PARTICLE_KEY, true);
 			serverlevel.gameEvent(phantom, GameEvent.ENTITY_PLACE, phantom.blockPosition());
@@ -269,7 +269,7 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 			this.clearFire();
 		}
 
-		attacker.level.levelEvent(2004, attacker.blockPosition(), 0);
+		attacker.level().levelEvent(2004, attacker.blockPosition(), 0);
 		attacker.playSound(ModSoundEvents.DYSSOMNIA_SUMMON.get(), 5.0F, 1.0F);
 	}
 
@@ -443,7 +443,7 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 		{
 			if (!this.parent.isRetreating() && this.parent.getTarget() != null && this.parent.getTarget() instanceof Player && this.parent.getAttackPhase() == DyssomniaEntity.AttackPhase.WAIT && (this.parent.getRandom().nextInt(6) == 0 || this.parent.isOnFire()) && this.parent.distanceToSqr(this.parent.getTarget()) < 16.0D * 16.0D)
 			{
-				return this.parent.level.getNearbyEntities(Phantom.class, this.phantomCountTargeting, this.parent, this.parent.getBoundingBox().inflate(32.0D)).size() < 1;
+				return this.parent.level().getNearbyEntities(Phantom.class, this.phantomCountTargeting, this.parent, this.parent.getBoundingBox().inflate(32.0D)).size() < 1;
 			}
 			else
 			{
@@ -479,12 +479,12 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 
 			if ((target.distanceToSqr(this.parent) < d0 * d0 || this.attackTimer > 10) && this.parent.hasLineOfSight(target))
 			{
-				Level level = this.parent.level;
+				Level level = this.parent.level();
 				++this.attackTimer;
 
 				if (this.attackTimer == 20)
 				{
-					this.parent.summonPhantom((ServerLevel)level, this.parent, target, this.parent.getRandom(), 1 + this.parent.getRandom().nextInt(this.parent.level.getDifficulty() == Difficulty.HARD ? 3 : 2));
+					this.parent.summonPhantom((ServerLevel)level, this.parent, target, this.parent.getRandom(), 1 + this.parent.getRandom().nextInt(this.parent.level().getDifficulty() == Difficulty.HARD ? 3 : 2));
 					this.parent.setAttackPhase(DyssomniaEntity.AttackPhase.WAIT);
 				}
 			}
@@ -546,7 +546,7 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 
 			if ((target.distanceToSqr(this.parent) < d0 * d0 || this.attackTimer > 10) && this.parent.hasLineOfSight(target))
 			{
-				Level level = this.parent.level;
+				Level level = this.parent.level();
 				++this.attackTimer;
 
 				if (this.attackTimer == 30)
@@ -741,7 +741,7 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 			double d1 = this.parent.getY();
 			double d2 = this.parent.getZ();
 
-			if (flag && this.parent.level.canSeeSky(blockpos) && blockpos.getY() < (this.parent.level.getMaxBuildHeight() + 64))
+			if (flag && this.parent.level().canSeeSky(blockpos) && blockpos.getY() < (this.parent.level().getMaxBuildHeight() + 64))
 			{
 				d0 = d0 + (random.nextFloat() * 2.0F - 1.0F) * 8.0F;
 				d1 = d1 + ((random.nextFloat() * 4.0F) + 8.0F);
@@ -771,7 +771,7 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 
 				if (!flag1)
 				{
-					Level level = this.parent.level;
+					Level level = this.parent.level();
 					BlockPos.MutableBlockPos blockpos$mutable = blockpos.mutable();
 					boolean flag2 = false;
 					int i = 0;

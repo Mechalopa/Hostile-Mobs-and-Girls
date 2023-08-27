@@ -64,7 +64,7 @@ public class ZombieGirlEntity extends Zombie
 
 		if (!this.isSilent())
 		{
-			this.level.levelEvent((Player)null, 1041, this.blockPosition(), 0);
+			this.level().levelEvent((Player)null, 1041, this.blockPosition(), 0);
 		}
 	}
 

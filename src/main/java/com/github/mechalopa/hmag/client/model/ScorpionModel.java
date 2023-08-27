@@ -398,7 +398,7 @@ public class ScorpionModel<T extends Entity> extends HierarchicalModel<T>
 		this.rightScissor2.xRot = 0.0F;
 		this.leftScissor2.xRot = 0.0F;
 
-		if (entityIn.isOnGround())
+		if (entityIn.onGround())
 		{
 			float f3 = -(Mth.cos(limbSwing * 0.67F * 2.0F) * 0.4F) * limbSwingAmount;
 			float f4 = -(Mth.cos(limbSwing * 0.67F * 2.0F + (float)Math.PI) * 0.4F) * limbSwingAmount;

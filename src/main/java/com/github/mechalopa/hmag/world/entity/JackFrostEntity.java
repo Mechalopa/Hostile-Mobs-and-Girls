@@ -36,9 +36,8 @@ import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.LiquidBlock;
+import net.minecraft.world.level.block.FrostedIceBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraftforge.common.util.BlockSnapshot;
 import net.minecraftforge.event.ForgeEventFactory;
@@ -78,15 +77,15 @@ public class JackFrostEntity extends Monster implements RangedAttackMob
 	{
 		super.aiStep();
 
-		if (!this.level.isClientSide)
+		if (!this.level().isClientSide())
 		{
-			if (this.level.getBiome(this.blockPosition()).is(ModTags.BiomeTags.JACK_FROST_MELTS))
+			if (this.level().getBiome(this.blockPosition()).is(ModTags.BiomeTags.JACK_FROST_MELTS))
 			{
 				this.hurt(this.damageSources().onFire(), 1.0F);
 			}
-			else if (ModConfigs.cachedServer.JACK_FROST_FREEZES_WATER && ForgeEventFactory.getMobGriefingEvent(this.level, this))
+			else if (ModConfigs.cachedServer.JACK_FROST_FREEZES_WATER && ForgeEventFactory.getMobGriefingEvent(this.level(), this))
 			{
-				if (this.isOnGround())
+				if (this.onGround())
 				{
 					BlockState blockstate = Blocks.FROSTED_ICE.defaultBlockState();
 					int i = 2;
@@ -98,16 +97,14 @@ public class JackFrostEntity extends Monster implements RangedAttackMob
 						if (blockpos1.closerToCenterThan(this.position(), (double)i))
 						{
 							blockpos$mutable.set(blockpos1.getX(), blockpos1.getY() + 1, blockpos1.getZ());
+							BlockState blockstate1 = this.level().getBlockState(blockpos$mutable);
 
-							if (this.level.isEmptyBlock(blockpos$mutable))
+							if (blockstate1.isAir())
 							{
-								BlockState blockstate1 = level.getBlockState(blockpos1);
-								boolean isFull = blockstate1.getBlock() == Blocks.WATER && blockstate1.getValue(LiquidBlock.LEVEL) == 0;
-
-								if (blockstate1.getMaterial() == Material.WATER && isFull && blockstate.canSurvive(level, blockpos1) && level.isUnobstructed(blockstate, blockpos1, CollisionContext.empty()) && !ForgeEventFactory.onBlockPlace(this, BlockSnapshot.create(level.dimension(), level, blockpos1), Direction.UP))
+								if (this.level().getBlockState(blockpos1) == FrostedIceBlock.meltsInto() && blockstate.canSurvive(level(), blockpos1) && this.level().isUnobstructed(blockstate, blockpos1, CollisionContext.empty()) && !ForgeEventFactory.onBlockPlace(this, BlockSnapshot.create(level().dimension(), level(), blockpos1), Direction.UP))
 								{
-									this.level.setBlockAndUpdate(blockpos1, blockstate);
-									this.level.scheduleTick(blockpos1, Blocks.FROSTED_ICE, Mth.nextInt(this.getRandom(), 60, 120));
+									this.level().setBlockAndUpdate(blockpos1, blockstate);
+									this.level().scheduleTick(blockpos1, Blocks.FROSTED_ICE, Mth.nextInt(this.getRandom(), 60, 120));
 								}
 							}
 						}
@@ -149,7 +146,7 @@ public class JackFrostEntity extends Monster implements RangedAttackMob
 
 		for (int i = 0; i < c; ++i)
 		{
-			HardSnowballEntity snowball = new HardSnowballEntity(this.level, this);
+			HardSnowballEntity snowball = new HardSnowballEntity(this.level(), this);
 			double d0 = target.getEyeY() - 1.1F;
 			double d1 = target.getX() - this.getX();
 			double d2 = d0 - snowball.getY();
@@ -157,7 +154,7 @@ public class JackFrostEntity extends Monster implements RangedAttackMob
 			double d4 = Math.sqrt(d1 * d1 + d3 * d3) * 0.2D;
 			snowball.shoot(d1, d2 + d4, d3, 1.5F, 10.0F);
 			snowball.setDamage(3.0F);
-			this.level.addFreshEntity(snowball);
+			this.level().addFreshEntity(snowball);
 		}
 
 		this.playSound(SoundEvents.SNOW_GOLEM_SHOOT, 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));

@@ -104,11 +104,11 @@ public class CrimsonSlaughtererEntity extends Monster
 			{
 				int i = 0;
 
-				if (this.level.getDifficulty() == Difficulty.NORMAL)
+				if (this.level().getDifficulty() == Difficulty.NORMAL)
 				{
 					i = 10;
 				}
-				else if (this.level.getDifficulty() == Difficulty.HARD)
+				else if (this.level().getDifficulty() == Difficulty.HARD)
 				{
 					i = 20;
 				}

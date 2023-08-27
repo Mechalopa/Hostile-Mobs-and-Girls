@@ -20,11 +20,11 @@ public class EvilFlameItem extends EnchantmentUpgradeItem
 	@Override
 	public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity entity, InteractionHand hand)
 	{
-		if (!player.level.isClientSide)
+		if (!player.level().isClientSide())
 		{
 			entity.setSecondsOnFire(3);
 			player.crit(entity);
-			player.level.playSound((Player)null, player.getX(), player.getY(), player.getZ(), SoundEvents.FLINTANDSTEEL_USE, SoundSource.NEUTRAL, 1.0F, player.level.getRandom().nextFloat() * 0.4F + 0.8F);
+			player.level().playSound((Player)null, player.getX(), player.getY(), player.getZ(), SoundEvents.FLINTANDSTEEL_USE, SoundSource.NEUTRAL, 1.0F, player.level().getRandom().nextFloat() * 0.4F + 0.8F);
 			stack.shrink(1);
 			return InteractionResult.SUCCESS;
 		}

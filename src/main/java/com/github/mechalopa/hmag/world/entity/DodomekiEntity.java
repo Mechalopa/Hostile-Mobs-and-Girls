@@ -80,20 +80,20 @@ public class DodomekiEntity extends Monster
 	@Override
 	public void tick()
 	{
-		if (this.level.isClientSide)
+		if (this.level().isClientSide())
 		{
 			this.eyesGlowingAnimationO = this.eyesGlowingAnimation;
 		}
 
 		super.tick();
 
-		if (this.level.isClientSide)
+		if (this.level().isClientSide())
 		{
 			if (this.isAggressive())
 			{
 				BlockPos pos = BlockPos.containing(this.getEyePosition(1.0F));
 
-				if (Math.max(this.level.getBrightness(LightLayer.SKY, pos) - ModClientUtils.getSkyDarken(this.level), this.level.getBrightness(LightLayer.BLOCK, pos)) < 7)
+				if (Math.max(this.level().getBrightness(LightLayer.SKY, pos) - ModClientUtils.getSkyDarken(this.level()), this.level().getBrightness(LightLayer.BLOCK, pos)) < 7)
 				{
 					this.eyesGlowingAnimation = Math.min(1.0F, this.eyesGlowingAnimation + 0.025F);
 				}
@@ -112,9 +112,9 @@ public class DodomekiEntity extends Monster
 	@Override
 	public void aiStep()
 	{
-		if (this.level.isClientSide)
+		if (this.level().isClientSide())
 		{
-			this.level.addParticle(ParticleTypes.MYCELIUM, this.getRandomX(0.75D), this.getRandomY() - 0.5D, this.getRandomZ(0.75D), (this.getRandom().nextDouble() - 0.5D) * 3.0D, -this.getRandom().nextDouble(), (this.getRandom().nextDouble() - 0.5D) * 3.0D);
+			this.level().addParticle(ParticleTypes.MYCELIUM, this.getRandomX(0.75D), this.getRandomY() - 0.5D, this.getRandomZ(0.75D), (this.getRandom().nextDouble() - 0.5D) * 3.0D, -this.getRandom().nextDouble(), (this.getRandom().nextDouble() - 0.5D) * 3.0D);
 		}
 
 		ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick(), ModConfigs.cachedServer.DODOMEKI_BURNS_IN_DAYLIGHT);
@@ -132,11 +132,11 @@ public class DodomekiEntity extends Monster
 			{
 				int i = 0;
 
-				if (this.level.getDifficulty() == Difficulty.NORMAL)
+				if (this.level().getDifficulty() == Difficulty.NORMAL)
 				{
 					i = 7;
 				}
-				else if (this.level.getDifficulty() == Difficulty.HARD)
+				else if (this.level().getDifficulty() == Difficulty.HARD)
 				{
 					i = 15;
 				}

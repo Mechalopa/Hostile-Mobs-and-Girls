@@ -65,7 +65,7 @@ public class WitherGhostEntity extends GhostEntity
 	@Override
 	protected void populateDefaultEquipmentSlots(RandomSource rand, DifficultyInstance difficulty)
 	{
-		if (rand.nextFloat() < (this.level.getDifficulty() == Difficulty.HARD ? 0.05F : 0.01F))
+		if (rand.nextFloat() < (this.level().getDifficulty() == Difficulty.HARD ? 0.05F : 0.01F))
 		{
 			this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.STONE_SWORD));
 		}

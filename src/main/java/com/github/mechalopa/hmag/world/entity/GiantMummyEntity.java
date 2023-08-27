@@ -107,9 +107,9 @@ public class GiantMummyEntity extends Monster
 	@Override
 	public void aiStep()
 	{
-		if (this.level.isClientSide && this.tickCount % 2 == 0)
+		if (this.level().isClientSide() && this.tickCount % 2 == 0)
 		{
-			this.level.addParticle(ParticleTypes.ASH, this.getRandomX(0.5D), this.getRandomY() - 0.25D, this.getRandomZ(0.5D), (this.getRandom().nextDouble() - 0.5D) * 3.0D, -this.getRandom().nextDouble(), (this.getRandom().nextDouble() - 0.5D) * 3.0D);
+			this.level().addParticle(ParticleTypes.ASH, this.getRandomX(0.5D), this.getRandomY() - 0.25D, this.getRandomZ(0.5D), (this.getRandom().nextDouble() - 0.5D) * 3.0D, -this.getRandom().nextDouble(), (this.getRandom().nextDouble() - 0.5D) * 3.0D);
 		}
 
 		ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick());
@@ -117,18 +117,18 @@ public class GiantMummyEntity extends Monster
 
 		if (this.isAlive())
 		{
-			if (ModConfigs.cachedServer.GIANT_MUMMY_DESTROY_BLOCKS && this.level.getDifficulty().getId() > 1 && this.getTarget() != null && this.horizontalCollision && ForgeEventFactory.getMobGriefingEvent(this.level, this))
+			if (ModConfigs.cachedServer.GIANT_MUMMY_DESTROY_BLOCKS && this.level().getDifficulty().getId() > 1 && this.getTarget() != null && this.horizontalCollision && ForgeEventFactory.getMobGriefingEvent(this.level(), this))
 			{
 				boolean flag = false;
 				AABB aabb = this.getBoundingBox().inflate(0.25D);
 
 				for (BlockPos blockpos : BlockPos.betweenClosed(Mth.floor(aabb.minX), Mth.floor(aabb.minY), Mth.floor(aabb.minZ), Mth.floor(aabb.maxX), Mth.floor(aabb.maxY), Mth.floor(aabb.maxZ)))
 				{
-					BlockState state = this.level.getBlockState(blockpos);
+					BlockState state = this.level().getBlockState(blockpos);
 
-					if (this.canDestroyBlock(state, this.level, blockpos, this))
+					if (this.canDestroyBlock(state, this.level(), blockpos, this))
 					{
-						flag = this.level.destroyBlock(blockpos, true, this) || flag;
+						flag = this.level().destroyBlock(blockpos, true, this) || flag;
 					}
 				}
 			}
@@ -146,11 +146,11 @@ public class GiantMummyEntity extends Monster
 			{
 				int i = 0;
 
-				if (this.level.getDifficulty() == Difficulty.NORMAL)
+				if (this.level().getDifficulty() == Difficulty.NORMAL)
 				{
 					i = 7;
 				}
-				else if (this.level.getDifficulty() == Difficulty.HARD)
+				else if (this.level().getDifficulty() == Difficulty.HARD)
 				{
 					i = 15;
 				}
@@ -252,7 +252,7 @@ public class GiantMummyEntity extends Monster
 
 	private boolean canDestroyBlock(BlockState state, Level level, BlockPos pos, LivingEntity livingEntity)
 	{
-		return state.is(ModTags.BlockTags.GIANT_MUMMY_DESTROYABLES) && state.canEntityDestroy(this.level, pos, this) && ForgeEventFactory.onEntityDestroyBlock(this, pos, state);
+		return state.is(ModTags.BlockTags.GIANT_MUMMY_DESTROYABLES) && state.canEntityDestroy(this.level(), pos, this) && ForgeEventFactory.onEntityDestroyBlock(this, pos, state);
 	}
 
 	@Nonnull
@@ -282,7 +282,7 @@ public class GiantMummyEntity extends Monster
 		@Override
 		protected BlockPathTypes evaluateBlockPathType(BlockGetter getter, BlockPos pos, BlockPathTypes blockPathTypes)
 		{
-			if ((blockPathTypes == BlockPathTypes.BLOCKED || blockPathTypes == BlockPathTypes.FENCE || blockPathTypes == BlockPathTypes.LEAVES || blockPathTypes == BlockPathTypes.COCOA) && this.mob != null && this.mob.isAlive() && ModConfigs.cachedServer.GIANT_MUMMY_DESTROY_BLOCKS && this.mob.level.getDifficulty().getId() > 1 && this.mob.getTarget() != null && getter.getBlockState(pos).is(ModTags.BlockTags.GIANT_MUMMY_DESTROYABLES))
+			if ((blockPathTypes == BlockPathTypes.BLOCKED || blockPathTypes == BlockPathTypes.FENCE || blockPathTypes == BlockPathTypes.LEAVES || blockPathTypes == BlockPathTypes.COCOA) && this.mob != null && this.mob.isAlive() && ModConfigs.cachedServer.GIANT_MUMMY_DESTROY_BLOCKS && this.mob.level().getDifficulty().getId() > 1 && this.mob.getTarget() != null && getter.getBlockState(pos).is(ModTags.BlockTags.GIANT_MUMMY_DESTROYABLES))
 			{
 				return BlockPathTypes.OPEN;
 			}

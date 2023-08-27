@@ -66,9 +66,9 @@ public class NightwalkerEntity extends Monster implements RangedAttackMob
 	@Override
 	public void aiStep()
 	{
-		if (this.level.isClientSide && this.tickCount % 2 == 0)
+		if (this.level().isClientSide() && this.tickCount % 2 == 0)
 		{
-			this.level.addParticle(ModParticleTypes.NIGHTWALKER.get(), this.getRandomX(0.75D), this.getRandomY() - 0.25D, this.getRandomZ(0.75D), (this.getRandom().nextDouble() - 0.5D) * 3.0D, -this.getRandom().nextDouble(), (this.getRandom().nextDouble() - 0.5D) * 3.0D);
+			this.level().addParticle(ModParticleTypes.NIGHTWALKER.get(), this.getRandomX(0.75D), this.getRandomY() - 0.25D, this.getRandomZ(0.75D), (this.getRandom().nextDouble() - 0.5D) * 3.0D, -this.getRandom().nextDouble(), (this.getRandom().nextDouble() - 0.5D) * 3.0D);
 		}
 
 		super.aiStep();
@@ -92,12 +92,12 @@ public class NightwalkerEntity extends Monster implements RangedAttackMob
 		double d2 = target.getY() + target.getEyeHeight() * 0.5D - this.getY(0.4D);
 		double d3 = target.getZ() - this.getZ();
 		double d4 = Math.sqrt(d1 * d1 + d3 * d3) * 0.04D;
-		MagicBulletEntity bullet= new MagicBulletEntity(this.level, this, d1 + this.getRandom().nextGaussian() * d4, d2, d3 + this.getRandom().nextGaussian() * d4);
+		MagicBulletEntity bullet= new MagicBulletEntity(this.level(), this, d1 + this.getRandom().nextGaussian() * d4, d2, d3 + this.getRandom().nextGaussian() * d4);
 		bullet.setPos(bullet.getX(), this.getY(0.4D) + 0.25D, bullet.getZ());
 		bullet.setDamage(4.0F);
 		bullet.setEffectLevel((byte)1);
 		bullet.setVariant(3);
-		this.level.addFreshEntity(bullet);
+		this.level().addFreshEntity(bullet);
 		this.playSound(SoundEvents.SHULKER_SHOOT, 2.0F, (this.getRandom().nextFloat() - this.getRandom().nextFloat()) * 0.2F + 1.0F);
 	}
 

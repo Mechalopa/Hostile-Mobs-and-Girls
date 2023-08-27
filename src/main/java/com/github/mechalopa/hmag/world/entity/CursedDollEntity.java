@@ -94,9 +94,9 @@ public class CursedDollEntity extends Monster
 	@Override
 	public void aiStep()
 	{
-		if (this.level.isClientSide)
+		if (this.level().isClientSide())
 		{
-			this.level.addParticle(ParticleTypes.ASH, this.getRandomX(0.5D), this.getRandomY() - 0.25D, this.getRandomZ(0.5D), (this.getRandom().nextDouble() - 0.5D) * 3.0D, -this.getRandom().nextDouble(), (this.getRandom().nextDouble() - 0.5D) * 3.0D);
+			this.level().addParticle(ParticleTypes.ASH, this.getRandomX(0.5D), this.getRandomY() - 0.25D, this.getRandomZ(0.5D), (this.getRandom().nextDouble() - 0.5D) * 3.0D, -this.getRandom().nextDouble(), (this.getRandom().nextDouble() - 0.5D) * 3.0D);
 		}
 
 		ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick(), ModConfigs.cachedServer.CURSED_DOLL_BURNS_IN_DAYLIGHT);
@@ -104,7 +104,7 @@ public class CursedDollEntity extends Monster
 
 		Vec3 vec3 = this.getDeltaMovement();
 
-		if (!this.onGround && vec3.y < 0.0D)
+		if (!this.onGround() && vec3.y < 0.0D)
 		{
 			this.setDeltaMovement(vec3.multiply(1.0D, 0.6D, 1.0D));
 		}
@@ -119,11 +119,11 @@ public class CursedDollEntity extends Monster
 			{
 				int i = 0;
 
-				if (this.level.getDifficulty() == Difficulty.NORMAL)
+				if (this.level().getDifficulty() == Difficulty.NORMAL)
 				{
 					i = 7;
 				}
-				else if (this.level.getDifficulty() == Difficulty.HARD)
+				else if (this.level().getDifficulty() == Difficulty.HARD)
 				{
 					i = 15;
 				}

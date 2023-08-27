@@ -97,16 +97,16 @@ public class HarpyEntity extends Monster
 	@Override
 	public void tick()
 	{
-		if (this.level.isClientSide)
+		if (this.level().isClientSide())
 		{
 			this.animationTickO = this.animationTick;
 		}
 
 		super.tick();
 
-		if (this.level.isClientSide)
+		if (this.level().isClientSide())
 		{
-			if (!this.isOnGround() && !this.isInWaterOrBubble() && !this.isPassenger())
+			if (!this.onGround() && !this.isInWaterOrBubble() && !this.isPassenger())
 			{
 				if (this.animationTick < 10)
 				{
@@ -127,7 +127,7 @@ public class HarpyEntity extends Monster
 
 		Vec3 vec3 = this.getDeltaMovement();
 
-		if (!this.onGround && vec3.y < 0.0D)
+		if (!this.onGround() && vec3.y < 0.0D)
 		{
 			this.setDeltaMovement(vec3.multiply(1.0D, 0.6D, 1.0D));
 		}
@@ -296,7 +296,7 @@ public class HarpyEntity extends Monster
 		@Override
 		public boolean canContinueToUse()
 		{
-			return super.canContinueToUse() && (!this.isLeaped || !this.mob.isOnGround());
+			return super.canContinueToUse() && (!this.isLeaped || !this.mob.onGround());
 		}
 
 		@Override
@@ -308,7 +308,7 @@ public class HarpyEntity extends Monster
 
 			if (pos != null)
 			{
-				if (!this.isLeaped && this.mob.isOnGround() && this.mob.getRandom().nextInt(32) == 0)
+				if (!this.isLeaped && this.mob.onGround() && this.mob.getRandom().nextInt(32) == 0)
 				{
 					if (Math.abs(pos.getY() - this.mob.getY()) <= 1.5D)
 					{

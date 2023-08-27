@@ -55,7 +55,7 @@ public abstract class ModDamagingProjectileEntity extends AbstractHurtingProject
 
 	protected void tick2()
 	{
-		if (!this.level.isClientSide && (this.tickCount >= 200 || this.getOwner() == null))
+		if (!this.level().isClientSide() && (this.tickCount >= 200 || this.getOwner() == null))
 		{
 			this.discard();
 		}
@@ -66,7 +66,7 @@ public abstract class ModDamagingProjectileEntity extends AbstractHurtingProject
 	{
 		super.onHit(result);
 
-		if (!this.level.isClientSide)
+		if (!this.level().isClientSide())
 		{
 			this.onHitServer(result);
 		}

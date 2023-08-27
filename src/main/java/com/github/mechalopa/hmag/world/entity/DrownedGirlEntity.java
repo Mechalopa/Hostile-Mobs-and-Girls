@@ -52,7 +52,7 @@ public class DrownedGirlEntity extends Drowned
 
 		if (this.getItemBySlot(EquipmentSlot.MAINHAND).isEmpty())
 		{
-			if (rand.nextFloat() < (this.level.getDifficulty() == Difficulty.HARD ? 0.05F : 0.01F))
+			if (rand.nextFloat() < (this.level().getDifficulty() == Difficulty.HARD ? 0.05F : 0.01F))
 			{
 				int i = rand.nextInt(3);
 

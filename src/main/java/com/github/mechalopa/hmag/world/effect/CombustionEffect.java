@@ -14,7 +14,7 @@ public class CombustionEffect extends MobEffect
 	@Override
 	public void applyEffectTick(LivingEntity livingEntity, int amplifier)
 	{
-		if (!livingEntity.level.isClientSide && !livingEntity.fireImmune() && !livingEntity.isInWaterRainOrBubble() && (!livingEntity.isOnFire() || livingEntity.getRemainingFireTicks() <= 1))
+		if (!livingEntity.level().isClientSide() && !livingEntity.fireImmune() && !livingEntity.isInWaterRainOrBubble() && (!livingEntity.isOnFire() || livingEntity.getRemainingFireTicks() <= 1))
 		{
 			livingEntity.setRemainingFireTicks(livingEntity.getRemainingFireTicks() + 20);
 			livingEntity.setSecondsOnFire(1);

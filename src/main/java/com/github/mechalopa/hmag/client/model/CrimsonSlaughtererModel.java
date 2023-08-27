@@ -396,7 +396,7 @@ public class CrimsonSlaughtererModel<T extends Mob> extends HierarchicalModel<T>
 		this.leg5E.zRot = f4;
 		this.leg6E.zRot = -f4;
 
-		if (entityIn.isOnGround())
+		if (entityIn.onGround())
 		{
 			float f5 = 0.45F;
 			float f6 = -(Mth.cos(limbSwing * f5 * 2.0F) * 0.4F) * limbSwingAmount;

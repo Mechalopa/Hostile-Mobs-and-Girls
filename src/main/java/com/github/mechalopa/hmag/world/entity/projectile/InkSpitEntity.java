@@ -73,7 +73,7 @@ public class InkSpitEntity extends Projectile
 	{
 		super.tick();
 
-		HitResult hitresult = ProjectileUtil.getHitResult(this, this::canHitEntity);
+		HitResult hitresult = ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity);
 
 		if (hitresult.getType() != HitResult.Type.MISS && !ForgeEventFactory.onProjectileImpact(this, hitresult))
 		{
@@ -113,7 +113,7 @@ public class InkSpitEntity extends Projectile
 	{
 		super.onHitEntity(result);
 
-		if (!this.level.isClientSide)
+		if (!this.level().isClientSide())
 		{
 			Entity entity = this.getOwner();
 			LivingEntity livingEntity = (entity != null && entity instanceof LivingEntity) ? (LivingEntity)entity : null;
@@ -127,11 +127,11 @@ public class InkSpitEntity extends Projectile
 				{
 					int i = 2;
 
-					if (this.level.getDifficulty() == Difficulty.NORMAL)
+					if (this.level().getDifficulty() == Difficulty.NORMAL)
 					{
 						i = 5;
 					}
-					else if (this.level.getDifficulty() == Difficulty.HARD)
+					else if (this.level().getDifficulty() == Difficulty.HARD)
 					{
 						i = 10;
 					}
@@ -150,9 +150,9 @@ public class InkSpitEntity extends Projectile
 	{
 		super.onHit(result);
 
-		if (!this.level.isClientSide)
+		if (!this.level().isClientSide())
 		{
-			this.level.broadcastEntityEvent(this, (byte)3);
+			this.level().broadcastEntityEvent(this, (byte)3);
 			this.discard();
 		}
 	}
@@ -170,7 +170,7 @@ public class InkSpitEntity extends Projectile
 		{
 			for (int i = 0; i < 30; ++i)
 			{
-				this.level.addParticle(ParticleTypes.SQUID_INK, this.getX(), this.getY(), this.getZ(), (this.random.nextFloat() - 0.5D) * 1.2D, (this.random.nextFloat() - 0.5D) * 1.2D, (this.random.nextFloat() - 1.2D) * 0.08D);
+				this.level().addParticle(ParticleTypes.SQUID_INK, this.getX(), this.getY(), this.getZ(), (this.random.nextFloat() - 0.5D) * 1.2D, (this.random.nextFloat() - 0.5D) * 1.2D, (this.random.nextFloat() - 1.2D) * 0.08D);
 			}
 		}
 	}
@@ -212,7 +212,7 @@ public class InkSpitEntity extends Projectile
 		{
 			double d3 = 0.4D + 0.1D * ((double)i / 5.0D);
 			Vec3 vec3 = new Vec3(d0 * d3 * ((double)(0.8F + this.random.nextFloat() * 0.4F)), d1 * ((double)(0.8F + this.random.nextFloat() * 0.4F)), d2 * d3 * ((double)(0.8F + this.random.nextFloat() * 0.4F)));
-			this.level.addParticle(ParticleTypes.SQUID_INK, this.getX(), this.getY(), this.getZ(), vec3.x, vec3.y, vec3.z);
+			this.level().addParticle(ParticleTypes.SQUID_INK, this.getX(), this.getY(), this.getZ(), vec3.x, vec3.y, vec3.z);
 		}
 	}
 }

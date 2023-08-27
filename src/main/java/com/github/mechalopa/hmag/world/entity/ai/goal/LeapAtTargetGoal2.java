@@ -57,7 +57,7 @@ public class LeapAtTargetGoal2 extends Goal
 
 				if (!(d0 < 4.0D) && !(d0 > this.getMaxAttackDistanceSqr()))
 				{
-					if (!this.mob.isOnGround())
+					if (!this.mob.onGround())
 					{
 						return false;
 					}
@@ -77,7 +77,7 @@ public class LeapAtTargetGoal2 extends Goal
 	@Override
 	public boolean canContinueToUse()
 	{
-		return !this.mob.isOnGround();
+		return !this.mob.onGround();
 	}
 
 	@Override

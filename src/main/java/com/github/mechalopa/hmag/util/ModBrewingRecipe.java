@@ -35,7 +35,7 @@ public class ModBrewingRecipe extends BrewingRecipe
 			{
 				for (ItemStack stack1 : stacks)
 				{
-					if (stack1.sameItem(stack) && PotionUtils.getPotion(stack1).equals(PotionUtils.getPotion(stack)))
+					if (ItemStack.isSameItem(stack1, stack) && PotionUtils.getPotion(stack1).equals(PotionUtils.getPotion(stack)))
 					{
 						return true;
 					}

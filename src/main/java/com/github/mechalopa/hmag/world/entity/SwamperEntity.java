@@ -134,7 +134,7 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 	{
 		if (!this.isNoAi())
 		{
-			this.setSuffocating((!this.isInWaterOrBubble() && isSuffocatingBiome(this, this.level)) || this.isOnFire());
+			this.setSuffocating((!this.isInWaterOrBubble() && isSuffocatingBiome(this, this.level())) || this.isOnFire());
 		}
 
 		super.tick();
@@ -148,14 +148,14 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 	@Override
 	public void aiStep()
 	{
-		if (this.level.isClientSide && this.isInWater() && this.getRandom().nextInt(4) == 0)
+		if (this.level().isClientSide() && this.isInWater() && this.getRandom().nextInt(4) == 0)
 		{
-			this.level.addParticle(ParticleTypes.BUBBLE, this.getRandomX(0.75D), this.getY(this.getRandom().nextDouble() * 0.75D) - 0.1D, this.getRandomZ(0.75D), 0.0D, 0.0D, 0.0D);
+			this.level().addParticle(ParticleTypes.BUBBLE, this.getRandomX(0.75D), this.getY(this.getRandom().nextDouble() * 0.75D) - 0.1D, this.getRandomZ(0.75D), 0.0D, 0.0D, 0.0D);
 		}
 
 		super.aiStep();
 
-		if (!this.level.isClientSide)
+		if (!this.level().isClientSide())
 		{
 			if (!this.isSuffocating() && this.getTarget() != null && this.getTarget().isAlive() && this.getTarget().getHealth() <= 1.0F && this.getHealth() <= this.getMaxHealth() / 4.0F)
 			{
@@ -184,11 +184,11 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 			{
 				int i = 0;
 
-				if (this.level.getDifficulty() == Difficulty.NORMAL)
+				if (this.level().getDifficulty() == Difficulty.NORMAL)
 				{
 					i = 7;
 				}
-				else if (this.level.getDifficulty() == Difficulty.HARD)
+				else if (this.level().getDifficulty() == Difficulty.HARD)
 				{
 					i = 15;
 				}
@@ -223,7 +223,7 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 	@Override
 	public void performRangedAttack(LivingEntity target, float distance)
 	{
-		InkSpitEntity inkspit = new InkSpitEntity(this.level, this);
+		InkSpitEntity inkspit = new InkSpitEntity(this.level(), this);
 		double d0 = target.getEyeY() - 1.1F;
 		double d1 = target.getX() - this.getX();
 		double d2 = d0 - inkspit.getY();
@@ -231,7 +231,7 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 		double d4 = Math.sqrt(d1 * d1 + d3 * d3) * 0.2D;
 		inkspit.shoot(d1, d2 + d4, d3, 1.4F, 12.0F);
 		inkspit.setDamage(2.0F);
-		this.level.addFreshEntity(inkspit);
+		this.level().addFreshEntity(inkspit);
 		this.playSound(ModSoundEvents.SWAMPER_SQUIRT.get(), this.getSoundVolume(), this.getVoicePitch());
 		this.setShouldSpitTimer(0);
 	}
@@ -251,7 +251,7 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 
 		if (super.hurt(source, amount))
 		{
-			if (!this.level.isClientSide && !this.isNoAi() && this.getShouldSpitTimer() <= 0 && !this.isSuffocating() && this.getRandom().nextInt(3) == 0 && source.getDirectEntity() != null && source.getDirectEntity() instanceof LivingEntity && this.getTarget() != null && source.getDirectEntity().equals(this.getTarget()) && !this.getTarget().hasEffect(MobEffects.BLINDNESS))
+			if (!this.level().isClientSide() && !this.isNoAi() && this.getShouldSpitTimer() <= 0 && !this.isSuffocating() && this.getRandom().nextInt(3) == 0 && source.getDirectEntity() != null && source.getDirectEntity() instanceof LivingEntity && this.getTarget() != null && source.getDirectEntity().equals(this.getTarget()) && !this.getTarget().hasEffect(MobEffects.BLINDNESS))
 			{
 				this.setShouldSpitTimer(60);
 			}
@@ -365,7 +365,7 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 		{
 			super(mob, speed, useLongMemory, reachScale, maxAttackDistance);
 			this.mob = mob;
-			this.level = mob.level;
+			this.level = mob.level();
 		}
 
 		@Override
@@ -400,7 +400,7 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 		{
 			this.mob = mob;
 			this.speedModifier = speed;
-			this.level = mob.level;
+			this.level = mob.level();
 			this.setFlags(EnumSet.of(Goal.Flag.MOVE));
 		}
 
@@ -470,7 +470,7 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 		{
 			super(mob, speed);
 			this.mob = mob;
-			this.level = mob.level;
+			this.level = mob.level();
 		}
 
 		@Override

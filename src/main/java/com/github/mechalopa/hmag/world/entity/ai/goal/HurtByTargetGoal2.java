@@ -31,7 +31,7 @@ public class HurtByTargetGoal2 extends TargetGoal
 
 		if (i != this.timestamp && livingentity != null)
 		{
-			if (livingentity.getType() == EntityType.PLAYER && this.mob.level.getGameRules().getBoolean(GameRules.RULE_UNIVERSAL_ANGER))
+			if (livingentity.getType() == EntityType.PLAYER && this.mob.level().getGameRules().getBoolean(GameRules.RULE_UNIVERSAL_ANGER))
 			{
 				return false;
 			}

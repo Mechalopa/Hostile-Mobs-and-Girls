@@ -67,9 +67,9 @@ public class EnderExecutorEntity extends EnderMan implements IBeamAttackMob
 	@Override
 	public void aiStep()
 	{
-		if (!this.level.isClientSide)
+		if (!this.level().isClientSide())
 		{
-			if (this.isAlive() && !this.isNoAi() && this.level.getDifficulty().getId() > 1 && ModConfigs.cachedServer.ENDER_EXECUTOR_BEAM_ATTACK)
+			if (this.isAlive() && !this.isNoAi() && this.level().getDifficulty().getId() > 1 && ModConfigs.cachedServer.ENDER_EXECUTOR_BEAM_ATTACK)
 			{
 				LivingEntity target = this.getTarget();
 
@@ -158,11 +158,11 @@ public class EnderExecutorEntity extends EnderMan implements IBeamAttackMob
 			{
 				if (!(source.getEntity() != null && source.isCreativePlayer()) && !source.is(ModTags.DamageTypeTags.BYPASSES_ENDER_EXECUTOR_DAMAGE_REDUCING) && f > 10.0F)
 				{
-					if (this.level.getDifficulty() == Difficulty.NORMAL)
+					if (this.level().getDifficulty() == Difficulty.NORMAL)
 					{
 						f = 10.0F + (f - 10.0F) * 0.25F;
 					}
-					else if (this.level.getDifficulty() == Difficulty.HARD)
+					else if (this.level().getDifficulty() == Difficulty.HARD)
 					{
 						f = 10.0F + (f - 10.0F) * 0.1F;
 					}
@@ -251,12 +251,12 @@ public class EnderExecutorEntity extends EnderMan implements IBeamAttackMob
 	{
 		if (!this.isSilent())
 		{
-			this.level.playSound((Player)null, target.getX(), target.getY(), target.getZ(), SoundEvents.ENCHANTMENT_TABLE_USE, this.getSoundSource(), 1.0F, this.random.nextFloat() * 0.2F + 0.9F);
+			this.level().playSound((Player)null, target.getX(), target.getY(), target.getZ(), SoundEvents.ENCHANTMENT_TABLE_USE, this.getSoundSource(), 1.0F, this.random.nextFloat() * 0.2F + 0.9F);
 		}
 
 		float f = damage;
 
-		if (this.level.getDifficulty() == Difficulty.HARD)
+		if (this.level().getDifficulty() == Difficulty.HARD)
 		{
 			f += 2.0F;
 		}
@@ -284,7 +284,7 @@ public class EnderExecutorEntity extends EnderMan implements IBeamAttackMob
 		{
 			return null;
 		}
-		else if (this.level.isClientSide)
+		else if (this.level().isClientSide)
 		{
 			if (this.targetedEntity != null)
 			{
@@ -292,7 +292,7 @@ public class EnderExecutorEntity extends EnderMan implements IBeamAttackMob
 			}
 			else
 			{
-				Entity entity = this.level.getEntity(this.entityData.get(ATTACK_TARGET));
+				Entity entity = this.level().getEntity(this.entityData.get(ATTACK_TARGET));
 
 				if (entity instanceof LivingEntity)
 				{

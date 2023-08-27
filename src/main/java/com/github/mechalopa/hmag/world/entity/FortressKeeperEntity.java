@@ -98,7 +98,7 @@ public class FortressKeeperEntity extends Monster implements RangedAttackMob
 	@Override
 	public void tick()
 	{
-		if (this.level.isClientSide)
+		if (this.level().isClientSide())
 		{
 			this.attackAnimationO = this.attackAnimation;
 			this.attackHandChangeAnimationO = this.attackHandChangeAnimation;
@@ -106,7 +106,7 @@ public class FortressKeeperEntity extends Monster implements RangedAttackMob
 
 		super.tick();
 
-		if (this.level.isClientSide)
+		if (this.level().isClientSide())
 		{
 			if (this.isRangedAttacking())
 			{
@@ -131,7 +131,7 @@ public class FortressKeeperEntity extends Monster implements RangedAttackMob
 	@Override
 	public void aiStep()
 	{
-		if (this.level.isClientSide)
+		if (this.level().isClientSide())
 		{
 			if (this.tickCount % 16 == 0 && !this.isInvisible() && !this.isInWaterOrBubble() && this.attackAnim <= 0.2F)
 			{
@@ -141,14 +141,14 @@ public class FortressKeeperEntity extends Monster implements RangedAttackMob
 				{
 					float f = Mth.cos(this.yBodyRot * ((float)Math.PI / 180.0F)) * (0.75F + (this.getRandom().nextFloat() - 0.5F) * 0.75F);
 					float f1 = Mth.sin(this.yBodyRot * ((float)Math.PI / 180.0F)) * (0.75F + (this.getRandom().nextFloat() - 0.5F) * 0.75F);
-					this.level.addParticle(ParticleTypes.LARGE_SMOKE, this.getX() + f, d0 - this.getRandom().nextDouble() * 0.1F, this.getZ() + f1, 0.0D, 0.0D, 0.0D);
+					this.level().addParticle(ParticleTypes.LARGE_SMOKE, this.getX() + f, d0 - this.getRandom().nextDouble() * 0.1F, this.getZ() + f1, 0.0D, 0.0D, 0.0D);
 				}
 
 				if (this.attackAnimation <= 0.0F || (this.attackHandChangeAnimation <= 0.0F ^ !this.isLeftHanded()))
 				{
 					float f2 = Mth.cos(this.yBodyRot * ((float)Math.PI / 180.0F)) * (0.75F + (this.getRandom().nextFloat() - 0.5F) * 0.75F);
 					float f3 = Mth.sin(this.yBodyRot * ((float)Math.PI / 180.0F)) * (0.75F + (this.getRandom().nextFloat() - 0.5F) * 0.75F);
-					this.level.addParticle(ParticleTypes.LARGE_SMOKE, this.getX() - f2, d0 - this.getRandom().nextDouble() * 0.1F, this.getZ() - f3, 0.0D, 0.0D, 0.0D);
+					this.level().addParticle(ParticleTypes.LARGE_SMOKE, this.getX() - f2, d0 - this.getRandom().nextDouble() * 0.1F, this.getZ() - f3, 0.0D, 0.0D, 0.0D);
 				}
 			}
 		}
@@ -165,11 +165,11 @@ public class FortressKeeperEntity extends Monster implements RangedAttackMob
 			{
 				int i = 0;
 
-				if (this.level.getDifficulty() == Difficulty.NORMAL)
+				if (this.level().getDifficulty() == Difficulty.NORMAL)
 				{
 					i = 7;
 				}
-				else if (this.level.getDifficulty() == Difficulty.HARD)
+				else if (this.level().getDifficulty() == Difficulty.HARD)
 				{
 					i = 15;
 				}
@@ -179,7 +179,7 @@ public class FortressKeeperEntity extends Monster implements RangedAttackMob
 					((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, i * 20, 0));
 				}
 
-				this.level.broadcastEntityEvent(this, (byte)4);
+				this.level().broadcastEntityEvent(this, (byte)4);
 				this.playSound(SoundEvents.IRON_GOLEM_ATTACK, 1.0F, 1.0F);
 			}
 
@@ -221,24 +221,24 @@ public class FortressKeeperEntity extends Monster implements RangedAttackMob
 		double d1 = target.getY() + target.getEyeHeight() * 0.5D - (this.getY() + 0.75F);
 		double d2 = target.getZ() - (this.getZ() + f1);
 		double d3 = Math.sqrt(d0 * d0 + d2 * d2);
-		MagmaBulletEntity bulletentity = new MagmaBulletEntity(this.level, this, d0 + this.getRandom().nextGaussian() * (d3 * 0.01F), d1 + d3 * 0.08F, d2 + this.getRandom().nextGaussian() * (d3 * 0.01F));
+		MagmaBulletEntity bulletentity = new MagmaBulletEntity(this.level(), this, d0 + this.getRandom().nextGaussian() * (d3 * 0.01F), d1 + d3 * 0.08F, d2 + this.getRandom().nextGaussian() * (d3 * 0.01F));
 		bulletentity.setPos(bulletentity.getX() + f, this.getY() + 0.75F, bulletentity.getZ() + f1);
 		bulletentity.setDamage(4.0F);
-		this.level.addFreshEntity(bulletentity);
+		this.level().addFreshEntity(bulletentity);
 
 		for (int i = 0; i < 8; ++i)
 		{
-			((ServerLevel)this.level).sendParticles(ParticleTypes.POOF, bulletentity.getX(), bulletentity.getY(), bulletentity.getZ(), 1, this.getRandom().nextGaussian() * 0.05D, 0.005D, this.getRandom().nextGaussian() * 0.05D, 0.0D);
+			((ServerLevel)this.level()).sendParticles(ParticleTypes.POOF, bulletentity.getX(), bulletentity.getY(), bulletentity.getZ(), 1, this.getRandom().nextGaussian() * 0.05D, 0.005D, this.getRandom().nextGaussian() * 0.05D, 0.0D);
 		}
 
 		if (!this.isInWaterOrBubble())
 		{
-			((ServerLevel)this.level).sendParticles(ParticleTypes.LAVA, bulletentity.getX(), bulletentity.getY(), bulletentity.getZ(), 8, 0.0D, 0.0D, 0.0D, 0.0D);
+			((ServerLevel)this.level()).sendParticles(ParticleTypes.LAVA, bulletentity.getX(), bulletentity.getY(), bulletentity.getZ(), 8, 0.0D, 0.0D, 0.0D, 0.0D);
 		}
 
 		if (!this.isSilent())
 		{
-			this.level.playSound((Player)null, this.getX(), this.getY(), this.getZ(), SoundEvents.SHULKER_SHOOT, this.getSoundSource(), 2.0F, (this.getRandom().nextFloat() - this.getRandom().nextFloat()) * 0.2F + 1.0F);
+			this.level().playSound((Player)null, this.getX(), this.getY(), this.getZ(), SoundEvents.SHULKER_SHOOT, this.getSoundSource(), 2.0F, (this.getRandom().nextFloat() - this.getRandom().nextFloat()) * 0.2F + 1.0F);
 		}
 
 		if (this.getRandom().nextInt(3) == 0)

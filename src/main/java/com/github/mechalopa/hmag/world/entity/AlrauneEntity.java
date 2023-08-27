@@ -101,11 +101,11 @@ public class AlrauneEntity extends Monster implements RangedAttackMob
 			{
 				int i = 0;
 
-				if (this.level.getDifficulty() == Difficulty.NORMAL)
+				if (this.level().getDifficulty() == Difficulty.NORMAL)
 				{
 					i = 5;
 				}
-				else if (this.level.getDifficulty() == Difficulty.HARD)
+				else if (this.level().getDifficulty() == Difficulty.HARD)
 				{
 					i = 10;
 				}
@@ -157,7 +157,7 @@ public class AlrauneEntity extends Monster implements RangedAttackMob
 
 		for (int i = 0; i < c; ++i)
 		{
-			PoisonSeedEntity shot = new PoisonSeedEntity(this.level, this);
+			PoisonSeedEntity shot = new PoisonSeedEntity(this.level(), this);
 			double d0 = target.getEyeY() - 1.1F;
 			double d1 = target.getX() - this.getX();
 			double d2 = d0 - shot.getY();
@@ -165,7 +165,7 @@ public class AlrauneEntity extends Monster implements RangedAttackMob
 			double d4 = Math.sqrt(d1 * d1 + d3 * d3) * 0.15D;
 			shot.shoot(d1, d2 + d4, d3, 1.5F, 10.0F);
 			shot.setDamage(4.0F);
-			this.level.addFreshEntity(shot);
+			this.level().addFreshEntity(shot);
 		}
 
 		this.playSound(SoundEvents.LLAMA_SPIT, 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));

@@ -61,7 +61,7 @@ public class ModUtils
 
 	public static void burnInDay(@Nonnull LivingEntity livingEntity, RandomSource random, Boolean isSunBurnTick, Boolean shouldBurn, int seconds)
 	{
-		if (livingEntity != null && livingEntity.level != null && !livingEntity.level.isClientSide && livingEntity.isAlive())
+		if (livingEntity != null && livingEntity.level() != null && !livingEntity.level().isClientSide && livingEntity.isAlive())
 		{
 			boolean flag = isSunBurnTick && shouldBurn && !livingEntity.isInWaterRainOrBubble();
 
@@ -95,7 +95,7 @@ public class ModUtils
 
 	public static void catchFire(@Nonnull LivingEntity livingEntity, @Nonnull Entity target, RandomSource random)
 	{
-		float f = livingEntity.level.getCurrentDifficultyAt(livingEntity.blockPosition()).getEffectiveDifficulty();
+		float f = livingEntity.level().getCurrentDifficultyAt(livingEntity.blockPosition()).getEffectiveDifficulty();
 
 		if (livingEntity.getMainHandItem().isEmpty() && livingEntity.isOnFire() && random.nextFloat() < f * 0.3F)
 		{
@@ -111,7 +111,7 @@ public class ModUtils
 		{
 			axisalignedbb = axisalignedbb.move(vec3);
 
-			if (!livingEntity.level.noCollision(livingEntity, axisalignedbb))
+			if (!livingEntity.level().noCollision(livingEntity, axisalignedbb))
 			{
 				return false;
 			}

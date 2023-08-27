@@ -64,7 +64,7 @@ public class HardSnowballEntity extends ModProjectileItemEntity
 
 			for (int i = 0; i < 8; ++i)
 			{
-				this.level.addParticle(particleoptions, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
+				this.level().addParticle(particleoptions, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
 			}
 		}
 	}
@@ -72,7 +72,7 @@ public class HardSnowballEntity extends ModProjectileItemEntity
 	@Override
 	protected void onHitServer(HitResult result)
 	{
-		this.level.broadcastEntityEvent(this, (byte)3);
+		this.level().broadcastEntityEvent(this, (byte)3);
 		super.onHitServer(result);
 	}
 

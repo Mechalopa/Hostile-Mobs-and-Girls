@@ -93,27 +93,27 @@ public class MeltyMonsterEntity extends Monster implements RangedAttackMob
 	@Override
 	public void aiStep()
 	{
-		if (this.level.isClientSide)
+		if (this.level().isClientSide())
 		{
 			if (!this.isInWaterOrRain())
 			{
 				if (this.tickCount % 5 == 0)
 				{
-					this.level.addParticle(ParticleTypes.LARGE_SMOKE, this.getRandomX(0.5D), this.getRandomY() - 0.5D, this.getRandomZ(0.5D), 0.0D, 0.0D, 0.0D);
+					this.level().addParticle(ParticleTypes.LARGE_SMOKE, this.getRandomX(0.5D), this.getRandomY() - 0.5D, this.getRandomZ(0.5D), 0.0D, 0.0D, 0.0D);
 				}
 
 				if (this.tickCount % 10 == 1)
 				{
-					this.level.addParticle(ParticleTypes.LAVA, this.getRandomX(0.5D), this.getRandomY() - 0.5D, this.getRandomZ(0.5D), 0.0D, 0.0D, 0.0D);
+					this.level().addParticle(ParticleTypes.LAVA, this.getRandomX(0.5D), this.getRandomY() - 0.5D, this.getRandomZ(0.5D), 0.0D, 0.0D, 0.0D);
 				}
 			}
 		}
 
 		super.aiStep();
 
-		if (!this.level.isClientSide)
+		if (!this.level().isClientSide())
 		{
-			if (ModConfigs.cachedServer.MELTY_MONSTER_SET_FIRE && !this.isInLava() && !this.isInWaterRainOrBubble() && !this.isFreezing() && ForgeEventFactory.getMobGriefingEvent(this.level, this))
+			if (ModConfigs.cachedServer.MELTY_MONSTER_SET_FIRE && !this.isInLava() && !this.isInWaterRainOrBubble() && !this.isFreezing() && ForgeEventFactory.getMobGriefingEvent(this.level(), this))
 			{
 				int i = Mth.floor(this.getX());
 				int j = Mth.floor(this.getY());
@@ -126,9 +126,9 @@ public class MeltyMonsterEntity extends Monster implements RangedAttackMob
 					k = Mth.floor(this.getZ() + (l / 2 % 2 * 2 - 1) * 0.25F);
 					BlockPos blockpos = new BlockPos(i, j, k);
 
-					if (this.level.isEmptyBlock(blockpos))
+					if (this.level().isEmptyBlock(blockpos))
 					{
-						this.level.setBlockAndUpdate(blockpos, BaseFireBlock.getState(this.level, blockpos));
+						this.level().setBlockAndUpdate(blockpos, BaseFireBlock.getState(this.level(), blockpos));
 		            }
 				}
 			}
@@ -154,9 +154,9 @@ public class MeltyMonsterEntity extends Monster implements RangedAttackMob
 		double d2 = target.getY() + target.getEyeHeight() * 0.5D - this.getY(0.5D);
 		double d3 = target.getZ() - this.getZ();
 		double d4 = Math.sqrt(d1 * d1 + d3 * d3) * 0.02D;
-		SmallFireball fireballentity = new SmallFireball(this.level, this, d1 + this.getRandom().nextGaussian() * d4, d2, d3 + this.getRandom().nextGaussian() * d4);
+		SmallFireball fireballentity = new SmallFireball(this.level(), this, d1 + this.getRandom().nextGaussian() * d4, d2, d3 + this.getRandom().nextGaussian() * d4);
 		fireballentity.setPos(fireballentity.getX(), this.getY(0.5D) + 0.5D, fireballentity.getZ());
-		this.level.addFreshEntity(fireballentity);
+		this.level().addFreshEntity(fireballentity);
 		this.playSound(SoundEvents.BLAZE_SHOOT, 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
 	}
 
@@ -214,9 +214,9 @@ public class MeltyMonsterEntity extends Monster implements RangedAttackMob
 		{
 			CollisionContext collisioncontext = CollisionContext.of(this);
 
-			if (collisioncontext.isAbove(LiquidBlock.STABLE_SHAPE, this.blockPosition(), true) && !this.level.getFluidState(this.blockPosition().above()).is(FluidTags.LAVA))
+			if (collisioncontext.isAbove(LiquidBlock.STABLE_SHAPE, this.blockPosition(), true) && !this.level().getFluidState(this.blockPosition().above()).is(FluidTags.LAVA))
 			{
-				this.onGround = true;
+				this.setOnGround(true);
 			}
 			else
 			{
@@ -351,7 +351,7 @@ public class MeltyMonsterEntity extends Monster implements RangedAttackMob
 		@Override
 		public boolean canContinueToUse()
 		{
-			return !this.parent.isInLava() && this.isValidTarget(this.parent.level, this.blockPos);
+			return !this.parent.isInLava() && this.isValidTarget(this.parent.level(), this.blockPos);
 		}
 
 		@Override

@@ -83,9 +83,9 @@ public class GhastlySeekerEntity extends FlyingMob implements Enemy
 	@Override
 	public void aiStep()
 	{
-		if (this.level.isClientSide && this.tickCount % 3 == 0)
+		if (this.level().isClientSide() && this.tickCount % 3 == 0)
 		{
-			this.level.addParticle(ParticleTypes.FLAME, this.getRandomX(0.5D), this.getRandomY() - 0.8D, this.getRandomZ(0.5D), 0.0D, 0.0D, 0.0D);
+			this.level().addParticle(ParticleTypes.FLAME, this.getRandomX(0.5D), this.getRandomY() - 0.8D, this.getRandomZ(0.5D), 0.0D, 0.0D, 0.0D);
 		}
 
 		super.aiStep();
@@ -245,7 +245,7 @@ public class GhastlySeekerEntity extends FlyingMob implements Enemy
 
 			if ((target.distanceToSqr(this.parent) < d0 * d0 || this.attackTimer > 10) && this.parent.hasLineOfSight(target))
 			{
-				Level world = this.parent.level;
+				Level world = this.parent.level();
 				++this.attackTimer;
 
 				if (this.attackTimer == 10 && !this.parent.isSilent())

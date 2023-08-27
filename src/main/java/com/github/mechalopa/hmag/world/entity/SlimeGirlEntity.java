@@ -110,9 +110,9 @@ public class SlimeGirlEntity extends Monster
 
 		boolean flag = false;
 
-		if (this.isOnGround() && !this.wasOnGround)
+		if (this.onGround() && !this.wasOnGround)
 		{
-			if (this.level.isClientSide)
+			if (this.level().isClientSide())
 			{
 				this.spawnParticle(12);
 			}
@@ -120,17 +120,17 @@ public class SlimeGirlEntity extends Monster
 			this.targetSquish = -0.5F;
 			flag = true;
 		}
-		else if (!this.onGround && this.wasOnGround)
+		else if (!this.onGround() && this.wasOnGround)
 		{
 			this.targetSquish = 1.0F;
 		}
 
-		if (this.level.isClientSide && !flag && this.tickCount % 8 == 0 && this.getRandom().nextInt(3) == 0)
+		if (this.level().isClientSide() && !flag && this.tickCount % 8 == 0 && this.getRandom().nextInt(3) == 0)
 		{
 			this.spawnParticle(1);
 		}
 
-		this.wasOnGround = this.isOnGround();
+		this.wasOnGround = this.onGround();
 		this.targetSquish *= 0.6F;
 	}
 
@@ -143,7 +143,7 @@ public class SlimeGirlEntity extends Monster
 			float f1 = this.getRandom().nextFloat() * 0.5F + 0.5F;
 			float f2 = Mth.sin(f) * 0.6F * f1;
 			float f3 = Mth.cos(f) * 0.6F * f1;
-			this.level.addParticle(ParticleTypes.WITCH, this.getX() + f2, this.getY(), this.getZ() + f3, 0.0D, 0.0D, 0.0D);
+			this.level().addParticle(ParticleTypes.WITCH, this.getX() + f2, this.getY(), this.getZ() + f3, 0.0D, 0.0D, 0.0D);
 		}
 	}
 
@@ -172,11 +172,11 @@ public class SlimeGirlEntity extends Monster
 			{
 				int i = 0;
 
-				if (this.level.getDifficulty() == Difficulty.NORMAL)
+				if (this.level().getDifficulty() == Difficulty.NORMAL)
 				{
 					i = 7;
 				}
-				else if (this.level.getDifficulty() == Difficulty.HARD)
+				else if (this.level().getDifficulty() == Difficulty.HARD)
 				{
 					i = 15;
 				}
@@ -198,7 +198,7 @@ public class SlimeGirlEntity extends Monster
 	@Override
 	public void remove(Entity.RemovalReason reason)
 	{
-		if (!this.level.isClientSide && ModConfigs.cachedServer.MAGICAL_SLIME_SPAWNS_ON_SLIME_GIRL_DEATH && this.isDeadOrDying())
+		if (!this.level().isClientSide() && ModConfigs.cachedServer.MAGICAL_SLIME_SPAWNS_ON_SLIME_GIRL_DEATH && this.isDeadOrDying())
 		{
 			Component component = this.getCustomName();
 			boolean flag = this.isNoAi();
@@ -211,7 +211,7 @@ public class SlimeGirlEntity extends Monster
 			{
 				float f1 = (l % 2 - 0.5F) * f;
 				float f2 = (l / 2 - 0.5F) * f;
-				MagicalSlimeEntity slime = ModEntityTypes.MAGICAL_SLIME.get().create(this.level);
+				MagicalSlimeEntity slime = ModEntityTypes.MAGICAL_SLIME.get().create(this.level());
 
 				if (this.isPersistenceRequired())
 				{
@@ -229,7 +229,7 @@ public class SlimeGirlEntity extends Monster
 				}
 
 				slime.moveTo(this.getX() + f1, this.getY() + 0.5D, this.getZ() + f2, this.getRandom().nextFloat() * 360.0F, 0.0F);
-				this.level.addFreshEntity(slime);
+				this.level().addFreshEntity(slime);
 			}
 		}
 

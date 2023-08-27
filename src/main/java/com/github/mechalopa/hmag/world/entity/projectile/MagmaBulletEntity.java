@@ -98,7 +98,7 @@ public class MagmaBulletEntity extends ModDamagingProjectileEntity
 	{
 		super.onHitEntity(result);
 
-		if (!this.level.isClientSide)
+		if (!this.level().isClientSide())
 		{
 			Entity entity = result.getEntity();
 
@@ -108,7 +108,7 @@ public class MagmaBulletEntity extends ModDamagingProjectileEntity
 				int i = entity.getRemainingFireTicks();
 				entity.setSecondsOnFire(5);
 
-				boolean flag = entity.hurt(ModDamageTypes.source(this.level, ModDamageTypes.MAGMA_BULLET, this, entity1), this.getDamage());
+				boolean flag = entity.hurt(ModDamageTypes.source(this.level(), ModDamageTypes.MAGMA_BULLET, this, entity1), this.getDamage());
 
 				if (!flag)
 				{
@@ -125,9 +125,9 @@ public class MagmaBulletEntity extends ModDamagingProjectileEntity
 	@Override
 	protected void onHitServer(HitResult result)
 	{
-		boolean flag = ForgeEventFactory.getMobGriefingEvent(this.level, this.getOwner());
-		this.level.explode((Entity)null, this.getX(), this.getY(), this.getZ(), 0.75F, flag, Level.ExplosionInteraction.MOB);
-		this.level.broadcastEntityEvent(this, (byte)3);
+		boolean flag = ForgeEventFactory.getMobGriefingEvent(this.level(), this.getOwner());
+		this.level().explode((Entity)null, this.getX(), this.getY(), this.getZ(), 0.75F, flag, Level.ExplosionInteraction.MOB);
+		this.level().broadcastEntityEvent(this, (byte)3);
 		super.onHitServer(result);
 	}
 
@@ -141,14 +141,14 @@ public class MagmaBulletEntity extends ModDamagingProjectileEntity
 
 			for (int i = 0; i < 16; ++i)
 			{
-				this.level.addParticle(particleoptions, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
+				this.level().addParticle(particleoptions, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
 			}
 
 			if (!this.isInWaterOrBubble())
 			{
 				for (int j = 0; j < 8; ++j)
 				{
-					this.level.addParticle(ParticleTypes.LAVA, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
+					this.level().addParticle(ParticleTypes.LAVA, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
 				}
 			}
 		}

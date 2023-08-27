@@ -57,7 +57,7 @@ public class PoisonSeedEntity extends ModProjectileItemEntity
 		{
 			for (int i = 0; i < 8; ++i)
 			{
-				this.level.addParticle(new ItemParticleOption(ParticleTypes.ITEM, this.getItem()), this.getX(), this.getY(), this.getZ(), (this.random.nextFloat() - 0.5D) * 0.08D, (this.random.nextFloat() - 0.5D) * 0.08D, (this.random.nextFloat() - 0.5D) * 0.08D);
+				this.level().addParticle(new ItemParticleOption(ParticleTypes.ITEM, this.getItem()), this.getX(), this.getY(), this.getZ(), (this.random.nextFloat() - 0.5D) * 0.08D, (this.random.nextFloat() - 0.5D) * 0.08D, (this.random.nextFloat() - 0.5D) * 0.08D);
 			}
 		}
 	}
@@ -66,7 +66,7 @@ public class PoisonSeedEntity extends ModProjectileItemEntity
 	protected void onHitServer(HitResult result)
 	{
 		AABB aabb = this.getBoundingBox().inflate(4.0D, 2.0D, 4.0D);
-		List<LivingEntity> list = this.level.getEntitiesOfClass(LivingEntity.class, aabb);
+		List<LivingEntity> list = this.level().getEntitiesOfClass(LivingEntity.class, aabb);
 
 		if (!list.isEmpty())
 		{
@@ -87,11 +87,11 @@ public class PoisonSeedEntity extends ModProjectileItemEntity
 
 						int i = 0;
 
-						if (this.level.getDifficulty() == Difficulty.NORMAL)
+						if (this.level().getDifficulty() == Difficulty.NORMAL)
 						{
 							i = 7 * 20;
 						}
-						else if (this.level.getDifficulty() == Difficulty.HARD)
+						else if (this.level().getDifficulty() == Difficulty.HARD)
 						{
 							i = 15 * 20;
 						}
@@ -109,8 +109,8 @@ public class PoisonSeedEntity extends ModProjectileItemEntity
 			}
 		}
 
-		this.level.levelEvent(2002, this.blockPosition(), MobEffects.POISON.getColor());
-		this.level.broadcastEntityEvent(this, (byte)3);
+		this.level().levelEvent(2002, this.blockPosition(), MobEffects.POISON.getColor());
+		this.level().broadcastEntityEvent(this, (byte)3);
 		super.onHitServer(result);
 	}
 

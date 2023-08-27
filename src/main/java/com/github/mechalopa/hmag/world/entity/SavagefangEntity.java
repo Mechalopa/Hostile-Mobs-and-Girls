@@ -160,7 +160,7 @@ public class SavagefangEntity extends Monster
 	@Override
 	public void tick()
 	{
-		if (this.level.isClientSide)
+		if (this.level().isClientSide())
 		{
 			if (this.isLaunched())
 			{
@@ -173,9 +173,9 @@ public class SavagefangEntity extends Monster
 
 		super.tick();
 
-		if (this.hasFollowers() && this.level.random.nextInt(200) == 1)
+		if (this.hasFollowers() && this.level().random.nextInt(200) == 1)
 		{
-			List<? extends SavagefangEntity> list = this.level.getEntitiesOfClass(this.getClass(), this.getBoundingBox().inflate(8.0D, 8.0D, 8.0D));
+			List<? extends SavagefangEntity> list = this.level().getEntitiesOfClass(this.getClass(), this.getBoundingBox().inflate(8.0D, 8.0D, 8.0D));
 
 			if (list.size() <= 1)
 			{
@@ -183,7 +183,7 @@ public class SavagefangEntity extends Monster
 			}
 		}
 
-		if (this.level.isClientSide)
+		if (this.level().isClientSide())
 		{
 			if (!this.isLaunched())
 			{
@@ -204,7 +204,7 @@ public class SavagefangEntity extends Monster
 	@Override
 	public void aiStep()
 	{
-		if (!this.level.isClientSide)
+		if (!this.level().isClientSide())
 		{
 			if (this.getTarget() != null && this.getTarget().isAlive() && !this.isLaunched())
 			{
@@ -231,11 +231,11 @@ public class SavagefangEntity extends Monster
 
 		if (!this.isInWater())
 		{
-			if (this.isOnGround() && this.verticalCollision)
+			if (this.onGround() && this.verticalCollision)
 			{
 				final float f = this.isLaunched() ? 0.2F : 0.4F;
 				this.setDeltaMovement(this.getDeltaMovement().add((this.getRandom().nextFloat() * 2.0F - 1.0F) * f, this.isLaunched() ? 0.4F : 0.6F, (this.getRandom().nextFloat() * 2.0F - 1.0F) * f));
-				this.onGround = false;
+				this.setOnGround(false);
 				this.hasImpulse = true;
 				this.playSound(this.getFlopSound(), this.getSoundVolume(), this.getVoicePitch());
 
@@ -265,7 +265,7 @@ public class SavagefangEntity extends Monster
 		}
 		else if (super.hurt(source, amount))
 		{
-			if (!this.level.isClientSide && !this.isNoAi() && !this.isInWater() && !this.isLaunched())
+			if (!this.level().isClientSide() && !this.isNoAi() && !this.isInWater() && !this.isLaunched())
 			{
 				this.setLaunched(true);
 			}
@@ -537,7 +537,7 @@ public class SavagefangEntity extends Monster
 
 			for (int i = 0; i < 12; ++i)
 			{
-				this.level.addParticle(ParticleTypes.BUBBLE, this.getRandomX(0.5D) - vec3.x * 1.0D, this.getRandomY() - vec3.y * 1.0D, this.getRandomZ(0.5D) - vec3.z * 1.0D, 0.0D, 0.0D, 0.0D);
+				this.level().addParticle(ParticleTypes.BUBBLE, this.getRandomX(0.5D) - vec3.x * 1.0D, this.getRandomY() - vec3.y * 1.0D, this.getRandomZ(0.5D) - vec3.z * 1.0D, 0.0D, 0.0D, 0.0D);
 			}
 		}
 		else
@@ -750,7 +750,7 @@ public class SavagefangEntity extends Monster
 				vec31 = vec31.normalize().scale(0.25D + this.mob.getRandom().nextFloat() * 0.05F).add(vec3.scale(0.5D));
 			}
 
-			if (!this.target.isInWaterOrBubble() || ( this.target.getY() + 1.0D > this.mob.getEyeY() && this.mob.level.isEmptyBlock(this.mob.blockPosition().above())))
+			if (!this.target.isInWaterOrBubble() || ( this.target.getY() + 1.0D > this.mob.getEyeY() && this.mob.level().isEmptyBlock(this.mob.blockPosition().above())))
 			{
 				this.mob.setDeltaMovement(vec31.x, 0.4D + this.mob.getRandom().nextFloat() * 0.2F, vec31.z);
 			}
@@ -761,12 +761,12 @@ public class SavagefangEntity extends Monster
 
 			this.mob.getNavigation().stop();
 
-			FluidState fluidstate = this.mob.level.getFluidState(this.mob.blockPosition());
+			FluidState fluidstate = this.mob.level().getFluidState(this.mob.blockPosition());
 
 			if (fluidstate.is(FluidTags.WATER))
 			{
 				this.mob.playSound(SoundEvents.DOLPHIN_JUMP, 0.9F, 1.2F);
-				this.mob.level.broadcastEntityEvent(this.mob, (byte)15);
+				this.mob.level().broadcastEntityEvent(this.mob, (byte)15);
 			}
 		}
 	}
@@ -831,7 +831,7 @@ public class SavagefangEntity extends Monster
 				Predicate<SavagefangEntity> predicate = (p) -> {
 					return p.canBeFollowed() || !p.isFollower();
 				};
-				List<? extends SavagefangEntity> list = this.mob.level.getEntitiesOfClass(this.mob.getClass(), this.mob.getBoundingBox().inflate(8.0D, 8.0D, 8.0D), predicate);
+				List<? extends SavagefangEntity> list = this.mob.level().getEntitiesOfClass(this.mob.getClass(), this.mob.getBoundingBox().inflate(8.0D, 8.0D, 8.0D), predicate);
 				SavagefangEntity savagefang = DataFixUtils.orElse(list.stream().filter(SavagefangEntity::canBeFollowed).findAny(), this.mob);
 				savagefang.addFollowers(list.stream().filter((p) -> {
 					return !p.isFollower();

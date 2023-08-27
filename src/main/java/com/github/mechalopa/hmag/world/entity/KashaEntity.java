@@ -107,16 +107,16 @@ public class KashaEntity extends Monster
 	@Override
 	public void aiStep()
 	{
-		if (this.level.isClientSide)
+		if (this.level().isClientSide())
 		{
 			if (this.tickCount % 10 == 0)
 			{
-				this.level.addParticle(ParticleTypes.LARGE_SMOKE, this.getRandomX(0.5D), this.getRandomY() + 0.25D, this.getRandomZ(0.5D), 0.0D, 0.0D, 0.0D);
+				this.level().addParticle(ParticleTypes.LARGE_SMOKE, this.getRandomX(0.5D), this.getRandomY() + 0.25D, this.getRandomZ(0.5D), 0.0D, 0.0D, 0.0D);
 			}
 
 			if (this.tickCount % 2 == 0)
 			{
-				this.level.addParticle(this.getVariant() == KashaEntity.Variant.SOUL ? ParticleTypes.SOUL_FIRE_FLAME : ParticleTypes.FLAME, this.getRandomX(0.75D), this.getRandomY() - 0.1D, this.getRandomZ(0.75D), 0.0D, 0.0D, 0.0D);
+				this.level().addParticle(this.getVariant() == KashaEntity.Variant.SOUL ? ParticleTypes.SOUL_FIRE_FLAME : ParticleTypes.FLAME, this.getRandomX(0.75D), this.getRandomY() - 0.1D, this.getRandomZ(0.75D), 0.0D, 0.0D, 0.0D);
 			}
 		}
 
@@ -132,11 +132,11 @@ public class KashaEntity extends Monster
 			{
 				int i = 0;
 
-				if (this.level.getDifficulty() == Difficulty.NORMAL)
+				if (this.level().getDifficulty() == Difficulty.NORMAL)
 				{
 					i = 5;
 				}
-				else if (this.level.getDifficulty() == Difficulty.HARD)
+				else if (this.level().getDifficulty() == Difficulty.HARD)
 				{
 					i = 10;
 				}
@@ -168,7 +168,7 @@ public class KashaEntity extends Monster
 	{
 		spawnData = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
 
-		if (this.level.getBlockState(this.blockPosition().below()).is(BlockTags.SOUL_FIRE_BASE_BLOCKS))
+		if (this.level().getBlockState(this.blockPosition().below()).is(BlockTags.SOUL_FIRE_BASE_BLOCKS))
 		{
 			this.setVariant(KashaEntity.Variant.SOUL);
 		}
@@ -187,7 +187,7 @@ public class KashaEntity extends Monster
 
 	private void setVariant(KashaEntity.Variant variant)
 	{
-		if (!this.level.isClientSide)
+		if (!this.level().isClientSide())
 		{
 			this.getAttribute(Attributes.ATTACK_DAMAGE).removeModifier(ATTACK_DAMAGE_MODIFIER);
 

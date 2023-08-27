@@ -108,7 +108,7 @@ public class GlaryadEntity extends Monster implements NeutralMob
 			this.maybePlayFirstAngerSound();
 		}
 
-		this.updatePersistentAnger((ServerLevel)this.level, true);
+		this.updatePersistentAnger((ServerLevel)this.level(), true);
 
 		if (this.getTarget() != null)
 		{
@@ -157,11 +157,11 @@ public class GlaryadEntity extends Monster implements NeutralMob
 			{
 				int i = 0;
 
-				if (this.level.getDifficulty() == Difficulty.NORMAL)
+				if (this.level().getDifficulty() == Difficulty.NORMAL)
 				{
 					i = 7;
 				}
-				else if (this.level.getDifficulty() == Difficulty.HARD)
+				else if (this.level().getDifficulty() == Difficulty.HARD)
 				{
 					i = 15;
 				}
@@ -189,7 +189,7 @@ public class GlaryadEntity extends Monster implements NeutralMob
 			if (this.playFirstAngerSoundIn == 0)
 			{
 				this.playAngerSound();
-				this.level.broadcastEntityEvent(this, (byte)13);
+				this.level().broadcastEntityEvent(this, (byte)13);
 			}
 		}
 	}
@@ -215,7 +215,7 @@ public class GlaryadEntity extends Monster implements NeutralMob
 	{
 		double d0 = this.getAttributeValue(Attributes.FOLLOW_RANGE);
 		AABB aabb = AABB.unitCubeFromLowerCorner(this.position()).inflate(d0, 10.0D, d0);
-		this.level.getEntitiesOfClass(GlaryadEntity.class, aabb, EntitySelector.NO_SPECTATORS).stream().filter((p) -> {
+		this.level().getEntitiesOfClass(GlaryadEntity.class, aabb, EntitySelector.NO_SPECTATORS).stream().filter((p) -> {
 			return p != this;
 		}).filter((p) -> {
 			return p.getTarget() == null;
@@ -318,7 +318,7 @@ public class GlaryadEntity extends Monster implements NeutralMob
 				double d0 = this.random.nextGaussian() * 0.02D;
 				double d1 = this.random.nextGaussian() * 0.02D;
 				double d2 = this.random.nextGaussian() * 0.02D;
-				this.level.addParticle(ParticleTypes.ANGRY_VILLAGER, this.getRandomX(1.0D), this.getRandomY() + 1.0D, this.getRandomZ(1.0D), d0, d1, d2);
+				this.level().addParticle(ParticleTypes.ANGRY_VILLAGER, this.getRandomX(1.0D), this.getRandomY() + 1.0D, this.getRandomZ(1.0D), d0, d1, d2);
 			}
 		}
 		else
@@ -338,7 +338,7 @@ public class GlaryadEntity extends Monster implements NeutralMob
 	public void readAdditionalSaveData(CompoundTag compound)
 	{
 		super.readAdditionalSaveData(compound);
-		this.readPersistentAngerSaveData(this.level, compound);
+		this.readPersistentAngerSaveData(this.level(), compound);
 	}
 
 	@Override

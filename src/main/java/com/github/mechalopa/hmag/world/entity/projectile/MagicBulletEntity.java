@@ -85,14 +85,14 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 	{
 		if (this.getVariant() == 2)
 		{
-			if (!this.level.isClientSide && (this.tickCount >= 60 || this.getOwner() == null))
+			if (!this.level().isClientSide() && (this.tickCount >= 60 || this.getOwner() == null))
 			{
 				this.discard();
 			}
 
-			if (this.level.isClientSide)
+			if (this.level().isClientSide())
 			{
-				this.level.addParticle(ModParticleTypes.NEMESIS_FLAME.get(), this.getRandomX(0.5D), this.getY(this.random.nextDouble() * 0.5D), this.getRandomZ(0.5D), 0.0D, 0.0D, 0.0D);
+				this.level().addParticle(ModParticleTypes.NEMESIS_FLAME.get(), this.getRandomX(0.5D), this.getY(this.random.nextDouble() * 0.5D), this.getRandomZ(0.5D), 0.0D, 0.0D, 0.0D);
 			}
 		}
 		else
@@ -122,7 +122,7 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 			}
 		}
 
-		if (!this.level.isClientSide)
+		if (!this.level().isClientSide())
 		{
 			Entity entity1 = this.getOwner();
 			float damage = this.getDamage();
@@ -162,11 +162,11 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 				switch (this.getVariant())
 				{
 				case 0:
-					if (this.level.getDifficulty() == Difficulty.NORMAL)
+					if (this.level().getDifficulty() == Difficulty.NORMAL)
 					{
 						i = 7;
 					}
-					else if (this.level.getDifficulty() == Difficulty.HARD)
+					else if (this.level().getDifficulty() == Difficulty.HARD)
 					{
 						i = 15;
 					}
@@ -178,11 +178,11 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 
 					break;
 				case 1:
-					if (this.level.getDifficulty() == Difficulty.NORMAL)
+					if (this.level().getDifficulty() == Difficulty.NORMAL)
 					{
 						i = 5;
 					}
-					else if (this.level.getDifficulty() == Difficulty.HARD)
+					else if (this.level().getDifficulty() == Difficulty.HARD)
 					{
 						i = 10;
 					}
@@ -207,11 +207,11 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 
 					break;
 				case 3:
-					if (this.level.getDifficulty() == Difficulty.NORMAL)
+					if (this.level().getDifficulty() == Difficulty.NORMAL)
 					{
 						i = 7;
 					}
-					else if (this.level.getDifficulty() == Difficulty.HARD)
+					else if (this.level().getDifficulty() == Difficulty.HARD)
 					{
 						i = 15;
 					}
@@ -225,7 +225,7 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 				}
 			}
 
-			this.level.broadcastEntityEvent(this, (byte)3);
+			this.level().broadcastEntityEvent(this, (byte)3);
 		}
 	}
 
@@ -278,7 +278,7 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 			{
 				for (int i = 0; i < 12; ++i)
 				{
-					this.level.addParticle(ModParticleTypes.NEMESIS_FLAME.get(), this.getRandomX(1.75D), this.getY(this.random.nextDouble() * 1.75D), this.getRandomZ(1.75D), 0.0D, 0.0D, 0.0D);
+					this.level().addParticle(ModParticleTypes.NEMESIS_FLAME.get(), this.getRandomX(1.75D), this.getY(this.random.nextDouble() * 1.75D), this.getRandomZ(1.75D), 0.0D, 0.0D, 0.0D);
 				}
 			}
 		}

@@ -101,14 +101,14 @@ public class OgreEntity extends Monster
 	@Override
 	public void tick()
 	{
-		if (this.level.isClientSide)
+		if (this.level().isClientSide())
 		{
 			this.attackAnimationO = this.attackAnimation;
 		}
 
 		super.tick();
 
-		if (this.level.isClientSide)
+		if (this.level().isClientSide())
 		{
 			if (this.isArmSwinging())
 			{
@@ -124,7 +124,7 @@ public class OgreEntity extends Monster
 	@Override
 	public void aiStep()
 	{
-		if (!this.level.isClientSide)
+		if (!this.level().isClientSide())
 		{
 			boolean flag = false;
 
@@ -141,7 +141,7 @@ public class OgreEntity extends Monster
 
 		super.aiStep();
 
-		if (!this.level.isClientSide)
+		if (!this.level().isClientSide())
 		{
 			if (this.armSwingTimer > 0)
 			{
@@ -163,11 +163,11 @@ public class OgreEntity extends Monster
 			{
 				int i = 0;
 
-				if (this.level.getDifficulty() == Difficulty.NORMAL)
+				if (this.level().getDifficulty() == Difficulty.NORMAL)
 				{
 					i = 5;
 				}
-				else if (this.level.getDifficulty() == Difficulty.HARD)
+				else if (this.level().getDifficulty() == Difficulty.HARD)
 				{
 					i = 10;
 				}
@@ -276,7 +276,7 @@ public class OgreEntity extends Monster
 
 	protected boolean destroyBlock()
 	{
-		if (ModConfigs.cachedServer.OGRE_DESTROY_BLOCKS && this.level.getDifficulty().getId() > 1 && ForgeEventFactory.getMobGriefingEvent(this.level, this))
+		if (ModConfigs.cachedServer.OGRE_DESTROY_BLOCKS && this.level().getDifficulty().getId() > 1 && ForgeEventFactory.getMobGriefingEvent(this.level(), this))
 		{
 			int i1 = Mth.floor(this.getY());
 			int l1 = Mth.floor(this.getX());
@@ -293,11 +293,11 @@ public class OgreEntity extends Monster
 						int k = i1 + j;
 						int l = i2 + l2;
 						BlockPos blockpos = new BlockPos(i3, k, l);
-						BlockState blockstate = this.level.getBlockState(blockpos);
+						BlockState blockstate = this.level().getBlockState(blockpos);
 
-						if (this.canDestroyBlock(blockstate, this.level, blockpos, this, 5.0F))
+						if (this.canDestroyBlock(blockstate, this.level(), blockpos, this, 5.0F))
 						{
-							flag = this.level.destroyBlock(blockpos, true, this) || flag;
+							flag = this.level().destroyBlock(blockpos, true, this) || flag;
 						}
 					}
 				}
@@ -317,9 +317,10 @@ public class OgreEntity extends Monster
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	private boolean canDestroyBlock(BlockState state, Level level, BlockPos pos, LivingEntity livingEntity, float maxHardness)
 	{
-		if (state.is(ModTags.BlockTags.OGRE_IMMUNE) || state.isAir() || state.getMaterial().isLiquid() || !(state.canEntityDestroy(this.level, pos, this) && ForgeEventFactory.onEntityDestroyBlock(this, pos, state)))
+		if (state.is(ModTags.BlockTags.OGRE_IMMUNE) || state.isAir() || state.liquid() || !(state.canEntityDestroy(this.level(), pos, this) && ForgeEventFactory.onEntityDestroyBlock(this, pos, state)))
 		{
 			return false;
 		}

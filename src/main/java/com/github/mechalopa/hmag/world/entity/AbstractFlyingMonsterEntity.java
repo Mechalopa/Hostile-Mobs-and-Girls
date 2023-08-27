@@ -61,7 +61,7 @@ public abstract class AbstractFlyingMonsterEntity extends Monster
 		}
 		else
 		{
-			if (!this.level.isClientSide && !this.isNoAi() && source.getEntity() instanceof LivingEntity && this.isCharging() && this.getRandom().nextInt(3) == 0)
+			if (!this.level().isClientSide() && !this.isNoAi() && source.getEntity() instanceof LivingEntity && this.isCharging() && this.getRandom().nextInt(3) == 0)
 			{
 				this.setAttackPhase(1);
 			}
@@ -347,7 +347,7 @@ public abstract class AbstractFlyingMonsterEntity extends Monster
 			{
 				BlockPos blockpos1 = blockpos.offset(flyingentity.getRandom().nextInt(this.width * 2 + 1) - this.width, flyingentity.getRandom().nextInt(this.height * 2 + 1) - this.height, flyingentity.getRandom().nextInt(this.width * 2 + 1) - this.width);
 
-				if (flyingentity.level.isEmptyBlock(blockpos1))
+				if (flyingentity.level().isEmptyBlock(blockpos1))
 				{
 					flyingentity.moveControl.setWantedPosition(blockpos1.getX() + 0.5D, blockpos1.getY() + 0.5D, blockpos1.getZ() + 0.5D, this.moveSpeed);
 

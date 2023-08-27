@@ -105,9 +105,9 @@ public class SpiderNestEntity extends Monster
 	@Override
 	public void aiStep()
 	{
-		if (this.level.isClientSide)
+		if (this.level().isClientSide())
 		{
-			this.level.addParticle(ParticleTypes.ASH, this.getRandomX(0.5D), this.getRandomY() - 0.25D, this.getRandomZ(0.5D), (this.getRandom().nextDouble() - 0.5D) * 3.0D, -this.getRandom().nextDouble(), (this.getRandom().nextDouble() - 0.5D) * 3.0D);
+			this.level().addParticle(ParticleTypes.ASH, this.getRandomX(0.5D), this.getRandomY() - 0.25D, this.getRandomZ(0.5D), (this.getRandom().nextDouble() - 0.5D) * 3.0D, -this.getRandom().nextDouble(), (this.getRandom().nextDouble() - 0.5D) * 3.0D);
 		}
 
 		super.aiStep();
@@ -122,11 +122,11 @@ public class SpiderNestEntity extends Monster
 			{
 				int i = 0;
 
-				if (this.level.getDifficulty() == Difficulty.NORMAL)
+				if (this.level().getDifficulty() == Difficulty.NORMAL)
 				{
 					i = 7;
 				}
-				else if (this.level.getDifficulty() == Difficulty.HARD)
+				else if (this.level().getDifficulty() == Difficulty.HARD)
 				{
 					i = 15;
 				}
@@ -149,9 +149,9 @@ public class SpiderNestEntity extends Monster
 	@Override
 	public void remove(Entity.RemovalReason reason)
 	{
-		if (!this.level.isClientSide && ModConfigs.cachedServer.SPIDER_NEST_SUMMON_CAVE_SPIDER && !this.isNoAi() && this.isDeadOrDying())
+		if (!this.level().isClientSide() && ModConfigs.cachedServer.SPIDER_NEST_SUMMON_CAVE_SPIDER && !this.isNoAi() && this.isDeadOrDying())
 		{
-			this.summonSpider((ServerLevel)this.level, this, this.getTarget(), this.getRandom(), 2 + this.getRandom().nextInt(3));
+			this.summonSpider((ServerLevel)this.level(), this, this.getTarget(), this.getRandom(), 2 + this.getRandom().nextInt(3));
 		}
 
 		super.remove(reason);
@@ -203,9 +203,9 @@ public class SpiderNestEntity extends Monster
 			double d2 = attacker.getY() + 0.5D;
 			double d3 = attacker.getZ() + (random.nextDouble() - random.nextDouble()) * 1.5D;
 
-			CaveSpider cavespider = EntityType.CAVE_SPIDER.create(attacker.level);
+			CaveSpider cavespider = EntityType.CAVE_SPIDER.create(attacker.level());
 			cavespider.moveTo(d1, d2, d3, random.nextFloat() * 360.0F, 0.0F);
-			cavespider.finalizeSpawn(serverlevel, attacker.level.getCurrentDifficultyAt(attacker.blockPosition()), MobSpawnType.MOB_SUMMONED, (SpawnGroupData)null, (CompoundTag)null);
+			cavespider.finalizeSpawn(serverlevel, attacker.level().getCurrentDifficultyAt(attacker.blockPosition()), MobSpawnType.MOB_SUMMONED, (SpawnGroupData)null, (CompoundTag)null);
 			serverlevel.addFreshEntityWithPassengers(cavespider);
 
 			if (target != null && target.isAlive())
@@ -214,10 +214,10 @@ public class SpiderNestEntity extends Monster
 			}
 
 			cavespider.getPersistentData().putBoolean(ModUtils.WITH_SPAWN_PARTICLE_KEY, true);
-			attacker.level.gameEvent(cavespider, GameEvent.ENTITY_PLACE, cavespider.blockPosition());
+			attacker.level().gameEvent(cavespider, GameEvent.ENTITY_PLACE, cavespider.blockPosition());
 		}
 
-		attacker.level.levelEvent(2004, attacker.blockPosition(), 0);
+		attacker.level().levelEvent(2004, attacker.blockPosition(), 0);
 		attacker.playSound(ModSoundEvents.SPIDER_NEST_SUMMON.get(), 1.0F, 1.0F);
 	}
 
@@ -354,13 +354,13 @@ public class SpiderNestEntity extends Monster
 					}
 					else
 					{
-						if (attacker.level.getNearbyEntities(CaveSpider.class, this.caveSpiderCountTargeting, attacker, attacker.getBoundingBox().inflate(12.0D)).size() >= 6)
+						if (attacker.level().getNearbyEntities(CaveSpider.class, this.caveSpiderCountTargeting, attacker, attacker.getBoundingBox().inflate(12.0D)).size() >= 6)
 						{
 							attacker.setSummonDelay(20);
 						}
 						else
 						{
-							attacker.summonSpider((ServerLevel)attacker.level, attacker, target, attacker.getRandom(), 1 + attacker.getRandom().nextInt(this.maxSpawn));
+							attacker.summonSpider((ServerLevel)attacker.level(), attacker, target, attacker.getRandom(), 1 + attacker.getRandom().nextInt(this.maxSpawn));
 							this.resetTimer(attacker);
 						}
 					}

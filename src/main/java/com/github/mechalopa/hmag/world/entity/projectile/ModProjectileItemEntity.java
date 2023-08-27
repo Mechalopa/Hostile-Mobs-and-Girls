@@ -41,7 +41,7 @@ public abstract class ModProjectileItemEntity extends ThrowableItemProjectile
 	{
 		super.onHit(result);
 
-		if (!this.level.isClientSide)
+		if (!this.level().isClientSide())
 		{
 			this.onHitServer(result);
 		}

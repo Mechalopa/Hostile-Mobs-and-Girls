@@ -130,16 +130,16 @@ public class JiangshiEntity extends Monster
 	@Override
 	public void tick()
 	{
-		if (this.level.isClientSide)
+		if (this.level().isClientSide())
 		{
 			this.animationTickO = this.animationTick;
 		}
 
 		super.tick();
 
-		if (this.level.isClientSide)
+		if (this.level().isClientSide())
 		{
-			if (!this.isOnGround() && !this.isInWaterOrBubble() && !this.isPassenger())
+			if (!this.onGround() && !this.isInWaterOrBubble() && !this.isPassenger())
 			{
 				if (this.animationTick < 10)
 				{
@@ -156,11 +156,11 @@ public class JiangshiEntity extends Monster
 	@Override
 	public void aiStep()
 	{
-		if (this.level.isClientSide)
+		if (this.level().isClientSide())
 		{
 			if (this.tickCount % (Math.max(8 - this.getSpeedBonus(), 1)) == 0)
 			{
-				this.level.addParticle(ParticleTypes.SOUL_FIRE_FLAME, this.getRandomX(0.75D), this.getRandomY() - 0.25D, this.getRandomZ(0.75D), 0.0D, 0.0D, 0.0D);
+				this.level().addParticle(ParticleTypes.SOUL_FIRE_FLAME, this.getRandomX(0.75D), this.getRandomY() - 0.25D, this.getRandomZ(0.75D), 0.0D, 0.0D, 0.0D);
 			}
 		}
 		else
@@ -189,11 +189,11 @@ public class JiangshiEntity extends Monster
 			{
 				int i = 0;
 
-				if (this.level.getDifficulty() == Difficulty.NORMAL)
+				if (this.level().getDifficulty() == Difficulty.NORMAL)
 				{
 					i = 7;
 				}
-				else if (this.level.getDifficulty() == Difficulty.HARD)
+				else if (this.level().getDifficulty() == Difficulty.HARD)
 				{
 					i = 15;
 				}
@@ -282,7 +282,7 @@ public class JiangshiEntity extends Monster
 
 		if (value != this.getSpeedBonus())
 		{
-			if (!this.level.isClientSide)
+			if (!this.level().isClientSide())
 			{
 				this.getAttribute(Attributes.MOVEMENT_SPEED).removeModifier(SPEED_MODIFIER_BY_DAMAGE_UUID);
 

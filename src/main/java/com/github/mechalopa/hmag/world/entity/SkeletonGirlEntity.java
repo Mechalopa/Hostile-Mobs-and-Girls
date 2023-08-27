@@ -74,7 +74,7 @@ public class SkeletonGirlEntity extends Skeleton
 
 		if (!this.isSilent())
 		{
-			this.level.levelEvent((Player)null, 1048, this.blockPosition(), 0);
+			this.level().levelEvent((Player)null, 1048, this.blockPosition(), 0);
 		}
 	}
 

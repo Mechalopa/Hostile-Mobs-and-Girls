@@ -121,7 +121,7 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 	@Override
 	public void aiStep()
 	{
-		if (!this.level.isClientSide)
+		if (!this.level().isClientSide())
 		{
 			if (this.isAlive())
 			{
@@ -172,7 +172,7 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 					double d0 = this.getRandomX(1.5D);
 					double d1 = this.getRandomY() - 0.25D;
 					double d2 = this.getRandomZ(1.5D);
-					this.level.addParticle(ParticleTypes.REVERSE_PORTAL, d0, d1, d2, (d0 - this.getX()) * -0.025D, (d1 - (this.getY(0.5D) - 0.25D)) * -0.025D, (d2 - this.getZ()) * -0.025D);
+					this.level().addParticle(ParticleTypes.REVERSE_PORTAL, d0, d1, d2, (d0 - this.getX()) * -0.025D, (d1 - (this.getY(0.5D) - 0.25D)) * -0.025D, (d2 - this.getZ()) * -0.025D);
 				}
 				else if (this.getAttackPhase().isRoarAttack())
 				{
@@ -181,14 +181,14 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 						double d0 = this.getRandomX(1.5D);
 						double d1 = this.getRandomY() - 0.25D;
 						double d2 = this.getRandomZ(1.5D);
-						this.level.addParticle(ParticleTypes.SMOKE, d0, d1, d2, (d0 - this.getX()) * 0.2D, (d1 - (this.getY(0.5D) - 0.25D)) * 0.2D, (d2 - this.getZ()) * 0.2D);
+						this.level().addParticle(ParticleTypes.SMOKE, d0, d1, d2, (d0 - this.getX()) * 0.2D, (d1 - (this.getY(0.5D) - 0.25D)) * 0.2D, (d2 - this.getZ()) * 0.2D);
 					}
 				}
 				else
 				{
 					if (this.tickCount % 12 == 0)
 					{
-						this.level.addParticle(ModParticleTypes.ENCHANTMENT_RUNE.get(), this.getRandomX(0.5D), this.getRandomY(), this.getRandomZ(0.5D), (this.getRandom().nextDouble() - 0.5D) * 2.0D, this.getRandom().nextDouble() - 0.25D, (this.getRandom().nextDouble() - 0.5D) * 2.0D);
+						this.level().addParticle(ModParticleTypes.ENCHANTMENT_RUNE.get(), this.getRandomX(0.5D), this.getRandomY(), this.getRandomZ(0.5D), (this.getRandom().nextDouble() - 0.5D) * 2.0D, this.getRandom().nextDouble() - 0.25D, (this.getRandom().nextDouble() - 0.5D) * 2.0D);
 					}
 				}
 			}
@@ -373,7 +373,7 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 		{
 			for (int i = 0; i < 32; ++i)
 			{
-				this.level.addParticle(ParticleTypes.LARGE_SMOKE, this.getRandomX(1.0D), this.getRandomY() - 0.25D, this.getRandomZ(1.0D), this.getRandom().nextGaussian() * 0.2D, this.getRandom().nextGaussian() * 0.2D, this.getRandom().nextGaussian() * 0.2D);
+				this.level().addParticle(ParticleTypes.LARGE_SMOKE, this.getRandomX(1.0D), this.getRandomY() - 0.25D, this.getRandomZ(1.0D), this.getRandom().nextGaussian() * 0.2D, this.getRandom().nextGaussian() * 0.2D, this.getRandom().nextGaussian() * 0.2D);
 			}
 		}
 		else
@@ -393,17 +393,17 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 	{
 		if (!this.isSilent())
 		{
-			this.level.playSound((Player)null, target.getX(), target.getY(), target.getZ(), SoundEvents.ENCHANTMENT_TABLE_USE, this.getSoundSource(), 1.0F, this.getRandom().nextFloat() * 0.2F + 0.9F);
+			this.level().playSound((Player)null, target.getX(), target.getY(), target.getZ(), SoundEvents.ENCHANTMENT_TABLE_USE, this.getSoundSource(), 1.0F, this.getRandom().nextFloat() * 0.2F + 0.9F);
 		}
 
 		float f = damage;
 		int i = 0;
 
-		if (this.level.getDifficulty() == Difficulty.NORMAL)
+		if (this.level().getDifficulty() == Difficulty.NORMAL)
 		{
 			i = 5;
 		}
-		else if (this.level.getDifficulty() == Difficulty.HARD)
+		else if (this.level().getDifficulty() == Difficulty.HARD)
 		{
 			f += 2.0F;
 			i = 10;
@@ -446,7 +446,7 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 		{
 			return null;
 		}
-		else if (this.level.isClientSide)
+		else if (this.level().isClientSide)
 		{
 			if (this.targetedEntity != null)
 			{
@@ -454,7 +454,7 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 			}
 			else
 			{
-				Entity entity = this.level.getEntity(this.entityData.get(ATTACK_TARGET));
+				Entity entity = this.level().getEntity(this.entityData.get(ATTACK_TARGET));
 
 				if (entity instanceof LivingEntity)
 				{
@@ -482,7 +482,7 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 	@Override
 	public float getClientSideAttackTime()
 	{
-		return (float)(this.level.getGameTime() % 24000L);
+		return (float)(this.level().getGameTime() % 24000L);
 	}
 
 	@Nonnull
@@ -619,18 +619,18 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 				}
 				else if (this.tickCounter >= 15)
 				{
-					for (LivingEntity livingentity : this.parent.level.getEntitiesOfClass(LivingEntity.class, this.parent.getBoundingBox().inflate(2.0D), new MonolithEntity.RoarTargetPredicate()))
+					for (LivingEntity livingentity : this.parent.level().getEntitiesOfClass(LivingEntity.class, this.parent.getBoundingBox().inflate(2.0D), new MonolithEntity.RoarTargetPredicate()))
 					{
 						if (!(livingentity instanceof Player && (((Player)livingentity).isCreative() || ((Player)livingentity).isSpectator())))
 						{
 							float f = 3.0F;
 							int i = 0;
 
-							if (this.parent.level.getDifficulty() == Difficulty.NORMAL)
+							if (this.parent.level().getDifficulty() == Difficulty.NORMAL)
 							{
 								i = 7;
 							}
-							else if (this.parent.level.getDifficulty() == Difficulty.HARD)
+							else if (this.parent.level().getDifficulty() == Difficulty.HARD)
 							{
 								f += 2.0F;
 								i = 12;
@@ -650,7 +650,7 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 					}
 
 					this.parent.playSound(SoundEvents.SHULKER_SHOOT, 1.0F, (this.parent.getRandom().nextFloat() - this.parent.getRandom().nextFloat()) * 0.2F + 1.0F);
-					this.parent.level.broadcastEntityEvent(this.parent, (byte)15);
+					this.parent.level().broadcastEntityEvent(this.parent, (byte)15);
 					this.parent.gameEvent(GameEvent.ENTITY_ROAR);
 					Vec3 vec3 = this.parent.getDeltaMovement();
 					Vec3 vec31 = (new Vec3(target.getX() - this.parent.getX(), 0.0D, target.getZ() - this.parent.getZ())).normalize().scale(0.25D);
@@ -928,7 +928,7 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 			{
 				return false;
 			}
-			else if (this.parent.getLastHurtByMob() != null && this.parent.getLastHurtByMob().equals(livingEntityIn) && !(livingEntityIn.getType() == EntityType.PLAYER && this.parent.level.getGameRules().getBoolean(GameRules.RULE_UNIVERSAL_ANGER)))
+			else if (this.parent.getLastHurtByMob() != null && this.parent.getLastHurtByMob().equals(livingEntityIn) && !(livingEntityIn.getType() == EntityType.PLAYER && this.parent.level().getGameRules().getBoolean(GameRules.RULE_UNIVERSAL_ANGER)))
 			{
 				return livingEntityIn.distanceToSqr(this.parent) <= 9.0D * 9.0D;
 			}

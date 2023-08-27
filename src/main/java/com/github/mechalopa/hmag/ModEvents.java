@@ -130,7 +130,7 @@ public class ModEvents
 						if (((AbstractArrow)source.getDirectEntity()).isCritArrow())
 						{
 							event.setAmount(event.getAmount() * 1.2F);
-							source = ModDamageTypes.source(source.getEntity().getLevel(), ModDamageTypes.CRITICAL_EVIL_ARROW, source.getEntity(), source.getDirectEntity());
+							source = ModDamageTypes.source(source.getEntity().level(), ModDamageTypes.CRITICAL_EVIL_ARROW, source.getEntity(), source.getDirectEntity());
 						}
 						else
 						{
@@ -157,7 +157,7 @@ public class ModEvents
 
 							if (level > 0)
 							{
-								if (!livingentity.isOnGround() && !livingentity.isInWaterOrBubble() && !livingentity.isInLava())
+								if (!livingentity.onGround() && !livingentity.isInWaterOrBubble() && !livingentity.isInLava())
 								{
 									event.setAmount(event.getAmount() * (1.0F + level * 0.3F));
 								}

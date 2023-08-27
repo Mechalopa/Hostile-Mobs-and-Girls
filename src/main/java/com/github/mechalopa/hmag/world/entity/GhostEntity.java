@@ -113,7 +113,7 @@ public class GhostEntity extends AbstractFlyingMonsterEntity
 	@Override
 	protected void populateDefaultEquipmentSlots(RandomSource rand, DifficultyInstance difficulty)
 	{
-		if (rand.nextFloat() < (this.level.getDifficulty() == Difficulty.HARD ? 0.05F : 0.01F))
+		if (rand.nextFloat() < (this.level().getDifficulty() == Difficulty.HARD ? 0.05F : 0.01F))
 		{
 			switch (rand.nextInt(3))
 			{
