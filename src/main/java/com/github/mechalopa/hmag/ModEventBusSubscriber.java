@@ -1,6 +1,5 @@
 package com.github.mechalopa.hmag;
 
-import com.github.mechalopa.hmag.registry.ModEnchantments;
 import com.github.mechalopa.hmag.registry.ModEntityTypes;
 import com.github.mechalopa.hmag.registry.ModItems;
 import com.github.mechalopa.hmag.registry.ModPotions;
@@ -51,35 +50,27 @@ import com.github.mechalopa.hmag.world.entity.SwamperEntity;
 import com.github.mechalopa.hmag.world.entity.WitherGhostEntity;
 import com.github.mechalopa.hmag.world.entity.WitherSkeletonGirlEntity;
 import com.github.mechalopa.hmag.world.entity.ZombieGirlEntity;
-import com.github.mechalopa.hmag.world.item.ILevelItem;
 import com.github.mechalopa.hmag.world.level.storage.loot.conditions.ModLoadedCondition;
 
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.item.EnchantedBookItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
-import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.registries.RegistryObject;
 
 @Mod.EventBusSubscriber(modid = HMaG.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEventBusSubscriber
@@ -163,43 +154,6 @@ public class ModEventBusSubscriber
 			BrewingRecipeRegistry.addRecipe(new ModBrewingRecipe(Ingredient.of(ModItems.FIRE_BOTTLE.get()), Ingredient.of(ModItems.BURNING_CORE.get()), new ItemStack(ModItems.BLASTING_BOTTLE.get(), 1)));
 		if (ModConfigs.cachedServer.LIGHTNING_BOTTLE_BREWING_RECIPE)
 			BrewingRecipeRegistry.addRecipe(new ModBrewingRecipe(Ingredient.of(ModItems.FIRE_BOTTLE.get()), Ingredient.of(ModItems.LIGHTNING_PARTICLE.get()), new ItemStack(ModItems.LIGHTNING_BOTTLE.get(), 1)));
-	}
-
-	@SubscribeEvent
-	public static void registerCreativeModeTab(final CreativeModeTabEvent.Register event)
-	{
-		event.registerCreativeModeTab(new ResourceLocation(HMaG.MODID, "tab"), builder -> builder.title(Component.translatable("item_group." + HMaG.MODID + ".tab")).icon(() -> new ItemStack(ModItems.EVIL_CRYSTAL.get())).displayItems((features, output) -> {
-			for (RegistryObject<Item> item : ModItems.getItemRegistry().getEntries())
-			{
-				if (item.get() instanceof ILevelItem)
-				{
-					ItemStack stack = new ItemStack(item.get());
-					CompoundTag compoundnbt = stack.getOrCreateTag();
-					compoundnbt.putByte(ILevelItem.LEVEL_KEY, (byte)((ILevelItem)item.get()).getMaxLevel());
-					output.accept(stack);
-				}
-				else
-				{
-					output.accept(item.get());
-				}
-			}
-
-			for (RegistryObject<Enchantment> enchantment : ModEnchantments.getEnchantmentRegistry().getEntries())
-			{
-				if (enchantment.get().isAllowedOnBooks())
-				{
-					output.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(enchantment.get(), enchantment.get().getMaxLevel())));
-				}
-			}
-
-			for (Item potionItem : ModUtils.POTION_ITEMS)
-			{
-				for (RegistryObject<Potion> potion : ModPotions.getPotionRegistry().getEntries())
-				{
-					output.accept(ModUtils.getPotionStack(potion.get(), potionItem));
-				}
-			}
-		}));
 	}
 
 	@SubscribeEvent

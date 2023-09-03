@@ -3,16 +3,15 @@ package com.github.mechalopa.hmag.world.item.crafting;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
-import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.SmithingRecipe;
 import net.minecraft.world.level.Level;
 
-public abstract class AbstractNewerUpgradeRecipe implements SmithingRecipe
+public abstract class AbstractUpgradeRecipe implements SmithingRecipe
 {
 	private final ResourceLocation recipeId;
 
-	public AbstractNewerUpgradeRecipe(ResourceLocation recipeId)
+	public AbstractUpgradeRecipe(ResourceLocation recipeId)
 	{
 		this.recipeId = recipeId;
 	}
@@ -20,7 +19,7 @@ public abstract class AbstractNewerUpgradeRecipe implements SmithingRecipe
 	@Override
 	public boolean matches(Container inv, Level level)
 	{
-		return level.enabledFeatures().contains(FeatureFlags.UPDATE_1_20) && inv.getItem(0).isEmpty();
+		return inv.getItem(0).isEmpty();
 	}
 
 	@Override

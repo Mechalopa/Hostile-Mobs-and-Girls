@@ -1,12 +1,15 @@
 {
-  "type": "minecraft:smithing",
-  "base": {
-    "item": "minecraft:shield"
-  },
+  "type": "minecraft:smithing_transform",
   "addition": {
     "item": "hmag:ancient_stone_block"
   },
+  "base": {
+    "item": "minecraft:shield"
+  },
   "result": {
     "item": "hmag:ancient_shield"
+  },
+  "template": {
+    "tag": "forge:nuggets/diamond"
   }
 }

@@ -17,45 +17,42 @@ import net.minecraft.world.Container;
 import net.minecraft.world.inventory.AnvilMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.LegacyUpgradeRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 
-@Deprecated(forRemoval = true)
-public class EnchantmentUpgradeRecipe extends LegacyUpgradeRecipe
+public class EnchantmentUpgradeRecipe extends AbstractUpgradeRecipe
 {
-	private final ResourceLocation recipeId;
-
 	public EnchantmentUpgradeRecipe(ResourceLocation recipeId)
 	{
-		super(recipeId, Ingredient.EMPTY, Ingredient.EMPTY, ItemStack.EMPTY);
-		this.recipeId = recipeId;
+		super(recipeId);
 	}
 
 	@Override
 	public boolean matches(Container inv, Level level)
 	{
-		ItemStack stack = inv.getItem(0);
-		ItemStack stack1 = inv.getItem(1);
-
-		if (!stack.isEmpty() && !(stack.getItem() == null || stack.getItem() == Items.ENCHANTED_BOOK) && !stack1.isEmpty() && stack1.getItem() != null && stack1.getItem() instanceof EnchantmentUpgradeItem && stack1.is(ModTags.ItemTags.ENCHANTMENT_UPGRADE_ITEMS) && !stack.is(ModTags.ItemTags.ENCHANTMENT_NOT_UPGRADEABLES))
+		if (super.matches(inv, level))
 		{
-			final List<EnchantmentUpgradeProp> eups = ((EnchantmentUpgradeItem)stack1.getItem()).getEnchantmentUpgradeProps();
+			ItemStack stack = inv.getItem(1);
+			ItemStack stack1 = inv.getItem(2);
 
-			if (!eups.isEmpty())
+			if (!stack.isEmpty() && !(stack.getItem() == null || stack.getItem() == Items.ENCHANTED_BOOK) && !stack1.isEmpty() && stack1.getItem() != null && stack1.getItem() instanceof EnchantmentUpgradeItem && stack1.is(ModTags.ItemTags.ENCHANTMENT_UPGRADE_ITEMS) && !stack.is(ModTags.ItemTags.ENCHANTMENT_NOT_UPGRADEABLES))
 			{
-				for (EnchantmentUpgradeProp eup : eups)
-				{
-					if (eup != null)
-					{
-						final Enchantment enchantment = eup.getEnchantment();
+				final List<EnchantmentUpgradeProp> eups = ((EnchantmentUpgradeItem)stack1.getItem()).getEnchantmentUpgradeProps();
 
-						if (enchantment != null && checkEnchantableItem(stack, enchantment, eup.getMinLevel(), eup.getMaxLevel()))
+				if (!eups.isEmpty())
+				{
+					for (EnchantmentUpgradeProp eup : eups)
+					{
+						if (eup != null)
 						{
-							return true;
+							final Enchantment enchantment = eup.getEnchantment();
+
+							if (enchantment != null && checkEnchantableItem(stack, enchantment, eup.getMinLevel(), eup.getMaxLevel()))
+							{
+								return true;
+							}
 						}
 					}
 				}
@@ -90,7 +87,7 @@ public class EnchantmentUpgradeRecipe extends LegacyUpgradeRecipe
 	@Override
 	public ItemStack assemble(Container inv, RegistryAccess registryAccess)
 	{
-		ItemStack stack = inv.getItem(1);
+		ItemStack stack = inv.getItem(2);
 
 		if (stack.getItem() instanceof EnchantmentUpgradeItem)
 		{
@@ -106,7 +103,7 @@ public class EnchantmentUpgradeRecipe extends LegacyUpgradeRecipe
 
 						if (enchantment != null)
 						{
-							ItemStack stack1 = inv.getItem(0);
+							ItemStack stack1 = inv.getItem(1);
 
 							if (checkEnchantableItem(stack1, enchantment, eup.getMinLevel(), eup.getMaxLevel()))
 							{
@@ -148,15 +145,15 @@ public class EnchantmentUpgradeRecipe extends LegacyUpgradeRecipe
 	}
 
 	@Override
-	public boolean isSpecial()
+	public boolean isBaseIngredient(ItemStack stack)
 	{
-		return true;
+		return stack.getItem() != Items.ENCHANTED_BOOK && !stack.is(ModTags.ItemTags.ENCHANTMENT_NOT_UPGRADEABLES);
 	}
 
 	@Override
-	public ResourceLocation getId()
+	public boolean isAdditionIngredient(ItemStack stack)
 	{
-		return this.recipeId;
+		return stack.getItem() != null && stack.getItem() instanceof EnchantmentUpgradeItem && stack.is(ModTags.ItemTags.ENCHANTMENT_UPGRADE_ITEMS);
 	}
 
 	@Override

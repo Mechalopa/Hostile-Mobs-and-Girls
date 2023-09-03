@@ -1,12 +1,15 @@
 {
-  "type": "minecraft:smithing",
-  "base": {
-    "item": "minecraft:wither_skeleton_skull"
-  },
+  "type": "minecraft:smithing_transform",
   "addition": {
     "item": "hmag:purification_cloth"
   },
+  "base": {
+    "item": "minecraft:wither_skeleton_skull"
+  },
   "result": {
     "item": "minecraft:skeleton_skull"
+  },
+  "template": {
+    "tag": "forge:nuggets/iron"
   }
 }

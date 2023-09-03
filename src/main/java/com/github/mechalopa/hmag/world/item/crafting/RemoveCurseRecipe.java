@@ -13,41 +13,38 @@ import net.minecraft.world.Container;
 import net.minecraft.world.inventory.AnvilMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.LegacyUpgradeRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 
-@Deprecated(forRemoval = true)
-public class RemoveCurseRecipe extends LegacyUpgradeRecipe
+public class RemoveCurseRecipe extends AbstractUpgradeRecipe
 {
-	private final ResourceLocation recipeId;
-
 	public RemoveCurseRecipe(ResourceLocation recipeId)
 	{
-		super(recipeId, Ingredient.EMPTY, Ingredient.EMPTY, ItemStack.EMPTY);
-		this.recipeId = recipeId;
+		super(recipeId);
 	}
 
 	@Override
 	public boolean matches(Container inv, Level level)
 	{
-		ItemStack stack = inv.getItem(0);
-		ItemStack stack1 = inv.getItem(1);
-
-		if (!stack.isEmpty() && !stack1.isEmpty() && stack1.getItem() != null && stack1.is(ModTags.ItemTags.CURSE_REMOVE_ITEMS) && !stack.is(ModTags.ItemTags.CURSE_UNREMOVABLES))
+		if (super.matches(inv, level))
 		{
-			Map<Enchantment, Integer> map = EnchantmentHelper.getEnchantments(stack);
+			ItemStack stack = inv.getItem(1);
+			ItemStack stack1 = inv.getItem(2);
 
-			for (Entry<Enchantment, Integer> entry : map.entrySet())
+			if (!stack.isEmpty() && !stack1.isEmpty() && stack1.getItem() != null && stack1.is(ModTags.ItemTags.CURSE_REMOVE_ITEMS) && !stack.is(ModTags.ItemTags.CURSE_UNREMOVABLES))
 			{
-				Enchantment enchantment = entry.getKey();
+				Map<Enchantment, Integer> map = EnchantmentHelper.getEnchantments(stack);
 
-				if (isRemovableCurse(enchantment))
+				for (Entry<Enchantment, Integer> entry : map.entrySet())
 				{
-					return true;
+					Enchantment enchantment = entry.getKey();
+
+					if (isRemovableCurse(enchantment))
+					{
+						return true;
+					}
 				}
 			}
 		}
@@ -63,7 +60,7 @@ public class RemoveCurseRecipe extends LegacyUpgradeRecipe
 	@Override
 	public ItemStack assemble(Container inv, RegistryAccess registryAccess)
 	{
-		ItemStack stack = inv.getItem(0);
+		ItemStack stack = inv.getItem(1);
 		ItemStack stack1 = stack.copy();
 		stack1.removeTagKey("Enchantments");
 		stack1.removeTagKey("StoredEnchantments");
@@ -94,15 +91,15 @@ public class RemoveCurseRecipe extends LegacyUpgradeRecipe
 	}
 
 	@Override
-	public boolean isSpecial()
+	public boolean isBaseIngredient(ItemStack stack)
 	{
-		return true;
+		return !stack.is(ModTags.ItemTags.CURSE_UNREMOVABLES);
 	}
 
 	@Override
-	public ResourceLocation getId()
+	public boolean isAdditionIngredient(ItemStack stack)
 	{
-		return this.recipeId;
+		return stack.is(ModTags.ItemTags.CURSE_REMOVE_ITEMS);
 	}
 
 	@Override

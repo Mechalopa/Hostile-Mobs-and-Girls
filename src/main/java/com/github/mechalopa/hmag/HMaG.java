@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.github.mechalopa.hmag.registry.ModBiomeModifiers;
 import com.github.mechalopa.hmag.registry.ModBlocks;
+import com.github.mechalopa.hmag.registry.ModCreativeModeTabs;
 import com.github.mechalopa.hmag.registry.ModEffects;
 import com.github.mechalopa.hmag.registry.ModEnchantments;
 import com.github.mechalopa.hmag.registry.ModEntityTypes;
@@ -40,6 +41,7 @@ public class HMaG
 		modEventBus.addListener(ModConfigs::loadConfig);
 
 		ModBlocks.register(modEventBus);
+		ModCreativeModeTabs.register(modEventBus);
 		ModEffects.register(modEventBus);
 		ModEnchantments.register(modEventBus);
 		ModEntityTypes.register(modEventBus);

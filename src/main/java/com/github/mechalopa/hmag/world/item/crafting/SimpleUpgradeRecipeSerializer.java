@@ -6,11 +6,9 @@ import com.google.gson.JsonObject;
 
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.crafting.LegacyUpgradeRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 
-@SuppressWarnings("removal")
-public class SimpleUpgradeRecipeSerializer<T extends LegacyUpgradeRecipe> implements RecipeSerializer<T>
+public class SimpleUpgradeRecipeSerializer<T extends AbstractUpgradeRecipe> implements RecipeSerializer<T>
 {
 	private final SimpleUpgradeRecipeSerializer.Factory<T> constructor;
 
@@ -36,7 +34,7 @@ public class SimpleUpgradeRecipeSerializer<T extends LegacyUpgradeRecipe> implem
 	public void toNetwork(FriendlyByteBuf buffer, T recipe){}
 
 	@FunctionalInterface
-	public interface Factory<T extends LegacyUpgradeRecipe>
+	public interface Factory<T extends AbstractUpgradeRecipe>
 	{
 		T create(ResourceLocation recipeId);
 	}
