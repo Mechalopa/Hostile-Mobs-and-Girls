@@ -12,7 +12,6 @@ displayURL="https://www.curseforge.com/minecraft/mc-mods/hostile-mobs-and-girls"
 credits="Mechalopa"
 authors="Mechalopa"
 description='''More Hostile Mobs and Girls!!!'''
-itemIcon="hmag:evil_crystal"
 [[dependencies.hmag]]
     modId="forge"
     mandatory=true
@@ -25,3 +24,5 @@ itemIcon="hmag:evil_crystal"
     versionRange="[1.19.4]"
     ordering="NONE"
     side="BOTH"
+[modproperties.hmag]
+    catalogueItemIcon="hmag:evil_crystal"
