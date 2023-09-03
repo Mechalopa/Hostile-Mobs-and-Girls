@@ -11,15 +11,15 @@
       "required": false
     },
     {
-      "id": "graveyard_biomes:haunted_forest",
+      "id": "nyctophobia:haunted_forest",
       "required": false
     },
     {
-      "id": "graveyard_biomes:haunted_lakes",
+      "id": "nyctophobia:haunted_lakes",
       "required": false
     },
     {
-      "id": "graveyard_biomes:eroded_haunted_forest",
+      "id": "nyctophobia:eroded_haunted_forest",
       "required": false
     },
     {
@@ -35,11 +35,11 @@
       "required": false
     },
     {
-      "id": "cherryblossomgrotto:cherry_blossom_bamboo_jungle",
+      "id": "eastwardjourneys:cherry_blossom_bamboo_jungle",
       "required": false
     },
     {
-      "id": "cherryblossomgrotto:stone_forest",
+      "id": "eastwardjourneys:stone_forest",
       "required": false
     }
   ]
