@@ -14,12 +14,12 @@ public class ModSmithingTemplateItem extends SmithingTemplateItem
 {
 	private static final ChatFormatting TITLE_FORMAT = ChatFormatting.GRAY;
 	private static final ChatFormatting DESCRIPTION_FORMAT = ChatFormatting.BLUE;
-	private static final Component EVIL_UPGRADE = Component.translatable(Util.makeDescriptionId("upgrade", new ResourceLocation(HMaG.MODID, "evil_upgrade"))).withStyle(TITLE_FORMAT);
-	private static final String EVIL_UPGRADE_KEY = "smithing_template." + HMaG.MODID + ".evil_upgrade";
-	private static final Component EVIL_UPGRADE_APPLIES_TO = Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(EVIL_UPGRADE_KEY + ".applies_to"))).withStyle(DESCRIPTION_FORMAT);
-	private static final Component EVIL_UPGRADE_INGREDIENTS = Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(EVIL_UPGRADE_KEY + ".ingredients"))).withStyle(DESCRIPTION_FORMAT);
-	private static final Component EVIL_UPGRADE_BASE_SLOT_DESCRIPTION = Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(EVIL_UPGRADE_KEY + ".base_slot_description")));
-	private static final Component EVIL_UPGRADE_ADDITIONS_SLOT_DESCRIPTION = Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(EVIL_UPGRADE_KEY + ".additions_slot_description")));
+	private static final Component EVIL_CRYSTAL_UPGRADE = Component.translatable(Util.makeDescriptionId("upgrade", new ResourceLocation(HMaG.MODID, "evil_crystal_upgrade"))).withStyle(TITLE_FORMAT);
+	private static final String EVIL_CRYSTAL_UPGRADE_KEY = "smithing_template." + HMaG.MODID + ".evil_crystal_upgrade";
+	private static final Component EVIL_CRYSTAL_UPGRADE_APPLIES_TO = Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(EVIL_CRYSTAL_UPGRADE_KEY + ".applies_to"))).withStyle(DESCRIPTION_FORMAT);
+	private static final Component EVIL_CRYSTAL_UPGRADE_INGREDIENTS = Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(EVIL_CRYSTAL_UPGRADE_KEY + ".ingredients"))).withStyle(DESCRIPTION_FORMAT);
+	private static final Component EVIL_CRYSTAL_UPGRADE_BASE_SLOT_DESCRIPTION = Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(EVIL_CRYSTAL_UPGRADE_KEY + ".base_slot_description")));
+	private static final Component EVIL_CRYSTAL_UPGRADE_ADDITIONS_SLOT_DESCRIPTION = Component.translatable(Util.makeDescriptionId("item", new ResourceLocation(EVIL_CRYSTAL_UPGRADE_KEY + ".additions_slot_description")));
 	private static final ResourceLocation EMPTY_SLOT_HELMET = new ResourceLocation("item/empty_armor_slot_helmet");
 	private static final ResourceLocation EMPTY_SLOT_CHESTPLATE = new ResourceLocation("item/empty_armor_slot_chestplate");
 	private static final ResourceLocation EMPTY_SLOT_LEGGINGS = new ResourceLocation("item/empty_armor_slot_leggings");
@@ -42,17 +42,17 @@ public class ModSmithingTemplateItem extends SmithingTemplateItem
 		super(appliesToDescription, ingredientsDescription, upgradeDescription, baseSlotDescription, addtionsSlotDescription, iconList, materialIconList);
 	}
 
-	public static ModSmithingTemplateItem createEvilUpgradeTemplate()
+	public static ModSmithingTemplateItem createEvilCrystalUpgradeTemplate()
 	{
-		return new ModSmithingTemplateItem(EVIL_UPGRADE_APPLIES_TO, EVIL_UPGRADE_INGREDIENTS, EVIL_UPGRADE, EVIL_UPGRADE_BASE_SLOT_DESCRIPTION, EVIL_UPGRADE_ADDITIONS_SLOT_DESCRIPTION, createEvilUpgradeIconList(), createEvilUpgradeMaterialList());
+		return new ModSmithingTemplateItem(EVIL_CRYSTAL_UPGRADE_APPLIES_TO, EVIL_CRYSTAL_UPGRADE_INGREDIENTS, EVIL_CRYSTAL_UPGRADE, EVIL_CRYSTAL_UPGRADE_BASE_SLOT_DESCRIPTION, EVIL_CRYSTAL_UPGRADE_ADDITIONS_SLOT_DESCRIPTION, createIconList(), createMaterialIconList());
 	}
 
-	private static List<ResourceLocation> createEvilUpgradeIconList()
+	private static List<ResourceLocation> createIconList()
 	{
 		return List.of(EMPTY_SLOT_HELMET, EMPTY_SLOT_SWORD, EMPTY_SLOT_CHESTPLATE, EMPTY_SLOT_PICKAXE, EMPTY_SLOT_LEGGINGS, EMPTY_SLOT_AXE, EMPTY_SLOT_BOOTS, EMPTY_SLOT_HOE, EMPTY_SLOT_SHOVEL);
 	}
 
-	private static List<ResourceLocation> createEvilUpgradeMaterialList()
+	private static List<ResourceLocation> createMaterialIconList()
 	{
 		return List.of(EMPTY_SLOT_INGOT, EMPTY_SLOT_REDSTONE_DUST, EMPTY_SLOT_LAPIS_LAZULI, EMPTY_SLOT_QUARTZ, EMPTY_SLOT_DIAMOND, EMPTY_SLOT_EMERALD, EMPTY_SLOT_AMETHYST_SHARD);
 	}

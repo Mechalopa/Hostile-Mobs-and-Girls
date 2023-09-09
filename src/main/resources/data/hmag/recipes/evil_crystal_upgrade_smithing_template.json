@@ -6,7 +6,7 @@
       "tag": "minecraft:stone_tool_materials"
     },
     "C": {
-      "tag": "forge:ingots/copper"
+      "tag": "minecraft:coals"
     },
     "S": {
       "item": "hmag:evil_crystal_fragment"
@@ -18,7 +18,7 @@
     "###"
   ],
   "result": {
-    "item": "hmag:evil_upgrade_smithing_template",
+    "item": "hmag:evil_crystal_upgrade_smithing_template",
     "count": 4
   },
   "show_notification": true

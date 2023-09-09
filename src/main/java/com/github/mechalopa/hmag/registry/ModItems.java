@@ -154,7 +154,7 @@ public class ModItems
 	public static final RegistryObject<Item> FORTUNE_CRYSTAL = REGISTRY.register("fortune_crystal", () -> new EnchantmentUpgradeItem(new Item.Properties().rarity(Rarity.UNCOMMON), new ModItem.Properties().foil(), new EnchantmentUpgradeItem.Properties().enchantment(Enchantments.BLOCK_FORTUNE, 3, 3)));
 	public static final RegistryObject<Item> FORTUNE_CRYSTAL_PLUS = REGISTRY.register("fortune_crystal_plus", () -> new EnchantmentUpgradeItem(new Item.Properties().rarity(Rarity.RARE), new ModItem.Properties().foil(), new EnchantmentUpgradeItem.Properties().enchantment(Enchantments.BLOCK_FORTUNE, 4, 4)));
 	public static final RegistryObject<Item> PURIFICATION_CLOTH = REGISTRY.register("purification_cloth", () -> new PurificationClothItem(new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON)));
-	public static final RegistryObject<Item> EVIL_UPGRADE_SMITHING_TEMPLATE = REGISTRY.register("evil_upgrade_smithing_template", () -> ModSmithingTemplateItem.createEvilUpgradeTemplate());
+	public static final RegistryObject<Item> EVIL_CRYSTAL_UPGRADE_SMITHING_TEMPLATE = REGISTRY.register("evil_crystal_upgrade_smithing_template", () -> ModSmithingTemplateItem.createEvilCrystalUpgradeTemplate());
 	public static final RegistryObject<Item> ENDLESS_PEARL = REGISTRY.register("endless_pearl", () -> new EndlessPearlItem(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
 	public static final RegistryObject<Item> TOTEM_OF_REPULSE = REGISTRY.register("totem_of_repulse", () -> new TotemOfRepulseItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
