@@ -98,7 +98,7 @@ public class LichEntity extends Monster implements RangedAttackMob
 		{
 			ServerLevel serverlevel = (ServerLevel)this.level;
 
-			for(int i = 0; i < 3; ++i)
+			for (int i = 0; i < 3; ++i)
 			{
 				BlockPos blockpos = this.blockPosition().offset(-2 + this.getRandom().nextInt(5), 1, -2 + this.getRandom().nextInt(5));
 				Vex vex = EntityType.VEX.create(this.level);

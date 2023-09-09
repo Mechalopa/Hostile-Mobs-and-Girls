@@ -101,6 +101,10 @@
     {
       "id": "enderzoology:concussion_creeper",
       "required": false
+    },
+    {
+      "id": "good_nights_sleep:baby_creeper",
+      "required": false
     }
   ]
 }

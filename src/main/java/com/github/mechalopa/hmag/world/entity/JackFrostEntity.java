@@ -103,10 +103,10 @@ public class JackFrostEntity extends Monster implements RangedAttackMob
 
 							if (this.level.isEmptyBlock(blockpos$mutable))
 							{
-								BlockState blockstate1 = level.getBlockState(blockpos1);
+								BlockState blockstate1 = this.level.getBlockState(blockpos1);
 								boolean isFull = blockstate1.getBlock() == Blocks.WATER && blockstate1.getValue(LiquidBlock.LEVEL) == 0;
 
-								if (blockstate1.getMaterial() == Material.WATER && isFull && blockstate.canSurvive(level, blockpos1) && level.isUnobstructed(blockstate, blockpos1, CollisionContext.empty()) && !ForgeEventFactory.onBlockPlace(this, BlockSnapshot.create(level.dimension(), level, blockpos1), Direction.UP))
+								if (blockstate1.getMaterial() == Material.WATER && isFull && blockstate.canSurvive(this.level, blockpos1) && this.level.isUnobstructed(blockstate, blockpos1, CollisionContext.empty()) && !ForgeEventFactory.onBlockPlace(this, BlockSnapshot.create(this.level.dimension(), this.level, blockpos1), Direction.UP))
 								{
 									this.level.setBlockAndUpdate(blockpos1, blockstate);
 									this.level.scheduleTick(blockpos1, Blocks.FROSTED_ICE, Mth.nextInt(this.getRandom(), 60, 120));
