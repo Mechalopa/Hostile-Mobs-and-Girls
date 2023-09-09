@@ -52,15 +52,15 @@ public class JEIPlugin implements IModPlugin
 	public void registerRecipes(IRecipeRegistration registration)
 	{
 		final List<Item> items = ImmutableList.of(
-				Items.DIAMOND_SWORD,
-				Items.DIAMOND_PICKAXE,
-				Items.DIAMOND_AXE,
-				Items.DIAMOND_SHOVEL,
-				Items.DIAMOND_HOE,
-				Items.DIAMOND_CHESTPLATE,
-				Items.DIAMOND_HELMET,
-				Items.DIAMOND_LEGGINGS,
-				Items.DIAMOND_BOOTS,
+				Items.IRON_SWORD,
+				Items.IRON_PICKAXE,
+				Items.IRON_AXE,
+				Items.IRON_SHOVEL,
+				Items.IRON_HOE,
+				Items.IRON_CHESTPLATE,
+				Items.IRON_HELMET,
+				Items.IRON_LEGGINGS,
+				Items.IRON_BOOTS,
 				Items.ELYTRA,
 				Items.SHIELD,
 				Items.BOW,
@@ -70,7 +70,7 @@ public class JEIPlugin implements IModPlugin
 				Items.SHEARS,
 				Items.FLINT_AND_STEEL,
 				Items.SHULKER_BOX,
-				Items.DIAMOND);
+				Items.IRON_INGOT);
 
 		Minecraft minecraft = Minecraft.getInstance();
 		Iterable<Recipe<?>> recipes = minecraft.level.getRecipeManager().getRecipes();
@@ -87,9 +87,10 @@ public class JEIPlugin implements IModPlugin
 				if (recipe instanceof RemoveCurseRecipe && !flag)
 				{
 					flag = true;
-					Ingredient ingredient = Ingredient.of(ModTags.ItemTags.CURSE_REMOVE_ITEMS);
+					Ingredient ingredient = Ingredient.of(ModTags.ItemTags.CURSE_REMOVE_TEMPLATES);
+					Ingredient ingredient1 = Ingredient.of(ModTags.ItemTags.CURSE_REMOVE_ITEMS);
 
-					if (!ingredient.isEmpty())
+					if (!ingredient.isEmpty() && !ingredient1.isEmpty())
 					{
 						for (Enchantment enchantment : ForgeRegistries.ENCHANTMENTS)
 						{
@@ -115,7 +116,7 @@ public class JEIPlugin implements IModPlugin
 									{
 										ResourceLocation enchid = ForgeRegistries.ENCHANTMENTS.getKey(enchantment);
 										ResourceLocation id = new ResourceLocation(HMaG.MODID, "jei." + recipe.getId().getPath() + "." + enchid.getNamespace() + "." + enchid.getPath());
-										addSmithingRecipe(smithingRecipes, id, Ingredient.of(stacks.stream()), ingredient, stack1);
+										addSmithingRecipe(smithingRecipes, id, ingredient, Ingredient.of(stacks.stream()), ingredient1, stack1);
 									}
 								}
 							}
@@ -125,13 +126,14 @@ public class JEIPlugin implements IModPlugin
 				else if (recipe instanceof EnchantmentUpgradeRecipe && !flag1)
 				{
 					flag1 = true;
-					Ingredient ingredient = Ingredient.of(ModTags.ItemTags.ENCHANTMENT_UPGRADE_ITEMS);
+					Ingredient ingredient = Ingredient.of(ModTags.ItemTags.ENCHANTMENT_UPGRADE_TEMPLATES);
+					Ingredient ingredient1 = Ingredient.of(ModTags.ItemTags.ENCHANTMENT_UPGRADE_ITEMS);
 
-					if (!ingredient.isEmpty())
+					if (!ingredient.isEmpty() && !ingredient1.isEmpty())
 					{
 						int i = 0;
 
-						for (ItemStack stack : ingredient.getItems())
+						for (ItemStack stack : ingredient1.getItems())
 						{
 							if (stack != null && !stack.isEmpty() && stack.getItem() != null && stack.getItem() instanceof EnchantmentUpgradeItem)
 							{
@@ -168,7 +170,7 @@ public class JEIPlugin implements IModPlugin
 														}
 
 														EnchantmentHelper.setEnchantments(ImmutableMap.of(enchantment, k + 1), stack3);
-														addSmithingRecipe(smithingRecipes, id, Ingredient.of(stack2), Ingredient.of(item), stack3);
+														addSmithingRecipe(smithingRecipes, id, ingredient, Ingredient.of(stack2), Ingredient.of(stack), stack3);
 													}
 
 													++j;
@@ -212,9 +214,9 @@ public class JEIPlugin implements IModPlugin
 		registration.addRecipes(RecipeTypes.CRAFTING, shapelessRecipes);
 	}
 
-	private static void addSmithingRecipe(List<SmithingRecipe> smithingRecipes, ResourceLocation id, Ingredient base, Ingredient addition, ItemStack output)
+	private static void addSmithingRecipe(List<SmithingRecipe> smithingRecipes, ResourceLocation id, Ingredient template, Ingredient base, Ingredient addition, ItemStack output)
 	{
-		smithingRecipes.add(new SmithingTransformRecipe(id, Ingredient.of(Items.BARRIER), base, addition, output));
+		smithingRecipes.add(new SmithingTransformRecipe(id, template, base, addition, output));
 	}
 
 	private static ItemStack getEnchantableItemStack(IRecipeRegistration registration, List<Item> list, Enchantment enchantment, TagKey<Item> blacklist)

@@ -113,5 +113,6 @@
         }
       ]
     }
-  ]
+  ],
+  "random_sequence": "hmag:entities/melty_monster"
 }

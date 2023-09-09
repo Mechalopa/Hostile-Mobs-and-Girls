@@ -28,7 +28,7 @@ public class RemoveCurseRecipe extends AbstractUpgradeRecipe
 	@Override
 	public boolean matches(Container inv, Level level)
 	{
-		if (super.matches(inv, level))
+		if (inv.getItem(0).is(ModTags.ItemTags.CURSE_REMOVE_TEMPLATES))
 		{
 			ItemStack stack = inv.getItem(1);
 			ItemStack stack1 = inv.getItem(2);
@@ -88,6 +88,12 @@ public class RemoveCurseRecipe extends AbstractUpgradeRecipe
 		}
 
 		return stack1;
+	}
+
+	@Override
+	public boolean isTemplateIngredient(ItemStack stack)
+	{
+		return stack.is(ModTags.ItemTags.CURSE_REMOVE_TEMPLATES);
 	}
 
 	@Override

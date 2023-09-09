@@ -46,5 +46,6 @@
         }
       ]
     }
-  ]
+  ],
+  "random_sequence": "hmag:entities/ghost"
 }

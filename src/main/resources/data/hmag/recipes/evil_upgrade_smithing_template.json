@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "minecraft:stone_tool_materials"
+    },
+    "C": {
+      "tag": "forge:ingots/copper"
+    },
+    "S": {
+      "item": "hmag:evil_crystal_fragment"
+    }
+  },
+  "pattern": [
+    "#S#",
+    "#C#",
+    "###"
+  ],
+  "result": {
+    "item": "hmag:evil_upgrade_smithing_template",
+    "count": 4
+  },
+  "show_notification": true
+}

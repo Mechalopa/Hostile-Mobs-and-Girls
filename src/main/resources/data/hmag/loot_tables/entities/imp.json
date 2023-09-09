@@ -155,5 +155,6 @@
         }
       ]
     }
-  ]
+  ],
+  "random_sequence": "hmag:entities/imp"
 }

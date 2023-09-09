@@ -32,7 +32,7 @@ public class EnchantmentUpgradeRecipe extends AbstractUpgradeRecipe
 	@Override
 	public boolean matches(Container inv, Level level)
 	{
-		if (super.matches(inv, level))
+		if (inv.getItem(0).is(ModTags.ItemTags.ENCHANTMENT_UPGRADE_TEMPLATES))
 		{
 			ItemStack stack = inv.getItem(1);
 			ItemStack stack1 = inv.getItem(2);
@@ -142,6 +142,12 @@ public class EnchantmentUpgradeRecipe extends AbstractUpgradeRecipe
 		}
 
 		return ItemStack.EMPTY;
+	}
+
+	@Override
+	public boolean isTemplateIngredient(ItemStack stack)
+	{
+		return stack.is(ModTags.ItemTags.ENCHANTMENT_UPGRADE_TEMPLATES);
 	}
 
 	@Override

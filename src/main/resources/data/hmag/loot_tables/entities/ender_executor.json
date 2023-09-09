@@ -144,5 +144,6 @@
         }
       ]
     }
-  ]
+  ],
+  "random_sequence": "hmag:entities/ender_executor"
 }

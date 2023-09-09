@@ -17,7 +17,10 @@
         "negate": true
       },
       {
-        "name": "minecraft:meadow",
+        "name": [
+          "minecraft:meadow",
+          "minecraft:cherry_grove"
+        ],
         "negate": true
       },
       {

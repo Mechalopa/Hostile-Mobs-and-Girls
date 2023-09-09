@@ -166,5 +166,6 @@
         }
       ]
     }
-  ]
+  ],
+  "random_sequence": "hmag:entities/redcap"
 }

@@ -127,5 +127,6 @@
         }
       ]
     }
-  ]
+  ],
+  "random_sequence": "hmag:entities/ogre"
 }

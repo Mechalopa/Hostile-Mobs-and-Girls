@@ -10,6 +10,6 @@
     "item": "hmag:ancient_boots"
   },
   "template": {
-    "tag": "forge:nuggets/diamond"
+    "item": "hmag:evil_upgrade_smithing_template"
   }
 }

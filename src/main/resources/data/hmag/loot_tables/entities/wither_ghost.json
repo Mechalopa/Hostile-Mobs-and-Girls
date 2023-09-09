@@ -72,5 +72,6 @@
         }
       ]
     }
-  ]
+  ],
+  "random_sequence": "hmag:entities/wither_ghost"
 }

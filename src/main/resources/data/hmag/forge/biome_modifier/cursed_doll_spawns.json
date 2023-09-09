@@ -3,6 +3,11 @@
   "biomes": [
     [
       {
+        "name": "minecraft:cherry_grove"
+      }
+    ],
+    [
+      {
         "name": "#hmag:is_overworld"
       },
       {
