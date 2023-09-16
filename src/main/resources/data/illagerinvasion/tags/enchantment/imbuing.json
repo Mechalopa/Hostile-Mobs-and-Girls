@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "hmag:health_boost",
+    "hmag:water_aspect",
+    "hmag:anti_air"
+  ]
+}
