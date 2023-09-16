@@ -79,7 +79,6 @@ public class ModConfigs
 	public static ForgeConfigSpec.IntValue INSOMNIA_FRUIT_COOLDOWN_LEVEL_3;
 	public static ForgeConfigSpec.IntValue INSOMNIA_FRUIT_COOLDOWN_LEVEL_4;
 	public static ForgeConfigSpec.IntValue INSOMNIA_FRUIT_COOLDOWN_LEVEL_5;
-	public static ForgeConfigSpec.IntValue TOTEM_OF_REPULSE_COOLDOWN;
 
 	public static ForgeConfigSpec.IntValue HEALTH_BOOST_MAX_LEVEL;
 	public static ForgeConfigSpec.BooleanValue HEALTH_BOOST_IS_TREASURE;
@@ -205,7 +204,6 @@ public class ModConfigs
 		INSOMNIA_FRUIT_COOLDOWN_LEVEL_3 = SERVER_BUILDER.defineInRange("insomuniaFruitCooldownLevel3", 1600, 0, 240000);
 		INSOMNIA_FRUIT_COOLDOWN_LEVEL_4 = SERVER_BUILDER.defineInRange("insomuniaFruitCooldownLevel4", 1400, 0, 240000);
 		INSOMNIA_FRUIT_COOLDOWN_LEVEL_5 = SERVER_BUILDER.defineInRange("insomuniaFruitCooldownLevel5", 1200, 0, 240000);
-		TOTEM_OF_REPULSE_COOLDOWN = SERVER_BUILDER.defineInRange("totemOfRepulseCooldown", 1800, 0, 240000);
 
 		SERVER_BUILDER.pop();
 
@@ -326,7 +324,6 @@ public class ModConfigs
 		public static int INSOMNIA_FRUIT_COOLDOWN_LEVEL_3;
 		public static int INSOMNIA_FRUIT_COOLDOWN_LEVEL_4;
 		public static int INSOMNIA_FRUIT_COOLDOWN_LEVEL_5;
-		public static int TOTEM_OF_REPULSE_COOLDOWN;
 
 		public static int HEALTH_BOOST_MAX_LEVEL;
 		public static boolean HEALTH_BOOST_IS_TREASURE;
@@ -430,7 +427,6 @@ public class ModConfigs
 			INSOMNIA_FRUIT_COOLDOWN_LEVEL_3 = ModConfigs.INSOMNIA_FRUIT_COOLDOWN_LEVEL_3.get();
 			INSOMNIA_FRUIT_COOLDOWN_LEVEL_4 = ModConfigs.INSOMNIA_FRUIT_COOLDOWN_LEVEL_4.get();
 			INSOMNIA_FRUIT_COOLDOWN_LEVEL_5 = ModConfigs.INSOMNIA_FRUIT_COOLDOWN_LEVEL_5.get();
-			TOTEM_OF_REPULSE_COOLDOWN = ModConfigs.TOTEM_OF_REPULSE_COOLDOWN.get();
 
 			HEALTH_BOOST_MAX_LEVEL = ModConfigs.HEALTH_BOOST_MAX_LEVEL.get();
 			HEALTH_BOOST_IS_TREASURE = ModConfigs.HEALTH_BOOST_IS_TREASURE.get();

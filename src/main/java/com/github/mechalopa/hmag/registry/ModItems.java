@@ -27,7 +27,6 @@ import com.github.mechalopa.hmag.world.item.PurificationClothItem;
 import com.github.mechalopa.hmag.world.item.RandomberryItem;
 import com.github.mechalopa.hmag.world.item.SwampyStewItem;
 import com.github.mechalopa.hmag.world.item.ThrowableBottleItem;
-import com.github.mechalopa.hmag.world.item.TotemOfRepulseItem;
 
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -156,7 +155,6 @@ public class ModItems
 	public static final RegistryObject<Item> PURIFICATION_CLOTH = REGISTRY.register("purification_cloth", () -> new PurificationClothItem(new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON)));
 	public static final RegistryObject<Item> EVIL_CRYSTAL_UPGRADE_SMITHING_TEMPLATE = REGISTRY.register("evil_crystal_upgrade_smithing_template", () -> ModSmithingTemplateItem.createEvilCrystalUpgradeTemplate());
 	public static final RegistryObject<Item> ENDLESS_PEARL = REGISTRY.register("endless_pearl", () -> new EndlessPearlItem(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
-	public static final RegistryObject<Item> TOTEM_OF_REPULSE = REGISTRY.register("totem_of_repulse", () -> new TotemOfRepulseItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
 	public static final RegistryObject<Item> ZOMBIE_GIRL_SPAWN_EGG = createSpawnEggRegistryObject("zombie_girl", ModEntityTypes.ZOMBIE_GIRL, 0xB4AD53, 0x577431);
 	public static final RegistryObject<Item> HUSK_GIRL_SPAWN_EGG = createSpawnEggRegistryObject("husk_girl", ModEntityTypes.HUSK_GIRL, 0xD3B87D, 0x62453D);
