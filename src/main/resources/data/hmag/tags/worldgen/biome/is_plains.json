@@ -6,7 +6,7 @@
       "required": false
     },
     {
-      "id": "#forge:is_plain",
+      "id": "#c:is_plain",
       "required": false
     },
     {

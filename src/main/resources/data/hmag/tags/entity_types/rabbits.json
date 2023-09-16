@@ -7,6 +7,10 @@
       "required": false
     },
     {
+      "id": "#c:rabbits",
+      "required": false
+    },
+    {
       "id": "earthmobsmod:hyper_rabbit",
       "required": false
     },

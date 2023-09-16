@@ -11,6 +11,14 @@
       "required": false
     },
     {
+      "id": "#c:dragon_scale",
+      "required": false
+    },
+    {
+      "id": "#c:scales/dragon",
+      "required": false
+    },
+    {
       "id": "iceandfire:dragonscales_red",
       "required": false
     },

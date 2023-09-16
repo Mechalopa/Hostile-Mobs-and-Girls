@@ -5,6 +5,10 @@
     {
       "id": "#forge:hoglins",
       "required": false
+    },
+    {
+      "id": "#c:hoglins",
+      "required": false
     }
   ]
 }

@@ -23,14 +23,6 @@
     {
       "id": "terralith:mirage_isles",
       "required": false
-    },
-    {
-      "id": "regions_unexplored:scorching_caves",
-      "required": false
-    },
-    {
-      "id": "regions_unexplored:corrupted_holt",
-      "required": false
     }
   ]
 }

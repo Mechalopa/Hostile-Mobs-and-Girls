@@ -9,6 +9,14 @@
     {
       "id": "#forge:is_taiga",
       "required": false
+    },
+    {
+      "id": "#c:is_coniferous",
+      "required": false
+    },
+    {
+      "id": "#c:is_taiga",
+      "required": false
     }
   ]
 }

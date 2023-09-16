@@ -7,6 +7,10 @@
       "required": false
     },
     {
+      "id": "#c:is_beach",
+      "required": false
+    },
+    {
       "id": "nyctophobia:ancient_dead_coral_reef",
       "required": false
     }

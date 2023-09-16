@@ -3,7 +3,11 @@
   "values": [
     "minecraft:chicken",
     {
-      "id": "#forge:chickens",
+      "id": "#forge:",
+      "required": false
+    },
+    {
+      "id": "#c:chickens",
       "required": false
     },
     {
