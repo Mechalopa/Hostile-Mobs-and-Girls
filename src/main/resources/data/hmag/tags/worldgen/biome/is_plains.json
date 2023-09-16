@@ -6,6 +6,14 @@
       "required": false
     },
     {
+      "id": "#forge:is_plain",
+      "required": false
+    },
+    {
+      "id": "#c:is_plains",
+      "required": false
+    },
+    {
       "id": "#c:is_plain",
       "required": false
     },
