@@ -1077,7 +1077,11 @@
       "required": false
     },
     {
-      "id": "#regions_unexplored:tall_saplings",
+      "id": "#regions_unexplored:shrubs",
+      "required": false
+    },
+    {
+      "id": "#regions_unexplored:grass",
       "required": false
     },
     {
@@ -1117,10 +1121,6 @@
       "required": false
     },
     {
-      "id": "regions_unexplored:frozen_grass",
-      "required": false
-    },
-    {
       "id": "regions_unexplored:glister_bulb",
       "required": false
     },
@@ -1153,10 +1153,6 @@
       "required": false
     },
     {
-      "id": "regions_unexplored:medium_grass",
-      "required": false
-    },
-    {
       "id": "regions_unexplored:mycotoxic_daisy",
       "required": false
     },
@@ -1166,10 +1162,6 @@
     },
     {
       "id": "regions_unexplored:pink_bioshroom",
-      "required": false
-    },
-    {
-      "id": "regions_unexplored:sandy_grass",
       "required": false
     },
     {
@@ -1202,18 +1194,6 @@
     },
     {
       "id": "regions_unexplored:spanish_moss_plant",
-      "required": false
-    },
-    {
-      "id": "regions_unexplored:steppe_grass",
-      "required": false
-    },
-    {
-      "id": "regions_unexplored:steppe_shrub",
-      "required": false
-    },
-    {
-      "id": "regions_unexplored:stone_bud",
       "required": false
     },
     {
