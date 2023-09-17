@@ -45,6 +45,30 @@
       "required": false
     },
     {
+      "id": "#forge:crops",
+      "required": false
+    },
+    {
+      "id": "#c:grass",
+      "required": false
+    },
+    {
+      "id": "#c:bushes",
+      "required": false
+    },
+    {
+      "id": "#c:flowers",
+      "required": false
+    },
+    {
+      "id": "#c:mushrooms",
+      "required": false
+    },
+    {
+      "id": "#c:crops",
+      "required": false
+    },
+    {
       "id": "biomemakeover:cattail",
       "required": false
     },

@@ -81,6 +81,10 @@
     {
       "id": "meadow:meadow_clearing",
       "required": false
+    },
+    {
+      "id": "eco:floating_river",
+      "required": false
     }
   ]
 }
