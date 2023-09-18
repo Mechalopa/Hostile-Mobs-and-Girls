@@ -17,6 +17,22 @@
     {
       "id": "#forge:honey/honey_bottle",
       "required": false
+    },
+    {
+      "id": "#c:honey_bottle",
+      "required": false
+    },
+    {
+      "id": "#c:honey",
+      "required": false
+    },
+    {
+      "id": "#c:honey/honey",
+      "required": false
+    },
+    {
+      "id": "#c:honey/honey_bottle",
+      "required": false
     }
   ]
 }

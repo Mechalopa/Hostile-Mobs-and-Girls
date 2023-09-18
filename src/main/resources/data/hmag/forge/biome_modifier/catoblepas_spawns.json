@@ -32,7 +32,7 @@
   ],
   "spawners": {
     "type": "hmag:catoblepas",
-    "weight": 15,
+    "weight": 20,
     "minCount": 1,
     "maxCount": 2
   }

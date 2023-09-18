@@ -8,6 +8,22 @@
       "required": false
     },
     {
+      "id": "#c:is_mountain",
+      "required": false
+    },
+    {
+      "id": "#c:is_hill",
+      "required": false
+    },
+    {
+      "id": "#c:is_peak",
+      "required": false
+    },
+    {
+      "id": "#c:is_slope",
+      "required": false
+    },
+    {
       "id": "terralith:basalt_cliffs",
       "required": false
     },

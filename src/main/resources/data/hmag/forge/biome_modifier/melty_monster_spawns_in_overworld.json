@@ -18,9 +18,9 @@
   ],
   "spawners": {
     "type": "hmag:melty_monster",
-    "weight": 15,
+    "weight": 25,
     "minCount": 1,
-    "maxCount": 2
+    "maxCount": 3
   },
   "charge": 0.25,
   "energy_budget": 0.25

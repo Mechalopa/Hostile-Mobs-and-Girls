@@ -10,6 +10,14 @@
       "required": false
     },
     {
+      "id": "#c:is_plains",
+      "required": false
+    },
+    {
+      "id": "#c:is_plain",
+      "required": false
+    },
+    {
       "id": "terralith:blooming_plateau",
       "required": false
     },

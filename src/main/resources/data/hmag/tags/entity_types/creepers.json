@@ -3,6 +3,10 @@
   "values": [
     "#forge:creepers",
     {
+      "id": "#c:creepers",
+      "required": false
+    },
+    {
       "id": "cactusmod:cactus_creeper",
       "required": false
     },
