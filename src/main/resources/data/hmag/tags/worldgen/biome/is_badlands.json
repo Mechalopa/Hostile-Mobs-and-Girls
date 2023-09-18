@@ -7,6 +7,10 @@
       "required": false
     },
     {
+      "id": "#c:is_badlands",
+      "required": false
+    },
+    {
       "id": "terralith:snowy_badlands",
       "required": false
     },

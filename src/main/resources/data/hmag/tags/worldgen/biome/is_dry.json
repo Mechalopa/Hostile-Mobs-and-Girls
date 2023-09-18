@@ -4,6 +4,10 @@
     {
       "id": "#forge:is_dry",
       "required": false
+    },
+    {
+      "id": "#c:is_dry",
+      "required": false
     }
   ]
 }

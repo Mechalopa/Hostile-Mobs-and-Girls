@@ -7,6 +7,10 @@
       "required": false
     },
     {
+      "id": "#c:chickens",
+      "required": false
+    },
+    {
       "id": "earthmobsmod:cluck_shroom",
       "required": false
     },

@@ -11,6 +11,30 @@
       "required": false
     },
     {
+      "id": "#forge:vegetables/spinach",
+      "required": false
+    },
+    {
+      "id": "#forge:vegetables/turnip",
+      "required": false
+    },
+    {
+      "id": "#c:crops/spinach",
+      "required": false
+    },
+    {
+      "id": "#c:crops/turnip",
+      "required": false
+    },
+    {
+      "id": "#c:vegetables/spinach",
+      "required": false
+    },
+    {
+      "id": "#c:vegetables/turnip",
+      "required": false
+    },
+    {
       "id": "miners_delight:cave_carrot",
       "required": false
     },

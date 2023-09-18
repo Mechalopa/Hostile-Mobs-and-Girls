@@ -7,6 +7,10 @@
       "required": false
     },
     {
+      "id": "#c:is_nether",
+      "required": false
+    },
+    {
       "id": "pyromancer:flaming_grove",
       "required": false
     },

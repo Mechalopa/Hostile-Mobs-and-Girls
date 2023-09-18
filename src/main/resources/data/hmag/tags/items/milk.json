@@ -25,6 +25,30 @@
     {
       "id": "#forge:milk_bottles",
       "required": false
+    },
+    {
+      "id": "#c:buckets/milk",
+      "required": false
+    },
+    {
+      "id": "#c:milk",
+      "required": false
+    },
+    {
+      "id": "#c:milk/milk",
+      "required": false
+    },
+    {
+      "id": "#c:milk/milk_bottle",
+      "required": false
+    },
+    {
+      "id": "#c:milks",
+      "required": false
+    },
+    {
+      "id": "#c:milk_bottles",
+      "required": false
     }
   ]
 }

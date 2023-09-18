@@ -252,7 +252,7 @@ public class MeltyMonsterEntity extends Monster implements RangedAttackMob
 	@Override
 	public int getMaxSpawnClusterSize()
 	{
-		return 2;
+		return 3;
 	}
 
 	@Override

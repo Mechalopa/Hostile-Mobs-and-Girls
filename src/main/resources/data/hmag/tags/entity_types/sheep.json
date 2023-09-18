@@ -7,6 +7,10 @@
       "required": false
     },
     {
+      "id": "#c:sheep",
+      "required": false
+    },
+    {
       "id": "earthmobsmod:horned_sheep",
       "required": false
     },

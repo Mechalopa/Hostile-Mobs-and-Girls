@@ -20,7 +20,7 @@
   ],
   "spawners": {
     "type": "hmag:alraune",
-    "weight": 10,
+    "weight": 15,
     "minCount": 1,
     "maxCount": 2
   }

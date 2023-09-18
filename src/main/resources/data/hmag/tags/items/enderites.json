@@ -6,6 +6,10 @@
       "required": false
     },
     {
+      "id": "#c:ingots/enderite",
+      "required": false
+    },
+    {
       "id": "enderitemod:enderite_ingot",
       "required": false
     },

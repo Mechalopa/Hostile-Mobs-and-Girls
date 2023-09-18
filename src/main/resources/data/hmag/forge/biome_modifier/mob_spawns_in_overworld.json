@@ -43,13 +43,13 @@
     },
     {
       "type": "hmag:spider_nest",
-      "weight": 8,
+      "weight": 10,
       "minCount": 1,
       "maxCount": 2
     },
     {
       "type": "hmag:necrotic_reaper",
-      "weight": 8,
+      "weight": 10,
       "minCount": 1,
       "maxCount": 2
     }
