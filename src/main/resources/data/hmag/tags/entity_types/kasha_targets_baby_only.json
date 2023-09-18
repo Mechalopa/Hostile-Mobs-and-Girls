@@ -9,6 +9,10 @@
     {
       "id": "#c:hoglins",
       "required": false
+    },
+    {
+      "id": "species:wraptor",
+      "required": false
     }
   ]
 }
