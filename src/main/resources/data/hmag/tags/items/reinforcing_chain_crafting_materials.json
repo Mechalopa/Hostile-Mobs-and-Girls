@@ -23,6 +23,14 @@
     {
       "id": "cnb:yeti_antler",
       "required": false
+    },
+    {
+      "id": "illagerinvasion:unusual_dust",
+      "required": false
+    },
+    {
+      "id": "illagerinvasion:illusionary_dust",
+      "required": false
     }
   ]
 }

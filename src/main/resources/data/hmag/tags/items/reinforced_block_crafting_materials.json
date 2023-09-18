@@ -26,6 +26,10 @@
     {
       "id": "#forge:nuggets/enderite",
       "required": false
+    },
+    {
+      "id": "enderite:enderite_nugget",
+      "required": false
     }
   ]
 }
