@@ -251,6 +251,7 @@
   "item.minecraft.smithing_template.hmag.evil_crystal_upgrade.base_slot_description": "Add armor, weapon, or tool",
   "item.minecraft.smithing_template.hmag.evil_crystal_upgrade.ingredients": "Various Upgrade Items",
   "upgrade.hmag.evil_crystal_upgrade": "Evil Crystal Upgrade",
+  "trim_material.hmag.evil_crystal": "Evil Crystal Material",
   "enchantment.hmag.health_boost.desc": "Increases the wearer's max health.",
   "enchantment.hmag.water_aspect.desc": "Increases damage against mobs that are hurt by water, such as Blazes and Endermans. Also extinguish mobs that are on fire.",
   "enchantment.hmag.anti_air.desc": "Increases damage against mobs in the air.",

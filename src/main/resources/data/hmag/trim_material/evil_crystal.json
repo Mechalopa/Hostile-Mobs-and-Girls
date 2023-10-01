@@ -1,0 +1,9 @@
+{
+  "asset_name": "hmag.evil_crystal",
+  "description": {
+    "color": "#7E0C0C",
+    "translate": "trim_material.hmag.evil_crystal"
+  },
+  "ingredient": "hmag:evil_crystal",
+  "item_model_index": 0.2095238
+}
