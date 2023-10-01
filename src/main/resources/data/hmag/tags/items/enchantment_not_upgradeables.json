@@ -1,4 +1,8 @@
 {
   "replace": false,
-  "values": []
+  "values": [
+    "#hmag:enchantment_upgrade_templates",
+    "#minecraft:trim_templates",
+    "minecraft:netherite_upgrade_smithing_template"
+  ]
 }
