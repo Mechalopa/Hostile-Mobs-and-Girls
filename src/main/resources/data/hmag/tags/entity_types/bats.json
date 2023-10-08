@@ -1,6 +1,50 @@
 {
   "replace": false,
   "values": [
-    "minecraft:bat"
+    "minecraft:bat",
+    {
+      "id": "spookybats:pumpkin_bat",
+      "required": false
+    },
+    {
+      "id": "spookybats:creeper_bat",
+      "required": false
+    },
+    {
+      "id": "spookybats:witch_bat",
+      "required": false
+    },
+    {
+      "id": "spookybats:steve_bat",
+      "required": false
+    },
+    {
+      "id": "spookybats:alex_bat",
+      "required": false
+    },
+    {
+      "id": "spookybats:herobrine_bat",
+      "required": false
+    },
+    {
+      "id": "spookybats:skeleton_bat",
+      "required": false
+    },
+    {
+      "id": "spookybats:wither_skeleton_bat",
+      "required": false
+    },
+    {
+      "id": "spookybats:undead_bat",
+      "required": false
+    },
+    {
+      "id": "spookybats:player_bat",
+      "required": false
+    },
+    {
+      "id": "spookybats:void_bat",
+      "required": false
+    }
   ]
 }
