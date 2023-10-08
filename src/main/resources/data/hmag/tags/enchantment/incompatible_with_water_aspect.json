@@ -1,6 +1,10 @@
 {
   "replace": false,
   "values": [
-    "minecraft:fire_aspect"
+    "minecraft:fire_aspect",
+    {
+      "id": "minecraft:soul_fire_aspect",
+      "required": false
+    }
   ]
 }

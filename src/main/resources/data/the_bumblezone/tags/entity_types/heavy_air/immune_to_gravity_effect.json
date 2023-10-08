@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "hmag:ghost",
+    "hmag:wither_ghost",
+    "hmag:hornet",
+    "hmag:banshee",
+    "hmag:ghastly_seeker",
+    "hmag:dyssomnia"
+  ]
+}

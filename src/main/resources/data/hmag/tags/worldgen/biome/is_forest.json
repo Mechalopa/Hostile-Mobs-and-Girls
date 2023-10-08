@@ -23,38 +23,6 @@
       "required": false
     },
     {
-      "id": "terralith:lavender_forest",
-      "required": false
-    },
-    {
-      "id": "terralith:lavender_valley",
-      "required": false
-    },
-    {
-      "id": "terralith:mirage_isles",
-      "required": false
-    },
-    {
-      "id": "terralith:moonlight_grove",
-      "required": false
-    },
-    {
-      "id": "terralith:moonlight_valley",
-      "required": false
-    },
-    {
-      "id": "terralith:sakura_grove",
-      "required": false
-    },
-    {
-      "id": "terralith:sakura_valley",
-      "required": false
-    },
-    {
-      "id": "terralith:skylands_spring",
-      "required": false
-    },
-    {
       "id": "terralith:temperate_highlands",
       "required": false
     },
