@@ -1,6 +1,7 @@
 package com.github.mechalopa.hmag.world.item;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -37,9 +38,9 @@ public class EnchantmentUpgradeItem extends ModItem
 	{
 		private final List<EnchantmentUpgradeProp> eups = Lists.newArrayList();
 
-		public EnchantmentUpgradeItem.Properties enchantment(Enchantment enchantmentIn, int min, int max)
+		public EnchantmentUpgradeItem.Properties enchantment(Supplier<Enchantment> enchantmentSupplier, int min, int max)
 		{
-			return this.enchantment(new EnchantmentUpgradeProp(enchantmentIn, min, max));
+			return this.enchantment(new EnchantmentUpgradeProp(enchantmentSupplier, min, max));
 		}
 
 		public EnchantmentUpgradeItem.Properties enchantment(EnchantmentUpgradeProp eupIn)
@@ -50,14 +51,13 @@ public class EnchantmentUpgradeItem extends ModItem
 
 		public class EnchantmentUpgradeProp
 		{
-			@Nullable
-			private final Enchantment enchantment;
+			private final Supplier<Enchantment> enchantmentSupplier;
 			private final int minLevel;
 			private final int maxLevel;
 
-			public EnchantmentUpgradeProp(@Nullable Enchantment enchantmentIn, int min, int max)
+			public EnchantmentUpgradeProp(Supplier<Enchantment> enchantmentSupplier, int min, int max)
 			{
-				this.enchantment = enchantmentIn;
+				this.enchantmentSupplier = enchantmentSupplier;
 				this.minLevel = min;
 				this.maxLevel = max;
 			}
@@ -65,7 +65,7 @@ public class EnchantmentUpgradeItem extends ModItem
 			@Nullable
 			public Enchantment getEnchantment()
 			{
-				return this.enchantment;
+				return this.enchantmentSupplier.get();
 			}
 
 			public int getMinLevel()
