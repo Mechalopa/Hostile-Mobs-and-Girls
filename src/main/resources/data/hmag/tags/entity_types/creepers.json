@@ -109,6 +109,10 @@
     {
       "id": "good_nights_sleep:baby_creeper",
       "required": false
+    },
+    {
+      "id": "alexscaves:nucleeper",
+      "required": false
     }
   ]
 }

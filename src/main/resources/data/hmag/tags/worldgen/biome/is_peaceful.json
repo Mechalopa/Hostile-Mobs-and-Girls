@@ -23,6 +23,14 @@
     {
       "id": "terralith:mirage_isles",
       "required": false
+    },
+    {
+      "id": "alexscaves:forlorn_hollows",
+      "required": false
+    },
+    {
+      "id": "alexscaves:primordial_caves",
+      "required": false
     }
   ]
 }

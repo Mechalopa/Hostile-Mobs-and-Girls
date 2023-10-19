@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:nuggets/netherite",
+    "hmag:iron_spear",
+    "hmag:necrotic_chainmail_helmet",
+    "hmag:necrotic_chainmail_chestplate",
+    "hmag:necrotic_chainmail_leggings",
+    "hmag:necrotic_chainmail_boots",
+    "hmag:reinforcing_chain",
+    "hmag:multiplex_reinforcing_chain",
+    "hmag:repulsion_gadget"
+  ]
+}

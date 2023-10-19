@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    {
-      "id": "evilcraft:degraded",
-      "required": false
-    }
-  ]
-}

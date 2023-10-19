@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "hmag:ghost",
+    "hmag:wither_ghost",
+    "hmag:ender_executor",
+    "hmag:melty_monster",
+    "hmag:banshee",
+    "hmag:kasha",
+    "hmag:monolith",
+    "hmag:crimson_slaughterer",
+    "hmag:dyssomnia",
+    "hmag:fortress_keeper",
+    "hmag:necrotic_reaper",
+    "hmag:glaryad"
+  ]
+}

@@ -1,21 +1,20 @@
 {
   "replace": false,
   "values": [
-    "minecraft:hoglin",
     {
-      "id": "#forge:hoglins",
+      "id": "alexscaves:abyssal_chasm",
       "required": false
     },
     {
-      "id": "#c:hoglins",
+      "id": "alexscaves:magnetic_caves",
       "required": false
     },
     {
-      "id": "species:wraptor",
+      "id": "alexscaves:toxic_caves",
       "required": false
     },
     {
-      "id": "bagusmob:hunter_boar",
+      "id": "evilcraft:degraded",
       "required": false
     }
   ]
