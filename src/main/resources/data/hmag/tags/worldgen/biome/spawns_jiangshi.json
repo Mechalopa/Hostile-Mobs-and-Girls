@@ -41,6 +41,10 @@
     {
       "id": "eastwardjourneys:stone_forest",
       "required": false
+    },
+    {
+      "id": "mysticsbiomes:bamboo_blossom_forest",
+      "required": false
     }
   ]
 }
