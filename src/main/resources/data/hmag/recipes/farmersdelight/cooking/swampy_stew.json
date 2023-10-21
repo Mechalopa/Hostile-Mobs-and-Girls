@@ -18,7 +18,7 @@
       "tag": "forge:mushrooms"
     },
     {
-      "item": "minecraft:seagrass"
+      "tag": "hmag:swampy_stew_crafting_plants"
     }
   ],
   "result": {

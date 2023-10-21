@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:dead_bush",
+    "minecraft:fern",
+    "minecraft:grass",
+    "minecraft:seagrass"
+  ]
+}

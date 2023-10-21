@@ -3,6 +3,10 @@
   "values": [
     "minecraft:bat",
     {
+      "id": "biomemakeover:blightbat",
+      "required": false
+    },
+    {
       "id": "spookybats:pumpkin_bat",
       "required": false
     },
@@ -44,6 +48,18 @@
     },
     {
       "id": "spookybats:void_bat",
+      "required": false
+    },
+    {
+      "id": "spookybats:sculk_bat",
+      "required": false
+    },
+    {
+      "id": "spookybats:ghost_bat",
+      "required": false
+    },
+    {
+      "id": "spookybats:evil_bat",
       "required": false
     }
   ]
