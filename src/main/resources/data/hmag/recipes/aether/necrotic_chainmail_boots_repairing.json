@@ -6,6 +6,7 @@
     }
   ],
   "type": "aether:repairing",
+  "category": "enchanting_repair",
   "group": "altar_boots_repair",
   "ingredient": {
     "item": "hmag:necrotic_chainmail_boots"

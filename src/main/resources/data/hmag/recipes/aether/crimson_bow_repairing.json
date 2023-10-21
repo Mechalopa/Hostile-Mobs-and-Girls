@@ -6,6 +6,7 @@
     }
   ],
   "type": "aether:repairing",
+  "category": "enchanting_repair",
   "ingredient": {
     "item": "hmag:crimson_bow"
   },

@@ -6,6 +6,7 @@
     }
   ],
   "type": "aether:repairing",
+  "category": "enchanting_repair",
   "group": "altar_chestplate_repair",
   "ingredient": {
     "item": "hmag:ancient_chestplate"
