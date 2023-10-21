@@ -1,10 +1,6 @@
 {
   "replace": false,
   "values": [
-    "minecraft:lush_caves",
-    {
-      "id": "regions_unexplored:lush_delta",
-      "required": false
-    }
+    "minecraft:lush_caves"
   ]
 }

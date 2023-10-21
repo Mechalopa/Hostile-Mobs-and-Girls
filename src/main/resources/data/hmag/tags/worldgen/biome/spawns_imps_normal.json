@@ -93,6 +93,10 @@
     {
       "id": "regions_unexplored:mycotoxic_undergrowth",
       "required": false
+    },
+    {
+      "id": "regions_unexplored:infernal_holt",
+      "required": false
     }
   ]
 }
