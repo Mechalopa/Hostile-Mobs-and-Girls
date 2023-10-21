@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "hmag:zombie_girl",
+    "hmag:drowned_girl",
+    "hmag:skeleton_girl",
+    "hmag:stray_girl",
+    "hmag:ghost",
+    "hmag:cursed_doll",
+    "hmag:dullahan",
+    "hmag:banshee",
+    "hmag:necrotic_reaper",
+    "hmag:dodomeki",
+    "hmag:jiangshi",
+    "hmag:giant_mummy"
+  ]
+}
