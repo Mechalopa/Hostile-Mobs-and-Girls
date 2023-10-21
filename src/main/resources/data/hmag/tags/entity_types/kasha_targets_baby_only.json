@@ -13,6 +13,10 @@
     {
       "id": "species:wraptor",
       "required": false
+    },
+    {
+      "id": "bagusmob:hunter_boar",
+      "required": false
     }
   ]
 }

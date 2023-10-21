@@ -22,6 +22,10 @@
     {
       "id": "witherproofed:withered_powder",
       "required": false
+    },
+    {
+      "id": "eidolon:withered_heart",
+      "required": false
     }
   ]
 }

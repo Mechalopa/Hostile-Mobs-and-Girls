@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "hmag:ghost",
+    "hmag:wither_ghost",
+    "hmag:ender_executor",
+    "hmag:melty_monster",
+    "hmag:cursed_doll",
+    "hmag:jack_frost",
+    "hmag:banshee",
+    "hmag:dogu",
+    "hmag:ghastly_seeker",
+    "hmag:slime_girl",
+    "hmag:magical_slime",
+    "hmag:monolith",
+    "hmag:fortress_keeper",
+    "hmag:nightwalker"
+  ]
+}
