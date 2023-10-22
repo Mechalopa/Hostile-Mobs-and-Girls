@@ -114,6 +114,7 @@ public class ModTags
 		public static final TagKey<MobEffect> RANDOMBERRY_GIVES = createMobEffectTag("randomberry_gives");
 		public static final TagKey<MobEffect> SPIDER_NEST_IMMUNE_TO = createMobEffectTag("spider_nest_immune_to");
 		public static final TagKey<MobEffect> SCORPION_IMMUNE_TO = createMobEffectTag("scorpion_immune_to");
+		public static final TagKey<MobEffect> UNREMOVABLE_EFFECTS = createMobEffectTag("unremovable_effects");
 		public static final TagKey<MobEffect> WITHER_GHOST_IMMUNE_TO = createMobEffectTag("wither_ghost_immune_to");
 	}
 
