@@ -75,6 +75,20 @@
           "type": "minecraft:item",
           "functions": [
             {
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "flags": {
+                      "is_on_fire": true
+                    }
+                  }
+                }
+              ],
+              "function": "minecraft:furnace_smelt"
+            },
+            {
               "function": "minecraft:set_count",
               "count": {
                 "min": -1.0,
@@ -118,6 +132,22 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "functions": [
+            {
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "flags": {
+                      "is_on_fire": true
+                    }
+                  }
+                }
+              ],
+              "function": "minecraft:furnace_smelt"
+            }
+          ],
           "name": "minecraft:clay"
         },
         {
