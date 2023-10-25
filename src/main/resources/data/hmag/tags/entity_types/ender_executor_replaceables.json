@@ -35,10 +35,6 @@
       "required": false
     },
     {
-      "id": "endermanoverhaul:ocean_enderman",
-      "required": false
-    },
-    {
       "id": "endermanoverhaul:savanna_enderman",
       "required": false
     },

@@ -43,6 +43,10 @@
     {
       "id": "tofucraft:zunda_upgrade_smithing_template",
       "required": false
+    },
+    {
+      "id": "voidscape:voidic_template",
+      "required": false
     }
   ]
 }
