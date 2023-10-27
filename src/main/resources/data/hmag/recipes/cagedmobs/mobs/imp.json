@@ -5,22 +5,14 @@
       "modid": "cagedmobs"
     }
   ],
-  "type": "cagedmobs:mob_data",
+  "type": "cagedmobs:entity_data",
   "entity": "hmag:imp",
   "samplerTier": 2,
   "environments": ["nether"],
   "growTicks": 1800,
   "results": [
     {
-      "chance": 0.5,
-      "output": {
-        "item": "minecraft:brown_mushroom"
-      },
-      "minAmount": 1,
-      "maxAmount": 2
-    },
-    {
-      "chance": 0.5,
+      "chance": 0.7,
       "output": {
         "item": "minecraft:red_mushroom"
       },
@@ -33,7 +25,8 @@
         "item": "hmag:golden_fork"
       },
       "minAmount": 1,
-      "maxAmount": 1
+      "maxAmount": 1,
+      "randomDurability": true
     },
     {
       "chance": 0.025,

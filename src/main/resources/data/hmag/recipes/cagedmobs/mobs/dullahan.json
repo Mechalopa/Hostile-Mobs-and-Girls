@@ -6,7 +6,7 @@
     }
   ],
   "type": "cagedmobs:mob_data",
-  "entity": "hmag:dullahan",
+  "entity": "hmag:entity_data",
   "samplerTier": 2,
   "environments": ["cave"],
   "growTicks": 1800,
@@ -41,7 +41,8 @@
         "item": "minecraft:stone_sword"
       },
       "minAmount": 1,
-      "maxAmount": 1
+      "maxAmount": 1,
+      "randomDurability": true
     },
     {
       "chance": 0.025,
@@ -49,7 +50,8 @@
         "item": "minecraft:iron_sword"
       },
       "minAmount": 1,
-      "maxAmount": 1
+      "maxAmount": 1,
+      "randomDurability": true
     },
     {
       "chance": 0.025,

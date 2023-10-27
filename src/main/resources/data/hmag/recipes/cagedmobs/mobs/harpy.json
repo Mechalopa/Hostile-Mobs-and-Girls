@@ -5,7 +5,7 @@
       "modid": "cagedmobs"
     }
   ],
-  "type": "cagedmobs:mob_data",
+  "type": "cagedmobs:entity_data",
   "entity": "hmag:harpy",
   "samplerTier": 2,
   "environments": ["sand"],
@@ -39,6 +39,9 @@
       "chance": 0.025,
       "output": {
         "item": "minecraft:potato"
+      },
+      "output_cooked": {
+        "item": "minecraft:baked_potato"
       },
       "minAmount": 1,
       "maxAmount": 1

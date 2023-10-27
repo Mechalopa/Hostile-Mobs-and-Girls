@@ -6,13 +6,13 @@
     }
   ],
   "type": "cagedmobs:entity_data",
-  "entity": "hmag:husk_girl",
+  "entity": "hmag:jiangshi",
   "samplerTier": 2,
-  "environments": ["sand"],
-  "growTicks": 1200,
+  "environments": ["cave"],
+  "growTicks": 1800,
   "results": [
     {
-      "chance": 0.7,
+      "chance": 0.5,
       "output": {
         "item": "minecraft:rotten_flesh"
       },
@@ -20,17 +20,25 @@
       "maxAmount": 2
     },
     {
-      "chance": 0.05,
+      "chance": 0.5,
       "output": {
-        "item": "hmag:evil_crystal_fragment"
+        "item": "hmag:soul_powder"
       },
       "minAmount": 1,
       "maxAmount": 2
     },
     {
-      "chance": 0.025,
+      "chance": 0.05,
       "output": {
-        "item": "minecraft:iron_ingot"
+        "item": "minecraft:bamboo"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "hmag:sharp_fang"
       },
       "minAmount": 1,
       "maxAmount": 1
@@ -38,18 +46,26 @@
     {
       "chance": 0.025,
       "output": {
-        "item": "minecraft:leather"
+        "item": "minecraft:gold_ingot"
       },
       "minAmount": 1,
       "maxAmount": 1
     },
     {
-      "chance": 0.025,
+      "chance": 0.3,
       "output": {
-        "item": "minecraft:pumpkin_seeds"
+        "item": "minecraft:iron_nugget"
       },
       "minAmount": 1,
-      "maxAmount": 1
+      "maxAmount": 2
+    },
+    {
+      "chance": 0.1,
+      "output": {
+        "item": "hmag:copper_nugget"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
     }
   ]
 }

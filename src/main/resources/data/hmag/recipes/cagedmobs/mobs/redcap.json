@@ -5,7 +5,7 @@
       "modid": "cagedmobs"
     }
   ],
-  "type": "cagedmobs:mob_data",
+  "type": "cagedmobs:entity_data",
   "entity": "hmag:redcap",
   "samplerTier": 2,
   "environments": ["cave"],
@@ -33,7 +33,8 @@
         "item": "minecraft:stone_axe"
       },
       "minAmount": 1,
-      "maxAmount": 1
+      "maxAmount": 1,
+      "randomDurability": true
     },
     {
       "chance": 0.025,
@@ -41,7 +42,8 @@
         "item": "minecraft:iron_axe"
       },
       "minAmount": 1,
-      "maxAmount": 1
+      "maxAmount": 1,
+      "randomDurability": true
     },
     {
       "chance": 0.04375,
@@ -49,7 +51,8 @@
         "item": "minecraft:iron_boots"
       },
       "minAmount": 1,
-      "maxAmount": 1
+      "maxAmount": 1,
+      "randomDurability": true
     },
     {
       "chance": 0.00625,
@@ -57,7 +60,8 @@
         "item": "minecraft:chainmail_boots"
       },
       "minAmount": 1,
-      "maxAmount": 1
+      "maxAmount": 1,
+      "randomDurability": true
     },
     {
       "chance": 0.025,
