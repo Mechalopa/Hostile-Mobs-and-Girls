@@ -22,10 +22,10 @@
     {
       "chance": 0.5,
       "output": {
-        "item": "minecraft:swamper_tentacle"
+        "item": "hmag:swamper_tentacle"
       },
       "output_cooked": {
-        "item": "minecraft:cooked_swamper_tentacle"
+        "item": "hmag:cooked_swamper_tentacle"
       },
       "minAmount": 1,
       "maxAmount": 3

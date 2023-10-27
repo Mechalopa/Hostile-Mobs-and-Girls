@@ -5,8 +5,8 @@
       "modid": "cagedmobs"
     }
   ],
-  "type": "cagedmobs:mob_data",
-  "entity": "hmag:entity_data",
+  "type": "cagedmobs:entity_data",
+  "entity": "hmag:dullahan",
   "samplerTier": 2,
   "environments": ["cave"],
   "growTicks": 1800,
