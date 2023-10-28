@@ -48,32 +48,25 @@
               }
             }
           ],
-          "name": "minecraft:hanging_roots"
-        },
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": -1.0,
-                "max": 1.0,
-                "type": "minecraft:uniform"
-              }
-            },
-            {
-              "function": "minecraft:looting_enchant",
-              "count": {
-                "min": 0.0,
-                "max": 1.0
-              }
-            }
-          ],
           "name": "minecraft:glow_berries"
         },
         {
           "type": "minecraft:item",
           "functions": [
+            {
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "flags": {
+                      "is_on_fire": true
+                    }
+                  }
+                }
+              ],
+              "function": "minecraft:furnace_smelt"
+            },
             {
               "function": "minecraft:set_count",
               "count": {
@@ -118,6 +111,22 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "functions": [
+            {
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "flags": {
+                      "is_on_fire": true
+                    }
+                  }
+                }
+              ],
+              "function": "minecraft:furnace_smelt"
+            }
+          ],
           "name": "minecraft:clay"
         },
         {

@@ -5,7 +5,7 @@
       "modid": "cagedmobs"
     }
   ],
-  "type": "cagedmobs:mob_data",
+  "type": "cagedmobs:entity_data",
   "entity": "hmag:hornet",
   "samplerTier": 2,
   "environments": ["cave"],
@@ -73,7 +73,8 @@
         "item": "hmag:iron_spear"
       },
       "minAmount": 1,
-      "maxAmount": 1
+      "maxAmount": 1,
+      "randomDurability": true
     },
     {
       "chance": 0.025,

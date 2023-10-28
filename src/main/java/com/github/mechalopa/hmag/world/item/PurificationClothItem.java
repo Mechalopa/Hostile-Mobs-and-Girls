@@ -3,6 +3,9 @@ package com.github.mechalopa.hmag.world.item;
 import java.util.Iterator;
 import java.util.Set;
 
+import javax.annotation.Nullable;
+
+import com.github.mechalopa.hmag.util.ModTags;
 import com.google.common.collect.Sets;
 
 import net.minecraft.advancements.CriteriaTriggers;
@@ -40,7 +43,7 @@ public class PurificationClothItem extends SimpleFoiledItem
 			{
 				MobEffectInstance effect = itr.next();
 
-				if (effect.getEffect() != null && !effect.getEffect().isBeneficial())
+				if (isRemovableEffect(effect))
 				{
 					set.add(effect);
 				}
@@ -72,6 +75,11 @@ public class PurificationClothItem extends SimpleFoiledItem
 		return stack;
 	}
 
+	private static boolean isRemovableEffect(@Nullable MobEffectInstance effect)
+	{
+		return effect.getEffect() != null && !effect.getEffect().isBeneficial() && !ModTags.checkTagContains(effect.getEffect(), ModTags.MobEffectTags.UNREMOVABLE_EFFECTS);
+	}
+
 	@Override
 	public UseAnim getUseAnimation(ItemStack stack)
 	{
@@ -89,7 +97,7 @@ public class PurificationClothItem extends SimpleFoiledItem
 		{
 			MobEffectInstance effect = itr.next();
 
-			if (effect.getEffect() != null && !effect.getEffect().isBeneficial())
+			if (isRemovableEffect(effect))
 			{
 				flag = true;
 				break;
