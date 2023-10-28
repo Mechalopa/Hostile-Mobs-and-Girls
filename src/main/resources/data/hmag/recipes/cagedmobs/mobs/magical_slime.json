@@ -5,10 +5,10 @@
       "modid": "cagedmobs"
     }
   ],
-  "type": "cagedmobs:mob_data",
+  "type": "cagedmobs:entity_data",
   "entity": "hmag:magical_slime",
   "samplerTier": 2,
-  "environments": ["cave"],
+  "environments": ["cave", "slime"],
   "growTicks": 1200,
   "results": [
     {

@@ -1,0 +1,16 @@
+{
+  "values": [
+    {
+      "block": "hmag:nether_star_block",
+      "amplifier": 3
+    },
+    {
+      "block": "hmag:reinforced_block",
+      "amplifier": 1
+    },
+    {
+      "block": "hmag:netherite_scrap_block",
+      "amplifier": 2
+    }
+  ]
+}

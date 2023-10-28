@@ -36,21 +36,18 @@ public record ModAddSpawnsBiomeModifier(List<List<ModAddSpawnsBiomeModifier.Biom
 	@Override
 	public void modify(Holder<Biome> biome, Phase phase, Builder builder)
 	{
-		if (phase == Phase.ADD)
+		if (phase == Phase.ADD && matches(biome, this.biomePropLists))
 		{
-			if (matches(biome, this.biomePropLists))
+			MobSpawnSettingsBuilder spawns = builder.getMobSpawnSettings();
+
+			for (SpawnerData spawner : this.spawners)
 			{
-				MobSpawnSettingsBuilder spawns = builder.getMobSpawnSettings();
+				EntityType<?> type = spawner.type;
+				spawns.addSpawn(type.getCategory(), spawner);
 
-				for (SpawnerData spawner : this.spawners)
+				if (this.energyBudget > 0.0D && this.charge > 0.0D)
 				{
-					EntityType<?> type = spawner.type;
-					spawns.addSpawn(type.getCategory(), spawner);
-
-					if (this.energyBudget > 0.0D && this.charge > 0.0D)
-					{
-						spawns.addMobCharge(type, this.charge, this.energyBudget);
-					}
+					spawns.addMobCharge(type, this.charge, this.energyBudget);
 				}
 			}
 		}
