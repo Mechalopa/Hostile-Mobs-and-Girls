@@ -5,7 +5,7 @@
       "modid": "cagedmobs"
     }
   ],
-  "type": "cagedmobs:mob_data",
+  "type": "cagedmobs:entity_data",
   "entity": "hmag:stoneular",
   "samplerTier": 2,
   "environments": ["cave"],

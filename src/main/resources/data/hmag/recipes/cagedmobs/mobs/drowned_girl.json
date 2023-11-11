@@ -5,7 +5,7 @@
       "modid": "cagedmobs"
     }
   ],
-  "type": "cagedmobs:mob_data",
+  "type": "cagedmobs:entity_data",
   "entity": "hmag:drowned_girl",
   "samplerTier": 2,
   "environments": ["sand"],
@@ -50,7 +50,8 @@
         "item": "minecraft:trident"
       },
       "minAmount": 1,
-      "maxAmount": 1
+      "maxAmount": 1,
+      "randomDurability": true
     },
     {
       "chance": 0.01,
@@ -58,7 +59,8 @@
         "item": "minecraft:fishing_rod"
       },
       "minAmount": 1,
-      "maxAmount": 1
+      "maxAmount": 1,
+      "randomDurability": true
     }
   ]
 }

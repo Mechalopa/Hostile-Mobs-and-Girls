@@ -5,7 +5,7 @@
       "modid": "cagedmobs"
     }
   ],
-  "type": "cagedmobs:mob_data",
+  "type": "cagedmobs:entity_data",
   "entity": "hmag:cursed_doll",
   "samplerTier": 2,
   "environments": ["cave"],
@@ -33,7 +33,8 @@
         "item": "minecraft:wooden_axe"
       },
       "minAmount": 1,
-      "maxAmount": 1
+      "maxAmount": 1,
+      "randomDurability": true
     },
     {
       "chance": 0.025,
@@ -41,7 +42,8 @@
         "item": "minecraft:stone_axe"
       },
       "minAmount": 1,
-      "maxAmount": 1
+      "maxAmount": 1,
+      "randomDurability": true
     },
     {
       "chance": 0.025,

@@ -5,7 +5,7 @@
       "modid": "cagedmobs"
     }
   ],
-  "type": "cagedmobs:mob_data",
+  "type": "cagedmobs:entity_data",
   "entity": "hmag:ender_executor",
   "samplerTier": 2,
   "environments": ["end"],
@@ -49,7 +49,8 @@
         "item": "minecraft:stone_sword"
       },
       "minAmount": 1,
-      "maxAmount": 1
+      "maxAmount": 1,
+      "randomDurability": true
     }
   ]
 }

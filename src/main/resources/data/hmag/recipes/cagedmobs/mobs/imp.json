@@ -5,7 +5,7 @@
       "modid": "cagedmobs"
     }
   ],
-  "type": "cagedmobs:mob_data",
+  "type": "cagedmobs:entity_data",
   "entity": "hmag:imp",
   "samplerTier": 2,
   "environments": ["nether"],
@@ -41,7 +41,8 @@
         "item": "hmag:golden_fork"
       },
       "minAmount": 1,
-      "maxAmount": 1
+      "maxAmount": 1,
+      "randomDurability": true
     },
     {
       "chance": 0.025,
