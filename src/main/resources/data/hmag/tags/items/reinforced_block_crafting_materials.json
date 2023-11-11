@@ -12,6 +12,14 @@
       "required": false
     },
     {
+      "id": "#c:ingots/manyullyn",
+      "required": false
+    },
+    {
+      "id": "#c:ingots/terrasteel",
+      "required": false
+    },
+    {
       "id": "turtlemancy:fragment_of_bedrock",
       "required": false
     },
@@ -25,6 +33,18 @@
     },
     {
       "id": "#forge:nuggets/enderite",
+      "required": false
+    },
+    {
+      "id": "#c:nuggets/bedrock",
+      "required": false
+    },
+    {
+      "id": "#c:nuggets/bedrockium",
+      "required": false
+    },
+    {
+      "id": "#c:nuggets/enderite",
       "required": false
     },
     {
