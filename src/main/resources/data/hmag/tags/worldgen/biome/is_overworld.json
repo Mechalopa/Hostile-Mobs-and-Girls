@@ -85,6 +85,10 @@
     {
       "id": "mysticsbiomes:strawberry_fields",
       "required": false
+    },
+    {
+      "id": "snifferplus:timeless_grotto",
+      "required": false
     }
   ]
 }

@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
+    "#forge:storage_blocks/netherite_scrap",
+    "#forge:nuggets/netherite_scrap",
     "#forge:nuggets/netherite",
     "hmag:iron_spear",
     "hmag:necrotic_chainmail_helmet",

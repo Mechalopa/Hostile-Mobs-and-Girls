@@ -31,6 +31,10 @@
       "required": false
     },
     {
+      "id": "creeperoverhaul:ocean_creeper",
+      "required": false
+    },
+    {
       "id": "specialmobs:creeper",
       "required": false
     },
