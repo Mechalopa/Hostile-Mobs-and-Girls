@@ -126,7 +126,7 @@ public class EnchantmentUpgradeManager extends SimpleJsonResourceReloadListener
 	private static Enchantment getEnchantment(String name)
 	{
 		Optional<Holder<Enchantment>> optional = ForgeRegistries.ENCHANTMENTS.getHolder(new ResourceLocation(name));
-		return optional.isPresent() ? ForgeRegistries.ENCHANTMENTS.getHolder(new ResourceLocation(name)).orElseThrow().get() : null;
+		return optional.isPresent() ? optional.orElseThrow().get() : null;
 	}
 
 	public static HashMap<EnchantmentUpgradeProp, Integer> getPropMap()
