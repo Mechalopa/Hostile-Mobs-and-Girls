@@ -7,10 +7,10 @@ import java.util.List;
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.world.item.crafting.EnchantmentUpgradeManager;
+import com.github.mechalopa.hmag.world.item.crafting.EnchantmentUpgradeManager.EnchantmentUpgradeProp;
 import com.github.mechalopa.hmag.world.item.crafting.EnchantmentUpgradeRecipe;
 import com.github.mechalopa.hmag.world.item.crafting.RemoveCurseRecipe;
 import com.github.mechalopa.hmag.world.item.crafting.SuspiciousStewUpgradeRecipe;
-import com.github.mechalopa.hmag.world.item.crafting.EnchantmentUpgradeManager.EnchantmentUpgradeProp;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
@@ -133,10 +133,10 @@ public class JEIPlugin implements IModPlugin
 
 						for (EnchantmentUpgradeProp prop : EnchantmentUpgradeManager.getPropMap().keySet())
 						{
-							if (prop.getEnchantment() != null)
+							if (prop.isValid())
 							{
 								final Enchantment enchantment = prop.getEnchantment();
-								ItemStack stack = getEnchantableItemStack(registration, items, enchantment, ModTags.ItemTags.ENCHANTMENT_NOT_UPGRADEABLES);
+								ItemStack stack = getEnchantableItemStack(registration, items, enchantment, ModTags.ItemTags.ENCHANTMENT_NOT_UPGRADABLES);
 
 								if (!stack.isEmpty())
 								{

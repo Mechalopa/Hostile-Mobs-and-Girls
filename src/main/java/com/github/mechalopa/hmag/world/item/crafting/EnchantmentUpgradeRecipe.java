@@ -14,7 +14,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.inventory.AnvilMenu;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -34,11 +33,11 @@ public class EnchantmentUpgradeRecipe extends AbstractUpgradeRecipe
 		ItemStack stack1 = inv.getItem(1);
 		ItemStack stack2 = inv.getItem(2);
 
-		if (!stack.isEmpty() && stack.getItem() != null && !stack1.isEmpty() && !(stack1.getItem() == null || stack1.getItem() == Items.ENCHANTED_BOOK) && !stack1.is(ModTags.ItemTags.ENCHANTMENT_NOT_UPGRADEABLES) && !stack2.isEmpty() && stack2.getItem() != null && !EnchantmentUpgradeManager.getPropMap().isEmpty())
+		if (!stack.isEmpty() && stack.getItem() != null && !stack1.isEmpty() && stack1.getItem() != null && !stack1.is(ModTags.ItemTags.ENCHANTMENT_NOT_UPGRADABLES) && !stack2.isEmpty() && stack2.getItem() != null && !EnchantmentUpgradeManager.getPropMap().isEmpty())
 		{
 			for (EnchantmentUpgradeProp prop : EnchantmentUpgradeManager.getPropMap().keySet())
 			{
-				if (prop.getEnchantment() != null && prop.getTemplate().equals(stack.getItem()) && prop.getAddition().equals(stack2.getItem()))
+				if (prop.isValid() && prop.getTemplate().equals(stack.getItem()) && prop.getAddition().equals(stack2.getItem()))
 				{
 					final Enchantment enchantment = prop.getEnchantment();
 
@@ -80,7 +79,7 @@ public class EnchantmentUpgradeRecipe extends AbstractUpgradeRecipe
 	{
 		for (EnchantmentUpgradeProp prop : EnchantmentUpgradeManager.getPropMap().keySet())
 		{
-			if (prop.getEnchantment() != null && prop.getTemplate().equals(inv.getItem(0).getItem()) && prop.getAddition().equals(inv.getItem(2).getItem()))
+			if (prop.isValid() && prop.getTemplate().equals(inv.getItem(0).getItem()) && prop.getAddition().equals(inv.getItem(2).getItem()))
 			{
 				final Enchantment enchantment = prop.getEnchantment();
 				ItemStack stack = inv.getItem(1);
@@ -128,7 +127,7 @@ public class EnchantmentUpgradeRecipe extends AbstractUpgradeRecipe
 		{
 			for (EnchantmentUpgradeProp prop : EnchantmentUpgradeManager.getPropMap().keySet())
 			{
-				if (prop.getEnchantment() != null && prop.getTemplate().equals(stack.getItem()))
+				if (prop.isValid() && prop.getTemplate().equals(stack.getItem()))
 				{
 					return true;
 				}
@@ -141,7 +140,7 @@ public class EnchantmentUpgradeRecipe extends AbstractUpgradeRecipe
 	@Override
 	public boolean isBaseIngredient(ItemStack stack)
 	{
-		return stack.getItem() != Items.ENCHANTED_BOOK && !stack.is(ModTags.ItemTags.ENCHANTMENT_NOT_UPGRADEABLES);
+		return !stack.is(ModTags.ItemTags.ENCHANTMENT_NOT_UPGRADABLES);
 	}
 
 	@Override
@@ -151,7 +150,7 @@ public class EnchantmentUpgradeRecipe extends AbstractUpgradeRecipe
 		{
 			for (EnchantmentUpgradeProp prop : EnchantmentUpgradeManager.getPropMap().keySet())
 			{
-				if (prop.getEnchantment() != null && prop.getAddition().equals(stack.getItem()))
+				if (prop.isValid() && prop.getAddition().equals(stack.getItem()))
 				{
 					return true;
 				}

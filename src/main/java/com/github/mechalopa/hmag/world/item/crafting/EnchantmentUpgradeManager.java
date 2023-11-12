@@ -3,6 +3,7 @@ package com.github.mechalopa.hmag.world.item.crafting;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Supplier;
 
 import javax.annotation.Nullable;
@@ -16,6 +17,7 @@ import com.mojang.serialization.DataResult;
 import com.mojang.serialization.JsonOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
+import net.minecraft.core.Holder;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
@@ -76,7 +78,7 @@ public class EnchantmentUpgradeManager extends SimpleJsonResourceReloadListener
 
 	private void addToPropMap(ValuesCodec codec)
 	{
-		codec.values().forEach(p -> PROP_MAP.put(new EnchantmentUpgradeProp(p.addition, p.template, getEnchantmentSupplier(p.enchantment), Math.max(p.min, 0), Math.max(p.max, p.min)), 0));
+		codec.values().forEach(p -> PROP_MAP.put(new EnchantmentUpgradeProp(p.addition, p.template, p.enchantment, Math.max(p.min, 0), Math.max(p.max, p.min)), 0));
 	}
 
 	public void updateFromServer(HashMap<EnchantmentUpgradeProp, Integer> map)
@@ -92,7 +94,7 @@ public class EnchantmentUpgradeManager extends SimpleJsonResourceReloadListener
 		{
 			buf.writeUtf(ForgeRegistries.ITEMS.getKey(prop.getAddition()).toString());
 			buf.writeUtf(ForgeRegistries.ITEMS.getKey(prop.getTemplate()).toString());
-			buf.writeUtf(ForgeRegistries.ENCHANTMENTS.getKey(prop.getEnchantment()).toString());
+			buf.writeUtf(prop.getEnchantmentKey());
 			buf.writeVarInt(prop.getMinLevel());
 			buf.writeVarInt(prop.getMaxLevel());
 		}
@@ -107,10 +109,10 @@ public class EnchantmentUpgradeManager extends SimpleJsonResourceReloadListener
 		{
 			Item addition = EnchantmentUpgradeManager.getItemSupplier(buf.readUtf()).get();
 			Item template = EnchantmentUpgradeManager.getItemSupplier(buf.readUtf()).get();
-			Supplier<Enchantment> enchantmentSupplier = EnchantmentUpgradeManager.getEnchantmentSupplier(buf.readUtf());
+			String enchantmentKey = buf.readUtf();
 			int minLevel = buf.readVarInt();
 			int maxLevel = buf.readVarInt();
-			map.put(new EnchantmentUpgradeProp(addition, template, enchantmentSupplier, minLevel, maxLevel), i);
+			map.put(new EnchantmentUpgradeProp(addition, template, enchantmentKey, minLevel, maxLevel), i);
 		}
 
 		return map;
@@ -121,9 +123,10 @@ public class EnchantmentUpgradeManager extends SimpleJsonResourceReloadListener
 		return ForgeRegistries.ITEMS.getHolder(new ResourceLocation(name)).orElseThrow();
 	}
 
-	private static Supplier<Enchantment> getEnchantmentSupplier(String name)
+	private static Enchantment getEnchantment(String name)
 	{
-		return ForgeRegistries.ENCHANTMENTS.getHolder(new ResourceLocation(name)).orElseThrow();
+		Optional<Holder<Enchantment>> optional = ForgeRegistries.ENCHANTMENTS.getHolder(new ResourceLocation(name));
+		return optional.isPresent() ? ForgeRegistries.ENCHANTMENTS.getHolder(new ResourceLocation(name)).orElseThrow().get() : null;
 	}
 
 	public static HashMap<EnchantmentUpgradeProp, Integer> getPropMap()
@@ -135,15 +138,17 @@ public class EnchantmentUpgradeManager extends SimpleJsonResourceReloadListener
 	{
 		private final Item addition;
 		private final Item template;
-		private final Supplier<Enchantment> enchantmentSupplier;
+		private final String enchantmentKey;
+		private final Enchantment enchantment;
 		private final int minLevel;
 		private final int maxLevel;
 
-		public EnchantmentUpgradeProp(Item addition, Item template, Supplier<Enchantment> enchantmentSupplier, int min, int max)
+		public EnchantmentUpgradeProp(Item addition, Item template, String enchantmentKey, int min, int max)
 		{
 			this.addition = addition;
 			this.template = template;
-			this.enchantmentSupplier = enchantmentSupplier;
+			this.enchantmentKey = enchantmentKey;
+			this.enchantment = EnchantmentUpgradeManager.getEnchantment(enchantmentKey);
 			this.minLevel = min;
 			this.maxLevel = max;
 		}
@@ -158,10 +163,15 @@ public class EnchantmentUpgradeManager extends SimpleJsonResourceReloadListener
 			return this.template;
 		}
 
+		public String getEnchantmentKey()
+		{
+			return this.enchantmentKey;
+		}
+
 		@Nullable
 		public Enchantment getEnchantment()
 		{
-			return this.enchantmentSupplier.get();
+			return this.enchantment;
 		}
 
 		public int getMinLevel()
@@ -172,6 +182,11 @@ public class EnchantmentUpgradeManager extends SimpleJsonResourceReloadListener
 		public int getMaxLevel()
 		{
 			return this.maxLevel;
+		}
+
+		public boolean isValid()
+		{
+			return this.getEnchantment() != null && this.getAddition() != Items.BARRIER && this.getTemplate() != Items.BARRIER;
 		}
 	}
 }

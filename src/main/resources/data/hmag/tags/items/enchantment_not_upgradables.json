@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "#minecraft:trim_templates",
+    "minecraft:enchanted_book",
     "minecraft:netherite_upgrade_smithing_template",
     "hmag:evil_crystal_upgrade_smithing_template",
     {
