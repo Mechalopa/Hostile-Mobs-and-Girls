@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
-    "#hmag:enchantment_upgrade_templates",
     "#minecraft:trim_templates",
     "minecraft:netherite_upgrade_smithing_template",
+    "hmag:evil_crystal_upgrade_smithing_template",
     {
       "id": "biomemakeover:cladding_upgrade_smithing_template",
       "required": false

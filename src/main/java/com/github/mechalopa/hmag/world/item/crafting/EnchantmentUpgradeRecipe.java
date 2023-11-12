@@ -1,14 +1,12 @@
 package com.github.mechalopa.hmag.world.item.crafting;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 import com.github.mechalopa.hmag.registry.ModRecipes;
 import com.github.mechalopa.hmag.util.ModTags;
-import com.github.mechalopa.hmag.world.item.EnchantmentUpgradeItem;
-import com.github.mechalopa.hmag.world.item.EnchantmentUpgradeItem.Properties.EnchantmentUpgradeProp;
+import com.github.mechalopa.hmag.world.item.crafting.EnchantmentUpgradeItemManager.EnchantmentUpgradeItemProp;
 import com.google.common.collect.ImmutableMap;
 
 import net.minecraft.core.RegistryAccess;
@@ -32,28 +30,21 @@ public class EnchantmentUpgradeRecipe extends AbstractUpgradeRecipe
 	@Override
 	public boolean matches(Container inv, Level level)
 	{
-		if (inv.getItem(0).is(ModTags.ItemTags.ENCHANTMENT_UPGRADE_TEMPLATES))
+		ItemStack stack = inv.getItem(0);
+		ItemStack stack1 = inv.getItem(1);
+		ItemStack stack2 = inv.getItem(2);
+
+		if (!stack.isEmpty() && stack.getItem() != null && !stack1.isEmpty() && !(stack1.getItem() == null || stack1.getItem() == Items.ENCHANTED_BOOK) && !stack1.is(ModTags.ItemTags.ENCHANTMENT_NOT_UPGRADEABLES) && !stack2.isEmpty() && stack2.getItem() != null && !EnchantmentUpgradeItemManager.getPropMap().isEmpty())
 		{
-			ItemStack stack = inv.getItem(1);
-			ItemStack stack1 = inv.getItem(2);
-
-			if (!stack.isEmpty() && !(stack.getItem() == null || stack.getItem() == Items.ENCHANTED_BOOK) && !stack1.isEmpty() && stack1.getItem() != null && stack1.getItem() instanceof EnchantmentUpgradeItem && stack1.is(ModTags.ItemTags.ENCHANTMENT_UPGRADE_ITEMS) && !stack.is(ModTags.ItemTags.ENCHANTMENT_NOT_UPGRADEABLES))
+			for (EnchantmentUpgradeItemProp prop : EnchantmentUpgradeItemManager.getPropMap().keySet())
 			{
-				final List<EnchantmentUpgradeProp> eups = ((EnchantmentUpgradeItem)stack1.getItem()).getEnchantmentUpgradeProps();
-
-				if (!eups.isEmpty())
+				if (prop.getEnchantment() != null && prop.getTemplate().equals(stack.getItem()) && prop.getAddition().equals(stack2.getItem()))
 				{
-					for (EnchantmentUpgradeProp eup : eups)
-					{
-						if (eup != null)
-						{
-							final Enchantment enchantment = eup.getEnchantment();
+					final Enchantment enchantment = prop.getEnchantment();
 
-							if (enchantment != null && checkEnchantableItem(stack, enchantment, eup.getMinLevel(), eup.getMaxLevel()))
-							{
-								return true;
-							}
-						}
+					if (checkEnchantableItem(stack1, enchantment, prop.getMinLevel(), prop.getMaxLevel()))
+					{
+						return true;
 					}
 				}
 			}
@@ -62,15 +53,15 @@ public class EnchantmentUpgradeRecipe extends AbstractUpgradeRecipe
 		return false;
 	}
 
-	private static boolean checkEnchantableItem(ItemStack stackIn, Enchantment enchantmentIn, int min, int max)
+	private static boolean checkEnchantableItem(ItemStack stack, Enchantment enchantment, int min, int max)
 	{
-		if (!stackIn.isEmpty() && enchantmentIn.canEnchant(stackIn))
+		if (!stack.isEmpty() && enchantment.canEnchant(stack))
 		{
-			int i = EnchantmentHelper.getTagEnchantmentLevel(enchantmentIn, stackIn);
+			int i = EnchantmentHelper.getTagEnchantmentLevel(enchantment, stack);
 
 			if (i == 0 && min == 0 && max >= 0)
 			{
-				if (EnchantmentHelper.isEnchantmentCompatible(EnchantmentHelper.getEnchantments(stackIn).keySet(), enchantmentIn))
+				if (EnchantmentHelper.isEnchantmentCompatible(EnchantmentHelper.getEnchantments(stack).keySet(), enchantment))
 				{
 					return true;
 				}
@@ -87,56 +78,42 @@ public class EnchantmentUpgradeRecipe extends AbstractUpgradeRecipe
 	@Override
 	public ItemStack assemble(Container inv, RegistryAccess registryAccess)
 	{
-		ItemStack stack = inv.getItem(2);
-
-		if (stack.getItem() instanceof EnchantmentUpgradeItem)
+		for (EnchantmentUpgradeItemProp prop : EnchantmentUpgradeItemManager.getPropMap().keySet())
 		{
-			final List<EnchantmentUpgradeProp> eups = ((EnchantmentUpgradeItem)stack.getItem()).getEnchantmentUpgradeProps();
-
-			if (!eups.isEmpty())
+			if (prop.getEnchantment() != null && prop.getTemplate().equals(inv.getItem(0).getItem()) && prop.getAddition().equals(inv.getItem(2).getItem()))
 			{
-				for (EnchantmentUpgradeProp eup : eups)
+				final Enchantment enchantment = prop.getEnchantment();
+				ItemStack stack = inv.getItem(1);
+
+				if (checkEnchantableItem(stack, enchantment, prop.getMinLevel(), prop.getMaxLevel()))
 				{
-					if (eup != null)
+					ItemStack stack1 = stack.copy();
+
+					if (stack.isEnchanted())
 					{
-						final Enchantment enchantment = eup.getEnchantment();
+						stack1.removeTagKey("Enchantments");
+						stack1.removeTagKey("StoredEnchantments");
+						int j = EnchantmentHelper.getTagEnchantmentLevel(enchantment, stack);
 
-						if (enchantment != null)
+						Map<Enchantment, Integer> map = EnchantmentHelper.getEnchantments(stack).entrySet().stream().filter((p) -> {
+							return p.getKey() != enchantment;
+						}).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+
+						map.put(enchantment, j + 1);
+						EnchantmentHelper.setEnchantments(map, stack1);
+						stack1.setRepairCost(0);
+
+						for (int k = 0; k < map.size(); ++k)
 						{
-							ItemStack stack1 = inv.getItem(1);
-
-							if (checkEnchantableItem(stack1, enchantment, eup.getMinLevel(), eup.getMaxLevel()))
-							{
-								ItemStack stack2 = stack1.copy();
-
-								if (stack1.isEnchanted())
-								{
-									stack2.removeTagKey("Enchantments");
-									stack2.removeTagKey("StoredEnchantments");
-									int j = EnchantmentHelper.getTagEnchantmentLevel(enchantment, stack1);
-
-									Map<Enchantment, Integer> map = EnchantmentHelper.getEnchantments(stack1).entrySet().stream().filter((p) -> {
-										return p.getKey() != enchantment;
-									}).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
-
-									map.put(enchantment, j + 1);
-									EnchantmentHelper.setEnchantments(map, stack2);
-									stack2.setRepairCost(0);
-
-									for (int k = 0; k < map.size(); ++k)
-									{
-										stack2.setRepairCost(AnvilMenu.calculateIncreasedRepairCost(stack1.getBaseRepairCost()));
-									}
-								}
-								else
-								{
-									EnchantmentHelper.setEnchantments(ImmutableMap.of(enchantment, 1), stack2);
-								}
-
-								return stack2;
-							}
+							stack1.setRepairCost(AnvilMenu.calculateIncreasedRepairCost(stack.getBaseRepairCost()));
 						}
 					}
+					else
+					{
+						EnchantmentHelper.setEnchantments(ImmutableMap.of(enchantment, 1), stack1);
+					}
+
+					return stack1;
 				}
 			}
 		}
@@ -147,7 +124,18 @@ public class EnchantmentUpgradeRecipe extends AbstractUpgradeRecipe
 	@Override
 	public boolean isTemplateIngredient(ItemStack stack)
 	{
-		return stack.is(ModTags.ItemTags.ENCHANTMENT_UPGRADE_TEMPLATES);
+		if (stack.getItem() != null && !EnchantmentUpgradeItemManager.getPropMap().isEmpty())
+		{
+			for (EnchantmentUpgradeItemProp prop : EnchantmentUpgradeItemManager.getPropMap().keySet())
+			{
+				if (prop.getEnchantment() != null && prop.getTemplate().equals(stack.getItem()))
+				{
+					return true;
+				}
+			}
+		}
+
+		return false;
 	}
 
 	@Override
@@ -159,7 +147,18 @@ public class EnchantmentUpgradeRecipe extends AbstractUpgradeRecipe
 	@Override
 	public boolean isAdditionIngredient(ItemStack stack)
 	{
-		return stack.getItem() != null && stack.getItem() instanceof EnchantmentUpgradeItem && stack.is(ModTags.ItemTags.ENCHANTMENT_UPGRADE_ITEMS);
+		if (stack.getItem() != null && !EnchantmentUpgradeItemManager.getPropMap().isEmpty())
+		{
+			for (EnchantmentUpgradeItemProp prop : EnchantmentUpgradeItemManager.getPropMap().keySet())
+			{
+				if (prop.getEnchantment() != null && prop.getAddition().equals(stack.getItem()))
+				{
+					return true;
+				}
+			}
+		}
+
+		return false;
 	}
 
 	@Override

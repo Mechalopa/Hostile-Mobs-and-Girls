@@ -1,5 +1,7 @@
 package com.github.mechalopa.hmag;
 
+import com.github.mechalopa.hmag.network.ModPacketHandler;
+import com.github.mechalopa.hmag.network.packet.SyncEnchantUpgradeMapPacket;
 import com.github.mechalopa.hmag.registry.ModEntityTypes;
 import com.github.mechalopa.hmag.registry.ModItems;
 import com.github.mechalopa.hmag.registry.ModPotions;
@@ -78,6 +80,8 @@ public class ModEventBusSubscriber
 	@SubscribeEvent
 	public static void setup(final FMLCommonSetupEvent event)
 	{
+		ModPacketHandler.INSTANCE.registerMessage(0, SyncEnchantUpgradeMapPacket.class, SyncEnchantUpgradeMapPacket::encode, SyncEnchantUpgradeMapPacket::decode, SyncEnchantUpgradeMapPacket::handle);
+
 		event.enqueueWork(() -> {
 			registerCompostables();
 			registerBrewingRecipes();

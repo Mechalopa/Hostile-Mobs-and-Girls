@@ -33,8 +33,6 @@ public class ModTags
 		public static final TagKey<Item> CURSE_REMOVE_TEMPLATES = createItemTag("curse_remove_templates");
 		public static final TagKey<Item> CURSE_UNREMOVABLES = createItemTag("curse_unremovables");
 		public static final TagKey<Item> ENCHANTMENT_NOT_UPGRADEABLES = createItemTag("enchantment_not_upgradeables");
-		public static final TagKey<Item> ENCHANTMENT_UPGRADE_ITEMS = createItemTag("enchantment_upgrade_items");
-		public static final TagKey<Item> ENCHANTMENT_UPGRADE_TEMPLATES = createItemTag("enchantment_upgrade_templates");
 		public static final TagKey<Item> FORTRESS_SHIELD_REPAIR_ITEMS = createItemTag("fortress_shield_repair_items");
 		public static final TagKey<Item> GLARYAD_TEMPT_ITEMS = createItemTag("glaryad_tempt_items");
 		public static final TagKey<Item> INSOMNIA_ITEMS = createItemTag("insomnia_items");

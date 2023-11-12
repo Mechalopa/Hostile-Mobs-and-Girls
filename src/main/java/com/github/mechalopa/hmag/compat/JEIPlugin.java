@@ -6,11 +6,11 @@ import java.util.List;
 
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.util.ModTags;
-import com.github.mechalopa.hmag.world.item.EnchantmentUpgradeItem;
-import com.github.mechalopa.hmag.world.item.EnchantmentUpgradeItem.Properties.EnchantmentUpgradeProp;
+import com.github.mechalopa.hmag.world.item.crafting.EnchantmentUpgradeItemManager;
 import com.github.mechalopa.hmag.world.item.crafting.EnchantmentUpgradeRecipe;
 import com.github.mechalopa.hmag.world.item.crafting.RemoveCurseRecipe;
 import com.github.mechalopa.hmag.world.item.crafting.SuspiciousStewUpgradeRecipe;
+import com.github.mechalopa.hmag.world.item.crafting.EnchantmentUpgradeItemManager.EnchantmentUpgradeItemProp;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
@@ -126,57 +126,36 @@ public class JEIPlugin implements IModPlugin
 				else if (recipe instanceof EnchantmentUpgradeRecipe && !flag1)
 				{
 					flag1 = true;
-					Ingredient ingredient = Ingredient.of(ModTags.ItemTags.ENCHANTMENT_UPGRADE_TEMPLATES);
-					Ingredient ingredient1 = Ingredient.of(ModTags.ItemTags.ENCHANTMENT_UPGRADE_ITEMS);
 
-					if (!ingredient.isEmpty() && !ingredient1.isEmpty())
+					if (!EnchantmentUpgradeItemManager.getPropMap().isEmpty())
 					{
 						int i = 0;
 
-						for (ItemStack stack : ingredient1.getItems())
+						for (EnchantmentUpgradeItemProp prop : EnchantmentUpgradeItemManager.getPropMap().keySet())
 						{
-							if (stack != null && !stack.isEmpty() && stack.getItem() != null && stack.getItem() instanceof EnchantmentUpgradeItem)
+							if (prop.getEnchantment() != null)
 							{
-								Item item = stack.getItem();
-								final List<EnchantmentUpgradeProp> eups = ((EnchantmentUpgradeItem)item).getEnchantmentUpgradeProps();
+								final Enchantment enchantment = prop.getEnchantment();
+								ItemStack stack = getEnchantableItemStack(registration, items, enchantment, ModTags.ItemTags.ENCHANTMENT_NOT_UPGRADEABLES);
 
-								if (!eups.isEmpty())
+								if (!stack.isEmpty())
 								{
-									int j = 0;
+									final int minLevel = prop.getMinLevel();
+									final int maxLevel = prop.getMaxLevel();
 
-									for (EnchantmentUpgradeProp eup : eups)
+									for (int j = minLevel; j <= maxLevel; ++j)
 									{
-										if (eup != null)
+										ResourceLocation id = new ResourceLocation(HMaG.MODID, "jei." + recipe.getId().getPath() + "." + i + "." + j);
+										ItemStack stack1 = stack.copy();
+										ItemStack stack2 = stack.copy();
+
+										if (j > 0)
 										{
-											Enchantment enchantment = eup.getEnchantment();
-
-											if (enchantment != null)
-											{
-												final int minLevel = eup.getMinLevel();
-												final int maxLevel = eup.getMaxLevel();
-												ItemStack stack1 = getEnchantableItemStack(registration, items, enchantment, ModTags.ItemTags.ENCHANTMENT_NOT_UPGRADEABLES);
-
-												if (!stack1.isEmpty())
-												{
-													for (int k = minLevel; k <= maxLevel; ++k)
-													{
-														ResourceLocation id = new ResourceLocation(HMaG.MODID, "jei." + recipe.getId().getPath() + "." + i + "." + j + "." + k);
-														ItemStack stack2 = stack1.copy();
-														ItemStack stack3 = stack1.copy();
-
-														if (k > 0)
-														{
-															EnchantmentHelper.setEnchantments(ImmutableMap.of(enchantment, k), stack2);
-														}
-
-														EnchantmentHelper.setEnchantments(ImmutableMap.of(enchantment, k + 1), stack3);
-														addSmithingRecipe(smithingRecipes, id, ingredient, Ingredient.of(stack2), Ingredient.of(stack), stack3);
-													}
-
-													++j;
-												}
-											}
+											EnchantmentHelper.setEnchantments(ImmutableMap.of(enchantment, j), stack1);
 										}
+
+										EnchantmentHelper.setEnchantments(ImmutableMap.of(enchantment, j + 1), stack2);
+										addSmithingRecipe(smithingRecipes, id, Ingredient.of(prop.getTemplate()), Ingredient.of(stack1), Ingredient.of(prop.getAddition()), stack2);
 									}
 
 									++i;

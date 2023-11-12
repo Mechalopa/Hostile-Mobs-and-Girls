@@ -1,0 +1,81 @@
+{
+  "values": [
+    {
+      "addition": "hmag:reinforcing_chain",
+      "enchantment": "minecraft:unbreaking",
+      "maxLevel": 2,
+      "minLevel": 0,
+      "template": "hmag:evil_crystal_upgrade_smithing_template"
+    },
+    {
+      "addition": "hmag:multiplex_reinforcing_chain",
+      "enchantment": "minecraft:unbreaking",
+      "maxLevel": 9,
+      "minLevel": 3,
+      "template": "hmag:evil_crystal_upgrade_smithing_template"
+    },
+    {
+      "addition": "hmag:repulsion_gadget",
+      "enchantment": "minecraft:knockback",
+      "maxLevel": 9,
+      "minLevel": 0,
+      "template": "hmag:evil_crystal_upgrade_smithing_template"
+    },
+    {
+      "addition": "hmag:repulsion_gadget",
+      "enchantment": "minecraft:punch",
+      "maxLevel": 9,
+      "minLevel": 0,
+      "template": "hmag:evil_crystal_upgrade_smithing_template"
+    },
+    {
+      "addition": "hmag:evil_flame",
+      "enchantment": "minecraft:fire_aspect",
+      "maxLevel": 1,
+      "minLevel": 0,
+      "template": "hmag:evil_crystal_upgrade_smithing_template"
+    },
+    {
+      "addition": "hmag:evil_flame",
+      "enchantment": "minecraft:flame",
+      "maxLevel": 0,
+      "minLevel": 0,
+      "template": "hmag:evil_crystal_upgrade_smithing_template"
+    },
+    {
+      "addition": "hmag:evil_thorn",
+      "enchantment": "minecraft:thorns",
+      "maxLevel": 9,
+      "minLevel": 0,
+      "template": "hmag:evil_crystal_upgrade_smithing_template"
+    },
+    {
+      "addition": "hmag:greedy_crystal",
+      "enchantment": "minecraft:looting",
+      "maxLevel": 3,
+      "minLevel": 3,
+      "template": "hmag:evil_crystal_upgrade_smithing_template"
+    },
+    {
+      "addition": "hmag:greedy_crystal_plus",
+      "enchantment": "minecraft:looting",
+      "maxLevel": 4,
+      "minLevel": 4,
+      "template": "hmag:evil_crystal_upgrade_smithing_template"
+    },
+    {
+      "addition": "hmag:fortune_crystal",
+      "enchantment": "minecraft:fortune",
+      "maxLevel": 3,
+      "minLevel": 3,
+      "template": "hmag:evil_crystal_upgrade_smithing_template"
+    },
+    {
+      "addition": "hmag:fortune_crystal_plus",
+      "enchantment": "minecraft:fortune",
+      "maxLevel": 4,
+      "minLevel": 4,
+      "template": "hmag:evil_crystal_upgrade_smithing_template"
+    }
+  ]
+}
