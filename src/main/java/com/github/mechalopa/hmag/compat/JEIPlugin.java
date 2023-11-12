@@ -10,7 +10,7 @@ import com.github.mechalopa.hmag.world.item.crafting.EnchantmentUpgradeItemManag
 import com.github.mechalopa.hmag.world.item.crafting.EnchantmentUpgradeRecipe;
 import com.github.mechalopa.hmag.world.item.crafting.RemoveCurseRecipe;
 import com.github.mechalopa.hmag.world.item.crafting.SuspiciousStewUpgradeRecipe;
-import com.github.mechalopa.hmag.world.item.crafting.EnchantmentUpgradeItemManager.EnchantmentUpgradeItemProp;
+import com.github.mechalopa.hmag.world.item.crafting.EnchantmentUpgradeItemManager.EnchantmentUpgradeProp;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
@@ -131,7 +131,7 @@ public class JEIPlugin implements IModPlugin
 					{
 						int i = 0;
 
-						for (EnchantmentUpgradeItemProp prop : EnchantmentUpgradeItemManager.getPropMap().keySet())
+						for (EnchantmentUpgradeProp prop : EnchantmentUpgradeItemManager.getPropMap().keySet())
 						{
 							if (prop.getEnchantment() != null)
 							{

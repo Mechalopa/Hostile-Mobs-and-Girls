@@ -20,7 +20,6 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
-import net.minecraft.util.Mth;
 import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -32,7 +31,7 @@ public class EnchantmentUpgradeItemManager extends SimpleJsonResourceReloadListe
 	private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 	private static final String DIRECTORY = HMaG.MODID + "/enchantment_upgrade";
 	public static final EnchantmentUpgradeItemManager INSTANCE = new EnchantmentUpgradeItemManager();
-	private static HashMap<EnchantmentUpgradeItemProp, Integer> PROP_MAP = new HashMap<>();
+	private static HashMap<EnchantmentUpgradeProp, Integer> PROP_MAP = new HashMap<>();
 
 	public static record ValuesCodec(List<PropCodec> values)
 	{
@@ -48,8 +47,8 @@ public class EnchantmentUpgradeItemManager extends SimpleJsonResourceReloadListe
 					ForgeRegistries.ITEMS.getCodec().optionalFieldOf("template", Items.BARRIER).forGetter(PropCodec::template),
 					Codec.STRING.fieldOf("enchantment").forGetter(PropCodec::enchantment),
 					Codec.INT.optionalFieldOf("minLevel", 0).forGetter(PropCodec::min),
-					Codec.INT.optionalFieldOf("maxLevel", 0).forGetter(PropCodec::max)
-					).apply(p, PropCodec::new);
+					Codec.INT.optionalFieldOf("maxLevel", 0).forGetter(PropCodec::max))
+					.apply(p, PropCodec::new);
 		}));
 	}
 
@@ -75,34 +74,33 @@ public class EnchantmentUpgradeItemManager extends SimpleJsonResourceReloadListe
 		});
 	}
 
-	private void addToPropMap(ValuesCodec values)
+	private void addToPropMap(ValuesCodec codec)
 	{
-		values.values().forEach(entry -> PROP_MAP.put(new EnchantmentUpgradeItemProp(entry.addition, entry.template, getEnchantmentSupplier(entry.enchantment), Mth.clamp(entry.min, 0, 255), Mth.clamp(entry.max, entry.min, 255)), 0));
+		codec.values().forEach(p -> PROP_MAP.put(new EnchantmentUpgradeProp(p.addition, p.template, getEnchantmentSupplier(p.enchantment), Math.max(p.min, 0), Math.max(p.max, p.min)), 0));
 	}
 
-	public void updateFromServer(HashMap<EnchantmentUpgradeItemProp, Integer> map)
+	public void updateFromServer(HashMap<EnchantmentUpgradeProp, Integer> map)
 	{
 		PROP_MAP = map;
 	}
 
-	public static void encodeMap(HashMap<EnchantmentUpgradeItemProp, Integer> map, FriendlyByteBuf buf)
+	public static void encodeMap(HashMap<EnchantmentUpgradeProp, Integer> map, FriendlyByteBuf buf)
 	{
 		buf.writeVarInt(map.size());
 
-		for (EnchantmentUpgradeItemProp prop : map.keySet())
+		for (EnchantmentUpgradeProp prop : map.keySet())
 		{
 			buf.writeUtf(ForgeRegistries.ITEMS.getKey(prop.getAddition()).toString());
 			buf.writeUtf(ForgeRegistries.ITEMS.getKey(prop.getTemplate()).toString());
 			buf.writeUtf(ForgeRegistries.ENCHANTMENTS.getKey(prop.getEnchantment()).toString());
 			buf.writeVarInt(prop.getMinLevel());
 			buf.writeVarInt(prop.getMaxLevel());
-			HMaG.LOGGER.debug("B");
 		}
 	}
 
-	public static HashMap<EnchantmentUpgradeItemProp, Integer> decodeMap(FriendlyByteBuf buf)
+	public static HashMap<EnchantmentUpgradeProp, Integer> decodeMap(FriendlyByteBuf buf)
 	{
-		HashMap<EnchantmentUpgradeItemProp, Integer> map = new HashMap<>();
+		HashMap<EnchantmentUpgradeProp, Integer> map = new HashMap<>();
 		int size = buf.readVarInt();
 
 		for (int i = 0; i < size; ++i)
@@ -112,8 +110,7 @@ public class EnchantmentUpgradeItemManager extends SimpleJsonResourceReloadListe
 			Supplier<Enchantment> enchantmentSupplier = EnchantmentUpgradeItemManager.getEnchantmentSupplier(buf.readUtf());
 			int minLevel = buf.readVarInt();
 			int maxLevel = buf.readVarInt();
-			map.put(new EnchantmentUpgradeItemProp(addition, template, enchantmentSupplier, minLevel, maxLevel), i);
-			HMaG.LOGGER.debug("A");
+			map.put(new EnchantmentUpgradeProp(addition, template, enchantmentSupplier, minLevel, maxLevel), i);
 		}
 
 		return map;
@@ -129,12 +126,12 @@ public class EnchantmentUpgradeItemManager extends SimpleJsonResourceReloadListe
 		return ForgeRegistries.ENCHANTMENTS.getHolder(new ResourceLocation(name)).orElseThrow();
 	}
 
-	public static HashMap<EnchantmentUpgradeItemProp, Integer> getPropMap()
+	public static HashMap<EnchantmentUpgradeProp, Integer> getPropMap()
 	{
 		return PROP_MAP;
 	}
 
-	public static class EnchantmentUpgradeItemProp
+	public static class EnchantmentUpgradeProp
 	{
 		private final Item addition;
 		private final Item template;
@@ -142,7 +139,7 @@ public class EnchantmentUpgradeItemManager extends SimpleJsonResourceReloadListe
 		private final int minLevel;
 		private final int maxLevel;
 
-		public EnchantmentUpgradeItemProp(Item addition, Item template, Supplier<Enchantment> enchantmentSupplier, int min, int max)
+		public EnchantmentUpgradeProp(Item addition, Item template, Supplier<Enchantment> enchantmentSupplier, int min, int max)
 		{
 			this.addition = addition;
 			this.template = template;

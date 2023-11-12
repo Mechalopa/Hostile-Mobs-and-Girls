@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import com.github.mechalopa.hmag.registry.ModRecipes;
 import com.github.mechalopa.hmag.util.ModTags;
-import com.github.mechalopa.hmag.world.item.crafting.EnchantmentUpgradeItemManager.EnchantmentUpgradeItemProp;
+import com.github.mechalopa.hmag.world.item.crafting.EnchantmentUpgradeItemManager.EnchantmentUpgradeProp;
 import com.google.common.collect.ImmutableMap;
 
 import net.minecraft.core.RegistryAccess;
@@ -36,7 +36,7 @@ public class EnchantmentUpgradeRecipe extends AbstractUpgradeRecipe
 
 		if (!stack.isEmpty() && stack.getItem() != null && !stack1.isEmpty() && !(stack1.getItem() == null || stack1.getItem() == Items.ENCHANTED_BOOK) && !stack1.is(ModTags.ItemTags.ENCHANTMENT_NOT_UPGRADEABLES) && !stack2.isEmpty() && stack2.getItem() != null && !EnchantmentUpgradeItemManager.getPropMap().isEmpty())
 		{
-			for (EnchantmentUpgradeItemProp prop : EnchantmentUpgradeItemManager.getPropMap().keySet())
+			for (EnchantmentUpgradeProp prop : EnchantmentUpgradeItemManager.getPropMap().keySet())
 			{
 				if (prop.getEnchantment() != null && prop.getTemplate().equals(stack.getItem()) && prop.getAddition().equals(stack2.getItem()))
 				{
@@ -78,7 +78,7 @@ public class EnchantmentUpgradeRecipe extends AbstractUpgradeRecipe
 	@Override
 	public ItemStack assemble(Container inv, RegistryAccess registryAccess)
 	{
-		for (EnchantmentUpgradeItemProp prop : EnchantmentUpgradeItemManager.getPropMap().keySet())
+		for (EnchantmentUpgradeProp prop : EnchantmentUpgradeItemManager.getPropMap().keySet())
 		{
 			if (prop.getEnchantment() != null && prop.getTemplate().equals(inv.getItem(0).getItem()) && prop.getAddition().equals(inv.getItem(2).getItem()))
 			{
@@ -126,7 +126,7 @@ public class EnchantmentUpgradeRecipe extends AbstractUpgradeRecipe
 	{
 		if (stack.getItem() != null && !EnchantmentUpgradeItemManager.getPropMap().isEmpty())
 		{
-			for (EnchantmentUpgradeItemProp prop : EnchantmentUpgradeItemManager.getPropMap().keySet())
+			for (EnchantmentUpgradeProp prop : EnchantmentUpgradeItemManager.getPropMap().keySet())
 			{
 				if (prop.getEnchantment() != null && prop.getTemplate().equals(stack.getItem()))
 				{
@@ -149,7 +149,7 @@ public class EnchantmentUpgradeRecipe extends AbstractUpgradeRecipe
 	{
 		if (stack.getItem() != null && !EnchantmentUpgradeItemManager.getPropMap().isEmpty())
 		{
-			for (EnchantmentUpgradeItemProp prop : EnchantmentUpgradeItemManager.getPropMap().keySet())
+			for (EnchantmentUpgradeProp prop : EnchantmentUpgradeItemManager.getPropMap().keySet())
 			{
 				if (prop.getEnchantment() != null && prop.getAddition().equals(stack.getItem()))
 				{

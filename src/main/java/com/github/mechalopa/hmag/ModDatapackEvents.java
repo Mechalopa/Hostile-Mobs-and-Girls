@@ -3,7 +3,7 @@ package com.github.mechalopa.hmag;
 import java.util.List;
 
 import com.github.mechalopa.hmag.network.ModPacketHandler;
-import com.github.mechalopa.hmag.network.packet.SyncEnchantUpgradeMapPacket;
+import com.github.mechalopa.hmag.network.packet.SyncEnchantmentUpgradeMapPacket;
 import com.github.mechalopa.hmag.world.item.RandomberryItem;
 import com.github.mechalopa.hmag.world.item.crafting.EnchantmentUpgradeItemManager;
 import com.google.common.collect.ImmutableList;
@@ -36,13 +36,13 @@ public class ModDatapackEvents
 	{
 		if (event.getPlayer() != null)
 		{
-			ModPacketHandler.INSTANCE.send(PacketDistributor.PLAYER.with(() -> event.getPlayer()), new SyncEnchantUpgradeMapPacket(EnchantmentUpgradeItemManager.getPropMap()));
+			ModPacketHandler.INSTANCE.send(PacketDistributor.PLAYER.with(() -> event.getPlayer()), new SyncEnchantmentUpgradeMapPacket(EnchantmentUpgradeItemManager.getPropMap()));
 		}
 		else
 		{
 			for (ServerPlayer player : event.getPlayerList().getPlayers())
 			{
-				ModPacketHandler.INSTANCE.send(PacketDistributor.PLAYER.with(() -> player), new SyncEnchantUpgradeMapPacket(EnchantmentUpgradeItemManager.getPropMap()));
+				ModPacketHandler.INSTANCE.send(PacketDistributor.PLAYER.with(() -> player), new SyncEnchantmentUpgradeMapPacket(EnchantmentUpgradeItemManager.getPropMap()));
 			}
 		}
 	}
@@ -52,7 +52,7 @@ public class ModDatapackEvents
 	{
 		if (!event.getEntity().level().isClientSide() && event.getEntity() instanceof ServerPlayer)
 		{
-			ModPacketHandler.INSTANCE.send(PacketDistributor.PLAYER.with(() -> (ServerPlayer)event.getEntity()), new SyncEnchantUpgradeMapPacket(EnchantmentUpgradeItemManager.getPropMap()));
+			ModPacketHandler.INSTANCE.send(PacketDistributor.PLAYER.with(() -> (ServerPlayer)event.getEntity()), new SyncEnchantmentUpgradeMapPacket(EnchantmentUpgradeItemManager.getPropMap()));
 		}
 	}
 
