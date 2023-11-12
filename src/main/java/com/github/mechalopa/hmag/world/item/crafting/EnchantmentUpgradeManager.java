@@ -26,11 +26,11 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraftforge.registries.ForgeRegistries;
 
-public class EnchantmentUpgradeItemManager extends SimpleJsonResourceReloadListener
+public class EnchantmentUpgradeManager extends SimpleJsonResourceReloadListener
 {
 	private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 	private static final String DIRECTORY = HMaG.MODID + "/enchantment_upgrade";
-	public static final EnchantmentUpgradeItemManager INSTANCE = new EnchantmentUpgradeItemManager();
+	public static final EnchantmentUpgradeManager INSTANCE = new EnchantmentUpgradeManager();
 	private static HashMap<EnchantmentUpgradeProp, Integer> PROP_MAP = new HashMap<>();
 
 	public static record ValuesCodec(List<PropCodec> values)
@@ -52,7 +52,7 @@ public class EnchantmentUpgradeItemManager extends SimpleJsonResourceReloadListe
 		}));
 	}
 
-	public EnchantmentUpgradeItemManager()
+	public EnchantmentUpgradeManager()
 	{
 		super(GSON, DIRECTORY);
 	}
@@ -105,9 +105,9 @@ public class EnchantmentUpgradeItemManager extends SimpleJsonResourceReloadListe
 
 		for (int i = 0; i < size; ++i)
 		{
-			Item addition = EnchantmentUpgradeItemManager.getItemSupplier(buf.readUtf()).get();
-			Item template = EnchantmentUpgradeItemManager.getItemSupplier(buf.readUtf()).get();
-			Supplier<Enchantment> enchantmentSupplier = EnchantmentUpgradeItemManager.getEnchantmentSupplier(buf.readUtf());
+			Item addition = EnchantmentUpgradeManager.getItemSupplier(buf.readUtf()).get();
+			Item template = EnchantmentUpgradeManager.getItemSupplier(buf.readUtf()).get();
+			Supplier<Enchantment> enchantmentSupplier = EnchantmentUpgradeManager.getEnchantmentSupplier(buf.readUtf());
 			int minLevel = buf.readVarInt();
 			int maxLevel = buf.readVarInt();
 			map.put(new EnchantmentUpgradeProp(addition, template, enchantmentSupplier, minLevel, maxLevel), i);
