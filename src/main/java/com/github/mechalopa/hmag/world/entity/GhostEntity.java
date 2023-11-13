@@ -60,7 +60,7 @@ public class GhostEntity extends AbstractFlyingMonsterEntity
 	protected void registerGoals()
 	{
 		this.goalSelector.addGoal(0, new FloatGoal(this));
-		this.goalSelector.addGoal(4, new AbstractFlyingMonsterEntity.ChargeAttackGoal());
+		this.goalSelector.addGoal(4, new AbstractFlyingMonsterEntity.ChargeAttackGoal(0.325F, 1.75F));
 		this.goalSelector.addGoal(8, new AbstractFlyingMonsterEntity.MoveRandomGoal());
 		this.goalSelector.addGoal(9, new LookAtPlayerGoal(this, Player.class, 3.0F, 1.0F));
 		this.goalSelector.addGoal(10, new LookAtPlayerGoal(this, Mob.class, 8.0F));

@@ -22,6 +22,6 @@
     "minCount": 1,
     "maxCount": 3
   },
-  "charge": 0.25,
-  "energy_budget": 0.25
+  "charge": 0.12,
+  "energy_budget": 0.5
 }
