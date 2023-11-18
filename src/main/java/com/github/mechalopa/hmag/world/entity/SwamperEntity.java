@@ -221,7 +221,7 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 	@Override
 	protected float getWaterSlowDown()
 	{
-		return 0.98F;
+		return 0.9F;
 	}
 
 	@Override

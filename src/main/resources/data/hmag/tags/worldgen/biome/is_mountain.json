@@ -38,6 +38,14 @@
     {
       "id": "terralith:white_cliffs",
       "required": false
+    },
+    {
+      "id": "meadow:meadow_forest",
+      "required": false
+    },
+    {
+      "id": "meadow:meadow_clearing",
+      "required": false
     }
   ]
 }
