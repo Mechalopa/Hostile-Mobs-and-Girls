@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:ink_sac"
+    },
+    {
+      "item": "minecraft:glow_ink_sac"
+    },
+    {
+      "tag": "forge:gems/prismarine"
+    },
+    {
+      "tag": "forge:dusts/prismarine"
+    },
+    {
+      "item": "hmag:evil_crystal_fragment"
+    }
+  ],
+  "result": {
+    "item": "hmag:evil_prismarine"
+  }
+}

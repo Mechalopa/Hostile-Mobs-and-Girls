@@ -9,11 +9,11 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
-public class EvilFlameItem extends Item
+public class EvilFlameItem extends ModItem
 {
-	public EvilFlameItem(Item.Properties builder)
+	public EvilFlameItem(Item.Properties builder, ModItem.Properties builder2)
 	{
-		super(builder);
+		super(builder, builder2);
 	}
 
 	@Override

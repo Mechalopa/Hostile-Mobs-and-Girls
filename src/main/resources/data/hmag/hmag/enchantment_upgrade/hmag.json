@@ -43,9 +43,37 @@
       "template": "hmag:evil_crystal_upgrade_smithing_template"
     },
     {
+      "addition": "hmag:evil_prismarine",
+      "enchantment": "hmag:water_aspect",
+      "maxLevel": 4,
+      "minLevel": 0,
+      "template": "hmag:evil_crystal_upgrade_smithing_template"
+    },
+    {
+      "addition": "hmag:evil_prismarine",
+      "enchantment": "minecraft:riptide",
+      "maxLevel": 2,
+      "minLevel": 0,
+      "template": "hmag:evil_crystal_upgrade_smithing_template"
+    },
+    {
+      "addition": "hmag:evil_prismarine",
+      "enchantment": "minecraft:respiration",
+      "maxLevel": 2,
+      "minLevel": 0,
+      "template": "hmag:evil_crystal_upgrade_smithing_template"
+    },
+    {
+      "addition": "hmag:evil_prismarine",
+      "enchantment": "minecraft:depth_strider",
+      "maxLevel": 2,
+      "minLevel": 0,
+      "template": "hmag:evil_crystal_upgrade_smithing_template"
+    },
+    {
       "addition": "hmag:evil_thorn",
       "enchantment": "minecraft:thorns",
-      "maxLevel": 9,
+      "maxLevel": 6,
       "minLevel": 0,
       "template": "hmag:evil_crystal_upgrade_smithing_template"
     },

@@ -144,7 +144,8 @@ public class ModItems
 	public static final RegistryObject<Item> REINFORCING_CHAIN = REGISTRY.register("reinforcing_chain", () -> new Item(new Item.Properties()));
 	public static final RegistryObject<Item> MULTIPLEX_REINFORCING_CHAIN = REGISTRY.register("multiplex_reinforcing_chain", () -> new ModItem(new Item.Properties().rarity(Rarity.UNCOMMON), new ModItem.Properties().foil()));
 	public static final RegistryObject<Item> REPULSION_GADGET = REGISTRY.register("repulsion_gadget", () -> new Item(new Item.Properties()));
-	public static final RegistryObject<Item> EVIL_FLAME = REGISTRY.register("evil_flame", () -> new EvilFlameItem(new Item.Properties()));
+	public static final RegistryObject<Item> EVIL_FLAME = REGISTRY.register("evil_flame", () -> new EvilFlameItem(new Item.Properties(), new ModItem.Properties().burnTime(1600)));
+	public static final RegistryObject<Item> EVIL_PRISMARINE = REGISTRY.register("evil_prismarine", () -> new Item(new Item.Properties()));
 	public static final RegistryObject<Item> EVIL_THORN = REGISTRY.register("evil_thorn", () -> new EvilThornItem(new Item.Properties()));
 	public static final RegistryObject<Item> GREEDY_CRYSTAL = REGISTRY.register("greedy_crystal", () -> new ModItem(new Item.Properties().rarity(Rarity.UNCOMMON), new ModItem.Properties().foil()));
 	public static final RegistryObject<Item> GREEDY_CRYSTAL_PLUS = REGISTRY.register("greedy_crystal_plus", () -> new ModItem(new Item.Properties().rarity(Rarity.RARE), new ModItem.Properties().foil()));
