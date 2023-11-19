@@ -33,7 +33,7 @@ public class AdditionalEntityLootModifier extends LootModifier
 	public AdditionalEntityLootModifier(LootItemCondition[] conditionsIn, LootItemFunction[] functions, Item addition)
 	{
 		super(conditionsIn);
-        this.functions = functions;
+		this.functions = functions;
 		this.addition = addition;
 	}
 

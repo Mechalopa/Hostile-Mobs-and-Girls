@@ -8,11 +8,6 @@
           "type": "minecraft:item",
           "name": "hmag:heart_of_the_sea_block"
         }
-      ],
-      "conditions": [
-        {
-          "condition": "minecraft:survives_explosion"
-        }
       ]
     }
   ]

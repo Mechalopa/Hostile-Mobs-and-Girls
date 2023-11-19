@@ -101,6 +101,26 @@
     {
       "id": "enderzoology:concussion_creeper",
       "required": false
+    },
+    {
+      "id": "creepycreepers:ghostly_creeper",
+      "required": false
+    },
+    {
+      "id": "creepycreepers:snowy_creeper",
+      "required": false
+    },
+    {
+      "id": "creepycreepers:halloween_creeper",
+      "required": false
+    },
+    {
+      "id": "creepycreepers:tuff_creeper",
+      "required": false
+    },
+    {
+      "id": "creepycreepers:corrupted_creeper",
+      "required": false
     }
   ]
 }

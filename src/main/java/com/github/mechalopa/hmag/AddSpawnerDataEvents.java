@@ -148,8 +148,8 @@ public class AddSpawnerDataEvents
 
 					if (ModConfigs.cachedServer.MELTY_MONSTER_SPAWN_WEIGHT > 0)
 					{
-						event.getSpawns().getSpawner(MobCategory.MONSTER).add(new SpawnerData(ModEntityTypes.MELTY_MONSTER.get(), ModConfigs.cachedServer.MELTY_MONSTER_SPAWN_WEIGHT, 1, 2));
-						event.getSpawns().addMobCharge(ModEntityTypes.MELTY_MONSTER.get(), 0.25D, 0.25D);
+						event.getSpawns().getSpawner(MobCategory.MONSTER).add(new SpawnerData(ModEntityTypes.MELTY_MONSTER.get(), ModConfigs.cachedServer.MELTY_MONSTER_SPAWN_WEIGHT, 1, 3));
+						event.getSpawns().addMobCharge(ModEntityTypes.MELTY_MONSTER.get(), 0.12D, 0.5D);
 					}
 				}
 
