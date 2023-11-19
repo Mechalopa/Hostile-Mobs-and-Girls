@@ -17,6 +17,10 @@
     {
       "id": "#c:is_taiga",
       "required": false
+    },
+    {
+      "id": "meadow:meadow_forest",
+      "required": false
     }
   ]
 }

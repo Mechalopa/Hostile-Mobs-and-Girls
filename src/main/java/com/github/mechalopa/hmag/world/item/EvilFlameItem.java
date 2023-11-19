@@ -12,9 +12,9 @@ import net.minecraft.world.item.enchantment.Enchantments;
 
 public class EvilFlameItem extends EnchantmentUpgradeItem
 {
-	public EvilFlameItem(Item.Properties builder)
+	public EvilFlameItem(Item.Properties builder, ModItem.Properties builder2)
 	{
-		super(builder, new EnchantmentUpgradeItem.Properties().enchantment(() ->Enchantments.FIRE_ASPECT, 0, 1).enchantment(() ->Enchantments.FLAMING_ARROWS, 0, 0));
+		super(builder, builder2, new EnchantmentUpgradeItem.Properties().enchantment(() -> Enchantments.FIRE_ASPECT, 0, 1).enchantment(() -> Enchantments.FLAMING_ARROWS, 0, 0));
 	}
 
 	@Override

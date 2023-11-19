@@ -31,6 +31,10 @@
       "required": false
     },
     {
+      "id": "creeperoverhaul:ocean_creeper",
+      "required": false
+    },
+    {
       "id": "specialmobs:creeper",
       "required": false
     },
@@ -108,6 +112,26 @@
     },
     {
       "id": "good_nights_sleep:baby_creeper",
+      "required": false
+    },
+    {
+      "id": "creepycreepers:ghostly_creeper",
+      "required": false
+    },
+    {
+      "id": "creepycreepers:snowy_creeper",
+      "required": false
+    },
+    {
+      "id": "creepycreepers:halloween_creeper",
+      "required": false
+    },
+    {
+      "id": "creepycreepers:tuff_creeper",
+      "required": false
+    },
+    {
+      "id": "creepycreepers:corrupted_creeper",
       "required": false
     }
   ]

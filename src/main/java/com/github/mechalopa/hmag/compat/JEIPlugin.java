@@ -156,7 +156,7 @@ public class JEIPlugin implements IModPlugin
 											{
 												final int minLevel = eup.getMinLevel();
 												final int maxLevel = eup.getMaxLevel();
-												ItemStack stack1 = getEnchantableItemStack(registration, items, enchantment, ModTags.ItemTags.ENCHANTMENT_NOT_UPGRADEABLES);
+												ItemStack stack1 = getEnchantableItemStack(registration, items, enchantment, ModTags.ItemTags.ENCHANTMENT_NOT_UPGRADABLES);
 
 												if (!stack1.isEmpty())
 												{

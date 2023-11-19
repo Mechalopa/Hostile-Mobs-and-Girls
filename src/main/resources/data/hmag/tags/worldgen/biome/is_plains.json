@@ -28,6 +28,10 @@
     {
       "id": "terralith:valley_clearing",
       "required": false
+    },
+    {
+      "id": "meadow:meadow_clearing",
+      "required": false
     }
   ]
 }

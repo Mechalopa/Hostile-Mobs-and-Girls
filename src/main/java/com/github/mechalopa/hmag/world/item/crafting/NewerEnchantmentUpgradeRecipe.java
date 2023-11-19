@@ -37,7 +37,7 @@ public class NewerEnchantmentUpgradeRecipe extends AbstractNewerUpgradeRecipe
 			ItemStack stack = inv.getItem(1);
 			ItemStack stack1 = inv.getItem(2);
 
-			if (!stack.isEmpty() && !(stack.getItem() == null || stack.getItem() == Items.ENCHANTED_BOOK) && !stack1.isEmpty() && stack1.getItem() != null && stack1.getItem() instanceof EnchantmentUpgradeItem && stack1.is(ModTags.ItemTags.ENCHANTMENT_UPGRADE_ITEMS) && !stack.is(ModTags.ItemTags.ENCHANTMENT_NOT_UPGRADEABLES))
+			if (!stack.isEmpty() && !(stack.getItem() == null || stack.getItem() == Items.ENCHANTED_BOOK) && !stack1.isEmpty() && stack1.getItem() != null && stack1.getItem() instanceof EnchantmentUpgradeItem && stack1.is(ModTags.ItemTags.ENCHANTMENT_UPGRADE_ITEMS) && !stack.is(ModTags.ItemTags.ENCHANTMENT_NOT_UPGRADABLES))
 			{
 				final List<EnchantmentUpgradeProp> eups = ((EnchantmentUpgradeItem)stack1.getItem()).getEnchantmentUpgradeProps();
 
@@ -147,7 +147,7 @@ public class NewerEnchantmentUpgradeRecipe extends AbstractNewerUpgradeRecipe
 	@Override
 	public boolean isBaseIngredient(ItemStack stack)
 	{
-		return stack.getItem() != Items.ENCHANTED_BOOK && !stack.is(ModTags.ItemTags.ENCHANTMENT_NOT_UPGRADEABLES);
+		return stack.getItem() != Items.ENCHANTED_BOOK && !stack.is(ModTags.ItemTags.ENCHANTMENT_NOT_UPGRADABLES);
 	}
 
 	@Override
