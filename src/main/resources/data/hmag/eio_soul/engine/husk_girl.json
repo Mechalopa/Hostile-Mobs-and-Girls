@@ -1,0 +1,6 @@
+{
+  "entity": "hmag:husk_girl",
+  "fluid": "enderio:flowing_nutrient_distillation",
+  "power/mb": 500,
+  "tick/mb": 15
+}

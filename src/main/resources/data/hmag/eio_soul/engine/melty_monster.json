@@ -1,0 +1,6 @@
+{
+  "entity": "hmag:melty_monster",
+  "fluid": "#minecraft:lava",
+  "power/mb": 300,
+  "tick/mb": 15
+}
