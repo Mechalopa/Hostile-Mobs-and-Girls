@@ -4,10 +4,6 @@
     {
       "id": "#forge:is_spooky",
       "required": false
-    },
-    {
-      "id": "#c:is_spooky",
-      "required": false
     }
   ]
 }
