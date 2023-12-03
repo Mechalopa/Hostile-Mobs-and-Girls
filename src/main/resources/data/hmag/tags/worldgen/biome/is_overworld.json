@@ -89,6 +89,22 @@
     {
       "id": "snifferplus:timeless_grotto",
       "required": false
+    },
+    {
+      "id": "spawn:ant_gardens",
+      "required": false
+    },
+    {
+      "id": "spookybats:spooky_oak_forest",
+      "required": false
+    },
+    {
+      "id": "spider_caves:spider_cave",
+      "required": false
+    },
+    {
+      "id": "underground_jungle:underground_jungle",
+      "required": false
     }
   ]
 }

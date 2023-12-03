@@ -33,6 +33,10 @@
     {
       "id": "mysticsbiomes:bamboo_blossom_forest",
       "required": false
+    },
+    {
+      "id": "spookybats:spooky_oak_forest",
+      "required": false
     }
   ]
 }

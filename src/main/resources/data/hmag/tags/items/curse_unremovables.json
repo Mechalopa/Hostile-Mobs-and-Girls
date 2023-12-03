@@ -67,6 +67,10 @@
     {
       "id": "witherproofed:soul_scorched_smithing_template",
       "required": false
+    },
+    {
+      "id": "unusualfishmod:ancient_weapon_smithing_template",
+      "required": false
     }
   ]
 }

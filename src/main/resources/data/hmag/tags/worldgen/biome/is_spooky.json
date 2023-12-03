@@ -4,6 +4,10 @@
     {
       "id": "#forge:is_spooky",
       "required": false
+    },
+    {
+      "id": "spookybats:spooky_oak_forest",
+      "required": false
     }
   ]
 }
