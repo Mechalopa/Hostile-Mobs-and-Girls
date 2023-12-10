@@ -72,6 +72,14 @@
     {
       "id": "unusualfishmod:ancient_weapon_smithing_template",
       "required": false
+    },
+    {
+      "id": "additionaladditions:gilded_netherite_upgrade",
+      "required": false
+    },
+    {
+      "id": "additionaladditions:rose_gold_upgrade",
+      "required": false
     }
   ]
 }

@@ -8,7 +8,7 @@
   "type": "cagedmobs:entity_data",
   "entity": "hmag:ender_executor",
   "samplerTier": 2,
-  "environments": ["end"],
+  "environments": ["end", "warped_nylium"],
   "growTicks": 1800,
   "results": [
     {
