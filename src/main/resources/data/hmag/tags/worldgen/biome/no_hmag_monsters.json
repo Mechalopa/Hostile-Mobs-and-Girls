@@ -5,6 +5,10 @@
     "minecraft:deep_dark",
     "minecraft:the_void",
     {
+      "id": "#forge:no_default_monsters",
+      "required": false
+    },
+    {
       "id": "biomesoplenty:rainbow_hills",
       "required": false
     },

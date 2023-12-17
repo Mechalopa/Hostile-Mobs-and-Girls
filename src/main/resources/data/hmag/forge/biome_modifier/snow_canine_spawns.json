@@ -13,7 +13,7 @@
         "negate": true
       },
       {
-        "name": "#hmag:is_peaceful",
+        "name": "#hmag:no_hmag_monsters",
         "negate": true
       }
     ]
