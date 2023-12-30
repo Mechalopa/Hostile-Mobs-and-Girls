@@ -5,25 +5,16 @@
       "condition": "minecraft:any_of",
       "terms": [
         {
-          "condition": "minecraft:entity_properties",
-          "entity": "this",
-          "predicate": {
-            "type": "minecraft:elder_guardian"
-          }
+          "condition": "forge:loot_table_id",
+          "loot_table_id": "minecraft:entities/elder_guardian"
         },
         {
-          "condition": "minecraft:entity_properties",
-          "entity": "this",
-          "predicate": {
-            "type": "minecraft:ravager"
-          }
+          "condition": "forge:loot_table_id",
+          "loot_table_id": "minecraft:entities/ravager"
         },
         {
-          "condition": "minecraft:entity_properties",
-          "entity": "this",
-          "predicate": {
-            "type": "minecraft:warden"
-          }
+          "condition": "forge:loot_table_id",
+          "loot_table_id": "minecraft:entities/warden"
         }
       ]
     },

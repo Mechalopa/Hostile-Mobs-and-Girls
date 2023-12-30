@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "hmag:ghast_tear_block"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "hmag:blocks/ghast_tear_block"
+}

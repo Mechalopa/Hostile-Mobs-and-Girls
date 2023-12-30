@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "hmag:ender_plasm"
+    }
+  },
+  "result": {
+    "item": "hmag:ender_plasm_block"
+  }
+}

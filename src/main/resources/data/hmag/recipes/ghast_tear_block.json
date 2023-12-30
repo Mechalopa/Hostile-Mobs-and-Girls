@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:ghast_tear"
+    }
+  },
+  "result": {
+    "item": "hmag:ghast_tear_block"
+  }
+}

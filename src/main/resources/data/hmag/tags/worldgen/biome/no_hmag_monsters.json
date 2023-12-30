@@ -35,6 +35,14 @@
     {
       "id": "alexscaves:primordial_caves",
       "required": false
+    },
+    {
+      "id": "spookybats:christmas_forest",
+      "required": false
+    },
+    {
+      "id": "spookybats:spooky_oak_forest",
+      "required": false
     }
   ]
 }

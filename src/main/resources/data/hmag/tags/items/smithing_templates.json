@@ -83,6 +83,14 @@
     {
       "id": "leatheredboots:leather_upgrade_smithing_template",
       "required": false
+    },
+    {
+      "id": "galosphere:silver_upgrade_smithing_template",
+      "required": false
+    },
+    {
+      "id": "galosphere:preserved_template",
+      "required": false
     }
   ]
 }

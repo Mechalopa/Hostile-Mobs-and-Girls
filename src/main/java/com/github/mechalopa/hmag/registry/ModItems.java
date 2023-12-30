@@ -53,6 +53,14 @@ public class ModItems
 
 	public static final RegistryObject<Item> EVIL_CRYSTAL_BLOCK = REGISTRY.register("evil_crystal_block", () -> new BlockItem(ModBlocks.EVIL_CRYSTAL_BLOCK.get(), new Item.Properties()));
 	public static final RegistryObject<Item> SOUL_POWDER_BLOCK = REGISTRY.register("soul_powder_block", () -> new BlockItem(ModBlocks.SOUL_POWDER_BLOCK.get(), new Item.Properties()));
+	public static final RegistryObject<Item> BLAZE_POWDER_BLOCK = REGISTRY.register("blaze_powder_block", () -> new BlockItem(ModBlocks.BLAZE_POWDER_BLOCK.get(), new Item.Properties())
+	{
+		@Override
+		public int getBurnTime(ItemStack stack, @Nullable RecipeType<?> recipeType)
+		{
+			return 9600;
+		}
+	});
 	public static final RegistryObject<Item> ANCIENT_STONE_BLOCK = REGISTRY.register("ancient_stone_block", () -> new BlockItem(ModBlocks.ANCIENT_STONE_BLOCK.get(), new Item.Properties().rarity(Rarity.UNCOMMON)));
 	public static final RegistryObject<Item> BURNING_CORE_BLOCK = REGISTRY.register("burning_core_block", () -> new BlockItem(ModBlocks.BURNING_CORE_BLOCK.get(), new Item.Properties())
 	{
@@ -63,6 +71,8 @@ public class ModItems
 		}
 	});
 	public static final RegistryObject<Item> ENDER_EYE_BLOCK = REGISTRY.register("ender_eye_block", () -> new BlockItem(ModBlocks.ENDER_EYE_BLOCK.get(), new Item.Properties()));
+	public static final RegistryObject<Item> ENDER_PLASM_BLOCK = REGISTRY.register("ender_plasm_block", () -> new BlockItem(ModBlocks.ENDER_PLASM_BLOCK.get(), new Item.Properties()));
+	public static final RegistryObject<Item> GHAST_TEAR_BLOCK = REGISTRY.register("ghast_tear_block", () -> new BlockItem(ModBlocks.GHAST_TEAR_BLOCK.get(), new Item.Properties()));
 	public static final RegistryObject<Item> PRISMARINE_CRYSTAL_BLOCK = REGISTRY.register("prismarine_crystal_block", () -> new BlockItem(ModBlocks.PRISMARINE_CRYSTAL_BLOCK.get(), new Item.Properties()));
 	public static final RegistryObject<Item> SCUTE_BLOCK = REGISTRY.register("scute_block", () -> new BlockItem(ModBlocks.SCUTE_BLOCK.get(), new Item.Properties()));
 	public static final RegistryObject<Item> NETHERITE_SCRAP_BLOCK = REGISTRY.register("netherite_scrap_block", () -> new BlockItem(ModBlocks.NETHERITE_SCRAP_BLOCK.get(), new Item.Properties().fireResistant()));

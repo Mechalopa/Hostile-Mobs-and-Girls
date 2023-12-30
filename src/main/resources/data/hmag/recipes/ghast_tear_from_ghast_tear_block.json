@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "forge:storage_blocks/ghast_tear"
+    }
+  ],
+  "result": {
+    "item": "minecraft:ghast_tear",
+    "count": 9
+  }
+}

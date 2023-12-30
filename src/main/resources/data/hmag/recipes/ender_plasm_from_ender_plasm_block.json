@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "hmag:ender_plasm_block"
+    }
+  ],
+  "result": {
+    "item": "hmag:ender_plasm",
+    "count": 9
+  }
+}

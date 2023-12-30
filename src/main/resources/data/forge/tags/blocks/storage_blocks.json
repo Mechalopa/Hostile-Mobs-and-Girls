@@ -1,7 +1,10 @@
 {
   "replace": false,
   "values": [
+    "#forge:storage_blocks/blaze",
+    "#forge:storage_blocks/blaze_powder",
     "#forge:storage_blocks/ender_eye",
+    "#forge:storage_blocks/ghast_tear",
     "#forge:storage_blocks/prismarine",
     "#forge:storage_blocks/scute",
     "#forge:storage_blocks/netherite_scrap",

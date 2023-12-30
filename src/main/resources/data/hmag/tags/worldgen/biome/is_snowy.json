@@ -4,6 +4,10 @@
     {
       "id": "#forge:is_snowy",
       "required": false
+    },
+    {
+      "id": "spookybats:christmas_forest",
+      "required": false
     }
   ]
 }

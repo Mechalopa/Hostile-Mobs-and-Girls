@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:dusts/blaze"
+    }
+  },
+  "result": {
+    "item": "hmag:blaze_powder_block"
+  }
+}

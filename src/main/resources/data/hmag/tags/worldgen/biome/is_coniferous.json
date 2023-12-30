@@ -13,6 +13,10 @@
     {
       "id": "meadow:meadow_forest",
       "required": false
+    },
+    {
+      "id": "spookybats:christmas_forest",
+      "required": false
     }
   ]
 }
