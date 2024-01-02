@@ -1,5 +1,6 @@
 {
   "type": "minecraft:smelting",
+  "category": "misc",
   "ingredient": [
     {
       "item": "hmag:evil_prismarine"

@@ -16,6 +16,7 @@
       }
     }
   ],
+  "category": "misc",
   "ingredients": [
     {
       "tag": "forge:gems/emerald"

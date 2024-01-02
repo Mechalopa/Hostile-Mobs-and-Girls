@@ -1,5 +1,6 @@
 {
   "type": "minecraft:blasting",
+  "category": "misc",
   "ingredient": [
     {
       "item": "hmag:iron_spear"
