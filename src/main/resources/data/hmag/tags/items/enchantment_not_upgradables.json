@@ -2,6 +2,14 @@
   "replace": false,
   "values": [
     "minecraft:enchanted_book",
-    "#hmag:smithing_templates"
+    "#hmag:smithing_templates",
+    {
+      "id": "endreborn:curious_relic",
+      "required": false
+    },
+    {
+      "id": "endreborn:mysterious_relic",
+      "required": false
+    }
   ]
 }

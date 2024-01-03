@@ -13,10 +13,6 @@
     {
       "id": "terralith:cave/underground_jungle",
       "required": false
-    },
-    {
-      "id": "underground_jungle:underground_jungle",
-      "required": false
     }
   ]
 }
