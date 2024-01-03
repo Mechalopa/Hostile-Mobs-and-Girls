@@ -9,7 +9,11 @@
         "name": "#hmag:is_coniferous"
       },
       {
-        "name": "#hmag:is_peaceful",
+        "name": "#hmag:biomesoplenty/tundra",
+        "negate": true
+      },
+      {
+        "name": "#hmag:no_hmag_monsters",
         "negate": true
       }
     ]

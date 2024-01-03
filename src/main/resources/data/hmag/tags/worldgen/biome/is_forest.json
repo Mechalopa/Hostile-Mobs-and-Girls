@@ -7,10 +7,6 @@
       "required": false
     },
     {
-      "id": "#c:is_forest",
-      "required": false
-    },
-    {
       "id": "terralith:alpha_islands",
       "required": false
     },
@@ -68,6 +64,10 @@
     },
     {
       "id": "mysticsbiomes:bamboo_blossom_forest",
+      "required": false
+    },
+    {
+      "id": "spookybats:spooky_oak_forest",
       "required": false
     }
   ]

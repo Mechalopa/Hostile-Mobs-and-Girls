@@ -18,6 +18,14 @@
       },
       "minAmount": 3,
       "maxAmount": 7
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "hmag:evil_crystal_fragment"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
     }
   ]
 }

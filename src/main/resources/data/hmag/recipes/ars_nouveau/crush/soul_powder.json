@@ -1,0 +1,21 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "ars_nouveau"
+    }
+  ],
+  "type": "ars_nouveau:crush",
+  "input": {
+    "item": "hmag:soul_powder"
+  },
+  "output": [
+    {
+      "chance": 1.0,
+      "count": 1,
+      "item": "minecraft:light_blue_dye",
+      "maxRange": 1
+    }
+  ],
+  "skip_block_place": false
+}

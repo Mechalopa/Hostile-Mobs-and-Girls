@@ -7,10 +7,6 @@
       "required": false
     },
     {
-      "id": "#c:is_savanna",
-      "required": false
-    },
-    {
       "id": "terralith:arid_highlands",
       "required": false
     },

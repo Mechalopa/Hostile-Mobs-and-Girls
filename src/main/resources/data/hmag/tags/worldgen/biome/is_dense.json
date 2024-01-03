@@ -4,10 +4,6 @@
     {
       "id": "#forge:is_dense",
       "required": false
-    },
-    {
-      "id": "#c:is_dense",
-      "required": false
     }
   ]
 }

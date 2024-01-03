@@ -6,7 +6,7 @@
         "name": "#hmag:is_overworld"
       },
       {
-        "name": "#hmag:is_peaceful",
+        "name": "#hmag:no_hmag_monsters",
         "negate": true
       }
     ],

@@ -9,9 +9,14 @@
     "#": {
       "item": "hmag:soul_powder"
     },
-    "X": {
-      "tag": "forge:crops/apple"
-    }
+    "X": [
+      {
+        "tag": "forge:crops/apple"
+      },
+      {
+        "tag": "forge:fruits/apple"
+      }
+    ]
   },
   "result": {
     "item": "hmag:soul_apple"

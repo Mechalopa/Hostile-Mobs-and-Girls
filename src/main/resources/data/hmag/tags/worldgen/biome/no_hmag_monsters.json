@@ -5,6 +5,10 @@
     "minecraft:deep_dark",
     "minecraft:the_void",
     {
+      "id": "#forge:no_default_monsters",
+      "required": false
+    },
+    {
       "id": "biomesoplenty:rainbow_hills",
       "required": false
     },
@@ -30,6 +34,14 @@
     },
     {
       "id": "regions_unexplored:corrupted_holt",
+      "required": false
+    },
+    {
+      "id": "spookybats:christmas_forest",
+      "required": false
+    },
+    {
+      "id": "spookybats:spooky_oak_forest",
       "required": false
     }
   ]

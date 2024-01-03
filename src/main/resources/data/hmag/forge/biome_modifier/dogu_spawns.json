@@ -9,7 +9,7 @@
         "name": "#hmag:is_badlands"
       },
       {
-        "name": "#hmag:is_peaceful",
+        "name": "#hmag:no_hmag_monsters",
         "negate": true
       }
     ],
@@ -21,7 +21,7 @@
         "name": "#hmag:is_jungle"
       },
       {
-        "name": "#hmag:is_peaceful",
+        "name": "#hmag:no_hmag_monsters",
         "negate": true
       }
     ],
@@ -33,7 +33,7 @@
         "name": "#hmag:is_magical"
       },
       {
-        "name": "#hmag:is_peaceful",
+        "name": "#hmag:no_hmag_monsters",
         "negate": true
       }
     ]

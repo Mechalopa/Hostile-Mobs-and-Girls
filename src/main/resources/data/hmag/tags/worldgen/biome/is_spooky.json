@@ -6,7 +6,7 @@
       "required": false
     },
     {
-      "id": "#c:is_spooky",
+      "id": "spookybats:spooky_oak_forest",
       "required": false
     }
   ]
