@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "hmag:ancient_shield",
-    "hmag:fortress_shield"
+    "#hmag:shields"
   ]
 }
