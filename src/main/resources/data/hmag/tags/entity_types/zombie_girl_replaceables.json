@@ -5,6 +5,10 @@
     {
       "id": "specialmobs:zombie",
       "required": false
+    },
+    {
+      "id": "sullysmod:bouldering_zombie",
+      "required": false
     }
   ]
 }

@@ -11,8 +11,6 @@ import com.google.gson.JsonObject;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.Deserializers;
@@ -41,9 +39,7 @@ public class AdditionalEntityLootModifier extends LootModifier
 	@Override
 	public List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context)
 	{
-		Entity entity = context.getParamOrNull(LootContextParams.THIS_ENTITY);
-
-		if (entity != null && entity instanceof LivingEntity && ((LivingEntity)entity).getLootTable() != null && context.getQueriedLootTableId().equals(((LivingEntity)entity).getLootTable()) && this.addition != null)
+		if (context.getParamOrNull(LootContextParams.THIS_ENTITY) != null && context.getParamOrNull(LootContextParams.BLOCK_STATE) == null && this.addition != null)
 		{
 			ItemStack stack = this.addition.getDefaultInstance();
 

@@ -69,6 +69,18 @@
     {
       "id": "spookybats:shulker_bat",
       "required": false
+    },
+    {
+      "id": "spookybats:candy_cane_bat",
+      "required": false
+    },
+    {
+      "id": "spookybats:reindeer_bat",
+      "required": false
+    },
+    {
+      "id": "spookybats:elf_bat",
+      "required": false
     }
   ]
 }

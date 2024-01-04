@@ -6,15 +6,15 @@
     }
   ],
   "type": "cagedmobs:additional_loot_data",
-  "entity": "minecraft:elder_guardian",
+  "entity": "minecraft:ravager",
   "results": [
     {
-      "chance": 0.375,
+      "chance": 0.05,
       "output": {
-        "item": "hmag:ancient_stone"
+        "item": "hmag:evil_crystal_fragment"
       },
       "minAmount": 1,
-      "maxAmount": 1
+      "maxAmount": 2
     }
   ]
 }

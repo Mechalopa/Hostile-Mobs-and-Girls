@@ -31,6 +31,18 @@
     {
       "id": "illagerinvasion:illusionary_dust",
       "required": false
+    },
+    {
+      "id": "cataclysm:amethyst_crab_shell",
+      "required": false
+    },
+    {
+      "id": "cataclysm:crystallized_coral_fragments",
+      "required": false
+    },
+    {
+      "id": "cataclysm:koboleton_bone",
+      "required": false
     }
   ]
 }

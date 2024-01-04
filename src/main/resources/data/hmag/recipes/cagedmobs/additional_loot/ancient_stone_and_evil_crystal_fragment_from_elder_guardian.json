@@ -1,0 +1,28 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cagedmobs"
+    }
+  ],
+  "type": "cagedmobs:additional_loot_data",
+  "entity": "minecraft:elder_guardian",
+  "results": [
+    {
+      "chance": 0.375,
+      "output": {
+        "item": "hmag:ancient_stone"
+      },
+      "minAmount": 1,
+      "maxAmount": 1
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "hmag:evil_crystal_fragment"
+      },
+      "minAmount": 1,
+      "maxAmount": 2
+    }
+  ]
+}

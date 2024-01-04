@@ -3,6 +3,7 @@ package com.github.mechalopa.hmag.client.renderer;
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.DoguModel;
+import com.github.mechalopa.hmag.client.renderer.layers.DoguEyesLayer;
 import com.github.mechalopa.hmag.world.entity.DoguEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 
@@ -21,6 +22,7 @@ public class DoguRenderer extends HumanoidMobRenderer<DoguEntity, DoguModel<Dogu
 	public DoguRenderer(EntityRendererProvider.Context context)
 	{
 		super(context, new DoguModel<>(context.bakeLayer(ModModelLayers.DOGU)), 0.5F);
+		this.addLayer(new DoguEyesLayer<>(this));
 	}
 
 	@Override
