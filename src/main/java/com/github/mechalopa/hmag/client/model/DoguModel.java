@@ -66,10 +66,10 @@ public class DoguModel<T extends Mob> extends HumanoidModel<T>
 			ModClientUtils.addC(headpart2pd, "head_part_2_parts_" + k, 16, 96, -1.0F, -5.0F, -0.5F, 2.0F, 4.0F, 1.0F, 0.0F, 0.0F, 0.0F);
 		}
 
-		PartDefinition bodypd = pd.getChild("body");
-		ModClientUtils.addC(bodypd, "bust", 0, 56, -4.5F, 0.0F, -3.0F, 9.0F, 3.0F, 5.0F, 0.0F, 2.0F, 0.0F);
-		ModClientUtils.addC(bodypd, "skirt_1", 0, 64, -5.0F, 0.0F, -3.0F, 10.0F, 2.0F, 6.0F, 0.0F, 8.0F, 0.0F);
-		ModClientUtils.addC(bodypd, "skirt_2", 0, 72, -5.5F, 0.0F, -3.5F, 11.0F, 2.0F, 7.0F, 0.0F, 10.0F, 0.0F);
+		PartDefinition bodypd = ModClientUtils.addC(pd, "body", 16, 16, -4.0F, 0.0F, -2.0F, 8.0F, 9.0F, 4.0F, 0.0F, 0.0F, 0.0F);
+		ModClientUtils.addC(bodypd, "bust", 0, 56, -4.5F, 0.0F, -3.0F, 9.0F, 3.0F, 5.0F, 0.0F, 2.0F, -0.005F);
+		ModClientUtils.addC(bodypd, "skirt_1", 0, 64, -5.0F, 0.0F, -3.0F, 10.0F, 2.0F, 6.0F, 0.0F, 8.25F, 0.0F);
+		ModClientUtils.addC(bodypd, "skirt_2", 0, 72, -5.5F, 0.0F, -3.5F, 11.0F, 2.0F, 7.0F, 0.0F, 10.25F, 0.0F);
 		PartDefinition rapd = ModClientUtils.addC(pd, "right_arm", 40, 16, -3.0F, -2.0F, -2.0F, 4.0F, 3.0F, 4.0F, -6.0F, 2.0F, 0.0F);
 		PartDefinition lapd = ModClientUtils.addC(pd, "left_arm", 40, 16, -1.0F, -2.0F, -2.0F, 4.0F, 3.0F, 4.0F, 6.0F, 2.0F, 0.0F, true);
 		ModClientUtils.addC(rapd, "right_arm_part_1", 32, 32, -3.0F, 0.0F, -2.0F, 5.0F, 1.0F, 4.0F, -1.0F, 0.0F, 0.0F);

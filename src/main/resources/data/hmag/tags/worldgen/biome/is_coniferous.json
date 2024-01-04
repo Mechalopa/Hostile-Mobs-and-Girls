@@ -11,14 +11,6 @@
       "required": false
     },
     {
-      "id": "#c:is_coniferous",
-      "required": false
-    },
-    {
-      "id": "#c:is_taiga",
-      "required": false
-    },
-    {
       "id": "graveyard_biomes:haunted_forest",
       "required": false
     },
@@ -32,6 +24,10 @@
     },
     {
       "id": "meadow:meadow_forest",
+      "required": false
+    },
+    {
+      "id": "spookybats:christmas_forest",
       "required": false
     }
   ]

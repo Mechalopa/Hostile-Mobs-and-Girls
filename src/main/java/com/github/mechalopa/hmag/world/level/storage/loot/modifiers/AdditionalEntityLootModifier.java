@@ -14,8 +14,6 @@ import com.mojang.serialization.JsonOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -70,9 +68,7 @@ public class AdditionalEntityLootModifier extends LootModifier
 	@Override
 	public ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context)
 	{
-		Entity entity = context.getParamOrNull(LootContextParams.THIS_ENTITY);
-
-		if (entity != null && entity instanceof LivingEntity && ((LivingEntity)entity).getLootTable() != null && context.getQueriedLootTableId().equals(((LivingEntity)entity).getLootTable()) && this.addition != null && !this.addition.equals(Items.BARRIER))
+		if (context.getParamOrNull(LootContextParams.THIS_ENTITY) != null && context.getParamOrNull(LootContextParams.BLOCK_STATE) == null && this.addition != null && !this.addition.equals(Items.BARRIER))
 		{
 			ItemStack stack = this.addition.getDefaultInstance();
 

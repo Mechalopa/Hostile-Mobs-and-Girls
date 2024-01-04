@@ -93,6 +93,10 @@
     {
       "id": "meadow:chicken_1",
       "required": false
+    },
+    {
+      "id": "#chicken_roost:roostultimate",
+      "required": false
     }
   ]
 }

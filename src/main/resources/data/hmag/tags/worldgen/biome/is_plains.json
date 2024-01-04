@@ -10,14 +10,6 @@
       "required": false
     },
     {
-      "id": "#c:is_plains",
-      "required": false
-    },
-    {
-      "id": "#c:is_plain",
-      "required": false
-    },
-    {
       "id": "terralith:blooming_plateau",
       "required": false
     },
@@ -31,6 +23,10 @@
     },
     {
       "id": "meadow:meadow_clearing",
+      "required": false
+    },
+    {
+      "id": "spawn:ant_gardens",
       "required": false
     }
   ]

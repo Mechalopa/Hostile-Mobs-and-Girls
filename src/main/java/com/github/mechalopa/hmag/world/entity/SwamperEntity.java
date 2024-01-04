@@ -486,7 +486,7 @@ public class SwamperEntity extends Monster implements RangedAttackMob
 				Vec3 vec3 = super.getPosition();
 				return (vec3 != null && this.level.getBlockState(new BlockPos(vec3)).is(Blocks.WATER)) ? vec3 : null;
 			}
-			else if ((this.level.isDay() && this.level.canSeeSky(this.mob.blockPosition())))
+			else if (this.level.isDay() && this.level.canSeeSky(this.mob.blockPosition()))
 			{
 				return super.getPosition();
 			}

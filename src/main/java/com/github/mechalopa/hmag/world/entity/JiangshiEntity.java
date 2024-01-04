@@ -221,7 +221,7 @@ public class JiangshiEntity extends Monster
 		{
 			return false;
 		}
-		else if (this.isNoAi() || source.isNoAggro() || source.isFire() || amount <= 0.0F || !((source.getEntity() != null && source.getEntity() instanceof LivingEntity)))
+		else if (this.isNoAi() || source.isNoAggro() || source.isFire() || amount <= 0.0F || !(source.getEntity() != null && source.getEntity() instanceof LivingEntity))
 		{
 			return true;
 		}

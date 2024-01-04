@@ -1,9 +1,14 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    {
-      "tag": "forge:crops/apple"
-    },
+    [
+      {
+        "tag": "forge:crops/apple"
+      },
+      {
+        "tag": "forge:fruits/apple"
+      }
+    ],
     {
       "tag": "hmag:honeys"
     }

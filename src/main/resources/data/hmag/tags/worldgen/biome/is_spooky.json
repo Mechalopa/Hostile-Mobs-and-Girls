@@ -6,10 +6,6 @@
       "required": false
     },
     {
-      "id": "#c:is_spooky",
-      "required": false
-    },
-    {
       "id": "graveyard_biomes:haunted_forest",
       "required": false
     },
@@ -23,6 +19,10 @@
     },
     {
       "id": "graveyard_biomes:deep_dark_forest",
+      "required": false
+    },
+    {
+      "id": "spookybats:spooky_oak_forest",
       "required": false
     }
   ]

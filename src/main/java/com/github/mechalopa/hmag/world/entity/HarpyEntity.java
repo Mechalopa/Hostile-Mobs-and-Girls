@@ -1,7 +1,5 @@
 package com.github.mechalopa.hmag.world.entity;
 
-import java.util.EnumSet;
-
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
@@ -31,7 +29,6 @@ import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
@@ -75,7 +72,7 @@ public class HarpyEntity extends Monster
 		this.goalSelector.addGoal(1, new FloatGoal(this));
 		this.goalSelector.addGoal(3, new LeapAtTargetGoal2(this, 0.39F, 0.45F, 7.0F, 24));
 		this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.0D, false));
-		this.goalSelector.addGoal(5, new HarpyEntity.RandomStrollGoal(this));
+		this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
 		this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
 		this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
 		this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
@@ -271,74 +268,5 @@ public class HarpyEntity extends Monster
 	public Packet<?> getAddEntityPacket()
 	{
 		return NetworkHooks.getEntitySpawningPacket(this);
-	}
-
-	private class RandomStrollGoal extends WaterAvoidingRandomStrollGoal
-	{
-		private boolean isLeaped = false;
-
-		public RandomStrollGoal(HarpyEntity mob)
-		{
-			super(mob, 1.0D);
-			this.setFlags(EnumSet.of(Goal.Flag.JUMP, Goal.Flag.MOVE));
-		}
-
-		@Override
-		public void start()
-		{
-			super.start();
-			this.isLeaped = false;
-		}
-
-		@Override
-		public void stop()
-		{
-			super.stop();
-			this.isLeaped = false;
-		}
-
-		@Override
-		public boolean canContinueToUse()
-		{
-			return super.canContinueToUse() && (!this.isLeaped || !this.mob.isOnGround());
-		}
-
-		@Override
-		public void tick()
-		{
-			super.tick();
-
-			BlockPos pos = this.mob.getNavigation().getTargetPos();
-
-			if (pos != null)
-			{
-				if (!this.isLeaped && this.mob.isOnGround() && this.mob.getRandom().nextInt(32) == 0)
-				{
-					if (Math.abs(pos.getY() - this.mob.getY()) <= 1.5D)
-					{
-						final double d0 = this.mob.distanceToSqr(pos.getX() + 0.5D, pos.getY(), pos.getZ() + 0.5D);
-
-						if (d0 <= 6.0D * 6.0D && d0 > 2.0D * 2.0D)
-						{
-							Vec3 vec3 = this.mob.getDeltaMovement();
-							Vec3 vec31 = new Vec3((pos.getX() + 0.5D) - this.mob.getX(), 0.0D, (pos.getZ() + 0.5D) - this.mob.getZ());
-
-							if (vec31.lengthSqr() > 1.0E-7D)
-							{
-								vec31 = vec31.normalize().scale(0.4D + this.mob.getRandom().nextFloat() * 0.1F).add(vec3.scale(0.2D));
-							}
-
-							this.mob.setDeltaMovement(vec31.x, 0.4D + this.mob.getRandom().nextFloat() * 0.05F, vec31.z);
-							this.isLeaped = true;
-						}
-					}
-				}
-
-				if (this.isLeaped)
-				{
-					this.mob.getLookControl().setLookAt(pos.getX() + 0.5D, pos.getY(), pos.getZ() + 0.5D, 30.0F, 30.0F);
-				}
-			}
-		}
 	}
 }

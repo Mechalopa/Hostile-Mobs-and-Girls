@@ -1,0 +1,21 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "ars_nouveau"
+    }
+  ],
+  "type": "ars_nouveau:crush",
+  "input": {
+    "item": "hmag:mysterious_petal"
+  },
+  "output": [
+    {
+      "chance": 1.0,
+      "count": 4,
+      "item": "minecraft:pink_dye",
+      "maxRange": 1
+    }
+  ],
+  "skip_block_place": false
+}
