@@ -1,6 +1,18 @@
 {
   "replace": false,
   "values": [
-    "minecraft:lush_caves"
+    "minecraft:lush_caves",
+    {
+      "id": "wythers:lush_dripstone_caves",
+      "required": false
+    },
+    {
+      "id": "wythers:lush_fungous_dripstone_caves",
+      "required": false
+    },
+    {
+      "id": "wythers:lush_shroom_caves",
+      "required": false
+    }
   ]
 }

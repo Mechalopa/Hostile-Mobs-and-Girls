@@ -4,6 +4,10 @@
     {
       "id": "#forge:is_swamp",
       "required": false
+    },
+    {
+      "id": "biox:cherry_swamp",
+      "required": false
     }
   ]
 }

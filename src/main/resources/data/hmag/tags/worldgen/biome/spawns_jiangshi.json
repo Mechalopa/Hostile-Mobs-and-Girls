@@ -45,6 +45,38 @@
     {
       "id": "mysticsbiomes:bamboo_blossom_forest",
       "required": false
+    },
+    {
+      "id": "wythers:bamboo_jungle_canyon",
+      "required": false
+    },
+    {
+      "id": "wythers:bamboo_jungle_highlands",
+      "required": false
+    },
+    {
+      "id": "wythers:bamboo_jungle_swamp",
+      "required": false
+    },
+    {
+      "id": "wythers:bamboo_swamp",
+      "required": false
+    },
+    {
+      "id": "wythers:huangshan_highlands",
+      "required": false
+    },
+    {
+      "id": "wythers:sakura_forest",
+      "required": false
+    },
+    {
+      "id": "wythers:sparse_bamboo_jungle",
+      "required": false
+    },
+    {
+      "id": "biox:autumnal_dark_forest",
+      "required": false
     }
   ]
 }
