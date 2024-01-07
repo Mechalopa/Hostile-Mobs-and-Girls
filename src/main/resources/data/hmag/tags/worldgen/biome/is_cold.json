@@ -4,6 +4,10 @@
     {
       "id": "#forge:is_cold",
       "required": false
+    },
+    {
+      "id": "biox:glacial_caves",
+      "required": false
     }
   ]
 }
