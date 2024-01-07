@@ -290,7 +290,9 @@ public class ModConfigs
 				"biomesoplenty:rainbow_hills",
 				"biomesoplenty:crystalline_chasm",
 				"cinderscapes:luminous_grove",
-				"infernalexp:glowstone_canyon"), (s) -> true);
+				"infernalexp:glowstone_canyon",
+				"terralith:mirage_isles",
+				"wythers:deep_dark_forest"), (s) -> true);
 		SPAWN_DIMENSION_BLACKLIST = SERVER_BUILDER.defineList("spawnDimentionBlacklist", Collections.singletonList(""), (s) -> true);
 		MOB_REPLACE_BIOME_BLACKLIST = SERVER_BUILDER.defineList("mobReplaceBiomeBlacklist", Collections.singletonList(""), (s) -> true);
 		MOB_REPLACE_DIMENSION_BLACKLIST = SERVER_BUILDER.defineList("mobReplaceDimentionBlacklist", Collections.singletonList(""), (s) -> true);
