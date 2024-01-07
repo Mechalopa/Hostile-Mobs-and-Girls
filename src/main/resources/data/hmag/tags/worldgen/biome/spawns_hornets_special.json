@@ -8,6 +8,10 @@
     {
       "id": "biomesoplenty:lavender_forest",
       "required": false
+    },
+    {
+      "id": "biox:cherry_swamp",
+      "required": false
     }
   ]
 }

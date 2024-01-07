@@ -4,6 +4,10 @@
     {
       "id": "#forge:is_hot",
       "required": false
+    },
+    {
+      "id": "biox:molten_caves",
+      "required": false
     }
   ]
 }

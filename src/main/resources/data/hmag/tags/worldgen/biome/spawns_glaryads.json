@@ -5,6 +5,18 @@
     {
       "id": "regions_unexplored:lush_delta",
       "required": false
+    },
+    {
+      "id": "wythers:lush_dripstone_caves",
+      "required": false
+    },
+    {
+      "id": "wythers:lush_fungous_dripstone_caves",
+      "required": false
+    },
+    {
+      "id": "wythers:lush_shroom_caves",
+      "required": false
     }
   ]
 }

@@ -16,6 +16,10 @@
     {
       "id": "terralith:cave/desert_caves",
       "required": false
+    },
+    {
+      "id": "biox:sandstony_shore",
+      "required": false
     }
   ]
 }

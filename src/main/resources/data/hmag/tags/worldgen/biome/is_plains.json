@@ -28,6 +28,22 @@
     {
       "id": "spawn:ant_gardens",
       "required": false
+    },
+    {
+      "id": "biox:autumnal_dark_plains",
+      "required": false
+    },
+    {
+      "id": "biox:birch_plains",
+      "required": false
+    },
+    {
+      "id": "biox:dark_plains",
+      "required": false
+    },
+    {
+      "id": "biox:flower_plains",
+      "required": false
     }
   ]
 }
