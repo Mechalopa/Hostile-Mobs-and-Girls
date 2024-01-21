@@ -91,10 +91,10 @@ public class SnowCanineModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 		ModClientUtils.addC(bodypart3pd, cd, "body_part_4", 32, 56, -4.0F, 0.0F, -2.5F, 8.0F, 1.0F, 5.0F, 0.0F, 1.0F, 0.0F);
 		PartDefinition rap1pd = ModClientUtils.addC(rapd, cd, "right_arm_part_1", 40, 20, 0.0F, -2.0F, -1.5F, 2.0F, 6.0F, 3.0F, 0.0F, 0.0F, 0.0F);
 		PartDefinition lap1pd = ModClientUtils.addC(lapd, cd, "left_arm_part_1", 40, 20, -2.0F, -2.0F, -1.5F, 2.0F, 6.0F, 3.0F, 0.0F, 0.0F, 0.0F, true);
-		PartDefinition rap2pd = ModClientUtils.addC(rap1pd, cd, "right_arm_part_2", 16, 32, 0.0F, -0.5F, -1.5F, 3.0F, 4.0F, 3.0F, 0.0F, 3.5F, 0.0F, -0.125F);
-		PartDefinition lap2pd = ModClientUtils.addC(lap1pd, cd, "left_arm_part_2", 16, 32, -2.0F, -0.5F, -1.5F, 3.0F, 4.0F, 3.0F, 0.0F, 3.5F, 0.0F, true, -0.125F);
-		ModClientUtils.addC(rap2pd, cd, "right_arm_part_3", 16, 40, 0.0F, 0.0F, -1.5F, 2.0F, 3.0F, 3.0F, 0.0F, 2.5F, 0.0F);
-		ModClientUtils.addC(lap2pd, cd, "left_arm_part_3", 16, 40, -2.0F, 0.0F, -1.5F, 2.0F, 3.0F, 3.0F, 0.0F, 2.5F, 0.0F, true);
+		PartDefinition rap2pd = ModClientUtils.addC(rap1pd, cd, "right_arm_part_2", 16, 32, 0.0F, -0.5F, -1.5F, 2.0F, 5.0F, 3.0F, 0.0F, 3.5F, 0.0F, -0.125F);
+		PartDefinition lap2pd = ModClientUtils.addC(lap1pd, cd, "left_arm_part_2", 16, 32, -2.0F, -0.5F, -1.5F, 2.0F, 5.0F, 3.0F, 0.0F, 3.5F, 0.0F, true, -0.125F);
+		ModClientUtils.addC(rap2pd, cd, "right_arm_part_3", 16, 40, 0.0F, 0.0F, -1.5F, 2.0F, 3.0F, 3.0F, 0.0F, 3.5F, 0.0F);
+		ModClientUtils.addC(lap2pd, cd, "left_arm_part_3", 16, 40, -2.0F, 0.0F, -1.5F, 2.0F, 3.0F, 3.0F, 0.0F, 3.5F, 0.0F, true);
 		PartDefinition rlp1pd = ModClientUtils.addC(rlpd, cd, "right_leg_part_1", 0, 20, -2.25F, 0.0F, -1.75F, 4.0F, 5.0F, 4.0F, 0.0F, -1.5F, 0.0F);
 		PartDefinition llp1pd = ModClientUtils.addC(llpd, cd, "left_leg_part_1", 0, 20, -1.75F, 0.0F, -1.75F, 4.0F, 5.0F, 4.0F, 0.0F, -1.5F, 0.0F, true);
 		ModClientUtils.addC(rlp1pd, cd, "right_leg_part_2", 0, 40, -1.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, 0.0F, 5.0F, 0.0F);
@@ -151,10 +151,10 @@ public class SnowCanineModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 
 		this.rightLeg.zRot = -((float)Math.PI * 0.01F);
 		this.leftLeg.zRot = (float)Math.PI * 0.01F;
-		this.rightArmPart1.xRot = (float)Math.PI / 12.0F;
-		this.leftArmPart1.xRot = (float)Math.PI / 12.0F;
-		this.rightArmPart2.xRot = -((float)Math.PI / 9.0F);
-		this.leftArmPart2.xRot = -((float)Math.PI / 9.0F);
+		this.rightArmPart1.xRot = (float)Math.PI / 14.0F;
+		this.leftArmPart1.xRot = (float)Math.PI / 14.0F;
+		this.rightArmPart2.xRot = -((float)Math.PI / 6.0F);
+		this.leftArmPart2.xRot = -((float)Math.PI / 6.0F);
 		this.rightArmPart3.xRot = -((float)Math.PI / 24.0F);
 		this.leftArmPart3.xRot = -((float)Math.PI / 24.0F);
 
@@ -178,7 +178,7 @@ public class SnowCanineModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 		this.rightEarPart.zRot = 0.0F;
 		this.leftEarPart.zRot = 0.0F;
 
-		this.tail1.xRot = (float)Math.PI * 2.0F / 5.0F;
+		this.tail1.xRot = (float)Math.PI * 8.0F / 15.0F;
 		this.tail1.xRot += Mth.sin(ageInTicks * 0.09F) * 0.3F;
 		this.tail1.yRot = Mth.cos(ageInTicks * 0.033F) * 0.36F;
 		this.tail2.xRot = (float)Math.PI / 7.0F;

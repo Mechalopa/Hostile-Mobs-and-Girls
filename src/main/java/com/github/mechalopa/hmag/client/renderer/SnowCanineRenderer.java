@@ -18,7 +18,7 @@ public class SnowCanineRenderer extends AbstractGirlRenderer<SnowCanineEntity, S
 
 	public SnowCanineRenderer(EntityRendererProvider.Context context)
 	{
-		super(context, new SnowCanineModel<>(context.bakeLayer(ModModelLayers.SNOW_CANINE)), 0.5F);
+		super(context, new SnowCanineModel<>(context.bakeLayer(ModModelLayers.SNOW_CANINE)), 0.5F, -1);
 		this.addLayer(new SnowCanineEyesLayer<>(this));
 	}
 
