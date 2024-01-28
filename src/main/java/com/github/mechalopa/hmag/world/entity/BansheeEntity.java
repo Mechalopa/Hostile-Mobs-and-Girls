@@ -85,7 +85,7 @@ public class BansheeEntity extends AbstractFlyingMonsterEntity
 	{
 		if (this.level().isClientSide())
 		{
-			Vec3 vec3 = this.getVariant() == 1 ? new Vec3(this.getRandom().nextFloat() * 0.125F + 0.875F, this.getRandom().nextFloat() * 0.1F + 0.9F, this.getRandom().nextFloat() * 0.375F + 0.5F) : new Vec3(this.getRandom().nextFloat() * 0.25F + 0.75F, this.getRandom().nextFloat() * 0.25F + 0.25F, this.getRandom().nextFloat() * 0.5F + 0.5F);
+			Vec3 vec3 = this.getVariant() == 1 ? new Vec3(this.getRandom().nextFloat() * 0.125F + 0.875F, this.getRandom().nextFloat() * 0.1F + 0.9F, this.getRandom().nextFloat() * 0.375F + 0.25F) : new Vec3(this.getRandom().nextFloat() * 0.25F + 0.75F, this.getRandom().nextFloat() * 0.25F + 0.25F, this.getRandom().nextFloat() * 0.5F + 0.5F);
 			this.level().addParticle(new DustParticleOptions(vec3.toVector3f(), 0.875F), this.getRandomX(0.75D), this.getRandomY() - 0.25D, this.getRandomZ(0.75D), 0.0D, 0.0D, 0.0D);
 		}
 

@@ -71,7 +71,7 @@ public class BansheeModel<T extends AbstractFlyingMonsterEntity> extends Abstrac
 		PartDefinition pd = md.getRoot();
 		PartDefinition bodypd = pd.getChild("body");
 		PartDefinition bodypart1pd = ModClientUtils.addC(bodypd, cd, "body_part_1", 32, 32, -2.5F, 0.0F, -1.0F, 5.0F, 2.0F, 2.0F, 0.0F, 7.0F, 0.0F);
-		ModClientUtils.addC(bodypart1pd, cd, "body_part_2", 32, 40, -3.0F, 0.0F, -1.5F, 6.0F, 1.0F, 3.0F, 0.0F, 1.5F, 0.0F);
+		ModClientUtils.addC(bodypart1pd, cd, "body_part_2", 32, 40, -3.0F, 0.0F, -1.5F, 6.0F, 3.0F, 3.0F, 0.0F, 2.0F, 0.0F);
 		PartDefinition s1pd = ModClientUtils.addC(bodypd, cd, "skirt_1", 0, 40, -4.0F, 0.0F, -2.5F, 8.0F, 2.0F, 5.0F, 0.0F, 9.0F, 0.0F);
 		PartDefinition s2pd = ModClientUtils.addC(s1pd, cd, "skirt_2", 0, 48, -4.5F, 0.0F, -3.5F, 9.0F, 2.0F, 7.0F, 0.0F, 2.0F, 0.0F);
 		PartDefinition s3pd = ModClientUtils.addC(s2pd, cd, "skirt_3", 0, 64, -5.0F, 0.0F, -4.5F, 10.0F, 2.0F, 9.0F, 0.0F, 2.0F, 0.0F);
@@ -96,6 +96,10 @@ public class BansheeModel<T extends AbstractFlyingMonsterEntity> extends Abstrac
 		ModClientUtils.addC(lhp2pd, cd, "left_ribbon_part_1", 16, 32, -2.5F, -2.5F, -1.0F, 3.0F, 5.0F, 1.0F, 0.5F, -0.5F, 0.0F, -0.25F);
 		ModClientUtils.addC(lhp2pd, cd, "left_ribbon_part_2", 24, 32, -0.5F, -2.5F, -1.0F, 3.0F, 5.0F, 1.0F, 0.5F, -0.5F, 0.0F, -0.25F);
 		ModClientUtils.addC(headpd, cd, "ahoge", 0, 96, -2.5F, -4.0F, 0.0F, 5.0F, 4.0F, 1.0F, 0.0F, -7.75F, 0.0F, -0.25F);
+		PartDefinition rapd = pd.getChild("right_arm");
+		PartDefinition lapd = pd.getChild("left_arm");
+		ModClientUtils.addC(rapd, cd, "right_arm_part_1", 32, 46, -1.5F, 0.0F, -2.0F, 4.0F, 5.0F, 4.0F, 0.0F, 4.0F, 0.0F);
+		ModClientUtils.addC(lapd, cd, "left_arm_part_1", 32, 46, -2.5F, 0.0F, -2.0F, 4.0F, 5.0F, 4.0F, 0.0F, 4.0F, 0.0F, true);
 		return md;
 	}
 
@@ -113,11 +117,15 @@ public class BansheeModel<T extends AbstractFlyingMonsterEntity> extends Abstrac
 		{
 			this.head.xRot = (float)Math.PI / 10.0F;
 			this.hat.xRot = (float)Math.PI / 10.0F;
+			this.rightHairPart2.xRot = -((float)Math.PI / 12.0F);
+			this.leftHairPart2.xRot = -((float)Math.PI / 12.0F);
 		}
 		else
 		{
 			this.head.xRot = 0.0F;
 			this.hat.xRot = 0.0F;
+			this.rightHairPart2.xRot = (float)Math.PI / 21.0F;
+			this.leftHairPart2.xRot = (float)Math.PI / 21.0F;
 		}
 
 		this.rightLeg.zRot = (float)Math.PI / 24.0F;
@@ -148,12 +156,12 @@ public class BansheeModel<T extends AbstractFlyingMonsterEntity> extends Abstrac
 			this.leftArm.xRot -= Mth.sin(ageInTicks * 0.067F) * 0.03F;
 		}
 
-		this.rightLeg.xRot = ((float)Math.PI / 18.0F);
-		this.leftLeg.xRot = ((float)Math.PI / 18.0F);
+		this.rightLeg.xRot = (float)Math.PI / 18.0F;
+		this.leftLeg.xRot = (float)Math.PI / 18.0F;
 		this.rightLeg.xRot -= f * 1.2F - f1 * 0.4F;
 		this.leftLeg.xRot -= f * 1.2F - f1 * 0.4F;
-		this.rightLeg.xRot += Mth.sin(ageInTicks * 0.048F + (float)Math.PI / 7.0F) * 0.054F;
-		this.leftLeg.xRot += Mth.sin(ageInTicks * 0.048F - (float)Math.PI / 4.0F) * 0.054F;
+		this.rightLeg.xRot += Mth.sin(ageInTicks * 0.048F) * 0.054F;
+		this.leftLeg.xRot -= Mth.sin(ageInTicks * 0.048F) * 0.054F;
 
 		this.hairPart1.xRot = ((float)Math.PI / 18.0F);
 		this.hairPart1.xRot += Mth.sin(ageInTicks * 0.06F) * 0.045F;
@@ -184,15 +192,13 @@ public class BansheeModel<T extends AbstractFlyingMonsterEntity> extends Abstrac
 		this.leftRibbonPart2.yRot = -f3 + f2;
 
 		f2 = Mth.sin(ageInTicks * 0.06F) * 0.04F;
-		f3 = Mth.sin(ageInTicks * 0.045F - (float)Math.PI / 6.0F) * 0.03F;
+		f3 = Mth.sin(ageInTicks * 0.045F - (float)Math.PI / 6.0F) * 0.036F;
 		f4 = Mth.sin(ageInTicks * 0.06F + (float)Math.PI / 6.0F) * 0.045F;
 
-		this.rightHairPart2.xRot = (float)Math.PI / 27.0F;
-		this.leftHairPart2.xRot = ((float)Math.PI / 27.0F);
 		this.rightHairPart2.xRot += f2;
 		this.leftHairPart2.xRot += f2;
-		this.rightHairPart2.zRot = (float)Math.PI / 24.0F;
-		this.leftHairPart2.zRot = -((float)Math.PI / 24.0F);
+		this.rightHairPart2.zRot = (float)Math.PI / 9.0F;
+		this.leftHairPart2.zRot = -((float)Math.PI / 9.0F);
 		this.rightHairPart2.zRot -= f3;
 		this.leftHairPart2.zRot += f3;
 		this.rightHairPart3.zRot = (float)Math.PI / 30.0F;
