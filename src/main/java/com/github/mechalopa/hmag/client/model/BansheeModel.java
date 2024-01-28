@@ -122,6 +122,8 @@ public class BansheeModel<T extends AbstractFlyingMonsterEntity> extends Abstrac
 
 		this.rightLeg.zRot = (float)Math.PI / 24.0F;
 		this.leftLeg.zRot = -((float)Math.PI / 24.0F);
+		this.rightLeg.zRot += Mth.cos(ageInTicks * 0.072F) * 0.042F;
+		this.leftLeg.zRot -= Mth.cos(ageInTicks * 0.072F) * 0.042F;
 
 		float f = Mth.sin(this.attackTime * (float)Math.PI);
 		float f1 = Mth.sin((1.0F - (1.0F - this.attackTime) * (1.0F - this.attackTime)) * (float)Math.PI);
@@ -140,18 +142,18 @@ public class BansheeModel<T extends AbstractFlyingMonsterEntity> extends Abstrac
 			this.leftArm.xRot = -((float)Math.PI * 7.0F / 11.0F);
 			this.rightArm.xRot -= f * 1.2F - f1 * 0.2F;
 			this.leftArm.xRot -= f * 1.2F - f1 * 0.2F;
-			this.rightArm.zRot += Mth.cos(ageInTicks * 0.09F) * 0.01F + 0.05F;
-			this.leftArm.zRot -= Mth.cos(ageInTicks * 0.09F) * 0.01F + 0.05F;
-			this.rightArm.xRot += Mth.sin(ageInTicks * 0.067F) * 0.01F;
-			this.leftArm.xRot -= Mth.sin(ageInTicks * 0.067F) * 0.01F;
+			this.rightArm.zRot += Mth.cos(ageInTicks * 0.09F) * 0.021F + 0.05F;
+			this.leftArm.zRot -= Mth.cos(ageInTicks * 0.09F) * 0.021F + 0.05F;
+			this.rightArm.xRot += Mth.sin(ageInTicks * 0.067F) * 0.03F;
+			this.leftArm.xRot -= Mth.sin(ageInTicks * 0.067F) * 0.03F;
 		}
 
 		this.rightLeg.xRot = ((float)Math.PI / 18.0F);
 		this.leftLeg.xRot = ((float)Math.PI / 18.0F);
 		this.rightLeg.xRot -= f * 1.2F - f1 * 0.4F;
 		this.leftLeg.xRot -= f * 1.2F - f1 * 0.4F;
-		this.rightLeg.xRot += Mth.sin(ageInTicks * 0.06F) * 0.03F;
-		this.leftLeg.xRot -= Mth.sin(ageInTicks * 0.06F) * 0.03F;
+		this.rightLeg.xRot += Mth.sin(ageInTicks * 0.048F + (float)Math.PI / 7.0F) * 0.054F;
+		this.leftLeg.xRot += Mth.sin(ageInTicks * 0.048F - (float)Math.PI / 4.0F) * 0.054F;
 
 		this.hairPart1.xRot = ((float)Math.PI / 18.0F);
 		this.hairPart1.xRot += Mth.sin(ageInTicks * 0.06F) * 0.045F;
