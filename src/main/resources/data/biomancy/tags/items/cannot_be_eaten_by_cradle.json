@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:storage_blocks/netherite_scrap",
+    "#forge:nuggets/netherite_scrap",
+    "#forge:nuggets/netherite",
+    "hmag:nether_star_block",
+    "hmag:heart_of_the_sea_block",
+    "hmag:reinforced_block",
+    "hmag:reinforced_glass",
+    "hmag:tinted_reinforced_glass",
+    "hmag:insomnia_fruit",
+    "hmag:fortune_crystal",
+    "hmag:fortune_crystal_plus",
+    "hmag:fortune_crystal",
+    "hmag:fortune_crystal_plus",
+    "hmag:endless_pearl"
+  ]
+}

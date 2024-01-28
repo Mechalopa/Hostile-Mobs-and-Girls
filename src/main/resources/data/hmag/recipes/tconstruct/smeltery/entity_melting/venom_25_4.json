@@ -7,11 +7,14 @@
   ],
   "type": "tconstruct:entity_melting",
   "entity": {
-    "type": "hmag:jack_frost"
+    "types": [
+      "hmag:spider_nest",
+      "hmag:scorpion"
+    ]
   },
   "result": {
-    "fluid": "minecraft:water",
-    "amount": 16
+    "fluid": "tconstruct:venom",
+    "amount": 25
   },
   "damage": 4
 }

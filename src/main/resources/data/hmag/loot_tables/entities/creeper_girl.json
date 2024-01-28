@@ -83,23 +83,24 @@
       ]
     },
     {
-      "rolls": 1.0,
-      "entries": [
-        {
-          "type": "minecraft:tag",
-          "name": "minecraft:creeper_drop_music_discs",
-          "expand": true
-        }
-      ],
+      "bonus_rolls": 0.0,
       "conditions": [
         {
           "condition": "minecraft:entity_properties",
+          "entity": "killer",
           "predicate": {
             "type": "#minecraft:skeletons"
-          },
-          "entity": "killer"
+          }
         }
-      ]
+      ],
+      "entries": [
+        {
+          "type": "minecraft:tag",
+          "expand": true,
+          "name": "minecraft:creeper_drop_music_discs"
+        }
+      ],
+      "rolls": 1.0
     }
   ],
   "random_sequence": "hmag:entities/creeper_girl"

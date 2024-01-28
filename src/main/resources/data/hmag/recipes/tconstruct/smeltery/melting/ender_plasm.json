@@ -7,12 +7,12 @@
   ],
   "type": "tconstruct:melting",
   "ingredient": {
-    "item": "hmag:cubic_nucleus"
+    "item": "hmag:ender_plasm"
   },
   "result": {
-    "fluid": "tconstruct:earth_slime",
-    "amount": 750
+    "fluid": "tconstruct:molten_ender",
+    "amount": 250
   },
-  "temperature": 50,
-  "time": 62
+  "temperature": 477,
+  "time": 49
 }

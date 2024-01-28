@@ -7,11 +7,11 @@
   ],
   "type": "tconstruct:entity_melting",
   "entity": {
-    "type": "hmag:fortress_keeper"
+    "type": "hmag:banshee"
   },
   "result": {
-    "fluid": "tconstruct:magma",
-    "amount": 16
+    "fluid": "tconstruct:liquid_soul",
+    "amount": 20
   },
   "damage": 4
 }

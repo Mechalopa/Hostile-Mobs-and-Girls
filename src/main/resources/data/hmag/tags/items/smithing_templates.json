@@ -49,7 +49,7 @@
       "required": false
     },
     {
-      "id": "eldritch_end:etyr_upgrade_template",
+      "id": "eldritch_end:etyr_upgrade_pattern",
       "required": false
     },
     {

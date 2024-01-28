@@ -7,13 +7,11 @@
   ],
   "type": "tconstruct:entity_melting",
   "entity": {
-    "types": [
-      "hmag:monolith"
-    ]
+    "type": "hmag:kasha"
   },
   "result": {
-    "fluid": "tconstruct:seared_stone",
-    "amount": 16
+    "fluid": "tconstruct:blazing_blood",
+    "amount": 20
   },
   "damage": 4
 }

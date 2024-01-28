@@ -7,12 +7,12 @@
   ],
   "type": "tconstruct:melting",
   "ingredient": {
-    "item": "hmag:cubic_nucleus"
+    "item": "hmag:soul_powder"
   },
   "result": {
-    "fluid": "tconstruct:earth_slime",
-    "amount": 750
+    "fluid": "tconstruct:liquid_soul",
+    "amount": 250
   },
-  "temperature": 50,
-  "time": 62
+  "temperature": 400,
+  "time": 23
 }

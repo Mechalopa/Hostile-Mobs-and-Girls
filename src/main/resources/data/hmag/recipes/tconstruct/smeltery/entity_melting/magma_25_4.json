@@ -7,10 +7,10 @@
   ],
   "type": "tconstruct:entity_melting",
   "entity": {
-    "type": "hmag:dogu"
+    "type": "hmag:fortress_keeper"
   },
   "result": {
-    "fluid": "tconstruct:molten_clay",
+    "fluid": "tconstruct:magma",
     "amount": 25
   },
   "damage": 4

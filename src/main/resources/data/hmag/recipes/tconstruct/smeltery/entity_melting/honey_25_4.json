@@ -7,11 +7,11 @@
   ],
   "type": "tconstruct:entity_melting",
   "entity": {
-    "type": "hmag:spider_nest"
+    "type": "hmag:hornet"
   },
   "result": {
-    "fluid": "tconstruct:venom",
-    "amount": 25
+    "fluid": "tconstruct:honey",
+    "amount": 20
   },
   "damage": 4
 }

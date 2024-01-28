@@ -1,0 +1,22 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "railcraft"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "railcraft:steel_ingot"
+    }
+  ],
+  "type": "railcraft:blasting",
+  "cookingTime": 400,
+  "experience": 0.0,
+  "ingredient": {
+    "item": "hmag:iron_spear"
+  },
+  "result": {
+    "item": "railcraft:steel_ingot"
+  },
+  "slagOutput": 1
+}

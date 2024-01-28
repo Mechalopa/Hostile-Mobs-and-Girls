@@ -7,12 +7,12 @@
   ],
   "type": "tconstruct:melting",
   "ingredient": {
-    "item": "hmag:cubic_nucleus"
+    "item": "hmag:burning_core"
   },
   "result": {
-    "fluid": "tconstruct:earth_slime",
-    "amount": 750
+    "fluid": "tconstruct:magma",
+    "amount": 1000
   },
-  "temperature": 50,
-  "time": 62
+  "temperature": 300,
+  "time": 127
 }

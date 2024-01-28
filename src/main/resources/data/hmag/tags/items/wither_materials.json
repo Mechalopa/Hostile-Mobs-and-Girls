@@ -30,6 +30,14 @@
     {
       "id": "lookinsharp:withering_artifact",
       "required": false
+    },
+    {
+      "id": "grimoireofgaia:withered_brain",
+      "required": false
+    },
+    {
+      "id": "majruszsdifficulty:cerberus_fang",
+      "required": false
     }
   ]
 }

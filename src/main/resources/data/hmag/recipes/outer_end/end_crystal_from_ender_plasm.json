@@ -2,15 +2,15 @@
   "type": "minecraft:crafting_shaped",
   "conditions": [
     {
-      "type": "forge:not",
-      "value": {
-        "type": "forge:mod_loaded",
-        "modid": "outer_end"
-      }
+      "type": "forge:mod_loaded",
+      "modid": "outer_end"
     },
     {
-      "type": "forge:tag_empty",
-      "tag": "outer_end:crystal_blocks"
+      "type": "forge:not",
+      "value": {
+        "type": "forge:tag_empty",
+        "tag": "outer_end:crystal_blocks"
+      }
     }
   ],
   "category": "misc",
@@ -21,7 +21,7 @@
   ],
   "key": {
     "X": {
-      "item": "minecraft:ender_eye"
+      "tag": "outer_end:crystal_blocks"
     },
     "Y": [
       {

@@ -137,6 +137,10 @@
     {
       "id": "creepycreepers:corrupted_creeper",
       "required": false
+    },
+    {
+      "id": "majruszsdifficulty:creeperling",
+      "required": false
     }
   ]
 }
