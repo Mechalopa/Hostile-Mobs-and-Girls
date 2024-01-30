@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "hmag:zombie_girl",
+    "hmag:husk_girl",
+    "hmag:lich",
+    "hmag:melty_monster",
+    "hmag:cursed_doll",
+    "hmag:jack_frost",
+    "hmag:dogu",
+    "hmag:monolith",
+    "hmag:fortress_keeper",
+    "hmag:necrotic_reaper",
+    "hmag:jiangshi",
+    "hmag:giant_mummy"
+  ]
+}

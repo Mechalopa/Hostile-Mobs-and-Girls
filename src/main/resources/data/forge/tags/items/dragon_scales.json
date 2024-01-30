@@ -16,6 +16,10 @@
     {
       "id": "tconstruct:dragon_scale",
       "required": false
+    },
+    {
+      "id": "dragonloot:dragon_scale",
+      "required": false
     }
   ]
 }
