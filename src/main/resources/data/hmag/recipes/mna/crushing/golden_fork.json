@@ -1,0 +1,13 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mna"
+    }
+  ],
+  "type": "mna:crushing",
+  "input": "hmag:golden_fork",
+  "output": "minecraft:gold_nugget",
+  "output_quantity": 2,
+  "tier": 2
+}

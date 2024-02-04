@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "grimoireofgaia:soulfire"
+    }
+  ],
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "grimoireofgaia:soulfire"
+    }
+  ],
+  "result": {
+    "item": "hmag:soul_powder",
+    "count": 4
+  }
+}

@@ -12,7 +12,6 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -32,17 +31,14 @@ public class SpiderNestRenderer extends MobRenderer<SpiderNestEntity, SpiderNest
 	@Override
 	protected void scale(SpiderNestEntity entity, PoseStack poseStack, float partialTickTime)
 	{
-		float f = (float)entity.tickCount + partialTickTime;
-		float f1 = Mth.sin(f * 0.09F) * 0.015F;
 		poseStack.scale(1.2F, 1.2F, 1.2F);
-		poseStack.scale(1.0F + f1, 1.0F - f1, 1.0F + f1);
 		super.scale(entity, poseStack, partialTickTime);
 	}
 
 	@Override
 	public Vec3 getRenderOffset(SpiderNestEntity entity, float partialTicks)
 	{
-		if (entity.isCharging())
+		if (entity.isCharging() && entity.isAlive())
 		{
 			return new Vec3(this.rand.nextGaussian() * 0.02D, 0.0D, this.rand.nextGaussian() * 0.02D);
 		}

@@ -7,13 +7,11 @@
   ],
   "type": "tconstruct:entity_melting",
   "entity": {
-    "types": [
-      "hmag:monolith"
-    ]
+    "type": "hmag:banshee"
   },
   "result": {
-    "fluid": "tconstruct:seared_stone",
-    "amount": 16
+    "fluid": "tconstruct:liquid_soul",
+    "amount": 20
   },
   "damage": 4
 }

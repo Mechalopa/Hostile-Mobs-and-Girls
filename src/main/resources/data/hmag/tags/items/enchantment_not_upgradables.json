@@ -1,4 +1,9 @@
 {
   "replace": false,
-  "values": []
+  "values": [
+    {
+      "id": "quark:ancient_tome",
+      "required": false
+    }
+  ]
 }

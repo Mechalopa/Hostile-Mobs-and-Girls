@@ -48,6 +48,8 @@ public class ModTags
 		public static final TagKey<EntityType<?>> CRIMSON_SLAUGHTERER_TARGET_ANIMAL_BLACKLIST = createEntityTypeTag("crimson_slaughterer_target_animal_blacklist");
 		public static final TagKey<EntityType<?>> DROWNED_GIRL_REPLACEABLES = createEntityTypeTag("drowned_girl_replaceables");
 		public static final TagKey<EntityType<?>> ENDER_EXECUTOR_REPLACEABLES = createEntityTypeTag("ender_executor_replaceables");
+		public static final TagKey<EntityType<?>> ENDER_RAGE_IMMUNE_BLACKLIST = createEntityTypeTag("ender_rage_immune_blacklist");
+		public static final TagKey<EntityType<?>> ENDER_RAGE_IMMUNE_WHITELIST = createEntityTypeTag("ender_rage_immune_whitelist");
 		public static final TagKey<EntityType<?>> HARD_SNOWBALL_HURTS_EXTRA_TYPES = createEntityTypeTag("hard_snowball_hurts_extra_types");
 		public static final TagKey<EntityType<?>> HUSK_GIRL_REPLACEABLES = createEntityTypeTag("husk_girl_replaceables");
 		public static final TagKey<EntityType<?>> INK_SPIT_IMMUNE = createEntityTypeTag("ink_spit_immune");

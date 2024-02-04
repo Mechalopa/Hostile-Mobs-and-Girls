@@ -12,7 +12,7 @@
   "cast_consumed": true,
   "fluid": {
     "tag": "forge:molten_gold",
-    "amount": 1152
+    "amount": 720
   },
   "result": "hmag:golden_tropical_fish",
   "cooling_time": 161

@@ -7,11 +7,14 @@
   ],
   "type": "tconstruct:entity_melting",
   "entity": {
-    "type": "hmag:jack_frost"
+    "types": [
+      "hmag:glaryad",
+      "hmag:alraune"
+    ]
   },
   "result": {
-    "fluid": "minecraft:water",
-    "amount": 16
+    "fluid": "tconstruct:molten_glass",
+    "amount": 50
   },
-  "damage": 4
+  "damage": 2
 }

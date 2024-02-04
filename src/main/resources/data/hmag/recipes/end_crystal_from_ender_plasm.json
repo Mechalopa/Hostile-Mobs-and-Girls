@@ -9,9 +9,14 @@
     "X": {
       "item": "minecraft:ender_eye"
     },
-    "Y": {
-      "item": "hmag:ender_plasm"
-    },
+    "Y": [
+      {
+        "item": "minecraft:ghast_tear"
+      },
+      {
+        "item": "hmag:ender_plasm"
+      }
+    ],
     "G": {
       "tag": "forge:glass/colorless"
     }

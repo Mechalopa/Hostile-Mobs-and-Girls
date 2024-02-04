@@ -503,7 +503,7 @@ public class ModEvents
 			}
 			else if (effect == ModEffects.ENDER_RAGE.get())
 			{
-				if (livingentity instanceof EnderMan)
+				if (!livingentity.getType().is(ModTags.EntityTypeTags.ENDER_RAGE_IMMUNE_BLACKLIST) && (livingentity instanceof EnderMan || livingentity.getType().is(ModTags.EntityTypeTags.ENDER_RAGE_IMMUNE_WHITELIST)))
 				{
 					event.setResult(Result.DENY);
 				}
