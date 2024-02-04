@@ -7,13 +7,11 @@
   ],
   "type": "tconstruct:entity_melting",
   "entity": {
-    "types": [
-      "hmag:monolith"
-    ]
+    "type": "hmag:fortress_keeper"
   },
   "result": {
-    "fluid": "tconstruct:seared_stone",
-    "amount": 16
+    "fluid": "tconstruct:magma",
+    "amount": 25
   },
   "damage": 4
 }

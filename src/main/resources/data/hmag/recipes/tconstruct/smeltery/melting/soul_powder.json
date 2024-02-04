@@ -1,0 +1,18 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "hmag:soul_powder"
+  },
+  "result": {
+    "fluid": "tconstruct:liquid_soul",
+    "amount": 250
+  },
+  "temperature": 400,
+  "time": 23
+}

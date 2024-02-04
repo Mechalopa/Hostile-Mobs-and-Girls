@@ -1,0 +1,17 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "type": "tconstruct:entity_melting",
+  "entity": {
+    "type": "hmag:kasha"
+  },
+  "result": {
+    "fluid": "tconstruct:blazing_blood",
+    "amount": 20
+  },
+  "damage": 4
+}

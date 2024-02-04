@@ -81,6 +81,10 @@
     {
       "id": "spookybats:elf_bat",
       "required": false
+    },
+    {
+      "id": "spookybats:biggest_fan_bat",
+      "required": false
     }
   ]
 }

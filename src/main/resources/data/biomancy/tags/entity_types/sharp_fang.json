@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "hmag:kobold",
+    "hmag:ogre",
+    "hmag:kasha",
+    "hmag:crimson_slaughterer",
+    "hmag:snow_canine",
+    "hmag:savagefang"
+  ]
+}

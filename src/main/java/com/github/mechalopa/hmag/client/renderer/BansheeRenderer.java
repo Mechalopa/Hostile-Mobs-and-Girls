@@ -32,14 +32,14 @@ public class BansheeRenderer extends AbstractGirlRenderer<BansheeEntity, Banshee
 	{
 		super.scale(entity, poseStack, partialTickTime);
 		float f = (float)entity.tickCount + partialTickTime;
-		poseStack.translate(0.0F, -0.12F + Mth.sin(f * 0.03F) * 0.06F, 0.0F);
+		poseStack.translate(0.0F, -0.06F + Mth.sin(f * 0.06F) * 0.04F, 0.0F);
 	}
 
 	@Override
 	protected void setupRotations(BansheeEntity entity, PoseStack poseStack, float ageInTicks, float rotationYaw, float partialTicks)
 	{
 		super.setupRotations(entity, poseStack, ageInTicks, rotationYaw, partialTicks);
-		poseStack.mulPose(Vector3f.XP.rotationDegrees(-10.0F));
+		poseStack.mulPose(Vector3f.XP.rotationDegrees(-6.0F));
 	}
 
 	@Override

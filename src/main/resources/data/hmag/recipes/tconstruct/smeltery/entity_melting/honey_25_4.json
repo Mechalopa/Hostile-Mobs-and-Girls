@@ -1,0 +1,17 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "type": "tconstruct:entity_melting",
+  "entity": {
+    "type": "hmag:hornet"
+  },
+  "result": {
+    "fluid": "tconstruct:honey",
+    "amount": 20
+  },
+  "damage": 4
+}

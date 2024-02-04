@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:nuggets/netherite_scrap",
+    "#forge:nuggets/netherite",
+    "hmag:nether_star_block",
+    "hmag:heart_of_the_sea_block",
+    "hmag:reinforced_block",
+    "hmag:reinforced_glass",
+    "hmag:tinted_reinforced_glass",
+    "hmag:insomnia_fruit",
+    "hmag:endless_pearl"
+  ]
+}

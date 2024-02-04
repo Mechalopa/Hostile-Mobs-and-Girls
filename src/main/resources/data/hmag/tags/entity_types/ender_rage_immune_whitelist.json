@@ -1,0 +1,94 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:endermen",
+    {
+      "id": "alexsmobs:spectre",
+      "required": false
+    },
+    {
+      "id": "enderzoology:enderminy",
+      "required": false
+    },
+    {
+      "id": "enderzoology:infested_zombie",
+      "required": false
+    },
+    {
+      "id": "cataclysm:ender_golem",
+      "required": false
+    },
+    {
+      "id": "cataclysm:ender_guardian",
+      "required": false
+    },
+    {
+      "id": "grimoireofgaia:behender",
+      "required": false
+    },
+    {
+      "id": "grimoireofgaia:ender_dragon_girl",
+      "required": false
+    },
+    {
+      "id": "grimoireofgaia:ender_eye",
+      "required": false
+    },
+    {
+      "id": "grimoireofgaia:ender_girl",
+      "required": false
+    },
+    {
+      "id": "mutantmonsters:mutant_enderman",
+      "required": false
+    },
+    {
+      "id": "mutantmonsters:endersoul_clone",
+      "required": false
+    },
+    {
+      "id": "endermail:ender_mailman",
+      "required": false
+    },
+    {
+      "id": "#farlanders:farlander_allies",
+      "required": false
+    },
+    {
+      "id": "farlanders:looter",
+      "required": false
+    },
+    {
+      "id": "farlanders:rebel",
+      "required": false
+    },
+    {
+      "id": "farlanders:wanderer",
+      "required": false
+    },
+    {
+      "id": "dungeons_mobs:blastling",
+      "required": false
+    },
+    {
+      "id": "dungeons_mobs:endersent",
+      "required": false
+    },
+    {
+      "id": "dungeons_mobs:snareling",
+      "required": false
+    },
+    {
+      "id": "dungeons_mobs:watchling",
+      "required": false
+    },
+    {
+      "id": "specialmobs:endercreeper",
+      "required": false
+    },
+    {
+      "id": "eldritch_end:dendler",
+      "required": false
+    }
+  ]
+}

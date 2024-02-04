@@ -105,7 +105,7 @@ public class SpiderNestModel<T extends SpiderNestEntity> extends HierarchicalMod
 	public static LayerDefinition createBodyLayer()
 	{
 		float f = 8.0F;
-		float f1 = 7.0F;
+		float f1 = 6.75F;
 		float f2 = 8.5F;
 		MeshDefinition md = new MeshDefinition();
 		PartDefinition pd = md.getRoot();
@@ -167,17 +167,19 @@ public class SpiderNestModel<T extends SpiderNestEntity> extends HierarchicalMod
 	@Override
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
-		if (entity.isCharging())
+		if (entity.isCharging() && entity.isAlive())
 		{
 			this.head.zRot = (ageInTicks * 1.2F) % (180.0F / (float)Math.PI) * (entity.getMainArm() == HumanoidArm.RIGHT ? 1.0F : -1.0F);
 			this.head.yRot = 0.0F;
 			this.head.xRot = 0.0F;
+			this.head.z = -8.0F;
 		}
 		else
 		{
 			this.head.zRot = 0.0F;
 			this.head.yRot = netHeadYaw / (180.0F / (float)Math.PI);
 			this.head.xRot = headPitch / (180.0F / (float)Math.PI);
+			this.head.z = -8.0F + Mth.cos(limbSwing * 0.66662F) * 1.0F * Mth.clamp(limbSwingAmount, -1.0F, 1.0F);
 		}
 
 //		this.bodyPart1.xRot = 0.0F;
@@ -257,11 +259,11 @@ public class SpiderNestModel<T extends SpiderNestEntity> extends HierarchicalMod
 
 		this.bodyPart9Right.zRot = -((float)Math.PI / 7.0F);
 		this.bodyPart9Left.zRot = (float)Math.PI / 7.0F;
-		this.bodyPart9Right.zRot += Mth.sin(ageInTicks * 0.067F - (float)Math.PI / 6.0F) * 0.036F;
-		this.bodyPart9Left.zRot -= Mth.sin(ageInTicks * 0.067F - (float)Math.PI / 6.0F) * 0.036F;
+		this.bodyPart9Right.zRot += Mth.sin(ageInTicks * 0.067F - (float)Math.PI / 6.0F) * 0.072F;
+		this.bodyPart9Left.zRot -= Mth.sin(ageInTicks * 0.067F - (float)Math.PI / 6.0F) * 0.072F;
 		this.bodyPart10Right.zRot = -((float)Math.PI / 15.0F);
 		this.bodyPart10Left.zRot = (float)Math.PI / 15.0F;
-		this.bodyPart10Right.zRot += Mth.sin(ageInTicks * 0.067F - (float)Math.PI / 3.0F) * 0.036F;
-		this.bodyPart10Left.zRot -= Mth.sin(ageInTicks * 0.067F - (float)Math.PI / 3.0F) * 0.036F;
+		this.bodyPart10Right.zRot += Mth.sin(ageInTicks * 0.067F - (float)Math.PI / 3.0F) * 0.072F;
+		this.bodyPart10Left.zRot -= Mth.sin(ageInTicks * 0.067F - (float)Math.PI / 3.0F) * 0.072F;
 	}
 }
