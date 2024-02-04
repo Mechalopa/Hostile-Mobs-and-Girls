@@ -1,6 +1,35 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/block",
+  "render_type": "translucent",
   "textures": {
-    "all": "hmag:block/ender_plasm_block"
-  }
+    "particle": "hmag:block/ender_plasm_block_inner",
+    "inner": "hmag:block/ender_plasm_block_inner",
+    "outer": "hmag:block/ender_plasm_block_outer"
+  },
+  "elements": [
+    {
+      "from": [ 0.625, 0.625, 0.625 ],
+      "to": [ 15.375, 15.375, 15.375 ],
+      "faces": {
+        "down": { "uv": [ 0, 0, 16, 16 ], "texture": "#inner" },
+        "up": { "uv": [ 0, 0, 16, 16 ], "texture": "#inner" },
+        "north": { "uv": [ 0, 0, 16, 16 ], "texture": "#inner" },
+        "south": { "uv": [ 0, 0, 16, 16 ], "texture": "#inner" },
+        "west": { "uv": [ 0, 0, 16, 16 ], "texture": "#inner" },
+        "east": { "uv": [ 0, 0, 16, 16 ], "texture": "#inner" }
+      }
+    },
+    {
+      "from": [ 0, 0, 0 ],
+      "to": [ 16, 16, 16 ],
+      "faces": {
+        "down": { "uv": [ 0, 0, 16, 16 ], "texture": "#outer", "cullface": "down" },
+        "up": { "uv": [ 0, 0, 16, 16 ], "texture": "#outer", "cullface": "up" },
+        "north": { "uv": [ 0, 0, 16, 16 ], "texture": "#outer", "cullface": "north" },
+        "south": { "uv": [ 0, 0, 16, 16 ], "texture": "#outer", "cullface": "south" },
+        "west": { "uv": [ 0, 0, 16, 16 ], "texture": "#outer", "cullface": "west" },
+        "east": { "uv": [ 0, 0, 16, 16 ], "texture": "#outer", "cullface": "east" }
+      }
+    }
+  ]
 }
