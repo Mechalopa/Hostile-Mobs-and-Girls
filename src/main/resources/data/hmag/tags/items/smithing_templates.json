@@ -91,6 +91,10 @@
     {
       "id": "galosphere:preserved_template",
       "required": false
+    },
+    {
+      "id": "quark:smithing_template_rune",
+      "required": false
     }
   ]
 }

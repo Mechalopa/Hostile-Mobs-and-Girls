@@ -97,6 +97,10 @@
     {
       "id": "#chicken_roost:roostultimate",
       "required": false
+    },
+    {
+      "id": "forcecraft:cold_chicken",
+      "required": false
     }
   ]
 }
