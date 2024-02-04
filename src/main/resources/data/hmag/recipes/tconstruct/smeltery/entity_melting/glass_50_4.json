@@ -12,8 +12,6 @@
       "hmag:alraune"
     ]
   },
-  "entity": {
-  },
   "result": {
     "fluid": "tconstruct:molten_glass",
     "amount": 50
