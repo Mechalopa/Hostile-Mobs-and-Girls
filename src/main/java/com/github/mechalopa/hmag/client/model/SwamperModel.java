@@ -121,6 +121,7 @@ public class SwamperModel<T extends Mob> extends HierarchicalModel<T>
 		this.head.xRot = headPitch / (180.0F / (float)Math.PI);
 		this.headPart.xRot = -((float)Math.PI / 24.0F);
 		this.headPart.xRot += Mth.sin(ageInTicks * 0.067F) * 0.024F;
+		ModClientUtils.scaleModelPart(this.headPart, Mth.sin(ageInTicks * 0.105F + (float)Math.PI / 10.0F) * 0.018F);
 
 		this.rightFin.xRot = -((float)Math.PI / 18.0F);
 		this.leftFin.xRot = -((float)Math.PI / 18.0F);
@@ -174,6 +175,8 @@ public class SwamperModel<T extends Mob> extends HierarchicalModel<T>
 		this.leftArmPart2.zRot += ((float)Math.PI / 7.0F) * f4;
 		this.rightArmPart2.zRot += Mth.cos(ageInTicks * 0.067F + (float)Math.PI / 3.0F) * 0.024F * f2;
 		this.leftArmPart2.zRot -= Mth.cos(ageInTicks * 0.067F + (float)Math.PI * 11.0F / 24.0F) * 0.024F * f2;
+		ModClientUtils.scaleModelPart(this.rightArmPart1, Mth.sin(ageInTicks * 0.105F + (float)Math.PI / 2.0F) * 0.015F);
+		ModClientUtils.scaleModelPart(this.leftArmPart1, Mth.sin(ageInTicks * 0.105F + (float)Math.PI / 2.0F) * 0.015F);
 
 		this.rightLeg1.xRot = Mth.cos(f + (float)Math.PI) * 1.4F * f1;
 		this.leftLeg1.xRot = Mth.cos(f + (float)Math.PI) * 1.4F * f1;

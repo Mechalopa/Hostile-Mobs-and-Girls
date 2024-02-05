@@ -266,20 +266,13 @@ public class SpiderNestModel<T extends SpiderNestEntity> extends HierarchicalMod
 		this.bodyPart10Right.zRot += Mth.sin(ageInTicks * 0.067F - (float)Math.PI / 3.0F) * 0.072F;
 		this.bodyPart10Left.zRot -= Mth.sin(ageInTicks * 0.067F - (float)Math.PI / 3.0F) * 0.072F;
 
-		scaleModelPart(this.root, Mth.sin(ageInTicks * 0.09F) * 0.0075F);
-		scaleModelPart(this.body, Mth.cos(limbSwing * 0.99993F) * 0.075F * Mth.clamp(limbSwingAmount, -1.0F, 1.0F));
-		scaleModelPart(this.bodyPart3, Mth.sin(ageInTicks * 0.54F + (float)Math.PI / 4.0F) * 0.025F);
-		scaleModelPart(this.bodyPart4, Mth.sin(ageInTicks * 0.54F - (float)Math.PI * 2.0F / 9.0F) * 0.025F);
-		scaleModelPart(this.bodyPart5, Mth.sin(ageInTicks * 0.54F - (float)Math.PI / 3.0F) * 0.025F);
-		scaleModelPart(this.bodyPart6, Mth.sin(ageInTicks * 0.54F + (float)Math.PI * 4.0F / 15.0F) * 0.025F);
-		scaleModelPart(this.bodyPart7, Mth.sin(ageInTicks * 0.54F + (float)Math.PI / 7.0F) * 0.025F);
-		scaleModelPart(this.bodyPart8, Mth.sin(ageInTicks * 0.54F - (float)Math.PI / 3.0F) * 0.025F);
-	}
-
-	private static void scaleModelPart(ModelPart part, float scale)
-	{
-		part.xScale = 1.0F + scale;
-		part.yScale = 1.0F - scale;
-		part.zScale = 1.0F + scale;
+		ModClientUtils.scaleModelPart(this.root, Mth.sin(ageInTicks * 0.09F) * 0.0075F);
+		ModClientUtils.scaleModelPart(this.body, Mth.cos(limbSwing * 0.99993F) * 0.075F * Mth.clamp(limbSwingAmount, -1.0F, 1.0F));
+		ModClientUtils.scaleModelPart(this.bodyPart3, Mth.sin(ageInTicks * 0.54F + (float)Math.PI / 4.0F) * 0.025F);
+		ModClientUtils.scaleModelPart(this.bodyPart4, Mth.sin(ageInTicks * 0.54F - (float)Math.PI * 2.0F / 9.0F) * 0.025F);
+		ModClientUtils.scaleModelPart(this.bodyPart5, Mth.sin(ageInTicks * 0.54F - (float)Math.PI / 3.0F) * 0.025F);
+		ModClientUtils.scaleModelPart(this.bodyPart6, Mth.sin(ageInTicks * 0.54F + (float)Math.PI * 4.0F / 15.0F) * 0.025F);
+		ModClientUtils.scaleModelPart(this.bodyPart7, Mth.sin(ageInTicks * 0.54F + (float)Math.PI / 7.0F) * 0.025F);
+		ModClientUtils.scaleModelPart(this.bodyPart8, Mth.sin(ageInTicks * 0.54F - (float)Math.PI / 3.0F) * 0.025F);
 	}
 }
