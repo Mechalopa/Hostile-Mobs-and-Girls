@@ -87,22 +87,22 @@ public class SnowCanineModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 		PartDefinition bodypd = pd.getChild("body");
 		PartDefinition bodypart1pd = bodypd.getChild("body_part_1");
 		PartDefinition bodypart2pd = ModClientUtils.addC(bodypart1pd, cd, "body_part_2", 32, 40, -3.0F, 0.0F, -1.5F, 6.0F, 1.0F, 3.0F, 0.0F, 2.5F, 0.0F);
-		PartDefinition bodypart3pd = ModClientUtils.addC(bodypart2pd, cd, "body_part_3", 32, 48, -3.5F, 0.0F, -2.0F, 7.0F, 2.0F, 4.0F, 0.0F, 0.5F, 0.0F);
+		PartDefinition bodypart3pd = ModClientUtils.addC(bodypart2pd, cd, "body_part_3", 32, 48, -4.0F, 0.0F, -2.0F, 8.0F, 2.0F, 4.0F, 0.0F, 0.5F, 0.0F);
 		ModClientUtils.addC(bodypart3pd, cd, "body_part_4", 32, 56, -4.0F, 0.0F, -2.5F, 8.0F, 1.0F, 5.0F, 0.0F, 1.0F, 0.0F);
 		PartDefinition rap1pd = ModClientUtils.addC(rapd, cd, "right_arm_part_1", 40, 20, 0.0F, -2.0F, -1.5F, 2.0F, 6.0F, 3.0F, 0.0F, 0.0F, 0.0F);
 		PartDefinition lap1pd = ModClientUtils.addC(lapd, cd, "left_arm_part_1", 40, 20, -2.0F, -2.0F, -1.5F, 2.0F, 6.0F, 3.0F, 0.0F, 0.0F, 0.0F, true);
-		PartDefinition rap2pd = ModClientUtils.addC(rap1pd, cd, "right_arm_part_2", 16, 32, 0.0F, -0.5F, -1.5F, 2.0F, 5.0F, 3.0F, 0.0F, 3.5F, 0.0F, -0.125F);
-		PartDefinition lap2pd = ModClientUtils.addC(lap1pd, cd, "left_arm_part_2", 16, 32, -2.0F, -0.5F, -1.5F, 2.0F, 5.0F, 3.0F, 0.0F, 3.5F, 0.0F, true, -0.125F);
+		PartDefinition rap2pd = ModClientUtils.addC(rap1pd, cd, "right_arm_part_2", 16, 32, 0.0F, -0.5F, -1.5F, 2.0F, 5.0F, 3.0F, 0.0F, 3.5F, 0.75F, -0.125F);
+		PartDefinition lap2pd = ModClientUtils.addC(lap1pd, cd, "left_arm_part_2", 16, 32, -2.0F, -0.5F, -1.5F, 2.0F, 5.0F, 3.0F, 0.0F, 3.5F, 0.75F, true, -0.125F);
 		ModClientUtils.addC(rap2pd, cd, "right_arm_part_3", 16, 40, 0.0F, 0.0F, -1.5F, 2.0F, 3.0F, 3.0F, 0.0F, 3.5F, 0.0F);
 		ModClientUtils.addC(lap2pd, cd, "left_arm_part_3", 16, 40, -2.0F, 0.0F, -1.5F, 2.0F, 3.0F, 3.0F, 0.0F, 3.5F, 0.0F, true);
 		PartDefinition rlp1pd = ModClientUtils.addC(rlpd, cd, "right_leg_part_1", 0, 20, -2.25F, 0.0F, -1.75F, 4.0F, 5.0F, 4.0F, 0.0F, -1.5F, 0.0F);
 		PartDefinition llp1pd = ModClientUtils.addC(llpd, cd, "left_leg_part_1", 0, 20, -1.75F, 0.0F, -1.75F, 4.0F, 5.0F, 4.0F, 0.0F, -1.5F, 0.0F, true);
 		ModClientUtils.addC(rlp1pd, cd, "right_leg_part_2", 0, 40, -1.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, 0.0F, 5.0F, 0.0F);
 		ModClientUtils.addC(llp1pd, cd, "left_leg_part_2", 0, 40, -1.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, 0.0F, 5.0F, 0.0F, true);
-		PartDefinition rlp3pd = ModClientUtils.addC(rlp1pd, cd, "right_leg_part_3", 0, 46, -1.5F, 0.0F, -1.5F, 3.0F, 5.0F, 3.0F, 0.0F, 5.25F, 0.0F, -0.005F);
-		PartDefinition llp3pd = ModClientUtils.addC(llp1pd, cd, "left_leg_part_3", 0, 46, -1.5F, 0.0F, -1.5F, 3.0F, 5.0F, 3.0F, 0.0F, 5.25F, 0.0F, true, -0.005F);
-		PartDefinition rlp4pd = ModClientUtils.addC(rlp3pd, cd, "right_leg_part_4", 0, 56, -1.5F, -1.5F, -1.0F, 3.0F, 4.0F, 2.0F, 0.0F, 5.75F, 0.0F, 0.125F);
-		PartDefinition llp4pd = ModClientUtils.addC(llp3pd, cd, "left_leg_part_4", 0, 56, -1.5F, -1.5F, -1.0F, 3.0F, 4.0F, 2.0F, 0.0F, 5.75F, 0.0F, true, 0.125F);
+		PartDefinition rlp3pd = ModClientUtils.addC(rlp1pd, cd, "right_leg_part_3", 0, 46, -1.5F, 0.0F, -1.5F, 3.0F, 5.0F, 3.0F, 0.0F, 5.25F, 0.25F, -0.005F);
+		PartDefinition llp3pd = ModClientUtils.addC(llp1pd, cd, "left_leg_part_3", 0, 46, -1.5F, 0.0F, -1.5F, 3.0F, 5.0F, 3.0F, 0.0F, 5.25F, 0.25F, true, -0.005F);
+		PartDefinition rlp4pd = ModClientUtils.addC(rlp3pd, cd, "right_leg_part_4", 0, 56, -1.5F, -1.5F, -1.0F, 3.0F, 4.0F, 2.0F, 0.0F, 5.75F, -0.125F, 0.125F);
+		PartDefinition llp4pd = ModClientUtils.addC(llp3pd, cd, "left_leg_part_4", 0, 56, -1.5F, -1.5F, -1.0F, 3.0F, 4.0F, 2.0F, 0.0F, 5.75F, -0.125F, true, 0.125F);
 		ModClientUtils.addC(rlp4pd, cd, "right_leg_part_5", 16, 56, -1.5F, -1.0F, -1.0F, 3.0F, 3.0F, 2.0F, 0.0F, 2.5F, 0.0F);
 		ModClientUtils.addC(llp4pd, cd, "left_leg_part_5", 16, 56, -1.5F, -1.0F, -1.0F, 3.0F, 3.0F, 2.0F, 0.0F, 2.5F, 0.0F, true);
 		PartDefinition repd = ModClientUtils.addC(headpd, cd, "right_ear", 32, 64, -2.0F, -1.75F, -1.0F, 3.0F, 2.0F, 2.0F, -1.5F, -8.0F, -0.75F, 0.25F);
@@ -144,10 +144,10 @@ public class SnowCanineModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 
 		this.bodyPart4.xRot = 0.0F;
 
-		this.rightArm.zRot = 0.0F;
-		this.leftArm.zRot = 0.0F;
-		this.rightArm.zRot += Mth.cos(ageInTicks * 0.09F) * 0.024F + 0.21F;
-		this.leftArm.zRot -= Mth.cos(ageInTicks * 0.09F) * 0.024F + 0.21F;
+		this.rightArm.zRot = (float)Math.PI / 12.0F;
+		this.leftArm.zRot = -((float)Math.PI / 12.0F);
+		this.rightArm.zRot += Mth.cos(ageInTicks * 0.09F) * 0.024F;
+		this.leftArm.zRot -= Mth.cos(ageInTicks * 0.09F) * 0.024F;
 
 		this.rightLeg.zRot = -((float)Math.PI * 0.01F);
 		this.leftLeg.zRot = (float)Math.PI * 0.01F;
@@ -165,11 +165,17 @@ public class SnowCanineModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 		this.leftLegPart3.xRot = (float)Math.PI / 5.0F;
 		this.rightLegPart4.xRot = -((float)Math.PI * 5.0F / 16.0F);
 		this.leftLegPart4.xRot = -((float)Math.PI * 5.0F / 16.0F);
+		this.rightLegPart4.yRot = (float)Math.PI / 48.0F;
+		this.leftLegPart4.yRot = -((float)Math.PI / 48.0F);
 		this.rightLegPart5.xRot = -((float)Math.PI / 3.0F);
 		this.leftLegPart5.xRot = -((float)Math.PI / 3.0F);
 		this.rightLegPart2.xRot = 0.0F;
 		this.leftLegPart2.xRot = 0.0F;
 
+		this.rightEar.xRot = -((float)Math.PI / 32.0F);
+		this.leftEar.xRot = -((float)Math.PI / 32.0F);
+		this.rightEar.zRot += Mth.cos(ageInTicks * 0.033F + (float)Math.PI / 4.0F) * 0.045F;
+		this.leftEar.zRot += Mth.cos(ageInTicks * 0.033F + (float)Math.PI / 4.0F) * 0.045F;
 		this.rightEar.zRot = -((float)Math.PI / 36.0F);
 		this.rightEar.zRot += Mth.sin(ageInTicks * 0.04F) * 0.03F;
 		this.leftEar.zRot = (float)Math.PI / 36.0F;
@@ -182,9 +188,9 @@ public class SnowCanineModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 		this.tail1.xRot += Mth.sin(ageInTicks * 0.09F) * 0.3F;
 		this.tail1.yRot = Mth.cos(ageInTicks * 0.033F) * 0.36F;
 		this.tail2.xRot = (float)Math.PI / 7.0F;
-		this.tail2.xRot += Mth.sin(ageInTicks * 0.09F + (float)Math.PI / 8.0F) * 0.06F;
+		this.tail2.xRot += Mth.sin(ageInTicks * 0.09F + (float)Math.PI / 8.0F) * 0.024F;
 		this.tail3.xRot = (float)Math.PI / 9.0F;
-		this.tail3.xRot += Mth.sin(ageInTicks * 0.09F + (float)Math.PI / 4.0F) * 0.06F;
+		this.tail3.xRot += Mth.sin(ageInTicks * 0.09F + (float)Math.PI / 4.0F) * 0.03F;
 		this.tail4.xRot = 0.0F;
 
 		this.hairPart.xRot = (float)Math.PI / 12.0F;
