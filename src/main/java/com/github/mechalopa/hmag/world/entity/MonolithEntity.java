@@ -624,7 +624,7 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 					{
 						if (!(livingentity instanceof Player && (((Player)livingentity).isCreative() || ((Player)livingentity).isSpectator())))
 						{
-							float f = 4.0F;
+							float f = 6.0F;
 							int i = 0;
 
 							if (this.parent.level().getDifficulty() == Difficulty.NORMAL)
@@ -744,7 +744,7 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 				{
 					if (this.parent.getActiveAttackTarget() != null)
 					{
-						this.parent.attackEntityWithBeamAttack(this.parent.getActiveAttackTarget(), 1.0F);
+						this.parent.attackEntityWithBeamAttack(this.parent.getActiveAttackTarget(), 4.0F);
 					}
 
 					this.parent.setAttackPhase(MonolithEntity.AttackPhase.BEAM_END);
