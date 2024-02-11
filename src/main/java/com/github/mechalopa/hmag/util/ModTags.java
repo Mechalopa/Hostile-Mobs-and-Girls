@@ -56,6 +56,7 @@ public class ModTags
 		public static final TagKey<EntityType<?>> KASHA_TARGETS = createEntityTypeTag("kasha_targets");
 		public static final TagKey<EntityType<?>> KASHA_TARGETS_BABY_ONLY = createEntityTypeTag("kasha_targets_baby_only");
 		public static final TagKey<EntityType<?>> MELTY_MONSTER_AVOID_MOBS = createEntityTypeTag("melty_monster_avoid_mobs");
+		public static final TagKey<EntityType<?>> MONOLITH_ROAR_IMMUNE = createEntityTypeTag("monolith_roar_immune");
 		public static final TagKey<EntityType<?>> MONOLITH_TARGET_BLACKLIST = createEntityTypeTag("monolith_target_blacklist");
 		public static final TagKey<EntityType<?>> SAVAGEFANG_TARGET_BLACKLIST = createEntityTypeTag("savagefang_target_blacklist");
 		public static final TagKey<EntityType<?>> SKELETON_GIRL_REPLACEABLES = createEntityTypeTag("skeleton_girl_replaceables");

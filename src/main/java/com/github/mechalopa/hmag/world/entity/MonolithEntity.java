@@ -927,11 +927,7 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 		@Override
 		public boolean test(@Nullable LivingEntity livingEntityIn)
 		{
-			if (livingEntityIn instanceof MonolithEntity)
-			{
-				return false;
-			}
-			else if (this.parent.getLastHurtByMob() != null && this.parent.getLastHurtByMob().equals(livingEntityIn) && !(livingEntityIn.getType() == EntityType.PLAYER && this.parent.level().getGameRules().getBoolean(GameRules.RULE_UNIVERSAL_ANGER)))
+			if (this.parent.getLastHurtByMob() != null && this.parent.getLastHurtByMob().equals(livingEntityIn) && !(livingEntityIn.getType() == EntityType.PLAYER && this.parent.level().getGameRules().getBoolean(GameRules.RULE_UNIVERSAL_ANGER)))
 			{
 				final double d0 = ModConfigs.cachedServer.MONOLITH_TARGET_DISTANCE;
 				return livingEntityIn.distanceToSqr(this.parent) <= d0 * d0;
@@ -957,7 +953,7 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 		@Override
 		public boolean test(@Nullable LivingEntity livingEntityIn)
 		{
-			return livingEntityIn.isAlive() && !(livingEntityIn instanceof MonolithEntity);
+			return livingEntityIn.isAlive() && !(livingEntityIn.getType().is(ModTags.EntityTypeTags.MONOLITH_ROAR_IMMUNE));
 		}
 	}
 }
