@@ -115,7 +115,7 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 				.add(Attributes.ATTACK_DAMAGE, 3.0D)
 				.add(Attributes.ARMOR, 8.0D)
 				.add(Attributes.KNOCKBACK_RESISTANCE, 0.75D)
-				.add(Attributes.FOLLOW_RANGE, 24.0D);
+				.add(Attributes.FOLLOW_RANGE, 32.0D);
 	}
 
 	@Override
@@ -557,7 +557,8 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 		{
 			if (this.parent.getTarget() != null && this.parent.getTarget().isAlive() && this.parent.getAttackPhase().isWait() && this.parent.getAttackPhase() != MonolithEntity.AttackPhase.ROAR_END)
 			{
-				return this.parent.distanceToSqr(this.parent.getTarget()) <= 3.0D * 3.0D;
+				final double d0 = ModConfigs.cachedServer.MONOLITH_ROAR_ATTACK_DISTANCE;
+				return this.parent.distanceToSqr(this.parent.getTarget()) <= d0 * d0;
 			}
 			else
 			{
@@ -612,11 +613,11 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 				}
 				else if (this.tickCounter >= 15)
 				{
-					for (LivingEntity livingentity : this.parent.level.getEntitiesOfClass(LivingEntity.class, this.parent.getBoundingBox().inflate(2.0D), new MonolithEntity.RoarTargetPredicate()))
+					for (LivingEntity livingentity : this.parent.level.getEntitiesOfClass(LivingEntity.class, this.parent.getBoundingBox().inflate(ModConfigs.cachedServer.MONOLITH_ROAR_ATTACK_RANGE), new MonolithEntity.RoarTargetPredicate()))
 					{
 						if (!(livingentity instanceof Player && (((Player)livingentity).isCreative() || ((Player)livingentity).isSpectator())))
 						{
-							float f = 3.0F;
+							float f = 6.0F;
 							int i = 0;
 
 							if (this.parent.level.getDifficulty() == Difficulty.NORMAL)
@@ -625,7 +626,7 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 							}
 							else if (this.parent.level.getDifficulty() == Difficulty.HARD)
 							{
-								f += 2.0F;
+								f += 3.0F;
 								i = 12;
 							}
 
@@ -676,8 +677,10 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 		{
 			if (this.parent.getTarget() != null && this.parent.getTarget().isAlive())
 			{
-				double d0 = this.parent.distanceToSqr(this.parent.getTarget());
-				return d0 > 2.0D * 2.0D && d0 <= 10.0D * 10.0D;
+				final double d0 = this.parent.distanceToSqr(this.parent.getTarget());
+				final double d1 = Math.max(ModConfigs.cachedServer.MONOLITH_ROAR_ATTACK_DISTANCE - 1.0D, 0.0F);
+				final double d2 = ModConfigs.cachedServer.MONOLITH_BEAM_ATTACK_DISTANCE;
+				return d0 > d1 * d1 && d0 <= d2 * d2;
 			}
 			else
 			{
@@ -734,7 +737,7 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 				{
 					if (this.parent.getActiveAttackTarget() != null)
 					{
-						this.parent.attackEntityWithBeamAttack(this.parent.getActiveAttackTarget(), 1.0F);
+						this.parent.attackEntityWithBeamAttack(this.parent.getActiveAttackTarget(), 5.0F);
 					}
 
 					this.parent.setAttackPhase(MonolithEntity.AttackPhase.BEAM_END);
@@ -917,13 +920,10 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 		@Override
 		public boolean test(@Nullable LivingEntity livingEntityIn)
 		{
-			if (livingEntityIn instanceof MonolithEntity)
+			if (this.parent.getLastHurtByMob() != null && this.parent.getLastHurtByMob().equals(livingEntityIn) && !(livingEntityIn.getType() == EntityType.PLAYER && this.parent.level.getGameRules().getBoolean(GameRules.RULE_UNIVERSAL_ANGER)))
 			{
-				return false;
-			}
-			else if (this.parent.getLastHurtByMob() != null && this.parent.getLastHurtByMob().equals(livingEntityIn) && !(livingEntityIn.getType() == EntityType.PLAYER && this.parent.level.getGameRules().getBoolean(GameRules.RULE_UNIVERSAL_ANGER)))
-			{
-				return livingEntityIn.distanceToSqr(this.parent) <= 9.0D * 9.0D;
+				final double d0 = ModConfigs.cachedServer.MONOLITH_TARGET_DISTANCE;
+				return livingEntityIn.distanceToSqr(this.parent) <= d0 * d0;
 			}
 			else if (livingEntityIn.getType().is(ModTags.EntityTypeTags.MONOLITH_TARGET_BLACKLIST))
 			{
@@ -931,7 +931,8 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 			}
 			else if (livingEntityIn instanceof Player || (livingEntityIn instanceof AbstractGolem && ModConfigs.cachedServer.MONOLITH_ATTACK_GOLEMS) || (livingEntityIn instanceof AbstractVillager && ModConfigs.cachedServer.MONOLITH_ATTACK_VILLAGERS) || (livingEntityIn.getMobType() == MobType.ILLAGER && ModConfigs.cachedServer.MONOLITH_ATTACK_ILLAGERS))
 			{
-				return livingEntityIn.distanceToSqr(this.parent) <= 9.0D * 9.0D;
+				final double d0 = ModConfigs.cachedServer.MONOLITH_TARGET_DISTANCE;
+				return livingEntityIn.distanceToSqr(this.parent) <= d0 * d0;
 			}
 			else
 			{
@@ -945,7 +946,7 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 		@Override
 		public boolean test(@Nullable LivingEntity livingEntityIn)
 		{
-			return livingEntityIn.isAlive() && !(livingEntityIn instanceof MonolithEntity);
+			return livingEntityIn.isAlive() && !(livingEntityIn.getType().is(ModTags.EntityTypeTags.MONOLITH_ROAR_IMMUNE));
 		}
 	}
 }

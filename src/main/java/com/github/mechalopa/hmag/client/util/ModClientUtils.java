@@ -8,6 +8,7 @@ import com.mojang.math.Matrix3f;
 import com.mojang.math.Matrix4f;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.CubeListBuilder;
@@ -160,5 +161,12 @@ public class ModClientUtils
 	public static PartDefinition addC(PartDefinition partdefinition, CubeDeformation cubeDeformation, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs, float xRot, float yRot, float zRot, boolean isMirror)
 	{
 		return partdefinition.addOrReplaceChild(name, CubeListBuilder.create().texOffs(xTexOffs, yTexOffs).mirror(isMirror).addBox(xp, yp, zp, xSize, ySize, zSize, cubeDeformation), PartPose.offsetAndRotation(xOffs, yOffs, zOffs, xRot, yRot, zRot));
+	}
+
+	public static void scaleModelPart(ModelPart part, float scale)
+	{
+		part.xScale = 1.0F + scale;
+		part.yScale = 1.0F - scale;
+		part.zScale = 1.0F + scale;
 	}
 }

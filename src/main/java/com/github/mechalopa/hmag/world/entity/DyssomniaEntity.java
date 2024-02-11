@@ -167,7 +167,7 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 
 			if (this.getAttackingTime() >= 0)
 			{
-				if (this.getAttackPhase() == DyssomniaEntity.AttackPhase.SHOT)
+				if (this.getAttackPhase() == DyssomniaEntity.AttackPhase.SHOOT)
 				{
 					double d0 = 1.75D;
 					double d1 = 1.5D;
@@ -398,7 +398,7 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 	{
 		WAIT(0),
 		SUMMON(1),
-		SHOT(2);
+		SHOOT(2);
 
 		private final int id;
 		private static final DyssomniaEntity.AttackPhase[] BY_ID = Arrays.stream(values()).sorted(Comparator.comparingInt(DyssomniaEntity.AttackPhase::getId)).toArray((p) -> {
@@ -520,14 +520,14 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 		@Override
 		public boolean canContinueToUse()
 		{
-			return this.parent.getTarget() != null && this.parent.getAttackPhase() == DyssomniaEntity.AttackPhase.SHOT;
+			return this.parent.getTarget() != null && this.parent.getAttackPhase() == DyssomniaEntity.AttackPhase.SHOOT;
 		}
 
 		@Override
 		public void start()
 		{
 			this.attackTimer = -50;
-			this.parent.setAttackPhase(DyssomniaEntity.AttackPhase.SHOT);
+			this.parent.setAttackPhase(DyssomniaEntity.AttackPhase.SHOOT);
 		}
 
 		@Override

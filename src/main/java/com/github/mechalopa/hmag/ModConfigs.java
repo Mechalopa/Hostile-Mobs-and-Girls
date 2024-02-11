@@ -33,6 +33,10 @@ public class ModConfigs
 	public static ForgeConfigSpec.BooleanValue MONOLITH_ATTACK_GOLEMS;
 	public static ForgeConfigSpec.BooleanValue MONOLITH_ATTACK_VILLAGERS;
 	public static ForgeConfigSpec.BooleanValue MONOLITH_ATTACK_ILLAGERS;
+	public static ForgeConfigSpec.DoubleValue MONOLITH_TARGET_DISTANCE;
+	public static ForgeConfigSpec.DoubleValue MONOLITH_BEAM_ATTACK_DISTANCE;
+	public static ForgeConfigSpec.DoubleValue MONOLITH_ROAR_ATTACK_DISTANCE;
+	public static ForgeConfigSpec.DoubleValue MONOLITH_ROAR_ATTACK_RANGE;
 	public static ForgeConfigSpec.BooleanValue CRIMSON_SLAUGHTERER_ATTACK_ANIMALS;
 	public static ForgeConfigSpec.BooleanValue CRIMSON_SLAUGHTERER_ATTACK_VILLAGERS;
 	public static ForgeConfigSpec.BooleanValue DYSSOMNIA_SUMMON_PHANTOM;
@@ -139,6 +143,10 @@ public class ModConfigs
 		MONOLITH_ATTACK_GOLEMS = SERVER_BUILDER.define("monolithAttackGolems", true);
 		MONOLITH_ATTACK_VILLAGERS = SERVER_BUILDER.define("monolithAttackVillagers", true);
 		MONOLITH_ATTACK_ILLAGERS = SERVER_BUILDER.define("monolithAttackIllagers", true);
+		MONOLITH_TARGET_DISTANCE = SERVER_BUILDER.defineInRange("monolithTargetDistance", 12.0D, 0.0D, 32.0D);
+		MONOLITH_BEAM_ATTACK_DISTANCE = SERVER_BUILDER.defineInRange("monolithBeamAttackDistance", 12.5D, 0.0D, 32.0D);
+		MONOLITH_ROAR_ATTACK_DISTANCE = SERVER_BUILDER.defineInRange("monolithRoarAttackDistance", 3.0D, 0.0D, 32.0D);
+		MONOLITH_ROAR_ATTACK_RANGE = SERVER_BUILDER.defineInRange("monolithRoarAttackRange", 2.5D, 0.0D, 32.0D);
 		CRIMSON_SLAUGHTERER_ATTACK_ANIMALS = SERVER_BUILDER.define("crimsonSlaughtererAttackAnimals", true);
 		CRIMSON_SLAUGHTERER_ATTACK_VILLAGERS = SERVER_BUILDER.define("crimsonSlaughtererAttackVillagers", true);
 		DYSSOMNIA_SUMMON_PHANTOM = SERVER_BUILDER.define("dyssomniaSummonPhantom", true);
@@ -280,6 +288,10 @@ public class ModConfigs
 		public static boolean MONOLITH_ATTACK_GOLEMS;
 		public static boolean MONOLITH_ATTACK_VILLAGERS;
 		public static boolean MONOLITH_ATTACK_ILLAGERS;
+		public static double MONOLITH_TARGET_DISTANCE;
+		public static double MONOLITH_BEAM_ATTACK_DISTANCE;
+		public static double MONOLITH_ROAR_ATTACK_DISTANCE;
+		public static double MONOLITH_ROAR_ATTACK_RANGE;
 		public static boolean CRIMSON_SLAUGHTERER_ATTACK_ANIMALS;
 		public static boolean CRIMSON_SLAUGHTERER_ATTACK_VILLAGERS;
 		public static boolean DYSSOMNIA_SUMMON_PHANTOM;
@@ -384,6 +396,10 @@ public class ModConfigs
 			MONOLITH_ATTACK_GOLEMS = ModConfigs.MONOLITH_ATTACK_GOLEMS.get();
 			MONOLITH_ATTACK_VILLAGERS = ModConfigs.MONOLITH_ATTACK_VILLAGERS.get();
 			MONOLITH_ATTACK_ILLAGERS = ModConfigs.MONOLITH_ATTACK_ILLAGERS.get();
+			MONOLITH_TARGET_DISTANCE = ModConfigs.MONOLITH_TARGET_DISTANCE.get();
+			MONOLITH_BEAM_ATTACK_DISTANCE = ModConfigs.MONOLITH_BEAM_ATTACK_DISTANCE.get();
+			MONOLITH_ROAR_ATTACK_DISTANCE = ModConfigs.MONOLITH_ROAR_ATTACK_DISTANCE.get();
+			MONOLITH_ROAR_ATTACK_RANGE = ModConfigs.MONOLITH_ROAR_ATTACK_RANGE.get();
 			CRIMSON_SLAUGHTERER_ATTACK_ANIMALS = ModConfigs.CRIMSON_SLAUGHTERER_ATTACK_ANIMALS.get();
 			CRIMSON_SLAUGHTERER_ATTACK_VILLAGERS = ModConfigs.CRIMSON_SLAUGHTERER_ATTACK_VILLAGERS.get();
 			DYSSOMNIA_SUMMON_PHANTOM = ModConfigs.DYSSOMNIA_SUMMON_PHANTOM.get();
