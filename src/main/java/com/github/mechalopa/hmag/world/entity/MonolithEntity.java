@@ -633,7 +633,7 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 							}
 							else if (this.parent.level().getDifficulty() == Difficulty.HARD)
 							{
-								f += 2.0F;
+								f += 3.0F;
 								i = 12;
 							}
 
@@ -744,7 +744,7 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 				{
 					if (this.parent.getActiveAttackTarget() != null)
 					{
-						this.parent.attackEntityWithBeamAttack(this.parent.getActiveAttackTarget(), 4.0F);
+						this.parent.attackEntityWithBeamAttack(this.parent.getActiveAttackTarget(), 5.0F);
 					}
 
 					this.parent.setAttackPhase(MonolithEntity.AttackPhase.BEAM_END);

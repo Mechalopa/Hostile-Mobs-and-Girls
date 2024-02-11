@@ -143,7 +143,7 @@ public class ModConfigs
 		MONOLITH_ATTACK_VILLAGERS = SERVER_BUILDER.define("monolithAttackVillagers", true);
 		MONOLITH_ATTACK_ILLAGERS = SERVER_BUILDER.define("monolithAttackIllagers", true);
 		MONOLITH_TARGET_DISTANCE = SERVER_BUILDER.defineInRange("monolithTargetDistance", 12.0D, 0.0D, 32.0D);
-		MONOLITH_BEAM_ATTACK_DISTANCE = SERVER_BUILDER.defineInRange("monolithBeamAttackDistance", 12.5D, 0.0D, 32.0D);
+		MONOLITH_BEAM_ATTACK_DISTANCE = SERVER_BUILDER.defineInRange("monolithBeamAttackDistance", 15.0D, 0.0D, 32.0D);
 		MONOLITH_ROAR_ATTACK_DISTANCE = SERVER_BUILDER.defineInRange("monolithRoarAttackDistance", 3.0D, 0.0D, 32.0D);
 		MONOLITH_ROAR_ATTACK_RANGE = SERVER_BUILDER.defineInRange("monolithRoarAttackRange", 2.5D, 0.0D, 32.0D);
 		CRIMSON_SLAUGHTERER_ATTACK_ANIMALS = SERVER_BUILDER.define("crimsonSlaughtererAttackAnimals", true);
