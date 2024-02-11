@@ -7,11 +7,11 @@
   ],
   "type": "tconstruct:entity_melting",
   "entity": {
-    "type": "hmag:spider_nest"
+    "type": "hmag:kasha"
   },
   "result": {
-    "fluid": "tconstruct:venom",
-    "amount": 25
+    "fluid": "tconstruct:blazing_blood",
+    "amount": 20
   },
   "damage": 4
 }

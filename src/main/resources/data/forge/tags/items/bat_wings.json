@@ -21,6 +21,10 @@
     {
       "id": "forcecraft:claw",
       "required": false
+    },
+    {
+      "id": "xtraarrows:bat_skin",
+      "required": false
     }
   ]
 }

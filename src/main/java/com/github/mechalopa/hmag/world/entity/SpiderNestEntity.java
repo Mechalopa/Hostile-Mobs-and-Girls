@@ -107,7 +107,7 @@ public class SpiderNestEntity extends Monster
 	{
 		if (this.level.isClientSide)
 		{
-			this.level.addParticle(ParticleTypes.ASH, this.getRandomX(0.5D), this.getRandomY() - 0.25D, this.getRandomZ(0.5D), (this.getRandom().nextDouble() - 0.5D) * 3.0D, -this.getRandom().nextDouble(), (this.getRandom().nextDouble() - 0.5D) * 3.0D);
+			this.level.addParticle(ParticleTypes.ASH, this.getRandomX(0.75D), this.getRandomY() - 0.25D, this.getRandomZ(0.75D), (this.getRandom().nextDouble() - 0.5D) * 3.0D, -this.getRandom().nextDouble(), (this.getRandom().nextDouble() - 0.5D) * 3.0D);
 		}
 
 		super.aiStep();

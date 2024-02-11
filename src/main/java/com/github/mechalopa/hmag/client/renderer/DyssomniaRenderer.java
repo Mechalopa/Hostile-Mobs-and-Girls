@@ -46,7 +46,7 @@ public class DyssomniaRenderer extends MobRenderer<DyssomniaEntity, DyssomniaMod
 	@Override
 	public Vec3 getRenderOffset(DyssomniaEntity entity, float partialTicks)
 	{
-		if (entity.getAttackingTime() >= 0 && entity.getAttackPhase() == DyssomniaEntity.AttackPhase.SUMMON)
+		if (entity.getAttackingTime() >= 0 && entity.getAttackPhase() == DyssomniaEntity.AttackPhase.SUMMON && entity.isAlive())
 		{
 			return new Vec3(this.rand.nextGaussian() * 0.03D, this.rand.nextGaussian() * 0.03D, this.rand.nextGaussian() * 0.03D);
 		}

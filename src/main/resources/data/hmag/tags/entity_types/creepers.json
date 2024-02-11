@@ -133,6 +133,18 @@
     {
       "id": "creepycreepers:corrupted_creeper",
       "required": false
+    },
+    {
+      "id": "majruszsdifficulty:creeperling",
+      "required": false
+    },
+    {
+      "id": "immersiveweapons:storm_creeper",
+      "required": false
+    },
+    {
+      "id": "lcrdrfs:laser_creeper",
+      "required": false
     }
   ]
 }
