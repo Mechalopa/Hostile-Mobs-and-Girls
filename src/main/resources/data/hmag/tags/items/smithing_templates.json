@@ -95,6 +95,10 @@
     {
       "id": "quark:smithing_template_rune",
       "required": false
+    },
+    {
+      "id": "oreganized:electrum_upgrade_smithing_template",
+      "required": false
     }
   ]
 }

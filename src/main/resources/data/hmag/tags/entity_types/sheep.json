@@ -97,6 +97,10 @@
     {
       "id": "blue_skies:stardust_ram",
       "required": false
+    },
+    {
+      "id": "bloomingnature:mossy_sheep",
+      "required": false
     }
   ]
 }
