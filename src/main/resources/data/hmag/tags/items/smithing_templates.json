@@ -99,6 +99,26 @@
     {
       "id": "oreganized:electrum_upgrade_smithing_template",
       "required": false
+    },
+    {
+      "id": "outer_end:cobalt_upgrade_template",
+      "required": false
+    },
+    {
+      "id": "outer_end:mint_upgrade_template",
+      "required": false
+    },
+    {
+      "id": "outer_end:rose_upgrade_template",
+      "required": false
+    },
+    {
+      "id": "undergarden:forgotten_upgrade_smithing_template",
+      "required": false
+    },
+    {
+      "id": "jellyfishing:grease_upgrade_template",
+      "required": false
     }
   ]
 }

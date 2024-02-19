@@ -59,6 +59,10 @@
       "required": false
     },
     {
+      "id": "jellyfishing:rock_bottom",
+      "required": false
+    },
+    {
       "id": "meadow:meadow_forest",
       "required": false
     },
@@ -100,6 +104,10 @@
     },
     {
       "id": "spookybats:spooky_oak_forest",
+      "required": false
+    },
+    {
+      "id": "galosphere:pink_salt_caves",
       "required": false
     }
   ]
