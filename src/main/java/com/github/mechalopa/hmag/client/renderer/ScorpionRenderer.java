@@ -15,7 +15,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class ScorpionRenderer extends MobRenderer<ScorpionEntity, ScorpionModel<ScorpionEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/scorpion.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/scorpion.png");
 
 	public ScorpionRenderer(EntityRendererProvider.Context context)
 	{
@@ -38,6 +38,6 @@ public class ScorpionRenderer extends MobRenderer<ScorpionEntity, ScorpionModel<
 	@Override
 	public ResourceLocation getTextureLocation(ScorpionEntity entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 }

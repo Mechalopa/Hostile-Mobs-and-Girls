@@ -15,7 +15,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class GlaryadRenderer extends AbstractGirlRenderer<GlaryadEntity, GlaryadModel<GlaryadEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/glaryad.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/glaryad.png");
 
 	public GlaryadRenderer(EntityRendererProvider.Context context)
 	{
@@ -31,6 +31,6 @@ public class GlaryadRenderer extends AbstractGirlRenderer<GlaryadEntity, Glaryad
 	@Override
 	public ResourceLocation getTextureLocation(GlaryadEntity entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 }

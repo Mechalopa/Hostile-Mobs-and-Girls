@@ -77,6 +77,7 @@ public class ModTags
 		public static final TagKey<DamageType> DULLAHAN_RESISTANT_TO = createDamageTypeTag("dullahan_resistant_to");
 		public static final TagKey<DamageType> FORTRESS_KEEPER_RESISTANT_TO = createDamageTypeTag("fortress_keeper_resistant_to");
 		public static final TagKey<DamageType> GIANT_MUMMY_RESISTANT_TO = createDamageTypeTag("giant_mummy_resistant_to");
+		public static final TagKey<DamageType> GIANT_MUMMY_VULNERABLE_TO = createDamageTypeTag("giant_mummy_vulnerable_to");
 		public static final TagKey<DamageType> GLARYAD_VULNERABLE_TO = createDamageTypeTag("glaryad_vulnerable_to");
 		public static final TagKey<DamageType> HORNET_VULNERABLE_TO = createDamageTypeTag("hornet_vulnerable_to");
 		public static final TagKey<DamageType> IMP_RESISTANT_TO = createDamageTypeTag("imp_resistant_to");

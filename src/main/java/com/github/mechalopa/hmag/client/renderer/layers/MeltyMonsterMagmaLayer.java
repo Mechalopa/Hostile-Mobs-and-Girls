@@ -27,7 +27,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class MeltyMonsterMagmaLayer extends RenderLayer<MeltyMonsterEntity, MeltyMonsterModel<MeltyMonsterEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/melty_monster/melty_monster_overlay.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/melty_monster/melty_monster_overlay.png");
 	private final MeltyMonsterModel<MeltyMonsterEntity> layerModel;
 
 	public MeltyMonsterMagmaLayer(RenderLayerParent<MeltyMonsterEntity, MeltyMonsterModel<MeltyMonsterEntity>> renderLayerParent, EntityModelSet modelSet)
@@ -68,7 +68,7 @@ public class MeltyMonsterMagmaLayer extends RenderLayer<MeltyMonsterEntity, Melt
 
 	public ResourceLocation getLayerTexture(MeltyMonsterEntity entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 
 	public static RenderType getMeltyMonsterOverlay(ResourceLocation location, float xOffs, float yOffs)

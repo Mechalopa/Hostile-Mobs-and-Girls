@@ -1,14 +1,18 @@
 package com.github.mechalopa.hmag.client.renderer;
 
+import java.util.Map;
+
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.world.entity.projectile.MagicBulletEntity;
+import com.google.common.collect.Maps;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 
+import net.minecraft.Util;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -23,10 +27,12 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class MagicBulletRenderer extends EntityRenderer<MagicBulletEntity>
 {
-	private static final ResourceLocation TEX0 = new ResourceLocation(HMaG.MODID, "textures/entity/projectile/magic_bullet_0.png");
-	private static final ResourceLocation TEX1 = new ResourceLocation(HMaG.MODID, "textures/entity/projectile/magic_bullet_1.png");
-	private static final ResourceLocation TEX2 = new ResourceLocation(HMaG.MODID, "textures/entity/projectile/magic_bullet_2.png");
-	private static final ResourceLocation TEX3 = new ResourceLocation(HMaG.MODID, "textures/entity/projectile/magic_bullet_3.png");
+	private static final Map<MagicBulletEntity.Variant, ResourceLocation> TEXTURES = Util.make(Maps.newEnumMap(MagicBulletEntity.Variant.class), p -> {
+		p.put(MagicBulletEntity.Variant.LICH, new ResourceLocation(HMaG.MODID, "textures/entity/projectile/magic_bullet_0.png"));
+		p.put(MagicBulletEntity.Variant.DYSSOMNIA, new ResourceLocation(HMaG.MODID, "textures/entity/projectile/magic_bullet_1.png"));
+		p.put(MagicBulletEntity.Variant.NEMESIS, new ResourceLocation(HMaG.MODID, "textures/entity/projectile/magic_bullet_2.png"));
+		p.put(MagicBulletEntity.Variant.NIGHTWALKER, new ResourceLocation(HMaG.MODID, "textures/entity/projectile/magic_bullet_3.png"));
+	});
 
 	public MagicBulletRenderer(EntityRendererProvider.Context context)
 	{
@@ -38,7 +44,7 @@ public class MagicBulletRenderer extends EntityRenderer<MagicBulletEntity>
 	{
 		switch (entity.getVariant())
 		{
-		case 1:
+		case DYSSOMNIA:
 			return Mth.clamp(super.getBlockLightLevel(entity, pos) + 7, 0, 15);
 		default:
 			return 15;
@@ -53,7 +59,7 @@ public class MagicBulletRenderer extends EntityRenderer<MagicBulletEntity>
 		poseStack.mulPose(this.entityRenderDispatcher.cameraOrientation());
 		poseStack.mulPose(Axis.YP.rotationDegrees(180.0F));
 		float f = (float)entity.tickCount + partialTicks;
-		float f1 = 0.5F + (entity.getVariant() == 2 ? Mth.sin(f * 0.8F) * 0.03F : Mth.sin(f * 0.4F) * 0.09F);
+		float f1 = 0.5F + (entity.getVariant() == MagicBulletEntity.Variant.NEMESIS ? Mth.sin(f * 0.8F) * 0.03F : Mth.sin(f * 0.4F) * 0.09F);
 		poseStack.scale(f1, f1, f1);
 		PoseStack.Pose posestack$pose = poseStack.last();
 		Matrix4f matrix4f = posestack$pose.pose();
@@ -75,16 +81,6 @@ public class MagicBulletRenderer extends EntityRenderer<MagicBulletEntity>
 	@Override
 	public ResourceLocation getTextureLocation(MagicBulletEntity entity)
 	{
-		switch (entity.getVariant())
-		{
-		case 1:
-			return TEX1;
-		case 2:
-			return TEX2;
-		case 3:
-			return TEX3;
-		default:
-			return TEX0;
-		}
+		return TEXTURES.getOrDefault(entity.getVariant(), TEXTURES.get(MagicBulletEntity.Variant.LICH));
 	}
 }

@@ -1,7 +1,7 @@
 package com.github.mechalopa.hmag.world.entity;
 
 import java.util.Arrays;
-import java.util.Comparator;
+import java.util.function.IntFunction;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -10,7 +10,9 @@ import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.registry.ModEntityTypes;
 import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.world.entity.ai.goal.LeapAtTargetGoal2;
+import com.mojang.serialization.Codec;
 
+import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -22,7 +24,10 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.ByIdMap;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
+import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
@@ -36,6 +41,7 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.VariantHolder;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
@@ -55,7 +61,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.network.NetworkHooks;
 
-public class SlimeGirlEntity extends Monster
+public class SlimeGirlEntity extends Monster implements VariantHolder<SlimeGirlEntity.ColorVariant>
 {
 	private static final EntityDataAccessor<Integer> DATA_VARIANT_ID = SynchedEntityData.defineId(SlimeGirlEntity.class, EntityDataSerializers.INT);
 	public float targetSquish;
@@ -73,7 +79,7 @@ public class SlimeGirlEntity extends Monster
 	protected void defineSynchedData()
 	{
 		super.defineSynchedData();
-		this.entityData.define(DATA_VARIANT_ID, 0);
+		this.entityData.define(DATA_VARIANT_ID, SlimeGirlEntity.ColorVariant.PINK_1.getId());
 	}
 
 	@Override
@@ -253,7 +259,7 @@ public class SlimeGirlEntity extends Monster
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag dataTag)
 	{
 		spawnData = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
-		this.setVariant(levelAccessor.getRandom().nextInt(SlimeGirlEntity.ColorVariant.values().length));
+		this.setVariant(SlimeGirlEntity.ColorVariant.getSpawnVariant(levelAccessor.getRandom()));
 		return spawnData;
 	}
 
@@ -276,40 +282,37 @@ public class SlimeGirlEntity extends Monster
 	}
 
 	@OnlyIn(Dist.CLIENT)
-	public float[] getColor()
+	public float[] getColors()
 	{
-		return SlimeGirlEntity.ColorVariant.byId(this.getVariant()).getColors();
-	}
-
-	public int getVariant()
-	{
-		return this.entityData.get(DATA_VARIANT_ID);
-	}
-
-	private void setVariant(int type)
-	{
-		if (type < 0 || type >= SlimeGirlEntity.ColorVariant.values().length)
-		{
-			type = this.getRandom().nextInt(SlimeGirlEntity.ColorVariant.values().length);
-		}
-
-		this.entityData.set(DATA_VARIANT_ID, type);
+		return this.getVariant().getColors();
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundTag compound)
+	public SlimeGirlEntity.ColorVariant getVariant()
 	{
-		super.addAdditionalSaveData(compound);
-		compound.putInt("Variant", this.getVariant());
-		compound.putBoolean("wasOnGround", this.wasOnGround);
+		return SlimeGirlEntity.ColorVariant.byId(this.entityData.get(DATA_VARIANT_ID));
+	}
+
+	@Override
+	public void setVariant(SlimeGirlEntity.ColorVariant variant)
+	{
+		this.entityData.set(DATA_VARIANT_ID, variant.getId());
 	}
 
 	@Override
 	public void readAdditionalSaveData(CompoundTag compound)
 	{
 		super.readAdditionalSaveData(compound);
-		this.setVariant(compound.getInt("Variant"));
+		this.setVariant(SlimeGirlEntity.ColorVariant.byId(compound.getInt("Variant")));
 		this.wasOnGround = compound.getBoolean("wasOnGround");
+	}
+
+	@Override
+	public void addAdditionalSaveData(CompoundTag compound)
+	{
+		super.addAdditionalSaveData(compound);
+		compound.putInt("Variant", this.getVariant().getId());
+		compound.putBoolean("wasOnGround", this.wasOnGround);
 	}
 
 	@Override
@@ -343,54 +346,61 @@ public class SlimeGirlEntity extends Monster
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 
-	public static enum ColorVariant
+	public static enum ColorVariant implements StringRepresentable
 	{
-		PINK1(0, 16678066),
-		PINK2(1, 16608633),
-		PINK3(2, 16143733),
-		PINK4(3, 16732339),
-		LIGHT_PINK1(4, 16225469),
-		LIGHT_PINK2(5, 16751005),
-		DARK_PINK1(6, 16005289),
-		DARK_PINK2(7, 14830776),
-		PURPLE1(8, 13393626),
-		PURPLE2(9, 13269976),
-		LAVENDER(10, 12360685),
-		WHITE1(11, 16766945),
-		RED1(12, 16216690),
-		RED2(13, 16605268),
-		SLIME(14, 9489279),
-		MINT(15, 7077059),
-		BLACK(16, 3946552),
-		SLATEBLUE(17, 6970061),
-		WHITE2(18, 16768685),
-		DARK_RED1(19, 9109504),
-		DARK_RED2(20, 14423100),
-		ORANGE(21, 16747520),
-		BROWN(22, 9127187),
-		GOLD(23, 16766720),
-		DARK_KHAKI(24, 12433259),
-		GREEN_YELLOW(25, 11403055),
-		GREEN1(26, 7048739),
-		GREEN2(27, 3050327),
-		GREEN3(28, 6452328),
-		BLUE(29, 8900331),
-		TURQUOISE(30, 4251856),
-		GRAY(31, 7833753);
+		PINK_1(0, "pink_1", 16678066),
+		PINK_2(1, "pink_2", 16608633),
+		PINK_3(2, "pink_3", 16143733),
+		PINK_4(3, "pink_4", 16732339),
+		LIGHT_PINK_1(4, "light_pink_1", 16225469),
+		LIGHT_PINK_2(5, "light_pink_2", 16751005),
+		DARK_PINK_1(6, "dark_pink_1", 16005289),
+		DARK_PINK_2(7, "dark_pink_2", 14830776),
+		PURPLE_1(8, "purple_1", 13393626),
+		PURPLE_2(9, "purple_2", 13269976),
+		LAVENDER(10, "lavender", 12360685),
+		WHITE_1(11, "white_1", 16766945),
+		RED_1(12, "red_1", 16216690),
+		RED_2(13, "red_2", 16605268),
+		SLIME(14, "slime", 9489279),
+		MINT(15, "mint", 7077059),
+		BLACK(16, "black", 3946552),
+		SLATEBLUE(17, "slateblue", 6970061),
+		WHITE_2(18, "white_2", 16768685),
+		DARK_RED_1(19, "dark_red_1", 9109504),
+		DARK_RED_2(20, "dark_red_2", 14423100),
+		ORANGE(21, "orange", 16747520),
+		BROWN(22, "brown", 9127187),
+		GOLD(23, "gold", 16766720),
+		DARK_KHAKI(24, "dark_khaki", 12433259),
+		GREEN_YELLOW(25, "green_yellow", 11403055),
+		GREEN_1(26, "green_1", 7048739),
+		GREEN_2(27, "green_2", 3050327),
+		GREEN_3(28, "green_3", 6452328),
+		BLUE(29, "blue", 8900331),
+		TURQUOISE(30, "turquoise", 4251856),
+		GRAY(31, "gray", 7833753);
 
+		private static final IntFunction<SlimeGirlEntity.ColorVariant> BY_ID = ByIdMap.continuous(SlimeGirlEntity.ColorVariant::getId, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
+		public static final Codec<SlimeGirlEntity.ColorVariant> CODEC = StringRepresentable.fromEnum(SlimeGirlEntity.ColorVariant::values);
 		private final int id;
+		private final String name;
 		private final float[] colors;
-		private static final SlimeGirlEntity.ColorVariant[] BY_ID = Arrays.stream(values()).sorted(Comparator.comparingInt(SlimeGirlEntity.ColorVariant::getId)).toArray((p) -> {
-			return new SlimeGirlEntity.ColorVariant[p];
-		});
 
-		private ColorVariant(int id, int color)
+		private ColorVariant(int id, String name, int color)
 		{
 			this.id = id;
+			this.name = name;
 			int i = (color & 16711680) >> 16;
 			int j = (color & '\uff00') >> 8;
 			int k = (color & 255) >> 0;
 			this.colors = new float[]{i / 255.0F, j / 255.0F, k / 255.0F};
+		}
+
+		@Override
+		public String getSerializedName()
+		{
+			return this.name;
 		}
 
 		public int getId()
@@ -405,12 +415,15 @@ public class SlimeGirlEntity extends Monster
 
 		public static SlimeGirlEntity.ColorVariant byId(int id)
 		{
-			if (id < 0 || id >= BY_ID.length)
-			{
-				id = 0;
-			}
+			return BY_ID.apply(id);
+		}
 
-			return BY_ID[id];
+		public static SlimeGirlEntity.ColorVariant getSpawnVariant(RandomSource random)
+		{
+			SlimeGirlEntity.ColorVariant[] variants = Arrays.stream(values()).toArray(p -> {
+				return new SlimeGirlEntity.ColorVariant[p];
+			});
+			return Util.getRandom(variants, random);
 		}
 	}
 

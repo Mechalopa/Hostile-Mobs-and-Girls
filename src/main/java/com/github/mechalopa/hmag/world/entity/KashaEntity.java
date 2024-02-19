@@ -1,8 +1,7 @@
 package com.github.mechalopa.hmag.world.entity;
 
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.UUID;
+import java.util.function.IntFunction;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -10,6 +9,7 @@ import javax.annotation.Nullable;
 import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
 import com.github.mechalopa.hmag.util.ModTags;
+import com.mojang.serialization.Codec;
 
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -20,6 +20,8 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.ByIdMap;
+import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
@@ -28,6 +30,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.VariantHolder;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -50,7 +53,7 @@ import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.network.NetworkHooks;
 
-public class KashaEntity extends Monster
+public class KashaEntity extends Monster implements VariantHolder<KashaEntity.Variant>
 {
 	private static final UUID ATTACK_DAMAGE_MODIFIER_UUID = UUID.fromString("7DDA541D-ABAA-BBF4-D099-AAC57D64ADA9");
 	private static final AttributeModifier ATTACK_DAMAGE_MODIFIER = new AttributeModifier(ATTACK_DAMAGE_MODIFIER_UUID, "Soul variant attack damage bonus", 1.0D, AttributeModifier.Operation.ADDITION);
@@ -70,7 +73,7 @@ public class KashaEntity extends Monster
 	protected void defineSynchedData()
 	{
 		super.defineSynchedData();
-		this.entityData.define(DATA_VARIANT_ID, 0);
+		this.entityData.define(DATA_VARIANT_ID, KashaEntity.Variant.NORMAL.getId());
 	}
 
 	@Override
@@ -180,12 +183,14 @@ public class KashaEntity extends Monster
 		return spawnData;
 	}
 
+	@Override
 	public KashaEntity.Variant getVariant()
 	{
 		return KashaEntity.Variant.byId(this.entityData.get(DATA_VARIANT_ID));
 	}
 
-	private void setVariant(KashaEntity.Variant variant)
+	@Override
+	public void setVariant(KashaEntity.Variant variant)
 	{
 		if (!this.level().isClientSide())
 		{
@@ -257,19 +262,26 @@ public class KashaEntity extends Monster
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 
-	public static enum Variant
+	public static enum Variant implements StringRepresentable
 	{
-		NORMAL(0),
-		SOUL(1);
+		NORMAL(0, "normal"),
+		SOUL(1, "soul");
 
+		private static final IntFunction<KashaEntity.Variant> BY_ID = ByIdMap.continuous(KashaEntity.Variant::getId, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
+		public static final Codec<KashaEntity.Variant> CODEC = StringRepresentable.fromEnum(KashaEntity.Variant::values);
 		private final int id;
-		private static final KashaEntity.Variant[] BY_ID = Arrays.stream(values()).sorted(Comparator.comparingInt(KashaEntity.Variant::getId)).toArray((p) -> {
-			return new KashaEntity.Variant[p];
-		});
+		private final String name;
 
-		private Variant(int idIn)
+		private Variant(int id, String name)
 		{
-			this.id = idIn;
+			this.id = id;
+			this.name = name;
+		}
+
+		@Override
+		public String getSerializedName()
+		{
+			return this.name;
 		}
 
 		public int getId()
@@ -277,14 +289,9 @@ public class KashaEntity extends Monster
 			return this.id;
 		}
 
-		public static KashaEntity.Variant byId(int idIn)
+		public static KashaEntity.Variant byId(int id)
 		{
-			if (idIn < 0 || idIn >= BY_ID.length)
-			{
-				idIn = 0;
-			}
-
-			return BY_ID[idIn];
+			return BY_ID.apply(id);
 		}
 	}
 }

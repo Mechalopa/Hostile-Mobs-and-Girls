@@ -1,6 +1,7 @@
 package com.github.mechalopa.hmag.client.model;
 
 import com.github.mechalopa.hmag.client.util.ModClientUtils;
+import com.github.mechalopa.hmag.world.entity.CommonOrUncommonVariant;
 import com.github.mechalopa.hmag.world.entity.CursedDollEntity;
 
 import net.minecraft.client.model.AnimationUtils;
@@ -122,7 +123,7 @@ public class CursedDollModel<T extends CursedDollEntity> extends AbstractAdvance
 		this.ribbon2.xRot = (float)Math.PI / 28.0F;
 		this.ribbon2.xRot += f2 * 0.05F;
 
-		boolean flag = entity.getVariant() == 1;
+		boolean flag = entity.getVariant() == CommonOrUncommonVariant.UNCOMMON;
 		this.rightRibbonPart1.visible = flag;
 		this.rightRibbonPart2.visible = flag;
 		this.leftRibbonPart1.visible = flag;

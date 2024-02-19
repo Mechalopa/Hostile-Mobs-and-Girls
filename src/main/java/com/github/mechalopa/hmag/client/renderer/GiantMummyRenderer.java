@@ -16,7 +16,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class GiantMummyRenderer extends HumanoidMobRenderer<GiantMummyEntity, GiantMummyModel<GiantMummyEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/giant_mummy.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/giant_mummy.png");
 
 	public  GiantMummyRenderer(EntityRendererProvider.Context context)
 	{
@@ -34,6 +34,6 @@ public class GiantMummyRenderer extends HumanoidMobRenderer<GiantMummyEntity, Gi
 	@Override
 	public ResourceLocation getTextureLocation(GiantMummyEntity entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 }

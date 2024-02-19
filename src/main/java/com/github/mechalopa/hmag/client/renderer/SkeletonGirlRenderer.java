@@ -17,7 +17,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class SkeletonGirlRenderer extends AbstractGirlRenderer<AbstractSkeleton, AbstractGirlModel<AbstractSkeleton>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/skeleton_girl.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/skeleton_girl.png");
 
 	public SkeletonGirlRenderer(EntityRendererProvider.Context context)
 	{
@@ -38,7 +38,7 @@ public class SkeletonGirlRenderer extends AbstractGirlRenderer<AbstractSkeleton,
 	@Override
 	public ResourceLocation getTextureLocation(AbstractSkeleton entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 
 	@Override

@@ -14,7 +14,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class SnowCanineRenderer extends AbstractGirlRenderer<SnowCanineEntity, SnowCanineModel<SnowCanineEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/snow_canine.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/snow_canine.png");
 
 	public SnowCanineRenderer(EntityRendererProvider.Context context)
 	{
@@ -25,6 +25,6 @@ public class SnowCanineRenderer extends AbstractGirlRenderer<SnowCanineEntity, S
 	@Override
 	public ResourceLocation getTextureLocation(SnowCanineEntity entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 }

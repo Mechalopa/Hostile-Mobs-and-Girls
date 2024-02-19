@@ -32,6 +32,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.VariantHolder;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
@@ -51,7 +52,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.network.NetworkHooks;
 
-public class CursedDollEntity extends Monster
+public class CursedDollEntity extends Monster implements VariantHolder<CommonOrUncommonVariant>
 {
 	private static final EntityDataAccessor<Integer> DATA_VARIANT_ID = SynchedEntityData.defineId(CursedDollEntity.class, EntityDataSerializers.INT);
 
@@ -65,7 +66,7 @@ public class CursedDollEntity extends Monster
 	protected void defineSynchedData()
 	{
 		super.defineSynchedData();
-		this.entityData.define(DATA_VARIANT_ID, 0);
+		this.entityData.define(DATA_VARIANT_ID, CommonOrUncommonVariant.COMMON.getId());
 	}
 
 	@Override
@@ -175,39 +176,36 @@ public class CursedDollEntity extends Monster
 	{
 		spawnData = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
 		RandomSource randomsource = levelAccessor.getRandom();
-		this.setVariant(randomsource.nextInt(4) == 0 ? 1 : 0);
+		this.setVariant(CommonOrUncommonVariant.getSpawnVariant(randomsource));
 		this.populateDefaultEquipmentSlots(randomsource, difficulty);
 		this.populateDefaultEquipmentEnchantments(randomsource, difficulty);
 		return spawnData;
 	}
 
-	public int getVariant()
+	@Override
+	public CommonOrUncommonVariant getVariant()
 	{
-		return this.entityData.get(DATA_VARIANT_ID);
+		return CommonOrUncommonVariant.byId(this.entityData.get(DATA_VARIANT_ID));
 	}
 
-	private void setVariant(int type)
+	@Override
+	public void setVariant(CommonOrUncommonVariant variant)
 	{
-		if (type < 0 || type >= 2)
-		{
-			type = 0;
-		}
-
-		this.entityData.set(DATA_VARIANT_ID, type);
+		this.entityData.set(DATA_VARIANT_ID, variant.getId());
 	}
 
 	@Override
 	public void readAdditionalSaveData(CompoundTag compound)
 	{
 		super.readAdditionalSaveData(compound);
-		this.setVariant(compound.getInt("Variant"));
+		this.setVariant(CommonOrUncommonVariant.byId(compound.getInt("Variant")));
 	}
 
 	@Override
 	public void addAdditionalSaveData(CompoundTag compound)
 	{
 		super.addAdditionalSaveData(compound);
-		compound.putInt("Variant", this.getVariant());
+		compound.putInt("Variant", this.getVariant().getId());
 	}
 
 	@Override

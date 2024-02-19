@@ -12,7 +12,6 @@ import com.github.mechalopa.hmag.registry.ModItems;
 import com.github.mechalopa.hmag.util.ModDamageTypes;
 import com.github.mechalopa.hmag.util.ModTags;
 import com.github.mechalopa.hmag.util.ModUtils;
-import com.github.mechalopa.hmag.world.entity.KashaEntity;
 import com.github.mechalopa.hmag.world.item.AncientShieldItem;
 import com.github.mechalopa.hmag.world.item.ILevelItem;
 import com.github.mechalopa.hmag.world.item.InsomniaSwordItem;
@@ -40,9 +39,7 @@ import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades.ItemListing;
@@ -414,7 +411,7 @@ public class ModEvents
 				{
 					EnderMan endermanentity = (EnderMan)event.getEntity();
 					endermanentity.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(endermanentity, LivingEntity.class, 10, false, false, (p) -> {
-						if (!(p instanceof EnderMan) && p.hasEffect(ModEffects.ENDER_RAGE.get()))
+						if (p.hasEffect(ModEffects.ENDER_RAGE.get()))
 						{
 							final double d0 = 8.0D + p.getEffect(ModEffects.ENDER_RAGE.get()).getAmplifier() * 12.0D;
 							return p.distanceToSqr(endermanentity) <= d0 * d0;
@@ -424,11 +421,6 @@ public class ModEvents
 							return false;
 						}
 					}).setUnseenMemoryTicks(30));
-				}
-				else if (event.getEntity() instanceof Creeper)
-				{
-					Creeper creeerentity = (Creeper)event.getEntity();
-					creeerentity.goalSelector.addGoal(3, new AvoidEntityGoal<>(creeerentity, KashaEntity.class, 6.0F, 1.0D, 1.2D));
 				}
 			}
 		}

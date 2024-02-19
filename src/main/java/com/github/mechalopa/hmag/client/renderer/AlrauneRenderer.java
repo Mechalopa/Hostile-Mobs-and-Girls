@@ -13,7 +13,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class AlrauneRenderer extends AbstractGirlRenderer<AlrauneEntity, AlrauneModel<AlrauneEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/alraune.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/alraune.png");
 
 	public AlrauneRenderer(EntityRendererProvider.Context context)
 	{
@@ -23,6 +23,6 @@ public class AlrauneRenderer extends AbstractGirlRenderer<AlrauneEntity, Alraune
 	@Override
 	public ResourceLocation getTextureLocation(AlrauneEntity entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 }

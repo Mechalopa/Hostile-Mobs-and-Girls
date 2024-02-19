@@ -43,6 +43,7 @@ import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.VariantHolder;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -66,7 +67,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.network.NetworkHooks;
 
-public class JiangshiEntity extends Monster
+public class JiangshiEntity extends Monster implements VariantHolder<CommonOrUncommonVariant>
 {
 	private static final UUID SPEED_MODIFIER_BY_DAMAGE_UUID = UUID.fromString("A25E5B12-7881-3AE6-D9F5-418CB7D9E02E");
 	private static final EntityDataAccessor<Integer> DATA_SPEED_BONUS = SynchedEntityData.defineId(JiangshiEntity.class, EntityDataSerializers.INT);
@@ -86,7 +87,7 @@ public class JiangshiEntity extends Monster
 	{
 		super.defineSynchedData();
 		this.entityData.define(DATA_SPEED_BONUS, 0);
-		this.entityData.define(DATA_VARIANT_ID, 0);
+		this.entityData.define(DATA_VARIANT_ID, CommonOrUncommonVariant.COMMON.getId());
 	}
 
 	@Override
@@ -253,7 +254,7 @@ public class JiangshiEntity extends Monster
 	{
 		spawnData = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
 		RandomSource randomsource = levelAccessor.getRandom();
-		this.setVariant(randomsource.nextInt(4) == 0 ? 1 : 0);
+		this.setVariant(CommonOrUncommonVariant.getSpawnVariant(randomsource));
 
 		if (this.getItemBySlot(EquipmentSlot.HEAD).isEmpty())
 		{
@@ -296,19 +297,16 @@ public class JiangshiEntity extends Monster
 		}
 	}
 
-	public int getVariant()
+	@Override
+	public CommonOrUncommonVariant getVariant()
 	{
-		return this.entityData.get(DATA_VARIANT_ID);
+		return CommonOrUncommonVariant.byId(this.entityData.get(DATA_VARIANT_ID));
 	}
 
-	private void setVariant(int type)
+	@Override
+	public void setVariant(CommonOrUncommonVariant variant)
 	{
-		if (type < 0 || type >= 2)
-		{
-			type = 0;
-		}
-
-		this.entityData.set(DATA_VARIANT_ID, type);
+		this.entityData.set(DATA_VARIANT_ID, variant.getId());
 	}
 
 	@Override
@@ -316,7 +314,7 @@ public class JiangshiEntity extends Monster
 	{
 		super.readAdditionalSaveData(compound);
 		this.setSpeedBonus(compound.getInt("SpeedBonus"));
-		this.setVariant(compound.getInt("Variant"));
+		this.setVariant(CommonOrUncommonVariant.byId(compound.getInt("Variant")));
 	}
 
 	@Override
@@ -324,7 +322,7 @@ public class JiangshiEntity extends Monster
 	{
 		super.addAdditionalSaveData(compound);
 		compound.putInt("SpeedBonus", this.getSpeedBonus());
-		compound.putInt("Variant", this.getVariant());
+		compound.putInt("Variant", this.getVariant().getId());
 	}
 
 	@Override

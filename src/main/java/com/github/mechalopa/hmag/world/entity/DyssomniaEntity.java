@@ -568,7 +568,7 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 					bullet.setPos(this.parent.getX() + vec3.x * d1, this.parent.getEyeY() - vec3.y * d2, this.parent.getZ() + vec3.z * d1);
 					bullet.setDamage(5.0F);
 					bullet.setEffectLevel((byte)1);
-					bullet.setVariant(1);
+					bullet.setVariant(MagicBulletEntity.Variant.DYSSOMNIA);
 					level.addFreshEntity(bullet);
 					this.parent.setAttackPhase(DyssomniaEntity.AttackPhase.WAIT);
 				}

@@ -15,7 +15,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class CrimsonSlaughtererRenderer extends MobRenderer<CrimsonSlaughtererEntity, CrimsonSlaughtererModel<CrimsonSlaughtererEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/crimson_slaughterer.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/crimson_slaughterer.png");
 
 	public CrimsonSlaughtererRenderer(EntityRendererProvider.Context context)
 	{
@@ -31,6 +31,6 @@ public class CrimsonSlaughtererRenderer extends MobRenderer<CrimsonSlaughtererEn
 	@Override
 	public ResourceLocation getTextureLocation(CrimsonSlaughtererEntity entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 }

@@ -19,7 +19,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class SpiderNestRenderer extends MobRenderer<SpiderNestEntity, SpiderNestModel<SpiderNestEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/spider_nest.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/spider_nest.png");
 	private final Random rand = new Random();
 
 	public SpiderNestRenderer(EntityRendererProvider.Context context)
@@ -51,6 +51,6 @@ public class SpiderNestRenderer extends MobRenderer<SpiderNestEntity, SpiderNest
 	@Override
 	public ResourceLocation getTextureLocation(SpiderNestEntity entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 }

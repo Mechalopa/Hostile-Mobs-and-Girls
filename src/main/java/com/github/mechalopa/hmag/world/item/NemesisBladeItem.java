@@ -112,7 +112,7 @@ public class NemesisBladeItem extends ModSwordItem implements ILevelItem
 				bullet.setDamage(i * 3.0F + 6.0F);
 				bullet.setPierceLevel((byte)Mth.clamp(i - 1, 0, 255));
 				bullet.setEffectLevel((byte)Mth.clamp(i, 0, 255));
-				bullet.setVariant(2);
+				bullet.setVariant(MagicBulletEntity.Variant.NEMESIS);
 
 				stack.hurtAndBreak(1, player, (p) -> {
 					p.broadcastBreakEvent(player.getUsedItemHand());

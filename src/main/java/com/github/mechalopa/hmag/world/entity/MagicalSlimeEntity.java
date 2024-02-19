@@ -14,6 +14,7 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.VariantHolder;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Monster;
@@ -23,7 +24,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.network.NetworkHooks;
 
-public class MagicalSlimeEntity extends Slime
+public class MagicalSlimeEntity extends Slime implements VariantHolder<SlimeGirlEntity.ColorVariant>
 {
 	private static final EntityDataAccessor<Integer> DATA_VARIANT_ID = SynchedEntityData.defineId(MagicalSlimeEntity.class, EntityDataSerializers.INT);
 
@@ -36,7 +37,7 @@ public class MagicalSlimeEntity extends Slime
 	protected void defineSynchedData()
 	{
 		super.defineSynchedData();
-		this.entityData.define(DATA_VARIANT_ID, 0);
+		this.entityData.define(DATA_VARIANT_ID, SlimeGirlEntity.ColorVariant.PINK_1.getId());
 	}
 
 	public static AttributeSupplier.Builder createAttributes()
@@ -59,7 +60,7 @@ public class MagicalSlimeEntity extends Slime
 	public void setSize(int size, boolean resetHealth)
 	{
 		super.setSize(size, resetHealth);
-		this.setVariant(this.getRandom().nextInt(SlimeGirlEntity.ColorVariant.values().length));
+		this.setVariant(SlimeGirlEntity.ColorVariant.getSpawnVariant(this.getRandom()));
 		this.getAttribute(Attributes.ARMOR).setBaseValue(size * 2);
 	}
 
@@ -88,38 +89,35 @@ public class MagicalSlimeEntity extends Slime
 	}
 
 	@OnlyIn(Dist.CLIENT)
-	public float[] getColor()
+	public float[] getColors()
 	{
-		return SlimeGirlEntity.ColorVariant.byId(this.getVariant()).getColors();
-	}
-
-	public int getVariant()
-	{
-		return this.entityData.get(DATA_VARIANT_ID);
-	}
-
-	public void setVariant(int typeIn)
-	{
-		if (typeIn < 0 || typeIn >= SlimeGirlEntity.ColorVariant.values().length)
-		{
-			typeIn = this.getRandom().nextInt(SlimeGirlEntity.ColorVariant.values().length);
-		}
-
-		this.entityData.set(DATA_VARIANT_ID, typeIn);
+		return this.getVariant().getColors();
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundTag compound)
+	public SlimeGirlEntity.ColorVariant getVariant()
 	{
-		super.addAdditionalSaveData(compound);
-		compound.putInt("Variant", this.getVariant());
+		return SlimeGirlEntity.ColorVariant.byId(this.entityData.get(DATA_VARIANT_ID));
+	}
+
+	@Override
+	public void setVariant(SlimeGirlEntity.ColorVariant variant)
+	{
+		this.entityData.set(DATA_VARIANT_ID, variant.getId());
 	}
 
 	@Override
 	public void readAdditionalSaveData(CompoundTag compound)
 	{
 		super.readAdditionalSaveData(compound);
-		this.setVariant(compound.getInt("Variant"));
+		this.setVariant(SlimeGirlEntity.ColorVariant.byId(compound.getInt("Variant")));
+	}
+
+	@Override
+	public void addAdditionalSaveData(CompoundTag compound)
+	{
+		super.addAdditionalSaveData(compound);
+		compound.putInt("Variant", this.getVariant().getId());
 	}
 
 	@Nonnull
