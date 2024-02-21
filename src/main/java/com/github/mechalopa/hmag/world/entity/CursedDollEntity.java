@@ -148,7 +148,7 @@ public class CursedDollEntity extends Monster implements VariantHolder<CommonOrU
 	{
 		if (source.is(ModTags.DamageTypeTags.CURSED_DOLL_VULNERABLE_TO))
 		{
-			amount = amount * 2.0F;
+			amount = amount * 1.5F;
 		}
 
 		return super.hurt(source, amount);

@@ -143,42 +143,17 @@ public class HarpyEntity extends Monster implements VariantHolder<HarpyEntity.Va
 	{
 		spawnData = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
 		RandomSource randomsource = levelAccessor.getRandom();
-		int variantId = randomsource.nextBoolean() ? 0 : 3;
 
 		if (randomsource.nextDouble() < ModConfigs.cachedServer.PINK_HARPY_SPAWN_CHANCE)
 		{
-			variantId = HarpyEntity.Variant.PINK.getId();
+			this.setVariant(HarpyEntity.Variant.PINK);
 		}
 		else
 		{
 			Holder<Biome> holder = levelAccessor.getBiome(this.blockPosition());
-
-			if (holder != null)
-			{
-				if (holder.is(ModTags.BiomeTags.IS_COLD))
-				{
-					variantId = randomsource.nextInt(4) == 0 ? (randomsource.nextInt(3) + 2) : 5;
-				}
-				else if (holder.is(ModTags.BiomeTags.IS_BADLANDS))
-				{
-					variantId = randomsource.nextInt(5) == 0 ? 3 : (randomsource.nextInt(3) == 0 ? 0 : (randomsource.nextInt(2) + 1));
-				}
-				else if (holder.is(ModTags.BiomeTags.IS_SANDY))
-				{
-					variantId = randomsource.nextInt(5) == 0 ? 5 : (randomsource.nextInt(3) == 0 ? 1 : (randomsource.nextBoolean() ? 0 : 2));
-				}
-				else if (holder.is(ModTags.BiomeTags.IS_SAVANNA))
-				{
-					variantId = randomsource.nextInt(6) == 0 ? 4 : randomsource.nextInt(3);
-				}
-				else if (holder.is(ModTags.BiomeTags.IS_PLAINS))
-				{
-					variantId = randomsource.nextInt(3) == 0 ? (randomsource.nextBoolean() ? 1 : 4) : 3;
-				}
-			}
+			this.setVariant(HarpyEntity.Variant.getSpawnVariant(holder, randomsource));
 		}
 
-		this.setVariant(HarpyEntity.Variant.byId(variantId));
 		return spawnData;
 	}
 
@@ -298,6 +273,64 @@ public class HarpyEntity extends Monster implements VariantHolder<HarpyEntity.Va
 		public static HarpyEntity.Variant byId(int id)
 		{
 			return BY_ID.apply(id);
+		}
+
+		public static HarpyEntity.Variant getSpawnVariant(Holder<Biome> holder, RandomSource random)
+		{
+			if (holder.is(ModTags.BiomeTags.IS_COLD))
+			{
+				if (random.nextInt(4) == 0)
+				{
+					switch (random.nextInt(3))
+					{
+					case 1:
+						return BROWN;
+					case 2:
+						return GRAY;
+					default:
+						return BEIGE;
+					}
+				}
+				else
+				{
+					return WHITE;
+				}
+			}
+			else if (holder.is(ModTags.BiomeTags.IS_BADLANDS))
+			{
+				return random.nextInt(5) == 0 ? BROWN : (random.nextInt(3) == 0 ? GOLD : (random.nextBoolean() ? ORANGE : BEIGE));
+			}
+			else if (holder.is(ModTags.BiomeTags.IS_SANDY))
+			{
+				return random.nextInt(5) == 0 ? WHITE : (random.nextInt(3) == 0 ? ORANGE : (random.nextBoolean() ? GOLD : BEIGE));
+			}
+			else if (holder.is(ModTags.BiomeTags.IS_SAVANNA))
+			{
+				if (random.nextInt(6) == 0)
+				{
+					return GRAY;
+				}
+				else
+				{
+					switch (random.nextInt(3))
+					{
+					case 1:
+						return ORANGE;
+					case 2:
+						return BEIGE;
+					default:
+						return GOLD;
+					}
+				}
+			}
+			else if (holder.is(ModTags.BiomeTags.IS_PLAINS))
+			{
+				return random.nextInt(3) == 0 ? (random.nextBoolean() ? ORANGE : GRAY) : BROWN;
+			}
+			else
+			{
+				return random.nextBoolean() ? GOLD : BROWN;
+			}
 		}
 	}
 }

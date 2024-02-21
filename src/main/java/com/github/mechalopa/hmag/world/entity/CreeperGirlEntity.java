@@ -62,8 +62,8 @@ public class CreeperGirlEntity extends Creeper implements VariantHolder<CreeperG
 	public static AttributeSupplier.Builder createAttributes()
 	{
 		return Monster.createMonsterAttributes()
-				.add(Attributes.MAX_HEALTH, 28.0D)
-				.add(Attributes.MOVEMENT_SPEED, 0.3D)
+				.add(Attributes.MAX_HEALTH, 30.0D)
+				.add(Attributes.MOVEMENT_SPEED, 0.28D)
 				.add(Attributes.KNOCKBACK_RESISTANCE, 0.25D);
 	}
 
