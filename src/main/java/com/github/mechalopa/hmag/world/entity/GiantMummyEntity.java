@@ -173,7 +173,7 @@ public class GiantMummyEntity extends Monster
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
-		if (source.is(ModTags.DamageTypeTags.SPIDER_NEST_VULNERABLE_TO))
+		if (source.is(ModTags.DamageTypeTags.GIANT_MUMMY_VULNERABLE_TO))
 		{
 			amount = amount * 1.5F;
 		}
