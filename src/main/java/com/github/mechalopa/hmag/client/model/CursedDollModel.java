@@ -70,7 +70,7 @@ public class CursedDollModel<T extends CursedDollEntity> extends AbstractAdvance
 		PartDefinition headpd = pd.getChild("head");
 		PartDefinition h1pd = ModClientUtils.addC(headpd, cd, "hair_part_1", 40, 48, -4.0F, 0.0F, -1.0F, 8.0F, 4.0F, 1.0F, 0.0F, 0.0F, 4.0F);
 		ModClientUtils.addC(h1pd, cd, "hair_part_2", 42, 56, -4.0F, 0.0F, -1.0F, 8.0F, 8.0F, 1.0F, 0.0F, 4.0F, 0.0F);
-		PartDefinition ribbonpd = ModClientUtils.addC(headpd, cd, "ribbon_1", 16, 32, -1.0F, -1.5F, -0.5F, 2.0F, 3.0F, 1.0F, 0.0F, -7.0F, 4.25F);
+		PartDefinition ribbonpd = ModClientUtils.addC(headpd, cd, "ribbon_1", 18, 32, -1.0F, -1.5F, -0.5F, 2.0F, 3.0F, 1.0F, 0.0F, -7.0F, 4.25F);
 		ModClientUtils.addC(ribbonpd, cd, "ribbon_right_part", 0, 96, 0.0F, -3.5F, -1.0F, 6.0F, 7.0F, 1.0F, 1.0F, 0.0F, 0.25F);
 		ModClientUtils.addC(ribbonpd, cd, "ribbon_left_part", 16, 96, -6.0F, -3.5F, -1.0F, 6.0F, 7.0F, 1.0F, -1.0F, 0.0F, 0.25F);
 		ModClientUtils.addC(ribbonpd, cd, "ribbon_2", 0, 104, -4.5F, 0.0F, -1.0F, 9.0F, 5.0F, 1.0F, 0.0F, 1.5F, 0.25F);

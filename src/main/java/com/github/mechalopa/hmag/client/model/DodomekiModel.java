@@ -22,6 +22,9 @@ public class DodomekiModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 	private ModelPart skirt3;
 	private ModelPart hairPart1;
 	private ModelPart hairPart2;
+	private ModelPart ribbonBase;
+	private ModelPart ribbonRightPart;
+	private ModelPart ribbonLeftPart;
 //	private ModelPart headwearPart;
 
 	public DodomekiModel(ModelPart modelPart)
@@ -34,6 +37,9 @@ public class DodomekiModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 		this.skirt3 = this.skirt2.getChild("skirt_3");
 		this.hairPart1 = this.head.getChild("hair_part_1");
 		this.hairPart2 = this.hairPart1.getChild("hair_part_2");
+		this.ribbonBase = this.head.getChild("ribbon_base");
+		this.ribbonRightPart = this.ribbonBase.getChild("ribbon_right_part");
+		this.ribbonLeftPart = this.ribbonBase.getChild("ribbon_left_part");
 //		this.headwearPart = this.hat.getChild("hat_part");
 	}
 
@@ -53,6 +59,9 @@ public class DodomekiModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 		PartDefinition headpd = pd.getChild("head");
 		PartDefinition h1pd = ModClientUtils.addC(headpd, cd, "hair_part_1", 0, 72, -4.0F, 0.0F, -1.0F, 8.0F, 4.0F, 1.0F, 0.0F, 0.0F, 4.0F);
 		ModClientUtils.addC(h1pd, cd, "hair_part_2", 0, 80, -4.0F, 0.0F, -1.0F, 8.0F, 8.0F, 1.0F, 0.0F, 4.0F, 0.0F);
+		PartDefinition ribbonpd = ModClientUtils.addC(headpd, cd, "ribbon_base", 16, 52, -1.0F, -0.5F, -0.5F, 2.0F, 1.0F, 1.0F, -4.375F, -8.0F, -1.5F);
+		ModClientUtils.addC(ribbonpd, cd, "ribbon_right_part", 16, 56, 0.0F, -2.5F, 0.0F, 4.0F, 5.0F, 1.0F, 0.5F, 0.0F, -0.25F, -0.25F);
+		ModClientUtils.addC(ribbonpd, cd, "ribbon_left_part", 16, 64, -4.0F, -2.5F, 0.0F, 4.0F, 5.0F, 1.0F, -0.5F, 0.0F, -0.25F, -0.25F);
 		PartDefinition hatpd = pd.getChild("hat");
 		ModClientUtils.addC(hatpd, cd, "hat_part", 32, 80, -4.0F, -2.0F, -4.0F, 8.0F, 2.0F, 8.0F, 0.0F, 3.0F, 0.0F, 0.5F);
 		return md;
@@ -64,11 +73,11 @@ public class DodomekiModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 	}
 
 	@Override
-	public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
+	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
 		this.head.zRot = 0.0F;
 
-		super.setupAnim(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+		super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 
 		this.head.zRot += Mth.cos(ageInTicks * 0.054F) * 0.06F;
 		this.hat.copyFrom(this.head);
@@ -90,6 +99,17 @@ public class DodomekiModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 		this.hairPart1.xRot += Mth.sin(ageInTicks * 0.075F) * 0.06F;
 		this.hairPart2.xRot = (float)Math.PI / 21.0F;
 		this.hairPart2.xRot += Mth.sin(ageInTicks * 0.075F + (float)Math.PI / 4.0F) * 0.06F;
+
+		float f = Mth.sin(ageInTicks * 0.075F + (float)Math.PI / 2.0F);
+		this.ribbonBase.xRot = -((float)Math.PI / 15.0F);
+		this.ribbonBase.xRot += Mth.sin(ageInTicks * 0.054F + (float)Math.PI / 6.0F) * 0.018F;
+		this.ribbonBase.zRot = -((float)Math.PI * 3.0F / 12.0F);
+		this.ribbonRightPart.yRot = -((float)Math.PI / 24.0F);
+		this.ribbonLeftPart.yRot = (float)Math.PI / 24.0F;
+		this.ribbonRightPart.yRot -= f * 0.05F;
+		this.ribbonLeftPart.yRot += f * 0.05F;
+		this.ribbonRightPart.zRot = -((float)Math.PI / 15.0F);
+		this.ribbonLeftPart.zRot = (float)Math.PI / 15.0F;
 
 		if (this.riding)
 		{

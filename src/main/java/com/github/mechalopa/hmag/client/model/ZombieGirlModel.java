@@ -51,7 +51,7 @@ public class ZombieGirlModel<T extends Zombie> extends AbstractAdvancedGirlModel
 		PartDefinition th2pd = ModClientUtils.addC(th1pd, cd, "tail_hair_2", 8, 56, -1.0F, -0.5F, 0.0F, 2.0F, 5.0F, 2.0F, 0.0F, 3.0F, 0.0F, 0.001F);
 		PartDefinition th3pd = ModClientUtils.addC(th2pd, cd, "tail_hair_3", 8, 56, -1.0F, -0.5F, 0.0F, 2.0F, 5.0F, 2.0F, 0.0F, 4.25F, 0.0F, -0.25F);
 		ModClientUtils.addC(th3pd, cd, "tail_hair_4", 16, 56, -0.5F, -0.5F, 0.0F, 1.0F, 4.0F, 1.0F, 0.0F, 4.5F, 0.5F);
-		ModClientUtils.addC(headpd, cd, "ahoge", 16, 32, -2.5F, -4.0F, 0.0F, 5.0F, 4.0F, 1.0F, 0.0F, -7.75F, 0.0F, -0.25F);
+		ModClientUtils.addC(headpd, cd, "ahoge", 16, 30, -2.5F, -4.0F, 0.0F, 5.0F, 4.0F, 1.0F, 0.0F, -7.75F, 0.0F, -0.25F);
 		return md;
 	}
 
@@ -61,11 +61,11 @@ public class ZombieGirlModel<T extends Zombie> extends AbstractAdvancedGirlModel
 	}
 
 	@Override
-	public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
+	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
-		super.setupAnim(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+		super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 
-		AnimationUtils.animateZombieArms(this.leftArm, this.rightArm, this.isAggressive(entityIn), this.attackTime, ageInTicks);
+		AnimationUtils.animateZombieArms(this.leftArm, this.rightArm, this.isAggressive(entity), this.attackTime, ageInTicks);
 
 //		this.clothPart.xRot = 0.0F;
 

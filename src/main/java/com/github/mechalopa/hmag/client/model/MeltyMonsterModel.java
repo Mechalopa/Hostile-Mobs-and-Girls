@@ -126,7 +126,7 @@ public class MeltyMonsterModel<T extends MeltyMonsterEntity> extends AbstractAdv
 		PartDefinition lhb3pd = lhb2pd.addOrReplaceChild("left_hair_b_3", cubelistbuilder7, PartPose.offset(0.0F, 3.5F, 0.0F));
 		PartDefinition lhb4pd = lhb3pd.addOrReplaceChild("left_hair_b_4", cubelistbuilder8, PartPose.offset(0.0F, 6.0F, 0.0F));
 		lhb4pd.addOrReplaceChild("left_hair_b_5", cubelistbuilder9, PartPose.offset(0.0F, 2.5F, 0.0F));
-		ModClientUtils.addC(headpd, cd, "ahoge", 16, 32, -2.5F, -3.0F, 0.0F, 5.0F, 3.0F, 1.0F, 0.0F, -7.75F, 0.0F, -0.25F);
+		ModClientUtils.addC(headpd, cd, "ahoge", 16, 30, -2.5F, -3.0F, 0.0F, 5.0F, 3.0F, 1.0F, 0.0F, -7.75F, 0.0F, -0.25F);
 		return md;
 	}
 
