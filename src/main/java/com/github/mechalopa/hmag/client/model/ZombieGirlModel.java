@@ -93,8 +93,8 @@ public class ZombieGirlModel<T extends Zombie> extends AbstractAdvancedGirlModel
 		this.ahoge.xRot += Mth.cos(ageInTicks * 0.03F + (float)Math.PI) * 0.09F;
 	}
 
-	public boolean isAggressive(T entityIn)
+	public boolean isAggressive(T entity)
 	{
-		return entityIn.isAggressive();
+		return entity.isAggressive();
 	}
 }

@@ -48,35 +48,32 @@ public class DrownedGirlModel<T extends Zombie> extends ZombieGirlModel<T>
 	}
 
 	@Override
-	public void prepareMobModel(T entityIn, float limbSwing, float limbSwingAmount, float partialTick)
+	public void prepareMobModel(T entity, float limbSwing, float limbSwingAmount, float partialTick)
 	{
-		prepareDrownedModel(entityIn, this);
-
-		super.prepareMobModel(entityIn, limbSwing, limbSwingAmount, partialTick);
+		prepareDrownedModel(entity, this);
+		super.prepareMobModel(entity, limbSwing, limbSwingAmount, partialTick);
 	}
 
 	@Override
-	public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
+	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
-		super.setupAnim(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
-
-		doAnim(entityIn, ageInTicks, attackTime, this);
-
+		super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+		doAnim(entity, ageInTicks, attackTime, this);
 		this.rightArmPart.yRot = -((float)Math.PI / 18.0F);
 		this.rightArmPart.yRot += Mth.sin(ageInTicks * 0.045F + (float)Math.PI) * 0.06F;
 		this.leftArmPart.yRot = (float)Math.PI / 18.0F;
 		this.leftArmPart.yRot -= Mth.sin(ageInTicks * 0.045F + (float)Math.PI) * 0.06F;
 	}
 
-	public static void prepareDrownedModel(Zombie entityIn, HumanoidModel<?> model)
+	public static void prepareDrownedModel(Zombie entity, HumanoidModel<?> model)
 	{
 		model.rightArmPose = HumanoidModel.ArmPose.EMPTY;
 		model.leftArmPose = HumanoidModel.ArmPose.EMPTY;
-		ItemStack stack = entityIn.getItemInHand(InteractionHand.MAIN_HAND);
+		ItemStack stack = entity.getItemInHand(InteractionHand.MAIN_HAND);
 
-		if (ModUtils.isTrident(stack) && entityIn.isAggressive())
+		if (ModUtils.isTrident(stack) && entity.isAggressive())
 		{
-			if (entityIn.getMainArm() == HumanoidArm.RIGHT)
+			if (entity.getMainArm() == HumanoidArm.RIGHT)
 			{
 				model.rightArmPose = HumanoidModel.ArmPose.THROW_SPEAR;
 			}
@@ -87,7 +84,7 @@ public class DrownedGirlModel<T extends Zombie> extends ZombieGirlModel<T>
 		}
 	}
 
-	public static void doAnim(Zombie entityIn, float ageInTicks, float attackTime, AbstractGirlModel<?> model)
+	public static void doAnim(Zombie entity, float ageInTicks, float attackTime, AbstractGirlModel<?> model)
 	{
 		if (model.leftArmPose == HumanoidModel.ArmPose.THROW_SPEAR)
 		{

@@ -20,15 +20,15 @@ public class DrownedGirlArmorModel<T extends Zombie> extends ZombieGirlArmorMode
 	}
 
 	@Override
-	public void prepareMobModel(T entityIn, float limbSwing, float limbSwingAmount, float partialTick)
+	public void prepareMobModel(T entity, float limbSwing, float limbSwingAmount, float partialTick)
 	{
 		this.rightArmPose = HumanoidModel.ArmPose.EMPTY;
 		this.leftArmPose = HumanoidModel.ArmPose.EMPTY;
-		ItemStack stack = entityIn.getItemInHand(InteractionHand.MAIN_HAND);
+		ItemStack stack = entity.getItemInHand(InteractionHand.MAIN_HAND);
 
-		if (ModUtils.isTrident(stack) && entityIn.isAggressive())
+		if (ModUtils.isTrident(stack) && entity.isAggressive())
 		{
-			if (entityIn.getMainArm() == HumanoidArm.RIGHT)
+			if (entity.getMainArm() == HumanoidArm.RIGHT)
 			{
 				this.rightArmPose = HumanoidModel.ArmPose.THROW_SPEAR;
 			}
@@ -38,14 +38,13 @@ public class DrownedGirlArmorModel<T extends Zombie> extends ZombieGirlArmorMode
 			}
 		}
 
-		super.prepareMobModel(entityIn, limbSwing, limbSwingAmount, partialTick);
+		super.prepareMobModel(entity, limbSwing, limbSwingAmount, partialTick);
 	}
 
 	@Override
-	public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
+	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
-		super.setupAnim(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
-
-		DrownedGirlModel.doAnim(entityIn, ageInTicks, attackTime, this);
+		super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+		DrownedGirlModel.doAnim(entity, ageInTicks, attackTime, this);
 	}
 }

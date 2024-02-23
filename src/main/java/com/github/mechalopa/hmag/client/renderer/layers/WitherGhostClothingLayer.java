@@ -31,7 +31,7 @@ public class WitherGhostClothingLayer extends GhostClothingLayer
 	}
 
 	@Override
-	protected float getAlpha(GhostEntity livingEntityIn)
+	protected float getAlpha(GhostEntity entity)
 	{
 		return 0.875F;
 	}

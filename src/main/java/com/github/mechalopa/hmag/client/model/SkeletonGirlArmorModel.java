@@ -32,19 +32,17 @@ public class SkeletonGirlArmorModel<T extends AbstractSkeleton> extends GirlArmo
 	}
 
 	@Override
-	public void prepareMobModel(T entityIn, float limbSwing, float limbSwingAmount, float partialTick)
+	public void prepareMobModel(T entity, float limbSwing, float limbSwingAmount, float partialTick)
 	{
-		SkeletonGirlModel.prepareSkeletonModel(entityIn, this);
-
-		super.prepareMobModel(entityIn, limbSwing, limbSwingAmount, partialTick);
+		SkeletonGirlModel.prepareSkeletonModel(entity, this);
+		super.prepareMobModel(entity, limbSwing, limbSwingAmount, partialTick);
 	}
 
 	@Override
-	public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
+	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
-		super.setupAnim(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
-
-		SkeletonGirlModel.doAnim(entityIn, ageInTicks, this.attackTime, this);
+		super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+		SkeletonGirlModel.doAnim(entity, ageInTicks, this.attackTime, this);
 	}
 
 	@Override
