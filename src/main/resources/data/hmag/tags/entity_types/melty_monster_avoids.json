@@ -3,6 +3,14 @@
   "values": [
     "minecraft:strider",
     {
+      "id": "#forge:striders",
+      "required": false
+    },
+    {
+      "id": "#c:striders",
+      "required": false
+    },
+    {
       "id": "alexsmobs:straddler",
       "required": false
     }

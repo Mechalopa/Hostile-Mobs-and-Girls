@@ -142,7 +142,7 @@ public class HornetModel<T extends AbstractFlyingMonsterEntity> extends Humanoid
 		ModClientUtils.addC(llp3pd, cd, "left_leg_part_4", 40, 80, -1.5F, 0.0F, -1.0F, 3.0F, 4.0F, 2.0F, 0.0F, 2.0F, 0.0F, true);
 
 		PartDefinition thoraxpd = ModClientUtils.addC(bodypd, cd, "thorax", 32, 48, -2.0F, -0.25F, -1.0F, 4.0F, 3.0F, 2.0F, 0.0F, 8.0F, 0.0F);
-		PartDefinition abp1pd = ModClientUtils.addC(thoraxpd, cd, "abdomen_part_1", 16, 32, -2.5F, 0.0F, -1.5F, 5.0F, 1.0F, 3.0F, 0.0F, 2.0F, 0.25F);
+		PartDefinition abp1pd = ModClientUtils.addC(thoraxpd, cd, "abdomen_part_1", 18, 32, -2.5F, 0.0F, -1.5F, 5.0F, 1.0F, 3.0F, 0.0F, 2.0F, 0.25F);
 		PartDefinition abp2pd = ModClientUtils.addC(abp1pd, cd, "abdomen_part_2", 0, 40, -3.0F, 0.0F, -2.0F, 6.0F, 1.0F, 4.0F, 0.0F, 1.0F, 0.0F);
 		PartDefinition abp3pd = ModClientUtils.addC(abp2pd, cd, "abdomen_part_3", 0, 48, -3.5F, 0.0F, -3.0F, 7.0F, 2.0F, 6.0F, 0.0F, 1.0F, 0.0F);
 		PartDefinition abp4pd = ModClientUtils.addC(abp3pd, cd, "abdomen_part_4", 0, 56, -4.0F, 0.0F, -3.5F, 8.0F, 2.0F, 7.0F, 0.0F, 2.0F, 0.0F);
@@ -167,13 +167,13 @@ public class HornetModel<T extends AbstractFlyingMonsterEntity> extends Humanoid
 	}
 
 	@Override
-	public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
+	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
-		super.setupAnim(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+		super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 
-		AnimationUtils.animateZombieArms(this.leftArm, this.rightArm, entityIn.isCharging(), this.attackTime, ageInTicks);
+		AnimationUtils.animateZombieArms(this.leftArm, this.rightArm, entity.isCharging(), this.attackTime, ageInTicks);
 
-		float f = -(float)Math.PI / (entityIn.isCharging() ? 4.0F : 15.0F);
+		float f = -(float)Math.PI / (entity.isCharging() ? 4.0F : 15.0F);
 		float f1 = Mth.sin(ageInTicks * 0.12F);
 		float f2 = Mth.sin(ageInTicks * 0.09F);
 

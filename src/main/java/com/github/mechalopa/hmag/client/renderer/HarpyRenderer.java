@@ -20,7 +20,6 @@ public class HarpyRenderer extends AbstractGirlRenderer<HarpyEntity, HarpyModel<
 	private static final ResourceLocation TEX4 = new ResourceLocation(HMaG.MODID, "textures/entity/harpy/harpy_4.png");
 	private static final ResourceLocation TEX5 = new ResourceLocation(HMaG.MODID, "textures/entity/harpy/harpy_5.png");
 	private static final ResourceLocation TEX6 = new ResourceLocation(HMaG.MODID, "textures/entity/harpy/harpy_6.png");
-	private static final ResourceLocation TEX7 = new ResourceLocation(HMaG.MODID, "textures/entity/harpy/harpy_7.png");
 
 	public HarpyRenderer(EntityRendererProvider.Context context)
 	{
@@ -44,8 +43,6 @@ public class HarpyRenderer extends AbstractGirlRenderer<HarpyEntity, HarpyModel<
 			return TEX5;
 		case 6:
 			return TEX6;
-		case 7:
-			return TEX7;
 		default:
 			return TEX0;
 		}

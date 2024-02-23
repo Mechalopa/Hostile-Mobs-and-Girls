@@ -276,7 +276,7 @@ public class SlimeGirlEntity extends Monster
 	}
 
 	@OnlyIn(Dist.CLIENT)
-	public float[] getColor()
+	public float[] getColors()
 	{
 		return SlimeGirlEntity.ColorVariant.byId(this.getVariant()).getColors();
 	}

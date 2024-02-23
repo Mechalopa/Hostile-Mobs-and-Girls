@@ -28,19 +28,19 @@ public class SlimeGirlOuterLayer extends AbstractClothingLayer<SlimeGirlEntity, 
 	@Override
 	protected float getR(SlimeGirlEntity entity)
 	{
-		return (entity.getColor())[0];
+		return (entity.getColors())[0];
 	}
 
 	@Override
 	protected float getG(SlimeGirlEntity entity)
 	{
-		return (entity.getColor())[1];
+		return (entity.getColors())[1];
 	}
 
 	@Override
 	protected float getB(SlimeGirlEntity entity)
 	{
-		return (entity.getColor())[2];
+		return (entity.getColors())[2];
 	}
 
 	@Override

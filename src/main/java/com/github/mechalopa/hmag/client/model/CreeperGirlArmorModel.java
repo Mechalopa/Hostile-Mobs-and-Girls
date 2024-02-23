@@ -32,10 +32,10 @@ public class CreeperGirlArmorModel<T extends CreeperGirlEntity> extends GirlArmo
 	}
 
 	@Override
-	public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
+	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
-		super.setupAnim(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+		super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 
-		CreeperGirlModel.doAnim(entityIn, ageInTicks, this.attackTime, this);
+		CreeperGirlModel.doAnim(entity, ageInTicks, this.attackTime, this);
 	}
 }

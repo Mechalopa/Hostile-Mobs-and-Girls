@@ -147,7 +147,7 @@ public class CursedDollEntity extends Monster
 	{
 		if (source.is(ModTags.DamageTypeTags.CURSED_DOLL_VULNERABLE_TO))
 		{
-			amount = amount * 2.0F;
+			amount = amount * 1.5F;
 		}
 
 		return super.hurt(source, amount);

@@ -81,7 +81,7 @@ public class CrimsonSlaughtererEntity extends Monster
 	{
 		return Monster.createMonsterAttributes()
 				.add(Attributes.MAX_HEALTH, 80.0D)
-				.add(Attributes.MOVEMENT_SPEED, 0.33D)
+				.add(Attributes.MOVEMENT_SPEED, 0.312D)
 				.add(Attributes.ATTACK_DAMAGE, 12.0D)
 				.add(Attributes.ATTACK_KNOCKBACK, 0.5D)
 				.add(Attributes.ARMOR, 5.0D)

@@ -74,7 +74,6 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 			return 0.87F;
 		case 2:
 			return 0.98F;
-		case 0:
 		default:
 			return 0.9F;
 		}
@@ -354,7 +353,6 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 			return ParticleTypes.SMOKE;
 		case 3:
 			return ModParticleTypes.NIGHTWALKER_BULLET.get();
-		case 0:
 		default:
 			return ParticleTypes.DRAGON_BREATH;
 		}

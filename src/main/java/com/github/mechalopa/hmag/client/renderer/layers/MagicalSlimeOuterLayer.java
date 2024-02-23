@@ -54,7 +54,7 @@ public class MagicalSlimeOuterLayer<T extends LivingEntity> extends RenderLayer<
 
 			if (livingEntity instanceof MagicalSlimeEntity)
 			{
-				float[] afloat = ((MagicalSlimeEntity)livingEntity).getColor();
+				float[] afloat = ((MagicalSlimeEntity)livingEntity).getColors();
 				this.model.renderToBuffer(poseStack, vertexconsumer, packedLight, LivingEntityRenderer.getOverlayCoords(livingEntity, 0.0F), afloat[0], afloat[1], afloat[2], 1.0F);
 			}
 			else

@@ -56,7 +56,7 @@ public class ModTags
 		public static final TagKey<EntityType<?>> INK_SPIT_IMMUNE = createEntityTypeTag("ink_spit_immune");
 		public static final TagKey<EntityType<?>> KASHA_TARGETS = createEntityTypeTag("kasha_targets");
 		public static final TagKey<EntityType<?>> KASHA_TARGETS_BABY_ONLY = createEntityTypeTag("kasha_targets_baby_only");
-		public static final TagKey<EntityType<?>> MELTY_MONSTER_AVOID_MOBS = createEntityTypeTag("melty_monster_avoid_mobs");
+		public static final TagKey<EntityType<?>> MELTY_MONSTER_AVOIDS = createEntityTypeTag("melty_monster_avoids");
 		public static final TagKey<EntityType<?>> MONOLITH_ROAR_IMMUNE = createEntityTypeTag("monolith_roar_immune");
 		public static final TagKey<EntityType<?>> MONOLITH_TARGET_BLACKLIST = createEntityTypeTag("monolith_target_blacklist");
 		public static final TagKey<EntityType<?>> SAVAGEFANG_TARGET_BLACKLIST = createEntityTypeTag("savagefang_target_blacklist");
@@ -78,6 +78,7 @@ public class ModTags
 		public static final TagKey<DamageType> DULLAHAN_RESISTANT_TO = createDamageTypeTag("dullahan_resistant_to");
 		public static final TagKey<DamageType> FORTRESS_KEEPER_RESISTANT_TO = createDamageTypeTag("fortress_keeper_resistant_to");
 		public static final TagKey<DamageType> GIANT_MUMMY_RESISTANT_TO = createDamageTypeTag("giant_mummy_resistant_to");
+		public static final TagKey<DamageType> GIANT_MUMMY_VULNERABLE_TO = createDamageTypeTag("giant_mummy_vulnerable_to");
 		public static final TagKey<DamageType> GLARYAD_VULNERABLE_TO = createDamageTypeTag("glaryad_vulnerable_to");
 		public static final TagKey<DamageType> HORNET_VULNERABLE_TO = createDamageTypeTag("hornet_vulnerable_to");
 		public static final TagKey<DamageType> IMP_RESISTANT_TO = createDamageTypeTag("imp_resistant_to");

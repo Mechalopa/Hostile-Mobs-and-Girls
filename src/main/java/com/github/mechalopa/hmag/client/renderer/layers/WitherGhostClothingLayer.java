@@ -25,15 +25,15 @@ public class WitherGhostClothingLayer extends GhostClothingLayer
 	}
 
 	@Override
-	protected float getAlpha(GhostEntity livingEntityIn)
+	protected float getAlpha(GhostEntity entity)
 	{
 		return 0.875F;
 	}
 
 	@Override
-	public ResourceLocation getLayerTexture(GhostEntity livingEntityIn)
+	public ResourceLocation getLayerTexture(GhostEntity entity)
 	{
-		switch (livingEntityIn.getVariant())
+		switch (entity.getVariant())
 		{
 		case 1:
 			return TEX1;
