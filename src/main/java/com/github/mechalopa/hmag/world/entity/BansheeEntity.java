@@ -22,6 +22,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.VariantHolder;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
@@ -35,7 +36,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
 
-public class BansheeEntity extends AbstractFlyingMonsterEntity
+public class BansheeEntity extends AbstractFlyingMonsterEntity implements VariantHolder<CommonOrUncommonVariant>
 {
 	private static final EntityDataAccessor<Integer> DATA_VARIANT_ID = SynchedEntityData.defineId(BansheeEntity.class, EntityDataSerializers.INT);
 
@@ -49,7 +50,7 @@ public class BansheeEntity extends AbstractFlyingMonsterEntity
 	protected void defineSynchedData()
 	{
 		super.defineSynchedData();
-		this.entityData.define(DATA_VARIANT_ID, 0);
+		this.entityData.define(DATA_VARIANT_ID, CommonOrUncommonVariant.COMMON.getId());
 	}
 
 	@Override
@@ -85,7 +86,7 @@ public class BansheeEntity extends AbstractFlyingMonsterEntity
 	{
 		if (this.level.isClientSide)
 		{
-			Vec3 vec3 = this.getVariant() == 1 ? new Vec3(this.getRandom().nextFloat() * 0.1F + 0.8F, this.getRandom().nextFloat() * 0.1F + 0.9F, this.getRandom().nextFloat() * 0.375F + 0.25F) : new Vec3(this.getRandom().nextFloat() * 0.25F + 0.75F, this.getRandom().nextFloat() * 0.25F + 0.25F, this.getRandom().nextFloat() * 0.5F + 0.5F);
+			Vec3 vec3 = this.getVariant()== CommonOrUncommonVariant.UNCOMMON ? new Vec3(this.getRandom().nextFloat() * 0.1F + 0.8F, this.getRandom().nextFloat() * 0.1F + 0.9F, this.getRandom().nextFloat() * 0.375F + 0.25F) : new Vec3(this.getRandom().nextFloat() * 0.25F + 0.75F, this.getRandom().nextFloat() * 0.25F + 0.25F, this.getRandom().nextFloat() * 0.5F + 0.5F);
 			this.level.addParticle(new DustParticleOptions(vec3.toVector3f(), 0.875F), this.getRandomX(0.75D), this.getRandomY() - 0.25D, this.getRandomZ(0.75D), 0.0D, 0.0D, 0.0D);
 		}
 
@@ -134,37 +135,34 @@ public class BansheeEntity extends AbstractFlyingMonsterEntity
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag dataTag)
 	{
 		spawnData = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
-		this.setVariant(levelAccessor.getRandom().nextInt(4) == 0 ? 1 : 0);
+		this.setVariant(CommonOrUncommonVariant.getSpawnVariant(levelAccessor.getRandom()));
 		return spawnData;
 	}
 
-	public int getVariant()
+	@Override
+	public CommonOrUncommonVariant getVariant()
 	{
-		return this.entityData.get(DATA_VARIANT_ID);
+		return CommonOrUncommonVariant.byId(this.entityData.get(DATA_VARIANT_ID));
 	}
 
-	private void setVariant(int type)
+	@Override
+	public void setVariant(CommonOrUncommonVariant variant)
 	{
-		if (type < 0 || type >= 2)
-		{
-			type = 0;
-		}
-
-		this.entityData.set(DATA_VARIANT_ID, type);
+		this.entityData.set(DATA_VARIANT_ID, variant.getId());
 	}
 
 	@Override
 	public void readAdditionalSaveData(CompoundTag compound)
 	{
 		super.readAdditionalSaveData(compound);
-		this.setVariant(compound.getInt("Variant"));
+		this.setVariant(CommonOrUncommonVariant.byId(compound.getInt("Variant")));
 	}
 
 	@Override
 	public void addAdditionalSaveData(CompoundTag compound)
 	{
 		super.addAdditionalSaveData(compound);
-		compound.putInt("Variant", this.getVariant());
+		compound.putInt("Variant", this.getVariant().getId());
 	}
 
 	@Override

@@ -12,7 +12,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class EvilArrowRenderer extends ArrowRenderer<EvilArrowEntity>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/projectile/evil_arrow.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/projectile/evil_arrow.png");
 
 	public EvilArrowRenderer(EntityRendererProvider.Context context)
 	{
@@ -22,6 +22,6 @@ public class EvilArrowRenderer extends ArrowRenderer<EvilArrowEntity>
 	@Override
 	public ResourceLocation getTextureLocation(EvilArrowEntity entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 }

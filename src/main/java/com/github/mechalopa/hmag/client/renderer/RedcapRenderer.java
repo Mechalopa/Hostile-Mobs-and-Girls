@@ -17,7 +17,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class RedcapRenderer extends AbstractGirlRenderer<RedcapEntity, RedcapModel<RedcapEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/redcap.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/redcap.png");
 
 	public RedcapRenderer(EntityRendererProvider.Context context)
 	{
@@ -40,6 +40,6 @@ public class RedcapRenderer extends AbstractGirlRenderer<RedcapEntity, RedcapMod
 	@Override
 	public ResourceLocation getTextureLocation(RedcapEntity entityIn)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 }

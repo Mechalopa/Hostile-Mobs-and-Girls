@@ -1,13 +1,18 @@
 package com.github.mechalopa.hmag.client.renderer;
 
+import java.util.Map;
+
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.CursedDollModel;
 import com.github.mechalopa.hmag.client.renderer.layers.CursedDollEyesLayer;
+import com.github.mechalopa.hmag.world.entity.CommonOrUncommonVariant;
 import com.github.mechalopa.hmag.world.entity.CursedDollEntity;
+import com.google.common.collect.Maps;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 
+import net.minecraft.Util;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
@@ -17,8 +22,10 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class CursedDollRenderer extends AbstractGirlRenderer<CursedDollEntity, CursedDollModel<CursedDollEntity>>
 {
-	private static final ResourceLocation TEX0 = new ResourceLocation(HMaG.MODID, "textures/entity/cursed_doll/cursed_doll_0.png");
-	private static final ResourceLocation TEX1 = new ResourceLocation(HMaG.MODID, "textures/entity/cursed_doll/cursed_doll_1.png");
+	private static final Map<CommonOrUncommonVariant, ResourceLocation> TEXTURES = Util.make(Maps.newEnumMap(CommonOrUncommonVariant.class), p -> {
+		p.put(CommonOrUncommonVariant.COMMON, new ResourceLocation(HMaG.MODID, "textures/entity/cursed_doll/cursed_doll_0.png"));
+		p.put(CommonOrUncommonVariant.UNCOMMON, new ResourceLocation(HMaG.MODID, "textures/entity/cursed_doll/cursed_doll_1.png"));
+	});
 
 	public CursedDollRenderer(EntityRendererProvider.Context context)
 	{
@@ -45,12 +52,6 @@ public class CursedDollRenderer extends AbstractGirlRenderer<CursedDollEntity, C
 	@Override
 	public ResourceLocation getTextureLocation(CursedDollEntity entity)
 	{
-		switch (entity.getVariant())
-		{
-		case 1:
-			return TEX1;
-		default:
-			return TEX0;
-		}
+		return TEXTURES.getOrDefault(entity.getVariant(), TEXTURES.get(CommonOrUncommonVariant.COMMON));
 	}
 }

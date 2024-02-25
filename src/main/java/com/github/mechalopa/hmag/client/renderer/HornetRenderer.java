@@ -15,7 +15,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class HornetRenderer extends AbstractGirlRenderer<HornetEntity, HornetModel<HornetEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/hornet.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/hornet.png");
 
 	public HornetRenderer(EntityRendererProvider.Context context)
 	{
@@ -39,6 +39,6 @@ public class HornetRenderer extends AbstractGirlRenderer<HornetEntity, HornetMod
 	@Override
 	public ResourceLocation getTextureLocation(HornetEntity entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 }

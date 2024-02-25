@@ -20,7 +20,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class InkSpitRenderer extends EntityRenderer<InkSpitEntity>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/projectile/ink_spit.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/projectile/ink_spit.png");
 	private final InkSpitModel<InkSpitEntity> model;
 
 	public InkSpitRenderer(EntityRendererProvider.Context context)
@@ -37,7 +37,7 @@ public class InkSpitRenderer extends EntityRenderer<InkSpitEntity>
 		poseStack.mulPose(Axis.YP.rotationDegrees(Mth.lerp(partialTicks, entity.yRotO, entity.getYRot()) - 90.0F));
 		poseStack.mulPose(Axis.ZP.rotationDegrees(Mth.lerp(partialTicks, entity.xRotO, entity.getXRot())));
 		this.model.setupAnim(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F);
-		VertexConsumer vertexconsumer = buffer.getBuffer(this.model.renderType(TEX));
+		VertexConsumer vertexconsumer = buffer.getBuffer(this.model.renderType(TEXTURE));
 		this.model.renderToBuffer(poseStack, vertexconsumer, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 		poseStack.popPose();
 		super.render(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);
@@ -46,6 +46,6 @@ public class InkSpitRenderer extends EntityRenderer<InkSpitEntity>
 	@Override
 	public ResourceLocation getTextureLocation(InkSpitEntity entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 }

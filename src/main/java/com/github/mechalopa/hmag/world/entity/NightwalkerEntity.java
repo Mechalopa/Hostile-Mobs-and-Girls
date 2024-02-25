@@ -96,7 +96,7 @@ public class NightwalkerEntity extends Monster implements RangedAttackMob
 		bullet.setPos(bullet.getX(), this.getY(0.4D) + 0.25D, bullet.getZ());
 		bullet.setDamage(4.0F);
 		bullet.setEffectLevel((byte)1);
-		bullet.setVariant(3);
+		bullet.setVariant(MagicBulletEntity.Variant.NIGHTWALKER);
 		this.level.addFreshEntity(bullet);
 		this.playSound(SoundEvents.SHULKER_SHOOT, 2.0F, (this.getRandom().nextFloat() - this.getRandom().nextFloat()) * 0.2F + 1.0F);
 	}

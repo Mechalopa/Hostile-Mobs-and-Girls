@@ -18,7 +18,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class SavagefangRenderer extends MobRenderer<SavagefangEntity, SavagefangModel<SavagefangEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/savagefang.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/savagefang.png");
 
 	public SavagefangRenderer(EntityRendererProvider.Context context)
 	{
@@ -55,6 +55,6 @@ public class SavagefangRenderer extends MobRenderer<SavagefangEntity, Savagefang
 	@Override
 	public ResourceLocation getTextureLocation(SavagefangEntity entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 }

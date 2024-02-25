@@ -17,7 +17,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class SlimeGirlRenderer extends AbstractGirlRenderer<SlimeGirlEntity, SlimeGirlModel<SlimeGirlEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/slime_girl/slime_girl.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/slime_girl/slime_girl.png");
 
 	public SlimeGirlRenderer(EntityRendererProvider.Context context)
 	{
@@ -40,6 +40,6 @@ public class SlimeGirlRenderer extends AbstractGirlRenderer<SlimeGirlEntity, Sli
 	@Override
 	public ResourceLocation getTextureLocation(SlimeGirlEntity entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 }

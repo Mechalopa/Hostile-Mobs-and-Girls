@@ -14,7 +14,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class ImpRenderer extends AbstractGirlRenderer<ImpEntity, ImpModel<ImpEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/imp.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/imp.png");
 
 	public ImpRenderer(EntityRendererProvider.Context context)
 	{
@@ -31,6 +31,6 @@ public class ImpRenderer extends AbstractGirlRenderer<ImpEntity, ImpModel<ImpEnt
 	@Override
 	public ResourceLocation getTextureLocation(ImpEntity entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 }

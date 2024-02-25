@@ -1,5 +1,7 @@
 package com.github.mechalopa.hmag.client.renderer;
 
+import java.util.Map;
+
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.AbstractGirlModel;
@@ -7,8 +9,10 @@ import com.github.mechalopa.hmag.client.model.CreeperGirlArmorModel;
 import com.github.mechalopa.hmag.client.model.CreeperGirlModel;
 import com.github.mechalopa.hmag.client.renderer.layers.CreeperGirlPowerLayer;
 import com.github.mechalopa.hmag.world.entity.CreeperGirlEntity;
+import com.google.common.collect.Maps;
 import com.mojang.blaze3d.vertex.PoseStack;
 
+import net.minecraft.Util;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
 import net.minecraft.resources.ResourceLocation;
@@ -19,9 +23,11 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class CreeperGirlRenderer extends AbstractGirlRenderer<CreeperGirlEntity, AbstractGirlModel<CreeperGirlEntity>>
 {
-	private static final ResourceLocation TEX0 = new ResourceLocation(HMaG.MODID, "textures/entity/creeper_girl/creeper_girl_0.png");
-	private static final ResourceLocation TEX1 = new ResourceLocation(HMaG.MODID, "textures/entity/creeper_girl/creeper_girl_1.png");
-	private static final ResourceLocation TEX2 = new ResourceLocation(HMaG.MODID, "textures/entity/creeper_girl/creeper_girl_2.png");
+	private static final Map<CreeperGirlEntity.Variant, ResourceLocation> TEXTURES = Util.make(Maps.newEnumMap(CreeperGirlEntity.Variant.class), p -> {
+		p.put(CreeperGirlEntity.Variant.VARIANT_0, new ResourceLocation(HMaG.MODID, "textures/entity/creeper_girl/creeper_girl_0.png"));
+		p.put(CreeperGirlEntity.Variant.VARIANT_1, new ResourceLocation(HMaG.MODID, "textures/entity/creeper_girl/creeper_girl_1.png"));
+		p.put(CreeperGirlEntity.Variant.VARIANT_2, new ResourceLocation(HMaG.MODID, "textures/entity/creeper_girl/creeper_girl_2.png"));
+	});
 
 	public CreeperGirlRenderer(EntityRendererProvider.Context context)
 	{
@@ -58,14 +64,6 @@ public class CreeperGirlRenderer extends AbstractGirlRenderer<CreeperGirlEntity,
 	@Override
 	public ResourceLocation getTextureLocation(CreeperGirlEntity entity)
 	{
-		switch (entity.getVariant())
-		{
-		case 1:
-			return TEX1;
-		case 2:
-			return TEX2;
-		default:
-			return TEX0;
-		}
+		return TEXTURES.getOrDefault(entity.getVariant(), TEXTURES.get(CreeperGirlEntity.Variant.VARIANT_0));
 	}
 }

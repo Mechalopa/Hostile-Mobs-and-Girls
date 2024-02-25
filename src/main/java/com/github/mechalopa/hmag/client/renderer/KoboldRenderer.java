@@ -14,7 +14,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class KoboldRenderer extends AbstractGirlRenderer<KoboldEntity, KoboldModel<KoboldEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/kobold.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/kobold.png");
 
 	public KoboldRenderer(EntityRendererProvider.Context context)
 	{
@@ -31,6 +31,6 @@ public class KoboldRenderer extends AbstractGirlRenderer<KoboldEntity, KoboldMod
 	@Override
 	public ResourceLocation getTextureLocation(KoboldEntity entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 }

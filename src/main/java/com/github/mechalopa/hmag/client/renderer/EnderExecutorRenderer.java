@@ -33,9 +33,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class EnderExecutorRenderer extends MobRenderer<EnderExecutorEntity, EnderExecutorModel<EnderExecutorEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/ender_executor/ender_executor.png");
-	private static final ResourceLocation BEAM_TEX = new ResourceLocation(HMaG.MODID, "textures/entity/ender_executor/ender_executor_beam.png");
-	private static final RenderType BEAM_RENDER_TYPE = RenderType.entityCutoutNoCull(BEAM_TEX);
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/ender_executor/ender_executor.png");
+	private static final ResourceLocation BEAM_TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/ender_executor/ender_executor_beam.png");
+	private static final RenderType BEAM_RENDER_TYPE = RenderType.entityCutoutNoCull(BEAM_TEXTURE);
 	private final Random rand = new Random();
 
 	public EnderExecutorRenderer(EntityRendererProvider.Context context)
@@ -140,6 +140,6 @@ public class EnderExecutorRenderer extends MobRenderer<EnderExecutorEntity, Ende
 	@Override
 	public ResourceLocation getTextureLocation(EnderExecutorEntity entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 }

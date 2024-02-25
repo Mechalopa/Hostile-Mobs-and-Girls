@@ -14,7 +14,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class CatoblepasRenderer extends MobRenderer<CatoblepasEntity, CatoblepasModel<CatoblepasEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/catoblepas.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/catoblepas.png");
 
 	public CatoblepasRenderer(EntityRendererProvider.Context context)
 	{
@@ -24,6 +24,6 @@ public class CatoblepasRenderer extends MobRenderer<CatoblepasEntity, Catoblepas
 	@Override
 	public ResourceLocation getTextureLocation(CatoblepasEntity entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 }

@@ -1,8 +1,11 @@
 package com.github.mechalopa.hmag.world.entity.projectile;
 
+import java.util.function.IntFunction;
+
 import com.github.mechalopa.hmag.registry.ModEntityTypes;
 import com.github.mechalopa.hmag.registry.ModParticleTypes;
 import com.github.mechalopa.hmag.world.entity.LichEntity;
+import com.mojang.serialization.Codec;
 
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import net.minecraft.core.particles.ParticleOptions;
@@ -11,6 +14,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.util.ByIdMap;
+import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -19,6 +24,7 @@ import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.VariantHolder;
 import net.minecraft.world.entity.monster.Vex;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
@@ -28,7 +34,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.network.PlayMessages;
 
-public class MagicBulletEntity extends ModDamagingProjectileEntity
+public class MagicBulletEntity extends ModDamagingProjectileEntity implements VariantHolder<MagicBulletEntity.Variant>
 {
 	private static final EntityDataAccessor<Integer> DATA_VARIANT_ID = SynchedEntityData.defineId(MagicBulletEntity.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Byte> EFFECT_LEVEL = SynchedEntityData.defineId(MagicBulletEntity.class, EntityDataSerializers.BYTE);
@@ -60,7 +66,7 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 	protected void defineSynchedData()
 	{
 		super.defineSynchedData();
-		this.entityData.define(DATA_VARIANT_ID, 0);
+		this.entityData.define(DATA_VARIANT_ID, MagicBulletEntity.Variant.LICH.getId());
 		this.entityData.define(EFFECT_LEVEL, (byte)1);
 		this.entityData.define(PIERCE_LEVEL, (byte)0);
 	}
@@ -70,9 +76,9 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 	{
 		switch (this.getVariant())
 		{
-		case 1:
+		case DYSSOMNIA:
 			return 0.87F;
-		case 2:
+		case NEMESIS:
 			return 0.98F;
 		default:
 			return 0.9F;
@@ -82,7 +88,7 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 	@Override
 	protected void tick2()
 	{
-		if (this.getVariant() == 2)
+		if (this.getVariant() == MagicBulletEntity.Variant.NEMESIS)
 		{
 			if (!this.level.isClientSide && (this.tickCount >= 60 || this.getOwner() == null))
 			{
@@ -131,7 +137,7 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 			{
 				LivingEntity livingentity = (LivingEntity)entity1;
 
-				if (this.getVariant() == 0)
+				if (this.getVariant() == MagicBulletEntity.Variant.LICH)
 				{
 					if (livingentity instanceof LichEntity && entity instanceof Vex && livingentity.isAlliedTo((entity)))
 					{
@@ -160,7 +166,7 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 
 				switch (this.getVariant())
 				{
-				case 0:
+				case LICH:
 					if (this.level.getDifficulty() == Difficulty.NORMAL)
 					{
 						i = 7;
@@ -176,7 +182,7 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 					}
 
 					break;
-				case 1:
+				case DYSSOMNIA:
 					if (this.level.getDifficulty() == Difficulty.NORMAL)
 					{
 						i = 5;
@@ -192,7 +198,7 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 					}
 
 					break;
-				case 2:
+				case NEMESIS:
 					i = (this.getEffectLevel() * 2 + 4) * 20;
 					((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.WEAKNESS, i, 1));
 					((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, i, 1));
@@ -205,7 +211,7 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 					}
 
 					break;
-				case 3:
+				case NIGHTWALKER:
 					if (this.level.getDifficulty() == Difficulty.NORMAL)
 					{
 						i = 7;
@@ -257,7 +263,7 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 	@Override
 	public EntityDimensions getDimensions(Pose pose)
 	{
-		if (this.getVariant() == 2)
+		if (this.getVariant() == MagicBulletEntity.Variant.NEMESIS)
 		{
 			return super.getDimensions(pose).scale(1.6F);
 		}
@@ -273,7 +279,7 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 	{
 		if (id == 3)
 		{
-			if (this.getVariant() == 2)
+			if (this.getVariant() == MagicBulletEntity.Variant.NEMESIS)
 			{
 				for (int i = 0; i < 12; ++i)
 				{
@@ -289,19 +295,16 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 		return false;
 	}
 
-	public int getVariant()
+	@Override
+	public MagicBulletEntity.Variant getVariant()
 	{
-		return this.entityData.get(DATA_VARIANT_ID);
+		return MagicBulletEntity.Variant.byId(this.entityData.get(DATA_VARIANT_ID));
 	}
 
-	public void setVariant(int type)
+	@Override
+	public void setVariant(MagicBulletEntity.Variant variant)
 	{
-		if (type < 0 || type >= 4)
-		{
-			type = 0;
-		}
-
-		this.entityData.set(DATA_VARIANT_ID, type);
+		this.entityData.set(DATA_VARIANT_ID, variant.getId());
 	}
 
 	public void setPierceLevel(byte amount)
@@ -325,21 +328,21 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundTag compound)
-	{
-		super.addAdditionalSaveData(compound);
-		compound.putInt("Variant", this.getVariant());
-		compound.putByte("PierceLevel", this.getPierceLevel());
-		compound.putByte("EffectLevel", this.getEffectLevel());
-	}
-
-	@Override
 	public void readAdditionalSaveData(CompoundTag compound)
 	{
 		super.readAdditionalSaveData(compound);
-		this.setVariant(compound.getInt("Variant"));
+		this.setVariant(MagicBulletEntity.Variant.byId(compound.getInt("Variant")));
 		this.setPierceLevel(compound.getByte("PierceLevel"));
 		this.setEffectLevel(compound.getByte("EffectLevel"));
+	}
+
+	@Override
+	public void addAdditionalSaveData(CompoundTag compound)
+	{
+		super.addAdditionalSaveData(compound);
+		compound.putInt("Variant", this.getVariant().getId());
+		compound.putByte("PierceLevel", this.getPierceLevel());
+		compound.putByte("EffectLevel", this.getEffectLevel());
 	}
 
 	@Override
@@ -347,14 +350,49 @@ public class MagicBulletEntity extends ModDamagingProjectileEntity
 	{
 		switch (this.getVariant())
 		{
-		case 1:
+		case DYSSOMNIA:
 			return ParticleTypes.LARGE_SMOKE;
-		case 2:
+		case NEMESIS:
 			return ParticleTypes.SMOKE;
-		case 3:
+		case NIGHTWALKER:
 			return ModParticleTypes.NIGHTWALKER_BULLET.get();
 		default:
 			return ParticleTypes.DRAGON_BREATH;
+		}
+	}
+
+	public static enum Variant implements StringRepresentable
+	{
+		LICH(0, "lich"),
+		DYSSOMNIA(1, "dyssomnia"),
+		NEMESIS(2, "nemesis"),
+		NIGHTWALKER(3, "nightwalker");
+
+		private static final IntFunction<MagicBulletEntity.Variant> BY_ID = ByIdMap.continuous(MagicBulletEntity.Variant::getId, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
+		public static final Codec<MagicBulletEntity.Variant> CODEC = StringRepresentable.fromEnum(MagicBulletEntity.Variant::values);
+		private final int id;
+		private final String name;
+
+		private Variant(int id, String name)
+		{
+			this.id = id;
+			this.name = name;
+		}
+
+		@Override
+		public String getSerializedName()
+		{
+			return this.name;
+		}
+
+		public int getId()
+		{
+			return this.id;
+		}
+
+		public static MagicBulletEntity.Variant byId(int id)
+		{
+			return BY_ID.apply(id);
 		}
 	}
 }

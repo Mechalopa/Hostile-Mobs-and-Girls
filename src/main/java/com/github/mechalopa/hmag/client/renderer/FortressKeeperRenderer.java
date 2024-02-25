@@ -16,7 +16,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class FortressKeeperRenderer extends MobRenderer<FortressKeeperEntity, FortressKeeperModel<FortressKeeperEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/fortress_keeper.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/fortress_keeper.png");
 
 	public FortressKeeperRenderer(EntityRendererProvider.Context context)
 	{
@@ -33,6 +33,6 @@ public class FortressKeeperRenderer extends MobRenderer<FortressKeeperEntity, Fo
 	@Override
 	public ResourceLocation getTextureLocation(FortressKeeperEntity entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 }

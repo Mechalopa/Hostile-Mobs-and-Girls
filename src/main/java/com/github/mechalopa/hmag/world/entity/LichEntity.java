@@ -125,7 +125,7 @@ public class LichEntity extends Monster implements RangedAttackMob
 			bullet.setPos(bullet.getX(), this.getY(0.5D) + 0.25D, bullet.getZ());
 			bullet.setDamage(6.0F);
 			bullet.setEffectLevel((byte)1);
-			bullet.setVariant(0);
+			bullet.setVariant(MagicBulletEntity.Variant.LICH);
 			this.level.addFreshEntity(bullet);
 			this.playSound(SoundEvents.BLAZE_SHOOT, 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
 			this.swing(InteractionHand.MAIN_HAND);

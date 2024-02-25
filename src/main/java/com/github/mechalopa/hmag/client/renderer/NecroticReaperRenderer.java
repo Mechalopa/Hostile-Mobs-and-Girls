@@ -14,7 +14,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class NecroticReaperRenderer extends AbstractGirlRenderer<NecroticReaperEntity, NecroticReaperModel<NecroticReaperEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/necrotic_reaper.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/necrotic_reaper.png");
 
 	public  NecroticReaperRenderer(EntityRendererProvider.Context context)
 	{
@@ -25,6 +25,6 @@ public class NecroticReaperRenderer extends AbstractGirlRenderer<NecroticReaperE
 	@Override
 	public ResourceLocation getTextureLocation(NecroticReaperEntity entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 }

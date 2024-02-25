@@ -1,11 +1,15 @@
 package com.github.mechalopa.hmag.client.renderer;
 
+import java.util.Map;
+
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.GhostModel;
 import com.github.mechalopa.hmag.client.renderer.layers.GhostClothingLayer;
 import com.github.mechalopa.hmag.world.entity.GhostEntity;
+import com.google.common.collect.Maps;
 
+import net.minecraft.Util;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
@@ -18,11 +22,13 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class GhostRenderer extends HumanoidMobRenderer<GhostEntity, GhostModel<GhostEntity>>
 {
-	private static final ResourceLocation TEX0 = new ResourceLocation(HMaG.MODID, "textures/entity/ghost/ghost_0.png");
-	private static final ResourceLocation TEX1 = new ResourceLocation(HMaG.MODID, "textures/entity/ghost/ghost_1.png");
-	private static final ResourceLocation TEX2 = new ResourceLocation(HMaG.MODID, "textures/entity/ghost/ghost_2.png");
-	private static final ResourceLocation TEX3 = new ResourceLocation(HMaG.MODID, "textures/entity/ghost/ghost_3.png");
-	private static final ResourceLocation TEX4 = new ResourceLocation(HMaG.MODID, "textures/entity/ghost/ghost_4.png");
+	private static final Map<GhostEntity.Variant, ResourceLocation> TEXTURES = Util.make(Maps.newEnumMap(GhostEntity.Variant.class), p -> {
+		p.put(GhostEntity.Variant.VARIANT_0, new ResourceLocation(HMaG.MODID, "textures/entity/ghost/ghost_0.png"));
+		p.put(GhostEntity.Variant.VARIANT_1, new ResourceLocation(HMaG.MODID, "textures/entity/ghost/ghost_1.png"));
+		p.put(GhostEntity.Variant.VARIANT_2, new ResourceLocation(HMaG.MODID, "textures/entity/ghost/ghost_2.png"));
+		p.put(GhostEntity.Variant.VARIANT_3, new ResourceLocation(HMaG.MODID, "textures/entity/ghost/ghost_3.png"));
+		p.put(GhostEntity.Variant.VARIANT_4, new ResourceLocation(HMaG.MODID, "textures/entity/ghost/ghost_4.png"));
+	});
 
 	public GhostRenderer(EntityRendererProvider.Context context)
 	{
@@ -50,19 +56,7 @@ public class GhostRenderer extends HumanoidMobRenderer<GhostEntity, GhostModel<G
 	@Override
 	public ResourceLocation getTextureLocation(GhostEntity entity)
 	{
-		switch (entity.getVariant())
-		{
-		case 1:
-			return TEX1;
-		case 2:
-			return TEX2;
-		case 3:
-			return TEX3;
-		case 4:
-			return TEX4;
-		default:
-			return TEX0;
-		}
+		return TEXTURES.getOrDefault(entity.getVariant(), TEXTURES.get(GhostEntity.Variant.VARIANT_0));
 	}
 
 	public GhostClothingLayer getLayer(EntityRendererProvider.Context context)

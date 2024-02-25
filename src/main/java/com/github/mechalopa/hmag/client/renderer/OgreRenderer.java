@@ -15,7 +15,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class OgreRenderer extends HumanoidMobRenderer<OgreEntity, OgreModel<OgreEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/ogre.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/ogre.png");
 
 	public OgreRenderer(EntityRendererProvider.Context context)
 	{
@@ -32,6 +32,6 @@ public class OgreRenderer extends HumanoidMobRenderer<OgreEntity, OgreModel<Ogre
 	@Override
 	public ResourceLocation getTextureLocation(OgreEntity entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 }

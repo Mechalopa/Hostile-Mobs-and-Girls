@@ -1,6 +1,14 @@
 {
   "replace": false,
   "values": [
-    "minecraft:strider"
+    "minecraft:strider",
+    {
+      "id": "#forge:striders",
+      "required": false
+    },
+    {
+      "id": "#c:striders",
+      "required": false
+    }
   ]
 }

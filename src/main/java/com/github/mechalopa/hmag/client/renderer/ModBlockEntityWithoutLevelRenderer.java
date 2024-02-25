@@ -22,8 +22,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class ModBlockEntityWithoutLevelRenderer extends BlockEntityWithoutLevelRenderer
 {
-	private static final ResourceLocation ANCIENT_SHIELD_TEX = new ResourceLocation(HMaG.MODID, "textures/entity/shield/ancient_shield.png");
-	private static final ResourceLocation FORTRESS_SHIELD_TEX = new ResourceLocation(HMaG.MODID, "textures/entity/shield/fortress_shield.png");
+	private static final ResourceLocation ANCIENT_SHIELD_TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/shield/ancient_shield.png");
+	private static final ResourceLocation FORTRESS_SHIELD_TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/shield/fortress_shield.png");
 	private ModShieldModel ancientShieldModel;
 	private ModShieldModel fortressShieldModel;
 
@@ -41,11 +41,11 @@ public class ModBlockEntityWithoutLevelRenderer extends BlockEntityWithoutLevelR
 
 		if (item == ModItems.ANCIENT_SHIELD.get())
 		{
-			drawShieldModel(stack, type, poseStack, buffer, packedLight, packedOverlay, ANCIENT_SHIELD_TEX, ancientShieldModel);
+			drawShieldModel(stack, type, poseStack, buffer, packedLight, packedOverlay, ANCIENT_SHIELD_TEXTURE, ancientShieldModel);
 		}
 		else if (item == ModItems.FORTRESS_SHIELD.get())
 		{
-			drawShieldModel(stack, type, poseStack, buffer, packedLight, packedOverlay, FORTRESS_SHIELD_TEX, fortressShieldModel);
+			drawShieldModel(stack, type, poseStack, buffer, packedLight, packedOverlay, FORTRESS_SHIELD_TEXTURE, fortressShieldModel);
 		}
 	}
 
