@@ -13,8 +13,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class EnderExecutorEyesLayer<T extends EnderExecutorEntity, M extends EnderExecutorModel<T>> extends EyesLayer2<T, M>
 {
-	private static final RenderType RENDER_TYPE0 = RenderType.eyes(new ResourceLocation(HMaG.MODID, "textures/entity/ender_executor_eyes.png"));
-	private static final RenderType RENDER_TYPE1 = RenderType.eyes(new ResourceLocation(HMaG.MODID, "textures/entity/ender_executor_eyes_is_beam.png"));
+	private static final RenderType RENDER_TYPE_0 = RenderType.eyes(new ResourceLocation(HMaG.MODID, "textures/entity/ender_executor_eyes.png"));
+	private static final RenderType RENDER_TYPE_1 = RenderType.eyes(new ResourceLocation(HMaG.MODID, "textures/entity/ender_executor_eyes_is_beam.png"));
 
 	public EnderExecutorEyesLayer(RenderLayerParent<T, M> renderLayerParent)
 	{
@@ -24,6 +24,6 @@ public class EnderExecutorEyesLayer<T extends EnderExecutorEntity, M extends End
 	@Override
 	public RenderType renderType(T entity)
 	{
-		return this.getParentModel().beamAttacking && entity.tickCount % 2 == 0 ? RENDER_TYPE1 : RENDER_TYPE0;
+		return this.getParentModel().beamAttacking && entity.tickCount % 2 == 0 ? RENDER_TYPE_1 : RENDER_TYPE_0;
 	}
 }

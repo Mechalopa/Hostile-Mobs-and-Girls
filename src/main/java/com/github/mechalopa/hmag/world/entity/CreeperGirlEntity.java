@@ -53,7 +53,7 @@ public class CreeperGirlEntity extends Creeper implements IModMob
 	{
 		return Monster.createMonsterAttributes()
 				.add(Attributes.MAX_HEALTH, 30.0D)
-				.add(Attributes.MOVEMENT_SPEED, 0.3D)
+				.add(Attributes.MOVEMENT_SPEED, 0.28D)
 				.add(Attributes.KNOCKBACK_RESISTANCE, 0.25D);
 	}
 

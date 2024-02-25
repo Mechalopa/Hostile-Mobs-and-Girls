@@ -64,22 +64,21 @@ public class SkeletonGirlModel<T extends AbstractSkeleton> extends AbstractGirlM
 	}
 
 	@Override
-	public void prepareMobModel(T entityIn, float limbSwing, float limbSwingAmount, float partialTick)
+	public void prepareMobModel(T entity, float limbSwing, float limbSwingAmount, float partialTick)
 	{
-		prepareSkeletonModel(entityIn, this);
-
-		super.prepareMobModel(entityIn, limbSwing, limbSwingAmount, partialTick);
+		prepareSkeletonModel(entity, this);
+		super.prepareMobModel(entity, limbSwing, limbSwingAmount, partialTick);
 	}
 
-	public static void prepareSkeletonModel(AbstractSkeleton entityIn, HumanoidModel<?> model)
+	public static void prepareSkeletonModel(AbstractSkeleton entity, HumanoidModel<?> model)
 	{
 		model.rightArmPose = HumanoidModel.ArmPose.EMPTY;
 		model.leftArmPose = HumanoidModel.ArmPose.EMPTY;
-		ItemStack stack = entityIn.getItemInHand(InteractionHand.MAIN_HAND);
+		ItemStack stack = entity.getItemInHand(InteractionHand.MAIN_HAND);
 
-		if (ModUtils.isBow(stack) && entityIn.isAggressive())
+		if (ModUtils.isBow(stack) && entity.isAggressive())
 		{
-			if (entityIn.getMainArm() == HumanoidArm.RIGHT)
+			if (entity.getMainArm() == HumanoidArm.RIGHT)
 			{
 				model.rightArmPose = HumanoidModel.ArmPose.BOW_AND_ARROW;
 			}
@@ -91,11 +90,10 @@ public class SkeletonGirlModel<T extends AbstractSkeleton> extends AbstractGirlM
 	}
 
 	@Override
-	public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
+	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
-		super.setupAnim(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
-
-		doAnim(entityIn, ageInTicks, this.attackTime, this);
+		super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+		doAnim(entity, ageInTicks, this.attackTime, this);
 
 		if (this.riding)
 		{
@@ -122,11 +120,11 @@ public class SkeletonGirlModel<T extends AbstractSkeleton> extends AbstractGirlM
 		this.leftHair2.zRot += Mth.sin(ageInTicks * 0.06F + (float)Math.PI / 3.0F) * 0.03F;
 	}
 
-	public static void doAnim(AbstractSkeleton entityIn, float ageInTicks, float attackTime, AbstractGirlModel<?> model)
+	public static void doAnim(AbstractSkeleton entity, float ageInTicks, float attackTime, AbstractGirlModel<?> model)
 	{
-		ItemStack stack = entityIn.getMainHandItem();
+		ItemStack stack = entity.getMainHandItem();
 
-		if (entityIn.isAggressive() && (stack.isEmpty() || !ModUtils.isBow(stack)))
+		if (entity.isAggressive() && (stack.isEmpty() || !ModUtils.isBow(stack)))
 		{
 			float f = Mth.sin(attackTime * (float)Math.PI);
 			float f1 = Mth.sin((1.0F - (1.0F - attackTime) * (1.0F - attackTime)) * (float)Math.PI);

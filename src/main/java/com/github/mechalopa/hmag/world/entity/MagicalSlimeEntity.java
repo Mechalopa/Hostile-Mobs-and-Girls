@@ -85,7 +85,7 @@ public class MagicalSlimeEntity extends Slime implements IModMob
 	}
 
 	@OnlyIn(Dist.CLIENT)
-	public float[] getColor()
+	public float[] getColors()
 	{
 		return SlimeGirlEntity.ColorVariant.byId(this.getVariant()).getColors();
 	}

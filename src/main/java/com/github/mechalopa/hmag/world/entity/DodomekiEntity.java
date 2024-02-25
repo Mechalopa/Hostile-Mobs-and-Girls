@@ -87,7 +87,11 @@ public class DodomekiEntity extends Monster implements IModMob
 
 		if (this.level.isClientSide)
 		{
-			if (this.isAggressive())
+			if (!this.isAlive())
+			{
+				this.eyesGlowingAnimation = Math.max(0.0F, this.eyesGlowingAnimation - 0.1F);
+			}
+			else if (this.isAggressive())
 			{
 				BlockPos pos = new BlockPos(this.getEyePosition(1.0F));
 

@@ -22,9 +22,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class MagicBulletRenderer extends EntityRenderer<MagicBulletEntity>
 {
-	private static final ResourceLocation TEX0 = new ResourceLocation(HMaG.MODID, "textures/entity/projectile/magic_bullet_0.png");
-	private static final ResourceLocation TEX1 = new ResourceLocation(HMaG.MODID, "textures/entity/projectile/magic_bullet_1.png");
-	private static final ResourceLocation TEX2 = new ResourceLocation(HMaG.MODID, "textures/entity/projectile/magic_bullet_2.png");
+	private static final ResourceLocation TEXTURE_0 = new ResourceLocation(HMaG.MODID, "textures/entity/projectile/magic_bullet_0.png");
+	private static final ResourceLocation TEXTURE_1 = new ResourceLocation(HMaG.MODID, "textures/entity/projectile/magic_bullet_1.png");
+	private static final ResourceLocation TEXTURE_2 = new ResourceLocation(HMaG.MODID, "textures/entity/projectile/magic_bullet_2.png");
 
 	public MagicBulletRenderer(EntityRendererProvider.Context context)
 	{
@@ -76,11 +76,11 @@ public class MagicBulletRenderer extends EntityRenderer<MagicBulletEntity>
 		switch (entity.getVariant())
 		{
 		case 1:
-			return TEX1;
+			return TEXTURE_1;
 		case 2:
-			return TEX2;
+			return TEXTURE_2;
 		default:
-			return TEX0;
+			return TEXTURE_0;
 		}
 	}
 }

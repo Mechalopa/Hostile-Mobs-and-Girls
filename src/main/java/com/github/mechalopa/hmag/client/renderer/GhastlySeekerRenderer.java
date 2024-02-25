@@ -17,8 +17,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class GhastlySeekerRenderer extends MobRenderer<GhastlySeekerEntity, GhastlySeekerModel<GhastlySeekerEntity>>
 {
-	private static final ResourceLocation TEX0 = new ResourceLocation(HMaG.MODID, "textures/entity/ghastly_seeker.png");
-	private static final ResourceLocation TEX1 = new ResourceLocation(HMaG.MODID, "textures/entity/ghastly_seeker_shooting.png");
+	private static final ResourceLocation TEXTURE_0 = new ResourceLocation(HMaG.MODID, "textures/entity/ghastly_seeker.png");
+	private static final ResourceLocation TEXTURE_1 = new ResourceLocation(HMaG.MODID, "textures/entity/ghastly_seeker_shooting.png");
 
 	public GhastlySeekerRenderer(EntityRendererProvider.Context context)
 	{
@@ -42,6 +42,6 @@ public class GhastlySeekerRenderer extends MobRenderer<GhastlySeekerEntity, Ghas
 	@Override
 	public ResourceLocation getTextureLocation(GhastlySeekerEntity entity)
 	{
-		return entity.isAttacking() ? TEX1 : TEX0;
+		return entity.isAttacking() ? TEXTURE_1 : TEXTURE_0;
 	}
 }

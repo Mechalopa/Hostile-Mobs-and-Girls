@@ -45,7 +45,6 @@ public abstract class AbstractAdvancedGirlModel<T extends LivingEntity> extends 
 	public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
 		super.setupAnim(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
-
 		this.bust.xRot = ((float)Math.PI / 4.0F) + ((float)Math.PI / 18.0F);
 	}
 }

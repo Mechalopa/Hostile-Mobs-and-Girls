@@ -95,7 +95,6 @@ public class CursedDollEntity extends Monster implements IModMob
 		}
 
 		ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick(), 8);
-
 		super.aiStep();
 
 		Vec3 vec3 = this.getDeltaMovement();
@@ -149,7 +148,7 @@ public class CursedDollEntity extends Monster implements IModMob
 	{
 		if (source.isFire())
 		{
-			amount = amount * 2.0F;
+			amount = amount * 1.5F;
 		}
 
 		return super.hurt(source, amount);

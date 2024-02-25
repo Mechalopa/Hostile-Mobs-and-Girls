@@ -17,7 +17,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class ZombieGirlRenderer extends AbstractGirlRenderer<Zombie, AbstractGirlModel<Zombie>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/zombie_girl.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/zombie_girl.png");
 
 	public ZombieGirlRenderer(EntityRendererProvider.Context context)
 	{
@@ -38,7 +38,7 @@ public class ZombieGirlRenderer extends AbstractGirlRenderer<Zombie, AbstractGir
 	@Override
 	public ResourceLocation getTextureLocation(Zombie entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 
 	@Override

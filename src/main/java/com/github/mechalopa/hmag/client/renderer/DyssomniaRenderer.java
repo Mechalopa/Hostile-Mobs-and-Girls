@@ -20,7 +20,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class DyssomniaRenderer extends MobRenderer<DyssomniaEntity, DyssomniaModel<DyssomniaEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/dyssomnia.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/dyssomnia.png");
 	private final Random rand = new Random();
 
 	public DyssomniaRenderer(EntityRendererProvider.Context context)
@@ -59,6 +59,6 @@ public class DyssomniaRenderer extends MobRenderer<DyssomniaEntity, DyssomniaMod
 	@Override
 	public ResourceLocation getTextureLocation(DyssomniaEntity entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 }

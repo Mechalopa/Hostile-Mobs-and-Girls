@@ -13,7 +13,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class HuskGirlRenderer extends ZombieGirlRenderer
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/husk_girl.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/husk_girl.png");
 
 	public HuskGirlRenderer(EntityRendererProvider.Context context)
 	{
@@ -30,6 +30,6 @@ public class HuskGirlRenderer extends ZombieGirlRenderer
 	@Override
 	public ResourceLocation getTextureLocation(Zombie entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 }

@@ -69,47 +69,47 @@ public class EnderExecutorModel<T extends EnderExecutorEntity> extends AbstractG
 		PartDefinition pd = md.getRoot();
 		PartDefinition rapd = ModClientUtils.addC(pd, cd, "right_arm", 40, 16, 0.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F, -5.0F, 2.0F + f, 0.0F);
 		PartDefinition lapd = ModClientUtils.addC(pd, cd, "left_arm", 40, 16, -2.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F, 5.0F, 2.0F + f, 0.0F, true);
-		ModClientUtils.addC(rapd, cd, "right_arm_part_1", 0, 40, -0.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, 0.0F, 3.0F, 0.0F);
-		ModClientUtils.addC(lapd, cd, "left_arm_part_1", 0, 40, -2.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, 0.0F, 3.0F, 0.0F, true);
-		ModClientUtils.addC(rapd, cd, "right_arm_part_2", 0, 40, -0.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, 0.0F, 7.0F, 0.0F);
-		ModClientUtils.addC(lapd, cd, "left_arm_part_2", 0, 40, -2.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, 0.0F, 7.0F, 0.0F, true);
-		PartDefinition rlpd = ModClientUtils.addC(pd, cd, "right_leg", 16, 32, -1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F, -2.0F, 12.0F + f, 0.0F);
-		PartDefinition llpd = ModClientUtils.addC(pd, cd, "left_leg", 16, 32, -1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F, 2.0F, 12.0F + f, 0.0F, true);
-		ModClientUtils.addC(rlpd, cd, "right_leg_part_1", 0, 44, -1.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, 0.0F, 16.0F, 0.0F);
-		ModClientUtils.addC(llpd, cd, "left_leg_part_1", 0, 44, -1.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, 0.0F, 16.0F, 0.0F, true);
-		ModClientUtils.addC(rlpd, cd, "right_leg_part_2", 0, 44, -1.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, 0.0F, 18.0F, 0.0F);
-		ModClientUtils.addC(llpd, cd, "left_leg_part_2", 0, 44, -1.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, 0.0F, 18.0F, 0.0F, true);
+		ModClientUtils.addC(rapd, cd, "right_arm_part_1", 24, 32, -0.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, 0.0F, 3.0F, 0.0F);
+		ModClientUtils.addC(lapd, cd, "left_arm_part_1", 24, 32, -2.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, 0.0F, 3.0F, 0.0F, true);
+		ModClientUtils.addC(rapd, cd, "right_arm_part_2", 24, 32, -0.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, 0.0F, 7.0F, 0.0F);
+		ModClientUtils.addC(lapd, cd, "left_arm_part_2", 24, 32, -2.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, 0.0F, 7.0F, 0.0F, true);
+		PartDefinition rlpd = ModClientUtils.addC(pd, cd, "right_leg", 48, 16, -1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F, -2.0F, 12.0F + f, 0.0F);
+		PartDefinition llpd = ModClientUtils.addC(pd, cd, "left_leg", 48, 16, -1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F, 2.0F, 12.0F + f, 0.0F, true);
+		ModClientUtils.addC(rlpd, cd, "right_leg_part_1", 36, 32, -1.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, 0.0F, 16.0F, 0.0F);
+		ModClientUtils.addC(llpd, cd, "left_leg_part_1", 36, 32, -1.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, 0.0F, 16.0F, 0.0F, true);
+		ModClientUtils.addC(rlpd, cd, "right_leg_part_2", 36, 32, -1.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, 0.0F, 18.0F, 0.0F);
+		ModClientUtils.addC(llpd, cd, "left_leg_part_2", 36, 32, -1.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, 0.0F, 18.0F, 0.0F, true);
 		PartDefinition bodypd = pd.getChild("body");
 		ModClientUtils.addC(bodypd, cd, "bust", 0, 32, -3.0F, -1.5F, -1.5F, 6.0F, 3.0F, 3.0F, 0.0F, 3.5F, -1.1F, -0.005F);
-		ModClientUtils.addC(bodypd, cd, "skirt_1", 0, 64, -3.5F, 0.0F, -2.0F, 7.0F, 2.0F, 4.0F, 0.0F, 11.0F, 0.0F);
-		PartDefinition s2pd = ModClientUtils.addC(bodypd, cd, "skirt_2", 24, 64, -4.0F, 0.0F, -2.5F, 8.0F, 2.0F, 5.0F, 0.0F, 13.0F, 0.0F);
-		PartDefinition s3pd = ModClientUtils.addC(s2pd, cd, "skirt_3", 0, 72, -4.5F, 0.0F, -3.0F, 9.0F, 2.0F, 6.0F, 0.0F, 2.0F, 0.0F);
-		PartDefinition s4pd = ModClientUtils.addC(s3pd, cd, "skirt_4", 0, 80, -5.0F, 0.0F, -3.5F, 10.0F, 2.0F, 7.0F, 0.0F, 2.0F, 0.0F);
-		ModClientUtils.addC(s4pd, cd, "skirt_5", 0, 92, -5.5F, 0.0F, -4.0F, 11.0F, 3.0F, 8.0F, 0.0F, 2.0F, 0.0F);
+		ModClientUtils.addC(bodypd, cd, "skirt_1", 0, 38, -3.5F, 0.0F, -2.0F, 7.0F, 2.0F, 4.0F, 0.0F, 11.0F, 0.0F);
+		PartDefinition s2pd = ModClientUtils.addC(bodypd, cd, "skirt_2", 22, 36, -4.0F, 0.0F, -2.5F, 8.0F, 2.0F, 5.0F, 0.0F, 13.0F, 0.0F);
+		PartDefinition s3pd = ModClientUtils.addC(s2pd, cd, "skirt_3", 0, 44, -4.5F, 0.0F, -3.0F, 9.0F, 2.0F, 6.0F, 0.0F, 2.0F, 0.0F);
+		PartDefinition s4pd = ModClientUtils.addC(s3pd, cd, "skirt_4", 0, 52, -5.0F, 0.0F, -3.5F, 10.0F, 2.0F, 7.0F, 0.0F, 2.0F, 0.0F);
+		ModClientUtils.addC(s4pd, cd, "skirt_5", 26, 53, -5.5F, 0.0F, -4.0F, 11.0F, 3.0F, 8.0F, 0.0F, 2.0F, 0.0F);
 		PartDefinition headpd = pd.getChild("head");
-		PartDefinition rhpd = ModClientUtils.addC(headpd, cd, "right_hair_1", 24, 32, -1.0F, -1.5F, -1.0F, 2.0F, 14.0F, 2.0F, -4.25F, -8.0F, 3.5F);
-		PartDefinition lhpd = ModClientUtils.addC(headpd, cd, "left_hair_1", 24, 32, -1.0F, -1.5F, -1.0F, 2.0F, 14.0F, 2.0F, 4.25F, -8.0F, 3.5F, true);
-		ModClientUtils.addC(rhpd, cd, "right_hair_2", 32, 32, -1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F, 0.0F, 12.5F, 0.0F);
-		ModClientUtils.addC(lhpd, cd, "left_hair_2", 32, 32, -1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F, 0.0F, 12.5F, 0.0F, true);
+		PartDefinition rhpd = ModClientUtils.addC(headpd, cd, "right_hair_1", 56, 16, -1.0F, -1.5F, -1.0F, 2.0F, 14.0F, 2.0F, -4.25F, -8.0F, 3.5F);
+		PartDefinition lhpd = ModClientUtils.addC(headpd, cd, "left_hair_1", 56, 16, -1.0F, -1.5F, -1.0F, 2.0F, 14.0F, 2.0F, 4.25F, -8.0F, 3.5F, true);
+		ModClientUtils.addC(rhpd, cd, "right_hair_2", 56, 32, -1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F, 0.0F, 12.5F, 0.0F);
+		ModClientUtils.addC(lhpd, cd, "left_hair_2", 56, 32, -1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F, 0.0F, 12.5F, 0.0F, true);
 		return md;
 	}
 
 	public static LayerDefinition createBodyLayer()
 	{
-		return LayerDefinition.create(createMesh(CubeDeformation.NONE), 64, 128);
+		return LayerDefinition.create(createMesh(CubeDeformation.NONE), 64, 64);
 	}
 
 	@Override
-	public void prepareMobModel(T entityIn, float limbSwing, float limbSwingAmount, float partialTick)
+	public void prepareMobModel(T entity, float limbSwing, float limbSwingAmount, float partialTick)
 	{
-		super.prepareMobModel(entityIn, limbSwing, limbSwingAmount, partialTick);
-		this.animationAmount = entityIn.getAttackAnimationScale(partialTick);
+		super.prepareMobModel(entity, limbSwing, limbSwingAmount, partialTick);
+		this.animationAmount = entity.getAttackAnimationScale(partialTick);
 	}
 
 	@Override
-	public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
+	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
-		super.setupAnim(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+		super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 
 		this.head.visible = true;
 		float f = -14.0F;
@@ -170,7 +170,7 @@ public class EnderExecutorModel<T extends EnderExecutorEntity> extends AbstractG
 		}
 		else if (this.carrying)
 		{
-			if (entityIn.getMainArm() != HumanoidArm.RIGHT)
+			if (entity.getMainArm() != HumanoidArm.RIGHT)
 			{
 				this.rightArm.xRot = Mth.sin(ageInTicks * 0.09F) * 0.03F + ((float)Math.PI / 9.0F);
 				this.rightArm.zRot = -(Mth.cos(ageInTicks * 0.06F) * 0.125F - ((float)Math.PI / 5.0F));

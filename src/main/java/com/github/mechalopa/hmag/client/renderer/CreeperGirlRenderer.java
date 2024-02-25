@@ -19,9 +19,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class CreeperGirlRenderer extends AbstractGirlRenderer<CreeperGirlEntity, AbstractGirlModel<CreeperGirlEntity>>
 {
-	private static final ResourceLocation TEX0 = new ResourceLocation(HMaG.MODID, "textures/entity/creeper_girl_0.png");
-	private static final ResourceLocation TEX1 = new ResourceLocation(HMaG.MODID, "textures/entity/creeper_girl_1.png");
-	private static final ResourceLocation TEX2 = new ResourceLocation(HMaG.MODID, "textures/entity/creeper_girl_2.png");
+	private static final ResourceLocation TEXTURE_0 = new ResourceLocation(HMaG.MODID, "textures/entity/creeper_girl_0.png");
+	private static final ResourceLocation TEXTURE_1 = new ResourceLocation(HMaG.MODID, "textures/entity/creeper_girl_1.png");
+	private static final ResourceLocation TEXTURE_2 = new ResourceLocation(HMaG.MODID, "textures/entity/creeper_girl_2.png");
 
 	public CreeperGirlRenderer(EntityRendererProvider.Context context)
 	{
@@ -61,11 +61,11 @@ public class CreeperGirlRenderer extends AbstractGirlRenderer<CreeperGirlEntity,
 		switch (entity.getVariant())
 		{
 		case 1:
-			return TEX1;
+			return TEXTURE_1;
 		case 2:
-			return TEX2;
+			return TEXTURE_2;
 		default:
-			return TEX0;
+			return TEXTURE_0;
 		}
 	}
 }

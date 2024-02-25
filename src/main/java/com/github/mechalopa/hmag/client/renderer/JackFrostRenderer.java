@@ -13,7 +13,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class JackFrostRenderer extends AbstractGirlRenderer<JackFrostEntity, JackFrostModel<JackFrostEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/jack_frost.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/jack_frost.png");
 
 	public  JackFrostRenderer(EntityRendererProvider.Context context)
 	{
@@ -23,6 +23,6 @@ public class JackFrostRenderer extends AbstractGirlRenderer<JackFrostEntity, Jac
 	@Override
 	public ResourceLocation getTextureLocation(JackFrostEntity entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 }
