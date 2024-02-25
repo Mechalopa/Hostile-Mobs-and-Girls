@@ -57,8 +57,8 @@ public class GlaryadModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 		PartDefinition pd = md.getRoot();
 		PartDefinition rapd = ModClientUtils.addC(pd, cd, "right_arm", 40, 16, 0.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F, -5.0F, 2.0F, 0.0F);
 		PartDefinition lapd = ModClientUtils.addC(pd, cd, "left_arm", 40, 16, -2.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F, 5.0F, 2.0F, 0.0F, true);
-		ModClientUtils.addC(rapd, cd, "right_arm_part_1", 16, 32, -1.5F, 0.0F, 0.0F, 3.0F, 4.0F, 1.0F, 0.25F, -0.25F, -1.0F);
-		ModClientUtils.addC(lapd, cd, "left_arm_part_1", 16, 32, -1.5F, 0.0F, 0.0F, 3.0F, 4.0F, 1.0F, -0.25F, -0.25F, -1.0F);
+		ModClientUtils.addC(rapd, cd, "right_arm_part_1", 16, 30, -1.5F, 0.0F, 0.0F, 3.0F, 4.0F, 1.0F, 0.25F, -0.25F, -1.0F);
+		ModClientUtils.addC(lapd, cd, "left_arm_part_1", 16, 30, -1.5F, 0.0F, 0.0F, 3.0F, 4.0F, 1.0F, -0.25F, -0.25F, -1.0F);
 		ModClientUtils.addC(rapd, cd, "right_arm_part_2", 24, 32, 0.0F, 0.0F, -1.5F, 1.0F, 6.0F, 3.0F, 0.0F, 0.0F, 0.0F);
 		ModClientUtils.addC(lapd, cd, "left_arm_part_2", 24, 32, -1.0F, 0.0F, -1.5F, 1.0F, 6.0F, 3.0F, 0.0F, 0.0F, 0.0F, true);
 		PartDefinition bodypd = pd.getChild("body");

@@ -172,6 +172,11 @@ public class GiantMummyEntity extends Monster
 	@Override
 	public boolean hurt(DamageSource source, float amount)
 	{
+		if (source.isFire())
+		{
+			amount = amount * 1.5F;
+		}
+
 		if (source.isProjectile())
 		{
 			amount = amount * 0.5F;

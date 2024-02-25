@@ -17,7 +17,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class MeltyMonsterRenderer extends AbstractGirlRenderer<MeltyMonsterEntity, MeltyMonsterModel<MeltyMonsterEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/melty_monster/melty_monster.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/melty_monster/melty_monster.png");
 
 	public MeltyMonsterRenderer(EntityRendererProvider.Context context)
 	{
@@ -36,6 +36,6 @@ public class MeltyMonsterRenderer extends AbstractGirlRenderer<MeltyMonsterEntit
 	@Override
 	public ResourceLocation getTextureLocation(MeltyMonsterEntity entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 }

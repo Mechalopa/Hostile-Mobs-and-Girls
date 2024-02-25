@@ -13,11 +13,11 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class WitherGhostClothingLayer extends GhostClothingLayer
 {
-	private static final ResourceLocation TEX0 = new ResourceLocation(HMaG.MODID, "textures/entity/ghost/wither_ghost_skin_0.png");
-	private static final ResourceLocation TEX1 = new ResourceLocation(HMaG.MODID, "textures/entity/ghost/wither_ghost_skin_1.png");
-	private static final ResourceLocation TEX2 = new ResourceLocation(HMaG.MODID, "textures/entity/ghost/wither_ghost_skin_2.png");
-	private static final ResourceLocation TEX3 = new ResourceLocation(HMaG.MODID, "textures/entity/ghost/wither_ghost_skin_3.png");
-	private static final ResourceLocation TEX4 = new ResourceLocation(HMaG.MODID, "textures/entity/ghost/wither_ghost_skin_4.png");
+	private static final ResourceLocation TEXTURE_0 = new ResourceLocation(HMaG.MODID, "textures/entity/ghost/wither_ghost_skin_0.png");
+	private static final ResourceLocation TEXTURE_1 = new ResourceLocation(HMaG.MODID, "textures/entity/ghost/wither_ghost_skin_1.png");
+	private static final ResourceLocation TEXTURE_2 = new ResourceLocation(HMaG.MODID, "textures/entity/ghost/wither_ghost_skin_2.png");
+	private static final ResourceLocation TEXTURE_3 = new ResourceLocation(HMaG.MODID, "textures/entity/ghost/wither_ghost_skin_3.png");
+	private static final ResourceLocation TEXTURE_4 = new ResourceLocation(HMaG.MODID, "textures/entity/ghost/wither_ghost_skin_4.png");
 
 	public WitherGhostClothingLayer(RenderLayerParent<GhostEntity, GhostModel<GhostEntity>> renderLayerParent, EntityModelSet modelSet)
 	{
@@ -25,26 +25,26 @@ public class WitherGhostClothingLayer extends GhostClothingLayer
 	}
 
 	@Override
-	protected float getAlpha(GhostEntity livingEntityIn)
+	protected float getAlpha(GhostEntity entity)
 	{
 		return 0.875F;
 	}
 
 	@Override
-	public ResourceLocation getLayerTexture(GhostEntity livingEntityIn)
+	public ResourceLocation getLayerTexture(GhostEntity entity)
 	{
-		switch (livingEntityIn.getVariant())
+		switch (entity.getVariant())
 		{
 		case 1:
-			return TEX1;
+			return TEXTURE_1;
 		case 2:
-			return TEX2;
+			return TEXTURE_2;
 		case 3:
-			return TEX3;
+			return TEXTURE_3;
 		case 4:
-			return TEX4;
+			return TEXTURE_4;
 		default:
-			return TEX0;
+			return TEXTURE_0;
 		}
 	}
 }

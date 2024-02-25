@@ -18,7 +18,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class MagicalSlimeRenderer extends MobRenderer<MagicalSlimeEntity, MagicalSlimeModel<MagicalSlimeEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/magical_slime.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/magical_slime.png");
 
 	public MagicalSlimeRenderer(EntityRendererProvider.Context context)
 	{
@@ -47,6 +47,6 @@ public class MagicalSlimeRenderer extends MobRenderer<MagicalSlimeEntity, Magica
 	@Override
 	public ResourceLocation getTextureLocation(MagicalSlimeEntity entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 }

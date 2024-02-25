@@ -15,7 +15,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class NightwalkerRenderer extends MobRenderer<NightwalkerEntity, NightwalkerModel<NightwalkerEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/nightwalker.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/nightwalker.png");
 
 	public NightwalkerRenderer(EntityRendererProvider.Context context)
 	{
@@ -26,6 +26,6 @@ public class NightwalkerRenderer extends MobRenderer<NightwalkerEntity, Nightwal
 	@Override
 	public ResourceLocation getTextureLocation(NightwalkerEntity entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 }

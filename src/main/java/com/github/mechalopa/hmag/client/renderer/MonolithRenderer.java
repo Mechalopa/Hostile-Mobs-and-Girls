@@ -29,13 +29,13 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class MonolithRenderer extends MobRenderer<MonolithEntity, MonolithModel<MonolithEntity>>
 {
-	private static final ResourceLocation TEX0 = new ResourceLocation(HMaG.MODID, "textures/entity/monolith/monolith_0.png");
-	private static final ResourceLocation TEX1 = new ResourceLocation(HMaG.MODID, "textures/entity/monolith/monolith_1.png");
-	private static final ResourceLocation TEX2 = new ResourceLocation(HMaG.MODID, "textures/entity/monolith/monolith_2.png");
-	private static final ResourceLocation TEX3 = new ResourceLocation(HMaG.MODID, "textures/entity/monolith/monolith_3.png");
-	private static final ResourceLocation TEX4 = new ResourceLocation(HMaG.MODID, "textures/entity/monolith/monolith_4.png");
-	private static final ResourceLocation BEAM_TEX = new ResourceLocation("textures/entity/guardian_beam.png");
-	private static final RenderType BEAM_RENDER_TYPE = RenderType.entityCutoutNoCull(BEAM_TEX);
+	private static final ResourceLocation TEXTURE_0 = new ResourceLocation(HMaG.MODID, "textures/entity/monolith/monolith_0.png");
+	private static final ResourceLocation TEXTURE_1 = new ResourceLocation(HMaG.MODID, "textures/entity/monolith/monolith_1.png");
+	private static final ResourceLocation TEXTURE_2 = new ResourceLocation(HMaG.MODID, "textures/entity/monolith/monolith_2.png");
+	private static final ResourceLocation TEXTURE_3 = new ResourceLocation(HMaG.MODID, "textures/entity/monolith/monolith_3.png");
+	private static final ResourceLocation TEXTURE_4 = new ResourceLocation(HMaG.MODID, "textures/entity/monolith/monolith_4.png");
+	private static final ResourceLocation BEAM_TEXTURE = new ResourceLocation("textures/entity/guardian_beam.png");
+	private static final RenderType BEAM_RENDER_TYPE = RenderType.entityCutoutNoCull(BEAM_TEXTURE);
 	private final Random rand = new Random();
 
 	public MonolithRenderer(EntityRendererProvider.Context context)
@@ -149,16 +149,16 @@ public class MonolithRenderer extends MobRenderer<MonolithEntity, MonolithModel<
 		{
 		case BEAM_CHARGE2:
 		case BEAM_END:
-			return TEX1;
+			return TEXTURE_1;
 		case BEAM_ATTACK:
-			return TEX2;
+			return TEXTURE_2;
 		case ROAR_CHARGE:
 		case ROAR_END:
-			return TEX3;
+			return TEXTURE_3;
 		case ROAR_ATTACK:
-			return TEX4;
+			return TEXTURE_4;
 		default:
-			return TEX0;
+			return TEXTURE_0;
 		}
 	}
 }

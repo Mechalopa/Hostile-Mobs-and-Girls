@@ -17,7 +17,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class DoguRenderer extends HumanoidMobRenderer<DoguEntity, DoguModel<DoguEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/dogu.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/dogu.png");
 
 	public DoguRenderer(EntityRendererProvider.Context context)
 	{
@@ -36,6 +36,6 @@ public class DoguRenderer extends HumanoidMobRenderer<DoguEntity, DoguModel<Dogu
 	@Override
 	public ResourceLocation getTextureLocation(DoguEntity entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 }

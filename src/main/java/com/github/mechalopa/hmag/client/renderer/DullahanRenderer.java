@@ -13,7 +13,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class DullahanRenderer extends AbstractGirlRenderer<DullahanEntity, DullahanModel<DullahanEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/dullahan.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/dullahan.png");
 
 	public DullahanRenderer(EntityRendererProvider.Context context)
 	{
@@ -23,6 +23,6 @@ public class DullahanRenderer extends AbstractGirlRenderer<DullahanEntity, Dulla
 	@Override
 	public ResourceLocation getTextureLocation(DullahanEntity entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 }

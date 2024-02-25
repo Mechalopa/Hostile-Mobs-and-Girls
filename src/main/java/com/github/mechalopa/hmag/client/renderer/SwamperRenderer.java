@@ -15,7 +15,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class SwamperRenderer extends MobRenderer<SwamperEntity, SwamperModel<SwamperEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/swamper.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/swamper.png");
 
 	public SwamperRenderer(EntityRendererProvider.Context context)
 	{
@@ -32,7 +32,7 @@ public class SwamperRenderer extends MobRenderer<SwamperEntity, SwamperModel<Swa
 	@Override
 	public ResourceLocation getTextureLocation(SwamperEntity entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 
 	@Override

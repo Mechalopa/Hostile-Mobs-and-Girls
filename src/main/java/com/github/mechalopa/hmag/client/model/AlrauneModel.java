@@ -19,6 +19,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class AlrauneModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 {
+//	private ModelPart rightArmPart1;
+//	private ModelPart leftArmPart1;
 	private ModelPart rightHair1;
 	private ModelPart leftHair1;
 	private ModelPart rightHair2;
@@ -73,6 +75,8 @@ public class AlrauneModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 	public AlrauneModel(ModelPart modelPart)
 	{
 		super(modelPart);
+//		this.rightArmPart1 = this.rightArm.getChild("right_arm_part_1");
+//		this.leftArmPart1 = this.leftArm.getChild("left_arm_part_1");
 		this.rightHair1 = this.head.getChild("right_hair_1");
 		this.leftHair1 = this.head.getChild("left_hair_1");
 		this.rightHair2 = this.rightHair1.getChild("right_hair_2");
@@ -139,12 +143,14 @@ public class AlrauneModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 	{
 		MeshDefinition md = AbstractAdvancedGirlModel.createMesh(cd, 0.0F);
 		PartDefinition pd = md.getRoot();
-		ModClientUtils.addC(pd, cd, "right_arm", 40, 16, 0.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F, -5.0F, 2.0F, 0.0F);
-		ModClientUtils.addC(pd, cd, "left_arm", 40, 16, -2.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F, 5.0F, 2.0F, 0.0F, true);
+		PartDefinition rapd = ModClientUtils.addC(pd, cd, "right_arm", 40, 16, 0.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F, -5.0F, 2.0F, 0.0F);
+		PartDefinition lapd = ModClientUtils.addC(pd, cd, "left_arm", 40, 16, -2.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F, 5.0F, 2.0F, 0.0F, true);
+		ModClientUtils.addC(rapd, cd, "right_arm_part_1", 48, 32, -0.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, 0.0F, 7.0F, 0.0F);
+		ModClientUtils.addC(lapd, cd, "left_arm_part_1", 48, 32, -2.5F, 0.0F, -1.5F, 3.0F, 1.0F, 3.0F, 0.0F, 7.0F, 0.0F, true);
 
 		PartDefinition headpd = pd.getChild("head");
-		PartDefinition rh1pd = ModClientUtils.addC(headpd, cd, "right_hair_1", 48, 64, -0.5F, -1.0F, 0.0F, 1.0F, 10.0F, 1.0F, -4.0F, -8.0F, 1.5F, 0.25F);
-		PartDefinition lh1pd = ModClientUtils.addC(headpd, cd, "left_hair_1", 48, 64, -0.5F, -1.0F, 0.0F, 1.0F, 10.0F, 1.0F, 4.0F, -8.0F, 1.5F, true, 0.25F);
+		PartDefinition rh1pd = ModClientUtils.addC(headpd, cd, "right_hair_1", 48, 64, -0.5F, -1.0F, 0.0F, 1.0F, 10.0F, 1.0F, -4.0F, -8.0F, 0.5F, 0.25F);
+		PartDefinition lh1pd = ModClientUtils.addC(headpd, cd, "left_hair_1", 48, 64, -0.5F, -1.0F, 0.0F, 1.0F, 10.0F, 1.0F, 4.0F, -8.0F, 0.5F, true, 0.25F);
 		PartDefinition rh2pd = ModClientUtils.addC(rh1pd, cd, "right_hair_2", 32, 48, -1.0F, -0.5F, -0.5F, 2.0F, 6.0F, 1.0F, 0.0F, 9.5F, 0.0F);
 		PartDefinition lh2pd = ModClientUtils.addC(lh1pd, cd, "left_hair_2", 32, 48, -1.0F, -0.5F, -0.5F, 2.0F, 6.0F, 1.0F, 0.0F, 9.5F, 0.0F, true);
 		ModClientUtils.addC(rh2pd, cd, "right_hair_3", 32, 56, -1.0F, -0.5F, -0.5F, 2.0F, 5.0F, 1.0F, 0.0F, 5.5F, 0.0F);
@@ -228,9 +234,9 @@ public class AlrauneModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 	}
 
 	@Override
-	public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
+	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
-		super.setupAnim(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+		super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 
 		this.rightArm.zRot = ((float)Math.PI / 8.0F);
 		this.leftArm.zRot = -((float)Math.PI / 8.0F);

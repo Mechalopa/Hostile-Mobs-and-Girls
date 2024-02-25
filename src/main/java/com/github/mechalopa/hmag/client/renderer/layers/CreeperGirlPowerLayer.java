@@ -16,7 +16,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class CreeperGirlPowerLayer extends EnergySwirlLayer<CreeperGirlEntity, AbstractGirlModel<CreeperGirlEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation("textures/entity/creeper/creeper_armor.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation("textures/entity/creeper/creeper_armor.png");
 	private final CreeperGirlArmorModel<CreeperGirlEntity> model;
 
 	public CreeperGirlPowerLayer(RenderLayerParent<CreeperGirlEntity, AbstractGirlModel<CreeperGirlEntity>> renderLayerParent, EntityModelSet modelSet)
@@ -34,7 +34,7 @@ public class CreeperGirlPowerLayer extends EnergySwirlLayer<CreeperGirlEntity, A
 	@Override
 	protected ResourceLocation getTextureLocation()
 	{
-		return TEX;
+		return TEXTURE;
 	}
 
 	@Override

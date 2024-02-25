@@ -13,7 +13,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class StrayGirlRenderer extends SkeletonGirlRenderer
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/stray_girl.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/stray_girl.png");
 
 	public StrayGirlRenderer(EntityRendererProvider.Context context)
 	{
@@ -24,6 +24,6 @@ public class StrayGirlRenderer extends SkeletonGirlRenderer
 	@Override
 	public ResourceLocation getTextureLocation(AbstractSkeleton entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 }

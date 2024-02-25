@@ -15,11 +15,11 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class GhostClothingLayer extends AbstractClothingLayer<GhostEntity, GhostModel<GhostEntity>>
 {
-	private static final ResourceLocation TEX0 = new ResourceLocation(HMaG.MODID, "textures/entity/ghost/ghost_skin_0.png");
-	private static final ResourceLocation TEX1 = new ResourceLocation(HMaG.MODID, "textures/entity/ghost/ghost_skin_1.png");
-	private static final ResourceLocation TEX2 = new ResourceLocation(HMaG.MODID, "textures/entity/ghost/ghost_skin_2.png");
-	private static final ResourceLocation TEX3 = new ResourceLocation(HMaG.MODID, "textures/entity/ghost/ghost_skin_3.png");
-	private static final ResourceLocation TEX4 = new ResourceLocation(HMaG.MODID, "textures/entity/ghost/ghost_skin_4.png");
+	private static final ResourceLocation TEXTURE_0 = new ResourceLocation(HMaG.MODID, "textures/entity/ghost/ghost_skin_0.png");
+	private static final ResourceLocation TEXTURE_1 = new ResourceLocation(HMaG.MODID, "textures/entity/ghost/ghost_skin_1.png");
+	private static final ResourceLocation TEXTURE_2 = new ResourceLocation(HMaG.MODID, "textures/entity/ghost/ghost_skin_2.png");
+	private static final ResourceLocation TEXTURE_3 = new ResourceLocation(HMaG.MODID, "textures/entity/ghost/ghost_skin_3.png");
+	private static final ResourceLocation TEXTURE_4 = new ResourceLocation(HMaG.MODID, "textures/entity/ghost/ghost_skin_4.png");
 	private final GhostModel<GhostEntity> model;
 
 	public GhostClothingLayer(RenderLayerParent<GhostEntity, GhostModel<GhostEntity>> renderLayerParent, EntityModelSet modelSet)
@@ -46,15 +46,15 @@ public class GhostClothingLayer extends AbstractClothingLayer<GhostEntity, Ghost
 		switch (entity.getVariant())
 		{
 		case 1:
-			return TEX1;
+			return TEXTURE_1;
 		case 2:
-			return TEX2;
+			return TEXTURE_2;
 		case 3:
-			return TEX3;
+			return TEXTURE_3;
 		case 4:
-			return TEX4;
+			return TEXTURE_4;
 		default:
-			return TEX0;
+			return TEXTURE_0;
 		}
 	}
 }

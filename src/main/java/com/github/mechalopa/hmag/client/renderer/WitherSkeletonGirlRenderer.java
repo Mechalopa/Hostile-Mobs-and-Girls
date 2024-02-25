@@ -13,7 +13,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class WitherSkeletonGirlRenderer extends SkeletonGirlRenderer
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/wither_skeleton_girl.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/wither_skeleton_girl.png");
 
 	public WitherSkeletonGirlRenderer(EntityRendererProvider.Context context)
 	{
@@ -30,6 +30,6 @@ public class WitherSkeletonGirlRenderer extends SkeletonGirlRenderer
 	@Override
 	public ResourceLocation getTextureLocation(AbstractSkeleton entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 }

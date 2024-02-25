@@ -13,14 +13,13 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class HarpyRenderer extends AbstractGirlRenderer<HarpyEntity, HarpyModel<HarpyEntity>>
 {
-	private static final ResourceLocation TEX0 = new ResourceLocation(HMaG.MODID, "textures/entity/harpy/harpy_0.png");
-	private static final ResourceLocation TEX1 = new ResourceLocation(HMaG.MODID, "textures/entity/harpy/harpy_1.png");
-	private static final ResourceLocation TEX2 = new ResourceLocation(HMaG.MODID, "textures/entity/harpy/harpy_2.png");
-	private static final ResourceLocation TEX3 = new ResourceLocation(HMaG.MODID, "textures/entity/harpy/harpy_3.png");
-	private static final ResourceLocation TEX4 = new ResourceLocation(HMaG.MODID, "textures/entity/harpy/harpy_4.png");
-	private static final ResourceLocation TEX5 = new ResourceLocation(HMaG.MODID, "textures/entity/harpy/harpy_5.png");
-	private static final ResourceLocation TEX6 = new ResourceLocation(HMaG.MODID, "textures/entity/harpy/harpy_6.png");
-	private static final ResourceLocation TEX7 = new ResourceLocation(HMaG.MODID, "textures/entity/harpy/harpy_7.png");
+	private static final ResourceLocation TEXTURE_0 = new ResourceLocation(HMaG.MODID, "textures/entity/harpy/harpy_0.png");
+	private static final ResourceLocation TEXTURE_1 = new ResourceLocation(HMaG.MODID, "textures/entity/harpy/harpy_1.png");
+	private static final ResourceLocation TEXTURE_2 = new ResourceLocation(HMaG.MODID, "textures/entity/harpy/harpy_2.png");
+	private static final ResourceLocation TEXTURE_3 = new ResourceLocation(HMaG.MODID, "textures/entity/harpy/harpy_3.png");
+	private static final ResourceLocation TEXTURE_4 = new ResourceLocation(HMaG.MODID, "textures/entity/harpy/harpy_4.png");
+	private static final ResourceLocation TEXTURE_5 = new ResourceLocation(HMaG.MODID, "textures/entity/harpy/harpy_5.png");
+	private static final ResourceLocation TEXTURE_6 = new ResourceLocation(HMaG.MODID, "textures/entity/harpy/harpy_6.png");
 
 	public HarpyRenderer(EntityRendererProvider.Context context)
 	{
@@ -33,21 +32,19 @@ public class HarpyRenderer extends AbstractGirlRenderer<HarpyEntity, HarpyModel<
 		switch (entity.getVariant())
 		{
 		case 1:
-			return TEX1;
+			return TEXTURE_1;
 		case 2:
-			return TEX2;
+			return TEXTURE_2;
 		case 3:
-			return TEX3;
+			return TEXTURE_3;
 		case 4:
-			return TEX4;
+			return TEXTURE_4;
 		case 5:
-			return TEX5;
+			return TEXTURE_5;
 		case 6:
-			return TEX6;
-		case 7:
-			return TEX7;
+			return TEXTURE_6;
 		default:
-			return TEX0;
+			return TEXTURE_0;
 		}
 	}
 }

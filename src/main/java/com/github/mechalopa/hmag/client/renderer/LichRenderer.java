@@ -14,7 +14,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class LichRenderer extends HumanoidMobRenderer<LichEntity, LichModel<LichEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/lich.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/lich.png");
 
 	public LichRenderer(EntityRendererProvider.Context context)
 	{
@@ -24,6 +24,6 @@ public class LichRenderer extends HumanoidMobRenderer<LichEntity, LichModel<Lich
 	@Override
 	public ResourceLocation getTextureLocation(LichEntity entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 }

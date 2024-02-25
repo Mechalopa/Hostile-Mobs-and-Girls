@@ -98,7 +98,6 @@ public class CursedDollEntity extends Monster
 		}
 
 		ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick(), ModConfigs.cachedServer.CURSED_DOLL_BURNS_IN_DAYLIGHT);
-
 		super.aiStep();
 
 		Vec3 vec3 = this.getDeltaMovement();
@@ -152,7 +151,7 @@ public class CursedDollEntity extends Monster
 	{
 		if (source.isFire())
 		{
-			amount = amount * 2.0F;
+			amount = amount * 1.5F;
 		}
 
 		return super.hurt(source, amount);

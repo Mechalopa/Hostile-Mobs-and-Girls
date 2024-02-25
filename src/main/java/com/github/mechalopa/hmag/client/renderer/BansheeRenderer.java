@@ -18,8 +18,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class BansheeRenderer extends AbstractGirlRenderer<BansheeEntity, BansheeModel<BansheeEntity>>
 {
-	private static final ResourceLocation TEX0 = new ResourceLocation(HMaG.MODID, "textures/entity/banshee/banshee_0.png");
-	private static final ResourceLocation TEX1 = new ResourceLocation(HMaG.MODID, "textures/entity/banshee/banshee_1.png");
+	private static final ResourceLocation TEXTURE_0 = new ResourceLocation(HMaG.MODID, "textures/entity/banshee/banshee_0.png");
+	private static final ResourceLocation TEXTURE_1 = new ResourceLocation(HMaG.MODID, "textures/entity/banshee/banshee_1.png");
 
 	public BansheeRenderer(EntityRendererProvider.Context context)
 	{
@@ -54,9 +54,9 @@ public class BansheeRenderer extends AbstractGirlRenderer<BansheeEntity, Banshee
 		switch (entity.getVariant())
 		{
 		case 1:
-			return TEX1;
+			return TEXTURE_1;
 		default:
-			return TEX0;
+			return TEXTURE_0;
 		}
 	}
 }

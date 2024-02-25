@@ -45,18 +45,18 @@ public class CreeperGirlModel<T extends CreeperGirlEntity> extends AbstractAdvan
 	}
 
 	@Override
-	public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
+	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
-		super.setupAnim(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+		super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 
-		doAnim(entityIn, ageInTicks, this.attackTime, this);
+		doAnim(entity, ageInTicks, this.attackTime, this);
 
 //		this.skirt1.xRot = 0.0F;
 //		this.skirt2.xRot = 0.0F;
 //		this.hatPart.xRot = 0.0F;
 	}
 
-	public static void doAnim(CreeperGirlEntity entityIn, float ageInTicks, float attackTime, AbstractGirlModel<?> model)
+	public static void doAnim(CreeperGirlEntity entity, float ageInTicks, float attackTime, AbstractGirlModel<?> model)
 	{
 		float f = Mth.sin(attackTime * (float)Math.PI);
 		float f1 = Mth.sin((1.0F - (1.0F - attackTime) * (1.0F - attackTime)) * (float)Math.PI);

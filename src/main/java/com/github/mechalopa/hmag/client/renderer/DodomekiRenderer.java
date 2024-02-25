@@ -14,7 +14,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class DodomekiRenderer extends AbstractGirlRenderer<DodomekiEntity, DodomekiModel<DodomekiEntity>>
 {
-	private static final ResourceLocation TEX = new ResourceLocation(HMaG.MODID, "textures/entity/dodomeki.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/dodomeki.png");
 
 	public DodomekiRenderer(EntityRendererProvider.Context context)
 	{
@@ -25,6 +25,6 @@ public class DodomekiRenderer extends AbstractGirlRenderer<DodomekiEntity, Dodom
 	@Override
 	public ResourceLocation getTextureLocation(DodomekiEntity entity)
 	{
-		return TEX;
+		return TEXTURE;
 	}
 }
