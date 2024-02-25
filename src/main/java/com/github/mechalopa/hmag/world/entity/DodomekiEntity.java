@@ -93,7 +93,7 @@ public class DodomekiEntity extends Monster
 			{
 				this.eyesGlowingAnimation = Math.max(0.0F, this.eyesGlowingAnimation - 0.1F);
 			}
-			if (this.isAggressive())
+			else if (this.isAggressive())
 			{
 				BlockPos pos = BlockPos.containing(this.getEyePosition(1.0F));
 
