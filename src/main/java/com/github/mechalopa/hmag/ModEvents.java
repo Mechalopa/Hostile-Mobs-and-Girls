@@ -651,7 +651,6 @@ public class ModEvents
 			genericTrades.add(new BasicItemListing(new ItemStack(ModItems.RAVAGER_MEAT.get(), 1), new ItemStack(Items.EMERALD, 1), 32, 1, 0.05F));
 			genericTrades.add(new BasicItemListing(2, new ItemStack(ModItems.LEMON.get()), 5, 1, 1.0F));
 			genericTrades.add(new BasicItemListing(5, new ItemStack(ModItems.FIRE_BOTTLE.get()), 8, 1, 1.0F));
-			rareTrades.add(new BasicItemListing(32, new ItemStack(ModItems.LIGHTNING_PARTICLE.get()), 5, 1, 0.05F));
 			rareTrades.add(new BasicItemListing(1, new ItemStack(ModItems.SOUL_POWDER.get()), 8, 1, 0.05F));
 			rareTrades.add(new BasicItemListing(64, new ItemStack(ModItems.LIGHTNING_PARTICLE.get()), 5, 1, 0.05F));
 			rareTrades.add(new BasicItemListing(32, new ItemStack(ModItems.PURIFICATION_CLOTH.get()), 3, 1, 0.05F));
