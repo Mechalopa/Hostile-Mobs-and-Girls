@@ -1,5 +1,5 @@
 {
-  "type": "hmag:additional_entity_loot",
+  "type": "hmag:add_item_for_entity",
   "conditions": [
     {
       "condition": "minecraft:any_of",

@@ -1,0 +1,10 @@
+{
+  "type": "hmag:add_table",
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:chests/end_city_treasure"
+    }
+  ],
+  "table": "hmag:additions/chests/end_city_treasure"
+}

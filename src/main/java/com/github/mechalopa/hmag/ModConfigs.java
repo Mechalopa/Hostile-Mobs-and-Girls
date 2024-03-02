@@ -110,7 +110,6 @@ public class ModConfigs
 	public static ForgeConfigSpec.BooleanValue BLASTING_BOTTLE_BREWING_RECIPE;
 	public static ForgeConfigSpec.BooleanValue LIGHTNING_BOTTLE_BREWING_RECIPE;
 
-	public static ForgeConfigSpec.BooleanValue ADDITIONAL_CHEST_LOOTS;
 	public static ForgeConfigSpec.BooleanValue ADDITIONAL_VILLAGER_TRADES;
 	public static ForgeConfigSpec.BooleanValue ADDITIONAL_WANDERER_TRADES;
 
@@ -251,7 +250,6 @@ public class ModConfigs
 
 		SERVER_BUILDER.push("world");
 
-		ADDITIONAL_CHEST_LOOTS = SERVER_BUILDER.define("additionalChestLoots", true);
 		ADDITIONAL_VILLAGER_TRADES = SERVER_BUILDER.define("additionalVillagerTrades", true);
 		ADDITIONAL_WANDERER_TRADES = SERVER_BUILDER.define("additionalWandererTrades", true);
 
@@ -363,7 +361,6 @@ public class ModConfigs
 		public static boolean BLASTING_BOTTLE_BREWING_RECIPE;
 		public static boolean LIGHTNING_BOTTLE_BREWING_RECIPE;
 
-		public static boolean ADDITIONAL_CHEST_LOOTS;
 		public static boolean ADDITIONAL_VILLAGER_TRADES;
 		public static boolean ADDITIONAL_WANDERER_TRADES;
 
@@ -470,7 +467,6 @@ public class ModConfigs
 			BLASTING_BOTTLE_BREWING_RECIPE = ModConfigs.BLASTING_BOTTLE_BREWING_RECIPE.get();
 			LIGHTNING_BOTTLE_BREWING_RECIPE = ModConfigs.LIGHTNING_BOTTLE_BREWING_RECIPE.get();
 
-			ADDITIONAL_CHEST_LOOTS = ModConfigs.ADDITIONAL_CHEST_LOOTS.get();
 			ADDITIONAL_VILLAGER_TRADES = ModConfigs.ADDITIONAL_VILLAGER_TRADES.get();
 			ADDITIONAL_WANDERER_TRADES = ModConfigs.ADDITIONAL_WANDERER_TRADES.get();
 		}

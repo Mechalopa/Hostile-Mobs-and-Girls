@@ -1,0 +1,10 @@
+{
+  "type": "hmag:add_table",
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:chests/woodland_mansion"
+    }
+  ],
+  "table": "hmag:additions/chests/woodland_mansion"
+}

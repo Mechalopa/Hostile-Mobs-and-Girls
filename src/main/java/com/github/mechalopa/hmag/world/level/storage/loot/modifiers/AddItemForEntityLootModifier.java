@@ -26,7 +26,7 @@ import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.common.loot.LootModifierManager;
 import net.minecraftforge.registries.ForgeRegistries;
 
-public class AdditionalEntityLootModifier extends LootModifier
+public class AddItemForEntityLootModifier extends LootModifier
 {
 	private static final Codec<LootItemFunction[]> LOOT_FUNCTIONS_CODEC = Codec.PASSTHROUGH.flatXmap(d -> {
 		try
@@ -52,13 +52,13 @@ public class AdditionalEntityLootModifier extends LootModifier
 		}
 	});
 
-	public static final Supplier<Codec<AdditionalEntityLootModifier>> CODEC = Suppliers.memoize(() -> RecordCodecBuilder.create(inst -> codecStart(inst).and(inst.group(LOOT_FUNCTIONS_CODEC.optionalFieldOf("functions", new LootItemFunction[0]).forGetter(m -> m.functions),ForgeRegistries.ITEMS.getCodec().optionalFieldOf("addition", Items.BARRIER).forGetter(m -> m.addition))).apply(inst, AdditionalEntityLootModifier::new)));
+	public static final Supplier<Codec<AddItemForEntityLootModifier>> CODEC = Suppliers.memoize(() -> RecordCodecBuilder.create(inst -> codecStart(inst).and(inst.group(LOOT_FUNCTIONS_CODEC.optionalFieldOf("functions", new LootItemFunction[0]).forGetter(m -> m.functions),ForgeRegistries.ITEMS.getCodec().optionalFieldOf("addition", Items.BARRIER).forGetter(m -> m.addition))).apply(inst, AddItemForEntityLootModifier::new)));
 	private final LootItemFunction[] functions;
 	private final Item addition;
 
-	public AdditionalEntityLootModifier(LootItemCondition[] conditionsIn, LootItemFunction[] functions, Item addition)
+	public AddItemForEntityLootModifier(LootItemCondition[] conditions, LootItemFunction[] functions, Item addition)
 	{
-		super(conditionsIn);
+		super(conditions);
 		this.functions = functions;
 		this.addition = addition;
 	}
