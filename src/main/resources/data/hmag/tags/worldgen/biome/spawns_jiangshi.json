@@ -77,6 +77,10 @@
     {
       "id": "biox:autumnal_dark_forest",
       "required": false
+    },
+    {
+      "id": "atmospheric:kousa_jungle",
+      "required": false
     }
   ]
 }
