@@ -2,11 +2,6 @@
   "type": "minecraft:chest",
   "pools": [
     {
-      "rolls": {
-        "min": 0.0,
-        "max": 2.0,
-        "type": "minecraft:uniform"
-      },
       "entries": [
         {
           "type": "minecraft:item",
@@ -129,7 +124,13 @@
           ],
           "name": "hmag:exp_berry"
         }
-      ]
+      ],
+      "rolls": {
+        "min": 0.0,
+        "max": 2.0,
+        "type": "minecraft:uniform"
+      }
     }
-  ]
+  ],
+  "random_sequence": "jafohana:additions/chests/village/village_temple"
 }

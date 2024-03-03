@@ -2,11 +2,6 @@
   "type": "minecraft:chest",
   "pools": [
     {
-      "rolls": {
-        "min": 0.0,
-        "max": 1.0,
-        "type": "minecraft:uniform"
-      },
       "entries": [
         {
           "type": "minecraft:item",
@@ -23,7 +18,13 @@
           ],
           "name": "hmag:reinforcing_chain"
         }
-      ]
+      ],
+      "rolls": {
+        "min": 0.0,
+        "max": 1.0,
+        "type": "minecraft:uniform"
+      }
     }
-  ]
+  ],
+  "random_sequence": "hmag:additions/chests/village/village_armorer"
 }
