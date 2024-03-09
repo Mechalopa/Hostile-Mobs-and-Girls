@@ -19,7 +19,6 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.ByIdMap;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.Difficulty;
@@ -171,7 +170,7 @@ public class KashaEntity extends Monster implements VariantHolder<KashaEntity.Va
 	{
 		spawnData = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
 
-		if (this.level().getBlockState(this.blockPosition().below()).is(BlockTags.SOUL_FIRE_BASE_BLOCKS))
+		if (this.level().getBlockState(this.blockPosition().below()).is(ModTags.BlockTags.SOUL_KASHA_SPAWNABLE_ON))
 		{
 			this.setVariant(KashaEntity.Variant.SOUL);
 		}

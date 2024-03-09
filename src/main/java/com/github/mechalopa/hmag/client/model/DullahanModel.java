@@ -1,6 +1,7 @@
 package com.github.mechalopa.hmag.client.model;
 
 import com.github.mechalopa.hmag.client.util.ModClientUtils;
+import com.github.mechalopa.hmag.world.entity.DullahanEntity;
 
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
@@ -9,12 +10,11 @@ import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.entity.Mob;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class DullahanModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
+public class DullahanModel<T extends DullahanEntity> extends AbstractAdvancedGirlModel<T>
 {
 	private ModelPart skirt1;
 	private ModelPart skirt2;
@@ -57,32 +57,43 @@ public class DullahanModel<T extends Mob> extends AbstractAdvancedGirlModel<T>
 
 		float f = Mth.sin(this.attackTime * (float)Math.PI);
 		float f1 = Mth.sin((1.0F - (1.0F - this.attackTime) * (1.0F - this.attackTime)) * (float)Math.PI);
-		boolean flag = entity.getMainArm() == HumanoidArm.LEFT;
 
-		if (flag)
+		if (entity.getVariant() == DullahanEntity.Variant.HEADLESS)
 		{
-			this.rightArm.zRot = 0.0F;
-			this.rightArm.yRot = -(0.1F - f * 0.6F);
-			this.rightArm.xRot = (float)Math.PI / 12.0F;
-			this.rightArm.xRot -= f * 1.2F - f1 * 0.4F;
-			this.rightArm.zRot += Mth.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
-			this.rightArm.xRot -= Mth.sin(ageInTicks * 0.067F) * 0.05F;
+			this.head.visible = false;
+			this.hat.visible = false;
 		}
 		else
 		{
-			this.leftArm.zRot = 0.0F;
-			this.leftArm.yRot = 0.1F - f * 0.6F;
-			this.leftArm.xRot = (float)Math.PI / 12.0F;
-			this.leftArm.xRot -= f * 1.2F - f1 * 0.4F;
-			this.leftArm.zRot -= Mth.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
-			this.leftArm.xRot -= Mth.sin(ageInTicks * 0.067F) * 0.05F;
-		}
+			boolean flag = entity.getMainArm() == HumanoidArm.LEFT;
 
-		float f2 = 1.0F;
-		this.head.x = f2 * 7.0F * (flag ? -1.0F : 1.0F);
-		this.head.y = f2 * 17.5F;
-		this.head.z = f2 * 1.5F;
-		this.hat.copyFrom(this.head);
+			if (flag)
+			{
+				this.rightArm.zRot = 0.0F;
+				this.rightArm.yRot = -(0.1F - f * 0.6F);
+				this.rightArm.xRot = (float)Math.PI / 12.0F;
+				this.rightArm.xRot -= f * 1.2F - f1 * 0.4F;
+				this.rightArm.zRot += Mth.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
+				this.rightArm.xRot -= Mth.sin(ageInTicks * 0.067F) * 0.05F;
+			}
+			else
+			{
+				this.leftArm.zRot = 0.0F;
+				this.leftArm.yRot = 0.1F - f * 0.6F;
+				this.leftArm.xRot = (float)Math.PI / 12.0F;
+				this.leftArm.xRot -= f * 1.2F - f1 * 0.4F;
+				this.leftArm.zRot -= Mth.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
+				this.leftArm.xRot -= Mth.sin(ageInTicks * 0.067F) * 0.05F;
+			}
+
+			this.head.visible = true;
+			this.hat.visible = true;
+			float f2 = 1.0F;
+			this.head.x = f2 * 7.0F * (flag ? -1.0F : 1.0F);
+			this.head.y = f2 * 17.5F;
+			this.head.z = f2 * 1.5F;
+			this.hat.copyFrom(this.head);
+		}
 
 		this.cloak.xRot = (float)Math.PI / 6.0F;
 		this.cloak.xRot -= Mth.cos(limbSwing * 0.45F) * 2.0F * limbSwingAmount * 0.21F;

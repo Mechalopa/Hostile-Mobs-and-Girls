@@ -40,8 +40,8 @@ public enum CommonOrUncommonVariant implements StringRepresentable
 		return BY_ID.apply(id);
 	}
 
-	public static CommonOrUncommonVariant getSpawnVariant(RandomSource random)
+	public static CommonOrUncommonVariant getSpawnVariant(RandomSource random, double chance)
 	{
-		return random.nextInt(4) == 0 ? UNCOMMON : COMMON;
+		return random.nextDouble() < chance ? UNCOMMON : COMMON;
 	}
 }

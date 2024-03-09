@@ -176,7 +176,7 @@ public class CursedDollEntity extends Monster implements VariantHolder<CommonOrU
 	{
 		spawnData = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
 		RandomSource randomsource = levelAccessor.getRandom();
-		this.setVariant(CommonOrUncommonVariant.getSpawnVariant(randomsource));
+		this.setVariant(CommonOrUncommonVariant.getSpawnVariant(randomsource, ModConfigs.cachedServer.CURSED_DOLL_ANOTHER_VARIANT_SPAWN_CHANCE));
 		this.populateDefaultEquipmentSlots(randomsource, difficulty);
 		this.populateDefaultEquipmentEnchantments(randomsource, difficulty);
 		return spawnData;

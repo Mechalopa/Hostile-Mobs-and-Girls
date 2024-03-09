@@ -2,6 +2,7 @@ package com.github.mechalopa.hmag.world.entity;
 
 import javax.annotation.Nullable;
 
+import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
 import com.github.mechalopa.hmag.util.ModUtils;
 
@@ -135,7 +136,7 @@ public class BansheeEntity extends AbstractFlyingMonsterEntity implements Varian
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag dataTag)
 	{
 		spawnData = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
-		this.setVariant(CommonOrUncommonVariant.getSpawnVariant(levelAccessor.getRandom()));
+		this.setVariant(CommonOrUncommonVariant.getSpawnVariant(levelAccessor.getRandom(), ModConfigs.cachedServer.BANSHEE_ANOTHER_VARIANT_SPAWN_CHANCE));
 		return spawnData;
 	}
 
