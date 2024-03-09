@@ -172,7 +172,7 @@ public class GhostEntity extends AbstractFlyingMonsterEntity implements IModMob
 		return this.entityData.get(DATA_VARIANT_ID);
 	}
 
-	private void setVariant(int typeIn)
+	protected void setVariant(int typeIn)
 	{
 		if (typeIn < 0 || typeIn >= 5)
 		{
