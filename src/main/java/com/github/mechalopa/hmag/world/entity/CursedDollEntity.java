@@ -189,7 +189,7 @@ public class CursedDollEntity extends Monster
 		return this.entityData.get(DATA_VARIANT_ID);
 	}
 
-	private void setVariant(int type)
+	protected void setVariant(int type)
 	{
 		if (type < 0 || type >= 2)
 		{

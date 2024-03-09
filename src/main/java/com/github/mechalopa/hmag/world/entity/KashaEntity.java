@@ -189,7 +189,7 @@ public class KashaEntity extends Monster
 		return KashaEntity.Variant.byId(this.entityData.get(DATA_VARIANT_ID));
 	}
 
-	private void setVariant(KashaEntity.Variant variant)
+	protected void setVariant(KashaEntity.Variant variant)
 	{
 		if (!this.level.isClientSide)
 		{
