@@ -5,6 +5,10 @@
     {
       "id": "ravageandcabbage:ravager",
       "required": false
+    },
+    {
+      "id": "#goety:ravagers",
+      "required": false
     }
   ]
 }

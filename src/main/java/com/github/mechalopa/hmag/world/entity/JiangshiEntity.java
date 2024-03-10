@@ -254,7 +254,7 @@ public class JiangshiEntity extends Monster implements VariantHolder<CommonOrUnc
 	{
 		spawnData = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
 		RandomSource randomsource = levelAccessor.getRandom();
-		this.setVariant(CommonOrUncommonVariant.getSpawnVariant(randomsource));
+		this.setVariant(CommonOrUncommonVariant.getSpawnVariant(randomsource, ModConfigs.cachedServer.JIANGSHI_ANOTHER_VARIANT_SPAWN_CHANCE));
 
 		if (this.getItemBySlot(EquipmentSlot.HEAD).isEmpty())
 		{
