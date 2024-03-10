@@ -178,7 +178,7 @@ public class CursedDollEntity extends Monster
 	{
 		spawnData = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
 		RandomSource randomsource = levelAccessor.getRandom();
-		this.setVariant(randomsource.nextInt(4) == 0 ? 1 : 0);
+		this.setVariant(randomsource.nextDouble() < ModConfigs.cachedServer.CURSED_DOLL_ANOTHER_VARIANT_SPAWN_CHANCE ? 1 : 0);
 		this.populateDefaultEquipmentSlots(randomsource, difficulty);
 		this.populateDefaultEquipmentEnchantments(randomsource, difficulty);
 		return spawnData;

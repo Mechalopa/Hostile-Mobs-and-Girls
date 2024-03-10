@@ -1,8 +1,8 @@
 package com.github.mechalopa.hmag.registry;
 
 import com.github.mechalopa.hmag.HMaG;
-import com.github.mechalopa.hmag.world.level.storage.loot.modifiers.AdditionalEntityLootModifier;
-import com.github.mechalopa.hmag.world.level.storage.loot.modifiers.ReplaceLootModifier;
+import com.github.mechalopa.hmag.world.level.storage.loot.modifiers.AddItemForEntityLootModifier;
+import com.github.mechalopa.hmag.world.level.storage.loot.modifiers.ReplaceItemModifier;
 import com.mojang.serialization.Codec;
 
 import net.minecraftforge.common.loot.IGlobalLootModifier;
@@ -16,8 +16,8 @@ public class ModLootModifiers
 {
 	private static final DeferredRegister<Codec<? extends IGlobalLootModifier>> REGISTRY = DeferredRegister.create(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, HMaG.MODID);
 
-	public static final RegistryObject<Codec<AdditionalEntityLootModifier>> ADDITIONAL_ENTITY_LOOT = REGISTRY.register("additional_entity_loot", AdditionalEntityLootModifier.CODEC);
-	public static final RegistryObject<Codec<ReplaceLootModifier>> REPLACE_LOOT = REGISTRY.register("replace_loot", ReplaceLootModifier.CODEC);
+	public static final RegistryObject<Codec<AddItemForEntityLootModifier>> ADD_ITEM_FOR_ENTITY = REGISTRY.register("add_item_for_entity", AddItemForEntityLootModifier.CODEC);
+	public static final RegistryObject<Codec<ReplaceItemModifier>> REPLACE_ITEM = REGISTRY.register("replace_item", ReplaceItemModifier.CODEC);
 
 	@SubscribeEvent
 	public static void register(IEventBus eventBus)

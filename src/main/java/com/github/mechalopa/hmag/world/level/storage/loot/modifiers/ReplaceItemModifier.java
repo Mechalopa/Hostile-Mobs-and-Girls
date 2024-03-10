@@ -19,15 +19,15 @@ import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.registries.ForgeRegistries;
 
-public class ReplaceLootModifier extends LootModifier
+public class ReplaceItemModifier extends LootModifier
 {
-	public static final Supplier<Codec<ReplaceLootModifier>> CODEC = Suppliers.memoize(() -> RecordCodecBuilder.create(inst -> codecStart(inst).and(inst.group(ForgeRegistries.ITEMS.getCodec().optionalFieldOf("original", Items.BARRIER).forGetter(m -> m.original), ForgeRegistries.ITEMS.getCodec().optionalFieldOf("replacement", Items.BARRIER).forGetter(m -> m.replacement))).apply(inst, ReplaceLootModifier::new)));
+	public static final Supplier<Codec<ReplaceItemModifier>> CODEC = Suppliers.memoize(() -> RecordCodecBuilder.create(inst -> codecStart(inst).and(inst.group(ForgeRegistries.ITEMS.getCodec().optionalFieldOf("original", Items.BARRIER).forGetter(m -> m.original), ForgeRegistries.ITEMS.getCodec().optionalFieldOf("replacement", Items.BARRIER).forGetter(m -> m.replacement))).apply(inst, ReplaceItemModifier::new)));
 	private final Item original;
 	private final Item replacement;
 
-	public ReplaceLootModifier(LootItemCondition[] conditionsIn, Item original, Item replacement)
+	public ReplaceItemModifier(LootItemCondition[] conditions, Item original, Item replacement)
 	{
-		super(conditionsIn);
+		super(conditions);
 		this.original = original;
 		this.replacement = replacement;
 	}

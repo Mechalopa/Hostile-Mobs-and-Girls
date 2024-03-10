@@ -1,5 +1,8 @@
 package com.github.mechalopa.hmag.world.entity;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
@@ -10,6 +13,9 @@ import com.github.mechalopa.hmag.util.ModUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
@@ -46,10 +52,19 @@ import net.minecraftforge.network.NetworkHooks;
 
 public class DullahanEntity extends Monster
 {
+	private static final EntityDataAccessor<Integer> DATA_VARIANT_ID = SynchedEntityData.defineId(DullahanEntity.class, EntityDataSerializers.INT);
+
 	public DullahanEntity(EntityType<? extends DullahanEntity> type, Level level)
 	{
 		super(type, level);
 		this.xpReward = 15;
+	}
+
+	@Override
+	protected void defineSynchedData()
+	{
+		super.defineSynchedData();
+		this.entityData.define(DATA_VARIANT_ID, 0);
 	}
 
 	@Override
@@ -146,9 +161,34 @@ public class DullahanEntity extends Monster
 	{
 		spawnData = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
 		RandomSource randomsource = levelAccessor.getRandom();
+		this.setVariant(randomsource.nextDouble() < ModConfigs.cachedServer.HEADLESS_DULLAHAN_SPAWN_CHANCE ? DullahanEntity.Variant.HEADLESS : DullahanEntity.Variant.NORMAL);
 		this.populateDefaultEquipmentSlots(randomsource, difficulty);
 		this.populateDefaultEquipmentEnchantments(randomsource, difficulty);
 		return spawnData;
+	}
+
+	public DullahanEntity.Variant getVariant()
+	{
+		return DullahanEntity.Variant.byId(this.entityData.get(DATA_VARIANT_ID));
+	}
+
+	protected void setVariant(DullahanEntity.Variant variant)
+	{
+		this.entityData.set(DATA_VARIANT_ID, variant.getId());
+	}
+
+	@Override
+	public void readAdditionalSaveData(CompoundTag compound)
+	{
+		super.readAdditionalSaveData(compound);
+		this.setVariant(DullahanEntity.Variant.byId(compound.getInt("Variant")));
+	}
+
+	@Override
+	public void addAdditionalSaveData(CompoundTag compound)
+	{
+		super.addAdditionalSaveData(compound);
+		compound.putInt("Variant", this.getVariant().getId());
 	}
 
 	@Override
@@ -198,5 +238,36 @@ public class DullahanEntity extends Monster
 	public Packet<?> getAddEntityPacket()
 	{
 		return NetworkHooks.getEntitySpawningPacket(this);
+	}
+
+	public static enum Variant
+	{
+		NORMAL(0),
+		HEADLESS(1);
+
+		private final int id;
+		private static final DullahanEntity.Variant[] BY_ID = Arrays.stream(values()).sorted(Comparator.comparingInt(DullahanEntity.Variant::getId)).toArray((p) -> {
+			return new DullahanEntity.Variant[p];
+		});
+
+		private Variant(int idIn)
+		{
+			this.id = idIn;
+		}
+
+		public int getId()
+		{
+			return this.id;
+		}
+
+		public static DullahanEntity.Variant byId(int idIn)
+		{
+			if (idIn < 0 || idIn >= BY_ID.length)
+			{
+				idIn = 0;
+			}
+
+			return BY_ID[idIn];
+		}
 	}
 }

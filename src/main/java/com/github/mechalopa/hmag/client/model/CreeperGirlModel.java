@@ -48,9 +48,7 @@ public class CreeperGirlModel<T extends CreeperGirlEntity> extends AbstractAdvan
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch)
 	{
 		super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
-
 		doAnim(entity, ageInTicks, this.attackTime, this);
-
 //		this.skirt1.xRot = 0.0F;
 //		this.skirt2.xRot = 0.0F;
 //		this.hatPart.xRot = 0.0F;

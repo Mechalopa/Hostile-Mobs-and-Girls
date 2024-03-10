@@ -1,5 +1,5 @@
 {
-  "type": "hmag:replace_loot",
+  "type": "hmag:replace_item",
   "conditions": [
     {
       "condition": "hmag:mod_loaded",
