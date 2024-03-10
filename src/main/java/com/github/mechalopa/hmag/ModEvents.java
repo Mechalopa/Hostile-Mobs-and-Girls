@@ -508,7 +508,7 @@ public class ModEvents
 	@SubscribeEvent
 	public void onItemAttributeModifier(ItemAttributeModifierEvent event)
 	{
-		if (!event.getItemStack().isEmpty() && event.getItemStack().getItem() != null)
+		if (!event.getItemStack().isEmpty() && event.getItemStack().getItem() != null && event.getSlotType() != null && event.getSlotType().getType() != null)
 		{
 			ItemStack stack = event.getItemStack();
 
@@ -516,7 +516,7 @@ public class ModEvents
 			{
 				final int i = event.getSlotType().getIndex();
 
-				if (event.getSlotType().getType() == EquipmentSlot.Type.ARMOR && i >= 0 && i < HealthBoostEnchantment.HEALTH_BOOST_ENCHANTMENT_MAX_HEALTH_UUIDS.length)
+				if (event.getSlotType().isArmor() && i >= 0 && i < HealthBoostEnchantment.HEALTH_BOOST_ENCHANTMENT_MAX_HEALTH_UUIDS.length)
 				{
 					final int level = EnchantmentHelper.getTagEnchantmentLevel(ModEnchantments.HEALTH_BOOST.get(), stack);
 
