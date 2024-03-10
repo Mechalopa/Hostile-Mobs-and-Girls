@@ -167,7 +167,7 @@ public class DullahanEntity extends Monster implements VariantHolder<DullahanEnt
 	{
 		spawnData = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
 		RandomSource randomsource = levelAccessor.getRandom();
-		this.setVariant(randomsource.nextDouble() < ModConfigs.cachedServer.CREEPER_GIRL_REPLACE_CHANCE ? DullahanEntity.Variant.HEADLESS : DullahanEntity.Variant.NORMAL);
+		this.setVariant(randomsource.nextDouble() < ModConfigs.cachedServer.HEADLESS_DULLAHAN_SPAWN_CHANCE ? DullahanEntity.Variant.HEADLESS : DullahanEntity.Variant.NORMAL);
 		this.populateDefaultEquipmentSlots(randomsource, difficulty);
 		this.populateDefaultEquipmentEnchantments(randomsource, difficulty);
 		return spawnData;
