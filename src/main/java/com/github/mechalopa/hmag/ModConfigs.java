@@ -56,6 +56,11 @@ public class ModConfigs
 	public static ForgeConfigSpec.BooleanValue NECROTIC_REAPER_ATTACK_BABY_TURTLES;
 	public static ForgeConfigSpec.BooleanValue GLARYAD_REGEN;
 
+	public static ForgeConfigSpec.DoubleValue BANSHEE_ANOTHER_VARIANT_SPAWN_CHANCE;
+	public static ForgeConfigSpec.DoubleValue CURSED_DOLL_ANOTHER_VARIANT_SPAWN_CHANCE;
+	public static ForgeConfigSpec.DoubleValue HEADLESS_DULLAHAN_SPAWN_CHANCE;
+	public static ForgeConfigSpec.DoubleValue PINK_HARPY_SPAWN_CHANCE;
+
 	public static ForgeConfigSpec.DoubleValue ZOMBIE_GIRL_REPLACE_CHANCE;
 	public static ForgeConfigSpec.DoubleValue HUSK_GIRL_REPLACE_CHANCE;
 	public static ForgeConfigSpec.DoubleValue DROWNED_GIRL_REPLACE_CHANCE;
@@ -213,6 +218,11 @@ public class ModConfigs
 
 		SERVER_BUILDER.push("spawn");
 
+		BANSHEE_ANOTHER_VARIANT_SPAWN_CHANCE = SERVER_BUILDER.defineInRange("bansheeAnotherVariantSpawnChance", 0.25D, 0.0D, 1.0D);
+		CURSED_DOLL_ANOTHER_VARIANT_SPAWN_CHANCE = SERVER_BUILDER.defineInRange("cursedDollAnotherVariantSpawnChance", 0.25D, 0.0D, 1.0D);
+		HEADLESS_DULLAHAN_SPAWN_CHANCE = SERVER_BUILDER.defineInRange("headlessDullahanSpawnChance", 0.0625D, 0.0D, 1.0D);
+		PINK_HARPY_SPAWN_CHANCE = SERVER_BUILDER.defineInRange("pinkHarpySpawnChance", 0.001D, 0.0D, 1.0D);
+
 		SERVER_BUILDER.push("replaceChance");
 
 		ZOMBIE_GIRL_REPLACE_CHANCE = SERVER_BUILDER.defineInRange("zombieGirlReplaceChance", 0.15D, 0.0D, 1.0D);
@@ -284,12 +294,12 @@ public class ModConfigs
 
 		SERVER_BUILDER.push("height");
 
-		SURFACE_MOB_SPAWN_MIN_HEIGHT = SERVER_BUILDER.defineInRange("surfaceMobSpawnMinHeight", 64, -64, 320);
-		KOBOLD_SPAWN_MAX_HEIGHT = SERVER_BUILDER.defineInRange("koboldSpawnMaxHeight", 31, -64, 320);
-		LICH_SPAWN_MAX_HEIGHT = SERVER_BUILDER.defineInRange("lichSpawnMaxHeight", -1, -64, 320);
-		OGRE_SPAWN_MAX_HEIGHT = SERVER_BUILDER.defineInRange("ogreSpawnMaxHeight", -1, -64, 320);
-		SPIDER_NEST_SPAWN_MAX_HEIGHT = SERVER_BUILDER.defineInRange("spiderNestSpawnMaxHeight", -1, -64, 320);
-		NECROTIC_REAPER_SPAWN_MAX_HEIGHT = SERVER_BUILDER.defineInRange("necroticReaperSpawnMaxHeight", -1, -64, 320);
+		SURFACE_MOB_SPAWN_MIN_HEIGHT = SERVER_BUILDER.defineInRange("surfaceMobSpawnMinHeight", 64, -1024, 1024);
+		KOBOLD_SPAWN_MAX_HEIGHT = SERVER_BUILDER.defineInRange("koboldSpawnMaxHeight", 31, -1024, 1024);
+		LICH_SPAWN_MAX_HEIGHT = SERVER_BUILDER.defineInRange("lichSpawnMaxHeight", -1, -1024, 1024);
+		OGRE_SPAWN_MAX_HEIGHT = SERVER_BUILDER.defineInRange("ogreSpawnMaxHeight", -1, -1024, 1024);
+		SPIDER_NEST_SPAWN_MAX_HEIGHT = SERVER_BUILDER.defineInRange("spiderNestSpawnMaxHeight", -1, -1024, 1024);
+		NECROTIC_REAPER_SPAWN_MAX_HEIGHT = SERVER_BUILDER.defineInRange("necroticReaperSpawnMaxHeight", -1, -1024, 1024);
 
 		SERVER_BUILDER.pop();
 
@@ -411,6 +421,11 @@ public class ModConfigs
 		public static boolean NECROTIC_REAPER_ATTACK_VILLAGERS;
 		public static boolean NECROTIC_REAPER_ATTACK_BABY_TURTLES;
 		public static boolean GLARYAD_REGEN;
+
+		public static double BANSHEE_ANOTHER_VARIANT_SPAWN_CHANCE;
+		public static double CURSED_DOLL_ANOTHER_VARIANT_SPAWN_CHANCE;
+		public static double HEADLESS_DULLAHAN_SPAWN_CHANCE;
+		public static double PINK_HARPY_SPAWN_CHANCE;
 
 		public static double ZOMBIE_GIRL_REPLACE_CHANCE;
 		public static double HUSK_GIRL_REPLACE_CHANCE;
@@ -564,6 +579,11 @@ public class ModConfigs
 			NECROTIC_REAPER_ATTACK_VILLAGERS = ModConfigs.NECROTIC_REAPER_ATTACK_VILLAGERS.get();
 			NECROTIC_REAPER_ATTACK_BABY_TURTLES = ModConfigs.NECROTIC_REAPER_ATTACK_BABY_TURTLES.get();
 			GLARYAD_REGEN = ModConfigs.GLARYAD_REGEN.get();
+
+			BANSHEE_ANOTHER_VARIANT_SPAWN_CHANCE = ModConfigs.BANSHEE_ANOTHER_VARIANT_SPAWN_CHANCE.get();
+			CURSED_DOLL_ANOTHER_VARIANT_SPAWN_CHANCE = ModConfigs.CURSED_DOLL_ANOTHER_VARIANT_SPAWN_CHANCE.get();
+			HEADLESS_DULLAHAN_SPAWN_CHANCE = ModConfigs.HEADLESS_DULLAHAN_SPAWN_CHANCE.get();
+			PINK_HARPY_SPAWN_CHANCE = ModConfigs.PINK_HARPY_SPAWN_CHANCE.get();
 
 			ZOMBIE_GIRL_REPLACE_CHANCE = ModConfigs.ZOMBIE_GIRL_REPLACE_CHANCE.get();
 			HUSK_GIRL_REPLACE_CHANCE = ModConfigs.HUSK_GIRL_REPLACE_CHANCE.get();

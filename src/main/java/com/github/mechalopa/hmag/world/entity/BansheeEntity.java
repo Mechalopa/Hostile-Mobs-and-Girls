@@ -2,6 +2,7 @@ package com.github.mechalopa.hmag.world.entity;
 
 import javax.annotation.Nullable;
 
+import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
 import com.github.mechalopa.hmag.util.ModUtils;
 import com.mojang.math.Vector3f;
@@ -89,7 +90,6 @@ public class BansheeEntity extends AbstractFlyingMonsterEntity implements IModMo
 		}
 
 		ModUtils.burnInDay(this, this.getRandom(), this.isSunBurnTick(), 8);
-
 		super.aiStep();
 	}
 
@@ -133,7 +133,7 @@ public class BansheeEntity extends AbstractFlyingMonsterEntity implements IModMo
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag dataTag)
 	{
 		spawnData = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
-		this.setVariant(this.getRandom().nextInt(4) == 0 ? 1 : 0);
+		this.setVariant(this.getRandom().nextDouble() < ModConfigs.cachedServer.BANSHEE_ANOTHER_VARIANT_SPAWN_CHANCE ? 1 : 0);
 		return spawnData;
 	}
 

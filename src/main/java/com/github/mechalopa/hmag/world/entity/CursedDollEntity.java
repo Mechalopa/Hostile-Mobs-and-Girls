@@ -3,6 +3,7 @@ package com.github.mechalopa.hmag.world.entity;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
 import com.github.mechalopa.hmag.util.ModUtils;
 import com.github.mechalopa.hmag.world.entity.ai.goal.MeleeAttackGoal2;
@@ -174,7 +175,7 @@ public class CursedDollEntity extends Monster implements IModMob
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor worldIn, DifficultyInstance difficultyIn, MobSpawnType spawnType, @Nullable SpawnGroupData spawnDataIn, @Nullable CompoundTag dataTag)
 	{
 		spawnDataIn = super.finalizeSpawn(worldIn, difficultyIn, spawnType, spawnDataIn, dataTag);
-		this.setVariant(this.getRandom().nextInt(4) == 0 ? 1 : 0);
+		this.setVariant(this.getRandom().nextDouble() < ModConfigs.cachedServer.CURSED_DOLL_ANOTHER_VARIANT_SPAWN_CHANCE ? 1 : 0);
 		this.populateDefaultEquipmentSlots(difficultyIn);
 		this.populateDefaultEquipmentEnchantments(difficultyIn);
 		return spawnDataIn;

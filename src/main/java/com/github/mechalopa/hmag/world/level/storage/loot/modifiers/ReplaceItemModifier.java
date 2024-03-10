@@ -17,14 +17,14 @@ import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.registries.ForgeRegistries;
 
-public class ReplaceLootModifier extends LootModifier
+public class ReplaceItemModifier extends LootModifier
 {
 	private final Item original;
 	private final Item replacement;
 
-	public ReplaceLootModifier(LootItemCondition[] conditionsIn, Item original, Item replacement)
+	public ReplaceItemModifier(LootItemCondition[] conditions, Item original, Item replacement)
 	{
-		super(conditionsIn);
+		super(conditions);
 		this.original = original;
 		this.replacement = replacement;
 	}
@@ -52,18 +52,18 @@ public class ReplaceLootModifier extends LootModifier
 		}
 	}
 
-	public static class Serializer extends GlobalLootModifierSerializer<ReplaceLootModifier>
+	public static class Serializer extends GlobalLootModifierSerializer<ReplaceItemModifier>
 	{
 		@Override
-		public ReplaceLootModifier read(ResourceLocation name, JsonObject object, LootItemCondition[] conditionsIn)
+		public ReplaceItemModifier read(ResourceLocation name, JsonObject object, LootItemCondition[] conditions)
 		{
 			Item original = ForgeRegistries.ITEMS.getValue(new ResourceLocation((GsonHelper.getAsString(object, "original"))));
 			Item replacement = ForgeRegistries.ITEMS.getValue(new ResourceLocation((GsonHelper.getAsString(object, "replacement"))));
-			return new ReplaceLootModifier(conditionsIn, original, replacement);
+			return new ReplaceItemModifier(conditions, original, replacement);
 		}
 
 		@Override
-		public JsonObject write(ReplaceLootModifier instance)
+		public JsonObject write(ReplaceItemModifier instance)
 		{
 			JsonObject json = makeConditions(instance.conditions);
 			json.addProperty("original", ForgeRegistries.ITEMS.getKey(instance.original).toString());

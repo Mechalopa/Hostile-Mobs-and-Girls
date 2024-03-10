@@ -22,15 +22,15 @@ import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.registries.ForgeRegistries;
 
-public class AdditionalEntityLootModifier extends LootModifier
+public class AddItemForEntityLootModifier extends LootModifier
 {
 	private static final Gson GSON = Deserializers.createFunctionSerializer().create();
 	private final LootItemFunction[] functions;
 	private final Item addition;
 
-	public AdditionalEntityLootModifier(LootItemCondition[] conditionsIn, LootItemFunction[] functions, Item addition)
+	public AddItemForEntityLootModifier(LootItemCondition[] conditions, LootItemFunction[] functions, Item addition)
 	{
-		super(conditionsIn);
+		super(conditions);
 		this.functions = functions;
 		this.addition = addition;
 	}
@@ -54,18 +54,18 @@ public class AdditionalEntityLootModifier extends LootModifier
 		return generatedLoot;
 	}
 
-	public static class Serializer extends GlobalLootModifierSerializer<AdditionalEntityLootModifier>
+	public static class Serializer extends GlobalLootModifierSerializer<AddItemForEntityLootModifier>
 	{
 		@Override
-		public AdditionalEntityLootModifier read(ResourceLocation name, JsonObject object, LootItemCondition[] conditionsIn)
+		public AddItemForEntityLootModifier read(ResourceLocation name, JsonObject object, LootItemCondition[] conditions)
 		{
 			LootItemFunction[] functions = object.has("functions") ? GSON.fromJson(object.get("functions"), LootItemFunction[].class) : new LootItemFunction[0];
 			Item addition = ForgeRegistries.ITEMS.getValue(new ResourceLocation((GsonHelper.getAsString(object, "addition"))));
-			return new AdditionalEntityLootModifier(conditionsIn, functions, addition);
+			return new AddItemForEntityLootModifier(conditions, functions, addition);
 		}
 
 		@Override
-		public JsonObject write(AdditionalEntityLootModifier instance)
+		public JsonObject write(AddItemForEntityLootModifier instance)
 		{
 			JsonObject json = makeConditions(instance.conditions);
 

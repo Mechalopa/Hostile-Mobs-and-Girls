@@ -3,6 +3,7 @@ package com.github.mechalopa.hmag.world.entity;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import com.github.mechalopa.hmag.ModConfigs;
 import com.github.mechalopa.hmag.registry.ModSoundEvents;
 import com.github.mechalopa.hmag.world.entity.ai.goal.LeapAtTargetGoal2;
 
@@ -135,17 +136,17 @@ public class HarpyEntity extends Monster implements IModMob
 
 	@Override
 	@Nullable
-	public SpawnGroupData finalizeSpawn(ServerLevelAccessor worldIn, DifficultyInstance difficultyIn, MobSpawnType spawnType, @Nullable SpawnGroupData spawnDataIn, @Nullable CompoundTag dataTag)
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor levelAccessor, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag dataTag)
 	{
-		spawnDataIn = super.finalizeSpawn(worldIn, difficultyIn, spawnType, spawnDataIn, dataTag);
+		spawnData = super.finalizeSpawn(levelAccessor, difficulty, spawnType, spawnData, dataTag);
 
-		if (this.getRandom().nextFloat() < 0.001F)
+		if (this.getRandom().nextDouble() < ModConfigs.cachedServer.PINK_HARPY_SPAWN_CHANCE)
 		{
 			this.setVariant(6);
 		}
 		else
 		{
-			ResourceKey<Biome> biomeKey = ResourceKey.create(ForgeRegistries.Keys.BIOMES, worldIn.getBiome(this.blockPosition()).value().getRegistryName());
+			ResourceKey<Biome> biomeKey = ResourceKey.create(ForgeRegistries.Keys.BIOMES, levelAccessor.getBiome(this.blockPosition()).value().getRegistryName());
 
 			if (biomeKey != null)
 			{
@@ -180,7 +181,7 @@ public class HarpyEntity extends Monster implements IModMob
 			}
 		}
 
-		return spawnDataIn;
+		return spawnData;
 	}
 
 	public int getVariant()

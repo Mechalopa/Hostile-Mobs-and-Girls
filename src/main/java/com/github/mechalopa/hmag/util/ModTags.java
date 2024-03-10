@@ -13,6 +13,7 @@ public class ModTags
 {
 	public static final TagKey<Block> GLARYADS_SPAWNABLE_ON = createBlockTag("glaryads_spawnable_on");
 	public static final TagKey<Block> OGRE_IMMUNE = createBlockTag("ogre_immune");
+	public static final TagKey<Block> SOUL_KASHA_SPAWNABLE_ON = createBlockTag("soul_kasha_spawnable_on");
 
 	public static final TagKey<Item> ANCIENT_ARMOR_REPAIR_ITEMS = createItemTag("ancient_armor_repair_items");
 	public static final TagKey<Item> ANCIENT_SHIELD_REPAIR_ITEMS = createItemTag("ancient_shield_repair_items");
