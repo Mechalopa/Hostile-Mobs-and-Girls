@@ -477,7 +477,7 @@ public class ModEvents
 	@SubscribeEvent
 	public void onItemAttributeModifier(ItemAttributeModifierEvent event)
 	{
-		if (!event.getItemStack().isEmpty() && event.getItemStack().getItem() != null)
+		if (!event.getItemStack().isEmpty() && event.getItemStack().getItem() != null && event.getSlotType() != null && event.getSlotType().getType() != null)
 		{
 			ItemStack stack = event.getItemStack();
 
