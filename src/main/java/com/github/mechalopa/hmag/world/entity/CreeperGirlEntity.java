@@ -105,7 +105,6 @@ public class CreeperGirlEntity extends Creeper implements IModMob
 		return this.entityData.get(DATA_VARIANT_ID);
 	}
 
-
 	protected void setVariant(int typeIn)
 	{
 		if (typeIn < 0 || typeIn >= 3)
