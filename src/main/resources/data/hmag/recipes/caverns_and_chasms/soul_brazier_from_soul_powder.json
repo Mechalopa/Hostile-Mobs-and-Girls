@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "caverns_and_chasms:brazier"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "caverns_and_chasms:soul_brazier"
+    }
+  ],
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "caverns_and_chasms:brazier"
+    },
+    {
+      "item": "hmag:soul_powder"
+    },
+    {
+      "item": "hmag:soul_powder"
+    },
+    {
+      "item": "hmag:soul_powder"
+    },
+    {
+      "item": "hmag:soul_powder"
+    }
+  ],
+  "result": {
+    "item": "caverns_and_chasms:soul_brazier"
+  }
+}
