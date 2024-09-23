@@ -27,6 +27,18 @@
       "required": false
     },
     {
+      "id": "#creeperoverhaul:creepers",
+      "required": false
+    },
+    {
+      "id": "creeperoverhaul:birch_creeper",
+      "required": false
+    },
+    {
+      "id": "creeperoverhaul:ocean_creeper",
+      "required": false
+    },
+    {
       "id": "specialmobs:creeper",
       "required": false
     },
