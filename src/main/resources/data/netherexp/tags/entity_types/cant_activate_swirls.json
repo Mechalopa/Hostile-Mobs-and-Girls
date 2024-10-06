@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "hmag:ghost",
+    "hmag:wither_ghost",
+    "hmag:banshee",
+    "hmag:ghastly_seeker"
+  ]
+}

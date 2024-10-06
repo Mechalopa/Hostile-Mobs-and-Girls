@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "charred_horizons:decaying_valley",
+      "required": false
+    }
+  ]
+}

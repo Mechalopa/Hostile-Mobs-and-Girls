@@ -109,6 +109,14 @@
     {
       "id": "galosphere:pink_salt_caves",
       "required": false
+    },
+    {
+      "id": "yungscavebiomes:frosted_caves",
+      "required": false
+    },
+    {
+      "id": "yungscavebiomes:lost_caves",
+      "required": false
     }
   ]
 }

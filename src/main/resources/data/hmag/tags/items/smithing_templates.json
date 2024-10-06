@@ -9,6 +9,10 @@
       "required": false
     },
     {
+      "id": "cataclysm:cursium_upgrade_smithing_template",
+      "required": false
+    },
+    {
       "id": "cataclysm:ignitium_upgrade_smithing_template",
       "required": false
     },
@@ -210,6 +214,10 @@
     },
     {
       "id": "randomisfits:zurite_upgrade_smithing_template",
+      "required": false
+    },
+    {
+      "id": "netherexp:pump_charge_upgrade_smithing_template",
       "required": false
     }
   ]
