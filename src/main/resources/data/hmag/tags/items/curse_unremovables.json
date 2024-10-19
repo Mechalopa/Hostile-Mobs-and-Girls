@@ -6,6 +6,10 @@
     {
       "id": "tolaserblade:lb_blueprint",
       "required": false
+    },
+    {
+      "id": "composite_material:ancient_fiber",
+      "required": false
     }
   ]
 }

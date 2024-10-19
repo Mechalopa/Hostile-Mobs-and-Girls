@@ -241,6 +241,10 @@
     {
       "id": "elementalcreepers:friendly_creeper",
       "required": false
+    },
+    {
+      "id": "charred_horizons:spore_creeper",
+      "required": false
     }
   ]
 }
