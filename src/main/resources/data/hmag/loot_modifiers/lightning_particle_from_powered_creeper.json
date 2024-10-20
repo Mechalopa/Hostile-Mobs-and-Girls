@@ -19,6 +19,14 @@
             "type": "#hmag:creepers",
             "nbt": "{Powered:true}"
           }
+        },
+        {
+          "condition": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "type": "#hmag:creepers",
+            "nbt": "{Charged:true}"
+          }
         }
       ]
     }

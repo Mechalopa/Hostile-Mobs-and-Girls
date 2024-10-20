@@ -123,10 +123,6 @@
       "required": false
     },
     {
-      "id": "alexscaves:nucleeper",
-      "required": false
-    },
-    {
       "id": "creepycreepers:ghostly_creeper",
       "required": false
     },

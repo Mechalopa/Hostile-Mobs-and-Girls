@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:foods/berry",
+    "#forge:foods/fish",
+    "#forge:foods/fruit",
+    "#forge:foods/golden",
+    "#forge:foods/meat",
+    "#forge:foods/pie",
+    "#forge:foods/seafood",
+    "#forge:foods/soup"
+  ]
+}
