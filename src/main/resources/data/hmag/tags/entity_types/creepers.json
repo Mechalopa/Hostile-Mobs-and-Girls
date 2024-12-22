@@ -241,6 +241,14 @@
     {
       "id": "charred_horizons:spore_creeper",
       "required": false
+    },
+    {
+      "id": "echoes:echo_creeper",
+      "required": false
+    },
+    {
+      "id": "occultism:wild_horde_creeper",
+      "required": false
     }
   ]
 }

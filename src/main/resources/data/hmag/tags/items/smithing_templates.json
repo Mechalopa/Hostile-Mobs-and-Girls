@@ -223,6 +223,10 @@
     {
       "id": "netherexp:pump_charge_upgrade_smithing_template",
       "required": false
+    },
+    {
+      "id": "botanicpledge:yggdrasilsteel_template",
+      "required": false
     }
   ]
 }

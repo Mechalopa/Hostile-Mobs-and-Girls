@@ -117,6 +117,18 @@
     {
       "id": "yungscavebiomes:lost_caves",
       "required": false
+    },
+    {
+      "id": "hexalia:enchanted_bayou",
+      "required": false
+    },
+    {
+      "id": "sleepy_hollows:sleepy_hollows",
+      "required": false
+    },
+    {
+      "id": "blasted_barrens:blasted_barrens",
+      "required": false
     }
   ]
 }

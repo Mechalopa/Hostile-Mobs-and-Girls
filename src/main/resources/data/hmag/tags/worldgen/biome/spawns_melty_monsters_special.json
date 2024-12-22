@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "#hmag:spawns_overworld_mobs_special",
+    {
+      "id": "alexscaves:forlorn_hollows",
+      "required": false
+    },
+    {
+      "id": "sleepy_hollows:sleepy_hollows",
+      "required": false
+    },
+    {
+      "id": "blasted_barrens:blasted_barrens",
+      "required": false
+    }
+  ]
+}
