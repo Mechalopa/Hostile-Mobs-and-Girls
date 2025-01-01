@@ -15,6 +15,10 @@
           "minecraft:warped_forest"
         ],
         "negate": true
+      },
+      {
+        "name": "#hmag:netherexp/black_ice_glaciers",
+        "negate": true
       }
     ]
   ],

@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "hmag:blaze_powder_block",
+    "hmag:burning_core_block",
+    "hmag:burning_core",
+    "hmag:fire_bottle",
+    "hmag:blasting_bottle",
+    "hmag:evil_flame"
+  ]
+}

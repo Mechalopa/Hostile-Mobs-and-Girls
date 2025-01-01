@@ -63,10 +63,6 @@
     {
       "id": "sleepy_hollows:sleepy_hollows",
       "required": false
-    },
-    {
-      "id": "blasted_barrens:blasted_barrens",
-      "required": false
     }
   ]
 }

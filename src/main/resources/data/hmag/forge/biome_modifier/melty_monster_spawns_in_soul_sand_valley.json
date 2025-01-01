@@ -5,6 +5,11 @@
       {
         "name": "minecraft:soul_sand_valley"
       }
+    ],
+    [
+      {
+        "name": "#hmag:netherexp/black_ice_glaciers"
+      }
     ]
   ],
   "spawners": {
