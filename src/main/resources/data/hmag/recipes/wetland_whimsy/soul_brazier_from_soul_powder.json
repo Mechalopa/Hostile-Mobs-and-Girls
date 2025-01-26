@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "wetland_whimsy:limestone_brazier"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "wetland_whimsy:soul_brazier"
+    }
+  ],
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "wetland_whimsy:limestone_brazier"
+    },
+    {
+      "item": "hmag:soul_powder"
+    },
+    {
+      "item": "hmag:soul_powder"
+    },
+    {
+      "item": "hmag:soul_powder"
+    },
+    {
+      "item": "hmag:soul_powder"
+    }
+  ],
+  "result": {
+    "item": "wetland_whimsy:soul_brazier"
+  }
+}

@@ -11,7 +11,7 @@
   },
   "result": {
     "amount": 1000,
-    "fluid": "tconstruct:magma"
+    "tag": "forge:magma"
   },
   "temperature": 300,
   "time": 127

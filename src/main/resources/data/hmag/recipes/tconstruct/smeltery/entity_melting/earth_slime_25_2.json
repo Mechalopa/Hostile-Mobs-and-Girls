@@ -14,6 +14,6 @@
   },
   "result": {
     "amount": 25,
-    "fluid": "tconstruct:earth_slime"
+    "tag": "forge:slime"
   }
 }

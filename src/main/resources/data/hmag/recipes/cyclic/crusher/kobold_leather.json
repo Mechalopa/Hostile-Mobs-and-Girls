@@ -1,0 +1,25 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cyclic"
+    }
+  ],
+  "type": "cyclic:crusher",
+  "bonus": {
+    "count": 2,
+    "item": "minecraft:blue_dye"
+  },
+  "energy": {
+    "rfpertick": 10,
+    "ticks": 100
+  },
+  "input": {
+    "item": "hmag:kobold_leather"
+  },
+  "percent": 50,
+  "result": {
+    "count": 3,
+    "item": "minecraft:blue_dye"
+  }
+}

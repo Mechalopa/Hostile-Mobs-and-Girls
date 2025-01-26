@@ -14,6 +14,6 @@
   },
   "result": {
     "amount": 10,
-    "fluid": "tconstruct:molten_copper"
+    "tag": "forge:molten_copper"
   }
 }

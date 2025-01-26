@@ -15,6 +15,6 @@
   },
   "result": {
     "amount": 10,
-    "fluid": "tconstruct:liquid_soul"
+    "tag": "forge:molten_iron"
   }
 }

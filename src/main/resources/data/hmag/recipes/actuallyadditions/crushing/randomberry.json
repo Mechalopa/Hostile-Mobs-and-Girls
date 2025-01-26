@@ -1,0 +1,28 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "actuallyadditions"
+    }
+  ],
+  "type": "actuallyadditions:crushing",
+  "ingredient": {
+    "item": "hmag:randomberry"
+  },
+  "result": [
+    {
+      "chance": 1.0,
+      "result": {
+        "Count": 3,
+        "id": "minecraft:purple_dye"
+      }
+    },
+    {
+      "chance": 0.0,
+      "result": {
+        "Count": 0,
+        "id": "minecraft:air"
+      }
+    }
+  ]
+}

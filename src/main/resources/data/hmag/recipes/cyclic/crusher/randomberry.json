@@ -1,0 +1,25 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "cyclic"
+    }
+  ],
+  "type": "cyclic:crusher",
+  "bonus": {
+    "count": 1,
+    "item": "minecraft:blue_dye"
+  },
+  "energy": {
+    "rfpertick": 10,
+    "ticks": 100
+  },
+  "input": {
+    "item": "hmag:randomberry"
+  },
+  "percent": 20,
+  "result": {
+    "count": 2,
+    "item": "minecraft:purple_dye"
+  }
+}

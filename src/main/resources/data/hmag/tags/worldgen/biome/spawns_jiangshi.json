@@ -23,6 +23,10 @@
       "required": false
     },
     {
+      "id": "environmental:blossom_valleys",
+      "required": false
+    },
+    {
       "id": "environmental:blossom_woods",
       "required": false
     },

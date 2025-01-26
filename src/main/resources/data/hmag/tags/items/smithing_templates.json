@@ -227,6 +227,50 @@
     {
       "id": "botanicpledge:yggdrasilsteel_template",
       "required": false
+    },
+    {
+      "id": "kuromaterials:zurite_upgrade_smithing_template",
+      "required": false
+    },
+    {
+      "id": "rediscovered:dragon_armor_chain_smithing_template",
+      "required": false
+    },
+    {
+      "id": "rediscovered:dragon_armor_inlay_smithing_template",
+      "required": false
+    },
+    {
+      "id": "rediscovered:dragon_armor_plating_smithing_template",
+      "required": false
+    },
+    {
+      "id": "epicpaladins:arclight_template",
+      "required": false
+    },
+    {
+      "id": "epicpaladins:bloodstone_template",
+      "required": false
+    },
+    {
+      "id": "epicpaladins:cryorium_template",
+      "required": false
+    },
+    {
+      "id": "epicpaladins:jade_template",
+      "required": false
+    },
+    {
+      "id": "epicpaladins:moonlight_template",
+      "required": false
+    },
+    {
+      "id": "epicpaladins:sculk_template",
+      "required": false
+    },
+    {
+      "id": "epicpaladins:steel_template",
+      "required": false
     }
   ]
 }

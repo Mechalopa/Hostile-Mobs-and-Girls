@@ -11,7 +11,7 @@
   },
   "result": {
     "amount": 90,
-    "fluid": "tconstruct:molten_gold",
+    "tag": "forge:molten_gold",
     "unit_size": 10
   },
   "temperature": 700,
