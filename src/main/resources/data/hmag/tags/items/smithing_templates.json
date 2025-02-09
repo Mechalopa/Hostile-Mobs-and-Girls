@@ -229,22 +229,6 @@
       "required": false
     },
     {
-      "id": "kuromaterials:zurite_upgrade_smithing_template",
-      "required": false
-    },
-    {
-      "id": "rediscovered:dragon_armor_chain_smithing_template",
-      "required": false
-    },
-    {
-      "id": "rediscovered:dragon_armor_inlay_smithing_template",
-      "required": false
-    },
-    {
-      "id": "rediscovered:dragon_armor_plating_smithing_template",
-      "required": false
-    },
-    {
       "id": "epicpaladins:arclight_template",
       "required": false
     },
@@ -270,6 +254,30 @@
     },
     {
       "id": "epicpaladins:steel_template",
+      "required": false
+    },
+    {
+      "id": "immersiveweapons:molten_smithing_template",
+      "required": false
+    },
+    {
+      "id": "kuromaterials:zurite_upgrade_smithing_template",
+      "required": false
+    },
+    {
+      "id": "newworld:mattock_crafting_template",
+      "required": false
+    },
+    {
+      "id": "rediscovered:dragon_armor_chain_smithing_template",
+      "required": false
+    },
+    {
+      "id": "rediscovered:dragon_armor_inlay_smithing_template",
+      "required": false
+    },
+    {
+      "id": "rediscovered:dragon_armor_plating_smithing_template",
       "required": false
     }
   ]
