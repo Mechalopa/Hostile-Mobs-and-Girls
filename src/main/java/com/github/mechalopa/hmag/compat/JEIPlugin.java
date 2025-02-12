@@ -22,9 +22,11 @@ import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.Container;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -195,7 +197,7 @@ public class JEIPlugin implements IModPlugin
 
 	private static void addSmithingRecipe(List<SmithingRecipe> smithingRecipes, ResourceLocation id, Ingredient template, Ingredient base, Ingredient addition, ItemStack output)
 	{
-		smithingRecipes.add(new SmithingTransformRecipe(id, template, base, addition, output));
+		smithingRecipes.add(new FixedOutputSmithingTransformRecipe(id, template, base, addition, output));
 	}
 
 	private static ItemStack getEnchantableItemStack(IRecipeRegistration registration, List<Item> list, Enchantment enchantment, TagKey<Item> blacklist)
@@ -221,5 +223,17 @@ public class JEIPlugin implements IModPlugin
 		}
 
 		return ItemStack.EMPTY;
+	}
+
+	private static final class FixedOutputSmithingTransformRecipe extends SmithingTransformRecipe {
+
+		public FixedOutputSmithingTransformRecipe(ResourceLocation p_267143_, Ingredient p_266750_, Ingredient p_266787_, Ingredient p_267292_, ItemStack p_267031_) {
+			super(p_267143_, p_266750_, p_266787_, p_267292_, p_267031_);
+		}
+
+		@Override
+		public ItemStack assemble(Container p_267036_, RegistryAccess p_266699_) {
+			return this.getResultItem(p_266699_);
+		}
 	}
 }
