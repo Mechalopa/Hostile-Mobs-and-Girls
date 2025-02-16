@@ -3,6 +3,10 @@
     {
       "type": "forge:mod_loaded",
       "modid": "cyclic"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "cyclic:crusher"
     }
   ],
   "type": "cyclic:crusher",
