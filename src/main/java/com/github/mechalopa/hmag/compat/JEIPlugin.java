@@ -225,15 +225,17 @@ public class JEIPlugin implements IModPlugin
 		return ItemStack.EMPTY;
 	}
 
-	private static final class FixedOutputSmithingTransformRecipe extends SmithingTransformRecipe {
-
-		public FixedOutputSmithingTransformRecipe(ResourceLocation p_267143_, Ingredient p_266750_, Ingredient p_266787_, Ingredient p_267292_, ItemStack p_267031_) {
-			super(p_267143_, p_266750_, p_266787_, p_267292_, p_267031_);
+	private static final class FixedOutputSmithingTransformRecipe extends SmithingTransformRecipe
+	{
+		public FixedOutputSmithingTransformRecipe(ResourceLocation id, Ingredient template, Ingredient base, Ingredient addition, ItemStack output)
+		{
+			super(id, template, base, addition, output);
 		}
 
 		@Override
-		public ItemStack assemble(Container p_267036_, RegistryAccess p_266699_) {
-			return this.getResultItem(p_266699_);
+		public ItemStack assemble(Container container, RegistryAccess registryAccess)
+		{
+			return this.getResultItem(registryAccess);
 		}
 	}
 }
