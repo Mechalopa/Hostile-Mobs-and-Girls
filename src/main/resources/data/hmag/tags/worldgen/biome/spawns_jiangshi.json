@@ -85,6 +85,10 @@
     {
       "id": "biomeswevegone:crag_gardens",
       "required": false
+    },
+    {
+      "id": "natures_spirit:bamboo_wetlands",
+      "required": false
     }
   ]
 }

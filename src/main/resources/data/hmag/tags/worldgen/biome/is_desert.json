@@ -8,6 +8,10 @@
     {
       "id": "mysticsbiomes:lush_oasis",
       "required": false
+    },
+    {
+      "id": "#natures_spirit:is_desert",
+      "required": false
     }
   ]
 }

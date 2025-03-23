@@ -9,6 +9,10 @@
       "required": false
     },
     {
+      "id": "#c:no_default_monsters",
+      "required": false
+    },
+    {
       "id": "biomesoplenty:rainbow_hills",
       "required": false
     },

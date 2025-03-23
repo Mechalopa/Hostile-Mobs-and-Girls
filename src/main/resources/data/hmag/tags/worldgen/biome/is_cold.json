@@ -16,6 +16,10 @@
     {
       "id": "excessive_building:snowy_maple_forest",
       "required": false
+    },
+    {
+      "id": "#natures_spirit:is_cold",
+      "required": false
     }
   ]
 }

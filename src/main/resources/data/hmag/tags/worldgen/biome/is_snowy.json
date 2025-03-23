@@ -16,6 +16,10 @@
     {
       "id": "terralith:scarlet_mountains",
       "required": false
+    },
+    {
+      "id": "#natures_spirit:is_freezing",
+      "required": false
     }
   ]
 }
