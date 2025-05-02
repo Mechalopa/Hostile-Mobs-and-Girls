@@ -105,6 +105,14 @@
     {
       "id": "endertrigon:baby_ender_dragon",
       "required": false
+    },
+    {
+      "id": "legendary_monsters:endersent",
+      "required": false
+    },
+    {
+      "id": "legendary_monsters:chorusling",
+      "required": false
     }
   ]
 }

@@ -12,6 +12,10 @@
     {
       "id": "mna:witherbone",
       "required": false
+    },
+    {
+      "id": "legendary_monsters:withered_bone",
+      "required": false
     }
   ]
 }

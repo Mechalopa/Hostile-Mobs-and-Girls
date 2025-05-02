@@ -38,6 +38,10 @@
     {
       "id": "majruszsdifficulty:cerberus_fang",
       "required": false
+    },
+    {
+      "id": "legendary_monsters.withered_horn",
+      "required": false
     }
   ]
 }
