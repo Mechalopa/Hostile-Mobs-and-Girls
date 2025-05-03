@@ -279,6 +279,10 @@
     {
       "id": "rediscovered:dragon_armor_plating_smithing_template",
       "required": false
+    },
+    {
+      "id": "wan_ancient_beasts:ancient_upgrade_smithing_template",
+      "required": false
     }
   ]
 }

@@ -10,6 +10,22 @@
     {
       "id": "biox:molten_caves",
       "required": false
+    },
+    {
+      "id": "bleak_and_barren:arid_savanna",
+      "required": false
+    },
+    {
+      "id": "bleak_and_barren:bushland",
+      "required": false
+    },
+    {
+      "id": "bleak_and_barren:droughted_tropics",
+      "required": false
+    },
+    {
+      "id": "climaterivers:warm_river",
+      "required": false
     }
   ]
 }

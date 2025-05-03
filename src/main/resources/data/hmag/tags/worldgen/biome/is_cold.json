@@ -20,6 +20,22 @@
     {
       "id": "#natures_spirit:is_cold",
       "required": false
+    },
+    {
+      "id": "bleak_and_barren:frozen_wasteland",
+      "required": false
+    },
+    {
+      "id": "bleak_and_barren:frozen_forest",
+      "required": false
+    },
+    {
+      "id": "bleak_and_barren:spruce_parkland",
+      "required": false
+    },
+    {
+      "id": "climaterivers:cold_river",
+      "required": false
     }
   ]
 }

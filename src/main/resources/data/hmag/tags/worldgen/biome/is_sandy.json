@@ -24,6 +24,14 @@
     {
       "id": "mysticsbiomes:lush_oasis",
       "required": false
+    },
+    {
+      "id": "natures_spirit:tropical_shores",
+      "required": false
+    },
+    {
+      "id": "bleak_and_barren:arid_savanna",
+      "required": false
     }
   ]
 }
