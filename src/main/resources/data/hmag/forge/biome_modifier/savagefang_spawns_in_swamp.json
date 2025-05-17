@@ -3,6 +3,11 @@
   "biomes": [
     [
       {
+        "name": "#hmag:climaterivers/warm_river"
+      }
+    ],
+    [
+      {
         "name": "#hmag:is_overworld"
       },
       {

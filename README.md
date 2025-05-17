@@ -8,3 +8,4 @@ More Hostile Mobs and Girls!!!
 - es_es.json by not-a-java-dev
 - ru_ru.json by Tefnya, Quarkrus
 - zh_cn.json by Kzeroko, SodiumZH
+- zh_tw.json by RaebLin
