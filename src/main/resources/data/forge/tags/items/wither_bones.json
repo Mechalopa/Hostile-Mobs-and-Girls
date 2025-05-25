@@ -16,6 +16,14 @@
     {
       "id": "legendary_monsters:withered_bone",
       "required": false
+    },
+    {
+      "id": "eternalnether:withered_bone",
+      "required": false
+    },
+    {
+      "id": "netherex:wither_bone",
+      "required": false
     }
   ]
 }

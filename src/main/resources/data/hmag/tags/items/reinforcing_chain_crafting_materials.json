@@ -44,6 +44,10 @@
     {
       "id": "cataclysm:koboleton_bone",
       "required": false
+    },
+    {
+      "id": "dungeonsdelight:stained_scrap",
+      "required": false
     }
   ]
 }
