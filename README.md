@@ -5,7 +5,7 @@ More Hostile Mobs and Girls!!!
 ## Japanese Forum and Descriptions
 - [Minecraft Japan Forum Thread](https://forum.civa.jp/viewtopic.php?f=3&t=750)
 ## Credits
-- es_es.json by not-a-java-dev
-- ru_ru.json by Tefnya, Quarkrus
-- zh_cn.json by Kzeroko, SodiumZH
-- zh_tw.json by RaebLin
+- `es_es.json` by not-a-java-dev
+- `ru_ru.json` by Tefnya, Quarkrus
+- `zh_cn.json` by Kzeroko, SodiumZH
+- `zh_tw.json` by RaebLin
