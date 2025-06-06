@@ -283,6 +283,18 @@
     {
       "id": "wan_ancient_beasts:ancient_upgrade_smithing_template",
       "required": false
+    },
+    {
+      "id": "ae2:fluix_upgrade_smithing_template",
+      "required": false
+    },
+    {
+      "id": "cavesanddepths:rosegoldupgradesmithingtemplate",
+      "required": false
+    },
+    {
+      "id": "kobolds:kobold_template",
+      "required": false
     }
   ]
 }

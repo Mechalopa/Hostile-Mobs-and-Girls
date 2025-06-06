@@ -2,7 +2,7 @@
   "replace": false,
   "values": [
     {
-      "id": "climaterivers:warm_river",
+      "id": "climaterivers:lukewarm_river",
       "required": false
     }
   ]
