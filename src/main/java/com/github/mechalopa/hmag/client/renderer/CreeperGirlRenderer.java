@@ -2,12 +2,12 @@ package com.github.mechalopa.hmag.client.renderer;
 
 import java.util.Map;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.AbstractGirlModel;
 import com.github.mechalopa.hmag.client.model.CreeperGirlArmorModel;
 import com.github.mechalopa.hmag.client.model.CreeperGirlModel;
 import com.github.mechalopa.hmag.client.renderer.layers.CreeperGirlPowerLayer;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.CreeperGirlEntity;
 import com.google.common.collect.Maps;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -24,9 +24,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class CreeperGirlRenderer extends AbstractGirlRenderer<CreeperGirlEntity, AbstractGirlModel<CreeperGirlEntity>>
 {
 	private static final Map<CreeperGirlEntity.Variant, ResourceLocation> TEXTURES = Util.make(Maps.newEnumMap(CreeperGirlEntity.Variant.class), p -> {
-		p.put(CreeperGirlEntity.Variant.VARIANT_0, new ResourceLocation(HMaG.MODID, "textures/entity/creeper_girl/creeper_girl_0.png"));
-		p.put(CreeperGirlEntity.Variant.VARIANT_1, new ResourceLocation(HMaG.MODID, "textures/entity/creeper_girl/creeper_girl_1.png"));
-		p.put(CreeperGirlEntity.Variant.VARIANT_2, new ResourceLocation(HMaG.MODID, "textures/entity/creeper_girl/creeper_girl_2.png"));
+		p.put(CreeperGirlEntity.Variant.VARIANT_0, ModClientUtils.getHMaGEntityTexture("creeper_girl/creeper_girl_0"));
+		p.put(CreeperGirlEntity.Variant.VARIANT_1, ModClientUtils.getHMaGEntityTexture("creeper_girl/creeper_girl_1"));
+		p.put(CreeperGirlEntity.Variant.VARIANT_2, ModClientUtils.getHMaGEntityTexture("creeper_girl/creeper_girl_2"));
 	});
 
 	public CreeperGirlRenderer(EntityRendererProvider.Context context)

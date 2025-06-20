@@ -1,9 +1,8 @@
 package com.github.mechalopa.hmag.client;
 
-import com.github.mechalopa.hmag.HMaG;
+import com.github.mechalopa.hmag.util.ModUtils;
 
 import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -88,7 +87,7 @@ public class ModModelLayers
 
 	private static ModelLayerLocation create(String name, String layername)
 	{
-		return new ModelLayerLocation(new ResourceLocation(HMaG.MODID, name), layername);
+		return new ModelLayerLocation(ModUtils.getHMaGRL(name), layername);
 	}
 
 	private static ModelLayerLocation create(String name)

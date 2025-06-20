@@ -1,7 +1,7 @@
 package com.github.mechalopa.hmag.client.renderer.layers;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.model.MeltyMonsterModel;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.MeltyMonsterEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 
@@ -9,14 +9,13 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.EyesLayer;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class MeltyMonsterClothingLayer<T extends MeltyMonsterEntity, M extends MeltyMonsterModel<T>> extends EyesLayer<T, M>
 {
-	private static final RenderType RENDER_TYPE = RenderType.eyes(new ResourceLocation(HMaG.MODID, "textures/entity/melty_monster/melty_monster_clothing.png"));
+	private static final RenderType RENDER_TYPE = RenderType.eyes(ModClientUtils.getHMaGEntityTexture("melty_monster/melty_monster_clothing"));
 
 	public MeltyMonsterClothingLayer(RenderLayerParent<T, M> renderLayerParent)
 	{

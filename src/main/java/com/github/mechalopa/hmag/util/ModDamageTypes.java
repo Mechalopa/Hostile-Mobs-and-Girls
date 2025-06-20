@@ -2,11 +2,8 @@ package com.github.mechalopa.hmag.util;
 
 import javax.annotation.Nullable;
 
-import com.github.mechalopa.hmag.HMaG;
-
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.entity.Entity;
@@ -19,7 +16,7 @@ public class ModDamageTypes
 
 	private static ResourceKey<DamageType> register(String name)
 	{
-		return ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(HMaG.MODID, name));
+		return ResourceKey.create(Registries.DAMAGE_TYPE, ModUtils.getHMaGRL(name));
 	}
 
 	public static DamageSource source(Level level, ResourceKey<DamageType> key)

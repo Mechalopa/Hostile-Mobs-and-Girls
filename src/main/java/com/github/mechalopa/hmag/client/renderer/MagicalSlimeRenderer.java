@@ -1,9 +1,9 @@
 package com.github.mechalopa.hmag.client.renderer;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.MagicalSlimeModel;
 import com.github.mechalopa.hmag.client.renderer.layers.MagicalSlimeOuterLayer;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.MagicalSlimeEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 
@@ -18,7 +18,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class MagicalSlimeRenderer extends MobRenderer<MagicalSlimeEntity, MagicalSlimeModel<MagicalSlimeEntity>>
 {
-	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/magical_slime.png");
+	private static final ResourceLocation TEXTURE = ModClientUtils.getHMaGEntityTexture("magical_slime");
 
 	public MagicalSlimeRenderer(EntityRendererProvider.Context context)
 	{

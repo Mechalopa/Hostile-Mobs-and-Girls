@@ -1,8 +1,8 @@
 package com.github.mechalopa.hmag.client.renderer;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.KoboldModel;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.KoboldEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 
@@ -14,7 +14,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class KoboldRenderer extends AbstractGirlRenderer<KoboldEntity, KoboldModel<KoboldEntity>>
 {
-	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/kobold.png");
+	private static final ResourceLocation TEXTURE = ModClientUtils.getHMaGEntityTexture("kobold");
 
 	public KoboldRenderer(EntityRendererProvider.Context context)
 	{

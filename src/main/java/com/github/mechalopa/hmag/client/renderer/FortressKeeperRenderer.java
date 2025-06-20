@@ -1,9 +1,9 @@
 package com.github.mechalopa.hmag.client.renderer;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.FortressKeeperModel;
 import com.github.mechalopa.hmag.client.renderer.layers.FortressKeeperFireLayer;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.FortressKeeperEntity;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -16,7 +16,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class FortressKeeperRenderer extends MobRenderer<FortressKeeperEntity, FortressKeeperModel<FortressKeeperEntity>>
 {
-	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/fortress_keeper.png");
+	private static final ResourceLocation TEXTURE = ModClientUtils.getHMaGEntityTexture("fortress_keeper");
 
 	public FortressKeeperRenderer(EntityRendererProvider.Context context)
 	{

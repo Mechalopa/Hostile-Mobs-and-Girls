@@ -1,6 +1,6 @@
 package com.github.mechalopa.hmag.client.renderer;
 
-import com.github.mechalopa.hmag.HMaG;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.projectile.EvilArrowEntity;
 
 import net.minecraft.client.renderer.entity.ArrowRenderer;
@@ -12,7 +12,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class EvilArrowRenderer extends ArrowRenderer<EvilArrowEntity>
 {
-	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/projectile/evil_arrow.png");
+	private static final ResourceLocation TEXTURE = ModClientUtils.getHMaGEntityTexture("projectile/evil_arrow");
 
 	public EvilArrowRenderer(EntityRendererProvider.Context context)
 	{

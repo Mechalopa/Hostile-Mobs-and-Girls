@@ -9,6 +9,7 @@ import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
 import com.github.mechalopa.hmag.HMaG;
+import com.github.mechalopa.hmag.util.ModUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
@@ -120,12 +121,13 @@ public class EnchantmentUpgradeManager extends SimpleJsonResourceReloadListener
 
 	private static Supplier<Item> getItemSupplier(String name)
 	{
-		return ForgeRegistries.ITEMS.getHolder(new ResourceLocation(name)).orElseThrow();
+		return ForgeRegistries.ITEMS.getHolder(ModUtils.getRL(name)).orElseThrow();
 	}
 
+	@Nullable
 	private static Enchantment getEnchantment(String name)
 	{
-		Optional<Holder<Enchantment>> optional = ForgeRegistries.ENCHANTMENTS.getHolder(new ResourceLocation(name));
+		Optional<Holder<Enchantment>> optional = ForgeRegistries.ENCHANTMENTS.getHolder(ModUtils.getRL(name));
 		return optional.isPresent() ? optional.orElseThrow().get() : null;
 	}
 

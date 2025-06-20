@@ -1,8 +1,8 @@
 package com.github.mechalopa.hmag.client.renderer.layers;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.MeltyMonsterModel;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.MeltyMonsterEntity;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -27,7 +27,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class MeltyMonsterMagmaLayer extends RenderLayer<MeltyMonsterEntity, MeltyMonsterModel<MeltyMonsterEntity>>
 {
-	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/melty_monster/melty_monster_overlay.png");
+	private static final ResourceLocation TEXTURE = ModClientUtils.getHMaGEntityTexture("melty_monster/melty_monster_overlay");
 	private final MeltyMonsterModel<MeltyMonsterEntity> layerModel;
 
 	public MeltyMonsterMagmaLayer(RenderLayerParent<MeltyMonsterEntity, MeltyMonsterModel<MeltyMonsterEntity>> renderLayerParent, EntityModelSet modelSet)

@@ -1,8 +1,8 @@
 package com.github.mechalopa.hmag.client.renderer.layers;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.SkeletonGirlArmorModel;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import net.minecraft.client.model.EntityModel;
@@ -18,7 +18,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class StrayGirlClothingLayer<T extends AbstractSkeleton, M extends EntityModel<T>> extends RenderLayer<T, M>
 {
-	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/stray_girl_clothing.png");
+	private static final ResourceLocation TEXTURE = ModClientUtils.getHMaGEntityTexture("stray_girl_clothing");
 	private final SkeletonGirlArmorModel<T> layerModel;
 
 	public StrayGirlClothingLayer(RenderLayerParent<T, M> renderLayerParent, EntityModelSet modelSet)

@@ -1,8 +1,8 @@
 package com.github.mechalopa.hmag.client.renderer;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.SwamperModel;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.SwamperEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 
@@ -15,7 +15,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class SwamperRenderer extends MobRenderer<SwamperEntity, SwamperModel<SwamperEntity>>
 {
-	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/swamper.png");
+	private static final ResourceLocation TEXTURE = ModClientUtils.getHMaGEntityTexture("swamper");
 
 	public SwamperRenderer(EntityRendererProvider.Context context)
 	{

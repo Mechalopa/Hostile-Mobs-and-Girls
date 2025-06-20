@@ -1,9 +1,9 @@
 package com.github.mechalopa.hmag.client.renderer;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.GiantMummyModel;
 import com.github.mechalopa.hmag.client.renderer.layers.GiantMummyEyesLayer;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.GiantMummyEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 
@@ -16,7 +16,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class GiantMummyRenderer extends HumanoidMobRenderer<GiantMummyEntity, GiantMummyModel<GiantMummyEntity>>
 {
-	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/giant_mummy.png");
+	private static final ResourceLocation TEXTURE = ModClientUtils.getHMaGEntityTexture("giant_mummy");
 
 	public  GiantMummyRenderer(EntityRendererProvider.Context context)
 	{

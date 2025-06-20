@@ -1,8 +1,8 @@
 package com.github.mechalopa.hmag.client.renderer;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.HornetModel;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.HornetEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
@@ -15,8 +15,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class HornetRenderer extends AbstractGirlRenderer<HornetEntity, HornetModel<HornetEntity>>
 {
-	private static final ResourceLocation TEXTURE_0 = new ResourceLocation(HMaG.MODID, "textures/entity/hornet/hornet.png");
-	private static final ResourceLocation TEXTURE_1 = new ResourceLocation(HMaG.MODID, "textures/entity/hornet/hornet_angry.png");
+	private static final ResourceLocation TEXTURE_0 = ModClientUtils.getHMaGEntityTexture("hornet/hornet");
+	private static final ResourceLocation TEXTURE_1 = ModClientUtils.getHMaGEntityTexture("hornet/hornet_angry");
 
 	public HornetRenderer(EntityRendererProvider.Context context)
 	{

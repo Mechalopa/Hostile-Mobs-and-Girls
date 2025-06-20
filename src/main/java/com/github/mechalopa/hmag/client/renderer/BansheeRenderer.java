@@ -2,10 +2,10 @@ package com.github.mechalopa.hmag.client.renderer;
 
 import java.util.Map;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.BansheeModel;
 import com.github.mechalopa.hmag.client.renderer.layers.BansheeLayer;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.BansheeEntity;
 import com.github.mechalopa.hmag.world.entity.CommonOrUncommonVariant;
 import com.google.common.collect.Maps;
@@ -24,8 +24,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class BansheeRenderer extends AbstractGirlRenderer<BansheeEntity, BansheeModel<BansheeEntity>>
 {
 	private static final Map<CommonOrUncommonVariant, ResourceLocation> TEXTURES = Util.make(Maps.newEnumMap(CommonOrUncommonVariant.class), p -> {
-		p.put(CommonOrUncommonVariant.COMMON, new ResourceLocation(HMaG.MODID, "textures/entity/banshee/banshee_0.png"));
-		p.put(CommonOrUncommonVariant.UNCOMMON, new ResourceLocation(HMaG.MODID, "textures/entity/banshee/banshee_1.png"));
+		p.put(CommonOrUncommonVariant.COMMON, ModClientUtils.getHMaGEntityTexture("banshee/banshee_0"));
+		p.put(CommonOrUncommonVariant.UNCOMMON, ModClientUtils.getHMaGEntityTexture("banshee/banshee_1"));
 	});
 
 	public BansheeRenderer(EntityRendererProvider.Context context)

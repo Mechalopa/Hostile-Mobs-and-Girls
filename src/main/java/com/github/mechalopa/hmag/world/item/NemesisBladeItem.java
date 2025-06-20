@@ -53,7 +53,7 @@ public class NemesisBladeItem extends ModSwordItem implements ILevelItem
 			if (entity instanceof Player)
 			{
 				CompoundTag compoundnbt = stack.getOrCreateTag();
-				int itemLevel = !compoundnbt.contains("hmag.level") ? 0 : (int)compoundnbt.getByte(ILevelItem.LEVEL_KEY);
+				int itemLevel = !compoundnbt.contains(ILevelItem.LEVEL_KEY) ? 0 : (int)compoundnbt.getByte(ILevelItem.LEVEL_KEY);
 				final int i = Math.max(((Player)entity).experienceLevel, 0);
 				int j = 0;
 
@@ -182,7 +182,7 @@ public class NemesisBladeItem extends ModSwordItem implements ILevelItem
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag tooltipFlag)
 	{
 		final int i = ILevelItem.getItemLevel(stack);
-		list.add(Component.translatable("text.hmag.level", i + 1).withStyle(i >= 6 ? ChatFormatting.LIGHT_PURPLE : (i >= 5 ? ChatFormatting.AQUA : (i >= 3 ? ChatFormatting.YELLOW : (i <= 0 ? ChatFormatting.RED : ChatFormatting.GRAY)))));
+		list.add(Component.translatable("text." + ILevelItem.LEVEL_KEY, i + 1).withStyle(i >= 6 ? ChatFormatting.LIGHT_PURPLE : (i >= 5 ? ChatFormatting.AQUA : (i >= 3 ? ChatFormatting.YELLOW : (i <= 0 ? ChatFormatting.RED : ChatFormatting.GRAY)))));
 	}
 
 	@Override

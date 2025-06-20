@@ -1,8 +1,8 @@
 package com.github.mechalopa.hmag.client.renderer;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.ImpModel;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.ImpEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 
@@ -14,7 +14,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class ImpRenderer extends AbstractGirlRenderer<ImpEntity, ImpModel<ImpEntity>>
 {
-	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/imp.png");
+	private static final ResourceLocation TEXTURE = ModClientUtils.getHMaGEntityTexture("imp");
 
 	public ImpRenderer(EntityRendererProvider.Context context)
 	{

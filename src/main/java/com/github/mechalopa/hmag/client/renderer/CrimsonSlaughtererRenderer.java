@@ -1,8 +1,8 @@
 package com.github.mechalopa.hmag.client.renderer;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.CrimsonSlaughtererModel;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.CrimsonSlaughtererEntity;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -15,7 +15,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class CrimsonSlaughtererRenderer extends MobRenderer<CrimsonSlaughtererEntity, CrimsonSlaughtererModel<CrimsonSlaughtererEntity>>
 {
-	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/crimson_slaughterer.png");
+	private static final ResourceLocation TEXTURE = ModClientUtils.getHMaGEntityTexture("crimson_slaughterer");
 
 	public CrimsonSlaughtererRenderer(EntityRendererProvider.Context context)
 	{

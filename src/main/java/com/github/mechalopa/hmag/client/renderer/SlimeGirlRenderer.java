@@ -1,10 +1,10 @@
 package com.github.mechalopa.hmag.client.renderer;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.SlimeGirlModel;
 import com.github.mechalopa.hmag.client.renderer.layers.SlimeGirlEyesLayer;
 import com.github.mechalopa.hmag.client.renderer.layers.SlimeGirlOuterLayer;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.SlimeGirlEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 
@@ -17,7 +17,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class SlimeGirlRenderer extends AbstractGirlRenderer<SlimeGirlEntity, SlimeGirlModel<SlimeGirlEntity>>
 {
-	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/slime_girl/slime_girl.png");
+	private static final ResourceLocation TEXTURE = ModClientUtils.getHMaGEntityTexture("slime_girl/slime_girl");
 
 	public SlimeGirlRenderer(EntityRendererProvider.Context context)
 	{

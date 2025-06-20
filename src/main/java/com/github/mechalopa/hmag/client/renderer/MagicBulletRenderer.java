@@ -5,7 +5,7 @@ import java.util.Map;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
-import com.github.mechalopa.hmag.HMaG;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.projectile.MagicBulletEntity;
 import com.google.common.collect.Maps;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -28,10 +28,10 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class MagicBulletRenderer extends EntityRenderer<MagicBulletEntity>
 {
 	private static final Map<MagicBulletEntity.Variant, ResourceLocation> TEXTURES = Util.make(Maps.newEnumMap(MagicBulletEntity.Variant.class), p -> {
-		p.put(MagicBulletEntity.Variant.LICH, new ResourceLocation(HMaG.MODID, "textures/entity/projectile/magic_bullet_0.png"));
-		p.put(MagicBulletEntity.Variant.DYSSOMNIA, new ResourceLocation(HMaG.MODID, "textures/entity/projectile/magic_bullet_1.png"));
-		p.put(MagicBulletEntity.Variant.NEMESIS, new ResourceLocation(HMaG.MODID, "textures/entity/projectile/magic_bullet_2.png"));
-		p.put(MagicBulletEntity.Variant.NIGHTWALKER, new ResourceLocation(HMaG.MODID, "textures/entity/projectile/magic_bullet_3.png"));
+		p.put(MagicBulletEntity.Variant.LICH, ModClientUtils.getHMaGEntityTexture("projectile/magic_bullet_0"));
+		p.put(MagicBulletEntity.Variant.DYSSOMNIA, ModClientUtils.getHMaGEntityTexture("projectile/magic_bullet_1"));
+		p.put(MagicBulletEntity.Variant.NEMESIS, ModClientUtils.getHMaGEntityTexture("projectile/magic_bullet_2"));
+		p.put(MagicBulletEntity.Variant.NIGHTWALKER, ModClientUtils.getHMaGEntityTexture("projectile/magic_bullet_3"));
 	});
 
 	public MagicBulletRenderer(EntityRendererProvider.Context context)

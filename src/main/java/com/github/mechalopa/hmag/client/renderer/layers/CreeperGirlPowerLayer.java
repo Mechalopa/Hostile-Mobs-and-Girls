@@ -3,6 +3,7 @@ package com.github.mechalopa.hmag.client.renderer.layers;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.AbstractGirlModel;
 import com.github.mechalopa.hmag.client.model.CreeperGirlArmorModel;
+import com.github.mechalopa.hmag.util.ModUtils;
 import com.github.mechalopa.hmag.world.entity.CreeperGirlEntity;
 
 import net.minecraft.client.model.EntityModel;
@@ -16,7 +17,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class CreeperGirlPowerLayer extends EnergySwirlLayer<CreeperGirlEntity, AbstractGirlModel<CreeperGirlEntity>>
 {
-	private static final ResourceLocation TEXTURE = new ResourceLocation("textures/entity/creeper/creeper_armor.png");
+	private static final ResourceLocation TEXTURE = ModUtils.getRL("textures/entity/creeper/creeper_armor.png");
 	private final CreeperGirlArmorModel<CreeperGirlEntity> model;
 
 	public CreeperGirlPowerLayer(RenderLayerParent<CreeperGirlEntity, AbstractGirlModel<CreeperGirlEntity>> renderLayerParent, EntityModelSet modelSet)

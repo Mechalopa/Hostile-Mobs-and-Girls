@@ -1,8 +1,8 @@
 package com.github.mechalopa.hmag.client.renderer;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.InkSpitModel;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.projectile.InkSpitEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -20,7 +20,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class InkSpitRenderer extends EntityRenderer<InkSpitEntity>
 {
-	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/projectile/ink_spit.png");
+	private static final ResourceLocation TEXTURE = ModClientUtils.getHMaGEntityTexture("projectile/ink_spit");
 	private final InkSpitModel<InkSpitEntity> model;
 
 	public InkSpitRenderer(EntityRendererProvider.Context context)

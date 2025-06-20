@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.util.ModTags;
+import com.github.mechalopa.hmag.util.ModUtils;
 import com.github.mechalopa.hmag.world.item.crafting.EnchantmentUpgradeManager;
 import com.github.mechalopa.hmag.world.item.crafting.EnchantmentUpgradeManager.EnchantmentUpgradeProp;
 import com.github.mechalopa.hmag.world.item.crafting.EnchantmentUpgradeRecipe;
@@ -47,7 +48,7 @@ public class JEIPlugin implements IModPlugin
 	@Override
 	public ResourceLocation getPluginUid()
 	{
-		return new ResourceLocation(HMaG.MODID, HMaG.MODID);
+		return ModUtils.getHMaGRL(HMaG.MODID);
 	}
 
 	@Override
@@ -117,7 +118,7 @@ public class JEIPlugin implements IModPlugin
 									if (!stacks.isEmpty())
 									{
 										ResourceLocation enchid = ForgeRegistries.ENCHANTMENTS.getKey(enchantment);
-										ResourceLocation id = new ResourceLocation(HMaG.MODID, "jei." + recipe.getId().getPath() + "." + enchid.getNamespace() + "." + enchid.getPath());
+										ResourceLocation id = ModUtils.getHMaGRL("jei." + recipe.getId().getPath() + "." + enchid.getNamespace() + "." + enchid.getPath());
 										addSmithingRecipe(smithingRecipes, id, ingredient, Ingredient.of(stacks.stream()), ingredient1, stack1);
 									}
 								}
@@ -147,7 +148,7 @@ public class JEIPlugin implements IModPlugin
 
 									for (int j = minLevel; j <= maxLevel; ++j)
 									{
-										ResourceLocation id = new ResourceLocation(HMaG.MODID, "jei." + recipe.getId().getPath() + "." + i + "." + j);
+										ResourceLocation id = ModUtils.getHMaGRL("jei." + recipe.getId().getPath() + "." + i + "." + j);
 										ItemStack stack1 = stack.copy();
 										ItemStack stack2 = stack.copy();
 
@@ -178,7 +179,7 @@ public class JEIPlugin implements IModPlugin
 						ItemStack output = new ItemStack(Items.SUSPICIOUS_STEW, 1);
 						CompoundTag compoundtag = output.getOrCreateTag();
 						compoundtag.putBoolean(SuspiciousStewUpgradeRecipe.UPGRADED_KEY, true);
-						ResourceLocation id = new ResourceLocation(HMaG.MODID, "jei." + recipe.getId().getPath());
+						ResourceLocation id = ModUtils.getHMaGRL("jei." + recipe.getId().getPath());
 						ShapelessRecipe recipe3 = new ShapelessRecipe(id, group, CraftingBookCategory.MISC, output, inputs);
 						shapelessRecipes.add(recipe3);
 					}

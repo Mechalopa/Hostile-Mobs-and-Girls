@@ -5,6 +5,7 @@ import javax.annotation.Nonnull;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
+import com.github.mechalopa.hmag.util.ModUtils;
 import com.github.mechalopa.hmag.world.entity.IBeamAttackMob;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 
@@ -17,6 +18,7 @@ import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.item.ClampedItemPropertyFunction;
 import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -48,6 +50,11 @@ public class ModClientUtils
 	public static final ClampedItemPropertyFunction PROPERTY_SHIELD_BLOCKING = (stack, world, livingentity, seed) -> {
 		return livingentity != null && livingentity.isUsingItem() && livingentity.getUseItem() == stack ? 1.0F : 0.0F;
 	};
+
+	public static ResourceLocation getHMaGEntityTexture(String name)
+	{
+		return ModUtils.getHMaGRL("textures/entity/" + name + ".png");
+	}
 
 	public static Vec3 getPosition(@Nonnull LivingEntity entityLiving, double d0, float f)
 	{

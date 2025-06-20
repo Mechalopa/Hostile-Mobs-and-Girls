@@ -101,6 +101,7 @@ import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.registry.ModEntityTypes;
 import com.github.mechalopa.hmag.registry.ModItems;
 import com.github.mechalopa.hmag.registry.ModParticleTypes;
+import com.github.mechalopa.hmag.util.ModUtils;
 import com.github.mechalopa.hmag.world.item.ILevelItem;
 
 import net.minecraft.client.model.HumanoidModel;
@@ -109,7 +110,6 @@ import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.client.renderer.item.ItemProperties;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -128,22 +128,22 @@ public class ModClientEventBusSubscriber
 	public static void setupClient(final FMLClientSetupEvent event)
 	{
 		event.enqueueWork(() -> {
-			ItemProperties.register(ModItems.INSOMNIA_FRUIT.get(), new ResourceLocation("level"), (stack, world, livingentity, seed) -> {
+			ItemProperties.register(ModItems.INSOMNIA_FRUIT.get(), ModUtils.getRL("level"), (stack, world, livingentity, seed) -> {
 				final int i = ILevelItem.getItemLevel(stack);
 				return i >= 5 ? 2.0F : (i > 0 ? 1.0F : 0.0F);
 			});
-			ItemProperties.register(ModItems.INSOMNIA_SWORD.get(), new ResourceLocation("level"), (stack, world, livingentity, seed) -> {
+			ItemProperties.register(ModItems.INSOMNIA_SWORD.get(), ModUtils.getRL("level"), (stack, world, livingentity, seed) -> {
 				final int i = ILevelItem.getItemLevel(stack);
 				return i >= 5 ? 2.0F : (i > 0 ? 1.0F : 0.0F);
 			});
-			ItemProperties.register(ModItems.NEMESIS_BLADE.get(), new ResourceLocation("level"), (stack, world, livingentity, seed) -> {
+			ItemProperties.register(ModItems.NEMESIS_BLADE.get(), ModUtils.getRL("level"), (stack, world, livingentity, seed) -> {
 				final int i = ILevelItem.getItemLevel(stack);
 				return i >= 6 ? 4.0F : (i >= 5 ? 3.0F : (i >= 3 ? 2.0F : (i > 0 ? 1.0F : 0.0F)));
 			});
-			ItemProperties.register(ModItems.CRIMSON_BOW.get(), new ResourceLocation("pull"), ModClientUtils.PROPERTY_BOW_PULL);
-			ItemProperties.register(ModItems.CRIMSON_BOW.get(), new ResourceLocation("pulling"), ModClientUtils.PROPERTY_BOW_PULLING);
-			ItemProperties.register(ModItems.ANCIENT_SHIELD.get(), new ResourceLocation("blocking"), ModClientUtils.PROPERTY_SHIELD_BLOCKING);
-			ItemProperties.register(ModItems.FORTRESS_SHIELD.get(), new ResourceLocation("blocking"), ModClientUtils.PROPERTY_SHIELD_BLOCKING);
+			ItemProperties.register(ModItems.CRIMSON_BOW.get(), ModUtils.getRL("pull"), ModClientUtils.PROPERTY_BOW_PULL);
+			ItemProperties.register(ModItems.CRIMSON_BOW.get(), ModUtils.getRL("pulling"), ModClientUtils.PROPERTY_BOW_PULLING);
+			ItemProperties.register(ModItems.ANCIENT_SHIELD.get(), ModUtils.getRL("blocking"), ModClientUtils.PROPERTY_SHIELD_BLOCKING);
+			ItemProperties.register(ModItems.FORTRESS_SHIELD.get(), ModUtils.getRL("blocking"), ModClientUtils.PROPERTY_SHIELD_BLOCKING);
 		});
 
 		MinecraftForge.EVENT_BUS.register(new ModClientEvents());

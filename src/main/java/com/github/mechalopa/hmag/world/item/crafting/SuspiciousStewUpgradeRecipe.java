@@ -3,6 +3,7 @@ package com.github.mechalopa.hmag.world.item.crafting;
 import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.registry.ModRecipes;
 import com.github.mechalopa.hmag.util.ModTags;
+import com.github.mechalopa.hmag.util.ModUtils;
 import com.google.common.base.Strings;
 
 import net.minecraft.ResourceLocationException;
@@ -107,7 +108,7 @@ public class SuspiciousStewUpgradeRecipe extends CustomRecipe
 					{
 						try
 						{
-							mobeffect = ForgeRegistries.MOB_EFFECTS.getValue(new ResourceLocation(name));
+							mobeffect = ForgeRegistries.MOB_EFFECTS.getValue(ModUtils.getRL(name));
 						}
 						catch (ResourceLocationException e){}
 					}

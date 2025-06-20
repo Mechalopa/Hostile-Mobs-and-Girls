@@ -2,10 +2,10 @@ package com.github.mechalopa.hmag.client.renderer;
 
 import java.util.Random;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.DyssomniaModel;
 import com.github.mechalopa.hmag.client.renderer.layers.DyssomniaEyesLayer;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.DyssomniaEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
@@ -20,7 +20,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class DyssomniaRenderer extends MobRenderer<DyssomniaEntity, DyssomniaModel<DyssomniaEntity>>
 {
-	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/dyssomnia.png");
+	private static final ResourceLocation TEXTURE = ModClientUtils.getHMaGEntityTexture("dyssomnia");
 	private final Random rand = new Random();
 
 	public DyssomniaRenderer(EntityRendererProvider.Context context)

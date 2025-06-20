@@ -1,11 +1,11 @@
 package com.github.mechalopa.hmag.client.renderer;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.MeltyMonsterModel;
 import com.github.mechalopa.hmag.client.renderer.layers.MeltyMonsterClothingLayer;
 import com.github.mechalopa.hmag.client.renderer.layers.MeltyMonsterEyesLayer;
 import com.github.mechalopa.hmag.client.renderer.layers.MeltyMonsterMagmaLayer;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.MeltyMonsterEntity;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -17,7 +17,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class MeltyMonsterRenderer extends AbstractGirlRenderer<MeltyMonsterEntity, MeltyMonsterModel<MeltyMonsterEntity>>
 {
-	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/melty_monster/melty_monster.png");
+	private static final ResourceLocation TEXTURE = ModClientUtils.getHMaGEntityTexture("melty_monster/melty_monster");
 
 	public MeltyMonsterRenderer(EntityRendererProvider.Context context)
 	{

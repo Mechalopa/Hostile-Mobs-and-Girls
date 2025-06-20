@@ -1,9 +1,9 @@
 package com.github.mechalopa.hmag.client.renderer;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.DoguModel;
 import com.github.mechalopa.hmag.client.renderer.layers.DoguEyesLayer;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.DoguEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 
@@ -17,7 +17,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class DoguRenderer extends HumanoidMobRenderer<DoguEntity, DoguModel<DoguEntity>>
 {
-	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/dogu.png");
+	private static final ResourceLocation TEXTURE = ModClientUtils.getHMaGEntityTexture("dogu");
 
 	public DoguRenderer(EntityRendererProvider.Context context)
 	{

@@ -11,6 +11,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.RegistryCodecs;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
@@ -304,5 +305,23 @@ public class ModUtils
 	public static ItemStack getPotionStack(Potion potion, Item containerItem)
 	{
 		return PotionUtils.setPotion(new ItemStack(containerItem), potion);
+	}
+
+	@SuppressWarnings("removal")
+	public static ResourceLocation getRL(String name)
+	{
+		return new ResourceLocation(name);
+	}
+
+	@SuppressWarnings("removal")
+	public static ResourceLocation getRL(String modid, String name)
+	{
+		return new ResourceLocation(modid, name);
+	}
+
+	@SuppressWarnings("removal")
+	public static ResourceLocation getHMaGRL(String name)
+	{
+		return new ResourceLocation(HMaG.MODID, name);
 	}
 }

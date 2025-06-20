@@ -1,8 +1,8 @@
 package com.github.mechalopa.hmag.client.renderer.layers;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.SlimeGirlModel;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.SlimeGirlEntity;
 
 import net.minecraft.client.model.EntityModel;
@@ -15,7 +15,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class SlimeGirlEyesLayer extends AbstractClothingLayer<SlimeGirlEntity, SlimeGirlModel<SlimeGirlEntity>>
 {
-	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/slime_girl/slime_girl_eyes.png");
+	private static final ResourceLocation TEXTURE = ModClientUtils.getHMaGEntityTexture("slime_girl/slime_girl_eyes");
 	private final SlimeGirlModel<SlimeGirlEntity> model;
 
 	public SlimeGirlEyesLayer(RenderLayerParent<SlimeGirlEntity, SlimeGirlModel<SlimeGirlEntity>> renderLayerParent, EntityModelSet modelSet)

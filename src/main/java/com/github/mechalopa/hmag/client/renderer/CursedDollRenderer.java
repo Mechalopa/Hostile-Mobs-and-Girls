@@ -2,10 +2,10 @@ package com.github.mechalopa.hmag.client.renderer;
 
 import java.util.Map;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.CursedDollModel;
 import com.github.mechalopa.hmag.client.renderer.layers.CursedDollEyesLayer;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.CommonOrUncommonVariant;
 import com.github.mechalopa.hmag.world.entity.CursedDollEntity;
 import com.google.common.collect.Maps;
@@ -23,8 +23,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class CursedDollRenderer extends AbstractGirlRenderer<CursedDollEntity, CursedDollModel<CursedDollEntity>>
 {
 	private static final Map<CommonOrUncommonVariant, ResourceLocation> TEXTURES = Util.make(Maps.newEnumMap(CommonOrUncommonVariant.class), p -> {
-		p.put(CommonOrUncommonVariant.COMMON, new ResourceLocation(HMaG.MODID, "textures/entity/cursed_doll/cursed_doll_0.png"));
-		p.put(CommonOrUncommonVariant.UNCOMMON, new ResourceLocation(HMaG.MODID, "textures/entity/cursed_doll/cursed_doll_1.png"));
+		p.put(CommonOrUncommonVariant.COMMON, ModClientUtils.getHMaGEntityTexture("cursed_doll/cursed_doll_0"));
+		p.put(CommonOrUncommonVariant.UNCOMMON, ModClientUtils.getHMaGEntityTexture("cursed_doll/cursed_doll_1"));
 	});
 
 	public CursedDollRenderer(EntityRendererProvider.Context context)

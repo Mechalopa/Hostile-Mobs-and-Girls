@@ -1,9 +1,6 @@
 package com.github.mechalopa.hmag.util;
 
-import com.github.mechalopa.hmag.HMaG;
-
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.effect.MobEffect;
@@ -141,42 +138,42 @@ public class ModTags
 
 	private static TagKey<Block> createBlockTag(String name)
 	{
-		return TagKey.create(Registries.BLOCK, new ResourceLocation(HMaG.MODID, name));
+		return TagKey.create(Registries.BLOCK, ModUtils.getHMaGRL(name));
 	}
 
 	private static TagKey<Item> createItemTag(String name)
 	{
-		return TagKey.create(Registries.ITEM, new ResourceLocation(HMaG.MODID, name));
+		return TagKey.create(Registries.ITEM, ModUtils.getHMaGRL(name));
 	}
 
 	private static TagKey<EntityType<?>> createEntityTypeTag(String name)
 	{
-		return TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(HMaG.MODID, name));
+		return TagKey.create(Registries.ENTITY_TYPE, ModUtils.getHMaGRL(name));
 	}
 
 	private static TagKey<DamageType> createDamageTypeTag(String name)
 	{
-		return TagKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(HMaG.MODID, name));
+		return TagKey.create(Registries.DAMAGE_TYPE, ModUtils.getHMaGRL(name));
 	}
 
 	private static TagKey<Enchantment> createEnchantmentTag(String name)
 	{
-		return TagKey.create(Registries.ENCHANTMENT, new ResourceLocation(HMaG.MODID, name));
+		return TagKey.create(Registries.ENCHANTMENT, ModUtils.getHMaGRL(name));
 	}
 
 	private static TagKey<MobEffect> createMobEffectTag(String name)
 	{
-		return TagKey.create(Registries.MOB_EFFECT, new ResourceLocation(HMaG.MODID, name));
+		return TagKey.create(Registries.MOB_EFFECT, ModUtils.getHMaGRL(name));
 	}
 
 	private static TagKey<Biome> createBiomeTag(String name)
 	{
-		return TagKey.create(Registries.BIOME, new ResourceLocation(HMaG.MODID, name));
+		return TagKey.create(Registries.BIOME, ModUtils.getHMaGRL(name));
 	}
 
 	private static TagKey<Structure> createStructureTag(String name)
 	{
-		return TagKey.create(Registries.STRUCTURE, new ResourceLocation(HMaG.MODID, name));
+		return TagKey.create(Registries.STRUCTURE, ModUtils.getHMaGRL(name));
 	}
 
 	public static boolean checkTagContains(Enchantment enchantment, TagKey<Enchantment> tag)

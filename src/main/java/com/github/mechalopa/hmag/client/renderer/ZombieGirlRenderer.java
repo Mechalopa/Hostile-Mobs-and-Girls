@@ -1,10 +1,10 @@
 package com.github.mechalopa.hmag.client.renderer;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.AbstractGirlModel;
 import com.github.mechalopa.hmag.client.model.ZombieGirlArmorModel;
 import com.github.mechalopa.hmag.client.model.ZombieGirlModel;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -17,7 +17,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class ZombieGirlRenderer extends AbstractGirlRenderer<Zombie, AbstractGirlModel<Zombie>>
 {
-	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/zombie_girl.png");
+	private static final ResourceLocation TEXTURE = ModClientUtils.getHMaGEntityTexture("zombie_girl");
 
 	public ZombieGirlRenderer(EntityRendererProvider.Context context)
 	{

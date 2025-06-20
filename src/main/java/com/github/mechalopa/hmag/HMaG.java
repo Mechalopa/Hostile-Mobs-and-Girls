@@ -32,6 +32,7 @@ public class HMaG
 
 	public static final Logger LOGGER = LogManager.getLogger();
 
+	@SuppressWarnings("removal")
 	public HMaG()
 	{
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ModConfigs.SERVER_CONFIG);

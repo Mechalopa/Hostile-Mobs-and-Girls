@@ -1,8 +1,8 @@
 package com.github.mechalopa.hmag.registry;
 
 import com.github.mechalopa.hmag.HMaG;
+import com.github.mechalopa.hmag.util.ModUtils;
 
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -61,6 +61,6 @@ public class ModSoundEvents
 
 	private static RegistryObject<SoundEvent> createSoundEvent(String name)
 	{
-		return REGISTRY.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(HMaG.MODID, name)));
+		return REGISTRY.register(name, () -> SoundEvent.createVariableRangeEvent(ModUtils.getHMaGRL(name)));
 	}
 }

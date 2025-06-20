@@ -1,9 +1,9 @@
 package com.github.mechalopa.hmag.client.renderer;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.DrownedGirlArmorModel;
 import com.github.mechalopa.hmag.client.model.DrownedGirlModel;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 
@@ -17,7 +17,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class DrownedGirlRenderer extends ZombieGirlRenderer
 {
-	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/drowned_girl.png");
+	private static final ResourceLocation TEXTURE = ModClientUtils.getHMaGEntityTexture("drowned_girl");
 
 	public DrownedGirlRenderer(EntityRendererProvider.Context context)
 	{

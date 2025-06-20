@@ -2,10 +2,10 @@ package com.github.mechalopa.hmag.client.renderer;
 
 import java.util.Map;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.GhostModel;
 import com.github.mechalopa.hmag.client.renderer.layers.GhostClothingLayer;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.GhostEntity;
 import com.google.common.collect.Maps;
 
@@ -23,11 +23,11 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class GhostRenderer extends HumanoidMobRenderer<GhostEntity, GhostModel<GhostEntity>>
 {
 	private static final Map<GhostEntity.Variant, ResourceLocation> TEXTURES = Util.make(Maps.newEnumMap(GhostEntity.Variant.class), p -> {
-		p.put(GhostEntity.Variant.VARIANT_0, new ResourceLocation(HMaG.MODID, "textures/entity/ghost/ghost_0.png"));
-		p.put(GhostEntity.Variant.VARIANT_1, new ResourceLocation(HMaG.MODID, "textures/entity/ghost/ghost_1.png"));
-		p.put(GhostEntity.Variant.VARIANT_2, new ResourceLocation(HMaG.MODID, "textures/entity/ghost/ghost_2.png"));
-		p.put(GhostEntity.Variant.VARIANT_3, new ResourceLocation(HMaG.MODID, "textures/entity/ghost/ghost_3.png"));
-		p.put(GhostEntity.Variant.VARIANT_4, new ResourceLocation(HMaG.MODID, "textures/entity/ghost/ghost_4.png"));
+		p.put(GhostEntity.Variant.VARIANT_0, ModClientUtils.getHMaGEntityTexture("ghost/ghost_0"));
+		p.put(GhostEntity.Variant.VARIANT_1, ModClientUtils.getHMaGEntityTexture("ghost/ghost_1"));
+		p.put(GhostEntity.Variant.VARIANT_2, ModClientUtils.getHMaGEntityTexture("ghost/ghost_2"));
+		p.put(GhostEntity.Variant.VARIANT_3, ModClientUtils.getHMaGEntityTexture("ghost/ghost_3"));
+		p.put(GhostEntity.Variant.VARIANT_4, ModClientUtils.getHMaGEntityTexture("ghost/ghost_4"));
 	});
 
 	public GhostRenderer(EntityRendererProvider.Context context)

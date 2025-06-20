@@ -1,8 +1,8 @@
 package com.github.mechalopa.hmag.client.renderer.layers;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.GhastlySeekerModel;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.GhastlySeekerEntity;
 
 import net.minecraft.client.model.EntityModel;
@@ -15,7 +15,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class GhastlySeekerLayer extends AbstractClothingLayer<GhastlySeekerEntity, GhastlySeekerModel<GhastlySeekerEntity>>
 {
-	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/ghastly_seeker/ghastly_seeker_overlay.png");
+	private static final ResourceLocation TEXTURE = ModClientUtils.getHMaGEntityTexture("ghastly_seeker/ghastly_seeker_overlay");
 	private final GhastlySeekerModel<GhastlySeekerEntity> model;
 
 	public GhastlySeekerLayer(RenderLayerParent<GhastlySeekerEntity, GhastlySeekerModel<GhastlySeekerEntity>> renderLayerParent, EntityModelSet modelSet)

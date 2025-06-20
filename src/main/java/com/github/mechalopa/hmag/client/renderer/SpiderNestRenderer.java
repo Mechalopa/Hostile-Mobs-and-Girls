@@ -2,10 +2,10 @@ package com.github.mechalopa.hmag.client.renderer;
 
 import java.util.Random;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.SpiderNestModel;
 import com.github.mechalopa.hmag.client.renderer.layers.SpiderNestEyesLayer;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.SpiderNestEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 
@@ -19,7 +19,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class SpiderNestRenderer extends MobRenderer<SpiderNestEntity, SpiderNestModel<SpiderNestEntity>>
 {
-	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/spider_nest.png");
+	private static final ResourceLocation TEXTURE = ModClientUtils.getHMaGEntityTexture("spider_nest");
 	private final Random rand = new Random();
 
 	public SpiderNestRenderer(EntityRendererProvider.Context context)

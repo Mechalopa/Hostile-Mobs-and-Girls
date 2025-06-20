@@ -1,8 +1,8 @@
 package com.github.mechalopa.hmag.client.renderer;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.DullahanModel;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.DullahanEntity;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -13,7 +13,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class DullahanRenderer extends AbstractGirlRenderer<DullahanEntity, DullahanModel<DullahanEntity>>
 {
-	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/dullahan.png");
+	private static final ResourceLocation TEXTURE = ModClientUtils.getHMaGEntityTexture("dullahan");
 
 	public DullahanRenderer(EntityRendererProvider.Context context)
 	{

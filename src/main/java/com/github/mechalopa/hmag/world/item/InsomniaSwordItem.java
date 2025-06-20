@@ -119,7 +119,7 @@ public class InsomniaSwordItem extends ModSwordItem implements ILevelItem
 	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag tooltipFlag)
 	{
 		final int i = ILevelItem.getItemLevel(stack);
-		list.add(Component.translatable("text.hmag.level", i + 1).withStyle(i >= 5 ? ChatFormatting.LIGHT_PURPLE : (i >= 4 ? ChatFormatting.AQUA : (i >= 2 ? ChatFormatting.YELLOW : (i <= 0 ? ChatFormatting.RED : ChatFormatting.GRAY)))));
+		list.add(Component.translatable("text." + ILevelItem.LEVEL_KEY, i + 1).withStyle(i >= 5 ? ChatFormatting.LIGHT_PURPLE : (i >= 4 ? ChatFormatting.AQUA : (i >= 2 ? ChatFormatting.YELLOW : (i <= 0 ? ChatFormatting.RED : ChatFormatting.GRAY)))));
 	}
 
 	@Override

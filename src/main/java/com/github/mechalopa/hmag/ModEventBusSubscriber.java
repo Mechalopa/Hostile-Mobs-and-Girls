@@ -56,7 +56,6 @@ import com.github.mechalopa.hmag.world.level.storage.loot.conditions.ModLoadedCo
 
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.item.Item;
@@ -87,7 +86,7 @@ public class ModEventBusSubscriber
 			registerBrewingRecipes();
 		});
 
-		Registry.register(BuiltInRegistries.LOOT_CONDITION_TYPE, new ResourceLocation(HMaG.MODID, "mod_loaded"), ModLoadedCondition.TYPE);
+		Registry.register(BuiltInRegistries.LOOT_CONDITION_TYPE, ModUtils.getHMaGRL("mod_loaded"), ModLoadedCondition.TYPE);
 	}
 
 //	@SubscribeEvent

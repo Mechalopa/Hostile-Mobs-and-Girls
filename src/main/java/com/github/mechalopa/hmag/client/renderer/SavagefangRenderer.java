@@ -1,9 +1,9 @@
 package com.github.mechalopa.hmag.client.renderer;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.SavagefangModel;
 import com.github.mechalopa.hmag.client.renderer.layers.SavagefangEyesLayer;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.SavagefangEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
@@ -18,7 +18,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class SavagefangRenderer extends MobRenderer<SavagefangEntity, SavagefangModel<SavagefangEntity>>
 {
-	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/savagefang.png");
+	private static final ResourceLocation TEXTURE = ModClientUtils.getHMaGEntityTexture("savagefang");
 
 	public SavagefangRenderer(EntityRendererProvider.Context context)
 	{

@@ -1,9 +1,9 @@
 package com.github.mechalopa.hmag.client.renderer;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.GhastlySeekerModel;
 import com.github.mechalopa.hmag.client.renderer.layers.GhastlySeekerLayer;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.GhastlySeekerEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
@@ -17,8 +17,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class GhastlySeekerRenderer extends MobRenderer<GhastlySeekerEntity, GhastlySeekerModel<GhastlySeekerEntity>>
 {
-	private static final ResourceLocation TEXTURE_0 = new ResourceLocation(HMaG.MODID, "textures/entity/ghastly_seeker/ghastly_seeker.png");
-	private static final ResourceLocation TEXTURE_1 = new ResourceLocation(HMaG.MODID, "textures/entity/ghastly_seeker/ghastly_seeker_shooting.png");
+	private static final ResourceLocation TEXTURE_0 = ModClientUtils.getHMaGEntityTexture("ghastly_seeker/ghastly_seeker");
+	private static final ResourceLocation TEXTURE_1 = ModClientUtils.getHMaGEntityTexture("ghastly_seeker/ghastly_seeker_shooting");
 
 	public GhastlySeekerRenderer(EntityRendererProvider.Context context)
 	{

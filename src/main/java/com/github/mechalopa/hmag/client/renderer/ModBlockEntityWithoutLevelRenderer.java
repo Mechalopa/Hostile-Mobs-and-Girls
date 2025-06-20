@@ -1,8 +1,8 @@
 package com.github.mechalopa.hmag.client.renderer;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.ModShieldModel;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.registry.ModItems;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -22,8 +22,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class ModBlockEntityWithoutLevelRenderer extends BlockEntityWithoutLevelRenderer
 {
-	private static final ResourceLocation ANCIENT_SHIELD_TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/shield/ancient_shield.png");
-	private static final ResourceLocation FORTRESS_SHIELD_TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/shield/fortress_shield.png");
+	private static final ResourceLocation ANCIENT_SHIELD_TEXTURE = ModClientUtils.getHMaGEntityTexture("shield/ancient_shield");
+	private static final ResourceLocation FORTRESS_SHIELD_TEXTURE = ModClientUtils.getHMaGEntityTexture("shield/fortress_shield");
 	private ModShieldModel ancientShieldModel;
 	private ModShieldModel fortressShieldModel;
 

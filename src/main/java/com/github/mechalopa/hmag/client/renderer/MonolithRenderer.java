@@ -5,10 +5,10 @@ import java.util.Random;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.MonolithModel;
 import com.github.mechalopa.hmag.client.util.ModClientUtils;
+import com.github.mechalopa.hmag.util.ModUtils;
 import com.github.mechalopa.hmag.world.entity.MonolithEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -30,12 +30,12 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class MonolithRenderer extends MobRenderer<MonolithEntity, MonolithModel<MonolithEntity>>
 {
-	private static final ResourceLocation TEXTURE_0 = new ResourceLocation(HMaG.MODID, "textures/entity/monolith/monolith_0.png");
-	private static final ResourceLocation TEXTURE_1 = new ResourceLocation(HMaG.MODID, "textures/entity/monolith/monolith_1.png");
-	private static final ResourceLocation TEXTURE_2 = new ResourceLocation(HMaG.MODID, "textures/entity/monolith/monolith_2.png");
-	private static final ResourceLocation TEXTURE_3 = new ResourceLocation(HMaG.MODID, "textures/entity/monolith/monolith_3.png");
-	private static final ResourceLocation TEXTURE_4 = new ResourceLocation(HMaG.MODID, "textures/entity/monolith/monolith_4.png");
-	private static final ResourceLocation BEAM_TEXTURE = new ResourceLocation("textures/entity/guardian_beam.png");
+	private static final ResourceLocation TEXTURE_0 = ModClientUtils.getHMaGEntityTexture("monolith/monolith_0");
+	private static final ResourceLocation TEXTURE_1 = ModClientUtils.getHMaGEntityTexture("monolith/monolith_1");
+	private static final ResourceLocation TEXTURE_2 = ModClientUtils.getHMaGEntityTexture("monolith/monolith_2");
+	private static final ResourceLocation TEXTURE_3 = ModClientUtils.getHMaGEntityTexture("monolith/monolith_3");
+	private static final ResourceLocation TEXTURE_4 = ModClientUtils.getHMaGEntityTexture("monolith/monolith_4");
+	private static final ResourceLocation BEAM_TEXTURE = ModUtils.getRL("textures/entity/guardian_beam.png");
 	private static final RenderType BEAM_RENDER_TYPE = RenderType.entityCutoutNoCull(BEAM_TEXTURE);
 	private final Random rand = new Random();
 

@@ -1,10 +1,10 @@
 package com.github.mechalopa.hmag.client.renderer;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.AbstractGirlModel;
 import com.github.mechalopa.hmag.client.model.SkeletonGirlArmorModel;
 import com.github.mechalopa.hmag.client.model.SkeletonGirlModel;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -17,7 +17,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class SkeletonGirlRenderer extends AbstractGirlRenderer<AbstractSkeleton, AbstractGirlModel<AbstractSkeleton>>
 {
-	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/skeleton_girl.png");
+	private static final ResourceLocation TEXTURE = ModClientUtils.getHMaGEntityTexture("skeleton_girl");
 
 	public SkeletonGirlRenderer(EntityRendererProvider.Context context)
 	{

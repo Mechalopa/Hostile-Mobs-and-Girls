@@ -2,8 +2,8 @@ package com.github.mechalopa.hmag.client.renderer.layers;
 
 import java.util.Map;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.model.JiangshiModel;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.CommonOrUncommonVariant;
 import com.github.mechalopa.hmag.world.entity.JiangshiEntity;
 import com.google.common.collect.Maps;
@@ -11,7 +11,6 @@ import com.google.common.collect.Maps;
 import net.minecraft.Util;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -19,8 +18,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class JiangshiEyesLayer<T extends JiangshiEntity, M extends JiangshiModel<T>> extends EyesLayer2<T, M>
 {
 	private static final Map<CommonOrUncommonVariant, RenderType> RENDER_TYPES = Util.make(Maps.newEnumMap(CommonOrUncommonVariant.class), p -> {
-		p.put(CommonOrUncommonVariant.COMMON, RenderType.eyes(new ResourceLocation(HMaG.MODID, "textures/entity/jiangshi/jiangshi_eyes_0.png")));
-		p.put(CommonOrUncommonVariant.UNCOMMON, RenderType.eyes(new ResourceLocation(HMaG.MODID, "textures/entity/jiangshi/jiangshi_eyes_1.png")));
+		p.put(CommonOrUncommonVariant.COMMON, RenderType.eyes(ModClientUtils.getHMaGEntityTexture("jiangshi/jiangshi_eyes_0")));
+		p.put(CommonOrUncommonVariant.UNCOMMON, RenderType.eyes(ModClientUtils.getHMaGEntityTexture("jiangshi/jiangshi_eyes_1")));
 	});
 
 	public JiangshiEyesLayer(RenderLayerParent<T, M> renderLayerParent)

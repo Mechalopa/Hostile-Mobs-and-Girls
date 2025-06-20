@@ -2,10 +2,10 @@ package com.github.mechalopa.hmag.client.renderer;
 
 import java.util.Map;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.JiangshiModel;
 import com.github.mechalopa.hmag.client.renderer.layers.JiangshiEyesLayer;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.CommonOrUncommonVariant;
 import com.github.mechalopa.hmag.world.entity.JiangshiEntity;
 import com.google.common.collect.Maps;
@@ -22,8 +22,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class JiangshiRenderer extends AbstractGirlRenderer<JiangshiEntity, JiangshiModel<JiangshiEntity>>
 {
 	private static final Map<CommonOrUncommonVariant, ResourceLocation> TEXTURES = Util.make(Maps.newEnumMap(CommonOrUncommonVariant.class), p -> {
-		p.put(CommonOrUncommonVariant.COMMON, new ResourceLocation(HMaG.MODID, "textures/entity/jiangshi/jiangshi_0.png"));
-		p.put(CommonOrUncommonVariant.UNCOMMON, new ResourceLocation(HMaG.MODID, "textures/entity/jiangshi/jiangshi_1.png"));
+		p.put(CommonOrUncommonVariant.COMMON, ModClientUtils.getHMaGEntityTexture("jiangshi/jiangshi_0"));
+		p.put(CommonOrUncommonVariant.UNCOMMON, ModClientUtils.getHMaGEntityTexture("jiangshi/jiangshi_1"));
 	});
 
 	public JiangshiRenderer(EntityRendererProvider.Context context)

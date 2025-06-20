@@ -1,10 +1,10 @@
 package com.github.mechalopa.hmag.client.renderer;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.AbstractGirlModel;
 import com.github.mechalopa.hmag.client.model.GirlArmorModel;
 import com.github.mechalopa.hmag.client.model.RedcapModel;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.RedcapEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 
@@ -17,7 +17,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class RedcapRenderer extends AbstractGirlRenderer<RedcapEntity, RedcapModel<RedcapEntity>>
 {
-	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/redcap.png");
+	private static final ResourceLocation TEXTURE = ModClientUtils.getHMaGEntityTexture("redcap");
 
 	public RedcapRenderer(EntityRendererProvider.Context context)
 	{

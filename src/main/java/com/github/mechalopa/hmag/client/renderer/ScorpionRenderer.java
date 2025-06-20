@@ -1,8 +1,8 @@
 package com.github.mechalopa.hmag.client.renderer;
 
-import com.github.mechalopa.hmag.HMaG;
 import com.github.mechalopa.hmag.client.ModModelLayers;
 import com.github.mechalopa.hmag.client.model.ScorpionModel;
+import com.github.mechalopa.hmag.client.util.ModClientUtils;
 import com.github.mechalopa.hmag.world.entity.ScorpionEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 
@@ -15,7 +15,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class ScorpionRenderer extends MobRenderer<ScorpionEntity, ScorpionModel<ScorpionEntity>>
 {
-	private static final ResourceLocation TEXTURE = new ResourceLocation(HMaG.MODID, "textures/entity/scorpion.png");
+	private static final ResourceLocation TEXTURE = ModClientUtils.getHMaGEntityTexture("scorpion");
 
 	public ScorpionRenderer(EntityRendererProvider.Context context)
 	{
