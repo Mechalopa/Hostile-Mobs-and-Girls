@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "minecraft:wither_skeletons",
-    "hmag:wither_skeletons_girl"
+    "minecraft:wither_skeleton",
+    "hmag:wither_skeleton_girl"
   ]
 }

@@ -1,12 +1,6 @@
 {
-  "type": "hmag:add_spawns",
-  "biomes": [
-    [
-      {
-        "name": "#hmag:spawns_wither_ghosts_normal"
-      }
-    ]
-  ],
+  "type": "forge:add_spawns",
+  "biomes": "#hmag:spawns_wither_ghosts_normal",
   "spawners": {
     "type": "hmag:wither_ghost",
     "weight": 12,

@@ -1,12 +1,6 @@
 {
-  "type": "hmag:add_spawns",
-  "biomes": [
-    [
-      {
-        "name": "#hmag:spawns_glaryads"
-      }
-    ]
-  ],
+  "type": "forge:add_spawns",
+  "biomes": "#hmag:spawns_glaryads",
   "spawners": {
     "type": "hmag:glaryad",
     "weight": 50,

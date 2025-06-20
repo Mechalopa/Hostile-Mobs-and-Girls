@@ -1,12 +1,6 @@
 {
-  "type": "hmag:add_spawns",
-  "biomes": [
-    [
-      {
-        "name": "#hmag:biomesoplenty/withered_abyss"
-      }
-    ]
-  ],
+  "type": "forge:add_spawns",
+  "biomes": "#hmag:biomesoplenty/withered_abyss",
   "spawners": {
     "type": "hmag:wither_ghost",
     "weight": 1,

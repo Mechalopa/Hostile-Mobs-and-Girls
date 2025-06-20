@@ -1,12 +1,6 @@
 {
-  "type": "hmag:add_spawns",
-  "biomes": [
-    [
-      {
-        "name": "#hmag:spawns_jiangshi"
-      }
-    ]
-  ],
+  "type": "forge:add_spawns",
+  "biomes": "#hmag:spawns_jiangshi",
   "spawners": {
     "type": "hmag:jiangshi",
     "weight": 20,

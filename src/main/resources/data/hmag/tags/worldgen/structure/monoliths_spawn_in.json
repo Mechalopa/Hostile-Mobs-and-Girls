@@ -5,6 +5,10 @@
     {
       "id": "repurposed_structures:stronghold_end",
       "required": false
+    },
+    {
+      "id": "enderscape:end_city",
+      "required": false
     }
   ]
 }

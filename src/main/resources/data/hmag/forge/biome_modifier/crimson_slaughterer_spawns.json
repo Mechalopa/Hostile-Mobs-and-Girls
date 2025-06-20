@@ -1,12 +1,6 @@
 {
-  "type": "hmag:add_spawns",
-  "biomes": [
-    [
-      {
-        "name": "#hmag:spawns_crimson_slaughterers"
-      }
-    ]
-  ],
+  "type": "forge:add_spawns",
+  "biomes": "#hmag:spawns_crimson_slaughterers",
   "spawners": {
     "type": "hmag:crimson_slaughterer",
     "weight": 2,

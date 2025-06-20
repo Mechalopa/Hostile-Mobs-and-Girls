@@ -1,12 +1,6 @@
 {
-  "type": "hmag:add_spawns",
-  "biomes": [
-    [
-      {
-        "name": "#hmag:spawns_imps_special"
-      }
-    ]
-  ],
+  "type": "forge:add_spawns",
+  "biomes": "#hmag:spawns_imps_special",
   "spawners": {
     "type": "hmag:imp",
     "weight": 2,

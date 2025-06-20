@@ -1,12 +1,6 @@
 {
-  "type": "hmag:add_spawns",
-  "biomes": [
-    [
-      {
-        "name": "#hmag:spawns_ghastly_seekers_normal"
-      }
-    ]
-  ],
+  "type": "forge:add_spawns",
+  "biomes": "#hmag:spawns_ghastly_seekers_normal",
   "spawners": {
     "type": "hmag:ghastly_seeker",
     "weight": 7,
