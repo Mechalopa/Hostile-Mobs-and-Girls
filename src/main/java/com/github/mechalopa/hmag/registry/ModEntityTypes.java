@@ -83,7 +83,7 @@ public class ModEntityTypes
 			.of(WitherSkeletonGirlEntity::new, MobCategory.MONSTER).fireImmune().immuneTo(Blocks.WITHER_ROSE).sized(0.7F, 2.4F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
 			.build(ModUtils.getHMaGRL("wither_skeleton_girl").toString()));
 	public static final RegistryObject<EntityType<StrayGirlEntity>> STRAY_GIRL = REGISTRY.register("stray_girl", () -> EntityType.Builder
-			.of(StrayGirlEntity::new, MobCategory.MONSTER).sized(0.6F, 1.99F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
+			.of(StrayGirlEntity::new, MobCategory.MONSTER).immuneTo(Blocks.POWDER_SNOW).sized(0.6F, 1.99F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
 			.build(ModUtils.getHMaGRL("stray_girl").toString()));
 	public static final RegistryObject<EntityType<CreeperGirlEntity>> CREEPER_GIRL = REGISTRY.register("creeper_girl", () -> EntityType.Builder
 			.of(CreeperGirlEntity::new, MobCategory.MONSTER).sized(0.6F, 1.95F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
@@ -116,7 +116,7 @@ public class ModEntityTypes
 			.of(CursedDollEntity::new, MobCategory.MONSTER).sized(0.6F, 1.7F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
 			.build(ModUtils.getHMaGRL("cursed_doll").toString()));
 	public static final RegistryObject<EntityType<JackFrostEntity>> JACK_FROST = REGISTRY.register("jack_frost", () -> EntityType.Builder
-			.of(JackFrostEntity::new, MobCategory.MONSTER).sized(0.6F, 1.95F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
+			.of(JackFrostEntity::new, MobCategory.MONSTER).immuneTo(Blocks.POWDER_SNOW).sized(0.6F, 1.95F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
 			.build(ModUtils.getHMaGRL("jack_frost").toString()));
 	public static final RegistryObject<EntityType<HornetEntity>> HORNET = REGISTRY.register("hornet", () -> EntityType.Builder
 			.of(HornetEntity::new, MobCategory.MONSTER).sized(0.6F, 1.7F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
@@ -164,7 +164,7 @@ public class ModEntityTypes
 			.of(DyssomniaEntity::new, MobCategory.MONSTER).sized(2.3F, 1.1F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
 			.build(ModUtils.getHMaGRL("dyssomnia").toString()));
 	public static final RegistryObject<EntityType<SnowCanineEntity>> SNOW_CANINE = REGISTRY.register("snow_canine", () -> EntityType.Builder
-			.of(SnowCanineEntity::new, MobCategory.MONSTER).sized(0.6F, 1.95F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
+			.of(SnowCanineEntity::new, MobCategory.MONSTER).immuneTo(Blocks.POWDER_SNOW).sized(0.6F, 1.95F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
 			.build(ModUtils.getHMaGRL("snow_canine").toString()));
 	public static final RegistryObject<EntityType<HarpyEntity>> HARPY = REGISTRY.register("harpy", () -> EntityType.Builder
 			.of(HarpyEntity::new, MobCategory.MONSTER).sized(0.6F, 1.95F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)

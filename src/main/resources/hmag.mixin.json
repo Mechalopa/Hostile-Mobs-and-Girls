@@ -6,6 +6,7 @@
   "mixins": [
     "IronGolemMixin",
     "SnowballMixin",
+    "VillagerHostilesSensorMixin",
     "ZoglinMixin"
   ],
   "injectors": {

@@ -13,7 +13,7 @@ import net.minecraft.world.entity.monster.Zoglin;
 @Mixin(Zoglin.class)
 public abstract class ZoglinMixin
 {
-	@Inject(method = "isTargetable", at = @At(value = "HEAD"), cancellable = true)
+	@Inject(method = "Lnet/minecraft/world/entity/monster/Zoglin;isTargetable(Lnet/minecraft/world/entity/LivingEntity;)Z", at = @At(value = "HEAD"), cancellable = true)
 	public void hmag_isTargetable(LivingEntity livingentity, CallbackInfoReturnable<Boolean> cir)
 	{
 		if (livingentity != null && livingentity instanceof CreeperGirlEntity)
