@@ -61,6 +61,7 @@ import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingTickEvent;
+import net.minecraftforge.event.entity.living.LivingEvent.LivingVisibilityEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.event.entity.living.MobSpawnEvent;
@@ -217,6 +218,23 @@ public class ModEvents
 					}
 				}
 			}
+		}
+	}
+
+	@SubscribeEvent
+	public void onLivingVisibility(LivingVisibilityEvent event)
+	{
+		if (event.getEntity() == null || event.getLookingEntity() == null)
+		{
+			return;
+		}
+
+		ItemStack stack = event.getEntity().getItemBySlot(EquipmentSlot.HEAD);
+		EntityType<?> entitytype = event.getLookingEntity().getType();
+
+		if ((entitytype == ModEntityTypes.SKELETON_GIRL.get() && stack.is(Items.SKELETON_SKULL)) || (entitytype == ModEntityTypes.ZOMBIE_GIRL.get() && stack.is(Items.ZOMBIE_HEAD)) || (entitytype == ModEntityTypes.CREEPER_GIRL.get() && stack.is(Items.CREEPER_HEAD)))
+		{
+			event.modifyVisibility(0.5D);
 		}
 	}
 

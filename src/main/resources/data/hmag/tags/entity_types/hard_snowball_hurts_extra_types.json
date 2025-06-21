@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "#hmag:snowball_hurts_types",
     "#minecraft:freeze_hurts_extra_types"
   ]
 }

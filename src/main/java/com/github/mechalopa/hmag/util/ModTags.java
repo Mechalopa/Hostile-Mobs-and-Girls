@@ -59,6 +59,7 @@ public class ModTags
 		public static final TagKey<EntityType<?>> SAVAGEFANG_TARGET_BLACKLIST = createEntityTypeTag("savagefang_target_blacklist");
 		public static final TagKey<EntityType<?>> SKELETON_GIRL_REPLACEABLES = createEntityTypeTag("skeleton_girl_replaceables");
 		public static final TagKey<EntityType<?>> SNOW_CANINE_TARGETS = createEntityTypeTag("snow_canine_targets");
+		public static final TagKey<EntityType<?>> SNOWBALL_HURTS_TYPES = createEntityTypeTag("snowball_hurts_types");
 		public static final TagKey<EntityType<?>> STRAY_GIRL_REPLACEABLES = createEntityTypeTag("stray_girl_replaceables");
 		public static final TagKey<EntityType<?>> WITHER_SKELETON_GIRL_REPLACEABLES = createEntityTypeTag("wither_skeleton_girl_replaceables");
 		public static final TagKey<EntityType<?>> ZOMBIE_GIRL_REPLACEABLES = createEntityTypeTag("zombie_girl_replaceables");
