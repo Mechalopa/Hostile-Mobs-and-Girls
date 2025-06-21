@@ -8,6 +8,17 @@
       {
         "name": "#hmag:no_hmag_monsters",
         "negate": true
+      },
+      {
+        "name": [
+          "minecraft:soul_sand_valley",
+          "minecraft:warped_forest"
+        ],
+        "negate": true
+      },
+      {
+        "name": "#hmag:netherexp/black_ice_glaciers",
+        "negate": true
       }
     ]
   ],

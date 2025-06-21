@@ -17,7 +17,7 @@ public class ModConfigs
 	public static ForgeConfigSpec.BooleanValue OGRE_ATTACK_BABY_TURTLES;
 	public static ForgeConfigSpec.BooleanValue OGRE_DESTROY_BLOCKS;
 	public static ForgeConfigSpec.BooleanValue SPIDER_NEST_SUMMON_CAVE_SPIDER;
-	public static ForgeConfigSpec.BooleanValue MELTY_MONSTER_SET_FIRE;
+	public static ForgeConfigSpec.DoubleValue MELTY_MONSTER_SET_FIRE_CHANCE;
 	public static ForgeConfigSpec.BooleanValue CURSED_DOLL_BURNS_IN_DAYLIGHT;
 	public static ForgeConfigSpec.BooleanValue KASHA_ATTACK_VILLAGERS;
 	public static ForgeConfigSpec.BooleanValue KASHA_ATTACK_BABY_TURTLES;
@@ -129,7 +129,7 @@ public class ModConfigs
 		OGRE_ATTACK_BABY_TURTLES = SERVER_BUILDER.define("ogreAttackBabyTurtles", true);
 		OGRE_DESTROY_BLOCKS = SERVER_BUILDER.define("enableOgreDestroyBlocks", true);
 		SPIDER_NEST_SUMMON_CAVE_SPIDER = SERVER_BUILDER.define("spiderNestSummonCaveSpider", true);
-		MELTY_MONSTER_SET_FIRE = SERVER_BUILDER.define("enableMeltyMonsterSetFire", true);
+		MELTY_MONSTER_SET_FIRE_CHANCE = SERVER_BUILDER.defineInRange("meltyMonsterSetFireChance", 0.008D, 0.0D, 1.0D);
 		CURSED_DOLL_BURNS_IN_DAYLIGHT = SERVER_BUILDER.define("cursedDollBurnsInDaylight", true);
 		KASHA_ATTACK_VILLAGERS = SERVER_BUILDER.define("kashaAttackVillagers", true);
 		KASHA_ATTACK_BABY_TURTLES = SERVER_BUILDER.define("kashaAttackBabyTurtles", true);
@@ -276,7 +276,7 @@ public class ModConfigs
 		public static boolean OGRE_ATTACK_BABY_TURTLES;
 		public static boolean OGRE_DESTROY_BLOCKS;
 		public static boolean SPIDER_NEST_SUMMON_CAVE_SPIDER;
-		public static boolean MELTY_MONSTER_SET_FIRE;
+		public static double MELTY_MONSTER_SET_FIRE_CHANCE;
 		public static boolean CURSED_DOLL_BURNS_IN_DAYLIGHT;
 		public static boolean KASHA_ATTACK_VILLAGERS;
 		public static boolean KASHA_ATTACK_BABY_TURTLES;
@@ -386,7 +386,7 @@ public class ModConfigs
 			OGRE_ATTACK_BABY_TURTLES = ModConfigs.OGRE_ATTACK_BABY_TURTLES.get();
 			OGRE_DESTROY_BLOCKS = ModConfigs.OGRE_DESTROY_BLOCKS.get();
 			SPIDER_NEST_SUMMON_CAVE_SPIDER = ModConfigs.SPIDER_NEST_SUMMON_CAVE_SPIDER.get();
-			MELTY_MONSTER_SET_FIRE = ModConfigs.MELTY_MONSTER_SET_FIRE.get();
+			MELTY_MONSTER_SET_FIRE_CHANCE = ModConfigs.MELTY_MONSTER_SET_FIRE_CHANCE.get();
 			CURSED_DOLL_BURNS_IN_DAYLIGHT = ModConfigs.CURSED_DOLL_BURNS_IN_DAYLIGHT.get();
 			KASHA_ATTACK_VILLAGERS = ModConfigs.KASHA_ATTACK_VILLAGERS.get();
 			KASHA_ATTACK_BABY_TURTLES = ModConfigs.KASHA_ATTACK_BABY_TURTLES.get();

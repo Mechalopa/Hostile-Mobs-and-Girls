@@ -113,20 +113,20 @@ public class MeltyMonsterEntity extends Monster implements RangedAttackMob
 
 		if (!this.level().isClientSide())
 		{
-			if (ModConfigs.cachedServer.MELTY_MONSTER_SET_FIRE && !this.isInLava() && !this.isInWaterRainOrBubble() && !this.isFreezing() && ForgeEventFactory.getMobGriefingEvent(this.level(), this))
+			if (ModConfigs.cachedServer.MELTY_MONSTER_SET_FIRE_CHANCE > 0.0D && !this.isInLava() && !this.isInWaterRainOrBubble() && !this.isFreezing() && ForgeEventFactory.getMobGriefingEvent(this.level(), this))
 			{
 				int i = Mth.floor(this.getX());
-				int j = Mth.floor(this.getY());
+				int j = Mth.floor(this.getY() + 0.125D);
 				int k = Mth.floor(this.getZ());
 
 				for (int l = 0; l < 4; ++l)
 				{
 					i = Mth.floor(this.getX() + (l % 2 * 2 - 1) * 0.25F);
-					j = Mth.floor(this.getY());
+					j = Mth.floor(this.getY() + 0.125D);
 					k = Mth.floor(this.getZ() + (l / 2 % 2 * 2 - 1) * 0.25F);
 					BlockPos blockpos = new BlockPos(i, j, k);
 
-					if (this.level().isEmptyBlock(blockpos))
+					if (this.getRandom().nextDouble() < ModConfigs.cachedServer.MELTY_MONSTER_SET_FIRE_CHANCE && this.level().isEmptyBlock(blockpos))
 					{
 						this.level().setBlockAndUpdate(blockpos, BaseFireBlock.getState(this.level(), blockpos));
 		            }
