@@ -9,6 +9,18 @@
     {
       "id": "enderscape:end_city",
       "required": false
+    },
+    {
+      "id": "nova_structures:end_castle",
+      "required": false
+    },
+    {
+      "id": "nova_structures:end_ship",
+      "required": false
+    },
+    {
+      "id": "mes:starlight_voyager",
+      "required": false
     }
   ]
 }
