@@ -295,6 +295,10 @@
     {
       "id": "kobolds:kobold_template",
       "required": false
+    },
+    {
+      "id": "avaritia:upgrade_smithing_template",
+      "required": false
     }
   ]
 }

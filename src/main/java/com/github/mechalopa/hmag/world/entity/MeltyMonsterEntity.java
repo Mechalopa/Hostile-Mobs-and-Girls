@@ -170,7 +170,7 @@ public class MeltyMonsterEntity extends Monster implements RangedAttackMob
 		}
 		while(levelAccessor.getFluidState(blockpos$mutable).is(FluidTags.LAVA));
 
-		return levelAccessor.getBlockState(blockpos$mutable).isAir() && (spawnType == MobSpawnType.SPAWNER || pos.getY() < (levelAccessor.getMinBuildHeight() < 0  ? 0 : 32) || random.nextBoolean());
+		return levelAccessor.getBlockState(blockpos$mutable).isAir() && (spawnType == MobSpawnType.SPAWNER || pos.getY() < (levelAccessor.getMinBuildHeight() < 0 ? 0 : 32) || random.nextBoolean());
 	}
 
 	@Override

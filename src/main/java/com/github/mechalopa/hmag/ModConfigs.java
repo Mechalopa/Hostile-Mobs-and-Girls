@@ -145,10 +145,10 @@ public class ModConfigs
 		MONOLITH_ATTACK_GOLEMS = SERVER_BUILDER.define("monolithAttackGolems", true);
 		MONOLITH_ATTACK_VILLAGERS = SERVER_BUILDER.define("monolithAttackVillagers", true);
 		MONOLITH_ATTACK_ILLAGERS = SERVER_BUILDER.define("monolithAttackIllagers", true);
-		MONOLITH_TARGET_DISTANCE = SERVER_BUILDER.defineInRange("monolithTargetDistance", 12.0D, 0.0D, 32.0D);
-		MONOLITH_BEAM_ATTACK_DISTANCE = SERVER_BUILDER.defineInRange("monolithBeamAttackDistance", 15.0D, 0.0D, 32.0D);
-		MONOLITH_ROAR_ATTACK_DISTANCE = SERVER_BUILDER.defineInRange("monolithRoarAttackDistance", 3.0D, 0.0D, 32.0D);
-		MONOLITH_ROAR_ATTACK_RANGE = SERVER_BUILDER.defineInRange("monolithRoarAttackRange", 2.5D, 0.0D, 32.0D);
+		MONOLITH_TARGET_DISTANCE = SERVER_BUILDER.defineInRange("monolithTargetDistance", 12.0D, 0.0D, 64.0D);
+		MONOLITH_BEAM_ATTACK_DISTANCE = SERVER_BUILDER.defineInRange("monolithBeamAttackDistance", 15.0D, 0.0D, 64.0D);
+		MONOLITH_ROAR_ATTACK_DISTANCE = SERVER_BUILDER.defineInRange("monolithRoarAttackDistance", 3.0D, 0.0D, 64.0D);
+		MONOLITH_ROAR_ATTACK_RANGE = SERVER_BUILDER.defineInRange("monolithRoarAttackRange", 2.5D, 0.0D, 64.0D);
 		CRIMSON_SLAUGHTERER_ATTACK_ANIMALS = SERVER_BUILDER.define("crimsonSlaughtererAttackAnimals", true);
 		CRIMSON_SLAUGHTERER_ATTACK_VILLAGERS = SERVER_BUILDER.define("crimsonSlaughtererAttackVillagers", true);
 		DYSSOMNIA_SUMMON_PHANTOM = SERVER_BUILDER.define("dyssomniaSummonPhantom", true);
@@ -198,12 +198,13 @@ public class ModConfigs
 
 		SERVER_BUILDER.push("height");
 
-		SURFACE_MOB_SPAWN_MIN_HEIGHT = SERVER_BUILDER.defineInRange("surfaceMobSpawnMinHeight", 64, -1024, 1024);
-		KOBOLD_SPAWN_MAX_HEIGHT = SERVER_BUILDER.defineInRange("koboldSpawnMaxHeight", 31, -1024, 1024);
-		LICH_SPAWN_MAX_HEIGHT = SERVER_BUILDER.defineInRange("lichSpawnMaxHeight", -1, -1024, 1024);
-		OGRE_SPAWN_MAX_HEIGHT = SERVER_BUILDER.defineInRange("ogreSpawnMaxHeight", -1, -1024, 1024);
-		SPIDER_NEST_SPAWN_MAX_HEIGHT = SERVER_BUILDER.defineInRange("spiderNestSpawnMaxHeight", -1, -1024, 1024);
-		NECROTIC_REAPER_SPAWN_MAX_HEIGHT = SERVER_BUILDER.defineInRange("necroticReaperSpawnMaxHeight", -1, -1024, 1024);
+		SURFACE_MOB_SPAWN_MIN_HEIGHT = SERVER_BUILDER.defineInRange("surfaceMobSpawnMinHeight", 64, Integer.MIN_VALUE, Integer.MAX_VALUE);
+		SURFACE_MOB_SPAWN_MIN_HEIGHT = SERVER_BUILDER.defineInRange("surfaceMobSpawnMinHeight", 64, Integer.MIN_VALUE, Integer.MAX_VALUE);
+		KOBOLD_SPAWN_MAX_HEIGHT = SERVER_BUILDER.defineInRange("koboldSpawnMaxHeight", 31, Integer.MIN_VALUE, Integer.MAX_VALUE);
+		LICH_SPAWN_MAX_HEIGHT = SERVER_BUILDER.defineInRange("lichSpawnMaxHeight", -1, Integer.MIN_VALUE, Integer.MAX_VALUE);
+		OGRE_SPAWN_MAX_HEIGHT = SERVER_BUILDER.defineInRange("ogreSpawnMaxHeight", -1, Integer.MIN_VALUE, Integer.MAX_VALUE);
+		SPIDER_NEST_SPAWN_MAX_HEIGHT = SERVER_BUILDER.defineInRange("spiderNestSpawnMaxHeight", -1, Integer.MIN_VALUE, Integer.MAX_VALUE);
+		NECROTIC_REAPER_SPAWN_MAX_HEIGHT = SERVER_BUILDER.defineInRange("necroticReaperSpawnMaxHeight", -1, Integer.MIN_VALUE, Integer.MAX_VALUE);
 
 		SERVER_BUILDER.pop();
 
@@ -213,26 +214,26 @@ public class ModConfigs
 
 		SERVER_BUILDER.push("item");
 
-		INSOMNIA_FRUIT_COOLDOWN_LEVEL_0 = SERVER_BUILDER.defineInRange("insomuniaFruitCooldownLevel0", 1800, 0, 240000);
-		INSOMNIA_FRUIT_COOLDOWN_LEVEL_1 = SERVER_BUILDER.defineInRange("insomuniaFruitCooldownLevel1", 1800, 0, 240000);
-		INSOMNIA_FRUIT_COOLDOWN_LEVEL_2 = SERVER_BUILDER.defineInRange("insomuniaFruitCooldownLevel2", 1800, 0, 240000);
-		INSOMNIA_FRUIT_COOLDOWN_LEVEL_3 = SERVER_BUILDER.defineInRange("insomuniaFruitCooldownLevel3", 1600, 0, 240000);
-		INSOMNIA_FRUIT_COOLDOWN_LEVEL_4 = SERVER_BUILDER.defineInRange("insomuniaFruitCooldownLevel4", 1400, 0, 240000);
-		INSOMNIA_FRUIT_COOLDOWN_LEVEL_5 = SERVER_BUILDER.defineInRange("insomuniaFruitCooldownLevel5", 1200, 0, 240000);
+		INSOMNIA_FRUIT_COOLDOWN_LEVEL_0 = SERVER_BUILDER.defineInRange("insomuniaFruitCooldownLevel0", 1800, 0, Integer.MAX_VALUE);
+		INSOMNIA_FRUIT_COOLDOWN_LEVEL_1 = SERVER_BUILDER.defineInRange("insomuniaFruitCooldownLevel1", 1800, 0, Integer.MAX_VALUE);
+		INSOMNIA_FRUIT_COOLDOWN_LEVEL_2 = SERVER_BUILDER.defineInRange("insomuniaFruitCooldownLevel2", 1800, 0, Integer.MAX_VALUE);
+		INSOMNIA_FRUIT_COOLDOWN_LEVEL_3 = SERVER_BUILDER.defineInRange("insomuniaFruitCooldownLevel3", 1600, 0, Integer.MAX_VALUE);
+		INSOMNIA_FRUIT_COOLDOWN_LEVEL_4 = SERVER_BUILDER.defineInRange("insomuniaFruitCooldownLevel4", 1400, 0, Integer.MAX_VALUE);
+		INSOMNIA_FRUIT_COOLDOWN_LEVEL_5 = SERVER_BUILDER.defineInRange("insomuniaFruitCooldownLevel5", 1200, 0, Integer.MAX_VALUE);
 
 		SERVER_BUILDER.pop();
 
 		SERVER_BUILDER.push("enchantment");
 
-		HEALTH_BOOST_MAX_LEVEL = SERVER_BUILDER.defineInRange("healthBoostMaxLevel", 5, 1, 10);
+		HEALTH_BOOST_MAX_LEVEL = SERVER_BUILDER.defineInRange("healthBoostMaxLevel", 5, 1, Integer.MAX_VALUE);
 		HEALTH_BOOST_IS_TREASURE = SERVER_BUILDER.define("healthBoostIsTreasure", true);
 		HEALTH_BOOST_IS_TRADEABLE = SERVER_BUILDER.define("healthBoostIsTradeable", true);
 		HEALTH_BOOST_IS_DISCOVERABLE = SERVER_BUILDER.define("healthBoostIsDiscoverable", true);
-		WATER_ASPECT_MAX_LEVEL = SERVER_BUILDER.defineInRange("waterAspectMaxLevel", 5, 1, 10);
+		WATER_ASPECT_MAX_LEVEL = SERVER_BUILDER.defineInRange("waterAspectMaxLevel", 5, 1, Integer.MAX_VALUE);
 		WATER_ASPECT_IS_TREASURE = SERVER_BUILDER.define("waterAspectIsTreasure", false);
 		WATER_ASPECT_IS_TRADEABLE = SERVER_BUILDER.define("waterAspectIsTradeable", true);
 		WATER_ASPECT_IS_DISCOVERABLE = SERVER_BUILDER.define("waterAspectIsDiscoverable", true);
-		ANTI_AIR_MAX_LEVEL = SERVER_BUILDER.defineInRange("antiAirMaxLevel", 5, 1, 10);
+		ANTI_AIR_MAX_LEVEL = SERVER_BUILDER.defineInRange("antiAirMaxLevel", 5, 1, Integer.MAX_VALUE);
 		ANTI_AIR_IS_TREASURE = SERVER_BUILDER.define("antiAirIsTreasure", false);
 		ANTI_AIR_IS_TRADEABLE = SERVER_BUILDER.define("antiAirIsTradeable", true);
 		ANTI_AIR_IS_DISCOVERABLE = SERVER_BUILDER.define("antiAirIsDiscoverable", true);

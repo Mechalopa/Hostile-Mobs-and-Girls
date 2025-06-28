@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "hmag:zombie_girl",
+    "hmag:husk_girl",
+    "hmag:drowned_girl",
+    "hmag:jiangshi",
+    "hmag:giant_mummy"
+  ]
+}

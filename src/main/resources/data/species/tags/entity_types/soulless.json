@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "hmag:ghost",
+    "hmag:wither_ghost",
+    "hmag:banshee",
+    "hmag:slime_girl",
+    "hmag:magical_slime",
+    "hmag:dyssomnia"
+  ]
+}

@@ -578,7 +578,7 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 		{
 			if (this.parent.getTarget() != null && this.parent.getTarget().isAlive() && this.parent.getAttackPhase().isRoarAttack())
 			{
-				return this.parent.distanceToSqr(this.parent.getTarget()) < 4096D;
+				return this.parent.distanceToSqr(this.parent.getTarget()) < 4096.0D;
 			}
 			else
 			{

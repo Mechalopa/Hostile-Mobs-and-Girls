@@ -3,11 +3,47 @@
   "values": [
     "#forge:crops/carrot",
     {
+      "id": "#forge:vegetables/carrot",
+      "required": false
+    },
+    {
+      "id": "#c:crops/carrot",
+      "required": false
+    },
+    {
+      "id": "#c:vegetables/carrot",
+      "required": false
+    },
+    {
+      "id": "#forge:crops/parsnip",
+      "required": false
+    },
+    {
       "id": "#forge:crops/spinach",
       "required": false
     },
     {
       "id": "#forge:crops/turnip",
+      "required": false
+    },
+    {
+      "id": "#forge:crops/white_turnip",
+      "required": false
+    },
+    {
+      "id": "#forge:crops/radish",
+      "required": false
+    },
+    {
+      "id": "#forge:crops/rutabaga",
+      "required": false
+    },
+    {
+      "id": "#forge:crops/swede",
+      "required": false
+    },
+    {
+      "id": "#forge:vegetables/parsnip",
       "required": false
     },
     {
@@ -19,6 +55,26 @@
       "required": false
     },
     {
+      "id": "#forge:vegetables/white_turnip",
+      "required": false
+    },
+    {
+      "id": "#forge:vegetables/radish",
+      "required": false
+    },
+    {
+      "id": "#forge:vegetables/rutabaga",
+      "required": false
+    },
+    {
+      "id": "#forge:vegetables/swede",
+      "required": false
+    },
+    {
+      "id": "#c:crops/parsnip",
+      "required": false
+    },
+    {
       "id": "#c:crops/spinach",
       "required": false
     },
@@ -27,11 +83,47 @@
       "required": false
     },
     {
+      "id": "#c:crops/radish",
+      "required": false
+    },
+    {
+      "id": "#c:crops/white_turnip",
+      "required": false
+    },
+    {
+      "id": "#c:crops/rutabaga",
+      "required": false
+    },
+    {
+      "id": "#c:crops/swede",
+      "required": false
+    },
+    {
+      "id": "#c:vegetables/parsnip",
+      "required": false
+    },
+    {
       "id": "#c:vegetables/spinach",
       "required": false
     },
     {
       "id": "#c:vegetables/turnip",
+      "required": false
+    },
+    {
+      "id": "#c:vegetables/white_turnip",
+      "required": false
+    },
+    {
+      "id": "#c:vegetables/radish",
+      "required": false
+    },
+    {
+      "id": "#c:vegetables/rutabaga",
+      "required": false
+    },
+    {
+      "id": "#c:vegetables/swede",
       "required": false
     },
     {

@@ -62,9 +62,9 @@ public class ModUtils
 
 	public static void burnInDay(@Nonnull LivingEntity livingEntity, RandomSource random, Boolean isSunBurnTick, Boolean shouldBurn, int seconds)
 	{
-		if (livingEntity != null && livingEntity.level() != null && !livingEntity.level().isClientSide && livingEntity.isAlive())
+		if (livingEntity != null && livingEntity.level() != null && !livingEntity.level().isClientSide() && livingEntity.isAlive())
 		{
-			boolean flag = isSunBurnTick && shouldBurn && !livingEntity.isInWaterRainOrBubble();
+			boolean flag = isSunBurnTick && shouldBurn;
 
 			if (flag)
 			{
