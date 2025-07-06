@@ -1,0 +1,38 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mechanical_botany"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "mechanical_botany:compost"
+    }
+  ],
+  "type": "mechanical_botany:composting",
+  "ingredients": [
+    [
+      {
+        "item": "hmag:cureberry"
+      },
+      {
+        "item": "hmag:randomberry"
+      },
+      {
+        "item": "hmag:exp_berry"
+      }
+    ]
+  ],
+  "processingTime": 50,
+  "results": [
+    {
+      "count": 1,
+      "item": "mechanical_botany:compost"
+    },
+    {
+      "chance": 0.3,
+      "count": 1,
+      "item": "mechanical_botany:compost"
+    }
+  ]
+}
