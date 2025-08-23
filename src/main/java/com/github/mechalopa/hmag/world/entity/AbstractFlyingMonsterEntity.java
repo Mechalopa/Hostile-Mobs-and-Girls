@@ -235,7 +235,7 @@ public abstract class AbstractFlyingMonsterEntity extends Monster
 							attacker.moveControl.setWantedPosition(vec3.x, vec3.y - 0.75D, vec3.z, this.moveSpeed);
 						}
 					}
-					else if (attacker.getRandom().nextInt(16) == 0)
+					else if (attacker.getRandom().nextInt(this.adjustedTickDelay(16)) == 0)
 					{
 						attacker.setAttackPhase(0);
 					}
