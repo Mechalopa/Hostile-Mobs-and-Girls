@@ -478,7 +478,7 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 		@Override
 		public boolean canUse()
 		{
-			if (!this.parent.isRetreating() && this.parent.getTarget() != null && this.parent.getTarget() instanceof Player && this.parent.getAttackPhase() == DyssomniaEntity.AttackPhase.WAIT && (this.parent.getRandom().nextInt(6) == 0 || this.parent.isOnFire()) && this.parent.distanceToSqr(this.parent.getTarget()) < 16.0D * 16.0D)
+			if (!this.parent.isRetreating() && this.parent.getTarget() != null && this.parent.getTarget().isAlive() && this.parent.getTarget() instanceof Player && this.parent.getAttackPhase() == DyssomniaEntity.AttackPhase.WAIT && (this.parent.getRandom().nextInt(this.adjustedTickDelay(6)) == 0 || this.parent.isOnFire()) && this.parent.distanceToSqr(this.parent.getTarget()) < 16.0D * 16.0D)
 			{
 				return this.parent.level().getNearbyEntities(Phantom.class, this.phantomCountTargeting, this.parent, this.parent.getBoundingBox().inflate(32.0D)).size() < 1;
 			}
@@ -491,7 +491,7 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 		@Override
 		public boolean canContinueToUse()
 		{
-			return this.parent.getTarget() != null && this.parent.getTarget() instanceof Player && this.parent.getAttackPhase() == DyssomniaEntity.AttackPhase.SUMMON;
+			return this.parent.getTarget() != null && this.parent.getTarget().isAlive() && this.parent.getTarget() instanceof Player && this.parent.getAttackPhase() == DyssomniaEntity.AttackPhase.SUMMON;
 		}
 
 		@Override
@@ -509,33 +509,43 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 		}
 
 		@Override
+		public boolean requiresUpdateEveryTick()
+		{
+			return true;
+		}
+
+		@Override
 		public void tick()
 		{
 			LivingEntity target = this.parent.getTarget();
-			double d0 = 32.0D;
 
-			if ((target.distanceToSqr(this.parent) < d0 * d0 || this.attackTimer > 10) && this.parent.hasLineOfSight(target))
+			if (target != null)
 			{
-				Level level = this.parent.level();
-				++this.attackTimer;
+				double d0 = 32.0D;
 
-				if (this.attackTimer == 20)
+				if ((target.distanceToSqr(this.parent) < d0 * d0 || this.attackTimer > 10) && this.parent.hasLineOfSight(target))
 				{
-					this.parent.summonPhantom((ServerLevel)level, this.parent, target, this.parent.getRandom(), 1 + this.parent.getRandom().nextInt(this.parent.level().getDifficulty() == Difficulty.HARD ? 3 : 2));
-					this.parent.setAttackPhase(DyssomniaEntity.AttackPhase.WAIT);
-				}
-			}
-			else
-			{
-				--this.attackTimer;
+					Level level = this.parent.level();
+					++this.attackTimer;
 
-				if (this.attackTimer <= -40)
+					if (this.attackTimer == 20)
+					{
+						this.parent.summonPhantom((ServerLevel)level, this.parent, target, this.parent.getRandom(), 1 + this.parent.getRandom().nextInt(this.parent.level().getDifficulty() == Difficulty.HARD ? 3 : 2));
+						this.parent.setAttackPhase(DyssomniaEntity.AttackPhase.WAIT);
+					}
+				}
+				else
 				{
-					this.parent.setAttackPhase(DyssomniaEntity.AttackPhase.WAIT);
-				}
-			}
+					--this.attackTimer;
 
-			this.parent.setAttackingTime(this.attackTimer < 0 ? -1 : this.attackTimer);
+					if (this.attackTimer <= -40)
+					{
+						this.parent.setAttackPhase(DyssomniaEntity.AttackPhase.WAIT);
+					}
+				}
+
+				this.parent.setAttackingTime(this.attackTimer < 0 ? -1 : this.attackTimer);
+			}
 		}
 	}
 
@@ -552,13 +562,13 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 		@Override
 		public boolean canUse()
 		{
-			return this.parent.getTarget() != null && this.parent.getAttackPhase() == DyssomniaEntity.AttackPhase.WAIT && this.parent.distanceToSqr(this.parent.getTarget()) < 24.0D * 24.0D;
+			return this.parent.getTarget() != null && this.parent.getTarget().isAlive() && this.parent.getAttackPhase() == DyssomniaEntity.AttackPhase.WAIT && this.parent.distanceToSqr(this.parent.getTarget()) < 24.0D * 24.0D;
 		}
 
 		@Override
 		public boolean canContinueToUse()
 		{
-			return this.parent.getTarget() != null && this.parent.getAttackPhase() == DyssomniaEntity.AttackPhase.SHOOT;
+			return this.parent.getTarget() != null && this.parent.getTarget().isAlive() && this.parent.getAttackPhase() == DyssomniaEntity.AttackPhase.SHOOT;
 		}
 
 		@Override
@@ -576,51 +586,61 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 		}
 
 		@Override
+		public boolean requiresUpdateEveryTick()
+		{
+			return true;
+		}
+
+		@Override
 		public void tick()
 		{
 			LivingEntity target = this.parent.getTarget();
-			double d0 = 32.0D;
 
-			if ((target.distanceToSqr(this.parent) < d0 * d0 || this.attackTimer > 10) && this.parent.hasLineOfSight(target))
+			if (target != null)
 			{
-				Level level = this.parent.level();
-				++this.attackTimer;
+				double d0 = 32.0D;
 
-				if (this.attackTimer == 30)
+				if ((target.distanceToSqr(this.parent) < d0 * d0 || this.attackTimer > 10) && this.parent.hasLineOfSight(target))
 				{
-					double d1 = 1.75D;
-					double d2 = 1.5D;
-					Vec3 vec3 = this.parent.getViewVector(1.0F);
-					double d3 = target.getX() - (this.parent.getX() + vec3.x * d1);
-					double d4 = target.getY(0.5D) - (this.parent.getEyeY() - vec3.y * d2);
-					double d5 = target.getZ() - (this.parent.getZ() + vec3.z * d1);
+					Level level = this.parent.level();
+					++this.attackTimer;
 
-					if (!this.parent.isSilent())
+					if (this.attackTimer == 30)
 					{
-						level.levelEvent((Player)null, 1024, this.parent.blockPosition(), 0);
+						double d1 = 1.75D;
+						double d2 = 1.5D;
+						Vec3 vec3 = this.parent.getViewVector(1.0F);
+						double d3 = target.getX() - (this.parent.getX() + vec3.x * d1);
+						double d4 = target.getY(0.5D) - (this.parent.getEyeY() - vec3.y * d2);
+						double d5 = target.getZ() - (this.parent.getZ() + vec3.z * d1);
+
+						if (!this.parent.isSilent())
+						{
+							level.levelEvent((Player)null, 1024, this.parent.blockPosition(), 0);
+						}
+
+						double d6 = Math.sqrt(d3 * d3 + d5 * d5) * 0.02D;
+						MagicBulletEntity bullet = new MagicBulletEntity(level, this.parent, d3 + this.parent.getRandom().nextGaussian() * d6, d4, d5 + this.parent.getRandom().nextGaussian() * d6);
+						bullet.setPos(this.parent.getX() + vec3.x * d1, this.parent.getEyeY() - vec3.y * d2, this.parent.getZ() + vec3.z * d1);
+						bullet.setDamage(5.0F);
+						bullet.setEffectLevel((byte)1);
+						bullet.setVariant(MagicBulletEntity.Variant.DYSSOMNIA);
+						level.addFreshEntity(bullet);
+						this.parent.setAttackPhase(DyssomniaEntity.AttackPhase.WAIT);
 					}
-
-					double d6 = Math.sqrt(d3 * d3 + d5 * d5) * 0.02D;
-					MagicBulletEntity bullet = new MagicBulletEntity(level, this.parent, d3 + this.parent.getRandom().nextGaussian() * d6, d4, d5 + this.parent.getRandom().nextGaussian() * d6);
-					bullet.setPos(this.parent.getX() + vec3.x * d1, this.parent.getEyeY() - vec3.y * d2, this.parent.getZ() + vec3.z * d1);
-					bullet.setDamage(5.0F);
-					bullet.setEffectLevel((byte)1);
-					bullet.setVariant(MagicBulletEntity.Variant.DYSSOMNIA);
-					level.addFreshEntity(bullet);
-					this.parent.setAttackPhase(DyssomniaEntity.AttackPhase.WAIT);
 				}
-			}
-			else
-			{
-				--this.attackTimer;
-
-				if (this.attackTimer <= -60)
+				else
 				{
-					this.parent.setAttackPhase(DyssomniaEntity.AttackPhase.WAIT);
-				}
-			}
+					--this.attackTimer;
 
-			this.parent.setAttackingTime(this.attackTimer < 0 ? -1 : this.attackTimer);
+					if (this.attackTimer <= -60)
+					{
+						this.parent.setAttackPhase(DyssomniaEntity.AttackPhase.WAIT);
+					}
+				}
+
+				this.parent.setAttackingTime(this.attackTimer < 0 ? -1 : this.attackTimer);
+			}
 		}
 	}
 
@@ -636,6 +656,12 @@ public class DyssomniaEntity extends FlyingMob implements Enemy
 
 		@Override
 		public boolean canUse()
+		{
+			return true;
+		}
+
+		@Override
+		public boolean requiresUpdateEveryTick()
 		{
 			return true;
 		}

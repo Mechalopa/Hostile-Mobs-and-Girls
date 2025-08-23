@@ -41,7 +41,7 @@ public class SavagefangRenderer extends MobRenderer<SavagefangEntity, Savagefang
 		float f = 4.3F * Mth.sin(0.6F * ageInTicks);
 		poseStack.mulPose(Axis.YP.rotationDegrees(f));
 
-		if (entity.isLaunched())
+		if (entity.isWashedAshore())
 		{
 			poseStack.translate((double)0.1F, (double)0.1F, (double)-0.1F);
 			poseStack.mulPose(Axis.ZP.rotationDegrees(90.0F));

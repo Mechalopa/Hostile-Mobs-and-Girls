@@ -99,7 +99,7 @@ public class SavagefangEntity extends Monster
 		this.goalSelector.addGoal(2, new SavagefangEntity.LeapGoal(this));
 		this.goalSelector.addGoal(3, new SavagefangEntity.AttackGoal(this));
 		this.goalSelector.addGoal(4, new SavagefangEntity.SwimGoal(this, 1.0D, 20));
-		this.goalSelector.addGoal(5, new SavagefangEntity.FollowSchoolLeaderGoal(this));
+		this.goalSelector.addGoal(5, new SavagefangEntity.FollowFlockLeaderGoal(this));
 		this.targetSelector.addGoal(1, new HurtByTargetGoal(this).setAlertOthers());
 		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LivingEntity.class, 10, true, false, new SavagefangEntity.TargetPredicate(this)).setUnseenMemoryTicks(30));
 	}
@@ -162,7 +162,7 @@ public class SavagefangEntity extends Monster
 	{
 		if (this.level().isClientSide())
 		{
-			if (this.isLaunched())
+			if (this.isWashedAshore())
 			{
 				this.xRotAnimation = 0.0F;
 			}
@@ -185,7 +185,7 @@ public class SavagefangEntity extends Monster
 
 		if (this.level().isClientSide())
 		{
-			if (!this.isLaunched())
+			if (!this.isWashedAshore())
 			{
 				this.xRotAnimation = Mth.clamp(ModUtils.rotlerp(this.xRotAnimation, this.getXRot(), 90.0F, false), -180.0F, 180.0F);
 			}
@@ -206,7 +206,7 @@ public class SavagefangEntity extends Monster
 	{
 		if (!this.level().isClientSide())
 		{
-			if (this.getTarget() != null && this.getTarget().isAlive() && !this.isLaunched())
+			if (this.getTarget() != null && this.getTarget().isAlive() && !this.isWashedAshore())
 			{
 				if (!this.isAttacking())
 				{
@@ -233,23 +233,23 @@ public class SavagefangEntity extends Monster
 		{
 			if (this.onGround() && this.verticalCollision)
 			{
-				final float f = this.isLaunched() ? 0.2F : 0.4F;
-				this.setDeltaMovement(this.getDeltaMovement().add((this.getRandom().nextFloat() * 2.0F - 1.0F) * f, this.isLaunched() ? 0.4F : 0.6F, (this.getRandom().nextFloat() * 2.0F - 1.0F) * f));
+				final float f = this.isWashedAshore() ? 0.2F : 0.4F;
+				this.setDeltaMovement(this.getDeltaMovement().add((this.getRandom().nextFloat() * 2.0F - 1.0F) * f, this.isWashedAshore() ? 0.4F : 0.6F, (this.getRandom().nextFloat() * 2.0F - 1.0F) * f));
 				this.setOnGround(false);
 				this.hasImpulse = true;
 				this.playSound(this.getFlopSound(), this.getSoundVolume(), this.getVoicePitch());
 
 				if (!this.isNoAi() && (this.getRandom().nextInt(8) == 0 || this.getAirSupply() <= 100))
 				{
-					this.setLaunched(true);
+					this.setWashedAshore(true);
 				}
 			}
 		}
 		else
 		{
-			if (this.isLaunched())
+			if (this.isWashedAshore())
 			{
-				this.setLaunched(false);
+				this.setWashedAshore(false);
 			}
 		}
 
@@ -265,9 +265,9 @@ public class SavagefangEntity extends Monster
 		}
 		else if (super.hurt(source, amount))
 		{
-			if (!this.level().isClientSide() && !this.isNoAi() && !this.isInWater() && !this.isLaunched())
+			if (!this.level().isClientSide() && !this.isNoAi() && !this.isInWater() && !this.isWashedAshore())
 			{
-				this.setLaunched(true);
+				this.setWashedAshore(true);
 			}
 
 			return true;
@@ -353,12 +353,12 @@ public class SavagefangEntity extends Monster
 		return this.leapCooldown;
 	}
 
-	public boolean isLaunched()
+	public boolean isWashedAshore()
 	{
 		return (this.entityData.get(DATA_FLAGS_ID) & 1) != 0;
 	}
 
-	public void setLaunched(boolean flag)
+	public void setWashedAshore(boolean flag)
 	{
 		byte b0 = this.entityData.get(DATA_FLAGS_ID);
 		this.entityData.set(DATA_FLAGS_ID, flag ? (byte)(b0 | 1) : (byte)(b0 & -2));
@@ -379,14 +379,14 @@ public class SavagefangEntity extends Monster
 	public void readAdditionalSaveData(CompoundTag compound)
 	{
 		super.readAdditionalSaveData(compound);
-		this.setLaunched(compound.getBoolean("isLaunched"));
+		this.setWashedAshore(compound.getBoolean("isWashedAshore"));
 	}
 
 	@Override
 	public void addAdditionalSaveData(CompoundTag compound)
 	{
 		super.addAdditionalSaveData(compound);
-		compound.putBoolean("isLaunched", this.isLaunched());
+		compound.putBoolean("isWashedAshore", this.isWashedAshore());
 	}
 
 	@Override
@@ -622,7 +622,7 @@ public class SavagefangEntity extends Monster
 		@Override
 		public void tick()
 		{
-			if (!this.mob.isLaunched())
+			if (!this.mob.isWashedAshore())
 			{
 				Vec3 vec3 = this.mob.getDeltaMovement();
 
@@ -661,13 +661,13 @@ public class SavagefangEntity extends Monster
 		@Override
 		public boolean canUse()
 		{
-			return super.canUse() && !this.mob.isLaunched();
+			return super.canUse() && !this.mob.isWashedAshore();
 		}
 
 		@Override
 		public boolean canContinueToUse()
 		{
-			return super.canContinueToUse() && !this.mob.isLaunched();
+			return super.canContinueToUse() && !this.mob.isWashedAshore();
 		}
 
 		@Override
@@ -691,7 +691,7 @@ public class SavagefangEntity extends Monster
 		@Override
 		public boolean canUse()
 		{
-			if (this.mob.isVehicle() || this.mob.getLeapCooldown() > 0 || this.mob.isLaunched())
+			if (this.mob.isVehicle() || this.mob.getLeapCooldown() > 0 || this.mob.isWashedAshore())
 			{
 				return false;
 			}
@@ -715,7 +715,7 @@ public class SavagefangEntity extends Monster
 						}
 						else
 						{
-							return this.mob.getRandom().nextInt(4) == 0;
+							return this.mob.getRandom().nextInt(reducedTickDelay(4)) == 0;
 						}
 					}
 					else
@@ -741,7 +741,7 @@ public class SavagefangEntity extends Monster
 		@Override
 		public void start()
 		{
-			this.mob.setLeapCooldown(15 + this.mob.getRandom().nextInt(15));
+			this.mob.setLeapCooldown(reducedTickDelay(15 + this.mob.getRandom().nextInt(15)));
 			Vec3 vec3 = this.mob.getDeltaMovement();
 			Vec3 vec31 = new Vec3(this.target.getX() - this.mob.getX(), 0.0D, this.target.getZ() - this.mob.getZ());
 
@@ -788,13 +788,13 @@ public class SavagefangEntity extends Monster
 		}
 	}
 
-	private static class FollowSchoolLeaderGoal extends Goal
+	private static class FollowFlockLeaderGoal extends Goal
 	{
 		private final SavagefangEntity mob;
 		private int timeToRecalcPath;
 		private int nextStartTick;
 
-		public FollowSchoolLeaderGoal(SavagefangEntity mob)
+		public FollowFlockLeaderGoal(SavagefangEntity mob)
 		{
 			this.mob = mob;
 			this.nextStartTick = this.nextStartTick(mob);
@@ -802,7 +802,7 @@ public class SavagefangEntity extends Monster
 
 		protected int nextStartTick(SavagefangEntity mob)
 		{
-			return 200 + mob.getRandom().nextInt(200) % 20;
+			return reducedTickDelay(200 + mob.getRandom().nextInt(200) % 20);
 		}
 
 		@Override
@@ -863,7 +863,7 @@ public class SavagefangEntity extends Monster
 		{
 			if (--this.timeToRecalcPath <= 0)
 			{
-				this.timeToRecalcPath = 30;
+				this.timeToRecalcPath = this.adjustedTickDelay(10);
 				this.mob.pathToLeader();
 			}
 		}
@@ -881,7 +881,7 @@ public class SavagefangEntity extends Monster
 		@Override
 		public boolean test(@Nullable LivingEntity livingEntity)
 		{
-			if (this.parent.isLaunched() || livingEntity.getType().is(ModTags.EntityTypeTags.SAVAGEFANG_TARGET_BLACKLIST))
+			if (this.parent.isWashedAshore() || livingEntity.getType().is(ModTags.EntityTypeTags.SAVAGEFANG_TARGET_BLACKLIST))
 			{
 				return false;
 			}

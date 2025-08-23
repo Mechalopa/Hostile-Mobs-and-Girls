@@ -238,46 +238,56 @@ public class GhastlySeekerEntity extends FlyingMob implements Enemy
 		}
 
 		@Override
+		public boolean requiresUpdateEveryTick()
+		{
+			return true;
+		}
+
+		@Override
 		public void tick()
 		{
 			LivingEntity target = this.parent.getTarget();
-			double d0 = 24.0D;
 
-			if ((target.distanceToSqr(this.parent) < d0 * d0 || this.attackTimer > 10) && this.parent.hasLineOfSight(target))
+			if (target != null)
 			{
-				Level world = this.parent.level();
-				++this.attackTimer;
+				double d0 = 24.0D;
 
-				if (this.attackTimer == 10 && !this.parent.isSilent())
+				if ((target.distanceToSqr(this.parent) < d0 * d0 || this.attackTimer > 10) && this.parent.hasLineOfSight(target))
 				{
-					world.levelEvent((Player)null, 1015, this.parent.blockPosition(), 0);
-				}
+					Level world = this.parent.level();
+					++this.attackTimer;
 
-				if (this.attackTimer == 20)
-				{
-					double d1 = 4.0D;
-					Vec3 vec3 = this.parent.getViewVector(1.0F);
-					double d2 = target.getX() - (this.parent.getX() + vec3.x * d1);
-					double d3 = target.getY() + target.getEyeHeight() * 0.5D - this.parent.getY(0.5D) + 0.25D;
-					double d4 = target.getZ() - (this.parent.getZ() + vec3.z * d1);
-
-					if (!this.parent.isSilent())
+					if (this.attackTimer == 10 && !this.parent.isSilent())
 					{
-						world.levelEvent((Player)null, 1016, this.parent.blockPosition(), 0);
+						world.levelEvent((Player)null, 1015, this.parent.blockPosition(), 0);
 					}
 
-					LargeFireball largefireball = new LargeFireball(world, this.parent, d2, d3, d4, this.parent.getExplosionPower());
-					largefireball.setPos(this.parent.getX() + vec3.x * 0.5D, this.parent.getY(0.5D) + 0.25D, largefireball.getZ() + vec3.z * 0.5D);
-					world.addFreshEntity(largefireball);
-					this.attackTimer = -50;
-				}
-			}
-			else if (this.attackTimer > 0)
-			{
-				--this.attackTimer;
-			}
+					if (this.attackTimer == 20)
+					{
+						double d1 = 4.0D;
+						Vec3 vec3 = this.parent.getViewVector(1.0F);
+						double d2 = target.getX() - (this.parent.getX() + vec3.x * d1);
+						double d3 = target.getY() + target.getEyeHeight() * 0.5D - this.parent.getY(0.5D) + 0.25D;
+						double d4 = target.getZ() - (this.parent.getZ() + vec3.z * d1);
 
-			this.parent.setAttackingTime(this.attackTimer < 0 ? -1 : this.attackTimer);
+						if (!this.parent.isSilent())
+						{
+							world.levelEvent((Player)null, 1016, this.parent.blockPosition(), 0);
+						}
+
+						LargeFireball largefireball = new LargeFireball(world, this.parent, d2, d3, d4, this.parent.getExplosionPower());
+						largefireball.setPos(this.parent.getX() + vec3.x * 0.5D, this.parent.getY(0.5D) + 0.25D, largefireball.getZ() + vec3.z * 0.5D);
+						world.addFreshEntity(largefireball);
+						this.attackTimer = -50;
+					}
+				}
+				else if (this.attackTimer > 0)
+				{
+					--this.attackTimer;
+				}
+
+				this.parent.setAttackingTime(this.attackTimer < 0 ? -1 : this.attackTimer);
+			}
 		}
 	}
 
@@ -293,6 +303,12 @@ public class GhastlySeekerEntity extends FlyingMob implements Enemy
 
 		@Override
 		public boolean canUse()
+		{
+			return true;
+		}
+
+		@Override
+		public boolean requiresUpdateEveryTick()
 		{
 			return true;
 		}

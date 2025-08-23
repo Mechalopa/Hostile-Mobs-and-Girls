@@ -164,7 +164,7 @@ public abstract class AbstractFlyingMonsterEntity extends Monster
 		@Override
 		public boolean canUse()
 		{
-			if (AbstractFlyingMonsterEntity.this.getTarget() != null && !AbstractFlyingMonsterEntity.this.getMoveControl().hasWanted() && AbstractFlyingMonsterEntity.this.getRandom().nextInt(this.chance) == 0)
+			if (AbstractFlyingMonsterEntity.this.getTarget() != null && AbstractFlyingMonsterEntity.this.getTarget().isAlive() && !AbstractFlyingMonsterEntity.this.getMoveControl().hasWanted() && AbstractFlyingMonsterEntity.this.getRandom().nextInt(reducedTickDelay(this.chance)) == 0)
 			{
 				return AbstractFlyingMonsterEntity.this.distanceToSqr(AbstractFlyingMonsterEntity.this.getTarget()) > this.attackRadius;
 			}
@@ -200,37 +200,50 @@ public abstract class AbstractFlyingMonsterEntity extends Monster
 		}
 
 		@Override
+		public boolean requiresUpdateEveryTick()
+		{
+			return true;
+		}
+
+		@Override
 		public void tick()
 		{
 			AbstractFlyingMonsterEntity attacker = AbstractFlyingMonsterEntity.this;
-			LivingEntity livingentity = attacker.getTarget();
+			LivingEntity target = attacker.getTarget();
 
-			this.attackTime = Math.max(this.attackTime - 1, 0);
-			attacker.getLookControl().setLookAt(livingentity, 30.0F, 30.0F);
-			double d0 = attacker.distanceToSqr(livingentity.getX(), livingentity.getY(), livingentity.getZ());
-			double d1 = this.getAttackReachSqr(livingentity);
-
-			if (d0 <= d1 && this.attackTime <= 0)
+			if (target != null)
 			{
-				this.attackTime = 20;
-				attacker.swing(InteractionHand.MAIN_HAND);
-				attacker.doHurtTarget(livingentity);
-				attacker.setAttackPhase(1);
+				this.attackTime = Math.max(this.attackTime - 1, 0);
+				attacker.getLookControl().setLookAt(target, 30.0F, 30.0F);
+				double d0 = attacker.distanceToSqr(target.getX(), target.getY(), target.getZ());
+				double d1 = this.getAttackReachSqr(target);
+
+				if (d0 <= d1 && this.attackTime <= 0)
+				{
+					this.attackTime = 20;
+					attacker.swing(InteractionHand.MAIN_HAND);
+					attacker.doHurtTarget(target);
+					attacker.setAttackPhase(1);
+				}
+				else
+				{
+					if (attacker.hasLineOfSight(target))
+					{
+						if (d0 < this.attackRadius + 15.0F)
+						{
+							Vec3 vec3 = target.getEyePosition();
+							attacker.moveControl.setWantedPosition(vec3.x, vec3.y - 0.75D, vec3.z, this.moveSpeed);
+						}
+					}
+					else if (attacker.getRandom().nextInt(16) == 0)
+					{
+						attacker.setAttackPhase(0);
+					}
+				}
 			}
 			else
 			{
-				if (attacker.hasLineOfSight(livingentity))
-				{
-					if (d0 < this.attackRadius + 15.0F)
-					{
-						Vec3 vec3 = livingentity.getEyePosition();
-						attacker.moveControl.setWantedPosition(vec3.x, vec3.y - 0.75D, vec3.z, this.moveSpeed);
-					}
-				}
-				else if (attacker.getRandom().nextInt(16) == 0)
-				{
-					attacker.setAttackPhase(0);
-				}
+				attacker.setAttackPhase(0);
 			}
 		}
 
@@ -314,7 +327,7 @@ public abstract class AbstractFlyingMonsterEntity extends Monster
 		@Override
 		public boolean canUse()
 		{
-			return !AbstractFlyingMonsterEntity.this.getMoveControl().hasWanted() && AbstractFlyingMonsterEntity.this.getRandom().nextInt(this.chance) == 0;
+			return !AbstractFlyingMonsterEntity.this.getMoveControl().hasWanted() && AbstractFlyingMonsterEntity.this.getRandom().nextInt(reducedTickDelay(this.chance)) == 0;
 		}
 
 		@Override

@@ -600,6 +600,12 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 		}
 
 		@Override
+		public boolean requiresUpdateEveryTick()
+		{
+			return true;
+		}
+
+		@Override
 		public void tick()
 		{
 			LivingEntity target = this.parent.getTarget();
@@ -711,6 +717,12 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 		}
 
 		@Override
+		public boolean requiresUpdateEveryTick()
+		{
+			return true;
+		}
+
+		@Override
 		public void tick()
 		{
 			LivingEntity target = this.parent.getTarget();
@@ -775,6 +787,12 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 		public boolean canContinueToUse()
 		{
 			return this.canUse();
+		}
+
+		@Override
+		public boolean requiresUpdateEveryTick()
+		{
+			return true;
 		}
 
 		@Override
