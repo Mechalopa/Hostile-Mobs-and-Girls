@@ -249,6 +249,10 @@
     {
       "id": "occultism:wild_horde_creeper",
       "required": false
+    },
+    {
+      "id": "aquatic_creepers:aquatic_creeper",
+      "required": false
     }
   ]
 }

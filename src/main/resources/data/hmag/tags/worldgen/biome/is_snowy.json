@@ -28,6 +28,10 @@
     {
       "id": "bleak_and_barren:frozen_forest",
       "required": false
+    },
+    {
+      "id": "pyromancer:permafrost_caverns",
+      "required": false
     }
   ]
 }

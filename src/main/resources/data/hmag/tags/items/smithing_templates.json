@@ -299,6 +299,10 @@
     {
       "id": "avaritia:upgrade_smithing_template",
       "required": false
+    },
+    {
+      "id": "hibernalherbs:inscription_smithing_template",
+      "required": false
     }
   ]
 }

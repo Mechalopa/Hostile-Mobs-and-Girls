@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "valhelsia_structures:brazier"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "valhelsia_structures:soul_brazier"
+    }
+  ],
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "valhelsia_structures:brazier"
+    },
+    {
+      "item": "hmag:soul_powder"
+    },
+    {
+      "item": "hmag:soul_powder"
+    },
+    {
+      "item": "hmag:soul_powder"
+    },
+    {
+      "item": "hmag:soul_powder"
+    }
+  ],
+  "result": {
+    "item": "valhelsia_structures:soul_brazier"
+  }
+}

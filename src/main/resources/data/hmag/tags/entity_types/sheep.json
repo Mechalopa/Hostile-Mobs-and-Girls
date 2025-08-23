@@ -91,6 +91,10 @@
       "required": false
     },
     {
+      "id": "meadow:wooly_sheep",
+      "required": false
+    },
+    {
       "id": "aether:sheepuff",
       "required": false
     },

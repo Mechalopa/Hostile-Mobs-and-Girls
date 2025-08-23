@@ -10,6 +10,10 @@
     {
       "id": "#lootr:containers",
       "required": false
+    },
+    {
+      "id": "#deadlyworld:spawners",
+      "required": false
     }
   ]
 }

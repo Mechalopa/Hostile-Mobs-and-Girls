@@ -36,6 +36,10 @@
     {
       "id": "climaterivers:cold_river",
       "required": false
+    },
+    {
+      "id": "pyromancer:permafrost_caverns",
+      "required": false
     }
   ]
 }
