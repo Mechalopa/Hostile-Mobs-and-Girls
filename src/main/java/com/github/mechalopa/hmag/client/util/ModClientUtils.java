@@ -53,7 +53,7 @@ public class ModClientUtils
 
 	public static ResourceLocation getHMaGEntityTexture(String name)
 	{
-		return ModUtils.getHMaGRL("textures/entity/" + name + ".png");
+		return ModUtils.createHMaGRL("textures/entity/" + name + ".png");
 	}
 
 	public static Vec3 getPosition(@Nonnull LivingEntity entityLiving, double d0, float f)
@@ -64,7 +64,7 @@ public class ModClientUtils
 		return new Vec3(d1, d2, d3);
 	}
 
-	public static boolean shouldRenderBeamAttackMob(@Nonnull LivingEntity livingEntity, @Nonnull Frustum camera, double camX, double camY, double camZ, @Nonnull IBeamAttackMob beamAttackMob)
+	public static boolean shouldRenderBeamAttackMob(@Nonnull LivingEntity livingEntity, @Nonnull Frustum frustum, double camX, double camY, double camZ, @Nonnull IBeamAttackMob beamAttackMob)
 	{
 		if (beamAttackMob.hasActiveAttackTarget())
 		{
@@ -74,7 +74,7 @@ public class ModClientUtils
 			{
 				Vec3 vec3 = ModClientUtils.getPosition(target, target.getBbHeight() * 0.5D, 1.0F);
 				Vec3 vec31 = ModClientUtils.getPosition(livingEntity, livingEntity.getEyeHeight(), 1.0F);
-				return camera.isVisible(new AABB(vec31.x, vec31.y, vec31.z, vec3.x, vec3.y, vec3.z));
+				return frustum.isVisible(new AABB(vec31.x, vec31.y, vec31.z, vec3.x, vec3.y, vec3.z));
 			}
 		}
 
@@ -94,84 +94,84 @@ public class ModClientUtils
 		return (int)((1.0D - d2 * d0 * d1) * 11.0D);
 	}
 
-	public static PartDefinition addC(PartDefinition partdefinition, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs, float extend)
+	public static PartDefinition addC(PartDefinition part, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs, float extend)
 	{
-		return addC(partdefinition, new CubeDeformation(extend), name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, 0.0F, 0.0F, 0.0F, false);
+		return addC(part, new CubeDeformation(extend), name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, 0.0F, 0.0F, 0.0F, false);
 	}
 
-	public static PartDefinition addC(PartDefinition partdefinition, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs, boolean isMirror, float extend)
+	public static PartDefinition addC(PartDefinition part, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs, boolean isMirror, float extend)
 	{
-		return addC(partdefinition, new CubeDeformation(extend), name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, 0.0F, 0.0F, 0.0F, isMirror);
+		return addC(part, new CubeDeformation(extend), name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, 0.0F, 0.0F, 0.0F, isMirror);
 	}
 
-	public static PartDefinition addC(PartDefinition partdefinition, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs)
+	public static PartDefinition addC(PartDefinition part, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs)
 	{
-		return addC(partdefinition, CubeDeformation.NONE, name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, 0.0F, 0.0F, 0.0F, false);
+		return addC(part, CubeDeformation.NONE, name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, 0.0F, 0.0F, 0.0F, false);
 	}
 
-	public static PartDefinition addC(PartDefinition partdefinition, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs, boolean isMirror)
+	public static PartDefinition addC(PartDefinition part, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs, boolean isMirror)
 	{
-		return addC(partdefinition, CubeDeformation.NONE, name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, 0.0F, 0.0F, 0.0F, isMirror);
+		return addC(part, CubeDeformation.NONE, name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, 0.0F, 0.0F, 0.0F, isMirror);
 	}
 
-	public static PartDefinition addC(PartDefinition partdefinition, CubeDeformation cubeDeformation, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs, float extend)
+	public static PartDefinition addC(PartDefinition part, CubeDeformation cube, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs, float extend)
 	{
-		return addC(partdefinition, cubeDeformation.extend(extend), name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, 0.0F, 0.0F, 0.0F, false);
+		return addC(part, cube.extend(extend), name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, 0.0F, 0.0F, 0.0F, false);
 	}
 
-	public static PartDefinition addC(PartDefinition partdefinition, CubeDeformation cubeDeformation, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs, boolean isMirror, float extend)
+	public static PartDefinition addC(PartDefinition part, CubeDeformation cube, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs, boolean isMirror, float extend)
 	{
-		return addC(partdefinition, cubeDeformation.extend(extend), name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, 0.0F, 0.0F, 0.0F, isMirror);
+		return addC(part, cube.extend(extend), name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, 0.0F, 0.0F, 0.0F, isMirror);
 	}
 
-	public static PartDefinition addC(PartDefinition partdefinition, CubeDeformation cubeDeformation, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs)
+	public static PartDefinition addC(PartDefinition part, CubeDeformation cube, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs)
 	{
-		return addC(partdefinition, cubeDeformation, name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, 0.0F, 0.0F, 0.0F, false);
+		return addC(part, cube, name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, 0.0F, 0.0F, 0.0F, false);
 	}
 
-	public static PartDefinition addC(PartDefinition partdefinition, CubeDeformation cubeDeformation, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs, boolean isMirror)
+	public static PartDefinition addC(PartDefinition part, CubeDeformation cube, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs, boolean isMirror)
 	{
-		return addC(partdefinition, cubeDeformation, name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, 0.0F, 0.0F, 0.0F, isMirror);
+		return addC(part, cube, name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, 0.0F, 0.0F, 0.0F, isMirror);
 	}
 
-	public static PartDefinition addC(PartDefinition partdefinition, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs, float xRot, float yRot, float zRot, float extend)
+	public static PartDefinition addC(PartDefinition part, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs, float xRot, float yRot, float zRot, float extend)
 	{
-		return addC(partdefinition, new CubeDeformation(extend), name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, xRot, yRot, zRot, false);
+		return addC(part, new CubeDeformation(extend), name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, xRot, yRot, zRot, false);
 	}
 
-	public static PartDefinition addC(PartDefinition partdefinition, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs, float xRot, float yRot, float zRot, boolean isMirror, float extend)
+	public static PartDefinition addC(PartDefinition part, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs, float xRot, float yRot, float zRot, boolean isMirror, float extend)
 	{
-		return addC(partdefinition, new CubeDeformation(extend), name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, xRot, yRot, zRot, isMirror);
+		return addC(part, new CubeDeformation(extend), name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, xRot, yRot, zRot, isMirror);
 	}
 
-	public static PartDefinition addC(PartDefinition partdefinition, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs, float xRot, float yRot, float zRot)
+	public static PartDefinition addC(PartDefinition part, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs, float xRot, float yRot, float zRot)
 	{
-		return addC(partdefinition, CubeDeformation.NONE, name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, xRot, yRot, zRot, false);
+		return addC(part, CubeDeformation.NONE, name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, xRot, yRot, zRot, false);
 	}
 
-	public static PartDefinition addC(PartDefinition partdefinition, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs, float xRot, float yRot, float zRot, boolean isMirror)
+	public static PartDefinition addC(PartDefinition part, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs, float xRot, float yRot, float zRot, boolean isMirror)
 	{
-		return addC(partdefinition, CubeDeformation.NONE, name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, xRot, yRot, zRot, isMirror);
+		return addC(part, CubeDeformation.NONE, name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, xRot, yRot, zRot, isMirror);
 	}
 
-	public static PartDefinition addC(PartDefinition partdefinition, CubeDeformation cubeDeformation, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs, float xRot, float yRot, float zRot, float extend)
+	public static PartDefinition addC(PartDefinition part, CubeDeformation cube, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs, float xRot, float yRot, float zRot, float extend)
 	{
-		return addC(partdefinition, cubeDeformation.extend(extend), name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, xRot, yRot, zRot, false);
+		return addC(part, cube.extend(extend), name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, xRot, yRot, zRot, false);
 	}
 
-	public static PartDefinition addC(PartDefinition partdefinition, CubeDeformation cubeDeformation, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs, float xRot, float yRot, float zRot, boolean isMirror, float extend)
+	public static PartDefinition addC(PartDefinition part, CubeDeformation cube, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs, float xRot, float yRot, float zRot, boolean isMirror, float extend)
 	{
-		return addC(partdefinition, cubeDeformation.extend(extend), name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, xRot, yRot, zRot, isMirror);
+		return addC(part, cube.extend(extend), name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, xRot, yRot, zRot, isMirror);
 	}
 
-	public static PartDefinition addC(PartDefinition partdefinition, CubeDeformation cubeDeformation, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs, float xRot, float yRot, float zRot)
+	public static PartDefinition addC(PartDefinition part, CubeDeformation cube, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs, float xRot, float yRot, float zRot)
 	{
-		return addC(partdefinition, cubeDeformation, name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, xRot, yRot, zRot, false);
+		return addC(part, cube, name, xTexOffs, yTexOffs, xp, yp, zp, xSize, ySize, zSize, xOffs, yOffs, zOffs, xRot, yRot, zRot, false);
 	}
 
-	public static PartDefinition addC(PartDefinition partdefinition, CubeDeformation cubeDeformation, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs, float xRot, float yRot, float zRot, boolean isMirror)
+	public static PartDefinition addC(PartDefinition part, CubeDeformation cube, String name, int xTexOffs, int yTexOffs, float xp, float yp, float zp, float xSize, float ySize, float zSize, float xOffs, float yOffs, float zOffs, float xRot, float yRot, float zRot, boolean isMirror)
 	{
-		return partdefinition.addOrReplaceChild(name, CubeListBuilder.create().texOffs(xTexOffs, yTexOffs).mirror(isMirror).addBox(xp, yp, zp, xSize, ySize, zSize, cubeDeformation), PartPose.offsetAndRotation(xOffs, yOffs, zOffs, xRot, yRot, zRot));
+		return part.addOrReplaceChild(name, CubeListBuilder.create().texOffs(xTexOffs, yTexOffs).mirror(isMirror).addBox(xp, yp, zp, xSize, ySize, zSize, cube), PartPose.offsetAndRotation(xOffs, yOffs, zOffs, xRot, yRot, zRot));
 	}
 
 	public static void scaleModelPart(ModelPart part, float scale)

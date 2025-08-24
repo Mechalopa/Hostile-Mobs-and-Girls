@@ -86,7 +86,7 @@ public class ModEventBusSubscriber
 			registerBrewingRecipes();
 		});
 
-		Registry.register(BuiltInRegistries.LOOT_CONDITION_TYPE, ModUtils.getHMaGRL("mod_loaded"), ModLoadedCondition.TYPE);
+		Registry.register(BuiltInRegistries.LOOT_CONDITION_TYPE, ModUtils.createHMaGRL("mod_loaded"), ModLoadedCondition.TYPE);
 	}
 
 //	@SubscribeEvent

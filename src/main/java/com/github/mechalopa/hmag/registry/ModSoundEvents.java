@@ -61,6 +61,6 @@ public class ModSoundEvents
 
 	private static RegistryObject<SoundEvent> createSoundEvent(String name)
 	{
-		return REGISTRY.register(name, () -> SoundEvent.createVariableRangeEvent(ModUtils.getHMaGRL(name)));
+		return REGISTRY.register(name, () -> SoundEvent.createVariableRangeEvent(ModUtils.createHMaGRL(name)));
 	}
 }

@@ -139,42 +139,42 @@ public class ModTags
 
 	private static TagKey<Block> createBlockTag(String name)
 	{
-		return TagKey.create(Registries.BLOCK, ModUtils.getHMaGRL(name));
+		return TagKey.create(Registries.BLOCK, ModUtils.createHMaGRL(name));
 	}
 
 	private static TagKey<Item> createItemTag(String name)
 	{
-		return TagKey.create(Registries.ITEM, ModUtils.getHMaGRL(name));
+		return TagKey.create(Registries.ITEM, ModUtils.createHMaGRL(name));
 	}
 
 	private static TagKey<EntityType<?>> createEntityTypeTag(String name)
 	{
-		return TagKey.create(Registries.ENTITY_TYPE, ModUtils.getHMaGRL(name));
+		return TagKey.create(Registries.ENTITY_TYPE, ModUtils.createHMaGRL(name));
 	}
 
 	private static TagKey<DamageType> createDamageTypeTag(String name)
 	{
-		return TagKey.create(Registries.DAMAGE_TYPE, ModUtils.getHMaGRL(name));
+		return TagKey.create(Registries.DAMAGE_TYPE, ModUtils.createHMaGRL(name));
 	}
 
 	private static TagKey<Enchantment> createEnchantmentTag(String name)
 	{
-		return TagKey.create(Registries.ENCHANTMENT, ModUtils.getHMaGRL(name));
+		return TagKey.create(Registries.ENCHANTMENT, ModUtils.createHMaGRL(name));
 	}
 
 	private static TagKey<MobEffect> createMobEffectTag(String name)
 	{
-		return TagKey.create(Registries.MOB_EFFECT, ModUtils.getHMaGRL(name));
+		return TagKey.create(Registries.MOB_EFFECT, ModUtils.createHMaGRL(name));
 	}
 
 	private static TagKey<Biome> createBiomeTag(String name)
 	{
-		return TagKey.create(Registries.BIOME, ModUtils.getHMaGRL(name));
+		return TagKey.create(Registries.BIOME, ModUtils.createHMaGRL(name));
 	}
 
 	private static TagKey<Structure> createStructureTag(String name)
 	{
-		return TagKey.create(Registries.STRUCTURE, ModUtils.getHMaGRL(name));
+		return TagKey.create(Registries.STRUCTURE, ModUtils.createHMaGRL(name));
 	}
 
 	public static boolean checkTagContains(Enchantment enchantment, TagKey<Enchantment> tag)

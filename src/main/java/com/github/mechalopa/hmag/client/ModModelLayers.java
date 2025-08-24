@@ -87,7 +87,7 @@ public class ModModelLayers
 
 	private static ModelLayerLocation create(String name, String layername)
 	{
-		return new ModelLayerLocation(ModUtils.getHMaGRL(name), layername);
+		return new ModelLayerLocation(ModUtils.createHMaGRL(name), layername);
 	}
 
 	private static ModelLayerLocation create(String name)

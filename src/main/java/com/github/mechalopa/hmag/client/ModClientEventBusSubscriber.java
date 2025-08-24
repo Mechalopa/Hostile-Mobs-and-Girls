@@ -128,22 +128,22 @@ public class ModClientEventBusSubscriber
 	public static void setupClient(final FMLClientSetupEvent event)
 	{
 		event.enqueueWork(() -> {
-			ItemProperties.register(ModItems.INSOMNIA_FRUIT.get(), ModUtils.getRL("level"), (stack, world, livingentity, seed) -> {
+			ItemProperties.register(ModItems.INSOMNIA_FRUIT.get(), ModUtils.createRL("level"), (stack, world, livingentity, seed) -> {
 				final int i = ILevelItem.getItemLevel(stack);
 				return i >= 5 ? 2.0F : (i > 0 ? 1.0F : 0.0F);
 			});
-			ItemProperties.register(ModItems.INSOMNIA_SWORD.get(), ModUtils.getRL("level"), (stack, world, livingentity, seed) -> {
+			ItemProperties.register(ModItems.INSOMNIA_SWORD.get(), ModUtils.createRL("level"), (stack, world, livingentity, seed) -> {
 				final int i = ILevelItem.getItemLevel(stack);
 				return i >= 5 ? 2.0F : (i > 0 ? 1.0F : 0.0F);
 			});
-			ItemProperties.register(ModItems.NEMESIS_BLADE.get(), ModUtils.getRL("level"), (stack, world, livingentity, seed) -> {
+			ItemProperties.register(ModItems.NEMESIS_BLADE.get(), ModUtils.createRL("level"), (stack, world, livingentity, seed) -> {
 				final int i = ILevelItem.getItemLevel(stack);
 				return i >= 6 ? 4.0F : (i >= 5 ? 3.0F : (i >= 3 ? 2.0F : (i > 0 ? 1.0F : 0.0F)));
 			});
-			ItemProperties.register(ModItems.CRIMSON_BOW.get(), ModUtils.getRL("pull"), ModClientUtils.PROPERTY_BOW_PULL);
-			ItemProperties.register(ModItems.CRIMSON_BOW.get(), ModUtils.getRL("pulling"), ModClientUtils.PROPERTY_BOW_PULLING);
-			ItemProperties.register(ModItems.ANCIENT_SHIELD.get(), ModUtils.getRL("blocking"), ModClientUtils.PROPERTY_SHIELD_BLOCKING);
-			ItemProperties.register(ModItems.FORTRESS_SHIELD.get(), ModUtils.getRL("blocking"), ModClientUtils.PROPERTY_SHIELD_BLOCKING);
+			ItemProperties.register(ModItems.CRIMSON_BOW.get(), ModUtils.createRL("pull"), ModClientUtils.PROPERTY_BOW_PULL);
+			ItemProperties.register(ModItems.CRIMSON_BOW.get(), ModUtils.createRL("pulling"), ModClientUtils.PROPERTY_BOW_PULLING);
+			ItemProperties.register(ModItems.ANCIENT_SHIELD.get(), ModUtils.createRL("blocking"), ModClientUtils.PROPERTY_SHIELD_BLOCKING);
+			ItemProperties.register(ModItems.FORTRESS_SHIELD.get(), ModUtils.createRL("blocking"), ModClientUtils.PROPERTY_SHIELD_BLOCKING);
 		});
 
 		MinecraftForge.EVENT_BUS.register(new ModClientEvents());

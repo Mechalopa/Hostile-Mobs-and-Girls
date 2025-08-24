@@ -121,13 +121,13 @@ public class EnchantmentUpgradeManager extends SimpleJsonResourceReloadListener
 
 	private static Supplier<Item> getItemSupplier(String name)
 	{
-		return ForgeRegistries.ITEMS.getHolder(ModUtils.getRL(name)).orElseThrow();
+		return ForgeRegistries.ITEMS.getHolder(ModUtils.createRL(name)).orElseThrow();
 	}
 
 	@Nullable
 	private static Enchantment getEnchantment(String name)
 	{
-		Optional<Holder<Enchantment>> optional = ForgeRegistries.ENCHANTMENTS.getHolder(ModUtils.getRL(name));
+		Optional<Holder<Enchantment>> optional = ForgeRegistries.ENCHANTMENTS.getHolder(ModUtils.createRL(name));
 		return optional.isPresent() ? optional.orElseThrow().get() : null;
 	}
 

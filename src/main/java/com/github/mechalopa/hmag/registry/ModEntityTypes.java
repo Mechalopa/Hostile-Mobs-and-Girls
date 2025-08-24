@@ -69,158 +69,158 @@ public class ModEntityTypes
 
 	public static final RegistryObject<EntityType<ZombieGirlEntity>> ZOMBIE_GIRL = REGISTRY.register("zombie_girl", () -> EntityType.Builder
 			.of(ZombieGirlEntity::new, MobCategory.MONSTER).sized(0.6F, 1.95F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("zombie_girl").toString()));
+			.build(ModUtils.createHMaGRL("zombie_girl").toString()));
 	public static final RegistryObject<EntityType<HuskGirlEntity>> HUSK_GIRL = REGISTRY.register("husk_girl", () -> EntityType.Builder
 			.of(HuskGirlEntity::new, MobCategory.MONSTER).sized(0.6F, 1.95F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("husk_girl").toString()));
+			.build(ModUtils.createHMaGRL("husk_girl").toString()));
 	public static final RegistryObject<EntityType<DrownedGirlEntity>> DROWNED_GIRL = REGISTRY.register("drowned_girl", () -> EntityType.Builder
 			.of(DrownedGirlEntity::new, MobCategory.MONSTER).sized(0.6F, 1.95F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("drowned_girl").toString()));
+			.build(ModUtils.createHMaGRL("drowned_girl").toString()));
 	public static final RegistryObject<EntityType<SkeletonGirlEntity>> SKELETON_GIRL = REGISTRY.register("skeleton_girl", () -> EntityType.Builder
 			.of(SkeletonGirlEntity::new, MobCategory.MONSTER).sized(0.6F, 1.99F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("skeleton_girl").toString()));
+			.build(ModUtils.createHMaGRL("skeleton_girl").toString()));
 	public static final RegistryObject<EntityType<WitherSkeletonGirlEntity>> WITHER_SKELETON_GIRL = REGISTRY.register("wither_skeleton_girl", () -> EntityType.Builder
 			.of(WitherSkeletonGirlEntity::new, MobCategory.MONSTER).fireImmune().immuneTo(Blocks.WITHER_ROSE).sized(0.7F, 2.4F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("wither_skeleton_girl").toString()));
+			.build(ModUtils.createHMaGRL("wither_skeleton_girl").toString()));
 	public static final RegistryObject<EntityType<StrayGirlEntity>> STRAY_GIRL = REGISTRY.register("stray_girl", () -> EntityType.Builder
 			.of(StrayGirlEntity::new, MobCategory.MONSTER).immuneTo(Blocks.POWDER_SNOW).sized(0.6F, 1.99F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("stray_girl").toString()));
+			.build(ModUtils.createHMaGRL("stray_girl").toString()));
 	public static final RegistryObject<EntityType<CreeperGirlEntity>> CREEPER_GIRL = REGISTRY.register("creeper_girl", () -> EntityType.Builder
 			.of(CreeperGirlEntity::new, MobCategory.MONSTER).sized(0.6F, 1.95F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("creeper_girl").toString()));
+			.build(ModUtils.createHMaGRL("creeper_girl").toString()));
 	public static final RegistryObject<EntityType<GhostEntity>> GHOST = REGISTRY.register("ghost", () -> EntityType.Builder
 			.of(GhostEntity::new, MobCategory.MONSTER).sized(0.6F, 1.95F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("ghost").toString()));
+			.build(ModUtils.createHMaGRL("ghost").toString()));
 	public static final RegistryObject<EntityType<WitherGhostEntity>> WITHER_GHOST = REGISTRY.register("wither_ghost", () -> EntityType.Builder
 			.of(WitherGhostEntity::new, MobCategory.MONSTER).fireImmune().immuneTo(Blocks.WITHER_ROSE).sized(0.6F, 1.95F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("wither_ghost").toString()));
+			.build(ModUtils.createHMaGRL("wither_ghost").toString()));
 	public static final RegistryObject<EntityType<EnderExecutorEntity>> ENDER_EXECUTOR = REGISTRY.register("ender_executor", () -> EntityType.Builder
 			.of(EnderExecutorEntity::new, MobCategory.MONSTER).sized(0.6F, 2.9F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("ender_executor").toString()));
+			.build(ModUtils.createHMaGRL("ender_executor").toString()));
 	public static final RegistryObject<EntityType<KoboldEntity>> KOBOLD = REGISTRY.register("kobold", () -> EntityType.Builder
 			.of(KoboldEntity::new, MobCategory.MONSTER).sized(0.6F, 1.7F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("kobold").toString()));
+			.build(ModUtils.createHMaGRL("kobold").toString()));
 	public static final RegistryObject<EntityType<LichEntity>> LICH = REGISTRY.register("lich", () -> EntityType.Builder
 			.of(LichEntity::new, MobCategory.MONSTER).sized(0.6F, 2.3F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("lich").toString()));
+			.build(ModUtils.createHMaGRL("lich").toString()));
 	public static final RegistryObject<EntityType<OgreEntity>> OGRE = REGISTRY.register("ogre", () -> EntityType.Builder
 			.of(OgreEntity::new, MobCategory.MONSTER).sized(0.9F, 2.8F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("ogre").toString()));
+			.build(ModUtils.createHMaGRL("ogre").toString()));
 	public static final RegistryObject<EntityType<SpiderNestEntity>> SPIDER_NEST = REGISTRY.register("spider_nest", () -> EntityType.Builder
 			.of(SpiderNestEntity::new, MobCategory.MONSTER).sized(1.2F, 1.8F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("spider_nest").toString()));
+			.build(ModUtils.createHMaGRL("spider_nest").toString()));
 	public static final RegistryObject<EntityType<MeltyMonsterEntity>> MELTY_MONSTER = REGISTRY.register("melty_monster", () -> EntityType.Builder
 			.of(MeltyMonsterEntity::new, MobCategory.MONSTER).fireImmune().sized(0.6F, 1.95F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("melty_monster").toString()));
+			.build(ModUtils.createHMaGRL("melty_monster").toString()));
 	public static final RegistryObject<EntityType<CursedDollEntity>> CURSED_DOLL = REGISTRY.register("cursed_doll", () -> EntityType.Builder
 			.of(CursedDollEntity::new, MobCategory.MONSTER).sized(0.6F, 1.7F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("cursed_doll").toString()));
+			.build(ModUtils.createHMaGRL("cursed_doll").toString()));
 	public static final RegistryObject<EntityType<JackFrostEntity>> JACK_FROST = REGISTRY.register("jack_frost", () -> EntityType.Builder
 			.of(JackFrostEntity::new, MobCategory.MONSTER).immuneTo(Blocks.POWDER_SNOW).sized(0.6F, 1.95F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("jack_frost").toString()));
+			.build(ModUtils.createHMaGRL("jack_frost").toString()));
 	public static final RegistryObject<EntityType<HornetEntity>> HORNET = REGISTRY.register("hornet", () -> EntityType.Builder
 			.of(HornetEntity::new, MobCategory.MONSTER).sized(0.6F, 1.7F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("hornet").toString()));
+			.build(ModUtils.createHMaGRL("hornet").toString()));
 	public static final RegistryObject<EntityType<DullahanEntity>> DULLAHAN = REGISTRY.register("dullahan", () -> EntityType.Builder
 			.of(DullahanEntity::new, MobCategory.MONSTER).sized(0.6F, 1.75F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("dullahan").toString()));
+			.build(ModUtils.createHMaGRL("dullahan").toString()));
 	public static final RegistryObject<EntityType<BansheeEntity>> BANSHEE = REGISTRY.register("banshee", () -> EntityType.Builder
 			.of(BansheeEntity::new, MobCategory.MONSTER).sized(0.6F, 1.95F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("banshee").toString()));
+			.build(ModUtils.createHMaGRL("banshee").toString()));
 	public static final RegistryObject<EntityType<AlrauneEntity>> ALRAUNE = REGISTRY.register("alraune", () -> EntityType.Builder
 			.of(AlrauneEntity::new, MobCategory.MONSTER).sized(0.6F, 1.95F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("alraune").toString()));
+			.build(ModUtils.createHMaGRL("alraune").toString()));
 	public static final RegistryObject<EntityType<CatoblepasEntity>> CATOBLEPAS = REGISTRY.register("catoblepas", () -> EntityType.Builder
 			.of(CatoblepasEntity::new, MobCategory.MONSTER).sized(0.9F, 1.4F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("catoblepas").toString()));
+			.build(ModUtils.createHMaGRL("catoblepas").toString()));
 	public static final RegistryObject<EntityType<ScorpionEntity>> SCORPION = REGISTRY.register("scorpion", () -> EntityType.Builder
 			.of(ScorpionEntity::new, MobCategory.MONSTER).sized(1.2F, 0.8F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("scorpion").toString()));
+			.build(ModUtils.createHMaGRL("scorpion").toString()));
 	public static final RegistryObject<EntityType<KashaEntity>> KASHA = REGISTRY.register("kasha", () -> EntityType.Builder
 			.of(KashaEntity::new, MobCategory.MONSTER).fireImmune().sized(0.6F, 0.7F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("kasha").toString()));
+			.build(ModUtils.createHMaGRL("kasha").toString()));
 	public static final RegistryObject<EntityType<DoguEntity>> DOGU = REGISTRY.register("dogu", () -> EntityType.Builder
 			.of(DoguEntity::new, MobCategory.MONSTER).sized(0.6F, 1.99F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("dogu").toString()));
+			.build(ModUtils.createHMaGRL("dogu").toString()));
 	public static final RegistryObject<EntityType<GhastlySeekerEntity>> GHASTLY_SEEKER = REGISTRY.register("ghastly_seeker", () -> EntityType.Builder
 			.of(GhastlySeekerEntity::new, MobCategory.MONSTER).fireImmune().sized(0.9F, 2.9F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("ghastly_seeker").toString()));
+			.build(ModUtils.createHMaGRL("ghastly_seeker").toString()));
 	public static final RegistryObject<EntityType<RedcapEntity>> REDCAP = REGISTRY.register("redcap", () -> EntityType.Builder
 			.of(RedcapEntity::new, MobCategory.MONSTER).sized(0.6F, 1.7F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("redcap").toString()));
+			.build(ModUtils.createHMaGRL("redcap").toString()));
 	public static final RegistryObject<EntityType<SlimeGirlEntity>> SLIME_GIRL = REGISTRY.register("slime_girl", () -> EntityType.Builder
 			.of(SlimeGirlEntity::new, MobCategory.MONSTER).sized(0.6F, 1.95F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("slime_girl").toString()));
+			.build(ModUtils.createHMaGRL("slime_girl").toString()));
 	public static final RegistryObject<EntityType<MagicalSlimeEntity>> MAGICAL_SLIME = REGISTRY.register("magical_slime", () -> EntityType.Builder
 			.of(MagicalSlimeEntity::new, MobCategory.MONSTER).sized(2.04F, 2.04F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("magical_slime").toString()));
+			.build(ModUtils.createHMaGRL("magical_slime").toString()));
 	public static final RegistryObject<EntityType<MonolithEntity>> MONOLITH = REGISTRY.register("monolith", () -> EntityType.Builder
 			.of(MonolithEntity::new, MobCategory.MONSTER).sized(0.6F, 1.75F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("monolith").toString()));
+			.build(ModUtils.createHMaGRL("monolith").toString()));
 	public static final RegistryObject<EntityType<CrimsonSlaughtererEntity>> CRIMSON_SLAUGHTERER = REGISTRY.register("crimson_slaughterer", () -> EntityType.Builder
 			.of(CrimsonSlaughtererEntity::new, MobCategory.MONSTER).fireImmune().sized(0.75F, 2.45F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("crimson_slaughterer").toString()));
+			.build(ModUtils.createHMaGRL("crimson_slaughterer").toString()));
 	public static final RegistryObject<EntityType<DyssomniaEntity>> DYSSOMNIA = REGISTRY.register("dyssomnia", () -> EntityType.Builder
 			.of(DyssomniaEntity::new, MobCategory.MONSTER).sized(2.3F, 1.1F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("dyssomnia").toString()));
+			.build(ModUtils.createHMaGRL("dyssomnia").toString()));
 	public static final RegistryObject<EntityType<SnowCanineEntity>> SNOW_CANINE = REGISTRY.register("snow_canine", () -> EntityType.Builder
 			.of(SnowCanineEntity::new, MobCategory.MONSTER).immuneTo(Blocks.POWDER_SNOW).sized(0.6F, 1.95F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("snow_canine").toString()));
+			.build(ModUtils.createHMaGRL("snow_canine").toString()));
 	public static final RegistryObject<EntityType<HarpyEntity>> HARPY = REGISTRY.register("harpy", () -> EntityType.Builder
 			.of(HarpyEntity::new, MobCategory.MONSTER).sized(0.6F, 1.95F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("harpy").toString()));
+			.build(ModUtils.createHMaGRL("harpy").toString()));
 	public static final RegistryObject<EntityType<SavagefangEntity>> SAVAGEFANG = REGISTRY.register("savagefang", () -> EntityType.Builder
 			.of(SavagefangEntity::new, MobCategory.MONSTER).sized(0.75F, 0.55F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("savagefang").toString()));
+			.build(ModUtils.createHMaGRL("savagefang").toString()));
 	public static final RegistryObject<EntityType<FortressKeeperEntity>> FORTRESS_KEEPER = REGISTRY.register("fortress_keeper", () -> EntityType.Builder
 			.of(FortressKeeperEntity::new, MobCategory.MONSTER).fireImmune().sized(1.2F, 2.15F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("fortress_keeper").toString()));
+			.build(ModUtils.createHMaGRL("fortress_keeper").toString()));
 	public static final RegistryObject<EntityType<NecroticReaperEntity>> NECROTIC_REAPER = REGISTRY.register("necrotic_reaper", () -> EntityType.Builder
 			.of(NecroticReaperEntity::new, MobCategory.MONSTER).sized(0.6F, 1.95F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("necrotic_reaper").toString()));
+			.build(ModUtils.createHMaGRL("necrotic_reaper").toString()));
 	public static final RegistryObject<EntityType<DodomekiEntity>> DODOMEKI = REGISTRY.register("dodomeki", () -> EntityType.Builder
 			.of(DodomekiEntity::new, MobCategory.MONSTER).sized(0.6F, 1.95F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("dodomeki").toString()));
+			.build(ModUtils.createHMaGRL("dodomeki").toString()));
 	public static final RegistryObject<EntityType<ImpEntity>> IMP = REGISTRY.register("imp", () -> EntityType.Builder
 			.of(ImpEntity::new, MobCategory.MONSTER).fireImmune().sized(0.6F, 1.7F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("imp").toString()));
+			.build(ModUtils.createHMaGRL("imp").toString()));
 	public static final RegistryObject<EntityType<GlaryadEntity>> GLARYAD = REGISTRY.register("glaryad", () -> EntityType.Builder
 			.of(GlaryadEntity::new, MobCategory.MONSTER).sized(0.6F, 1.95F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("glaryad").toString()));
+			.build(ModUtils.createHMaGRL("glaryad").toString()));
 	public static final RegistryObject<EntityType<JiangshiEntity>> JIANGSHI = REGISTRY.register("jiangshi", () -> EntityType.Builder
 			.of(JiangshiEntity::new, MobCategory.MONSTER).sized(0.6F, 1.95F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("jiangshi").toString()));
+			.build(ModUtils.createHMaGRL("jiangshi").toString()));
 	public static final RegistryObject<EntityType<GiantMummyEntity>> GIANT_MUMMY = REGISTRY.register("giant_mummy", () -> EntityType.Builder
 			.of(GiantMummyEntity::new, MobCategory.MONSTER).sized(0.9F, 2.9F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("giant_mummy").toString()));
+			.build(ModUtils.createHMaGRL("giant_mummy").toString()));
 	public static final RegistryObject<EntityType<NightwalkerEntity>> NIGHTWALKER = REGISTRY.register("nightwalker", () -> EntityType.Builder
 			.of(NightwalkerEntity::new, MobCategory.MONSTER).sized(1.2F, 2.52F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("nightwalker").toString()));
+			.build(ModUtils.createHMaGRL("nightwalker").toString()));
 	public static final RegistryObject<EntityType<SwamperEntity>> SWAMPER = REGISTRY.register("swamper", () -> EntityType.Builder
 			.of(SwamperEntity::new, MobCategory.MONSTER).sized(0.9F, 1.9F).setTrackingRange(8).setUpdateInterval(3).setShouldReceiveVelocityUpdates(false)
-			.build(ModUtils.getHMaGRL("swamper").toString()));
+			.build(ModUtils.createHMaGRL("swamper").toString()));
 
 	public static final RegistryObject<EntityType<MagicBulletEntity>> MAGIC_BULLET = REGISTRY.register("magic_bullet", () -> EntityType.Builder
 			.<MagicBulletEntity>of(MagicBulletEntity::new, MobCategory.MISC).sized(0.3215F, 0.3215F).setTrackingRange(4).setUpdateInterval(1).setShouldReceiveVelocityUpdates(true).setCustomClientFactory(MagicBulletEntity::new)
-			.build(ModUtils.getHMaGRL("magic_bullet").toString()));
+			.build(ModUtils.createHMaGRL("magic_bullet").toString()));
 	public static final RegistryObject<EntityType<HardSnowballEntity>> HARD_SNOWBALL = REGISTRY.register("hard_snowball", () -> EntityType.Builder
 			.<HardSnowballEntity>of(HardSnowballEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(10).setShouldReceiveVelocityUpdates(true).setCustomClientFactory(HardSnowballEntity::new)
-			.build(ModUtils.getHMaGRL("hard_snowball").toString()));
+			.build(ModUtils.createHMaGRL("hard_snowball").toString()));
 	public static final RegistryObject<EntityType<PoisonSeedEntity>> POISON_SEED = REGISTRY.register("poison_seed", () -> EntityType.Builder
 			.<PoisonSeedEntity>of(PoisonSeedEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(10).setShouldReceiveVelocityUpdates(true).setCustomClientFactory(PoisonSeedEntity::new)
-			.build(ModUtils.getHMaGRL("poison_seed").toString()));
+			.build(ModUtils.createHMaGRL("poison_seed").toString()));
 	public static final RegistryObject<EntityType<ThrowableBottleEntity>> THROWABLE_BOTTLE = REGISTRY.register("throwable_bottle", () -> EntityType.Builder
 			.<ThrowableBottleEntity>of(ThrowableBottleEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(10).setShouldReceiveVelocityUpdates(true).setCustomClientFactory(ThrowableBottleEntity::new)
-			.build(ModUtils.getHMaGRL("throwable_bottle").toString()));
+			.build(ModUtils.createHMaGRL("throwable_bottle").toString()));
 	public static final RegistryObject<EntityType<MagmaBulletEntity>> MAGMA_BULLET = REGISTRY.register("magma_bullet", () -> EntityType.Builder
 			.<MagmaBulletEntity>of(MagmaBulletEntity::new, MobCategory.MISC).fireImmune().sized(0.5F, 0.5F).setTrackingRange(4).setUpdateInterval(1).setShouldReceiveVelocityUpdates(true).setCustomClientFactory(MagmaBulletEntity::new)
-			.build(ModUtils.getHMaGRL("magma_bullet").toString()));
+			.build(ModUtils.createHMaGRL("magma_bullet").toString()));
 	public static final RegistryObject<EntityType<EvilArrowEntity>> EVIL_ARROW = REGISTRY.register("evil_arrow", () -> EntityType.Builder
 			.<EvilArrowEntity>of(EvilArrowEntity::new, MobCategory.MISC).sized(0.5F, 0.5F).setTrackingRange(4).setUpdateInterval(20).setShouldReceiveVelocityUpdates(true).setCustomClientFactory(EvilArrowEntity::new)
-			.build(ModUtils.getHMaGRL("evil_arrow").toString()));
+			.build(ModUtils.createHMaGRL("evil_arrow").toString()));
 	public static final RegistryObject<EntityType<InkSpitEntity>> INK_SPIT = REGISTRY.register("ink_spit", () -> EntityType.Builder
 			.<InkSpitEntity>of(InkSpitEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(4).setUpdateInterval(10).setShouldReceiveVelocityUpdates(true).setCustomClientFactory(InkSpitEntity::new)
-			.build(ModUtils.getHMaGRL("ink_spit").toString()));
+			.build(ModUtils.createHMaGRL("ink_spit").toString()));
 
 	@SubscribeEvent
 	public static void register(IEventBus eventBus)

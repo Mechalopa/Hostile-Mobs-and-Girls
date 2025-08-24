@@ -308,13 +308,13 @@ public class ModUtils
 	}
 
 	@SuppressWarnings("removal")
-	public static ResourceLocation getRL(String name)
+	public static ResourceLocation createRL(String name)
 	{
 		return new ResourceLocation(name);
 	}
 
 	@SuppressWarnings("removal")
-	public static ResourceLocation getHMaGRL(String name)
+	public static ResourceLocation createHMaGRL(String name)
 	{
 		return new ResourceLocation(HMaG.MODID, name);
 	}

@@ -35,7 +35,7 @@ public class MonolithRenderer extends MobRenderer<MonolithEntity, MonolithModel<
 	private static final ResourceLocation TEXTURE_2 = ModClientUtils.getHMaGEntityTexture("monolith/monolith_2");
 	private static final ResourceLocation TEXTURE_3 = ModClientUtils.getHMaGEntityTexture("monolith/monolith_3");
 	private static final ResourceLocation TEXTURE_4 = ModClientUtils.getHMaGEntityTexture("monolith/monolith_4");
-	private static final ResourceLocation BEAM_TEXTURE = ModUtils.getRL("textures/entity/guardian_beam.png");
+	private static final ResourceLocation BEAM_TEXTURE = ModUtils.createRL("textures/entity/guardian_beam.png");
 	private static final RenderType BEAM_RENDER_TYPE = RenderType.entityCutoutNoCull(BEAM_TEXTURE);
 	private final Random rand = new Random();
 

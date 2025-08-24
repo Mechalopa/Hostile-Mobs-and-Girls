@@ -16,7 +16,7 @@ public class ModDamageTypes
 
 	private static ResourceKey<DamageType> register(String name)
 	{
-		return ResourceKey.create(Registries.DAMAGE_TYPE, ModUtils.getHMaGRL(name));
+		return ResourceKey.create(Registries.DAMAGE_TYPE, ModUtils.createHMaGRL(name));
 	}
 
 	public static DamageSource source(Level level, ResourceKey<DamageType> key)

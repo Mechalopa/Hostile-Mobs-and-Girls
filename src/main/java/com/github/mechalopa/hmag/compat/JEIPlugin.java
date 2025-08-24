@@ -48,7 +48,7 @@ public class JEIPlugin implements IModPlugin
 	@Override
 	public ResourceLocation getPluginUid()
 	{
-		return ModUtils.getHMaGRL(HMaG.MODID);
+		return ModUtils.createHMaGRL(HMaG.MODID);
 	}
 
 	@Override
@@ -118,7 +118,7 @@ public class JEIPlugin implements IModPlugin
 									if (!stacks.isEmpty())
 									{
 										ResourceLocation enchid = ForgeRegistries.ENCHANTMENTS.getKey(enchantment);
-										ResourceLocation id = ModUtils.getHMaGRL("jei." + recipe.getId().getPath() + "." + enchid.getNamespace() + "." + enchid.getPath());
+										ResourceLocation id = ModUtils.createHMaGRL("jei." + recipe.getId().getPath() + "." + enchid.getNamespace() + "." + enchid.getPath());
 										addSmithingRecipe(smithingRecipes, id, ingredient, Ingredient.of(stacks.stream()), ingredient1, stack1);
 									}
 								}
@@ -148,7 +148,7 @@ public class JEIPlugin implements IModPlugin
 
 									for (int j = minLevel; j <= maxLevel; ++j)
 									{
-										ResourceLocation id = ModUtils.getHMaGRL("jei." + recipe.getId().getPath() + "." + i + "." + j);
+										ResourceLocation id = ModUtils.createHMaGRL("jei." + recipe.getId().getPath() + "." + i + "." + j);
 										ItemStack stack1 = stack.copy();
 										ItemStack stack2 = stack.copy();
 
@@ -179,7 +179,7 @@ public class JEIPlugin implements IModPlugin
 						ItemStack output = new ItemStack(Items.SUSPICIOUS_STEW, 1);
 						CompoundTag compoundtag = output.getOrCreateTag();
 						compoundtag.putBoolean(SuspiciousStewUpgradeRecipe.UPGRADED_KEY, true);
-						ResourceLocation id = ModUtils.getHMaGRL("jei." + recipe.getId().getPath());
+						ResourceLocation id = ModUtils.createHMaGRL("jei." + recipe.getId().getPath());
 						ShapelessRecipe recipe3 = new ShapelessRecipe(id, group, CraftingBookCategory.MISC, output, inputs);
 						shapelessRecipes.add(recipe3);
 					}

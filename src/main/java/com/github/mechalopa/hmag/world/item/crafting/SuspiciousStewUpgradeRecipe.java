@@ -108,7 +108,7 @@ public class SuspiciousStewUpgradeRecipe extends CustomRecipe
 					{
 						try
 						{
-							mobeffect = ForgeRegistries.MOB_EFFECTS.getValue(ModUtils.getRL(name));
+							mobeffect = ForgeRegistries.MOB_EFFECTS.getValue(ModUtils.createRL(name));
 						}
 						catch (ResourceLocationException e){}
 					}
