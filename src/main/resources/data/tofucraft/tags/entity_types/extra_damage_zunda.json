@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "hmag:ender_executor",
+    "hmag:ogre",
+    "hmag:cursed_doll",
+    "hmag:dullahan",
+    "hmag:redcap",
+    "hmag:dodomeki",
+    "hmag:imp",
+    "hmag:nightwalker"
+  ]
+}

@@ -89,6 +89,10 @@
     {
       "id": "natures_spirit:bamboo_wetlands",
       "required": false
+    },
+    {
+      "id": "abundant_atmosphere:eroded_bamboo_jungle",
+      "required": false
     }
   ]
 }

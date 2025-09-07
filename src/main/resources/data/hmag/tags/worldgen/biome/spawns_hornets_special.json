@@ -13,6 +13,18 @@
     {
       "id": "biox:cherry_swamp",
       "required": false
+    },
+    {
+      "id": "windswept:flowering_savanna",
+      "required": false
+    },
+    {
+      "id": "windswept:lavender_fields",
+      "required": false
+    },
+    {
+      "id": "windswept:lavender_hills",
+      "required": false
     }
   ]
 }
