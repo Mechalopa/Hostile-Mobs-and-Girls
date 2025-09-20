@@ -303,6 +303,26 @@
     {
       "id": "hibernalherbs:inscription_smithing_template",
       "required": false
+    },
+    {
+      "id": "embers_extended:duskstone_upgrade_smithing_template",
+      "required": false
+    },
+    {
+      "id": "infested_swarms_spiders:bee_template",
+      "required": false
+    },
+    {
+      "id": "infested_swarms_spiders:insect_template",
+      "required": false
+    },
+    {
+      "id": "infested_swarms_spiders:spider_template",
+      "required": false
+    },
+    {
+      "id": "tameablebeasts:arthropod_upgrade_smithing_template",
+      "required": false
     }
   ]
 }

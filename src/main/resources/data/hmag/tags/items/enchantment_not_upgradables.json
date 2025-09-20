@@ -18,6 +18,10 @@
     {
       "id": "composite_material:evolutium",
       "required": false
+    },
+    {
+      "id": "#irons_spellbooks:inscribed_rune",
+      "required": false
     }
   ]
 }
