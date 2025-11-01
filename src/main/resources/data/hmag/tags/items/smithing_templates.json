@@ -323,6 +323,10 @@
     {
       "id": "tameablebeasts:arthropod_upgrade_smithing_template",
       "required": false
+    },
+    {
+      "id": "endelurgy:enderite_upgrade_smithing_template",
+      "required": false
     }
   ]
 }

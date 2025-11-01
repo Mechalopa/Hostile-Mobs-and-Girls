@@ -20,6 +20,10 @@
     {
       "id": "bitz:enderite_ingot",
       "required": false
+    },
+    {
+      "id": "endelurgy:enderite_ingot",
+      "required": false
     }
   ]
 }
