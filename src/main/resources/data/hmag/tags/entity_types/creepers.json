@@ -257,6 +257,26 @@
     {
       "id": "nirvana:reefer",
       "required": false
+    },
+    {
+      "id": "grimoireofgaia:creep",
+      "required": false
+    },
+    {
+      "id": "savage_and_ravage:creepie",
+      "required": false
+    },
+    {
+      "id": "mutantmonsters:creeper_minion",
+      "required": false
+    },
+    {
+      "id": "aqua_creepers:aqua_creeper",
+      "required": false
+    },
+    {
+      "id": "dungeonnowloading:copper_creep",
+      "required": false
     }
   ]
 }

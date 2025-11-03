@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "hmag:magic_bullet",
+    "hmag:hard_snowball",
+    "hmag:poison_seed",
+    "hmag:throwable_bottle",
+    "hmag:ink_spit"
+  ]
+}

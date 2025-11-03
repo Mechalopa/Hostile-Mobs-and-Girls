@@ -48,6 +48,10 @@
     {
       "id": "dungeonsdelight:stained_scrap",
       "required": false
+    },
+    {
+      "id": "dungeonnowloading:spawner_frame",
+      "required": false
     }
   ]
 }
