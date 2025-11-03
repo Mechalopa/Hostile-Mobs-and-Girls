@@ -14,6 +14,10 @@
     {
       "id": "natures_spirit:white_cliffs",
       "required": false
+    },
+    {
+      "id": "#clifftree:is_cliff",
+      "required": false
     }
   ]
 }

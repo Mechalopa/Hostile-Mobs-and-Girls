@@ -67,6 +67,22 @@
     {
       "id": "sleepy_hollows:sleepy_hollows",
       "required": false
+    },
+    {
+      "id": "blasted_barrens:blasted_barrens",
+      "required": false
+    },
+    {
+      "id": "clifftree:dirt_caves",
+      "required": false
+    },
+    {
+      "id": "clifftree:mushroom_caves",
+      "required": false
+    },
+    {
+      "id": "clifftree:stone_ocean",
+      "required": false
     }
   ]
 }

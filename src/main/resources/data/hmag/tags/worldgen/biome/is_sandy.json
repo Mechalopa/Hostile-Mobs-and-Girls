@@ -32,6 +32,10 @@
     {
       "id": "bleak_and_barren:arid_savanna",
       "required": false
+    },
+    {
+      "id": "#clifftree:is_desert",
+      "required": false
     }
   ]
 }

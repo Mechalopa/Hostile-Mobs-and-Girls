@@ -12,6 +12,10 @@
     {
       "id": "#natures_spirit:is_wetland",
       "required": false
+    },
+    {
+      "id": "#clifftree:is_swamp",
+      "required": false
     }
   ]
 }

@@ -16,6 +16,10 @@
     {
       "id": "biox:dark_plains",
       "required": false
+    },
+    {
+      "id": "clifftree:snowy_old_growth_taiga",
+      "required": false
     }
   ]
 }

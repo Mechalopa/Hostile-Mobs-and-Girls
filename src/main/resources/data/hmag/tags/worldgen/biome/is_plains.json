@@ -64,6 +64,14 @@
     {
       "id": "bleak_and_barren:abandoned_farmland",
       "required": false
+    },
+    {
+      "id": "clifftree:shrubland",
+      "required": false
+    },
+    {
+      "id": "clifftree:tundra",
+      "required": false
     }
   ]
 }

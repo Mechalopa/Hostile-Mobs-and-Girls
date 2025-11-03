@@ -12,6 +12,10 @@
     {
       "id": "#natures_spirit:is_desert",
       "required": false
+    },
+    {
+      "id": "#clifftree:is_desert",
+      "required": false
     }
   ]
 }

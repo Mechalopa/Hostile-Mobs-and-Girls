@@ -26,6 +26,34 @@
     {
       "id": "climaterivers:warm_river",
       "required": false
+    },
+    {
+      "id": "clifftree:warm_caves",
+      "required": false
+    },
+    {
+      "id": "clifftree:warm_river",
+      "required": false
+    },
+    {
+      "id": "clifftree:inferno",
+      "required": false
+    },
+    {
+      "id": "clifftree:shrubland",
+      "required": false
+    },
+    {
+      "id": "clifftree:oasis",
+      "required": false
+    },
+    {
+      "id": "clifftree:tropical_river",
+      "required": false
+    },
+    {
+      "id": "clifftree:desert_cliff",
+      "required": false
     }
   ]
 }

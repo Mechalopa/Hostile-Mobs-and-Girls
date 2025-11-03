@@ -99,10 +99,6 @@
       "required": false
     },
     {
-      "id": "blasted_barrens:blasted_barrens",
-      "required": false
-    },
-    {
       "id": "oceanicrealms:sandstone_ocean",
       "required": false
     },
