@@ -277,6 +277,38 @@
     {
       "id": "dungeonnowloading:copper_creep",
       "required": false
+    },
+    {
+      "id": "aoa3:bone_creeper",
+      "required": false
+    },
+    {
+      "id": "aoa3:cave_creepoid",
+      "required": false
+    },
+    {
+      "id": "aoa3:creeperlock",
+      "required": false
+    },
+    {
+      "id": "aoa3:creepird",
+      "required": false
+    },
+    {
+      "id": "aoa3:creepuple",
+      "required": false
+    },
+    {
+      "id": "aoa3:king_creeper",
+      "required": false
+    },
+    {
+      "id": "aoa3:magical_creeper",
+      "required": false
+    },
+    {
+      "id": "aoa3:winged_creeper",
+      "required": false
     }
   ]
 }
