@@ -69,10 +69,6 @@
       "required": false
     },
     {
-      "id": "blasted_barrens:blasted_barrens",
-      "required": false
-    },
-    {
       "id": "clifftree:dirt_caves",
       "required": false
     },
