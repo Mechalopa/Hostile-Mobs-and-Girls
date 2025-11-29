@@ -1,12 +1,10 @@
 package com.github.mechalopa.hmag.world.item;
 
-import java.util.Iterator;
-import java.util.Set;
+import java.util.List;
 
 import javax.annotation.Nullable;
 
 import com.github.mechalopa.hmag.util.ModTags;
-import com.google.common.collect.Sets;
 
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;
@@ -15,7 +13,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -36,25 +34,9 @@ public class PurificationClothItem extends SimpleFoiledItem
 	{
 		if (!level.isClientSide())
 		{
-			Iterator<MobEffectInstance> itr = livingEntity.getActiveEffects().iterator();
-			Set<MobEffectInstance> set = Sets.newHashSet();
-
-			while (itr.hasNext())
+			for (MobEffect effect : getRemovableEffectList(livingEntity))
 			{
-				MobEffectInstance effect = itr.next();
-
-				if (isRemovableEffect(effect))
-				{
-					set.add(effect);
-				}
-			}
-
-			if (!set.isEmpty())
-			{
-				for (MobEffectInstance effect : set)
-				{
-					livingEntity.removeEffect(effect.getEffect());
-				}
+				livingEntity.removeEffect(effect);
 			}
 
 			level.playSound((Player)null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), SoundEvents.ZOMBIE_VILLAGER_CURE, SoundSource.NEUTRAL, 0.25F, level.getRandom().nextFloat() * 0.1F + 0.9F);
@@ -74,9 +56,14 @@ public class PurificationClothItem extends SimpleFoiledItem
 		return stack;
 	}
 
-	private static boolean isRemovableEffect(@Nullable MobEffectInstance effect)
+	private static List<MobEffect> getRemovableEffectList(LivingEntity livingEntity)
 	{
-		return effect.getEffect() != null && !effect.getEffect().isBeneficial() && !ModTags.checkTagContains(effect.getEffect(), ModTags.MobEffectTags.UNREMOVABLE_EFFECTS);
+		return livingEntity.getActiveEffects().stream().map(p -> p.getEffect()).filter(p -> isRemovableEffect(p)).toList();
+	}
+
+	private static boolean isRemovableEffect(@Nullable MobEffect effect)
+	{
+		return effect != null && !effect.isBeneficial() && !ModTags.checkTagContains(effect, ModTags.MobEffectTags.UNREMOVABLE_EFFECTS);
 	}
 
 	@Override
@@ -88,22 +75,10 @@ public class PurificationClothItem extends SimpleFoiledItem
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand)
 	{
-		boolean flag = false;
 		ItemStack stack = player.getItemInHand(hand);
-		Iterator<MobEffectInstance> itr = player.getActiveEffects().iterator();
+		List<MobEffect> list = getRemovableEffectList(player);
 
-		while (itr.hasNext())
-		{
-			MobEffectInstance effect = itr.next();
-
-			if (isRemovableEffect(effect))
-			{
-				flag = true;
-				break;
-			}
-		}
-
-		if (flag)
+		if (!list.isEmpty())
 		{
 			player.startUsingItem(hand);
 			return InteractionResultHolder.consume(stack);

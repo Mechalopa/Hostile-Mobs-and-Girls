@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:crops/apple",
+    "#forge:fruits/apple",
+    {
+      "id": "#c:crops/apple",
+      "required": false
+    },
+    {
+      "id": "#c:fruits/apple",
+      "required": false
+    }
+  ]
+}
