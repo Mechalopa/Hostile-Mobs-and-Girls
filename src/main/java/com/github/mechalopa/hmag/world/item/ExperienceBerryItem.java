@@ -19,9 +19,8 @@ public class ExperienceBerryItem extends Item
 	{
 		ItemStack stack1 = super.finishUsingItem(stack, level, livingEntity);
 
-		if (!level.isClientSide && livingEntity instanceof Player)
+		if (!level.isClientSide() && livingEntity instanceof Player player)
 		{
-			Player player = (Player)livingEntity;
             level.addFreshEntity(new ExperienceOrb(level, player.getX(), player.getY() - 1.0D, player.getZ(), level.getRandom().nextInt(9) + 12));
 		}
 

@@ -1,0 +1,16 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "kaleidoscope_cookery"
+    }
+  ],
+  "type": "kaleidoscope_cookery:millstone",
+  "ingredient": {
+    "item": "hmag:soul_powder"
+  },
+  "result": {
+    "count": 1,
+    "item": "minecraft:light_blue_dye"
+  }
+}

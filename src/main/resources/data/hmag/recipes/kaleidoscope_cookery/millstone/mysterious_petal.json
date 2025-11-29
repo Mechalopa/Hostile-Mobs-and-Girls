@@ -1,0 +1,16 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "kaleidoscope_cookery"
+    }
+  ],
+  "type": "kaleidoscope_cookery:millstone",
+  "ingredient": {
+    "item": "hmag:mysterious_petal"
+  },
+  "result": {
+    "count": 3,
+    "item": "minecraft:pink_dye"
+  }
+}

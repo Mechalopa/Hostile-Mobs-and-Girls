@@ -34,7 +34,7 @@ public class PurificationClothItem extends SimpleFoiledItem
 	@Override
 	public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity)
 	{
-		if (!level.isClientSide)
+		if (!level.isClientSide())
 		{
 			Iterator<MobEffectInstance> itr = livingEntity.getActiveEffects().iterator();
 			Set<MobEffectInstance> set = Sets.newHashSet();
@@ -60,9 +60,8 @@ public class PurificationClothItem extends SimpleFoiledItem
 			level.playSound((Player)null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), SoundEvents.ZOMBIE_VILLAGER_CURE, SoundSource.NEUTRAL, 0.25F, level.getRandom().nextFloat() * 0.1F + 0.9F);
 		}
 
-		if (livingEntity instanceof ServerPlayer)
+		if (livingEntity instanceof ServerPlayer serverplayerentity)
 		{
-			ServerPlayer serverplayerentity = (ServerPlayer)livingEntity;
 			CriteriaTriggers.CONSUME_ITEM.trigger(serverplayerentity, stack);
 			serverplayerentity.awardStat(Stats.ITEM_USED.get(this));
 		}

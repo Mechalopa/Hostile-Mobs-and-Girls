@@ -27,7 +27,7 @@ public class EndlessPearlItem extends SimpleFoiledItem
 		level.playSound((Player)null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENDER_PEARL_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
 		player.getCooldowns().addCooldown(this, 20);
 
-		if (!level.isClientSide)
+		if (!level.isClientSide())
 		{
 			ThrownEnderpearl enderpearl = new ThrownEnderpearl(level, player);
 			enderpearl.setItem(new ItemStack(Items.ENDER_PEARL));

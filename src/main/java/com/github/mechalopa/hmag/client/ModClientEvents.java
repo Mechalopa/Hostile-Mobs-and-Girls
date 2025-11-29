@@ -28,10 +28,9 @@ public class ModClientEvents
 		{
 			Player player = event.getPlayer();
 
-			if (player.isUsingItem() && player.getUseItem() != null && !player.getUseItem().isEmpty() && player.getUseItem().getItem() instanceof ModBowItem)
+			if (player.isUsingItem() && player.getUseItem() != null && !player.getUseItem().isEmpty() && player.getUseItem().getItem() instanceof ModBowItem bow)
 			{
 				float f = event.getFovModifier();
-				ModBowItem bow = (ModBowItem)player.getUseItem().getItem();
 				int i = player.getTicksUsingItem();
 				float f1 = (float)i / 20.0F;
 

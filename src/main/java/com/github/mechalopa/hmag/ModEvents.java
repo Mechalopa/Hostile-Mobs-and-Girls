@@ -95,9 +95,8 @@ public class ModEvents
 
 			if (!event.getSource().is(DamageTypeTags.IS_PROJECTILE))
 			{
-				if (source.getEntity() != null && source.getEntity() instanceof LivingEntity)
+				if (source.getEntity() != null && source.getEntity() instanceof LivingEntity attacker)
 				{
-					LivingEntity attacker = (LivingEntity)source.getEntity();
 					ItemStack stack = attacker.getMainHandItem();
 
 					if (!stack.isEmpty() && stack.hasTag())
@@ -121,14 +120,14 @@ public class ModEvents
 			}
 			else
 			{
-				if (source.getDirectEntity() != null && source.getDirectEntity() instanceof AbstractArrow)
+				if (source.getDirectEntity() != null && source.getDirectEntity() instanceof AbstractArrow arrowentity)
 				{
-					if (source.getDirectEntity().getType().equals(ModEntityTypes.EVIL_ARROW.get()))
+					if (arrowentity.getType().equals(ModEntityTypes.EVIL_ARROW.get()))
 					{
-						if (((AbstractArrow)source.getDirectEntity()).isCritArrow())
+						if (arrowentity.isCritArrow())
 						{
 							event.setAmount(event.getAmount() * 1.2F);
-							source = ModDamageTypes.source(source.getEntity().level(), ModDamageTypes.CRITICAL_EVIL_ARROW, source.getEntity(), source.getDirectEntity());
+							source = ModDamageTypes.source(source.getEntity().level(), ModDamageTypes.CRITICAL_EVIL_ARROW, source.getEntity(), arrowentity);
 						}
 						else
 						{
@@ -138,7 +137,7 @@ public class ModEvents
 
 					if (source.getEntity() != null && source.getEntity() instanceof LivingEntity)
 					{
-						if (((AbstractArrow)source.getDirectEntity()).shotFromCrossbow())
+						if (arrowentity.shotFromCrossbow())
 						{
 							LivingEntity attacker = (LivingEntity)source.getEntity();
 							int level = 0;
@@ -155,7 +154,7 @@ public class ModEvents
 
 							if (level > 0)
 							{
-								if (!livingentity.onGround() && !livingentity.isInWaterOrBubble() && !livingentity.isInLava())
+								if (!livingentity.onGround() && !livingentity.isInWaterOrBubble() && !livingentity.isInLava() && !livingentity.isPassenger())
 								{
 									event.setAmount(event.getAmount() * (1.0F + level * 0.3F));
 								}
@@ -250,10 +249,8 @@ public class ModEvents
 		{
 			event.getEntity().getPersistentData().putBoolean(ModUtils.LIVING_UPDATE_CHECKED_KEY, true);
 
-			if (event.getEntity() instanceof Mob)
+			if (event.getEntity() instanceof Mob mob)
 			{
-				Mob mob = (Mob)event.getEntity();
-
 				if (mob.getPersistentData().getBoolean(ModUtils.WITH_SPAWN_PARTICLE_KEY))
 				{
 					mob.spawnAnim();
@@ -369,10 +366,9 @@ public class ModEvents
 		{
 			Level level = event.getEntity().getCommandSenderWorld();
 
-			if (level != null && event.getEntity() instanceof Mob)
+			if (level != null && event.getEntity() instanceof Mob mob)
 			{
 				Holder<Biome> holder = level.getBiome(event.getEntity().blockPosition());
-				Mob mob = (Mob)event.getEntity();
 
 				if (!holder.containsTag(ModTags.BiomeTags.NO_MOB_REPLACEMENTS))
 				{
@@ -425,14 +421,13 @@ public class ModEvents
 		{
 			if (event.getEntity() != null)
 			{
-				if (event.getEntity() instanceof EnderMan)
+				if (event.getEntity() instanceof EnderMan enderman)
 				{
-					EnderMan endermanentity = (EnderMan)event.getEntity();
-					endermanentity.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(endermanentity, LivingEntity.class, 10, false, false, (p) -> {
+					enderman.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(enderman, LivingEntity.class, 10, false, false, (p) -> {
 						if (p.hasEffect(ModEffects.ENDER_RAGE.get()))
 						{
 							final double d0 = 8.0D + p.getEffect(ModEffects.ENDER_RAGE.get()).getAmplifier() * 12.0D;
-							return p.distanceToSqr(endermanentity) <= d0 * d0;
+							return p.distanceToSqr(enderman) <= d0 * d0;
 						}
 						else
 						{

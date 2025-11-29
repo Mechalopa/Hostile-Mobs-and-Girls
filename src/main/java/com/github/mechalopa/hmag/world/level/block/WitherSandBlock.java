@@ -28,14 +28,9 @@ public class WitherSandBlock extends SoulSandBlock
 	@Override
 	public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity)
 	{
-		if (!level.isClientSide && entity != null && entity instanceof LivingEntity)
+		if (!level.isClientSide() && entity != null && entity instanceof LivingEntity livingentity && !livingentity.isInvulnerableTo(level.damageSources().wither()))
 		{
-			LivingEntity livingentity = (LivingEntity)entity;
-
-			if (!livingentity.isInvulnerableTo(level.damageSources().wither()))
-			{
-				livingentity.addEffect(new MobEffectInstance(MobEffects.WITHER, 2 * 20, 0));
-			}
+			livingentity.addEffect(new MobEffectInstance(MobEffects.WITHER, 2 * 20, 0));
 		}
 	}
 

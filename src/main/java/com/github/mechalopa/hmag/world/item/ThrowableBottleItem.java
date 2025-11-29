@@ -58,7 +58,7 @@ public class ThrowableBottleItem extends ModItem
 		level.playSound((Player)null, player.getX(), player.getY(), player.getZ(), SoundEvents.EXPERIENCE_BOTTLE_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
 		player.getCooldowns().addCooldown(this, 20);
 
-		if (!level.isClientSide)
+		if (!level.isClientSide())
 		{
 			ThrowableBottleEntity bottleentity = new ThrowableBottleEntity(level, player);
 			bottleentity.setItem(stack);
@@ -73,6 +73,6 @@ public class ThrowableBottleItem extends ModItem
 			stack.shrink(1);
 		}
 
-		return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
+		return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
 	}
 }

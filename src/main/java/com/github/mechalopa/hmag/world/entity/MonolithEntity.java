@@ -328,19 +328,9 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 			{
 				return true;
 			}
-			else
+			else if (levelAccessor.getLevel() instanceof ServerLevel serverlevel && serverlevel.structureManager().getStructureWithPieceAt(pos, ModTags.StructureTags.MONOLITHS_SPAWN_IN).isValid())
 			{
-				Level level = levelAccessor.getLevel();
-
-				if (level instanceof ServerLevel)
-				{
-					ServerLevel serverlevel = (ServerLevel)level;
-
-					if (serverlevel.structureManager().getStructureWithPieceAt(pos, ModTags.StructureTags.MONOLITHS_SPAWN_IN).isValid())
-					{
-						return true;
-					}
-				}
+				return true;
 			}
 		}
 
@@ -446,7 +436,7 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 		{
 			return null;
 		}
-		else if (this.level().isClientSide)
+		else if (this.level().isClientSide())
 		{
 			if (this.targetedEntity != null)
 			{

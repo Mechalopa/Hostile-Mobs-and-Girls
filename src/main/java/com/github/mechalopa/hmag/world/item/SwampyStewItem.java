@@ -19,7 +19,7 @@ public class SwampyStewItem extends BowlFoodItem
 	{
 		ItemStack stack1 = super.finishUsingItem(stack, level, livingEntity);
 
-		if (!level.isClientSide)
+		if (!level.isClientSide())
 		{
 			livingEntity.removeEffect(MobEffects.MOVEMENT_SLOWDOWN);
 		}

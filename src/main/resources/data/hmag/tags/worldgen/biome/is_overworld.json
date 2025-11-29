@@ -105,6 +105,18 @@
     {
       "id": "pyromancer:permafrost_caverns",
       "required": false
+    },
+    {
+      "id": "riverredux:gravelly_river",
+      "required": false
+    },
+    {
+      "id": "riverredux:sandy_river",
+      "required": false
+    },
+    {
+      "id": "riverredux:tropical_river",
+      "required": false
     }
   ]
 }

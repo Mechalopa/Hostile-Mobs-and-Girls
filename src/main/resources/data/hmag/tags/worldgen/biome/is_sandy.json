@@ -36,6 +36,10 @@
     {
       "id": "#clifftree:is_desert",
       "required": false
+    },
+    {
+      "id": "riverredux:sandy_river",
+      "required": false
     }
   ]
 }

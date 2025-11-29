@@ -44,7 +44,7 @@ public class InsomniaFruitItem extends Item implements ILevelItem
 	@Override
 	public void inventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean isSelected)
 	{
-		if (!level.isClientSide)
+		if (!level.isClientSide())
 		{
 			if (entity instanceof ServerPlayer)
 			{
@@ -71,7 +71,7 @@ public class InsomniaFruitItem extends Item implements ILevelItem
 		ItemStack stack1 = stack.copy();
 		ItemStack stack2 = super.finishUsingItem(stack, level, livingEntity);
 
-		if (!level.isClientSide)
+		if (!level.isClientSide())
 		{
 			if (livingEntity instanceof ServerPlayer)
 			{

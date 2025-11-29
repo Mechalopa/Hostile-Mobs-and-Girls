@@ -1,0 +1,16 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "kaleidoscope_cookery"
+    }
+  ],
+  "type": "kaleidoscope_cookery:millstone",
+  "ingredient": {
+    "item": "hmag:kobold_leather"
+  },
+  "result": {
+    "count": 4,
+    "item": "minecraft:red_dye"
+  }
+}

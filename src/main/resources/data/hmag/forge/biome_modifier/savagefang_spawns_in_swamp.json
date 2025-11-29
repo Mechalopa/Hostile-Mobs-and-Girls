@@ -3,11 +3,6 @@
   "biomes": [
     [
       {
-        "name": "#hmag:climaterivers/lukewarm_river"
-      }
-    ],
-    [
-      {
         "name": "#hmag:is_overworld"
       },
       {
@@ -16,6 +11,11 @@
       {
         "name": "#hmag:no_hmag_monsters",
         "negate": true
+      }
+    ],
+    [
+      {
+        "name": "#hmag:spawns_savagefangs_special"
       }
     ]
   ],

@@ -4,6 +4,10 @@
     {
       "id": "climaterivers:lukewarm_river",
       "required": false
+    },
+    {
+      "id": "riverredux:tropical_river",
+      "required": false
     }
   ]
 }

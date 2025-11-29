@@ -28,9 +28,8 @@ public abstract class ModBowItem extends BowItem
 	@Override
 	public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int count)
 	{
-		if (livingEntity instanceof Player)
+		if (livingEntity instanceof Player player)
 		{
-			Player player = (Player)livingEntity;
 			boolean flag = player.getAbilities().instabuild || EnchantmentHelper.getTagEnchantmentLevel(Enchantments.INFINITY_ARROWS, stack) > 0;
 			ItemStack stack1 = player.getProjectile(stack);
 
@@ -55,15 +54,15 @@ public abstract class ModBowItem extends BowItem
 				{
 					boolean flag1 = player.getAbilities().instabuild || (stack1.getItem() instanceof ArrowItem && ((ArrowItem)stack1.getItem()).isInfinite(stack1, stack, player));
 
-					if (!level.isClientSide)
+					if (!level.isClientSide())
 					{
-						AbstractArrow abstractarrowentity = this.createArrow(level, stack1, stack, player, f, flag1);
+						AbstractArrow arrow = this.createArrow(level, stack1, stack, player, f, flag1);
 
 						stack.hurtAndBreak(1, player, (p) -> {
 							p.broadcastBreakEvent(player.getUsedItemHand());
 						});
 
-						level.addFreshEntity(abstractarrowentity);
+						level.addFreshEntity(arrow);
 					}
 
 					level.playSound((Player)null, player.getX(), player.getY(), player.getZ(), SoundEvents.ARROW_SHOOT,  SoundSource.PLAYERS, 1.0F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + f * 0.5F);

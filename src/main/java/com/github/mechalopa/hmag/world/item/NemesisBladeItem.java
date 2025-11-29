@@ -48,7 +48,7 @@ public class NemesisBladeItem extends ModSwordItem implements ILevelItem
 	@Override
 	public void inventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean isSelected)
 	{
-		if (!level.isClientSide)
+		if (!level.isClientSide())
 		{
 			if (entity instanceof Player)
 			{
@@ -94,17 +94,16 @@ public class NemesisBladeItem extends ModSwordItem implements ILevelItem
 	@Override
 	public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int count)
 	{
-		if (livingEntity instanceof Player)
+		if (livingEntity instanceof Player player)
 		{
 			final int i = ILevelItem.getItemLevel(stack);
-			Player player = (Player)livingEntity;
 
 			if (this.getUseDuration(stack) - count < 8 || !((player.experienceLevel > 0 && i > 0) || player.isCreative()))
 			{
 				return;
 			}
 
-			if (!level.isClientSide)
+			if (!level.isClientSide())
 			{
 				MagicBulletEntity bullet = new MagicBulletEntity(level, player, 0.0D, 0.0D, 0.0D);
 				bullet.setPos(bullet.getX(), player.getY(0.5F), bullet.getZ());
@@ -135,10 +134,8 @@ public class NemesisBladeItem extends ModSwordItem implements ILevelItem
 	@Override
 	public void onUseTick(Level level, LivingEntity livingEntity, ItemStack stack, int count)
 	{
-		if (livingEntity instanceof Player)
+		if (livingEntity instanceof Player player)
 		{
-			Player player = (Player)livingEntity;
-
 			if (this.getUseDuration(stack) - count != 8 || !((player.experienceLevel > 0 && ILevelItem.getItemLevel(stack) > 0) || player.isCreative()))
 			{
 				return;

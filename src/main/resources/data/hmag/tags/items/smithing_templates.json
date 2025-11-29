@@ -327,6 +327,10 @@
     {
       "id": "endelurgy:enderite_upgrade_smithing_template",
       "required": false
+    },
+    {
+      "id": "wardentools:warden_upgrade_smithing_template",
+      "required": false
     }
   ]
 }

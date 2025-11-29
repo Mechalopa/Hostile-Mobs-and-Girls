@@ -43,7 +43,7 @@ public class InsomniaSwordItem extends ModSwordItem implements ILevelItem
 	@Override
 	public void inventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean isSelected)
 	{
-		if (!level.isClientSide)
+		if (!level.isClientSide())
 		{
 			if (entity instanceof ServerPlayer)
 			{
@@ -75,7 +75,7 @@ public class InsomniaSwordItem extends ModSwordItem implements ILevelItem
 
 			Player player = (Player)livingEntity;
 
-			if (!level.isClientSide)
+			if (!level.isClientSide())
 			{
 				player.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 10 * 20, 0));
 			}

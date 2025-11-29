@@ -26,7 +26,7 @@ public class RandomberryItem extends Item
 	{
 		ItemStack stack1 = super.finishUsingItem(stack, level, livingEntity);
 
-		if (!level.isClientSide)
+		if (!level.isClientSide())
 		{
 			if (RANDOMBERRY_EFFECTS != null && !RANDOMBERRY_EFFECTS.isEmpty())
 			{
@@ -44,7 +44,7 @@ public class RandomberryItem extends Item
 
 	public static void refreshEffectList()
 	{
-		RANDOMBERRY_EFFECTS = ForgeRegistries.MOB_EFFECTS.getValues().stream().filter((p) -> {
+		RANDOMBERRY_EFFECTS = ForgeRegistries.MOB_EFFECTS.getValues().stream().filter(p -> {
 			return ModTags.checkTagContains(p, ModTags.MobEffectTags.RANDOMBERRY_GIVES);
 		}).toList();
 	}

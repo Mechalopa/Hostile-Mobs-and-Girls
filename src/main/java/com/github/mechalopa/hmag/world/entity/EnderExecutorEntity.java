@@ -284,7 +284,7 @@ public class EnderExecutorEntity extends EnderMan implements IBeamAttackMob
 		{
 			return null;
 		}
-		else if (this.level().isClientSide)
+		else if (this.level().isClientSide())
 		{
 			if (this.targetedEntity != null)
 			{
