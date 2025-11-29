@@ -2,8 +2,6 @@ package com.github.mechalopa.hmag.world.item;
 
 import java.util.List;
 
-import javax.annotation.Nullable;
-
 import com.github.mechalopa.hmag.util.ModTags;
 
 import net.minecraft.advancements.CriteriaTriggers;
@@ -58,12 +56,9 @@ public class PurificationClothItem extends SimpleFoiledItem
 
 	private static List<MobEffect> getRemovableEffectList(LivingEntity livingEntity)
 	{
-		return livingEntity.getActiveEffects().stream().map(p -> p.getEffect()).filter(p -> isRemovableEffect(p)).toList();
-	}
-
-	private static boolean isRemovableEffect(@Nullable MobEffect effect)
-	{
-		return effect != null && !effect.isBeneficial() && !ModTags.checkTagContains(effect, ModTags.MobEffectTags.UNREMOVABLE_EFFECTS);
+		return livingEntity.getActiveEffects().stream().map(p -> p.getEffect()).filter(p -> {
+			return p != null && !p.isBeneficial() && !ModTags.checkTagContains(p, ModTags.MobEffectTags.UNREMOVABLE_EFFECTS);
+		}).toList();
 	}
 
 	@Override
