@@ -20,14 +20,9 @@ public class PoisonSandBlock extends SoulSandBlock
 	@Override
 	public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity)
 	{
-		if (!level.isClientSide && entity != null && entity instanceof LivingEntity)
+		if (!level.isClientSide() && entity != null && entity instanceof LivingEntity livingentity && !livingentity.hasEffect(MobEffects.POISON))
 		{
-			LivingEntity livingentity = (LivingEntity)entity;
-
-			if (!livingentity.hasEffect(MobEffects.POISON))
-			{
-				livingentity.addEffect(new MobEffectInstance(MobEffects.POISON, 5 * 20, 0));
-			}
+			livingentity.addEffect(new MobEffectInstance(MobEffects.POISON, 5 * 20, 0));
 		}
 	}
 }

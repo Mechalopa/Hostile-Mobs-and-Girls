@@ -6,6 +6,10 @@
       "required": false
     },
     {
+      "id": "minecraft:pale_garden",
+      "required": false
+    },
+    {
       "id": "spookybats:spooky_oak_forest",
       "required": false
     },

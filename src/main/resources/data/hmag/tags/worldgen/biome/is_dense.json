@@ -6,6 +6,10 @@
       "required": false
     },
     {
+      "id": "minecraft:pale_garden",
+      "required": false
+    },
+    {
       "id": "biox:autumnal_dark_forest",
       "required": false
     },
