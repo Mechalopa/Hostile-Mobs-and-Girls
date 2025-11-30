@@ -331,6 +331,34 @@
     {
       "id": "wardentools:warden_upgrade_smithing_template",
       "required": false
+    },
+    {
+      "id": "mythsandlegends:infernum_upgrade_smithing_template",
+      "required": false
+    },
+    {
+      "id": "terramity:conductite_upgrade_smithing_template",
+      "required": false
+    },
+    {
+      "id": "terramity:cosmilite_upgrade_smithing_template",
+      "required": false
+    },
+    {
+      "id": "terramity:dimlite_upgrade_smithing_template",
+      "required": false
+    },
+    {
+      "id": "terramity:hellspec_upgrade_smithing_template",
+      "required": false
+    },
+    {
+      "id": "terramity:virentium_upgrade_smithing_template",
+      "required": false
+    },
+    {
+      "id": "terramity:void_upgrade_smithing_template",
+      "required": false
     }
   ]
 }
