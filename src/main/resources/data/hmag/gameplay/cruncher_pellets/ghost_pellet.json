@@ -1,0 +1,9 @@
+{
+  "type": "hmag:ghost",
+  "item": {
+    "id": "hmag:soul_powder",
+    "Count": 1
+  },
+  "minTries": 10,
+  "maxTries": 20
+}

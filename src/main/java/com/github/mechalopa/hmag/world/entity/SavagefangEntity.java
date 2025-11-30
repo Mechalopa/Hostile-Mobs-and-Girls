@@ -398,7 +398,7 @@ public class SavagefangEntity extends Monster
 	@SuppressWarnings("deprecation")
 	public static boolean checkSavagefangSpawnRules(EntityType<? extends SavagefangEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, RandomSource random)
 	{
-		return levelAccessor.getDifficulty() != Difficulty.PEACEFUL && isDarkEnoughToSpawn(levelAccessor, pos, random) && levelAccessor.getFluidState(pos).is(FluidTags.WATER) && (spawnType == MobSpawnType.SPAWNER || (pos.getY() >= levelAccessor.getSeaLevel() - 10 && levelAccessor.canSeeSkyFromBelowWater(pos) && random.nextDouble() < ModConfigs.cachedServer.SAVAGEFANG_SPAWN_CHANCE));
+		return levelAccessor.getDifficulty() != Difficulty.PEACEFUL && Monster.isDarkEnoughToSpawn(levelAccessor, pos, random) && levelAccessor.getFluidState(pos).is(FluidTags.WATER) && (spawnType == MobSpawnType.SPAWNER || (pos.getY() >= levelAccessor.getSeaLevel() - 10 && levelAccessor.canSeeSkyFromBelowWater(pos) && random.nextDouble() < ModConfigs.cachedServer.SAVAGEFANG_SPAWN_CHANCE));
 	}
 
 	public int getMaxSchoolSize()

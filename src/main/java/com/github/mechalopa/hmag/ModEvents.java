@@ -366,9 +366,10 @@ public class ModEvents
 		{
 			Level level = event.getEntity().getCommandSenderWorld();
 
-			if (level != null && event.getEntity() instanceof Mob mob)
+			if (level != null)
 			{
 				Holder<Biome> holder = level.getBiome(event.getEntity().blockPosition());
+				Mob mob = event.getEntity();
 
 				if (!holder.containsTag(ModTags.BiomeTags.NO_MOB_REPLACEMENTS))
 				{

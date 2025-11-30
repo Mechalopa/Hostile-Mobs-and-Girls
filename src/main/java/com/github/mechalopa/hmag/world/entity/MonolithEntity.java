@@ -22,7 +22,6 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -322,19 +321,7 @@ public class MonolithEntity extends FlyingMob implements Enemy, IBeamAttackMob
 
 	public static boolean checkMonolithSpawnRules(EntityType<MonolithEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, RandomSource randomIn)
 	{
-		if (levelAccessor.getDifficulty() != Difficulty.PEACEFUL && checkMobSpawnRules(type, levelAccessor, spawnType, pos, randomIn))
-		{
-			if (ModUtils.isDarkEnoughToSpawn(levelAccessor, pos, randomIn))
-			{
-				return true;
-			}
-			else if (levelAccessor.getLevel() instanceof ServerLevel serverlevel && serverlevel.structureManager().getStructureWithPieceAt(pos, ModTags.StructureTags.MONOLITHS_SPAWN_IN).isValid())
-			{
-				return true;
-			}
-		}
-
-		return false;
+		return levelAccessor.getDifficulty() != Difficulty.PEACEFUL && Mob.checkMobSpawnRules(type, levelAccessor, spawnType, pos, randomIn) && (ModUtils.isDarkEnoughToSpawn(levelAccessor, pos, randomIn) || levelAccessor.getLevel().structureManager().getStructureWithPieceAt(pos, ModTags.StructureTags.MONOLITHS_SPAWN_IN).isValid());
 	}
 
 	@Override

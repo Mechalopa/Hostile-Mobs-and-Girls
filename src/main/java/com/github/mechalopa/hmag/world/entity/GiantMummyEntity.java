@@ -12,7 +12,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
@@ -188,29 +187,7 @@ public class GiantMummyEntity extends Monster
 
 	public static boolean checkGiantMummySpawnRules(EntityType<GiantMummyEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, RandomSource random)
 	{
-		if (Monster.checkMonsterSpawnRules(type, levelAccessor, spawnType, pos, random))
-		{
-			if (spawnType == MobSpawnType.SPAWNER || pos.getY() >= ModConfigs.cachedServer.SURFACE_MOB_SPAWN_MIN_HEIGHT)
-			{
-				return true;
-			}
-			else
-			{
-				Level level = levelAccessor.getLevel();
-
-				if (level instanceof ServerLevel)
-				{
-					ServerLevel serverlevel = (ServerLevel)level;
-
-					if (serverlevel.structureManager().getStructureWithPieceAt(pos, ModTags.StructureTags.GIANT_MUMMIES_SPAWN_IN).isValid())
-					{
-						return true;
-					}
-				}
-			}
-		}
-
-		return false;
+		return Monster.checkMonsterSpawnRules(type, levelAccessor, spawnType, pos, random) && (spawnType == MobSpawnType.SPAWNER || pos.getY() >= ModConfigs.cachedServer.SURFACE_MOB_SPAWN_MIN_HEIGHT || levelAccessor.getLevel().structureManager().getStructureWithPieceAt(pos, ModTags.StructureTags.GIANT_MUMMIES_SPAWN_IN).isValid());
 	}
 
 	@Override
