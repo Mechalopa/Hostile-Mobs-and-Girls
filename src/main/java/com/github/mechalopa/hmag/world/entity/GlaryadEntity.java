@@ -304,7 +304,7 @@ public class GlaryadEntity extends Monster implements NeutralMob
 
 	public static boolean checkGlaryadSpawnRules(EntityType<? extends GlaryadEntity> type, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, RandomSource random)
 	{
-		return checkAnyLightMonsterSpawnRules(type, levelAccessor, spawnType, pos, random) && (spawnType == MobSpawnType.SPAWNER || levelAccessor.getBlockState(pos.below()).is(ModTags.BlockTags.GLARYADS_SPAWNABLE_ON));
+		return Monster.checkAnyLightMonsterSpawnRules(type, levelAccessor, spawnType, pos, random) && (spawnType == MobSpawnType.SPAWNER || levelAccessor.getBlockState(pos.below()).is(ModTags.BlockTags.GLARYADS_SPAWNABLE_ON));
 	}
 
 	@OnlyIn(Dist.CLIENT)
