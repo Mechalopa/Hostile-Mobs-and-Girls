@@ -309,6 +309,10 @@
     {
       "id": "aoa3:winged_creeper",
       "required": false
+    },
+    {
+      "id": "cyber_ware_port:cyber_creeper",
+      "required": false
     }
   ]
 }

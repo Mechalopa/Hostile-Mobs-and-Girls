@@ -24,6 +24,10 @@
     {
       "id": "endelurgy:enderite_ingot",
       "required": false
+    },
+    {
+      "id": "majruszsdifficulty:enderium_ingot",
+      "required": false
     }
   ]
 }

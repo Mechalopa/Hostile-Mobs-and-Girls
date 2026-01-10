@@ -359,6 +359,10 @@
     {
       "id": "terramity:void_upgrade_smithing_template",
       "required": false
+    },
+    {
+      "id": "majruszsdifficulty:enderium_upgrade_smithing_template",
+      "required": false
     }
   ]
 }

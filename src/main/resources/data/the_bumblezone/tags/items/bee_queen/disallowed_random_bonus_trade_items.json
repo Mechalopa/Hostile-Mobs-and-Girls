@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    "#hmag:reinforced_blocks",
+    "#hmag:insomnia_items",
+    "hmag:thorn_sand",
+    "hmag:poison_sand",
+    "hmag:wither_sand",
+    "hmag:necrofiber",
+    "hmag:nemesis_blade",
+    "hmag:necrotic_chainmail_helmet",
+    "hmag:necrotic_chainmail_chestplate",
+    "hmag:necrotic_chainmail_leggings",
+    "hmag:necrotic_chainmail_boots",
+    "hmag:evil_flame",
+    "hmag:evil_prismarine",
+    "hmag:evil_thorn",
+    "hmag:greedy_crystal",
+    "hmag:greedy_crystal_plus",
+    "hmag:fortune_crystal",
+    "hmag:fortune_crystal_plus",
+    "hmag:evil_crystal_upgrade_smithing_template",
+    "hmag:endless_pearl"
+  ]
+}

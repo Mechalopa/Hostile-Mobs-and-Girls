@@ -6,6 +6,14 @@
       "required": false
     },
     {
+      "id": "#c:is_magical",
+      "required": false
+    },
+    {
+      "id": "#c:magical",
+      "required": false
+    },
+    {
       "id": "magicalforest:magical_forest",
       "required": false
     },
