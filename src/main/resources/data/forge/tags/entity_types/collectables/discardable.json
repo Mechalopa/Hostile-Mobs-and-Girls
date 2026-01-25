@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "#forge:collectables/discardable"
+    "hmag:evil_arrow"
   ]
 }

@@ -363,6 +363,14 @@
     {
       "id": "majruszsdifficulty:enderium_upgrade_smithing_template",
       "required": false
+    },
+    {
+      "id": "smc:perfrostite_upgrade_scroll",
+      "required": false
+    },
+    {
+      "id": "werewolves:white_pelt_upgrade_smithing_template",
+      "required": false
     }
   ]
 }

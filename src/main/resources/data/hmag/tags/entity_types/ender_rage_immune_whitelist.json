@@ -2,8 +2,13 @@
   "replace": false,
   "values": [
     "#forge:endermen",
+    "#forge:enderman",
     {
       "id": "#c:endermen",
+      "required": false
+    },
+    {
+      "id": "#c:enderman",
       "required": false
     },
     {
@@ -112,6 +117,18 @@
     },
     {
       "id": "legendary_monsters:chorusling",
+      "required": false
+    },
+    {
+      "id": "goety:endersent",
+      "required": false
+    },
+    {
+      "id": "goety:ender_keeper",
+      "required": false
+    },
+    {
+      "id": "#goety:enderlings",
       "required": false
     }
   ]

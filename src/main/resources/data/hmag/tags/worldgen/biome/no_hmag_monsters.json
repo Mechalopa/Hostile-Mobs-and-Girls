@@ -71,6 +71,10 @@
     {
       "id": "clifftree:stone_ocean",
       "required": false
+    },
+    {
+      "id": "werewolves:werewolf_heaven",
+      "required": false
     }
   ]
 }
