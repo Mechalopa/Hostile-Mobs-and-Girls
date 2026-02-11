@@ -313,6 +313,10 @@
     {
       "id": "cyber_ware_port:cyber_creeper",
       "required": false
+    },
+    {
+      "id": "mutantmonsters:mutant_creeper",
+      "required": false
     }
   ]
 }

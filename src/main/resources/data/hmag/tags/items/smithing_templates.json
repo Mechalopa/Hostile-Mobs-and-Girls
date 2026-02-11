@@ -371,6 +371,66 @@
     {
       "id": "werewolves:white_pelt_upgrade_smithing_template",
       "required": false
+    },
+    {
+      "id": "simplest_broadaxes:broadaxe_smithing_template",
+      "required": false
+    },
+    {
+      "id": "simplest_hammers:hammer_upgrade_smithing_template",
+      "required": false
+    },
+    {
+      "id": "simplest_excavators:excavator_upgrade_smithing_template",
+      "required": false
+    },
+    {
+      "id": "constructionstick:template_angel",
+      "required": false
+    },
+    {
+      "id": "constructionstick:template_destruction",
+      "required": false
+    },
+    {
+      "id": "constructionstick:template_replacement",
+      "required": false
+    },
+    {
+      "id": "constructionstick:template_unbreakable",
+      "required": false
+    },
+    {
+      "id": "constructionstick:template_battery",
+      "required": false
+    },
+    {
+      "id": "#starcatcher:templates",
+      "required": false
+    },
+    {
+      "id": "l2complements:eternal_upgrade_smithing_template",
+      "required": false
+    },
+    {
+      "id": "l2complements:flame_upgrade_smithing_template",
+      "required": false
+    },
+    {
+      "id": "l2complements:frost_upgrade_smithing_template",
+      "required": false
+    },
+    {
+      "id": "l2complements:material_swap_smithing_template",
+      "required": false
+    },
+    {
+      "id": "legendary_monsters:enderitium_upgrade_smithing_template",
+      "required": false
+    },
+    {
+      "id": "legendary_monsters:annihilator_upgrade_smithing_template",
+      "required": false
     }
   ]
 }

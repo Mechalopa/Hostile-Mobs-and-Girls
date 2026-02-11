@@ -4,10 +4,6 @@
     "#hmag:creepers",
     "hmag:savagefang",
     {
-      "id": "mutantmonsters:mutant_creeper",
-      "required": false
-    },
-    {
       "id": "knightquest:eldbomb",
       "required": false
     }
