@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "decorative_blocks:brazier"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "decorative_blocks:soul_brazier"
+    }
+  ],
+  "category": "misc",
+  "group": "decorative_braziers",
+  "ingredients": [
+    {
+      "item": "decorative_blocks:brazier"
+    },
+    {
+      "item": "hmag:soul_powder"
+    },
+    {
+      "item": "hmag:soul_powder"
+    },
+    {
+      "item": "hmag:soul_powder"
+    },
+    {
+      "item": "hmag:soul_powder"
+    }
+  ],
+  "result": {
+    "item": "decorative_blocks:soul_brazier"
+  }
+}

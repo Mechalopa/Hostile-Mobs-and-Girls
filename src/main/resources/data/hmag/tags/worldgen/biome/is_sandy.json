@@ -40,6 +40,10 @@
     {
       "id": "riverredux:sandy_river",
       "required": false
+    },
+    {
+      "id": "undergroundworlds:underground_desert",
+      "required": false
     }
   ]
 }

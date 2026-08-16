@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "decorative_blocks:chandelier"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "decorative_blocks:soul_chandelier"
+    }
+  ],
+  "category": "misc",
+  "group": "decorative_chandeliers",
+  "ingredients": [
+    {
+      "item": "decorative_blocks:chandelier"
+    },
+    {
+      "item": "hmag:soul_powder"
+    },
+    {
+      "item": "hmag:soul_powder"
+    },
+    {
+      "item": "hmag:soul_powder"
+    },
+    {
+      "item": "hmag:soul_powder"
+    }
+  ],
+  "result": {
+    "item": "decorative_blocks:soul_chandelier"
+  }
+}

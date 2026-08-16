@@ -1,9 +1,6 @@
 {
   "replace": false,
   "values": [
-    "hmag:drowned_girl",
-    "hmag:savagefang",
-    "hmag:swamper",
     "hmag:zombie_girl",
     "hmag:skeleton_girl",
     "hmag:wither_skeleton_girl"

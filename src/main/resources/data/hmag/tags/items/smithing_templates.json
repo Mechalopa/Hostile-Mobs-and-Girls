@@ -443,6 +443,50 @@
     {
       "id": "kaleidoscope_end:ender_dragon_smithing_template",
       "required": false
+    },
+    {
+      "id": "betterend:handle_attachment_smithing_template",
+      "required": false
+    },
+    {
+      "id": "betterend:leather_handle_attachment_smithing_template",
+      "required": false
+    },
+    {
+      "id": "betterend:netherite_upgrade_smithing_template",
+      "required": false
+    },
+    {
+      "id": "betterend:plate_upgrade_smithing_template",
+      "required": false
+    },
+    {
+      "id": "betterend:terminite_upgrade_smithing_template",
+      "required": false
+    },
+    {
+      "id": "betterend:thallasium_upgrade_smithing_template",
+      "required": false
+    },
+    {
+      "id": "betterend:tool_assembly_smithing_template",
+      "required": false
+    },
+    {
+      "id": "betternether:bowl_upgrade_smithing_template",
+      "required": false
+    },
+    {
+      "id": "betternether:cincinnasite_diamond_upgrade_smithing_template",
+      "required": false
+    },
+    {
+      "id": "betternether:flaming_ruby_upgrade_smithing_template",
+      "required": false
+    },
+    {
+      "id": "goety_revelation:apocalyptium_upgrade_smithing_template",
+      "required": false
     }
   ]
 }

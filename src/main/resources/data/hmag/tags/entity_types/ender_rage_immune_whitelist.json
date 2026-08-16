@@ -134,6 +134,14 @@
     {
       "id": "whiteenderman:white_enderman",
       "required": false
+    },
+    {
+      "id": "goetyawaken:endersent_servant",
+      "required": false
+    },
+    {
+      "id": "goetyawaken:ender_keeper_servant",
+      "required": false
     }
   ]
 }

@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "type": "forge:item_exists",
+      "item": "galosphere:light_stand"
+    },
+    {
+      "type": "forge:item_exists",
+      "item": "galosphere:soul_light_stand"
+    }
+  ],
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "galosphere:light_stand"
+    },
+    {
+      "item": "hmag:soul_powder"
+    },
+    {
+      "item": "hmag:soul_powder"
+    },
+    {
+      "item": "hmag:soul_powder"
+    },
+    {
+      "item": "hmag:soul_powder"
+    }
+  ],
+  "result": {
+    "item": "galosphere:soul_light_stand"
+  }
+}
