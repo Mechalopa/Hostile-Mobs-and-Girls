@@ -3,6 +3,10 @@
   "values": [
     "minecraft:cactus",
     "minecraft:sweet_berry_bush",
-    "minecraft:thorns"
+    "minecraft:thorns",
+    {
+      "id": "netherdescent:crimson_berry_bush",
+      "required": false
+    }
   ]
 }

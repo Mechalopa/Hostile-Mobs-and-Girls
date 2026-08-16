@@ -8,6 +8,26 @@
     {
       "id": "riverredux:tropical_river",
       "required": false
+    },
+    {
+      "id": "hybrid_aquatic:tropical_river",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:tropical_river",
+      "required": false
+    },
+    {
+      "id": "wythers:jungle_river",
+      "required": false
+    },
+    {
+      "id": "wythers:tropical_forest_river",
+      "required": false
+    },
+    {
+      "id": "terralith:warm_river",
+      "required": false
     }
   ]
 }

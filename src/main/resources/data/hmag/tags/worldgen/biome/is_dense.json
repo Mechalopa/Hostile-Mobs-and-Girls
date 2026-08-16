@@ -24,6 +24,10 @@
     {
       "id": "clifftree:snowy_old_growth_taiga",
       "required": false
+    },
+    {
+      "id": "cliffbranch:snowy_old_growth_taiga",
+      "required": false
     }
   ]
 }

@@ -84,6 +84,54 @@
     {
       "id": "clifftree:gravelly_beach",
       "required": false
+    },
+    {
+      "id": "cliffbranch:bog",
+      "required": false
+    },
+    {
+      "id": "cliffbranch:snowy_old_growth_taiga",
+      "required": false
+    },
+    {
+      "id": "cliffbranch:glacier_valley",
+      "required": false
+    },
+    {
+      "id": "cliffbranch:glacier_cliff",
+      "required": false
+    },
+    {
+      "id": "cliffbranch:tundra",
+      "required": false
+    },
+    {
+      "id": "cliffbranch:cold_river",
+      "required": false
+    },
+    {
+      "id": "cliffbranch:cold_caves",
+      "required": false
+    },
+    {
+      "id": "cliffbranch:frozen_caves",
+      "required": false
+    },
+    {
+      "id": "cliffbranch:snowy_diorite_shore",
+      "required": false
+    },
+    {
+      "id": "cliffbranch:diorite_shore",
+      "required": false
+    },
+    {
+      "id": "cliffbranch:gravelly_beach",
+      "required": false
+    },
+    {
+      "id": "cliffbranch:basalt_shore",
+      "required": false
     }
   ]
 }

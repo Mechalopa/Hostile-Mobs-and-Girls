@@ -130,6 +130,10 @@
     {
       "id": "#goety:enderlings",
       "required": false
+    },
+    {
+      "id": "whiteenderman:white_enderman",
+      "required": false
     }
   ]
 }

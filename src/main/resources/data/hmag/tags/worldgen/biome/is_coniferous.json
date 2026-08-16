@@ -13,6 +13,14 @@
     {
       "id": "spookybats:christmas_forest",
       "required": false
+    },
+    {
+      "id": "youkaisfeasts:sakura_taiga",
+      "required": false
+    },
+    {
+      "id": "youkaishomecoming:sakura_taiga",
+      "required": false
     }
   ]
 }

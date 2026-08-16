@@ -28,6 +28,14 @@
       "required": false
     },
     {
+      "id": "undergroundworlds:underground_jungle",
+      "required": false
+    },
+    {
+      "id": "undergroundworlds:underground_desert",
+      "required": false
+    },
+    {
       "id": "clifftree:warm_caves",
       "required": false
     },
@@ -52,7 +60,35 @@
       "required": false
     },
     {
+      "id": "clifftree:tropical_beach",
+      "required": false
+    },
+    {
       "id": "clifftree:desert_cliff",
+      "required": false
+    },
+    {
+      "id": "clifftree:coniferous_badlands",
+      "required": false
+    },
+    {
+      "id": "cliffbranch:warm_river",
+      "required": false
+    },
+    {
+      "id": "cliffbranch:tropical_river",
+      "required": false
+    },
+    {
+      "id": "cliffbranch:tropical_beach",
+      "required": false
+    },
+    {
+      "id": "cliffbranch:desert_cliff",
+      "required": false
+    },
+    {
+      "id": "cliffbranch:desert_caves",
       "required": false
     }
   ]

@@ -251,6 +251,14 @@
       "required": false
     },
     {
+      "id": "undergroundworlds:icy_creeper",
+      "required": false
+    },
+    {
+      "id": "pumpkinpastures:pumpkin_creeper",
+      "required": false
+    },
+    {
       "id": "aquatic_creepers:aquatic_creeper",
       "required": false
     },
@@ -316,6 +324,90 @@
     },
     {
       "id": "mutantmonsters:mutant_creeper",
+      "required": false
+    },
+    {
+      "id": "caverns_and_chasms:evendeeper",
+      "required": false
+    },
+    {
+      "id": "primitivemobs:rocket_creeper",
+      "required": false
+    },
+    {
+      "id": "primitivemobs:festive_creeper",
+      "required": false
+    },
+    {
+      "id": "primitivemobs:support_creeper",
+      "required": false
+    },
+    {
+      "id": "meteors:alien_creeper",
+      "required": false
+    },
+    {
+      "id": "tolerable_creepers:creepie",
+      "required": false
+    },
+    {
+      "id": "adaptedmobs:festive_creeper",
+      "required": false
+    },
+    {
+      "id": "adaptedmobs:festive_creepie",
+      "required": false
+    },
+    {
+      "id": "adaptedmobs:rocket_creeper",
+      "required": false
+    },
+    {
+      "id": "adaptedmobs:rocket_creepie",
+      "required": false
+    },
+    {
+      "id": "adaptedmobs:support_creeper",
+      "required": false
+    },
+    {
+      "id": "adaptedmobs:support_creepie",
+      "required": false
+    },
+    {
+      "id": "goetyawaken:creeper_servant",
+      "required": false
+    },
+    {
+      "id": "goetyawaken:poisonous_potato_creeper_servant",
+      "required": false
+    },
+    {
+      "id": "goetyawaken:statue_creeper",
+      "required": false
+    },
+    {
+      "id": "goetyawaken:hostile_statue_creeper",
+      "required": false
+    },
+    {
+      "id": "goetyawaken:creeper_servant",
+      "required": false
+    },
+    {
+      "id": "goetyawaken:ice_creeper_servant",
+      "required": false
+    },
+    {
+      "id": "goetyawaken:ice_creeper",
+      "required": false
+    },
+    {
+      "id": "goetyawaken:spider_creeder_servant",
+      "required": false
+    },
+    {
+      "id": "goetyawaken:hostile_spider_creeder",
       "required": false
     }
   ]

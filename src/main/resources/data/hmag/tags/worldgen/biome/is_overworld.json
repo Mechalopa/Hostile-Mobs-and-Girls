@@ -117,6 +117,102 @@
     {
       "id": "riverredux:tropical_river",
       "required": false
+    },
+    {
+      "id": "youkaisfeasts:sakura_forest",
+      "required": false
+    },
+    {
+      "id": "youkaisfeasts:sakura_taiga",
+      "required": false
+    },
+    {
+      "id": "youkaisfeasts:sakura_birch_forest",
+      "required": false
+    },
+    {
+      "id": "youkaisfeasts:animal_path",
+      "required": false
+    },
+    {
+      "id": "youkaishomecoming:sakura_forest",
+      "required": false
+    },
+    {
+      "id": "youkaishomecoming:sakura_taiga",
+      "required": false
+    },
+    {
+      "id": "youkaishomecoming:sakura_birch_forest",
+      "required": false
+    },
+    {
+      "id": "youkaishomecoming:animal_path",
+      "required": false
+    },
+    {
+      "id": "hybrid_aquatic:cold_trench",
+      "required": false
+    },
+    {
+      "id": "hybrid_aquatic:coral_reef",
+      "required": false
+    },
+    {
+      "id": "hybrid_aquatic:deep_coral_reef",
+      "required": false
+    },
+    {
+      "id": "hybrid_aquatic:deep_warm_ocean",
+      "required": false
+    },
+    {
+      "id": "hybrid_aquatic:frozen_trench",
+      "required": false
+    },
+    {
+      "id": "hybrid_aquatic:lukewarm_trench",
+      "required": false
+    },
+    {
+      "id": "hybrid_aquatic:red_meadow",
+      "required": false
+    },
+    {
+      "id": "hybrid_aquatic:seagrass_bed",
+      "required": false
+    },
+    {
+      "id": "hybrid_aquatic:sulfuric_caves",
+      "required": false
+    },
+    {
+      "id": "hybrid_aquatic:tide_pools",
+      "required": false
+    },
+    {
+      "id": "hybrid_aquatic:trench",
+      "required": false
+    },
+    {
+      "id": "hybrid_aquatic:tropical_deep_coral_reef",
+      "required": false
+    },
+    {
+      "id": "hybrid_aquatic:tropical_river",
+      "required": false
+    },
+    {
+      "id": "hybrid_aquatic:warm_trench",
+      "required": false
+    },
+    {
+      "id": "fantastic_fishery:fungal_sea",
+      "required": false
+    },
+    {
+      "id": "fantastic_fishery:mushroom_fields_shore",
+      "required": false
     }
   ]
 }

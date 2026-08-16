@@ -16,6 +16,10 @@
     {
       "id": "#clifftree:is_desert",
       "required": false
+    },
+    {
+      "id": "undergroundworlds:underground_desert",
+      "required": false
     }
   ]
 }

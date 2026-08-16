@@ -93,6 +93,38 @@
     {
       "id": "abundant_atmosphere:eroded_bamboo_jungle",
       "required": false
+    },
+    {
+      "id": "youkaisfeasts:sakura_forest",
+      "required": false
+    },
+    {
+      "id": "youkaisfeasts:sakura_taiga",
+      "required": false
+    },
+    {
+      "id": "youkaisfeasts:sakura_birch_forest",
+      "required": false
+    },
+    {
+      "id": "youkaisfeasts:animal_path",
+      "required": false
+    },
+    {
+      "id": "youkaishomecoming:sakura_forest",
+      "required": false
+    },
+    {
+      "id": "youkaishomecoming:sakura_taiga",
+      "required": false
+    },
+    {
+      "id": "youkaishomecoming:sakura_birch_forest",
+      "required": false
+    },
+    {
+      "id": "youkaishomecoming:animal_path",
+      "required": false
     }
   ]
 }

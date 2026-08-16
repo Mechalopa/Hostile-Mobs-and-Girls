@@ -72,6 +72,10 @@
     {
       "id": "clifftree:tundra",
       "required": false
+    },
+    {
+      "id": "cliffbranch:shrubland",
+      "required": false
     }
   ]
 }

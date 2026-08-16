@@ -42,6 +42,14 @@
     {
       "id": "legendary_monsters:withered_horn",
       "required": false
+    },
+    {
+      "id": "kaleidoscope_nether:wither_rib",
+      "required": false
+    },
+    {
+      "id": "hexfortress:wither_skull_fragment",
+      "required": false
     }
   ]
 }

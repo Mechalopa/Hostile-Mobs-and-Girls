@@ -431,6 +431,18 @@
     {
       "id": "legendary_monsters:annihilator_upgrade_smithing_template",
       "required": false
+    },
+    {
+      "id": "alloyed:steel_upgrade_smithing_template",
+      "required": false
+    },
+    {
+      "id": "galvanized:galvanized_upgrade_smithing_template",
+      "required": false
+    },
+    {
+      "id": "kaleidoscope_end:ender_dragon_smithing_template",
+      "required": false
     }
   ]
 }
