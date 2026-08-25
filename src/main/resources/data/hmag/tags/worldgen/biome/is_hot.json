@@ -8,6 +8,18 @@
       "required": false
     },
     {
+      "id": "#c:is_hot",
+      "required": false
+    },
+    {
+      "id": "#c:hot",
+      "required": false
+    },
+    {
+      "id": "#c:climate_hot",
+      "required": false
+    },
+    {
       "id": "biox:molten_caves",
       "required": false
     },

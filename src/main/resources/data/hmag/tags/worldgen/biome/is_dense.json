@@ -6,6 +6,18 @@
       "required": false
     },
     {
+      "id": "#c:is_dense_vegetation",
+      "required": false
+    },
+    {
+      "id": "#c:dense_vegetation",
+      "required": false
+    },
+    {
+      "id": "#c:vegetation_dense",
+      "required": false
+    },
+    {
       "id": "minecraft:pale_garden",
       "required": false
     },

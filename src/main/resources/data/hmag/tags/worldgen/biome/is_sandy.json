@@ -6,6 +6,14 @@
       "required": false
     },
     {
+      "id": "#c:is_sandy",
+      "required": false
+    },
+    {
+      "id": "#c:sandy",
+      "required": false
+    },
+    {
       "id": "terralith:desert_spires",
       "required": false
     },

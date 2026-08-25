@@ -44,6 +44,22 @@
     {
       "id": "terralith:warped_mesa",
       "required": false
+    },
+    {
+      "id": "ars_elemental:blazing_forest",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:cascading_forest",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:flashing_forest",
+      "required": false
+    },
+    {
+      "id": "ars_elemental:flourishing_forest",
+      "required": false
     }
   ]
 }

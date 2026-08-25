@@ -6,6 +6,14 @@
       "required": false
     },
     {
+      "id": "#c:is_swamp",
+      "required": false
+    },
+    {
+      "id": "#c:swamp",
+      "required": false
+    },
+    {
       "id": "biox:cherry_swamp",
       "required": false
     },
@@ -15,6 +23,10 @@
     },
     {
       "id": "#clifftree:is_swamp",
+      "required": false
+    },
+    {
+      "id": "nyctophobia:marshlands",
       "required": false
     }
   ]

@@ -15,6 +15,26 @@
       "required": false
     },
     {
+      "id": "#c:is_badlands",
+      "required": false
+    },
+    {
+      "id": "#c:is_badland",
+      "required": false
+    },
+    {
+      "id": "#c:is_mesa",
+      "required": false
+    },
+    {
+      "id": "#c:badlands",
+      "required": false
+    },
+    {
+      "id": "#c:mesa",
+      "required": false
+    },
+    {
       "id": "terralith:snowy_badlands",
       "required": false
     },

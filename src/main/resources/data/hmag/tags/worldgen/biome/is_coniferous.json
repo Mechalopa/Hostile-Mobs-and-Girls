@@ -11,6 +11,26 @@
       "required": false
     },
     {
+      "id": "#c:is_coniferous",
+      "required": false
+    },
+    {
+      "id": "#c:coniferous",
+      "required": false
+    },
+    {
+      "id": "#c:tree_coniferous",
+      "required": false
+    },
+    {
+      "id": "#c:is_taiga",
+      "required": false
+    },
+    {
+      "id": "#c:taiga",
+      "required": false
+    },
+    {
       "id": "spookybats:christmas_forest",
       "required": false
     },

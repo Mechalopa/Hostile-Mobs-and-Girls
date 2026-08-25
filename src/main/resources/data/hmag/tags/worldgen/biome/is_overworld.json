@@ -213,6 +213,14 @@
     {
       "id": "fantastic_fishery:mushroom_fields_shore",
       "required": false
+    },
+    {
+      "id": "nyctophobia:burnt_forest",
+      "required": false
+    },
+    {
+      "id": "nyctophobia:marshlands",
+      "required": false
     }
   ]
 }

@@ -107,10 +107,6 @@
       "required": false
     },
     {
-      "id": "youkaisfeasts:animal_path",
-      "required": false
-    },
-    {
       "id": "youkaishomecoming:sakura_forest",
       "required": false
     },
@@ -123,7 +119,7 @@
       "required": false
     },
     {
-      "id": "youkaishomecoming:animal_path",
+      "id": "ars_elemental:flourishing_forest",
       "required": false
     }
   ]

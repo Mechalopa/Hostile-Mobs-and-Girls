@@ -6,6 +6,34 @@
     {
       "id": "#forge:is_mountain",
       "required": false
+    }
+    {
+      "id": "#c:is_hill",
+      "required": false
+    },
+    {
+      "id": "#c:is_mountain",
+      "required": false
+    },
+    {
+      "id": "#c:hill",
+      "required": false
+    },
+    {
+      "id": "#c:mountain",
+      "required": false
+    },
+    {
+      "id": "#c:mountain_peak",
+      "required": false
+    },
+    {
+      "id": "#c:mountain_slope",
+      "required": false
+    },
+    {
+      "id": "#c:extreme_hills",
+      "required": false
     },
     {
       "id": "#terralith:cliffs",

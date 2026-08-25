@@ -6,6 +6,14 @@
       "required": false
     },
     {
+      "id": "#c:is_snowy",
+      "required": false
+    },
+    {
+      "id": "#c:snowy",
+      "required": false
+    },
+    {
       "id": "spookybats:christmas_forest",
       "required": false
     },

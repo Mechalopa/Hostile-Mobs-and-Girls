@@ -7,7 +7,23 @@
       "required": false
     },
     {
+      "id": "#c:is_jungle",
+      "required": false
+    },
+    {
+      "id": "#c:jungle",
+      "required": false
+    },
+    {
       "id": "#forge:is_rainforest",
+      "required": false
+    },
+    {
+      "id": "#c:is_rainforest",
+      "required": false
+    },
+    {
+      "id": "#c:rainforest",
       "required": false
     },
     {

@@ -351,6 +351,10 @@
       "required": false
     },
     {
+      "id": "adaptedmobs:creeper",
+      "required": false
+    },
+    {
       "id": "adaptedmobs:festive_creeper",
       "required": false
     },

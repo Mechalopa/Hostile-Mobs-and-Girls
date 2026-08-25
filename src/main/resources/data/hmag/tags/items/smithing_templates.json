@@ -487,6 +487,34 @@
     {
       "id": "goety_revelation:apocalyptium_upgrade_smithing_template",
       "required": false
+    },
+    {
+      "id": "better_smithing_upgrades:basic_upgrade_smithing_template",
+      "required": false
+    },
+    {
+      "id": "caverns_and_chasms:trim_modifier_smithing_template",
+      "required": false
+    },
+    {
+      "id": "clutterbestiary:butterfly_elytra_smithing_template",
+      "required": false
+    },
+    {
+      "id": "curiosities:aluminum_upgrade_smithing_template",
+      "required": false
+    },
+    {
+      "id": "fangs_n_claws:shrike_upgrade_smithing_template",
+      "required": false
+    },
+    {
+      "id": "aquamirae:terrible_upgrade_smithing_template",
+      "required": false
+    },
+    {
+      "id": "aquamirae:abyssal_upgrade_smithing_template",
+      "required": false
     }
   ]
 }

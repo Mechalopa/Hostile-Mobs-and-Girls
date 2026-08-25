@@ -7,6 +7,14 @@
       "required": false
     },
     {
+      "id": "#c:is_forest",
+      "required": false
+    },
+    {
+      "id": "#c:forest",
+      "required": false
+    },
+    {
       "id": "terralith:alpha_islands",
       "required": false
     },

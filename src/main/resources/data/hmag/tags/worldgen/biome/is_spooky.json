@@ -6,6 +6,14 @@
       "required": false
     },
     {
+      "id": "#c:is_spooky",
+      "required": false
+    },
+    {
+      "id": "#c:spooky",
+      "required": false
+    },
+    {
       "id": "minecraft:pale_garden",
       "required": false
     },
