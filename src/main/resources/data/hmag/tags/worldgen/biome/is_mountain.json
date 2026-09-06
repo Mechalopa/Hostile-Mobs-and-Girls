@@ -6,7 +6,7 @@
     {
       "id": "#forge:is_mountain",
       "required": false
-    }
+    },
     {
       "id": "#c:is_hill",
       "required": false
