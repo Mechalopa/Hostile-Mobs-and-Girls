@@ -37,6 +37,18 @@
     {
       "id": "incendium:weeping_valley",
       "required": false
+    },
+    {
+      "id": "infernalexp:delta_shores",
+      "required": false
+    },
+    {
+      "id": "soulfulnether:ashen_deltas",
+      "required": false
+    },
+    {
+      "id": "netherdescent:sythian_torrids",
+      "required": false
     }
   ]
 }

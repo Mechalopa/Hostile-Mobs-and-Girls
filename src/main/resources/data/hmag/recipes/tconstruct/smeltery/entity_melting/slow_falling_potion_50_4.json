@@ -8,9 +8,7 @@
   "type": "tconstruct:entity_melting",
   "damage": 4,
   "entity": {
-    "types": [
-      "hmag:dyssomnia"
-    ]
+    "type": "hmag:dyssomnia"
   },
   "result": {
     "amount": 50,

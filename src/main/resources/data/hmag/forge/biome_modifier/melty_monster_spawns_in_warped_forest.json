@@ -5,6 +5,11 @@
       {
         "name": "minecraft:warped_forest"
       }
+    ],
+    [
+      {
+        "name": "#hmag:soulfulnether/gloomy_glades"
+      }
     ]
   ],
   "spawners": {

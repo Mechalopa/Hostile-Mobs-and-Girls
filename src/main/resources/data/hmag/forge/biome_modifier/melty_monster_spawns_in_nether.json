@@ -17,7 +17,27 @@
         "negate": true
       },
       {
+        "name": "#hmag:charred_horizons/decaying_valley",
+        "negate": true
+      },
+      {
+        "name": "#hmag:netherdescent/crimson_gardens",
+        "negate": true
+      },
+      {
+        "name": "#hmag:netherdescent/wailing_garth",
+        "negate": true
+      },
+      {
         "name": "#hmag:netherexp/black_ice_glaciers",
+        "negate": true
+      },
+      {
+        "name": "#hmag:soulfulnether/fright_forest",
+        "negate": true
+      },
+      {
+        "name": "#hmag:soulfulnether/gloomy_glades",
         "negate": true
       }
     ]

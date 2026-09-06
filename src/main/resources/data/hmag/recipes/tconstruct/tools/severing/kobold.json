@@ -7,9 +7,9 @@
   ],
   "type": "tconstruct:severing",
   "entity": {
-    "types": [
-      "hmag:kobold"
-    ]
+    "type": "hmag:kobold"
   },
+  "looting_bonus": 0.01,
+  "per_level_chance": 0.05,
   "result": "hmag:kobold_leather"
 }

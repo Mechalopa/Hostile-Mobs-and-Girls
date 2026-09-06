@@ -8,9 +8,7 @@
   "type": "tconstruct:entity_melting",
   "damage": 4,
   "entity": {
-    "types": [
-      "hmag:ogre"
-    ]
+    "type": "hmag:ogre"
   },
   "result": {
     "amount": 50,

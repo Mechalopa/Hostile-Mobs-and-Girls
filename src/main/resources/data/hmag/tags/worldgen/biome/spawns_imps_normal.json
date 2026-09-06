@@ -53,6 +53,14 @@
     {
       "id": "regions_unexplored:infernal_holt",
       "required": false
+    },
+    {
+      "id": "netherdescent:embur_bog",
+      "required": false
+    },
+    {
+      "id": "netherdescent:sythian_torrids",
+      "required": false
     }
   ]
 }

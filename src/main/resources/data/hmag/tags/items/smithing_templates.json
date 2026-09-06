@@ -515,6 +515,18 @@
     {
       "id": "aquamirae:abyssal_upgrade_smithing_template",
       "required": false
+    },
+    {
+      "id": "e2s2:modifier_template",
+      "required": false
+    },
+    {
+      "id": "e2s2:scarlet_armor_template",
+      "required": false
+    },
+    {
+      "id": "e2s2:wither_sword_template",
+      "required": false
     }
   ]
 }

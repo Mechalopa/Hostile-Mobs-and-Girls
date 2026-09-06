@@ -8,9 +8,7 @@
   "type": "tconstruct:entity_melting",
   "damage": 4,
   "entity": {
-    "types": [
-      "hmag:kasha"
-    ]
+    "type": "hmag:kasha"
   },
   "result": {
     "amount": 20,

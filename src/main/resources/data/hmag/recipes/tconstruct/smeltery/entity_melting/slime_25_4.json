@@ -8,12 +8,10 @@
   "type": "tconstruct:entity_melting",
   "damage": 4,
   "entity": {
-    "types": [
-      "hmag:ender_executor"
-    ]
+    "type": "hmag:slime_girl"
   },
   "result": {
     "amount": 25,
-    "tag": "forge:ender"
+    "tag": "forge:slime"
   }
 }

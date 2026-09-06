@@ -1,0 +1,44 @@
+{
+  "type": "hmag:add_spawns",
+  "biomes": [
+    [
+      {
+        "name": "#hmag:netherdescent/crimson_gardens"
+      }
+    ]
+  ],
+  "spawners": [
+    {
+      "type": "hmag:wither_ghost",
+      "weight": 4,
+      "minCount": 2,
+      "maxCount": 2
+    },
+    {
+      "type": "hmag:kasha",
+      "weight": 2,
+      "minCount": 1,
+      "maxCount": 2
+    },
+    {
+      "type": "hmag:imp",
+      "weight": 2,
+      "minCount": 1,
+      "maxCount": 2
+    },
+    {
+      "type": "hmag:crimson_slaughterer",
+      "weight": 1,
+      "minCount": 1,
+      "maxCount": 1
+    },
+    {
+      "type": "hmag:ghastly_seeker",
+      "weight": 5,
+      "minCount": 1,
+      "maxCount": 1
+    }
+  ],
+  "charge": 0.7,
+  "energy_budget": 0.15
+}

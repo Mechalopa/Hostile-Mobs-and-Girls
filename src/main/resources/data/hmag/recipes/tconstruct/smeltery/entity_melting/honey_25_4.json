@@ -8,12 +8,10 @@
   "type": "tconstruct:entity_melting",
   "damage": 4,
   "entity": {
-    "types": [
-      "hmag:hornet"
-    ]
+    "type": "hmag:hornet"
   },
   "result": {
-    "amount": 20,
+    "amount": 25,
     "tag": "forge:honey"
   }
 }

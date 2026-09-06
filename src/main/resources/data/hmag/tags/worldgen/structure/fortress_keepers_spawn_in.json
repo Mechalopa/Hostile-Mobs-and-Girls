@@ -21,6 +21,10 @@
     {
       "id": "nova_structures:nether_port",
       "required": false
+    },
+    {
+      "id": "hexfortress:nether_fortress",
+      "required": false
     }
   ]
 }

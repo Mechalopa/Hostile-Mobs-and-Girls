@@ -8,9 +8,7 @@
   "type": "tconstruct:entity_melting",
   "damage": 2,
   "entity": {
-    "types": [
-      "hmag:savagefang"
-    ]
+    "type": "hmag:savagefang"
   },
   "result": {
     "amount": 50,

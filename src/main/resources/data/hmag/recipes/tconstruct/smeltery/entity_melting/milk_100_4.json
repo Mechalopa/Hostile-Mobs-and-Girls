@@ -9,11 +9,12 @@
   "damage": 4,
   "entity": {
     "types": [
-      "hmag:drowned_girl"
+      "hmag:lich",
+      "hmag:necrotic_reaper"
     ]
   },
   "result": {
-    "amount": 10,
-    "tag": "forge:molten_copper"
+    "amount": 100,
+    "fluid": "minecraft:milk"
   }
 }

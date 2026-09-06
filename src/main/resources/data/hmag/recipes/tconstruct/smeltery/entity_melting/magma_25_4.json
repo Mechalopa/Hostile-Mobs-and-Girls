@@ -8,9 +8,7 @@
   "type": "tconstruct:entity_melting",
   "damage": 4,
   "entity": {
-    "types": [
-      "hmag:fortress_keeper"
-    ]
+    "type": "hmag:fortress_keeper"
   },
   "result": {
     "amount": 25,

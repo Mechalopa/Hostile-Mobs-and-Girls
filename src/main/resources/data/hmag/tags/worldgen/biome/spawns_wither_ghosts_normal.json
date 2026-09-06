@@ -53,6 +53,18 @@
     {
       "id": "regions_unexplored:blackstone_basin",
       "required": false
+    },
+    {
+      "id": "infernalexp:delta_shores",
+      "required": false
+    },
+    {
+      "id": "soulfulnether:ashen_deltas",
+      "required": false
+    },
+    {
+      "id": "netherdescent:embur_bog",
+      "required": false
     }
   ]
 }
