@@ -28,6 +28,10 @@
     {
       "id": "terralith:warm_river",
       "required": false
+    },
+    {
+      "id": "natures_spirit:lush_river",
+      "required": false
     }
   ]
 }

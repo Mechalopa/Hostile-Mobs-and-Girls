@@ -24,6 +24,10 @@
     {
       "id": "netherex:wither_bone",
       "required": false
+    },
+    {
+      "id": "armorplus:wither_bone",
+      "required": false
     }
   ]
 }
